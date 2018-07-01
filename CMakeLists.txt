@@ -3,8 +3,6 @@ cmake_minimum_required(VERSION 2.6)
 # lets name the project
 project(adl)
 
-MESSAGE("Starting cmake")
-
 # add the -c and -Wall flags
 if(MSVC)
 	add_definitions(
@@ -72,7 +70,9 @@ include_directories(
 	${PROJECT_SOURCE_DIR}/sources
 	${PROJECT_SOURCE_DIR}/source
 	${OPENGL_INCLUDE_DIRS}
+	${GLEW_INCLUDE_DIR}
 	${GLEW_INCLUDE_DIRS}
+	${SDL2_INCLUDE_DIR}
 	${SDL2_INCLUDE_DIRS}
 	${ASSIMP_INCLUDE_DIRS}
 )
@@ -80,6 +80,8 @@ include_directories(
 # Define the link libraries
 target_link_libraries( adl
 	${OPENGL_LIBRARIES}
+	${SDL2_LIBRARY}
+	${GLEW_LIBRARY}
 	${GLEW_LIBRARIES}
 	${SDL2_LIBRARIES}
 	${ASSIMP_LIBRARIES}

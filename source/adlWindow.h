@@ -1,7 +1,7 @@
 #ifndef adl_window_h__
 #define adl_window_h__
 
-#include <SDL2\SDL.h>
+#include <SDL2/SDL.h>
 #include <string>
 
 typedef SDL_Window* adlWindow_handle;

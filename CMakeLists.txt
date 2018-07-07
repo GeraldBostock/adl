@@ -14,8 +14,15 @@ else()
 		-c
 		-Wall
 		-msse2
+		-std=gnu++11
 	)
 endif()
+
+if(UNIX)
+	add_definitions(
+		-DADL_TARGET_SYSTEM_UNIX
+		)
+endif(UNIX)
 
 if ( CMAKE_BUILD_TYPE STREQUAL "" )
 	# CMake defaults to leaving CMAKE_BUILD_TYPE empty. This screws up
@@ -58,6 +65,10 @@ SET(ADL_CMAKE_DIR "${PROJECT_SOURCE_DIR}/cmake")
 # OpenGL
 find_package(OpenGL REQUIRED)
 
+if(UNIX)
+	find_package (Threads REQUIRED)
+endif (UNIX)
+
 # GLEW
 INCLUDE(${ADL_CMAKE_DIR}/FindGLEW.cmake)
 
@@ -86,6 +97,12 @@ target_link_libraries( adl
 	${SDL2_LIBRARIES}
 	${ASSIMP_LIBRARIES}
 )
+
+if(UNIX)
+	target_link_libraries( adl
+	${CMAKE_THREAD_LIBS_INIT}
+	)
+endif(UNIX)
 
 if(WIN32)
 	string(REPLACE "/" "\\" source_path_windows "${PROJECT_SOURCE_DIR}/res")

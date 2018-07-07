@@ -4,7 +4,7 @@
 #define SPDLOG_TRACE_ON
 #define SPDLOG_DEBUG_ON
 
-#include "spdlog\spdlog.h"
+#include "spdlog/spdlog.h"
 #include <string>
 #include <memory>
 
@@ -12,7 +12,7 @@ class adlLogger
 {
 public:
 	static void log_error(const std::string& error, bool log_to_file = false);
-	static void log_info(const std::string& error, bool log_to_file = false);
+	static void log_info(const std::string& info, bool log_to_file = false);
 
 private:
 	adlLogger();

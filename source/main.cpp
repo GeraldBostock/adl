@@ -1,20 +1,23 @@
-#include <stdio.h>
+#define SDL_MAIN_HANDLED
+#include "adlWindow.h"
+#include "adl_debug\adlAssert.h"
+#include "adl_debug\adlLogger.h"
 
-#include <SDL2/SDL.h>
-#include <GL/glew.h>
+#include <iostream>
 
 int main(int argc, char* args[])
 {
+
 	(void)argc;
 	(void)args;
-	SDL_Init(SDL_INIT_EVERYTHING);
-	
-	SDL_Window* window = SDL_CreateWindow("title", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1280, 720, SDL_WINDOW_SHOWN);
-	while(true)
+	adlLogger::log_info("Starting adl", true);
+
+	adlWindow window("Default Window", 1280, 720);
+
+	while (1)
 	{
+		
 	}
-	
-	SDL_Quit();
 
 	return 0;
 }

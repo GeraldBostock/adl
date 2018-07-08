@@ -3,7 +3,7 @@
 
 #include <memory>
 
-#include "adl_math\adlMath.h"
+#include "adl_math/adlMath.h"
 #include "adlResource.h"
 
 enum Texture_type

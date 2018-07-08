@@ -1,5 +1,5 @@
 #include "adlResource_manager.h"
-#include "adl_debug\adlAssert.h"
+#include "adl_debug/adlAssert.h"
 
 #include <fstream>
 #include <sstream>

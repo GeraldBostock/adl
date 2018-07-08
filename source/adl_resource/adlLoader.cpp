@@ -40,7 +40,7 @@ adlMesh_shared_ptr adlLoader::load_mesh(const std::string& mesh_path)
 	aiVector3D* mesh_normals = mesh->mNormals;
 	aiVector3D** mesh_uvs = mesh->mTextureCoords;
 
-	for (int i = 0; i < mesh->mNumVertices; i++)
+	for (unsigned int i = 0; i < mesh->mNumVertices; i++)
 	{
 		adlVec3 position(mesh_vertices[i].x, mesh_vertices[i].y, mesh_vertices[i].z);
 		adlVec3 normal(mesh_normals[i].x, mesh_normals[i].y, mesh_normals[i].z);

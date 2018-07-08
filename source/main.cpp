@@ -1,19 +1,15 @@
 #define SDL_MAIN_HANDLED
-#include "adlWindow.h"
+
+#include "adlWindow.h" 
 #include "adl_debug/adlAssert.h"
 #include "adl_debug/adlLogger.h"
-#include "adl_resource\adlResource_manager.h"
+#include "adl_resource/adlResource_manager.h"
+#include "adlInput.h"
 
 int main(int argc, char* args[])
 {
-
 	(void)argc;
 	(void)args;
-#ifdef ADL_TARGET_SYSTEM_WINDOWS
-	adlLogger::log_info("Starting adl on Windows", true);
-#elif defined ADL_TARGET_SYSTEM_UNIX
-	adlLogger::log_info("Starting adl on Unix", true);
-#endif
 
 	adlResource_manager& adl_rm = adlResource_manager::get();
 
@@ -23,7 +19,7 @@ int main(int argc, char* args[])
 
 	while (1)
 	{
-		
+		adlInput::update();
 	}
 
 	return 0;

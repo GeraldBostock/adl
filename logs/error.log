@@ -1,0 +1,40 @@
+[2018-07-07 10:43:23.977] [error_logger] [info] errrorororoororr
+[2018-07-07 13:48:42.485] [error_logger] [info] errrorororoororr
+[2018-07-07 13:49:21.640] [error_logger] [info] errrorororoororr
+[2018-07-07 13:49:56.986] [error_logger] [info] errrorororoororr
+[2018-07-07 19:58:02.230] [error_logger] [info] errrorororoororr
+[2018-07-07 21:16:35.316] [error_logger] [info] errrorororoororr
+[2018-07-07 22:01:53.908] [error_logger] [info] errrorororoororr
+[2018-07-07 22:02:05.485] [error_logger] [info] errrorororoororr
+[2018-07-07 22:02:16.022] [error_logger] [info] errrorororoororr
+[2018-07-07 22:03:17.118] [error_logger] [info] errrorororoororr
+[2018-07-07 22:09:27.202] [error_logger] [info] errrorororoororr
+[2018-07-07 22:09:35.801] [error_logger] [info] errrorororoororr
+[2018-07-07 22:10:20.871] [error_logger] [info] errrorororoororr
+[2018-07-07 22:16:11.187] [error_logger] [info] errrorororoororr
+[2018-07-07 22:16:38.776] [error_logger] [info] errrorororoororr
+[2018-07-07 22:17:29.433] [error_logger] [info] errrorororoororr
+[2018-07-07 22:17:48.631] [error_logger] [info] errrorororoororr
+[2018-07-07 22:18:23.317] [error_logger] [info] errrorororoororr
+[2018-07-07 22:18:36.045] [error_logger] [info] errrorororoororr
+[2018-07-07 22:18:45.653] [error_logger] [info] errrorororoororr
+[2018-07-07 22:20:49.056] [error_logger] [info] errrorororoororr
+[2018-07-07 22:21:39.618] [error_logger] [info] errrorororoororr
+[2018-07-07 22:22:08.785] [error_logger] [info] errrorororoororr
+[2018-07-07 22:33:29.838] [error_logger] [info] Assertion false failed.
+File: C:\Users\doga\Desktop\adl\source\main.cpp
+Line: 21
+
+[2018-07-07 22:33:53.798] [error_logger] [info] Assertion false failed.
+File: C:\Users\doga\Desktop\adl\source\main.cpp
+Line: 21
+
+[2018-07-07 22:34:14.513] [error_logger] [error] Assertion false failed.
+File: C:\Users\doga\Desktop\adl\source\main.cpp
+Line: 21
+
+[2018-07-07 22:34:47.693] [error_logger] [error] Assertion 4>5 failed.
+File: C:\Users\doga\Desktop\adl\source\main.cpp
+Line: 21
+
+[2018-07-08 09:22:12.473] [error_logger] [error] Mesh at %s does not exist in the resource database

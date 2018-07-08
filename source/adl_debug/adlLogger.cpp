@@ -18,7 +18,7 @@ void adlLogger::log_error(const std::string& error, bool log_to_file)
 	console_->error(error);
 	if(log_to_file)
 	{
-		error_logger_->info(error);
+		error_logger_->error(error);
 	}
 }
 

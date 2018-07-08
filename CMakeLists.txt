@@ -18,12 +18,6 @@ else()
 	)
 endif()
 
-if(UNIX)
-	add_definitions(
-		-DADL_TARGET_SYSTEM_UNIX
-		)
-endif(UNIX)
-
 if ( CMAKE_BUILD_TYPE STREQUAL "" )
 	# CMake defaults to leaving CMAKE_BUILD_TYPE empty. This screws up
 	# differentiation between debug and release builds.
@@ -58,6 +52,8 @@ add_executable(adl ${HDRS} ${SRCS})
 # We need a CMAKE_DIR with some code to find external dependencies
 SET(ADL_CMAKE_DIR "${PROJECT_SOURCE_DIR}/cmake")
 
+INCLUDE(${ADL_CMAKE_DIR}/Platform.cmake)
+
 #######################################
 # LOOK for the packages that we need! #
 #######################################
@@ -74,6 +70,9 @@ INCLUDE(${ADL_CMAKE_DIR}/FindGLEW.cmake)
 
 # SDL2
 INCLUDE(${ADL_CMAKE_DIR}/FindSDL2.cmake)
+
+# ASSIMP
+INCLUDE(${ADL_CMAKE_DIR}/FindASSIMP.cmake)
 
 # Define the include DIRs
 include_directories(

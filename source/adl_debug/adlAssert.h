@@ -18,7 +18,7 @@ static inline void failed_assertion(const char* expr, char* file, int line)
 	std::string file_string(file);
 	std::string line_string = std::to_string(line);
 
-	adlLogger::log_error("Assertion " + expression_string + " failed.\nFile: " + file_string + "\nLine: " + line_string + "\n");
+	adlLogger::log_error("Assertion " + expression_string + " failed.\nFile: " + file_string + "\nLine: " + line_string + "\n", true);
 }
 
 #endif // adl_assert_h__

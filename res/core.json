@@ -1,0 +1,10 @@
+{
+    "meshes": [
+		"box.obj",
+		"not_box.obj"
+	],
+	"textures": [
+		"default_texture.png",
+		"non_default_texture.png"
+	]
+}

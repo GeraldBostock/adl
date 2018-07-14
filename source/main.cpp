@@ -18,9 +18,9 @@ int main(int argc, char* args[])
 
 	adl_rm.get_mesh("box.obj");
 	adl_rm.get_mesh("box.obj");
-	adlWindow window("Default Window", 1280, 720);
+	adlWindow window("ADL Game Engine", 1280, 720);
 
-	while (1)
+	while (!adlInput::getKeyDown(adlKeys::adl_key_escape))
 	{
 		adlInput::update();
 	}

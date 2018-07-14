@@ -57,5 +57,5 @@ std::string adlResource_manager::get_core_file_string()
 
 adlMesh_shared_ptr adlResource_manager::get_mesh(const std::string& mesh_name)
 {
-
+	return nullptr;
 }

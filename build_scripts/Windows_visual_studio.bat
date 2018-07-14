@@ -12,3 +12,5 @@ mkdir Release
 copy ..\dependencies\bin\ Debug
 copy ..\dependencies\bin\ Release
 cd ..
+
+set /p DUMMY=Hit ENTER to continue...

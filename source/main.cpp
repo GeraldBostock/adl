@@ -1,9 +1,12 @@
 #define SDL_MAIN_HANDLED
 
+#include <stdio.h>
+
 #include "adlWindow.h" 
 #include "adl_debug/adlAssert.h"
 #include "adl_debug/adlLogger.h"
 #include "adl_resource/adlResource_manager.h"
+#include "adl_math/adlMath.h"
 #include "adlInput.h"
 
 int main(int argc, char* args[])

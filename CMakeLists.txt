@@ -46,19 +46,8 @@ file(GLOB_RECURSE SRCS
 	${PROJECT_SOURCE_DIR}/source/*.c
 )
 
-file (GLOB_RECURSE TEST_HEADERS
-	${PROJECT_SOURCE_DIR}/tests/*.h
-	${PROJECT_SOURCE_DIR}/tests/*.hpp
-)
-
-file (GLOB_RECURSE TEST_SOURCES
-	${PROJECT_SOURCE_DIR}/tests/*.c
-	${PROJECT_SOURCE_DIR}/tests/*.cpp
-)
-
 # Define the executable
 add_executable(adl ${HDRS} ${SRCS})
-add_executable(adl_tests ${TEST_HEADERS} ${TEST_SOURCES})
 
 # We need a CMAKE_DIR with some code to find external dependencies
 SET(ADL_CMAKE_DIR "${PROJECT_SOURCE_DIR}/cmake")
@@ -84,6 +73,9 @@ INCLUDE(${ADL_CMAKE_DIR}/FindSDL2.cmake)
 
 # ASSIMP
 INCLUDE(${ADL_CMAKE_DIR}/FindASSIMP.cmake)
+
+# Google Test
+INCLUDE(${ADL_CMAKE_DIR}/AddGoogleTest.cmake)
 
 # Define the include DIRs
 include_directories(

@@ -1,6 +1,7 @@
 #include "adlLoader.h"
 
 #include "adlMesh.h"
+#include "adlModel.h"
 #include "adl_debug/adlLogger.h"
 
 #include <assimp/Importer.hpp>
@@ -17,7 +18,7 @@ adlLoader::~adlLoader()
 
 }
 
-adlMesh_shared_ptr adlLoader::load_mesh(const std::string& mesh_path)
+adlModel_shared_ptr adlLoader::load_model(const std::string& mesh_path)
 {
 	Assimp::Importer importer;
 
@@ -26,39 +27,87 @@ adlMesh_shared_ptr adlLoader::load_mesh(const std::string& mesh_path)
 		aiProcess_FlipUVs
 		);
 
-	if (!scene)
+	if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 	{
 		adlLogger::log_error(importer.GetErrorString());
-		return false;
+		return nullptr;
 	}
+
+	adlModel_shared_ptr new_model = std::make_shared<adlModel>();
+
+	process_ai_node(scene->mRootNode, scene, new_model);
+
+	return new_model;
+}
+
+void adlLoader::process_ai_node(aiNode* node, const aiScene* scene, adlModel_shared_ptr model)
+{
+	// process all the node's meshes (if any)
+	for (unsigned int i = 0; i < node->mNumMeshes; i++)
+	{
+		aiMesh *mesh = scene->mMeshes[node->mMeshes[i]];
+		model->add_mesh(process_mesh(mesh, scene));
+	}
+	// then do the same for each of its children
+	for (unsigned int i = 0; i < node->mNumChildren; i++)
+	{
+		process_ai_node(node->mChildren[i], scene, model);
+	}
+}
+
+adlMesh_shared_ptr adlLoader::process_mesh(aiMesh *mesh, const aiScene *scene)
+{
+	adlMesh_shared_ptr new_mesh = std::make_shared<adlMesh>();
 
 	std::vector<Vertex> vertices;
 	std::vector<unsigned int> indices;
-
-	aiMesh* mesh = scene->mMeshes[0];
-	aiVector3D* mesh_vertices = mesh->mVertices;
-	aiVector3D* mesh_normals = mesh->mNormals;
-	aiVector3D** mesh_uvs = mesh->mTextureCoords;
+	std::vector<Texture> textures;
 
 	for (unsigned int i = 0; i < mesh->mNumVertices; i++)
 	{
-		adlVec3 position(mesh_vertices[i].x, mesh_vertices[i].y, mesh_vertices[i].z);
-		adlVec3 normal(mesh_normals[i].x, mesh_normals[i].y, mesh_normals[i].z);
-		adlVec2 uv;
+		Vertex vertex;
 
-		if (mesh_uvs[0])
+		adlVec3 vector;
+
+		if (mesh->HasPositions())
 		{
-			uv.x = mesh_uvs[0][i].x;
-			uv.y = mesh_uvs[0][i].y;
+			vector.x = mesh->mVertices[i].x;
+			vector.y = mesh->mVertices[i].y;
+			vector.z = mesh->mVertices[i].z;
+			vertex.position = vector;
 		}
 		else
 		{
-			uv = adlVec2(0.0f, 0.0f);
+			vertex.position = adlVec3::zero();
 		}
 
-		vertices.push_back(Vertex(position, normal, uv));
-	}
-	adlLogger::log_error(mesh_path + " contains more than one mesh. This function is used for loading a single mesh");
+		if (mesh->HasNormals())
+		{
+			vector.x = mesh->mNormals[i].x;
+			vector.y = mesh->mNormals[i].y;
+			vector.z = mesh->mNormals[i].z;
+			vertex.normal = vector;
+		}
+		else
+		{
+			vertex.normal = adlVec3::zero();
+		}
 
-	return nullptr;
+		if (mesh->mTextureCoords[0]) // does the mesh contain texture coordinates?
+		{
+			adlVec2 uv;
+			uv.x = mesh->mTextureCoords[0][i].x;
+			uv.y = mesh->mTextureCoords[0][i].y;
+			vertex.uv = uv;
+		}
+		else
+		{
+			vertex.uv = adlVec2::zero();
+		}
+
+		vertices.push_back(vertex);
+	}
+
+	new_mesh->add_vertices(vertices);
+	return new_mesh;
 }

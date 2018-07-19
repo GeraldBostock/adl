@@ -7,7 +7,7 @@
 #define ADL_BUTTON_LEFT SDL_BUTTON_LEFT
 #define ADL_BUTTON_RIGHT SDL_BUTTON_RIGHT
 
-enum adlKeys
+enum adl_keys
 {
 	adl_key_0 = SDL_SCANCODE_0,
 	adl_key_1 = SDL_SCANCODE_1,

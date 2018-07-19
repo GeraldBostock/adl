@@ -1,3 +1,6 @@
+#ifndef adl_math_h__
+#define adl_math_h__
+
 #define adl_pi 3.1415926535897932f
 #define	adl_two_pi 6.28318530717959f
 #define	adl_half_pi 1.57079632679f
@@ -10,3 +13,20 @@
 
 
 #include "vector.h"
+
+namespace adlMath
+{
+	template<typename a_type>
+	static inline a_type min(a_type x, a_type y)
+	{
+		return (x < y) ? x : y;
+	}
+
+	template<typename a_type>
+	static inline a_type max(a_type x, a_type y)
+	{
+		return (x < y) ? y : x;
+	}
+}
+
+#endif // adl_math_h__

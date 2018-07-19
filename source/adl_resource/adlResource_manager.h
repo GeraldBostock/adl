@@ -18,7 +18,7 @@ public:
 		return instance;
 	}
 
-	adlMesh_shared_ptr get_mesh(const std::string& mesh_name);
+	adlModel_shared_ptr get_model(const std::string& model_name);
 
 private:
 	adlResource_manager();
@@ -28,8 +28,12 @@ private:
 	void operator=(adlResource_manager const&)		= delete;
 
 	const std::string core_file_path = "../res/core.json";
+	
+	std::map<std::string, std::string> name_to_model_path_;
+	std::map<std::string, adlModel_shared_ptr> models_;
+	adlLoader loader_;
 
-	std::map<std::string, adlMesh_shared_ptr> meshes;
+	adlModel_shared_ptr model;
 };
 
 #endif // adl_resource_manager_h__

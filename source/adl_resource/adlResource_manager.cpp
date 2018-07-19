@@ -14,21 +14,34 @@ adlResource_manager::adlResource_manager()
 
 	adl_assert(document.IsObject());
 
-	const rapidjson::Value& mesh_paths = document["meshes"];
-	const rapidjson::Value& texture_paths = document["textures"];
+	const rapidjson::Value& mesh_objects = document["models"];
 
-	for (rapidjson::SizeType i = 0; i < mesh_paths.Size(); i++)
+	adl_assert(mesh_objects.IsArray());
+
+	for (rapidjson::Value::ConstValueIterator itr = mesh_objects.Begin(); itr != mesh_objects.End(); ++itr)
 	{
-		/*adlMesh_shared_ptr mesh = std::make_shared<adlMesh>();
-		mesh->set_file_path(mesh_paths[i].GetString());*/
-		meshes[mesh_paths[i].GetString()] = nullptr;
+		const rapidjson::Value& mesh_object = *itr;
+		adl_assert(mesh_object.IsObject());
+
+		rapidjson::Value::ConstMemberIterator itr2 = mesh_object.MemberBegin();
+		const std::string name = itr2->value.GetString();
+		itr2++;
+		const std::string path = itr2->value.GetString();
+		name_to_model_path_[name] = path;
+		models_[path] = nullptr;
+		/*for (rapidjson::Value::ConstMemberIterator itr2 = mesh_object.MemberBegin(); itr2 != mesh_object.MemberEnd(); ++itr2)
+		{
+			std::cout << itr2->name.GetString() << " : " << itr2->value.GetString() << std::endl;
+			if (itr2 + 1 == mesh_object.MemberEnd())
+			{
+				models_[itr2->value.GetString()] = nullptr;
+			}
+			else
+			{
+			}
+		}*/
 	}
 
-	for (rapidjson::SizeType i = 0; i < mesh_paths.Size(); i++)
-		printf("a[%d] = %s\n", i, mesh_paths[i].GetString());
-
-	for (rapidjson::SizeType i = 0; i < texture_paths.Size(); i++)
-		printf("a[%d] = %s\n", i, texture_paths[i].GetString());
 }
 
 std::string adlResource_manager::get_core_file_string()
@@ -55,7 +68,25 @@ std::string adlResource_manager::get_core_file_string()
 	return file_text;
 }
 
-adlMesh_shared_ptr adlResource_manager::get_mesh(const std::string& mesh_name)
+adlModel_shared_ptr adlResource_manager::get_model(const std::string& model_name)
 {
+	if (!name_to_model_path_[model_name].empty())
+	{
+		std::string model_path = name_to_model_path_[model_name];
+		if (models_[model_path] == nullptr)
+		{
+			adlLogger::log_info("Model " + model_name + " is not loaded yet. Loading.");
+			models_[model_path] = loader_.load_model(model_path);
+			return models_[model_path];
+		}
+		else
+		{
+			adlLogger::log_info("Model is loaded. Returning pointer");
+			return models_[model_path];
+		}
+	}
+
+	adlLogger::log_error("Model" + model_name + "doesn't exist. Returning nullptr");
+
 	return nullptr;
 }

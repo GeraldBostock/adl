@@ -1,8 +1,6 @@
 #ifndef adl_mesh_h__
 #define adl_mesh_h__
 
-#include <memory>
-
 #include "adl_math/adlMath.h"
 #include "adlResource.h"
 
@@ -14,12 +12,18 @@ enum Texture_type
 
 struct Vertex
 {
-	adlVec3 position_;
-	adlVec3 normal_;
-	adlVec2 uv_;
+	adlVec3 position;
+	adlVec3 normal;
+	adlVec2 uv;
+
+	Vertex()
+		: position(adlVec3::zero()), normal(adlVec3::zero()), uv(adlVec2::zero())
+	{
+
+	}
 
 	Vertex(adlVec3 position, adlVec3 normal, adlVec2 uv) 
-		: position_(position), normal_(normal), uv_(uv)
+		: position(position), normal(normal), uv(uv)
 	{
 	}
 };
@@ -30,18 +34,16 @@ struct Texture
 	std::string type;
 };
 
-class adlMesh : public adlResource
+class adlMesh
 {
 public:
 	adlMesh();
 	virtual ~adlMesh();
-	
-	void load() override;
-	void unload() override;
+
+	void add_vertices(std::vector<Vertex>& vertices);
+	void print_vertices();
 
 private:
-	void setup_mesh();
-	
 	std::vector<Vertex> vertices_;
 	std::vector<unsigned int> indices_;
 	std::vector<Texture> textures_;

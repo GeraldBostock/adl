@@ -13,16 +13,17 @@ adlLogger::~adlLogger()
 {
 }
 
-void adlLogger::log_error(const std::string& error, bool log_to_file)
+void adlLogger::log_error(const std::string& error, bool log_to_file /*= false*/)
 {
 	console_->error(error);
 	if(log_to_file)
 	{
 		error_logger_->error(error);
+		error_logger_->error(__LINE__);
 	}
 }
 
-void adlLogger::log_info(const std::string& info, bool log_to_file)
+void adlLogger::log_info(const std::string& info, bool log_to_file /*= false*/)
 {
 	console_->info(info);
 	if (log_to_file)

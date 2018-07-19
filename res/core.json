@@ -1,10 +1,9 @@
 {
-    "meshes": [
-		"box.obj",
-		"not_box.obj"
-	],
-	"textures": [
-		"default_texture.png",
-		"non_default_texture.png"
+    "models": [
+		{"name": "box", "path": "../res/models/box.obj"},
+		{"name": "rifle", "path": "../res/models/rifle.obj"},
+		{"name": "segment","path": "../res/models/segment.obj"},
+		{"name": "duck","path": "../res/models/duck.fbx"}
+		
 	]
 }

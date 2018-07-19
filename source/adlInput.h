@@ -13,17 +13,17 @@ public:
 	virtual ~adlInput();
 
 	static void update();
-	static bool getKey(adlKeys key);
-	static bool getKeyDown(adlKeys key);
-	static bool getKeyUp(adlKeys key);
+	static bool get_key(adl_keys key);
+	static bool get_key_down(adl_keys key);
+	static bool get_key_up(adl_keys key);
 
-	static bool getMouseDown(Uint32 button);
-	static bool getMouseUp(Uint32 button);
+	static bool get_mouse_down(uint32 button);
+	static bool get_mouse_up(uint32 button);
 
-	static adlVec2_i32 getMousePos();
+	static adlVec2_i32 get_mouse_pos();
 
-	static int getMouseXRel();
-	static int getMouseYRel();
+	static int get_mouse_x_rel();
+	static int get_mouse_y_rel();
 
 	struct Mouse
 	{
@@ -38,11 +38,11 @@ public:
 	};
 
 private:
-	static unsigned char m_keyboard[323];
-	static unsigned char m_prevKeyboard[323];
+	static unsigned char keyboard_[323];
+	static unsigned char prev_keyboard_[323];
 
-	static adlInput::Mouse m_mouse;
-	static adlInput::Mouse m_prevMouse;
+	static adlInput::Mouse mouse_;
+	static adlInput::Mouse prev_mouse_;
 };
 
 #endif // adl_input_h__

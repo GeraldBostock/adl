@@ -38,3 +38,7 @@ File: C:\Users\doga\Desktop\adl\source\main.cpp
 Line: 21
 
 [2018-07-08 09:22:12.473] [error_logger] [error] Mesh at %s does not exist in the resource database
+[2018-07-14 22:47:26.669] [error_logger] [error] Assertion document.IsObject() failed.
+File: C:\Users\doga\Desktop\adl\source\adl_resource\adlResource_manager.cpp
+Line: 15
+

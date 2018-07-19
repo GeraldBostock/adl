@@ -46,8 +46,19 @@ file(GLOB_RECURSE SRCS
 	${PROJECT_SOURCE_DIR}/source/*.c
 )
 
+file (GLOB_RECURSE TEST_HEADERS
+	${PROJECT_SOURCE_DIR}/tests/*.h
+	${PROJECT_SOURCE_DIR}/tests/*.hpp
+)
+
+file (GLOB_RECURSE TEST_SOURCES
+	${PROJECT_SOURCE_DIR}/tests/*.c
+	${PROJECT_SOURCE_DIR}/tests/*.cpp
+)
+
 # Define the executable
 add_executable(adl ${HDRS} ${SRCS})
+add_executable(adl_tests ${TEST_HEADERS} ${TEST_SOURCES})
 
 # We need a CMAKE_DIR with some code to find external dependencies
 SET(ADL_CMAKE_DIR "${PROJECT_SOURCE_DIR}/cmake")
@@ -125,6 +136,15 @@ endforeach()
 #Create virtual folders to make it look nicer in VS
 if(MSVC_IDE)
 	foreach(source IN LISTS SRCS HDRS)
+		get_filename_component(source_path "${source}" PATH)
+		string(REPLACE "${PROJECT_SOURCE_DIR}" "" relative_source_path "${source_path}")
+		string(REPLACE "/" "\\" source_path_msvc "${relative_source_path}")
+		source_group("${source_path_msvc}" FILES "${source}")
+	endforeach()
+endif()
+
+if(MSVC_IDE)
+	foreach(source IN LISTS TEST_HEADERS TEST_SOURCES)
 		get_filename_component(source_path "${source}" PATH)
 		string(REPLACE "${PROJECT_SOURCE_DIR}" "" relative_source_path "${source_path}")
 		string(REPLACE "/" "\\" source_path_msvc "${relative_source_path}")

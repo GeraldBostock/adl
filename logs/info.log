@@ -50,3 +50,8 @@
 [2018-07-08 12:44:37.790] [info_logger] [info] Starting adl on Windows
 [2018-07-08 14:13:20.175] [info_logger] [info] Starting adl on Windows
 [2018-07-08 14:38:31.606] [info_logger] [info] Starting adl on Windows
+[2018-07-19 00:53:21.788] [info_logger] [info] Model %s is not loaded yet. Loading.
+[2018-07-19 00:53:38.716] [info_logger] [info] Model %s is not loaded yet. Loading.
+[2018-07-19 00:55:18.626] [info_logger] [info] Model %s is not loaded yet. Loading.
+[2018-07-19 00:58:33.881] [info_logger] [info] Model %s is not loaded yet. Loading.
+[2018-07-19 01:03:15.625] [info_logger] [info] Model %s is not loaded yet. Loading.

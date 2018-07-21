@@ -27,7 +27,7 @@ private:
 	adlResource_manager(adlResource_manager const&) = delete;
 	void operator=(adlResource_manager const&)		= delete;
 
-	const std::string core_file_path = "../res/core.json";
+	const std::string core_file_path = "res/core.json";
 	
 	std::map<std::string, std::string> name_to_model_path_;
 	std::map<std::string, adlModel_shared_ptr> models_;

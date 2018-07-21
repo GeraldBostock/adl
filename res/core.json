@@ -1,9 +1,9 @@
 {
     "models": [
-		{"name": "box", "path": "../res/models/box.obj"},
-		{"name": "rifle", "path": "../res/models/rifle.obj"},
-		{"name": "segment","path": "../res/models/segment.obj"},
-		{"name": "duck","path": "../res/models/duck.fbx"}
+		{"name": "box", "path": "res/models/box.obj"},
+		{"name": "rifle", "path": "res/models/rifle.obj"},
+		{"name": "segment","path": "res/models/segment.obj"},
+		{"name": "duck","path": "res/models/duck.fbx"}
 		
 	]
 }

@@ -25,7 +25,7 @@ public:
 	static int get_mouse_x_rel();
 	static int get_mouse_y_rel();
 
-	struct Mouse
+	struct Mouse_state
 	{
 		int x;
 		int y;
@@ -41,8 +41,8 @@ private:
 	static unsigned char keyboard_[323];
 	static unsigned char prev_keyboard_[323];
 
-	static adlInput::Mouse mouse_;
-	static adlInput::Mouse prev_mouse_;
+	static adlInput::Mouse_state mouse_state_;
+	static adlInput::Mouse_state prev_mouse_state_;
 };
 
 #endif // adl_input_h__

@@ -1,6 +1,7 @@
 #ifndef adl_window_h__
 #define adl_window_h__
 
+#define SDL_MAIN_HANDLED
 #include <SDL2/SDL.h>
 #include <string>
 

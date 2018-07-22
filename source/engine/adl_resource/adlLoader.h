@@ -1,7 +1,7 @@
 #ifndef adl_loader_h__
 #define adl_loader_h__
 
-#include "adlShared_types.h"
+#include "engine/adlShared_types.h"
 #include "adlMesh.h"
 
 class adlMesh;

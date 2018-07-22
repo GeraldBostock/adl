@@ -1,5 +1,5 @@
 #include "adlResource_manager.h"
-#include "adl_debug/adlAssert.h"
+#include "engine/adl_debug/adlAssert.h"
 
 #include <fstream>
 #include <sstream>
@@ -29,17 +29,6 @@ adlResource_manager::adlResource_manager()
 		const std::string path = itr2->value.GetString();
 		name_to_model_path_[name] = path;
 		models_[path] = nullptr;
-		/*for (rapidjson::Value::ConstMemberIterator itr2 = mesh_object.MemberBegin(); itr2 != mesh_object.MemberEnd(); ++itr2)
-		{
-			std::cout << itr2->name.GetString() << " : " << itr2->value.GetString() << std::endl;
-			if (itr2 + 1 == mesh_object.MemberEnd())
-			{
-				models_[itr2->value.GetString()] = nullptr;
-			}
-			else
-			{
-			}
-		}*/
 	}
 
 }

@@ -1,6 +1,6 @@
-#include "adl_helper/adlFPS_manager.h"
+#include "engine/adl_helper/adlFPS_manager.h"
 
-#include "adl_debug/adlLogger.h"
+#include "engine/adl_debug/adlLogger.h"
 
 #include <thread>
 #include <chrono>
@@ -21,31 +21,22 @@ void adlFPS_manager::init()
 {
 	timer_.start();
 	frame_count_ = 0;
-	fps_ = 0.0;
 	sleep_duration_ = 0.0;
 	frame_start_time_ = timer_.get_elapsed_milli_seconds();
 	frame_end_time_ = frame_start_time_ + 1;
 	frame_duration_ = 1;
 	last_report_time_ = frame_start_time_;
 	target_frame_duration_ = (1.0 / target_fps_) * 1000;
+	frame_times_.resize(FRAME_VALUES, 0);
 }
 
 double adlFPS_manager::enforce_fps()
 {
+	int frames_index = frame_count_ % FRAME_VALUES;
+
 	frame_end_time_ = timer_.get_elapsed_milli_seconds();
 	frame_duration_ = frame_end_time_ - frame_start_time_;
 
-	if (report_interval_ != 0.0f)
-	{
-		if ((frame_end_time_ - last_report_time_) > report_interval_ * 1000)
-		{
-			last_report_time_ = frame_end_time_;
-
-			fps_ = (double)frame_count_ / timer_.get_elapsed_milli_seconds() * 1000;
-
-			adlLogger::log_info("FPS: " + std::to_string(fps_));
-		}
-	}
 	sleep_duration_ = target_frame_duration_ - frame_duration_;
 
 	if (sleep_duration_ > 0.0)
@@ -54,12 +45,41 @@ double adlFPS_manager::enforce_fps()
 		std::this_thread::sleep_for(std::chrono::milliseconds(time_to_sleep));
 	}
 	frame_start_time_ = timer_.get_elapsed_milli_seconds();
+
 	frame_count_++;
 
-	return (frame_duration_ + (frame_start_time_ - frame_end_time_));
-}
+	int count;
+	if (frame_count_ < FRAME_VALUES)
+	{
+		count = frame_count_;
+	}
+	else
+	{
+		count = FRAME_VALUES;
+	}
 
-float adlFPS_manager::get_fps()
-{
-	return fps_;
+	double dt = frame_duration_ + (frame_start_time_ - frame_end_time_);
+
+	frame_times_[frames_index] = dt;
+
+	double frames_per_second = 0;
+	for (int i = 0; i < count; i++)
+	{
+		frames_per_second += frame_times_[i];
+	}
+
+	frames_per_second /= count;
+	frames_per_second = 1000.0 / frames_per_second;
+
+	if (report_interval_ != 0.0f)
+	{
+		if ((frame_end_time_ - last_report_time_) > report_interval_ * 1000)
+		{
+			last_report_time_ = frame_end_time_;
+
+			adlLogger::log_info("FPS:" + std::to_string(frames_per_second));
+		}
+	}
+
+	return dt;
 }

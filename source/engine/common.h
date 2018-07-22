@@ -1,6 +1,10 @@
 #ifndef common_h__
 #define common_h__
 
+#if defined ADL_TARGET_SYSTEM_WINDOWS
+#define SDL_MAIN_HANDLED
+#endif
+
 #if defined(__GNUC__) || defined(__clang__) || (defined(_MSC_VER) && _MSC_VER >= 1600)
 #include <stdint.h>
 #elif defined(_MSC_VER)

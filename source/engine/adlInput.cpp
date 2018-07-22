@@ -1,0 +1,106 @@
+#include "adlInput.h"
+
+#include <iostream>
+
+adlInput::adlInput()
+{
+}
+
+void adlInput::update()
+{
+	SDL_Event e;
+	while (SDL_PollEvent(&e))
+	{
+	}
+
+	memcpy(prev_keyboard_, keyboard_, 323);
+	memcpy(keyboard_, SDL_GetKeyboardState(NULL), 323);
+
+	Uint32 buttons;
+
+	memcpy(&prev_mouse_state_, &mouse_state_, sizeof(Mouse_state));
+	buttons = SDL_GetMouseState(&mouse_state_.x, &mouse_state_.y);
+
+	mouse_state_.xDif = mouse_state_.x - prev_mouse_state_.x;
+	mouse_state_.yDif = mouse_state_.y - prev_mouse_state_.y;
+
+	if (buttons & ADL_BUTTON(1))
+		mouse_state_.lmb = 1;
+	else
+		mouse_state_.lmb = 0;
+
+	if (buttons & ADL_BUTTON(3))
+		mouse_state_.rmb = 1;
+	else
+		mouse_state_.rmb = 0;
+
+	if (mouse_state_.lmb == 0 && prev_mouse_state_.lmb == 1)
+		mouse_state_.lmbr = 1;
+	else
+		mouse_state_.lmbr = 0;
+
+	if (mouse_state_.rmb == 0 && prev_mouse_state_.rmb == 1)
+		mouse_state_.rmbr = 1;
+	else
+		mouse_state_.rmbr = 0;
+}
+
+bool adlInput::get_key(adl_keys key)
+{
+	return keyboard_[key];
+}
+
+bool adlInput::get_key_down(adl_keys key)
+{
+	return keyboard_[key] && !prev_keyboard_[key];
+}
+
+bool adlInput::get_key_up(adl_keys key)
+{
+	return !keyboard_[key] && prev_keyboard_[key];
+}
+
+bool adlInput::get_mouse_down(uint32 button)
+{
+	switch (button)
+	{
+	case ADL_BUTTON_LEFT:
+		return mouse_state_.lmb && !prev_mouse_state_.lmb;
+		break;
+	case ADL_BUTTON_RIGHT:
+		return mouse_state_.rmb && !prev_mouse_state_.rmb;
+		break;
+	}
+
+	return false;
+}
+
+bool adlInput::get_mouse_up(uint32 button)
+{
+	switch (button)
+	{
+	case ADL_BUTTON_LEFT:
+		return !mouse_state_.lmb && prev_mouse_state_.lmb;
+		break;
+	case ADL_BUTTON_RIGHT:
+		return !mouse_state_.rmb && prev_mouse_state_.rmb;
+		break;
+	}
+
+	return false;
+}
+
+adlVec2_i32 adlInput::get_mouse_pos()
+{
+	return adlVec2_i32{ mouse_state_.x, mouse_state_.y };
+}
+
+int adlInput::get_mouse_x_rel()
+{
+	return mouse_state_.xDif;
+}
+
+int adlInput::get_mouse_y_rel()
+{
+	return mouse_state_.yDif;
+}

@@ -4,8 +4,8 @@
 #include <string>
 #include <map>
 
-#include "rapidjson/document.h"
-#include "adl_debug/adlLogger.h"
+#include <document.h>
+#include "engine/adl_debug/adlLogger.h"
 #include "adlResource.h"
 #include "adlLoader.h"
 

@@ -4,10 +4,10 @@
 #define ADL_NEW(Class_name, ...)	new Class_name(##__VA_ARGS__);
 
 #define ADL_DELETE(ptr)	\
-if(ptr != nullptr)		\
+if(ptr != NULL)		\
 {						\
     delete ptr;			\
-    ptr = nullptr;		\
+    ptr = NULL;		\
 }
 
 #endif // adl_memory_h__

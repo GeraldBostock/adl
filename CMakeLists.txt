@@ -35,19 +35,32 @@ add_definitions( -O2 )
 endif ( CMAKE_BUILD_TYPE STREQUAL "Release" )
 
 # Lets LOAD app our headers!
-file(GLOB_RECURSE HDRS
-	${PROJECT_SOURCE_DIR}/source/*.h
-	${PROJECT_SOURCE_DIR}/source/*.hpp
+file(GLOB_RECURSE ADL_HDRS
+	${PROJECT_SOURCE_DIR}/source/engine/*.h
+	${PROJECT_SOURCE_DIR}/source/engine/*.hpp
 )
 
 # Lets LOAD app our sources!
-file(GLOB_RECURSE SRCS
-	${PROJECT_SOURCE_DIR}/source/*.cpp
-	${PROJECT_SOURCE_DIR}/source/*.c
+file(GLOB_RECURSE ADL_SRCS
+	${PROJECT_SOURCE_DIR}/source/engine/*.cpp
+	${PROJECT_SOURCE_DIR}/source/engine/*.c
+)
+
+# Lets LOAD app our headers!
+file(GLOB_RECURSE GAME_HDRS
+	${PROJECT_SOURCE_DIR}/source/game/*.h
+	${PROJECT_SOURCE_DIR}/source/game/*.hpp
+)
+
+# Lets LOAD app our sources!
+file(GLOB_RECURSE GAME_SRCS
+	${PROJECT_SOURCE_DIR}/source/game/*.cpp
+	${PROJECT_SOURCE_DIR}/source/game/*.c
 )
 
 # Define the executable
-add_executable(adl ${HDRS} ${SRCS})
+add_executable(adl ${ADL_HDRS} ${ADL_SRCS})
+add_executable(game ${GAME_HDRS} ${GAME_SRCS} ${ADL_HDRS} ${ADL_SRCS})
 
 # We need a CMAKE_DIR with some code to find external dependencies
 SET(ADL_CMAKE_DIR "${PROJECT_SOURCE_DIR}/cmake")
@@ -74,24 +87,56 @@ INCLUDE(${ADL_CMAKE_DIR}/FindSDL2.cmake)
 # ASSIMP
 INCLUDE(${ADL_CMAKE_DIR}/FindASSIMP.cmake)
 
-# Google Test
-INCLUDE(${ADL_CMAKE_DIR}/AddGoogleTest.cmake)
+# SPDLOG
+INCLUDE(${ADL_CMAKE_DIR}/FindSPDLOG.cmake)
 
-# Define the include DIRs
+# RAPIDJSON
+INCLUDE(${ADL_CMAKE_DIR}/FindRAPIDJSON.cmake)
+
+# Google Test
+# INCLUDE(${ADL_CMAKE_DIR}/AddGoogleTest.cmake)
+
+# ADL Includes
 include_directories(
-	${PROJECT_SOURCE_DIR}/headers
-	${PROJECT_SOURCE_DIR}/sources
-	${PROJECT_SOURCE_DIR}/source
+	${PROJECT_SOURCE_DIR}/headers/
+	${PROJECT_SOURCE_DIR}/sources/
+	${PROJECT_SOURCE_DIR}/source/
 	${OPENGL_INCLUDE_DIRS}
 	${GLEW_INCLUDE_DIR}
 	${GLEW_INCLUDE_DIRS}
 	${SDL2_INCLUDE_DIR}
 	${SDL2_INCLUDE_DIRS}
 	${ASSIMP_INCLUDE_DIRS}
+	${SPDLOG_INCLUDE_DIRS}
+	${RAPIDJSON_INCLUDE_DIRS}
 )
 
-# Define the link libraries
+# ADL Libs
 target_link_libraries( adl
+	${OPENGL_LIBRARIES}
+	${SDL2_LIBRARY}
+	${GLEW_LIBRARY}
+	${GLEW_LIBRARIES}
+	${SDL2_LIBRARIES}
+	${ASSIMP_LIBRARIES}
+)
+
+include_directories(
+	${PROJECT_SOURCE_DIR}/headers/
+	${PROJECT_SOURCE_DIR}/sources/
+	${PROJECT_SOURCE_DIR}/source/
+	${OPENGL_INCLUDE_DIRS}
+	${GLEW_INCLUDE_DIR}
+	${GLEW_INCLUDE_DIRS}
+	${SDL2_INCLUDE_DIR}
+	${SDL2_INCLUDE_DIRS}
+	${ASSIMP_INCLUDE_DIRS}
+	${SPDLOG_INCLUDE_DIRS}
+	${RAPIDJSON_INCLUDE_DIRS}
+)
+
+# ADL Libs
+target_link_libraries( game
 	${OPENGL_LIBRARIES}
 	${SDL2_LIBRARY}
 	${GLEW_LIBRARY}
@@ -127,7 +172,14 @@ endforeach()
 
 #Create virtual folders to make it look nicer in VS
 if(MSVC_IDE)
-	foreach(source IN LISTS SRCS HDRS)
+	foreach(source IN LISTS ADL_SRCS ADL_HDRS)
+		get_filename_component(source_path "${source}" PATH)
+		string(REPLACE "${PROJECT_SOURCE_DIR}" "" relative_source_path "${source_path}")
+		string(REPLACE "/" "\\" source_path_msvc "${relative_source_path}")
+		source_group("${source_path_msvc}" FILES "${source}")
+	endforeach()
+	
+	foreach(source IN LISTS GAME_SRCS GAME_HDRS)
 		get_filename_component(source_path "${source}" PATH)
 		string(REPLACE "${PROJECT_SOURCE_DIR}" "" relative_source_path "${source_path}")
 		string(REPLACE "/" "\\" source_path_msvc "${relative_source_path}")

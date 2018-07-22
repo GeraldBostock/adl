@@ -1,8 +1,8 @@
 #ifndef vector_h__
 #define vector_h__
 
-#include "common.h"
-#include "adl_debug/adlAssert.h"
+#include "engine/common.h"
+#include "engine/adl_debug/adlAssert.h"
 
 class adlVec2
 {

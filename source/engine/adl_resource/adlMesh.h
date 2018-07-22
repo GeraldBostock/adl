@@ -1,7 +1,7 @@
 #ifndef adl_mesh_h__
 #define adl_mesh_h__
 
-#include "adl_math/adlMath.h"
+#include "engine/adl_math/adlMath.h"
 #include "adlResource.h"
 
 enum Texture_type

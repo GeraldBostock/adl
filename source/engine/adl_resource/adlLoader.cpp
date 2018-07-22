@@ -2,7 +2,7 @@
 
 #include "adlMesh.h"
 #include "adlModel.h"
-#include "adl_debug/adlLogger.h"
+#include "engine/adl_debug/adlLogger.h"
 
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>

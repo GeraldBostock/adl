@@ -4,7 +4,7 @@
 #define SPDLOG_TRACE_ON
 #define SPDLOG_DEBUG_ON
 
-#include "spdlog/spdlog.h"
+#include <spdlog.h>
 #include <string>
 #include <memory>
 

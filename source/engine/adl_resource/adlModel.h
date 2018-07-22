@@ -2,8 +2,8 @@
 #define adl_model_h__
 
 #include <vector>
-#include "adl_resource/adlMesh.h"
-#include "adlShared_types.h"
+#include "engine/adl_resource/adlMesh.h"
+#include "engine/adlShared_types.h"
 
 class adlModel
 {

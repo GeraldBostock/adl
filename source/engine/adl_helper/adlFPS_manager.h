@@ -2,6 +2,9 @@
 #define adl_fps_manager_h__
 
 #include "adlTimer.h"
+#include <vector>
+
+#define FRAME_VALUES 10
 
 class adlFPS_manager
 {
@@ -13,13 +16,14 @@ public:
 	float get_fps();
 
 private:
+	std::vector<double> frame_times_;
+
 	adlTimer timer_;
 	double frame_start_time_;         
 	double frame_end_time_;           
 	double frame_duration_;          
 
-	double target_fps_;           
-	double fps_;          
+	double target_fps_;                   
 	int frame_count_;        
 
 	double target_frame_duration_;  
@@ -29,7 +33,6 @@ private:
 	double report_interval_;
 
 	void init();
-	//void set_target_fps();
 };
 
 #endif // adl_fps_manager_h__

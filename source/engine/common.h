@@ -5,6 +5,8 @@
 #define SDL_MAIN_HANDLED
 #endif
 
+#define USE_SDL
+
 #if defined(__GNUC__) || defined(__clang__) || (defined(_MSC_VER) && _MSC_VER >= 1600)
 #include <stdint.h>
 #elif defined(_MSC_VER)

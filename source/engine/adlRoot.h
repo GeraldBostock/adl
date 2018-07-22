@@ -8,6 +8,7 @@ class adlTimer;
 class adlFPS_manager;
 class adlResource_manager;
 class adlInput;
+class adlRender_manager;
 
 class adlRoot
 {
@@ -22,6 +23,7 @@ public:
 
 protected:
 	adlResource_manager* adl_rm;
+	adlRender_manager* adl_renderer;
 	adlInput* adl_input;
 
 	void init_window(const std::string& title, int width, int height);

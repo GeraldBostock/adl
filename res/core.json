@@ -3,7 +3,12 @@
 		{"name": "box", "path": "res/models/box.obj"},
 		{"name": "rifle", "path": "res/models/rifle.obj"},
 		{"name": "segment","path": "res/models/segment.obj"},
-		{"name": "duck","path": "res/models/duck.fbx"}
+		{"name": "duck","path": "res/models/duck.fbx"},
+		{"name": "wuson","path": "res/models/wuson.obj"},
+		{"name": "jeep","path": "res/models/jeep1.fbx"}
 		
+	],
+	"shaders": [
+		{"name": "basic_shader", "vertex_shader_path": "res/shaders/basic_shader.vs", "fragment_shader_path": "res/shaders/basic_shader.fs"}
 	]
 }

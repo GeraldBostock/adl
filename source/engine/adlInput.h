@@ -29,6 +29,8 @@ public:
 	int get_mouse_x_rel();
 	int get_mouse_y_rel();
 
+	bool close_button_pressed();
+
 	struct Mouse_state
 	{
 		int x;
@@ -47,6 +49,8 @@ private:
 
 	Mouse_state mouse_state_ = {};
 	Mouse_state prev_mouse_state_ = {};
+
+	bool close_button_ = false;
 
 	adlInput();
 };

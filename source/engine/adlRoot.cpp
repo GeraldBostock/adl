@@ -2,6 +2,7 @@
 
 #include "adlMemory.h"
 #include "adl_resource/adlResource_manager.h"
+#include "adl_renderer/adlRender_manager.h"
 #include "adlWindow.h"
 #include "adl_debug/adlLogger.h"
 #include "adlInput.h"
@@ -26,6 +27,13 @@ void adlRoot::init_window(const std::string& title, int width, int height)
 void adlRoot::run()
 {
 	adl_input->update();
+	adl_renderer->prepare();
+
+	if (adl_input->close_button_pressed())
+	{
+		is_running_ = false;
+		return;
+	}
 
 	double dt = fps_manager_->enforce_fps();
 
@@ -33,6 +41,8 @@ void adlRoot::run()
 	{
 		is_running_ = false;
 	}
+
+	window_->swap_buffers();
 }
 
 void adlRoot::start()
@@ -43,18 +53,21 @@ void adlRoot::start()
 
 void adlRoot::game_thread()
 {
+	adl_rm = &adlResource_manager::get();
+	adl_renderer = &adlRender_manager::get();
+	adl_input = &adlInput::get();
+
 	if (!init())
 	{
 		is_running_ = false;
 	}
 
-	adl_rm = &adlResource_manager::get();
-	adl_input = &adlInput::get();
-
-	fps_manager_ = ADL_NEW(adlFPS_manager, 120, 1.0);
+	fps_manager_ = ADL_NEW(adlFPS_manager, 120, 2.5);
 
 	while (is_running_)
 	{
 		run();
 	}
+
+	window_->close_window();
 }

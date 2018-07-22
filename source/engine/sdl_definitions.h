@@ -56,7 +56,7 @@ enum adl_keys
 	adl_key_right_shift = SDL_SCANCODE_RSHIFT,
 
 	adl_key_left_alt = SDL_SCANCODE_LALT,
-	adl_key_right_alt = SDL_SCANCODE_RALT
+	adl_key_right_alt = SDL_SCANCODE_RALT,
 };
 
 #endif // sdl_definitions_h__

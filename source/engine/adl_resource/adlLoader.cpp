@@ -3,6 +3,7 @@
 #include "adlMesh.h"
 #include "adlModel.h"
 #include "engine/adl_debug/adlLogger.h"
+#include "engine/adl_resource/adlStatic_shader.h"
 
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
@@ -16,6 +17,12 @@ adlLoader::adlLoader()
 adlLoader::~adlLoader()
 {
 
+}
+
+adlShader_shared_ptr adlLoader::load_shader(const std::string& vertex_shader_path, const std::string& fragment_shader_path)
+{
+	adlShader_shared_ptr new_shader = std::make_shared<adlStatic_shader>(vertex_shader_path, fragment_shader_path);
+	return new_shader;
 }
 
 adlModel_shared_ptr adlLoader::load_model(const std::string& mesh_path)

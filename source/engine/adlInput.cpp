@@ -11,6 +11,14 @@ void adlInput::update()
 	SDL_Event e;
 	while (SDL_PollEvent(&e))
 	{
+		if (e.type == SDL_QUIT)
+		{
+			close_button_ = true;
+		}
+		else
+		{
+			close_button_ = false;
+		}
 	}
 
 	memcpy(prev_keyboard_, keyboard_, 323);
@@ -103,4 +111,9 @@ int adlInput::get_mouse_x_rel()
 int adlInput::get_mouse_y_rel()
 {
 	return mouse_state_.yDif;
+}
+
+bool adlInput::close_button_pressed()
+{
+	return close_button_;
 }

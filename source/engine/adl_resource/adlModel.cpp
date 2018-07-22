@@ -17,7 +17,7 @@ void adlModel::add_mesh(adlMesh_shared_ptr mesh)
 
 void adlModel::print_vertices()
 {
-	for (int i = 0; i < meshes_.size(); i++)
+	for (unsigned int i = 0; i < meshes_.size(); i++)
 	{
 		meshes_[i]->print_vertices();
 	}

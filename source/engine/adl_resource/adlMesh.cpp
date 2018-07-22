@@ -18,7 +18,7 @@ void adlMesh::add_vertices(std::vector<Vertex>& vertices)
 
 void adlMesh::print_vertices()
 {
-	for (int i = 0; i < vertices_.size(); i++)
+	for (unsigned int i = 0; i < vertices_.size(); i++)
 	{
 		printf("x: %f, y: %f, z: %f\n", vertices_[i].position.vec[0], vertices_[i].position.vec[1], vertices_[i].position.vec[2]);
 	}

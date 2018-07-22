@@ -15,6 +15,7 @@ else()
 		-Wall
 		-msse2
 		-std=gnu++11
+		-nostartfiles
 	)
 endif()
 
@@ -59,7 +60,9 @@ file(GLOB_RECURSE GAME_SRCS
 )
 
 # Define the executable
-add_executable(adl ${ADL_HDRS} ${ADL_SRCS})
+if(WIN32)
+	add_executable(adl ${ADL_HDRS} ${ADL_SRCS})
+endif()
 add_executable(game ${GAME_HDRS} ${GAME_SRCS} ${ADL_HDRS} ${ADL_SRCS})
 
 # We need a CMAKE_DIR with some code to find external dependencies
@@ -111,7 +114,7 @@ include_directories(
 	${RAPIDJSON_INCLUDE_DIRS}
 )
 
-# ADL Libs
+if(WIN32)
 target_link_libraries( adl
 	${OPENGL_LIBRARIES}
 	${SDL2_LIBRARY}
@@ -120,21 +123,7 @@ target_link_libraries( adl
 	${SDL2_LIBRARIES}
 	${ASSIMP_LIBRARIES}
 )
-
-include_directories(
-	${PROJECT_SOURCE_DIR}/headers/
-	${PROJECT_SOURCE_DIR}/sources/
-	${PROJECT_SOURCE_DIR}/source/
-	${OPENGL_INCLUDE_DIRS}
-	${GLEW_INCLUDE_DIR}
-	${GLEW_INCLUDE_DIRS}
-	${SDL2_INCLUDE_DIR}
-	${SDL2_INCLUDE_DIRS}
-	${ASSIMP_INCLUDE_DIRS}
-	${SPDLOG_INCLUDE_DIRS}
-	${RAPIDJSON_INCLUDE_DIRS}
-)
-
+endif()
 # ADL Libs
 target_link_libraries( game
 	${OPENGL_LIBRARIES}
@@ -146,7 +135,7 @@ target_link_libraries( game
 )
 
 if(UNIX)
-	target_link_libraries( adl
+	target_link_libraries( game
 	${CMAKE_THREAD_LIBS_INIT}
 	)
 endif(UNIX)

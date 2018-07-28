@@ -14,10 +14,13 @@ public:
 
 	void prepare();
 	void render_mesh(adlModel_shared_ptr model);
+	void set_wire_frame_mode();
 
 private:
 	adlRender_manager();
 	~adlRender_manager();
+
+	bool is_wire_frame_mode_;
 };
 
 #endif // adl_render_manager_h__

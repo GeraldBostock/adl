@@ -42,4 +42,3 @@ file (GLOB_RECURSE TEST_SOURCES
 # Now simply link against gtest or gtest_main as needed. Eg
 add_executable(adl_tests ${TEST_HEADERS} ${TEST_SOURCES})
 target_link_libraries(adl_tests gtest_main)
-add_test(NAME vector_tests COMMAND example)

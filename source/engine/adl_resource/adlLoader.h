@@ -19,7 +19,7 @@ public:
 	adlShader_shared_ptr load_shader(const std::string& vertex_shader_path, const std::string& fragment_shader_path);
 private:
 	void process_ai_node(aiNode* node, const aiScene* scene, adlModel_shared_ptr model);
-	adlMesh_shared_ptr process_mesh(aiMesh *mesh, const aiScene *scene);
+	adlMesh_shared_ptr process_mesh(aiMesh *mesh);
 };
 
 #endif // adl_loader_h__

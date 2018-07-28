@@ -77,7 +77,9 @@ double adlFPS_manager::enforce_fps()
 		{
 			last_report_time_ = frame_end_time_;
 
-			adlLogger::log_info("FPS:" + std::to_string(frames_per_second));
+			
+			adlLogger* adl_logger = &adlLogger::get();
+			adl_logger->log_info("FPS:" + std::to_string(frames_per_second));
 		}
 	}
 

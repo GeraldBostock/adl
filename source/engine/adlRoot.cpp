@@ -35,7 +35,12 @@ void adlRoot::run()
 		return;
 	}
 
-	double dt = fps_manager_->enforce_fps();
+	int64 dt = fps_manager_->enforce_fps();
+
+	if (adl_input->get_key(adl_key_left_ctrl) && adl_input->get_key(adl_key_left_alt) && adl_input->get_key_up(adl_key_w))
+	{
+		adl_renderer->set_wire_frame_mode();
+	}
 
 	if (!update(dt))
 	{
@@ -56,6 +61,7 @@ void adlRoot::game_thread()
 	adl_rm = &adlResource_manager::get();
 	adl_renderer = &adlRender_manager::get();
 	adl_input = &adlInput::get();
+	adl_logger = &adlLogger::get();
 
 	if (!init())
 	{

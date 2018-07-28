@@ -14,7 +14,8 @@ adlShader_program::~adlShader_program()
 
 void adlShader_program::init(const std::string& vertex_file_path, const std::string& fragment_file_path)
 {
-	adlLogger::log_info("Compiling shader");
+	adlLogger* adl_logger = &adlLogger::get();
+	adl_logger->log_info("Compiling shader");
 	vertex_shader_id_ = load_shader(vertex_file_path, GL_VERTEX_SHADER);
 	fragment_shader_id_ = load_shader(fragment_file_path, GL_FRAGMENT_SHADER);
 
@@ -72,6 +73,7 @@ void adlShader_program::clean_up()
 
 uint32 adlShader_program::load_shader(const std::string& shader_path, int32 shader_type)
 {
+	adlLogger* adl_logger = &adlLogger::get();
 	std::ifstream file;
 	file.open(shader_path);
 
@@ -88,13 +90,13 @@ uint32 adlShader_program::load_shader(const std::string& shader_path, int32 shad
 	}
 	else
 	{
-		adlLogger::log_error("Unable to open shader file at " + shader_path);
+		adl_logger->log_error("Unable to open shader file at " + shader_path);
 	}
 
 	uint32 shader_id = glCreateShader(shader_type);
 	if (shader_id == 0)
 	{
-		adlLogger::log_error("Could not create shader");
+		adl_logger->log_error("Could not create shader");
 	}
 
 	const char* shader_source_strings[1];
@@ -135,6 +137,7 @@ void adlShader_program::check_shader_error(uint32 shader, uint32 flag, bool is_p
 			glGetShaderInfoLog(shader, sizeof(error), NULL, error);
 		}
 
-		adlLogger::log_error(error_message + std::string(error));
+		adlLogger* adl_logger = &adlLogger::get();
+		adl_logger->log_error(error_message + std::string(error));
 	}
 }

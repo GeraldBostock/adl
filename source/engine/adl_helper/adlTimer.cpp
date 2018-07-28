@@ -22,7 +22,7 @@ void adlTimer::stop()
 	is_paused_ = true;
 }
 
-double adlTimer::get_elapsed_milli_seconds()
+int64 adlTimer::get_elapsed_milli_seconds()
 {
 	Time_point end_time;
 
@@ -38,7 +38,7 @@ double adlTimer::get_elapsed_milli_seconds()
 	return std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time_).count();
 }
 
-double adlTimer::get_elapsed_seconds()
+int64 adlTimer::get_elapsed_seconds()
 {
 	return get_elapsed_milli_seconds() / 1000.0;
 }

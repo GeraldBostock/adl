@@ -2,6 +2,7 @@
 #include "engine/adl_debug/adlLogger.h"
 #include "engine/adl_resource/adlResource_manager.h"
 #include "engine/adl_resource/adlModel.h"
+#include "engine/adl_renderer/adlRender_manager.h"
 #include "engine/adlInput.h"
 
 Game::Game()
@@ -21,23 +22,18 @@ bool Game::init()
 	shader = adl_rm->get_shader("basic_shader");
 	model->set_shader(shader);
 	box->set_shader(shader);
-	model->set_wire_frame_mode(true);
 	return true;
 }
 
-bool Game::update(double dt)
+bool Game::update(int64 dt)
 {
 	if (adl_input->get_key_up(adl_key_escape))
 	{
 		return false;
 	}
 
-	if (adl_input->get_key(adl_key_left_ctrl) && adl_input->get_key(adl_key_left_alt) && adl_input->get_key_up(adl_key_w))
-	{
-		model->set_wire_frame_mode(!model->get_wire_frame_mode());
-	}
-	model->draw();
-	box->draw();
+	adl_renderer->render_mesh(model);
+	adl_renderer->render_mesh(box);
 
 	return true;
 }

@@ -1,5 +1,4 @@
-#include "adl_math/adlMath.h"
-#include "adl_debug/adlLogger.h"
+#include "engine/adl_math/adlMath.h"
 #include <gtest/gtest.h>
 
 TEST(Vector3f, Vector_vector_addition)

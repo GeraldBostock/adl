@@ -4,6 +4,8 @@
 #include "engine/common.h"
 #include "engine/adl_debug/adlAssert.h"
 
+#define adlVec4 adlVec3
+
 class adlVec2
 {
 public:
@@ -13,6 +15,7 @@ public:
 	inline adlVec2(const adlVec2& v);
 
 	inline static adlVec2 zero();
+	inline float length();
 
 	/*------------------------Operator overloads--------------------*/
 	inline adlVec2 operator+(const adlVec2& vector) const;
@@ -29,6 +32,8 @@ public:
 	inline bool operator!=(const adlVec2& vector) const;
 
 	inline float operator[](unsigned int index) const;
+
+	inline adlVec2 operator-() const;
 	/*---------------------------------------------------------------*/
 
 	union
@@ -65,6 +70,11 @@ inline adlVec2::adlVec2(const adlVec2& v)
 inline adlVec2 adlVec2::zero()
 {
 	return adlVec2(0.0f);
+}
+
+inline float adlVec2::length()
+{
+	return std::sqrt(x * x + y * y);
 }
 
 inline adlVec2 adlVec2::operator+(const adlVec2& vector) const
@@ -123,6 +133,11 @@ inline float adlVec2::operator[](unsigned int index) const
 	return vec[index];
 }
 
+inline adlVec2 adlVec2::operator-() const
+{
+	return adlVec2(-x, -y);
+}
+
 class adlVec2_i32
 {
 public:
@@ -132,6 +147,7 @@ public:
 	inline adlVec2_i32(const adlVec2_i32& v);
 
 	inline static adlVec2_i32 zero();
+	inline float length();
 	inline adlVec2 to_vec2();
 
 	/*------------------------Operator overloads--------------------*/
@@ -149,6 +165,8 @@ public:
 	inline bool operator!=(const adlVec2_i32& vector) const;
 
 	inline int32 operator[](unsigned int index) const;
+
+	inline adlVec2_i32 operator-() const;
 	/*---------------------------------------------------------------*/
 
 	union
@@ -185,6 +203,11 @@ inline adlVec2_i32::adlVec2_i32(const adlVec2_i32& v)
 inline adlVec2_i32 adlVec2_i32::zero()
 {
 	return adlVec2_i32(0);
+}
+
+inline float adlVec2_i32::length()
+{
+	return std::sqrt(x * x + y * y);
 }
 
 inline adlVec2 adlVec2_i32::to_vec2()
@@ -248,6 +271,11 @@ inline int32 adlVec2_i32::operator[](unsigned int index) const
 	return vec[index];
 }
 
+inline adlVec2_i32 adlVec2_i32::operator-() const
+{
+	return adlVec2_i32(-x, -y);
+}
+
 class adlVec3
 {
 public:
@@ -258,6 +286,7 @@ public:
 	inline adlVec3(const adlVec3& v);
 
 	inline static adlVec3 zero();
+	inline float length();
 
 	/*------------------------Operator overloads--------------------*/
 	inline adlVec3 operator+(const adlVec3& vector) const;
@@ -274,6 +303,8 @@ public:
 	inline bool operator!=(const adlVec3& vector) const;
 
 	inline float operator[](unsigned int index) const;
+
+	inline adlVec3 operator-() const;
 	/*---------------------------------------------------------------*/
 
 	union
@@ -283,13 +314,14 @@ public:
 			float x;
 			float y;
 			float z;
+			float w;
 		};
-		float vec[3];
+		float vec[4];
 	};
 };
 
 inline adlVec3::adlVec3()
-	: x(0), y(0), z(0)
+	: x(0), y(0), z(0), w(0)
 {
 }
 
@@ -316,6 +348,11 @@ inline adlVec3::adlVec3(const adlVec3& v)
 inline adlVec3 adlVec3::zero()
 {
 	return adlVec3(0.0f);
+}
+
+inline float adlVec3::length()
+{
+	return std::sqrt(x * x + y * y + z * z);
 }
 
 
@@ -371,8 +408,13 @@ inline bool adlVec3::operator!=(const adlVec3& vector) const
 
 inline float adlVec3::operator[](unsigned int index) const
 {
-	adl_assert((index >= 0) && (index < 3));
+	adl_assert((index >= 0) && (index < 4));
 	return vec[index];
+}
+
+inline adlVec3 adlVec3::operator-() const
+{
+	return adlVec3(-x, -y, -z);
 }
 
 class adlVec3_i32
@@ -385,6 +427,7 @@ public:
 	inline adlVec3_i32(const adlVec3_i32& v);
 
 	inline static adlVec3_i32 zero();
+	inline float length();
 	inline adlVec3 to_vec3();
 
 	/*------------------------Operator overloads--------------------*/
@@ -402,6 +445,8 @@ public:
 	inline bool operator!=(const adlVec3_i32& vector) const;
 
 	inline int32 operator[](unsigned int index) const;
+
+	inline adlVec3_i32 operator-() const;
 	/*---------------------------------------------------------------*/
 
 	union
@@ -444,6 +489,11 @@ inline adlVec3_i32::adlVec3_i32(const adlVec3_i32& v)
 inline adlVec3_i32 adlVec3_i32::zero()
 {
 	return adlVec3_i32(0);
+}
+
+inline float adlVec3_i32::length()
+{
+	return std::sqrt(x * x + y * y + z * z);
 }
 
 inline adlVec3 adlVec3_i32::to_vec3()
@@ -506,4 +556,10 @@ inline int32 adlVec3_i32::operator[](unsigned int index) const
 	adl_assert((index >= 0) && (index < 3));
 	return vec[index];
 }
+
+inline adlVec3_i32 adlVec3_i32::operator-() const
+{
+	return adlVec3_i32(-x, -y, -z);
+}
+
 #endif // vector_h__

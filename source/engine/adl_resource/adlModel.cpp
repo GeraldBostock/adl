@@ -28,20 +28,10 @@ void adlModel::print_vertices()
 
 void adlModel::draw()
 {
-	if (is_wire_frame_)
-	{
-		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	}
-	else
-	{
-		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	}
-
 	shader_->start();
 	for (auto mesh : meshes_)
 	{
 		glBindVertexArray(mesh->get_vao_id());
-		//glBindVertexArray(mesh->getVaoID());
 
 		glEnableVertexAttribArray(0);
 		glEnableVertexAttribArray(1);
@@ -65,14 +55,4 @@ void adlModel::set_shader(adlShader_shared_ptr shader)
 	{
 		mesh->set_shader(shader);
 	}
-}
-
-void adlModel::set_wire_frame_mode(bool is_wire_frame)
-{
-	is_wire_frame_ = is_wire_frame;
-}
-
-bool adlModel::get_wire_frame_mode()
-{
-	return is_wire_frame_;
 }

@@ -36,7 +36,8 @@ adlModel_shared_ptr adlLoader::load_model(const std::string& mesh_path)
 
 	if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 	{
-		adlLogger::log_error(importer.GetErrorString());
+		adlLogger* adl_logger = &adlLogger::get();
+		adl_logger->log_error(importer.GetErrorString());
 		return nullptr;
 	}
 
@@ -53,7 +54,7 @@ void adlLoader::process_ai_node(aiNode* node, const aiScene* scene, adlModel_sha
 	for (unsigned int i = 0; i < node->mNumMeshes; i++)
 	{
 		aiMesh *mesh = scene->mMeshes[node->mMeshes[i]];
-		model->add_mesh(process_mesh(mesh, scene));
+		model->add_mesh(process_mesh(mesh));
 	}
 	// then do the same for each of its children
 	for (unsigned int i = 0; i < node->mNumChildren; i++)
@@ -62,7 +63,7 @@ void adlLoader::process_ai_node(aiNode* node, const aiScene* scene, adlModel_sha
 	}
 }
 
-adlMesh_shared_ptr adlLoader::process_mesh(aiMesh *mesh, const aiScene *scene)
+adlMesh_shared_ptr adlLoader::process_mesh(aiMesh *mesh)
 {
 	adlMesh_shared_ptr new_mesh = std::make_shared<adlMesh>();
 

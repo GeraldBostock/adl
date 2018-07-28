@@ -11,18 +11,24 @@
 class adlLogger
 {
 public:
-	static void log_error(const std::string& error, bool log_to_file = false);
-	static void log_info(const std::string& info, bool log_to_file = false);
+	static adlLogger& get()
+	{
+		static adlLogger instance;
+		return instance;
+	}
+
+	void log_error(const std::string& error, bool log_to_file = false);
+	void log_info(const std::string& info, bool log_to_file = false);
 
 private:
 	adlLogger();
 	virtual ~adlLogger();
 
-	static std::shared_ptr<spdlog::logger> info_logger_;
-	static std::shared_ptr<spdlog::logger> error_logger_;
-	static std::shared_ptr<spdlog::logger> console_;
+	std::shared_ptr<spdlog::logger> info_logger_= spdlog::basic_logger_mt("info_logger", "../logs/info.log");
+	std::shared_ptr<spdlog::logger> error_logger_= spdlog::basic_logger_mt("error_logger", "../logs/error.log");
+	std::shared_ptr<spdlog::logger> console_ = spdlog::stderr_color_mt("console");
 
-	static bool init_;
+	bool init_ = false;
 };
 
 #endif // adl_logger_h__

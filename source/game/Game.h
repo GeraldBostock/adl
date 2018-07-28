@@ -3,6 +3,7 @@
 
 #include "engine/adlRoot.h"
 #include "engine/adlShared_types.h"
+#include "engine/common.h"
 #include <string>
 
 class Game : public adlRoot
@@ -12,7 +13,7 @@ public:
 	~Game();
 
 	bool init() override;
-	bool update(double dt) override;
+	bool update(int64 dt) override;
 	inline void create_window(const std::string& title, int width, int height)
 	{
 		init_window(title, width, height);

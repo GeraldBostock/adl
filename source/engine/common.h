@@ -2,7 +2,14 @@
 #define common_h__
 
 #if defined ADL_TARGET_SYSTEM_WINDOWS
+#include <windows.h>
 #define SDL_MAIN_HANDLED
+#pragma warning( disable : 4201 )
+#pragma warning( disable : 4244 )
+static inline void set_error_mode()
+{
+	_set_error_mode(_OUT_TO_MSGBOX);
+}
 #endif
 
 #define USE_SDL

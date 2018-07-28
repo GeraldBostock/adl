@@ -69,7 +69,8 @@ std::string adlResource_manager::get_core_file_string()
 	}
 	else
 	{
-		adlLogger::log_error("Could not open core resource file at %s\n", core_file_path.c_str());
+		adlLogger* adl_logger = &adlLogger::get();
+		adl_logger->log_error("Could not open core resource file at %s\n", core_file_path.c_str());
 	}
 
 	return file_text;
@@ -77,29 +78,31 @@ std::string adlResource_manager::get_core_file_string()
 
 adlModel_shared_ptr adlResource_manager::get_model(const std::string& model_name)
 {
+	adlLogger* adl_logger = &adlLogger::get();
 	if (!name_to_model_path_[model_name].empty())
 	{
 		const std::string model_path = name_to_model_path_[model_name];
 		if (models_[model_path] == nullptr)
 		{
-			adlLogger::log_info("Model " + model_name + " is not loaded yet. Loading.");
+			adl_logger->log_info("Model " + model_name + " is not loaded yet. Loading.");
 			models_[model_path] = loader_.load_model(model_path);
 			return models_[model_path];
 		}
 		else
 		{
-			adlLogger::log_info("Model is loaded. Returning pointer");
+			adl_logger->log_info("Model is loaded. Returning pointer");
 			return models_[model_path];
 		}
 	}
 
-	adlLogger::log_error("Model" + model_name + "doesn't exist. Returning nullptr");
+	adl_logger->log_error("Model" + model_name + "doesn't exist. Returning nullptr");
 
 	return nullptr;
 }
 
 adlShader_shared_ptr adlResource_manager::get_shader(const std::string& shader_name)
 {
+	adlLogger* adl_logger = &adlLogger::get();
 	if (!name_to_shader_path_[shader_name].first.empty() && !name_to_shader_path_[shader_name].second.empty())
 	{
 		const std::pair<std::string, std::string>& shader_paths = name_to_shader_path_[shader_name];
@@ -108,14 +111,16 @@ adlShader_shared_ptr adlResource_manager::get_shader(const std::string& shader_n
 			const std::string vertex_shader_path = name_to_shader_path_[shader_name].first;
 			const std::string fragment_shader_path = name_to_shader_path_[shader_name].second;
 
-			adlLogger::log_info("Shader " + shader_name + " is not loaded yet. Loading");
+			adl_logger->log_info("Shader " + shader_name + " is not loaded yet. Loading");
 			shaders_[shader_paths] = loader_.load_shader(vertex_shader_path, fragment_shader_path);
 			return shaders_[shader_paths];
 		}
 		else
 		{
-			adlLogger::log_info("Shader is loaded. Returning pointer");
+			adl_logger->log_info("Shader is loaded. Returning pointer");
 			return shaders_[shader_paths];
 		}
 	}
+
+	return nullptr;
 }

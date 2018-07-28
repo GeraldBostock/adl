@@ -3,13 +3,20 @@
 
 #include <string>
 
+#include "engine/common.h"
+
 class adlWindow;
 class adlTimer;
 class adlFPS_manager;
 class adlResource_manager;
 class adlInput;
 class adlRender_manager;
+class adlLogger;
 
+/*
+* Entry point for the engine
+* Extend this class and implement init() and update(double dt) methods
+*/
 class adlRoot
 {
 public:
@@ -18,13 +25,14 @@ public:
 	
 	void start();
 	virtual bool init() = 0;
-	virtual bool update(double dt) = 0;
+	virtual bool update(int64 dt) = 0;
 	void run();
 
 protected:
 	adlResource_manager* adl_rm;
 	adlRender_manager* adl_renderer;
 	adlInput* adl_input;
+	adlLogger* adl_logger;
 
 	void init_window(const std::string& title, int width, int height);
 private:

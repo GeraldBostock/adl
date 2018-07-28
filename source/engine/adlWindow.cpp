@@ -7,10 +7,11 @@ adlWindow::adlWindow(const std::string& title, int width, int height)
 	  width_(width), 
 	  height_(height)
 {
+	adlLogger* adl_logger = &adlLogger::get();
 #ifdef USE_SDL
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
 	{
-		adlLogger::log_error("SDL failed to initialize: " + std::string(SDL_GetError()));
+		adl_logger->log_error("SDL failed to initialize: " + std::string(SDL_GetError()));
 	}
 	else
 	{
@@ -32,7 +33,7 @@ adlWindow::adlWindow(const std::string& title, int width, int height)
 		window_ = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_OPENGL);
 		if (window_ == NULL)
 		{
-			adlLogger::log_error("Failed to create window: " + std::string(SDL_GetError()));
+			adl_logger->log_error("Failed to create window: " + std::string(SDL_GetError()));
 		}
 		else
 		{
@@ -40,7 +41,7 @@ adlWindow::adlWindow(const std::string& title, int width, int height)
 
 			if (glewInit() != GLEW_OK)
 			{
-				adlLogger::log_error("Failed to initialize GLEW");
+				adl_logger->log_error("Failed to initialize GLEW");
 			}
 		}
 	}

@@ -4,7 +4,7 @@
 #include <chrono>
 #include <ctime>
 
-#include "common.h"
+#include "engine/common.h"
 
 typedef std::chrono::time_point<std::chrono::system_clock> Time_point;
 typedef std::chrono::system_clock Clock;
@@ -17,8 +17,8 @@ public:
 
 	void start();
 	void stop();
-	double get_elapsed_milli_seconds();
-	double get_elapsed_seconds();
+	int64 get_elapsed_milli_seconds();
+	int64 get_elapsed_seconds();
 
 private:
 	Time_point start_time_;

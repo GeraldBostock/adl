@@ -12,9 +12,10 @@ adlMesh::~adlMesh()
 	
 }
 
-void adlMesh::add_vertices(std::vector<Vertex>& vertices)
+void adlMesh::add_vertices(std::vector<Vertex>& vertices, const std::vector<unsigned int>& indices)
 {
 	vertices_ = vertices;
+	indices_ = indices;
 	load_mesh_to_vao();
 }
 
@@ -32,47 +33,44 @@ void adlMesh::load_mesh_to_vao()
 
 	int mesh_vertex_count = vertices_.size();
 
-	std::vector<adlVec3> positions;
-	positions.resize(mesh_vertex_count);
+	std::vector<float> positions;
+	std::vector<float> normals;
+	std::vector<float> uvs;
 
-	std::vector<adlVec3> normals;
-	normals.resize(mesh_vertex_count);
-
-	std::vector<adlVec2> uvs;
-	uvs.resize(mesh_vertex_count);
-
-	for (int i = 0; i < mesh_vertex_count; i++)
+	for (auto vertex : vertices_)
 	{
-		positions[i] = vertices_[i].position;
-		normals[i] = vertices_[i].normal;
-		uvs[i] = vertices_[i].uv;
+		positions.push_back(vertex.position.x);
+		positions.push_back(vertex.position.y);
+		positions.push_back(vertex.position.z);
+
+		normals.push_back(vertex.normal.x);
+		normals.push_back(vertex.normal.y);
+		normals.push_back(vertex.normal.z);
+
+		uvs.push_back(vertex.uv.x);
+		uvs.push_back(vertex.uv.y);
 	}
 
-	store_data_in_attribute_list(0, positions, mesh_vertex_count);
-	store_data_in_attribute_list(1, normals, mesh_vertex_count);
-	store_uv_data_in_attribute_list(2, uvs, mesh_vertex_count);
+	store_data_in_attribute_list(0, positions, 3, mesh_vertex_count * 3);
+	store_data_in_attribute_list(1, normals, 3, mesh_vertex_count * 3);
+	store_data_in_attribute_list(2, uvs, 2, mesh_vertex_count * 2);
+
+	uint32 ebo;
+	glGenBuffers(1, &ebo);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices_.size() * sizeof(unsigned int), &indices_[0], GL_STATIC_DRAW);
+
 
 	glBindVertexArray(0);
 }
 
-void adlMesh::store_data_in_attribute_list(int attribute_number, const std::vector<adlVec3>& data, int count)
+void adlMesh::store_data_in_attribute_list(int attribute_number, const std::vector<float>& data, int32 stride, int count)
 {
-	uint32 vbo_;
-	glGenBuffers(1, &vbo_);
-	glBindBuffer(GL_ARRAY_BUFFER, vbo_);
-	glBufferData(GL_ARRAY_BUFFER, count * sizeof(data[0]), &data[0], GL_DYNAMIC_DRAW);
-	glVertexAttribPointer(attribute_number, 3, GL_FLOAT, GL_FALSE, 0, 0);
-
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-}
-
-void adlMesh::store_uv_data_in_attribute_list(int attribute_number, const std::vector<adlVec2>& data, int count)
-{
-	uint32 vbo_;
-	glGenBuffers(1, &vbo_);
-	glBindBuffer(GL_ARRAY_BUFFER, vbo_);
-	glBufferData(GL_ARRAY_BUFFER, count * sizeof(data[0]), &data[0], GL_DYNAMIC_DRAW);
-	glVertexAttribPointer(attribute_number, 2, GL_FLOAT, GL_FALSE, 0, 0);
+	uint32 vbo;
+	glGenBuffers(1, &vbo);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glBufferData(GL_ARRAY_BUFFER, count * sizeof(data[0]), &data[0], GL_STATIC_DRAW);
+	glVertexAttribPointer(attribute_number, stride, GL_FLOAT, GL_FALSE, 0, 0);
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
@@ -90,4 +88,9 @@ uint32 adlMesh::get_vao_id()
 int adlMesh::get_vertex_count()
 {
 	return vertices_.size();
+}
+
+int adlMesh::get_index_count()
+{
+	return indices_.size();
 }

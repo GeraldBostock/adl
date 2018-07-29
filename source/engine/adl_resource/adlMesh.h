@@ -44,23 +44,23 @@ public:
 	adlMesh();
 	virtual ~adlMesh();
 
-	void add_vertices(std::vector<Vertex>& vertices);
+	void add_vertices(std::vector<Vertex>& vertices, const std::vector<unsigned int>& indices);
 	void set_shader(adlShader_shared_ptr shader);
 	void print_vertices();
 
 	uint32 get_vao_id();
 	int get_vertex_count();
+	int get_index_count();
 
 private:
 	void load_mesh_to_vao();
-	void store_data_in_attribute_list(int attribute_number, const std::vector<adlVec3>& data, int count);
-	void store_uv_data_in_attribute_list(int attribute_number, const std::vector<adlVec2>& data, int count);
+	void store_data_in_attribute_list(int attribute_number, const std::vector<float>& data, int32 stride, int count);
 
 	std::vector<Vertex> vertices_;
 	std::vector<unsigned int> indices_;
 	std::vector<Texture> textures_;
 
-	uint32 vao_, vbo_, ebo_;
+	uint32 vao_, ebo_;
 
 	adlShader_shared_ptr shader_;
 };

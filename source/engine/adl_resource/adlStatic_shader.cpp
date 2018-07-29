@@ -22,8 +22,14 @@ void adlStatic_shader::bind_attributes()
 
 void adlStatic_shader::get_all_uniform_locations()
 {
+	transformation_matrix_location_ = get_uniform_location("transformation_matrix");
 	projection_matrix_location_ = /*super::*/get_uniform_location("projectionMatrix");
 	view_matrix_location_ = /*super::*/get_uniform_location("viewMatrix");
+}
+
+void adlStatic_shader::load_transformation(const adlMat4& matrix)
+{
+	load_matrix(transformation_matrix_location_, matrix);
 }
 
 //void adlStatic_shader::loadProjectionMatrix(glm::mat4 matrix)

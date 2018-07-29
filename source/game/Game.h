@@ -4,6 +4,7 @@
 #include "engine/adlRoot.h"
 #include "engine/adlShared_types.h"
 #include "engine/common.h"
+#include "engine/adl_helper/adlTimer.h"
 #include <string>
 
 class Game : public adlRoot
@@ -21,7 +22,10 @@ public:
 private:
 	adlModel_shared_ptr model;
 	adlModel_shared_ptr box;
+	adlModel_shared_ptr box2;
 	adlShader_shared_ptr shader;
+
+	adlTimer timer_;
 };
 
 #endif // game_h__

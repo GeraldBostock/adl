@@ -1,6 +1,8 @@
 #include "adlModel.h"
 #include "engine/adl_resource/adlStatic_shader.h"
 
+#include <iostream>
+
 #include <GL/glew.h>
 
 adlModel::adlModel()
@@ -29,6 +31,7 @@ void adlModel::print_vertices()
 void adlModel::draw()
 {
 	shader_->start();
+	shader_->load_transformation(frame_.get_transformation_matrix());
 	for (auto mesh : meshes_)
 	{
 		glBindVertexArray(mesh->get_vao_id());
@@ -37,7 +40,8 @@ void adlModel::draw()
 		glEnableVertexAttribArray(1);
 		glEnableVertexAttribArray(2);
 
-		glDrawArrays(GL_TRIANGLES, 0, mesh->get_vertex_count());
+		//glDrawArrays(GL_TRIANGLES, 0, mesh->get_vertex_count());
+		glDrawElements(GL_TRIANGLES, mesh->get_index_count(), GL_UNSIGNED_INT, 0);
 
 		glDisableVertexAttribArray(0);
 		glDisableVertexAttribArray(1);
@@ -55,4 +59,16 @@ void adlModel::set_shader(adlShader_shared_ptr shader)
 	{
 		mesh->set_shader(shader);
 	}
+}
+
+void adlModel::set_frame(adlMatrix_frame& frame)
+{
+	frame_.o = frame.o;
+	frame_.rot = frame.rot;
+	frame_.scale = frame.scale;
+}
+
+adlMatrix_frame adlModel::get_frame()
+{
+	return frame_;
 }

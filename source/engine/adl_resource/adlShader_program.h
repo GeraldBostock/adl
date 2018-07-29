@@ -28,7 +28,7 @@ protected:
 	void check_shader_error(uint32 shader, uint32 flag, bool is_program, const std::string& error_message);
 
 	void load_vector(int32 location, adlVec3 vector);
-	//void loadMatrix(int32 location, glm::mat4 matrix);
+	void load_matrix(int32 location, const adlMat4& matrix);
 
 private:
 	uint32 program_id_;

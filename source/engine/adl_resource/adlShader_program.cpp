@@ -47,7 +47,13 @@ int32 adlShader_program::get_uniform_location(const std::string& uniform_name)
 
 void adlShader_program::load_vector(int32 location, adlVec3 vector)
 {
-	glUniform3fv(location, 1, vector.vec);
+	float vector_buffer[3] = { vector.x, vector.y, vector.z };
+	glUniform3fv(location, 1, &vector_buffer[0]);
+}
+
+void adlShader_program::load_matrix(int32 location, const adlMat4& matrix)
+{
+	glUniformMatrix4fv(location, 1, GL_FALSE, matrix.mat);
 }
 
 

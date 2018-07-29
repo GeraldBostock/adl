@@ -53,6 +53,16 @@ namespace adlMath
 	{
 		return v1.x * v2.x + v1.y + v2.y;
 	}
+
+	inline float deg_to_rad(int degree)
+	{
+		return (float)degree * adl_deg_to_rad_conv;
+	}
+
+	inline int rad_to_deg(float radians)
+	{
+		return radians * adl_rad_to_deg_conv;
+	}
 }
 
 #endif // adl_math_h__

@@ -1,5 +1,5 @@
 #include "engine/adl_math/adlMath.h"
-#include "engine/adl_debug/adlLogger.h"
+#include "engine/adl_math/adlMatrix.cpp"
 #include <gtest/gtest.h>
 
 TEST(Matrix_tests, default_constructor)
@@ -176,4 +176,29 @@ TEST(Matrix_tests, Matrix_vector_multiplication)
 	ASSERT_FLOAT_EQ(actual_result.x, result_vector.x);
 	ASSERT_FLOAT_EQ(actual_result.y, result_vector.y);
 	ASSERT_FLOAT_EQ(actual_result.z, result_vector.z);
+}
+
+TEST(Matrix_tests, Mat4_identity)
+{
+	adlMat4 mat = adlMat4::identity();
+	adlVec4 vec(1, 2, 3, 1);
+
+	adlVec4 multiplied_vector = mat * vec;
+
+	ASSERT_FLOAT_EQ(vec.x, multiplied_vector.x);
+	ASSERT_FLOAT_EQ(vec.y, multiplied_vector.y);
+	ASSERT_FLOAT_EQ(vec.z, multiplied_vector.z);
+	ASSERT_FLOAT_EQ(vec.w, multiplied_vector.w);
+}
+
+TEST(Matrix_tests, Matrix_frame)
+{
+	adlMatrix_frame frame;
+
+	adlVec3 vec(1, 2, 3);
+	adlVec3 transformed_position = frame.transform_to_parent(vec);
+
+	ASSERT_FLOAT_EQ(vec.x, transformed_position.x);
+	ASSERT_FLOAT_EQ(vec.y, transformed_position.y);
+	ASSERT_FLOAT_EQ(vec.z, transformed_position.z);
 }

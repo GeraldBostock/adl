@@ -20,6 +20,11 @@ void adlModel::add_mesh(adlMesh_shared_ptr mesh)
 	meshes_.push_back(mesh);
 }
 
+void adlModel::add_mesh(adlMesh mesh)
+{
+	value_meshes_.push_back(mesh);
+}
+
 void adlModel::print_vertices()
 {
 	for (unsigned int i = 0; i < meshes_.size(); i++)
@@ -49,7 +54,29 @@ void adlModel::draw()
 
 		glBindVertexArray(0);
 	}
+
+	for (auto mesh : value_meshes_)
+	{
+		glBindVertexArray(mesh.get_vao_id());
+
+		glEnableVertexAttribArray(0);
+		glEnableVertexAttribArray(1);
+		glEnableVertexAttribArray(2);
+
+		glDrawElements(GL_TRIANGLES, mesh.get_index_count(), GL_UNSIGNED_INT, 0);
+
+		glDisableVertexAttribArray(0);
+		glDisableVertexAttribArray(1);
+		glDisableVertexAttribArray(2);
+
+		glBindVertexArray(0);
+	}
 	shader_->stop();
+}
+
+adlShader_shared_ptr adlModel::get_shader()
+{
+	return shader_;
 }
 
 void adlModel::set_shader(adlShader_shared_ptr shader)

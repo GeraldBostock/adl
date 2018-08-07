@@ -11,7 +11,7 @@ public:
 	~adlStatic_shader();
 
 	void load_transformation(const adlMat4& matrix);
-	//void loadProjectionMatrix(glm::mat4 projectionMatrix);
+	void load_projection(const adlMat4& matrix);
 	//void loadViewMatrix(Camera camera);
 
 protected:

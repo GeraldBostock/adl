@@ -157,6 +157,7 @@ public:
 			float _21, float _22, float _23, float _24,
 			float _31, float _32, float _33, float _34,
 			float _41, float _42, float _43, float _44);
+	inline adlMat4(float value);
 	inline adlMat4(const adlMat4& matrix);
 	inline adlMat4(const adlMat3& matrix);
 
@@ -179,6 +180,7 @@ public:
 	/*--------------------------------------------------------------*/
 
 	inline static adlMat4 identity();
+	adlMat4 create_projection_matrix(int window_width, int window_height, float fov_in_radians, float near_plane, float far_plane);
 
 	union
 	{
@@ -233,6 +235,14 @@ inline adlMat4::adlMat4(float _11, float _12, float _13, float _14,
 	  d(adlVec4(_41, _42, _43, _44))
 {
 	
+}
+
+inline adlMat4::adlMat4(float value)
+{
+	a = adlVec4(value);
+	b = adlVec4(value);
+	c = adlVec4(value);
+	d = adlVec4(value);
 }
 
 inline adlMat4::adlMat4(const adlMat4& matrix)

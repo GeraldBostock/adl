@@ -142,6 +142,18 @@ adlVec4 adlMat4::operator*(const adlVec4& vector) const
 
 void adlMatrix_frame::scale_matrix()
 {
+	/*
+	* Scale matrix
+	* | A 0 0 0 |
+	* | 0 B 0 0 |
+	* | 0 0 C 0 |
+	* | 0 0 0 1 |
+	*
+	* A: scale.x
+	* B: scale.y
+	* C: scale.z
+	*/
+
 	transformation_matrix_.a.x = scale.x;
 	transformation_matrix_.b.y = scale.y;
 	transformation_matrix_.c.z = scale.z;
@@ -167,6 +179,18 @@ void adlMatrix_frame::rotate_matrix()
 
 void adlMatrix_frame::translate_matrix()
 {
+	/*
+	* Translation matrix
+	* | 1 0 0 A | 
+	* | 0 1 0 B |
+	* | 0 0 1 C |
+	* | 0 0 0 1 |
+	*
+	* A = o.x
+	* B = o.y
+	* C 0 o.z
+	*/
+
 	transformation_matrix_.d.x = o.x;
 	transformation_matrix_.d.y = o.y;
 	transformation_matrix_.d.z = o.z;
@@ -186,9 +210,29 @@ adlMat4 adlMatrix_frame::get_transformation_matrix()
 adlMatrix_frame adlMatrix_frame::identity()
 {
 	adlMatrix_frame frame;
-	frame.o = adlVec3(0, 0, 0);
-	frame.rot = adlVec3(0, 0, 0);
-	frame.scale = adlVec3(1, 1, 1);
+	frame.o = adlVec3(0.0f);
+	frame.rot = adlVec3(0.0f);
+	frame.scale = adlVec3(1.0f);
 
 	return frame;
+}
+
+adlMat4 adlMat4::create_projection_matrix(int window_width, int window_height, float fov_in_radians, float near_plane, float far_plane)
+{
+	float adl_pi = 3.1415926535897932f;
+
+	adlMat4 projection_matrix = adlMat4::identity();
+	float aspect_ratio = (float)window_width / (float)window_height;
+	float y_scale = (float)(1.0f / (std::tan(fov_in_radians / 2.0f) * aspect_ratio));
+	float x_scale = y_scale / aspect_ratio;
+	float frustum_length = far_plane - near_plane;
+
+	projection_matrix.a.x = x_scale;
+	projection_matrix.b.y = y_scale;
+	projection_matrix.c.z = -((far_plane + near_plane) / frustum_length);
+	projection_matrix.c.w = -1;
+	projection_matrix.d.z = -((2 * far_plane * near_plane) / frustum_length);
+	projection_matrix.d.w = 0;
+
+	return projection_matrix;
 }

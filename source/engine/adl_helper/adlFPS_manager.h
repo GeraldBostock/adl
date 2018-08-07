@@ -5,6 +5,7 @@
 #include <vector>
 
 #define FRAME_VALUES 10
+#define MILLISECONDS_IN_SECOND 1000.0
 
 class adlFPS_manager
 {

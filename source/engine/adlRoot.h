@@ -33,10 +33,10 @@ protected:
 	adlRender_manager* adl_renderer;
 	adlInput* adl_input;
 	adlLogger* adl_logger;
+	adlWindow* window_;
 
 	void init_window(const std::string& title, int width, int height);
 private:
-	adlWindow* window_;
 	adlFPS_manager* fps_manager_;
 
 	bool is_running_;

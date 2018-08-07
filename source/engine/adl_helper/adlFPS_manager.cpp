@@ -1,6 +1,7 @@
 #include "engine/adl_helper/adlFPS_manager.h"
 
 #include "engine/adl_debug/adlLogger.h"
+#include <SDL2/SDL.h>
 
 #include <thread>
 #include <chrono>
@@ -26,7 +27,7 @@ void adlFPS_manager::init()
 	frame_end_time_ = frame_start_time_ + 1;
 	frame_duration_ = 1;
 	last_report_time_ = frame_start_time_;
-	target_frame_duration_ = (1.0 / target_fps_) * 1000;
+	target_frame_duration_ = (1.0 / target_fps_) * MILLISECONDS_IN_SECOND;
 	frame_times_.resize(FRAME_VALUES, 0);
 }
 
@@ -41,8 +42,10 @@ double adlFPS_manager::enforce_fps()
 
 	if (sleep_duration_ > 0.0)
 	{
+		//TODO find a better way of doing this
 		const unsigned long time_to_sleep = static_cast<unsigned long>(sleep_duration_);
-		std::this_thread::sleep_for(std::chrono::milliseconds(time_to_sleep));
+		SDL_Delay(time_to_sleep);
+		//std::this_thread::sleep_for(std::chrono::milliseconds(time_to_sleep));
 	}
 	frame_start_time_ = timer_.get_elapsed_milli_seconds();
 
@@ -69,11 +72,11 @@ double adlFPS_manager::enforce_fps()
 	}
 
 	frames_per_second /= count;
-	frames_per_second = 1000.0 / frames_per_second;
+	frames_per_second = MILLISECONDS_IN_SECOND / frames_per_second;
 
 	if (report_interval_ != 0.0f)
 	{
-		if ((frame_end_time_ - last_report_time_) > report_interval_ * 1000)
+		if ((frame_end_time_ - last_report_time_) > report_interval_ * MILLISECONDS_IN_SECOND)
 		{
 			last_report_time_ = frame_end_time_;
 

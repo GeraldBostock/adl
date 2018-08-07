@@ -1,9 +1,10 @@
 #include "Game.h"
 #include "engine/adl_debug/adlLogger.h"
 #include "engine/adl_resource/adlResource_manager.h"
-#include "engine/adl_resource/adlModel.h"
 #include "engine/adl_renderer/adlRender_manager.h"
 #include "engine/adlInput.h"
+#include "engine/adlMemory.h"
+#include "engine/adlWindow.h"
 
 #include <iostream>
 
@@ -35,6 +36,9 @@ bool Game::init()
 	box2->set_frame(frame);
 	timer_.start();
 
+	adlMat4 projection = projection.create_projection_matrix(window_->get_width(), window_->get_height(), adlMath::deg_to_rad(70), 0.1f, 1000.0f);;
+	adl_renderer->set_projection(projection);
+
 	return true;
 }
 
@@ -45,31 +49,35 @@ bool Game::update(int64 dt)
 		return false;
 	}
 
+	if (adl_input->get_key(adl_key_w))
+	{
+		model_z -= 0.2f;
+	}
+	if (adl_input->get_key(adl_key_s))
+	{
+		model_z += 0.2f;
+	}
+	if (adl_input->get_key(adl_key_a))
+	{
+		model_x -= 0.2f;
+	}
+	if (adl_input->get_key(adl_key_d))
+	{
+		model_x += 0.2f;
+	}
+
 	adlMatrix_frame frame = adlMatrix_frame::identity();
-	frame.o = adlVec3(0, -0.5f, 0);
+	frame.o = adlVec3(model_x, -0.5f, model_z);
 	frame.rot = adlVec3(0, adlMath::deg_to_rad(timer_.get_elapsed_milli_seconds()) / 8, 0);
 	frame.scale = adlVec3(0.5f, 0.5f, 0.5f);
 	model->set_frame(frame);
 
 	frame = adlMatrix_frame::identity();
-	frame.o = adlVec3(0, 0, 0);
+	frame.o = adlVec3(0, -0.5f, -10.0f);
 	frame.rot = adlVec3(adlMath::deg_to_rad(timer_.get_elapsed_milli_seconds()) / 8, 0, 0);
+	frame.scale = adlVec3(1.1f, 1.1f, 1.1f);
 	box->set_frame(frame);
 	adl_renderer->render_mesh(box);
-
-	frame.o = adlVec3(0.75f, 0, 0);
-	frame.rot = adlVec3(adlMath::deg_to_rad(timer_.get_elapsed_milli_seconds()) / 8, adlMath::deg_to_rad(timer_.get_elapsed_milli_seconds()) / 8, 0);
-	frame.scale = adlVec3(0.25f, 0.25f, 0.25f);
-	box2->set_frame(frame);
-	adl_renderer->render_mesh(box2);
-
-	frame.o = adlVec3(0.75f, 0.5f, 0);
-	box2->set_frame(frame);
-	adl_renderer->render_mesh(box2);
-
-	frame.o = adlVec3(-0.75f, 0.5f, 0);
-	box2->set_frame(frame);
-	adl_renderer->render_mesh(box2);
 
 	adl_renderer->render_mesh(model);
 

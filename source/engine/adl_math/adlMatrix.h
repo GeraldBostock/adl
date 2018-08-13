@@ -38,6 +38,16 @@ public:
 	adlMat3 get_y_rotation_matrix(float radians);
 	adlMat3 get_z_rotation_matrix(float radians);
 
+	/*
+	* Matrix Convention
+	* Column major
+	*
+	* | a.x  b.x  c.x |
+	* | a.y  b.y  c.y |
+	* | a.z  b.z  c.z |
+	*
+	*/
+
 	union
 	{
 		struct
@@ -181,6 +191,18 @@ public:
 
 	inline static adlMat4 identity();
 	adlMat4 create_projection_matrix(int window_width, int window_height, float fov_in_radians, float near_plane, float far_plane);
+	adlMat4 create_view_matrix(adlVec3 position, adlVec3 rotation);
+
+	/*
+	* Matrix Convention
+	* Column major
+	*
+	* | a.x  b.x  c.x  d.x |
+	* | a.y  b.y  c.y  d.y |
+	* | a.z  b.z  c.z  d.z |
+	* | a.w  b.w  c.w  d.w |
+	*
+	*/
 
 	union
 	{
@@ -348,6 +370,9 @@ public:
 	static adlMatrix_frame identity();
 
 	adlMat4 get_transformation_matrix();
+	adlMat4 get_view_matrix();
+
+	void inverse();
 
 	inline adlVec3 transform_to_parent(const adlVec3& vector);
 	//adlMatrix_frame transform_to_parent(const adlMatrix_frame& frame);

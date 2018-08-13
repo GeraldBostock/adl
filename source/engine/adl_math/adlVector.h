@@ -289,6 +289,8 @@ public:
 	inline float length();
 
 	inline float dotp(const adlVec3& vector);
+	adlVec3 crossp(const adlVec3& vector);
+	adlVec3 normalize();
 
 	/*------------------------Operator overloads--------------------*/
 	inline adlVec3 operator+(const adlVec3& vector) const;

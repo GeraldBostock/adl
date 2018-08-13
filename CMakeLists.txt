@@ -97,7 +97,7 @@ INCLUDE(${ADL_CMAKE_DIR}/FindSPDLOG.cmake)
 INCLUDE(${ADL_CMAKE_DIR}/FindRAPIDJSON.cmake)
 
 # Google Test
-INCLUDE(${ADL_CMAKE_DIR}/AddGoogleTest.cmake)
+# INCLUDE(${ADL_CMAKE_DIR}/AddGoogleTest.cmake)
 
 # ADL Includes
 include_directories(

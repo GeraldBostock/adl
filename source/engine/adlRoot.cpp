@@ -17,6 +17,7 @@ adlRoot::~adlRoot()
 {
 	ADL_DELETE(window_);
 	ADL_DELETE(fps_manager_);
+	ADL_DELETE(camera);
 }
 
 void adlRoot::init_window(const std::string& title, int width, int height)
@@ -42,6 +43,7 @@ void adlRoot::run()
 		adl_renderer->set_wire_frame_mode();
 	}
 
+	camera->update(dt);
 	if (!update(dt))
 	{
 		is_running_ = false;
@@ -62,6 +64,9 @@ void adlRoot::game_thread()
 	adl_renderer = &adlRender_manager::get();
 	adl_input = &adlInput::get();
 	adl_logger = &adlLogger::get();
+	camera = ADL_NEW(adlCamera);
+
+	adl_renderer->set_camera(camera);
 
 	if (!init())
 	{

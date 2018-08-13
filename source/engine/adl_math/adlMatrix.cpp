@@ -80,7 +80,7 @@ adlMat3 adlMat3::get_y_rotation_matrix(float radians)
 adlMat3 adlMat3::get_z_rotation_matrix(float radians)
 {
 	/*
-	* Matrix for y axis rotation
+	* Matrix for z axis rotation
 	*
 	* | cosθ  -sinθ	   0 |
 	* | sinθ   cosθ    0 |
@@ -188,7 +188,7 @@ void adlMatrix_frame::translate_matrix()
 	*
 	* A = o.x
 	* B = o.y
-	* C 0 o.z
+	* C = o.z
 	*/
 
 	transformation_matrix_.d.x = o.x;
@@ -207,6 +207,26 @@ adlMat4 adlMatrix_frame::get_transformation_matrix()
 	return transformation_matrix_;
 }
 
+adlMat4 adlMatrix_frame::get_view_matrix()
+{
+	transformation_matrix_ = adlMat4::identity();
+	float cos_pitch = std::cos(rot.x);
+	float sin_pitch = std::sin(rot.x);
+	float cos_yaw = std::cos(rot.y);
+	float sin_yaw = std::sin(rot.y);
+
+	adlVec3 x_axis(cos_yaw, 0, -sin_yaw);
+	adlVec3 y_axis(sin_yaw * sin_pitch, cos_pitch, cos_yaw * sin_pitch);
+	adlVec3 z_axis(sin_yaw * cos_pitch, -sin_pitch, cos_pitch * cos_yaw);
+
+	transformation_matrix_.a = adlVec4(x_axis.x, y_axis.x, z_axis.x, 0);
+	transformation_matrix_.b = adlVec4(x_axis.y, y_axis.y, z_axis.y, 0);
+	transformation_matrix_.c = adlVec4(x_axis.z, y_axis.z, z_axis.z, 0);
+	transformation_matrix_.d = adlVec4(-x_axis.dotp(o), -y_axis.dotp(o), -z_axis.dotp(o), 1);
+
+	return transformation_matrix_;
+}
+
 adlMatrix_frame adlMatrix_frame::identity()
 {
 	adlMatrix_frame frame;
@@ -217,10 +237,41 @@ adlMatrix_frame adlMatrix_frame::identity()
 	return frame;
 }
 
+void adlMatrix_frame::inverse()
+{
+	adlVec3 inverse_a;
+	adlVec3 inverse_b;
+	adlVec3 inverse_c;
+	adlVec3 inverse_d;
+
+	inverse_a.x = transformation_matrix_.a.x;
+	inverse_a.y = transformation_matrix_.b.x;
+	inverse_a.z = transformation_matrix_.c.x;
+	inverse_a.w = transformation_matrix_.d.x;
+
+	inverse_b.x = transformation_matrix_.a.y;
+	inverse_b.y = transformation_matrix_.b.y;
+	inverse_b.z = transformation_matrix_.c.y;
+	inverse_b.w = transformation_matrix_.d.y;
+
+	inverse_c.x = transformation_matrix_.a.z;
+	inverse_c.y = transformation_matrix_.b.z;
+	inverse_c.z = transformation_matrix_.c.z;
+	inverse_c.w = transformation_matrix_.d.z;
+
+	inverse_d.x = transformation_matrix_.a.w;
+	inverse_d.y = transformation_matrix_.b.w;
+	inverse_d.z = transformation_matrix_.c.w;
+	inverse_d.w = transformation_matrix_.d.w;
+
+	transformation_matrix_.a = inverse_a;
+	transformation_matrix_.b = inverse_b;
+	transformation_matrix_.c = inverse_c;
+	transformation_matrix_.d = inverse_d;
+}
+
 adlMat4 adlMat4::create_projection_matrix(int window_width, int window_height, float fov_in_radians, float near_plane, float far_plane)
 {
-	float adl_pi = 3.1415926535897932f;
-
 	adlMat4 projection_matrix = adlMat4::identity();
 	float aspect_ratio = (float)window_width / (float)window_height;
 	float y_scale = (float)(1.0f / (std::tan(fov_in_radians / 2.0f) * aspect_ratio));
@@ -235,4 +286,24 @@ adlMat4 adlMat4::create_projection_matrix(int window_width, int window_height, f
 	projection_matrix.d.w = 0;
 
 	return projection_matrix;
+}
+
+adlMat4 adlMat4::create_view_matrix(adlVec3 position, adlVec3 rotation)
+{
+	adlMat4 view_matrix = adlMat4::identity();
+	float cos_pitch = std::cos(rotation.x);
+	float sin_pitch = std::sin(rotation.x);
+	float cos_yaw = std::cos(rotation.y);
+	float sin_yaw = std::sin(rotation.y);
+
+	adlVec3 x_axis(cos_yaw, 0, -sin_yaw);
+	adlVec3 y_axis(sin_yaw * sin_pitch, cos_pitch, cos_yaw * sin_pitch);
+	adlVec3 z_axis(sin_yaw * cos_pitch, -sin_pitch, cos_pitch * cos_yaw);
+
+	view_matrix.a = adlVec4(x_axis.x, y_axis.x, z_axis.x, 0);
+	view_matrix.b = adlVec4(x_axis.y, y_axis.y, z_axis.y, 0);
+	view_matrix.c = adlVec4(x_axis.z, y_axis.z, z_axis.z, 0);
+	view_matrix.d = adlVec4(-x_axis.dotp(position), -y_axis.dotp(position), -z_axis.dotp(position), 1);
+
+	return view_matrix;
 }

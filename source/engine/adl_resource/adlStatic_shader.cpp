@@ -23,23 +23,10 @@ void adlStatic_shader::bind_attributes()
 
 void adlStatic_shader::get_all_uniform_locations()
 {
-	transformation_matrix_location_ = get_uniform_location("transformation_matrix");
-	projection_matrix_location_ = get_uniform_location("projection_matrix");
-	view_matrix_location_ = get_uniform_location("viewMatrix");
+	mvp_matrix_location_ = get_uniform_location("mvp_matrix");
 }
 
-void adlStatic_shader::load_transformation(const adlMat4& matrix)
+void adlStatic_shader::load_mvp(const adlMat4& matrix)
 {
-	load_matrix(transformation_matrix_location_, matrix);
+	load_matrix(mvp_matrix_location_, matrix);
 }
-
-void adlStatic_shader::load_projection(const adlMat4& matrix)
-{
-	load_matrix(projection_matrix_location_, matrix);
-}
-
-//void adlStatic_shader::loadViewMatrix(Camera camera)
-//{
-//	glm::mat4 viewMatrix = Maths::CreateViewMatrix(camera.getPosition(), camera.getPitch(), camera.getYaw());
-//	super::loadMatrix(m_viewMatrixLocation, viewMatrix);
-//}

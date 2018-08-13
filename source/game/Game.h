@@ -6,6 +6,7 @@
 #include "engine/common.h"
 #include "engine/adl_helper/adlTimer.h"
 #include "engine/adl_resource/adlModel.h"
+#include "Camera.h"
 #include <string>
 
 class Game : public adlRoot
@@ -29,6 +30,8 @@ private:
 
 	float model_z = 0.0f;
 	float model_x = 0.0f;
+	float model_yaw = 0;
+	float model_pitch = 0;
 
 	adlTimer timer_;
 };

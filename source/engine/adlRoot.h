@@ -4,6 +4,7 @@
 #include <string>
 
 #include "engine/common.h"
+#include "engine/adl_renderer/adlCamera.h"
 
 class adlWindow;
 class adlTimer;
@@ -34,6 +35,7 @@ protected:
 	adlInput* adl_input;
 	adlLogger* adl_logger;
 	adlWindow* window_;
+	adlCamera* camera;
 
 	void init_window(const std::string& title, int width, int height);
 private:

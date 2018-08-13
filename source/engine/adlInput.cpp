@@ -8,6 +8,9 @@ adlInput::adlInput()
 
 void adlInput::update()
 {
+	mouse_state_.xDif = 0;
+	mouse_state_.yDif = 0;
+
 	SDL_Event e;
 	while (SDL_PollEvent(&e))
 	{
@@ -19,6 +22,12 @@ void adlInput::update()
 		{
 			close_button_ = false;
 		}
+
+		if (e.type == SDL_MOUSEMOTION)
+		{
+			mouse_state_.xDif = e.motion.xrel;
+			mouse_state_.yDif = e.motion.yrel;
+		}
 	}
 
 	memcpy(prev_keyboard_, keyboard_, 323);
@@ -28,9 +37,6 @@ void adlInput::update()
 
 	memcpy(&prev_mouse_state_, &mouse_state_, sizeof(Mouse_state));
 	buttons = SDL_GetMouseState(&mouse_state_.x, &mouse_state_.y);
-
-	mouse_state_.xDif = mouse_state_.x - prev_mouse_state_.x;
-	mouse_state_.yDif = mouse_state_.y - prev_mouse_state_.y;
 
 	if (buttons & ADL_BUTTON(1))
 		mouse_state_.lmb = 1;

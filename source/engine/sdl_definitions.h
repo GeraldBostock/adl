@@ -57,6 +57,9 @@ enum adl_keys
 
 	adl_key_left_alt = SDL_SCANCODE_LALT,
 	adl_key_right_alt = SDL_SCANCODE_RALT,
+
+	adl_key_plus = SDL_SCANCODE_KP_PLUS,
+	adl_key_minus = SDL_SCANCODE_KP_MINUS
 };
 
 #endif // sdl_definitions_h__

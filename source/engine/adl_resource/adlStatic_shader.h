@@ -5,21 +5,16 @@
 class adlStatic_shader : public adlShader_program
 {
 public:
-	/*typedef adlShader_program super;*/
 
 	adlStatic_shader(const std::string& vertex_file, const std::string& fragment_file);
 	~adlStatic_shader();
 
-	void load_transformation(const adlMat4& matrix);
-	void load_projection(const adlMat4& matrix);
-	//void loadViewMatrix(Camera camera);
+	void load_mvp(const adlMat4& mvp_matrix);
 
 protected:
 	virtual void bind_attributes();
 	virtual void get_all_uniform_locations();
 
 private:
-	int32 transformation_matrix_location_;
-	int32 projection_matrix_location_;
-	int32 view_matrix_location_;
+	int32 mvp_matrix_location_;
 };

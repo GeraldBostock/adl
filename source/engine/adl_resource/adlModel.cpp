@@ -36,7 +36,6 @@ void adlModel::print_vertices()
 void adlModel::draw()
 {
 	shader_->start();
-	shader_->load_transformation(frame_.get_transformation_matrix());
 	for (auto mesh : meshes_)
 	{
 		glBindVertexArray(mesh->get_vao_id());

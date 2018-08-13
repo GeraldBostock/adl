@@ -3,6 +3,7 @@
 
 #include "engine/adlShared_types.h"
 #include "engine/adl_math/adlMath.h"
+#include "adlCamera.h"
 
 class adlRender_manager
 {
@@ -18,6 +19,8 @@ public:
 	void render_mesh(adlModel model);
 	void set_wire_frame_mode();
 
+	void set_camera(adlCamera* camera);
+
 	void set_projection(adlMat4 projection_matrix);
 
 private:
@@ -27,6 +30,8 @@ private:
 	bool is_wire_frame_mode_;
 
 	adlMat4 projection_matrix_;
+
+	adlCamera* camera_;
 };
 
 #endif // adl_render_manager_h__

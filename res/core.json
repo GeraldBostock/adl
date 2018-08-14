@@ -5,7 +5,8 @@
 		{"name": "segment","path": "res/models/segment.obj"},
 		{"name": "duck","path": "res/models/duck.fbx"},
 		{"name": "wuson","path": "res/models/wuson.obj"},
-		{"name": "jeep","path": "res/models/jeep1.fbx"}
+		{"name": "jeep","path": "res/models/jeep1.fbx"},
+		{"name": "cube", "path": "res/models/cube.obj"}
 		
 	],
 	"shaders": [

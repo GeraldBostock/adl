@@ -87,14 +87,14 @@ void adlModel::set_shader(adlShader_shared_ptr shader)
 	}
 }
 
-void adlModel::set_frame(adlMatrix_frame& frame)
-{
-	frame_.o = frame.o;
-	frame_.rot = frame.rot;
-	frame_.scale = frame.scale;
-}
-
-adlMatrix_frame adlModel::get_frame()
-{
-	return frame_;
-}
+//void adlModel::set_frame(adlMatrix_frame& frame)
+//{
+//	frame_.o = frame.o;
+//	frame_.rot = frame.rot;
+//	frame_.scale = frame.scale;
+//}
+//
+//adlMatrix_frame adlModel::get_frame()
+//{
+//	return frame_;
+//}

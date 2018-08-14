@@ -6,6 +6,7 @@
 #include "engine/common.h"
 #include "engine/adl_helper/adlTimer.h"
 #include "engine/adl_resource/adlModel.h"
+#include "engine/adlEntity.h"
 #include "Camera.h"
 #include <string>
 
@@ -27,6 +28,11 @@ private:
 	adlModel_shared_ptr box2;
 	adlShader_shared_ptr shader;
 	adlModel plank_model_;
+	adlEntity bison_entity_;
+	adlEntity box1_;
+	adlEntity box2_;
+
+	std::vector<adlEntity> boxes_;
 
 	float model_z = 0.0f;
 	float model_x = 0.0f;

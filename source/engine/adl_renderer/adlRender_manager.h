@@ -4,6 +4,7 @@
 #include "engine/adlShared_types.h"
 #include "engine/adl_math/adlMath.h"
 #include "adlCamera.h"
+#include "engine/adlEntity.h"
 
 class adlRender_manager
 {
@@ -15,8 +16,9 @@ public:
 	}
 
 	void prepare();
-	void render_mesh(adlModel_shared_ptr model);
-	void render_mesh(adlModel model);
+	void render(adlEntity entity);
+	/*void render_mesh(adlModel_shared_ptr model);
+	void render_mesh(adlModel model);*/
 	void set_wire_frame_mode();
 
 	void set_camera(adlCamera* camera);

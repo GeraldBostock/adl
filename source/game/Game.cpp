@@ -72,7 +72,7 @@ bool Game::init()
 	adlMat4 projection = projection.create_projection_matrix(window_->get_width(), window_->get_height(), adlMath::deg_to_rad(40), 0.1f, 1000.0f);;
 	adl_renderer->set_projection(projection);
 	
-	camera->set_camera_type(ct_fps_camera);
+	camera->set_camera_type(ct_rts_camera);
 
 	timer_.start();
 

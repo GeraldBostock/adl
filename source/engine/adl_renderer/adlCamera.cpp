@@ -102,21 +102,33 @@ void adlCamera::update_rts_camera(int64 dt)
 {
 	adlInput* input = &adlInput::get();
 
-	if (input->get_key(adl_key_plus))
+	adlVec2_i32 mousePos = input->get_mouse_pos();
+	float tolerance = 25;
+
+	if (mousePos.x < 25)
 	{
-		position_.y -= 0.05f;
+		position_.z += movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_ - 90)) * dt;
+		position_.x += movement_speed_ * std::sin(adlMath::deg_to_rad(yaw_ - 90)) * dt;
 	}
-	if (input->get_key(adl_key_minus))
+	else if (mousePos.x > 1280 - 25)
 	{
-		position_.y += 0.05f;
-	}
-	if (input->get_key(adl_key_d))
-	{
-		
+		position_.z -= movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_ - 90)) * dt;
+		position_.x -= movement_speed_ * std::sin(adlMath::deg_to_rad(yaw_ - 90)) * dt;
 	}
 
-	look_at(rts_camera_target_, adlVec3(0, 1, 0));
-	//camera_type_ = ct_fps_camera;
+	if (mousePos.y < 25)
+	{
+		position_.z -= movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_)) * dt;
+		position_.x -= movement_speed_ * std::sin(adlMath::deg_to_rad(yaw_)) * dt;
+	}
+	else if (mousePos.y > 720 - 25)
+	{
+		position_.z += movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_)) * dt;
+		position_.x += movement_speed_ * std::sin(adlMath::deg_to_rad(yaw_)) * dt;
+	}
+
+	view_matrix_ = view_matrix_.create_view_matrix(position_, adlVec3(adlMath::deg_to_rad(pitch_), adlMath::deg_to_rad(yaw_), adlMath::deg_to_rad(roll_)));
+
 }
 
 void adlCamera::update_custom_camera(int64 dt)
@@ -165,5 +177,6 @@ void adlCamera::set_camera_type(Camera_type type)
 	{
 		position_ = adlVec3(2.0f, 5.0f, 2.5f);
 		rts_camera_target_ = adlVec3(0.0, 0.0f, 0.0f);
+		pitch_ = -45;
 	}
 }

@@ -104,7 +104,7 @@ bool Game::update(int64 dt)
 		adlMatrix_frame box_frame = boxes_[i].get_frame();
 		box_frame.rot = adlVec3(0, adlMath::deg_to_rad(timer_.get_elapsed_milli_seconds()) / 8, 0);
 		boxes_[i].set_frame(box_frame);
-		adl_renderer->render(boxes_[i], adlColor::GREEN);
+		adl_renderer->render(boxes_[i], adlColor::RED);
 	}
 
 	frame.rot = adlVec3(0.0f);
@@ -119,7 +119,10 @@ bool Game::update(int64 dt)
 	adl_renderer->render(box1_, adlColor::BLUE);
 	adl_renderer->render(bison_entity_, adlColor::BLUE);
 	adl_renderer->render(teapot_entity_, adlColor::WHITE);
-	adl_renderer->render(mount_, adlColor::RED);
+	adl_renderer->render(mount_, adlColor::GREEN);
+
+	frame.o = adlVec3(std::sin(adlMath::deg_to_rad(timer_.get_elapsed_milli_seconds() / 8)) * 10, 5, 0);
+	light_->set_frame(frame);
 	adl_renderer->render(light_);
 
 

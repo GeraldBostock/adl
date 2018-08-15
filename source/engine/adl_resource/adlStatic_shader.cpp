@@ -26,6 +26,8 @@ void adlStatic_shader::get_all_uniform_locations()
 	mvp_matrix_location_ = get_uniform_location("mvp_matrix");
 	object_color_location_ = get_uniform_location("object_color");
 	light_color_location_ = get_uniform_location("light_color");
+	model_matrix_location_ = get_uniform_location("model_matrix");
+	light_position_location_ = get_uniform_location("light_position");
 }
 
 void adlStatic_shader::load_mvp(const adlMat4& matrix)
@@ -41,4 +43,14 @@ void adlStatic_shader::load_object_color(adlVec3 color)
 void adlStatic_shader::load_light_color(adlVec3 color)
 {
 	load_vector(light_color_location_, color);
+}
+
+void adlStatic_shader::load_model_matrix(const adlMat4& model_matrix)
+{
+	load_matrix(model_matrix_location_, model_matrix);
+}
+
+void adlStatic_shader::load_light_position(adlVec3 position)
+{
+	load_vector(light_position_location_, position);
 }

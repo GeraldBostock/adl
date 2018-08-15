@@ -5,6 +5,7 @@
 
 #include "engine/common.h"
 #include "engine/adl_renderer/adlCamera.h"
+#include "engine/adl_renderer/adlColor.h"
 
 class adlWindow;
 class adlTimer;

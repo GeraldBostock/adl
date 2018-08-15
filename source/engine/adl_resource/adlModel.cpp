@@ -35,7 +35,7 @@ void adlModel::print_vertices()
 
 void adlModel::draw()
 {
-	shader_->start();
+	//shader_->start();
 	for (auto mesh : meshes_)
 	{
 		glBindVertexArray(mesh->get_vao_id());
@@ -70,7 +70,7 @@ void adlModel::draw()
 
 		glBindVertexArray(0);
 	}
-	shader_->stop();
+	//shader_->stop();
 }
 
 adlShader_shared_ptr adlModel::get_shader()

@@ -1,11 +1,15 @@
 #version 400 core
 
-in vec4 color;
+uniform vec3 object_color;
+uniform vec3 light_color;
 
 out vec4 out_color;
 
-
 void main()
 {
-	out_color = color;
+	float ambient_strength = 0.2;
+	vec3 ambient = ambient_strength * light_color;
+	
+	vec3 result = ambient * object_color;
+	out_color = vec4(result, 1.0);
 }

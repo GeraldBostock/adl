@@ -6,10 +6,13 @@
 		{"name": "duck","path": "res/models/duck.fbx"},
 		{"name": "wuson","path": "res/models/wuson.obj"},
 		{"name": "jeep","path": "res/models/jeep1.fbx"},
-		{"name": "cube", "path": "res/models/cube.obj"}
+		{"name": "cube", "path": "res/models/cube.obj"},
+		{"name": "mountain", "path": "res/models/part.obj"},
+		{"name": "teapot", "path": "res/models/teapot.obj"}
 		
 	],
 	"shaders": [
-		{"name": "basic_shader", "vertex_shader_path": "res/shaders/basic_shader.vs", "fragment_shader_path": "res/shaders/basic_shader.fs"}
+		{"name": "basic_shader", "vertex_shader_path": "res/shaders/basic_shader.vs", "fragment_shader_path": "res/shaders/basic_shader.fs"},
+		{"name": "light_shader", "vertex_shader_Path": "res/shaders/basic_shader.vs", "fragment_shader_path": "res/shaders/light_shader.fs"}
 	]
 }

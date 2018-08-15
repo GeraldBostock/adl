@@ -5,6 +5,7 @@
 #include "engine/adl_math/adlMath.h"
 #include "adlCamera.h"
 #include "engine/adlEntity.h"
+#include "engine/adl_renderer/adlLight.h"
 
 class adlRender_manager
 {
@@ -16,12 +17,14 @@ public:
 	}
 
 	void prepare();
-	void render(adlEntity entity);
+	void render(adlEntity entity, adlColor color);
+	void render(adlLight* light);
 	/*void render_mesh(adlModel_shared_ptr model);
 	void render_mesh(adlModel model);*/
 	void set_wire_frame_mode();
 
 	void set_camera(adlCamera* camera);
+	void set_light(adlLight* light);
 
 	void set_projection(adlMat4 projection_matrix);
 
@@ -34,6 +37,7 @@ private:
 	adlMat4 projection_matrix_;
 
 	adlCamera* camera_;
+	adlLight* light_;
 };
 
 #endif // adl_render_manager_h__

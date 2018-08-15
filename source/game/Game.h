@@ -8,6 +8,7 @@
 #include "engine/adl_resource/adlModel.h"
 #include "engine/adlEntity.h"
 #include "Camera.h"
+#include "engine/adl_renderer/adlLight.h"
 #include <string>
 
 class Game : public adlRoot
@@ -31,6 +32,9 @@ private:
 	adlEntity bison_entity_;
 	adlEntity box1_;
 	adlEntity box2_;
+	adlEntity mount_;
+	adlEntity teapot_entity_;
+	adlLight* light_;
 
 	std::vector<adlEntity> boxes_;
 

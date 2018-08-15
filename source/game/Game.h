@@ -34,6 +34,8 @@ private:
 	adlEntity box2_;
 	adlEntity mount_;
 	adlEntity teapot_entity_;
+	adlEntity at_at_;
+	adlEntity big_box_;
 	adlLight* light_;
 
 	std::vector<adlEntity> boxes_;

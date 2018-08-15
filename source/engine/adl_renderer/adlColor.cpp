@@ -7,6 +7,7 @@ const adlColor adlColor::BLUE(0, 0, 255);
 const adlColor adlColor::MAGENTA(255, 0, 255);
 const adlColor adlColor::CYAN(0, 255, 255);
 const adlColor adlColor::YELLOW(255, 255, 0);
+const adlColor adlColor::BLACK(0, 0, 0);
 
 adlColor::adlColor()
 {

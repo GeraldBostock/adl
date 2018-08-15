@@ -8,7 +8,8 @@
 		{"name": "jeep","path": "res/models/jeep1.fbx"},
 		{"name": "cube", "path": "res/models/cube.obj"},
 		{"name": "mountain", "path": "res/models/part.obj"},
-		{"name": "teapot", "path": "res/models/teapot.obj"}
+		{"name": "teapot", "path": "res/models/teapot.obj"},
+		{"name": "bmw", "path": "res/models/bmw.obj"}
 		
 	],
 	"shaders": [

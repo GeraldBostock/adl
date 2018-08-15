@@ -53,6 +53,7 @@ void adlCamera::update_fps_camera(int64 dt)
 	{
 		pitch_ -= dy * mouse_sensitivity_;
 	}
+
 	if (dx < 0)
 	{
 		yaw_ += -dx * mouse_sensitivity_;

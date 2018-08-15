@@ -27,9 +27,6 @@ adlWindow::adlWindow(const std::string& title, int width, int height)
 		SDL_GL_SetAttribute(SDL_GL_BUFFER_SIZE, 32);
 		SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
-		SDL_ShowCursor(SDL_DISABLE);
-		SDL_SetRelativeMouseMode(SDL_TRUE);
-
 		/*
 		 * Creates the window and tells SDL that the window will be used for drawing OpenGL stuff
 		 */
@@ -82,4 +79,17 @@ void adlWindow::close_window()
 
 	closed_ = true;
 #endif // USE_SDL
+}
+
+void adlWindow::set_mouse_visible(bool is_visible)
+{
+	if (is_visible)
+	{
+		SDL_ShowCursor(SDL_ENABLE);
+	}
+	else
+	{
+		SDL_ShowCursor(SDL_DISABLE);
+		SDL_SetRelativeMouseMode(SDL_TRUE);
+	}
 }

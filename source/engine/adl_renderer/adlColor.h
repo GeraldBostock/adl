@@ -19,6 +19,7 @@ public:
 	static const adlColor MAGENTA;
 	static const adlColor CYAN;
 	static const adlColor YELLOW;
+	static const adlColor BLACK;
 
 private:
 	float r_;

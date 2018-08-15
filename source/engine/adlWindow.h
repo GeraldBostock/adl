@@ -33,6 +33,8 @@ public:
 	void swap_buffers();
 	void close_window();
 
+	void set_mouse_visible(bool is_visible);
+
 private:
 	std::string title_;
 	int width_;

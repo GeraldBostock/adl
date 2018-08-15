@@ -25,15 +25,19 @@ bool Game::init()
 	box = adl_rm->get_model("box");
 	adlModel_shared_ptr mountain_model = adl_rm->get_model("mountain");
 	adlModel_shared_ptr teapot_model = adl_rm->get_model("teapot");
+	adlModel_shared_ptr at_at_model = adl_rm->get_model("bmw");
 
 	shader = adl_rm->get_shader("basic_shader");
 	model->set_shader(shader);
 	box->set_shader(shader);
 	mountain_model->set_shader(shader);
 	teapot_model->set_shader(shader);
+	at_at_model->set_shader(shader);
 
 	adlModel_shared_ptr cube_model = adl_rm->get_model("cube");
 	cube_model->set_shader(shader);
+	at_at_.set_model(at_at_model);
+	big_box_.set_model(cube_model);
 
 	adlMatrix_frame frame = adlMatrix_frame::identity();
 
@@ -72,7 +76,18 @@ bool Game::init()
 	adlMat4 projection = projection.create_projection_matrix(window_->get_width(), window_->get_height(), adlMath::deg_to_rad(40), 0.1f, 1000.0f);;
 	adl_renderer->set_projection(projection);
 	
-	camera->set_camera_type(ct_fps_camera);
+	camera->set_camera_type(ct_rts_camera);
+	window_->set_mouse_visible(true);
+
+	frame.o = adlVec3(0, -2, -5);
+	frame.scale = adlVec3(0.00025f);
+	frame.rot = adlVec3(0);
+	at_at_.set_frame(frame);
+
+	frame.o = adlVec3(0, 30, 0);
+	frame.rot = adlVec3(0);
+	frame.scale = adlVec3(20);
+	big_box_.set_frame(frame);
 
 	timer_.start();
 
@@ -118,8 +133,10 @@ bool Game::update(int64 dt)
 
 	adl_renderer->render(box1_, adlColor::BLUE);
 	adl_renderer->render(bison_entity_, adlColor::BLUE);
-	adl_renderer->render(teapot_entity_, adlColor::WHITE);
+	adl_renderer->render(teapot_entity_, adlColor::BLUE);
 	adl_renderer->render(mount_, adlColor::GREEN);
+	adl_renderer->render(at_at_, adlColor::MAGENTA);
+	adl_renderer->render(big_box_, adlColor::CYAN);
 
 	frame.o = adlVec3(std::sin(adlMath::deg_to_rad(timer_.get_elapsed_milli_seconds() / 8)) * 10, 5, 0);
 	light_->set_frame(frame);

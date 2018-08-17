@@ -7,7 +7,6 @@ adlRoot::adlRoot()
 
 adlRoot::~adlRoot()
 {
-	//ADL_DELETE(window_);
 	ADL_DELETE(fps_manager_);
 	ADL_DELETE(camera);
 }
@@ -15,7 +14,6 @@ adlRoot::~adlRoot()
 void adlRoot::init_window(const std::string& title, int width, int height)
 {
 	adl_window = adlWindow::get(title, width, height);
-	//window_ = ADL_NEW(adlWindow, title, width, height);
 }
 
 void adlRoot::run()

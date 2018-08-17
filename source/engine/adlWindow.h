@@ -26,8 +26,6 @@ public:
 		{
 			instance_ = ADL_NEW(adlWindow, title, width, height);
 		}
-		//static adlWindow* instance = ADL_NEW(adlWindow, title, width, height);
-		//static adlWindow instance(title, width, height);
 		return instance_;
 	}
 	static adlWindow* get()
@@ -36,8 +34,6 @@ public:
 		{
 			instance_ = ADL_NEW(adlWindow, "Default Window", 1280, 720);
 		}
-		//static adlWindow* instance;
-		//static adlWindow instance;
 		return instance_;
 	}
 

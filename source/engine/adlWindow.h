@@ -2,6 +2,7 @@
 #define adl_window_h__
 
 #include "common.h"
+#include "adlMemory.h"
 
 #include <GL/glew.h>
 
@@ -12,13 +13,34 @@
 	typedef SDL_Window* adlWindow_handle;
 	typedef SDL_GLContext Graphics_context;
 #endif // USE_SDL
-#include <string>
 
+#include <string>
 
 class adlWindow
 {
 public:
-	adlWindow(const std::string& title, int width, int height);
+
+	static adlWindow* get(const std::string& title, int width, int height)
+	{
+		if (instance_ == nullptr)
+		{
+			instance_ = ADL_NEW(adlWindow, title, width, height);
+		}
+		//static adlWindow* instance = ADL_NEW(adlWindow, title, width, height);
+		//static adlWindow instance(title, width, height);
+		return instance_;
+	}
+	static adlWindow* get()
+	{
+		if (instance_ == nullptr)
+		{
+			instance_ = ADL_NEW(adlWindow, "Default Window", 1280, 720);
+		}
+		//static adlWindow* instance;
+		//static adlWindow instance;
+		return instance_;
+	}
+
 	~adlWindow();
 
 	int get_width() const
@@ -43,6 +65,11 @@ private:
 
 	adlWindow_handle window_;
 	Graphics_context g_context_;
+
+	adlWindow(const std::string& title, int width, int height);
+	adlWindow();
+
+	static adlWindow* instance_;
 };
 
 #endif // adl_window_h__

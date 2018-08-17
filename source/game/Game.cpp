@@ -1,10 +1,4 @@
 #include "Game.h"
-#include "engine/adl_debug/adlLogger.h"
-#include "engine/adl_resource/adlResource_manager.h"
-#include "engine/adl_renderer/adlRender_manager.h"
-#include "engine/adlInput.h"
-#include "engine/adlMemory.h"
-#include "engine/adlWindow.h"
 
 #include <iostream>
 
@@ -73,13 +67,11 @@ bool Game::init()
 		boxes_.push_back(entity);
 	}
 
-	adlMat4 projection = projection.create_projection_matrix(window_->get_width(), window_->get_height(), adlMath::deg_to_rad(40), 0.1f, 1000.0f);;
+	adlMat4 projection = projection.create_projection_matrix(adl_window->get_width(), adl_window->get_height(), adlMath::deg_to_rad(40), 0.1f, 1000.0f);;
 	adl_renderer->set_projection(projection);
 	
 	camera->set_camera_type(ct_rts_camera);
-<<<<<<< HEAD
-=======
-	window_->set_mouse_visible(true);
+	adl_window->set_mouse_visible(true);
 
 	frame.o = adlVec3(0, -2, -5);
 	frame.scale = adlVec3(0.00025f);
@@ -90,7 +82,6 @@ bool Game::init()
 	frame.rot = adlVec3(0);
 	frame.scale = adlVec3(20);
 	big_box_.set_frame(frame);
->>>>>>> 0c39e8bedfba31350345d142a38a065f60816978
 
 	timer_.start();
 

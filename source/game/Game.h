@@ -2,14 +2,6 @@
 #define game_h__
 
 #include "engine/adlRoot.h"
-#include "engine/adlShared_types.h"
-#include "engine/common.h"
-#include "engine/adl_helper/adlTimer.h"
-#include "engine/adl_resource/adlModel.h"
-#include "engine/adlEntity.h"
-#include "Camera.h"
-#include "engine/adl_renderer/adlLight.h"
-#include <string>
 
 class Game : public adlRoot
 {
@@ -19,10 +11,10 @@ public:
 
 	bool init() override;
 	bool update(int64 dt) override;
-	inline void create_window(const std::string& title, int width, int height)
+	/*inline void create_window(const std::string& title, int width, int height)
 	{
 		init_window(title, width, height);
-	}
+	}*/
 private:
 	adlModel_shared_ptr model;
 	adlModel_shared_ptr box;

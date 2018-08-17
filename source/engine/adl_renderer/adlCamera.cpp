@@ -1,5 +1,6 @@
 #include "adlCamera.h"
 #include "engine/adlInput.h"
+#include "engine/adlRoot.h"
 
 adlCamera::adlCamera()
 {
@@ -101,27 +102,30 @@ void adlCamera::look_at(adlVec3 target, adlVec3 up_vector)
 void adlCamera::update_rts_camera(int64 dt)
 {
 	adlInput* input = &adlInput::get();
+	adlWindow* window = adlWindow::get();
+	int screen_width = window->get_width();
+	int screen_height = window->get_height();
 
 	adlVec2_i32 mousePos = input->get_mouse_pos();
 	float tolerance = 25;
 
-	if (mousePos.x < 25)
+	if (mousePos.x < tolerance || input->get_key(adl_key_a))
 	{
 		position_.z += movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_ - 90)) * dt;
 		position_.x += movement_speed_ * std::sin(adlMath::deg_to_rad(yaw_ - 90)) * dt;
 	}
-	else if (mousePos.x > 1280 - 25)
+	else if (mousePos.x > screen_width - tolerance || input->get_key(adl_key_d))
 	{
 		position_.z -= movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_ - 90)) * dt;
 		position_.x -= movement_speed_ * std::sin(adlMath::deg_to_rad(yaw_ - 90)) * dt;
 	}
 
-	if (mousePos.y < 25)
+	if (mousePos.y < tolerance || input->get_key(adl_key_w))
 	{
 		position_.z -= movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_)) * dt;
 		position_.x -= movement_speed_ * std::sin(adlMath::deg_to_rad(yaw_)) * dt;
 	}
-	else if (mousePos.y > 720 - 25)
+	else if (mousePos.y > screen_height - tolerance || input->get_key(adl_key_s))
 	{
 		position_.z += movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_)) * dt;
 		position_.x += movement_speed_ * std::sin(adlMath::deg_to_rad(yaw_)) * dt;

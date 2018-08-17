@@ -1,13 +1,5 @@
 #include "adlRoot.h"
 
-#include "adlMemory.h"
-#include "adl_resource/adlResource_manager.h"
-#include "adl_renderer/adlRender_manager.h"
-#include "adlWindow.h"
-#include "adl_debug/adlLogger.h"
-#include "adlInput.h"
-#include "adl_helper/adlFPS_manager.h"
-
 adlRoot::adlRoot()
 {
 	is_running_ = false;
@@ -15,14 +7,15 @@ adlRoot::adlRoot()
 
 adlRoot::~adlRoot()
 {
-	ADL_DELETE(window_);
+	//ADL_DELETE(window_);
 	ADL_DELETE(fps_manager_);
 	ADL_DELETE(camera);
 }
 
 void adlRoot::init_window(const std::string& title, int width, int height)
 {
-	window_ = ADL_NEW(adlWindow, title, width, height);
+	adl_window = adlWindow::get(title, width, height);
+	//window_ = ADL_NEW(adlWindow, title, width, height);
 }
 
 void adlRoot::run()
@@ -49,7 +42,7 @@ void adlRoot::run()
 		is_running_ = false;
 	}
 
-	window_->swap_buffers();
+	adl_window->swap_buffers();
 }
 
 void adlRoot::start()
@@ -80,5 +73,5 @@ void adlRoot::game_thread()
 		run();
 	}
 
-	window_->close_window();
+	adl_window->close_window();
 }

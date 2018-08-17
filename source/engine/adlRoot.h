@@ -6,14 +6,13 @@
 #include "engine/common.h"
 #include "engine/adl_renderer/adlCamera.h"
 #include "engine/adl_renderer/adlColor.h"
-
-class adlWindow;
-class adlTimer;
-class adlFPS_manager;
-class adlResource_manager;
-class adlInput;
-class adlRender_manager;
-class adlLogger;
+#include "engine/adlWindow.h"
+#include "adlMemory.h"
+#include "adl_resource/adlResource_manager.h"
+#include "adl_renderer/adlRender_manager.h"
+#include "adl_debug/adlLogger.h"
+#include "adlInput.h"
+#include "adl_helper/adlFPS_manager.h"
 
 /*
 * Entry point for the engine
@@ -30,15 +29,15 @@ public:
 	virtual bool update(int64 dt) = 0;
 	void run();
 
-protected:
+	void init_window(const std::string& title, int width, int height);
+
 	adlResource_manager* adl_rm;
 	adlRender_manager* adl_renderer;
 	adlInput* adl_input;
 	adlLogger* adl_logger;
-	adlWindow* window_;
+	adlWindow* adl_window;
 	adlCamera* camera;
-
-	void init_window(const std::string& title, int width, int height);
+protected:
 private:
 	adlFPS_manager* fps_manager_;
 

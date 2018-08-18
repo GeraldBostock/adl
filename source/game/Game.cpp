@@ -17,9 +17,9 @@ bool Game::init()
 	model = adl_rm->get_model("wuson");
 
 	box = adl_rm->get_model("box");
-	adlModel_shared_ptr mountain_model = adl_rm->get_model("mountain");
-	adlModel_shared_ptr teapot_model = adl_rm->get_model("teapot");
-	adlModel_shared_ptr at_at_model = adl_rm->get_model("bmw");
+	adlModel_shared_ptr mountain_model	= adl_rm->get_model("mountain");
+	adlModel_shared_ptr teapot_model	= adl_rm->get_model("teapot");
+	adlModel_shared_ptr at_at_model		= adl_rm->get_model("bmw");
 
 	shader = adl_rm->get_shader("basic_shader");
 	model->set_shader(shader);
@@ -33,7 +33,7 @@ bool Game::init()
 	at_at_.set_model(at_at_model);
 	big_box_.set_model(cube_model);
 
-	adlMatrix_frame frame = adlMatrix_frame::identity();
+	adlTransform frame = adlMatrix_frame::identity();
 
 	light_ = ADL_NEW(adlLight, cube_model, adlColor::WHITE);
 	frame.scale = adlVec3(0.1f);
@@ -107,7 +107,6 @@ bool Game::update(int64 dt)
 	frame.scale = adlVec3(1.1f, 1.1f, 1.1f);
 	box1_.set_frame(frame);
 
-
 	for (int i = 0; i < 20; i++)
 	{
 		adlMatrix_frame box_frame = boxes_[i].get_frame();
@@ -135,7 +134,6 @@ bool Game::update(int64 dt)
 	frame.o = adlVec3(std::sin(adlMath::deg_to_rad(timer_.get_elapsed_milli_seconds() / 8)) * 10, 5, 0);
 	light_->set_frame(frame);
 	adl_renderer->render(light_);
-
 
 	return true;
 }

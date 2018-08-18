@@ -432,5 +432,6 @@ inline adlMatrix_frame adlMatrix_frame::operator=(const adlMatrix_frame& frame)
 	return new_frame;
 }
 
+typedef adlMatrix_frame adlTransform;
 
 #endif // matrix_h__

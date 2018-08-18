@@ -11,10 +11,7 @@ public:
 
 	bool init() override;
 	bool update(int64 dt) override;
-	/*inline void create_window(const std::string& title, int width, int height)
-	{
-		init_window(title, width, height);
-	}*/
+
 private:
 	adlModel_shared_ptr model;
 	adlModel_shared_ptr box;

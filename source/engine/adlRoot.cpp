@@ -51,11 +51,11 @@ void adlRoot::start()
 
 void adlRoot::game_thread()
 {
-	adl_rm = &adlResource_manager::get();
-	adl_renderer = &adlRender_manager::get();
-	adl_input = &adlInput::get();
-	adl_logger = &adlLogger::get();
-	camera = ADL_NEW(adlCamera);
+	adl_rm			= &adlResource_manager::get();
+	adl_renderer	= &adlRender_manager::get();
+	adl_input		= &adlInput::get();
+	adl_logger		= &adlLogger::get();
+	camera			= ADL_NEW(adlCamera);
 
 	adl_renderer->set_camera(camera);
 

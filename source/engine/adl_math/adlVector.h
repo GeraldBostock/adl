@@ -4,6 +4,8 @@
 #include "engine/common.h"
 #include "engine/adl_debug/adlAssert.h"
 
+#include <cmath>
+
 #define adlVec4 adlVec3
 
 class adlVec2

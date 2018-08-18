@@ -4,6 +4,7 @@
 #include "engine/adl_math/adlVector.h"
 #include "engine/adl_debug/adlAssert.h"
 
+#include <cmath>
 #include <iostream>
 
 class adlMat3
@@ -256,7 +257,7 @@ inline adlMat4::adlMat4(float _11, float _12, float _13, float _14,
 	  c(adlVec4(_31, _32, _33, _34)),
 	  d(adlVec4(_41, _42, _43, _44))
 {
-	
+
 }
 
 inline adlMat4::adlMat4(float value)

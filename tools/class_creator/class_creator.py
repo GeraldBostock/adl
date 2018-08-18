@@ -2,6 +2,16 @@ from tkinter import *
 from tkinter.filedialog import askdirectory
 
 import re
+import ctypes
+
+kernel32 = ctypes.WinDLL('kernel32')
+user32 = ctypes.WinDLL('user32')
+
+SW_HIDE = 0
+
+hWnd = kernel32.GetConsoleWindow()
+if hWnd:
+    user32.ShowWindow(hWnd, SW_HIDE)
 
 def browse(Textbox):
     foldername=askdirectory()
@@ -55,13 +65,15 @@ def write_to_cpp_file(class_name, file_path):
 
 if __name__ == '__main__':
    root = Tk()
-   root.title('Folder Creator')
+   root.title('Class Creator')
+   root.resizable(False, False)
 
    class_label = Label(root, text="Class Name")
    class_label.pack(side=LEFT)
 
    classname_box = Entry(root, bd=5)
    classname_box.pack(side=LEFT)
+   classname_box.focus()
 
    folder_label = Label(root, text="Folder Path")
    folder_label.pack(side=LEFT)

@@ -93,10 +93,10 @@ void adlCamera::look_at(adlVec3 target, adlVec3 up_vector)
 	adlVec3 x_axis = adlMath::normalize(adlMath::crossp(up_vector, z_axis));
 	adlVec3 y_axis = adlMath::crossp(z_axis, x_axis);
 
-	view_matrix_.a = adlVec4(x_axis.x, y_axis.x, z_axis.x, 0);
-	view_matrix_.b = adlVec4(x_axis.y, y_axis.y, z_axis.y, 0);
-	view_matrix_.c = adlVec4(x_axis.z, y_axis.z, z_axis.z, 0);
-	view_matrix_.d = adlVec4(-adlMath::dotp(x_axis, position_), -adlMath::dotp(y_axis, position_), -adlMath::dotp(z_axis, position_), 1);
+	view_matrix_.vectors.a = adlVec4(x_axis.x, y_axis.x, z_axis.x, 0);
+	view_matrix_.vectors.b = adlVec4(x_axis.y, y_axis.y, z_axis.y, 0);
+	view_matrix_.vectors.c = adlVec4(x_axis.z, y_axis.z, z_axis.z, 0);
+	view_matrix_.vectors.d = adlVec4(-adlMath::dotp(x_axis, position_), -adlMath::dotp(y_axis, position_), -adlMath::dotp(z_axis, position_), 1);
 }
 
 void adlCamera::update_rts_camera(int64 dt)

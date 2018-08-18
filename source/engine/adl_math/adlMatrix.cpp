@@ -6,30 +6,30 @@ adlMat3 adlMat3::operator*(const adlMat3& matrix) const
 {
 	adlMat3 result_matrix = adlMat3::identity();
 
-	adlVec3 row1(a.x, b.x, c.x);
-	adlVec3 row2(a.y, b.y, c.y);
-	adlVec3 row3(a.z, b.z, c.z);
+	adlVec3 row1(vectors.a.x, vectors.b.x, vectors.c.x);
+	adlVec3 row2(vectors.a.y, vectors.b.y, vectors.c.y);
+	adlVec3 row3(vectors.a.z, vectors.b.z, vectors.c.z);
 
-	result_matrix.mat[0] = row1.dotp(matrix.a);
-	result_matrix.mat[1] = row2.dotp(matrix.a);
-	result_matrix.mat[2] = row3.dotp(matrix.a);
+	result_matrix.mat[0] = row1.dotp(matrix.vectors.a);
+	result_matrix.mat[1] = row2.dotp(matrix.vectors.a);
+	result_matrix.mat[2] = row3.dotp(matrix.vectors.a);
 
-	result_matrix.mat[4] = row1.dotp(matrix.b);
-	result_matrix.mat[5] = row2.dotp(matrix.b);
-	result_matrix.mat[6] = row3.dotp(matrix.b);
+	result_matrix.mat[4] = row1.dotp(matrix.vectors.b);
+	result_matrix.mat[5] = row2.dotp(matrix.vectors.b);
+	result_matrix.mat[6] = row3.dotp(matrix.vectors.b);
 
-	result_matrix.mat[8] = row1.dotp(matrix.c);
-	result_matrix.mat[9] = row2.dotp(matrix.c);
-	result_matrix.mat[10] = row3.dotp(matrix.c);
+	result_matrix.mat[8] = row1.dotp(matrix.vectors.c);
+	result_matrix.mat[9] = row2.dotp(matrix.vectors.c);
+	result_matrix.mat[10] = row3.dotp(matrix.vectors.c);
 
 	return result_matrix;
 }
 
 adlVec3 adlMat3::operator*(const adlVec3& vector) const
 {
-	float a_ = (a.x * vector.x) + (a.y * vector.y) + (a.z * vector.z);
-	float b_ = (b.x * vector.x) + (b.y * vector.y) + (b.z * vector.z);
-	float c_ = (c.x * vector.x) + (c.y * vector.y) + (c.z * vector.z);
+	float a_ = (vectors.a.x * vector.x) + (vectors.a.y * vector.y) + (vectors.a.z * vector.z);
+	float b_ = (vectors.b.x * vector.x) + (vectors.b.y * vector.y) + (vectors.b.z * vector.z);
+	float c_ = (vectors.c.x * vector.x) + (vectors.c.y * vector.y) + (vectors.c.z * vector.z);
 
 	return adlVec3(a_, b_, c_);
 }
@@ -46,11 +46,11 @@ adlMat3 adlMat3::get_x_rotation_matrix(float radians)
 	*/
 
 	adlMat3 rot_matrix = adlMat3::identity();
-	rot_matrix.b.y = std::cos(radians);
-	rot_matrix.b.z = std::sin(radians);
+	rot_matrix.vectors.b.y = std::cos(radians);
+	rot_matrix.vectors.b.z = std::sin(radians);
 
-	rot_matrix.c.y = -std::sin(radians);
-	rot_matrix.c.z = std::cos(radians);
+	rot_matrix.vectors.c.y = -std::sin(radians);
+	rot_matrix.vectors.c.z = std::cos(radians);
 
 	return rot_matrix;
 }
@@ -68,11 +68,11 @@ adlMat3 adlMat3::get_y_rotation_matrix(float radians)
 
 	adlMat3 rot_matrix = adlMat3::identity();
 
-	rot_matrix.a.x = std::cos(radians);
-	rot_matrix.a.z = -std::sin(radians);
+	rot_matrix.vectors.a.x = std::cos(radians);
+	rot_matrix.vectors.a.z = -std::sin(radians);
 
-	rot_matrix.c.x = std::sin(radians);
-	rot_matrix.c.z = std::cos(radians);
+	rot_matrix.vectors.c.x = std::sin(radians);
+	rot_matrix.vectors.c.z = std::cos(radians);
 
 	return rot_matrix;
 }
@@ -89,11 +89,11 @@ adlMat3 adlMat3::get_z_rotation_matrix(float radians)
 	*/
 
 	adlMat3 rot_matrix = adlMat3::identity();
-	rot_matrix.a.x = std::cos(radians);
-	rot_matrix.a.y = std::sin(radians);
+	rot_matrix.vectors.a.x = std::cos(radians);
+	rot_matrix.vectors.a.y = std::sin(radians);
 
-	rot_matrix.b.x = -std::sin(radians);
-	rot_matrix.b.y = std::cos(radians);
+	rot_matrix.vectors.b.x = -std::sin(radians);
+	rot_matrix.vectors.b.y = std::cos(radians);
 
 	return rot_matrix;
 }
@@ -102,40 +102,40 @@ adlMat4 adlMat4::operator*(const adlMat4& matrix) const
 {
 	adlMat4 result_matrix = adlMat4::identity();
 
-	adlVec4 row1(a.x, b.x, c.x, d.x);
-	adlVec4 row2(a.y, b.y, c.y, d.y);
-	adlVec4 row3(a.z, b.z, c.z, d.z);
-	adlVec4 row4(a.w, b.w, c.w, d.w);
+	adlVec4 row1(vectors.a.x, vectors.b.x, vectors.c.x, vectors.d.x);
+	adlVec4 row2(vectors.a.y, vectors.b.y, vectors.c.y, vectors.d.y);
+	adlVec4 row3(vectors.a.z, vectors.b.z, vectors.c.z, vectors.d.z);
+	adlVec4 row4(vectors.a.w, vectors.b.w, vectors.c.w, vectors.d.w);
 
-	result_matrix.mat[0] = row1.dotp(matrix.a);
-	result_matrix.mat[1] = row2.dotp(matrix.a);
-	result_matrix.mat[2] = row3.dotp(matrix.a);
-	result_matrix.mat[3] = row4.dotp(matrix.a);
+	result_matrix.mat[0] = row1.dotp(matrix.vectors.a);
+	result_matrix.mat[1] = row2.dotp(matrix.vectors.a);
+	result_matrix.mat[2] = row3.dotp(matrix.vectors.a);
+	result_matrix.mat[3] = row4.dotp(matrix.vectors.a);
 
-	result_matrix.mat[4] = row1.dotp(matrix.b);
-	result_matrix.mat[5] = row2.dotp(matrix.b);
-	result_matrix.mat[6] = row3.dotp(matrix.b);
-	result_matrix.mat[7] = row4.dotp(matrix.b);
+	result_matrix.mat[4] = row1.dotp(matrix.vectors.b);
+	result_matrix.mat[5] = row2.dotp(matrix.vectors.b);
+	result_matrix.mat[6] = row3.dotp(matrix.vectors.b);
+	result_matrix.mat[7] = row4.dotp(matrix.vectors.b);
 
-	result_matrix.mat[8] = row1.dotp(matrix.c);
-	result_matrix.mat[9] = row2.dotp(matrix.c);
-	result_matrix.mat[10] = row3.dotp(matrix.c);
-	result_matrix.mat[11] = row4.dotp(matrix.c);
+	result_matrix.mat[8] = row1.dotp(matrix.vectors.c);
+	result_matrix.mat[9] = row2.dotp(matrix.vectors.c);
+	result_matrix.mat[10] = row3.dotp(matrix.vectors.c);
+	result_matrix.mat[11] = row4.dotp(matrix.vectors.c);
 
-	result_matrix.mat[12] = row1.dotp(matrix.d);
-	result_matrix.mat[13] = row2.dotp(matrix.d);
-	result_matrix.mat[14] = row3.dotp(matrix.d);
-	result_matrix.mat[15] = row4.dotp(matrix.d);
+	result_matrix.mat[12] = row1.dotp(matrix.vectors.d);
+	result_matrix.mat[13] = row2.dotp(matrix.vectors.d);
+	result_matrix.mat[14] = row3.dotp(matrix.vectors.d);
+	result_matrix.mat[15] = row4.dotp(matrix.vectors.d);
 
 	return result_matrix;
 }
 
 adlVec4 adlMat4::operator*(const adlVec4& vector) const
 {
-	float a_ = (a.x * vector.x) + (a.y * vector.y) + (a.z * vector.z) + (a.w * vector.w);
-	float b_ = (b.x * vector.x) + (b.y * vector.y) + (b.z * vector.z) + (b.w * vector.w);
-	float c_ = (c.x * vector.x) + (c.y * vector.y) + (c.z * vector.z) + (c.w * vector.w);
-	float d_ = (d.x * vector.x) + (d.y * vector.y) + (d.z * vector.z) + (d.w * vector.w);
+	float a_ = (vectors.a.x * vector.x) + (vectors.a.y * vector.y) + (vectors.a.z * vector.z) + (vectors.a.w * vector.w);
+	float b_ = (vectors.b.x * vector.x) + (vectors.b.y * vector.y) + (vectors.b.z * vector.z) + (vectors.b.w * vector.w);
+	float c_ = (vectors.c.x * vector.x) + (vectors.c.y * vector.y) + (vectors.c.z * vector.z) + (vectors.c.w * vector.w);
+	float d_ = (vectors.d.x * vector.x) + (vectors.d.y * vector.y) + (vectors.d.z * vector.z) + (vectors.d.w * vector.w);
 
 	return adlVec4(a_, b_, c_, d_);
 }
@@ -154,9 +154,9 @@ void adlMatrix_frame::scale_matrix()
 	* C: scale.z
 	*/
 
-	transformation_matrix_.a.x = scale.x;
-	transformation_matrix_.b.y = scale.y;
-	transformation_matrix_.c.z = scale.z;
+	transformation_matrix_.vectors.a.x = scale.x;
+	transformation_matrix_.vectors.b.y = scale.y;
+	transformation_matrix_.vectors.c.z = scale.z;
 }
 
 void adlMatrix_frame::rotate_matrix()
@@ -191,9 +191,9 @@ void adlMatrix_frame::translate_matrix()
 	* C = o.z
 	*/
 
-	transformation_matrix_.d.x = o.x;
-	transformation_matrix_.d.y = o.y;
-	transformation_matrix_.d.z = o.z;
+	transformation_matrix_.vectors.d.x = o.x;
+	transformation_matrix_.vectors.d.y = o.y;
+	transformation_matrix_.vectors.d.z = o.z;
 }
 
 adlMat4 adlMatrix_frame::get_transformation_matrix()
@@ -219,10 +219,10 @@ adlMat4 adlMatrix_frame::get_view_matrix()
 	adlVec3 y_axis(sin_yaw * sin_pitch, cos_pitch, cos_yaw * sin_pitch);
 	adlVec3 z_axis(sin_yaw * cos_pitch, -sin_pitch, cos_pitch * cos_yaw);
 
-	transformation_matrix_.a = adlVec4(x_axis.x, y_axis.x, z_axis.x, 0);
-	transformation_matrix_.b = adlVec4(x_axis.y, y_axis.y, z_axis.y, 0);
-	transformation_matrix_.c = adlVec4(x_axis.z, y_axis.z, z_axis.z, 0);
-	transformation_matrix_.d = adlVec4(-x_axis.dotp(o), -y_axis.dotp(o), -z_axis.dotp(o), 1);
+	transformation_matrix_.vectors.a = adlVec4(x_axis.x, y_axis.x, z_axis.x, 0);
+	transformation_matrix_.vectors.b = adlVec4(x_axis.y, y_axis.y, z_axis.y, 0);
+	transformation_matrix_.vectors.c = adlVec4(x_axis.z, y_axis.z, z_axis.z, 0);
+	transformation_matrix_.vectors.d = adlVec4(-x_axis.dotp(o), -y_axis.dotp(o), -z_axis.dotp(o), 1);
 
 	return transformation_matrix_;
 }
@@ -244,30 +244,30 @@ void adlMatrix_frame::inverse()
 	adlVec3 inverse_c;
 	adlVec3 inverse_d;
 
-	inverse_a.x = transformation_matrix_.a.x;
-	inverse_a.y = transformation_matrix_.b.x;
-	inverse_a.z = transformation_matrix_.c.x;
-	inverse_a.w = transformation_matrix_.d.x;
+	inverse_a.x = transformation_matrix_.vectors.a.x;
+	inverse_a.y = transformation_matrix_.vectors.b.x;
+	inverse_a.z = transformation_matrix_.vectors.c.x;
+	inverse_a.w = transformation_matrix_.vectors.d.x;
 
-	inverse_b.x = transformation_matrix_.a.y;
-	inverse_b.y = transformation_matrix_.b.y;
-	inverse_b.z = transformation_matrix_.c.y;
-	inverse_b.w = transformation_matrix_.d.y;
+	inverse_b.x = transformation_matrix_.vectors.a.y;
+	inverse_b.y = transformation_matrix_.vectors.b.y;
+	inverse_b.z = transformation_matrix_.vectors.c.y;
+	inverse_b.w = transformation_matrix_.vectors.d.y;
 
-	inverse_c.x = transformation_matrix_.a.z;
-	inverse_c.y = transformation_matrix_.b.z;
-	inverse_c.z = transformation_matrix_.c.z;
-	inverse_c.w = transformation_matrix_.d.z;
+	inverse_c.x = transformation_matrix_.vectors.a.z;
+	inverse_c.y = transformation_matrix_.vectors.b.z;
+	inverse_c.z = transformation_matrix_.vectors.c.z;
+	inverse_c.w = transformation_matrix_.vectors.d.z;
 
-	inverse_d.x = transformation_matrix_.a.w;
-	inverse_d.y = transformation_matrix_.b.w;
-	inverse_d.z = transformation_matrix_.c.w;
-	inverse_d.w = transformation_matrix_.d.w;
+	inverse_d.x = transformation_matrix_.vectors.a.w;
+	inverse_d.y = transformation_matrix_.vectors.b.w;
+	inverse_d.z = transformation_matrix_.vectors.c.w;
+	inverse_d.w = transformation_matrix_.vectors.d.w;
 
-	transformation_matrix_.a = inverse_a;
-	transformation_matrix_.b = inverse_b;
-	transformation_matrix_.c = inverse_c;
-	transformation_matrix_.d = inverse_d;
+	transformation_matrix_.vectors.a = inverse_a;
+	transformation_matrix_.vectors.b = inverse_b;
+	transformation_matrix_.vectors.c = inverse_c;
+	transformation_matrix_.vectors.d = inverse_d;
 }
 
 adlMat4 adlMat4::create_projection_matrix(int window_width, int window_height, float fov_in_radians, float near_plane, float far_plane)
@@ -278,12 +278,12 @@ adlMat4 adlMat4::create_projection_matrix(int window_width, int window_height, f
 	float x_scale = y_scale / aspect_ratio;
 	float frustum_length = far_plane - near_plane;
 
-	projection_matrix.a.x = x_scale;
-	projection_matrix.b.y = y_scale;
-	projection_matrix.c.z = -((far_plane + near_plane) / frustum_length);
-	projection_matrix.c.w = -1;
-	projection_matrix.d.z = -((2 * far_plane * near_plane) / frustum_length);
-	projection_matrix.d.w = 0;
+	projection_matrix.vectors.a.x = x_scale;
+	projection_matrix.vectors.b.y = y_scale;
+	projection_matrix.vectors.c.z = -((far_plane + near_plane) / frustum_length);
+	projection_matrix.vectors.c.w = -1;
+	projection_matrix.vectors.d.z = -((2 * far_plane * near_plane) / frustum_length);
+	projection_matrix.vectors.d.w = 0;
 
 	return projection_matrix;
 }
@@ -300,10 +300,10 @@ adlMat4 adlMat4::create_view_matrix(adlVec3 position, adlVec3 rotation)
 	adlVec3 y_axis(sin_yaw * sin_pitch, cos_pitch, cos_yaw * sin_pitch);
 	adlVec3 z_axis(sin_yaw * cos_pitch, -sin_pitch, cos_pitch * cos_yaw);
 
-	view_matrix.a = adlVec4(x_axis.x, y_axis.x, z_axis.x, 0);
-	view_matrix.b = adlVec4(x_axis.y, y_axis.y, z_axis.y, 0);
-	view_matrix.c = adlVec4(x_axis.z, y_axis.z, z_axis.z, 0);
-	view_matrix.d = adlVec4(-x_axis.dotp(position), -y_axis.dotp(position), -z_axis.dotp(position), 1);
+	view_matrix.vectors.a = adlVec4(x_axis.x, y_axis.x, z_axis.x, 0);
+	view_matrix.vectors.b = adlVec4(x_axis.y, y_axis.y, z_axis.y, 0);
+	view_matrix.vectors.c = adlVec4(x_axis.z, y_axis.z, z_axis.z, 0);
+	view_matrix.vectors.d = adlVec4(-x_axis.dotp(position), -y_axis.dotp(position), -z_axis.dotp(position), 1);
 
 	return view_matrix;
 }

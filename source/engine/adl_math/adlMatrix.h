@@ -56,7 +56,7 @@ public:
 			adlVec3 a;
 			adlVec3 b;
 			adlVec3 c;
-		};
+		} vectors;
 		float mat2d[3][4];
 		float mat[12];
 	};
@@ -65,16 +65,17 @@ private:
 };
 
 inline adlMat3::adlMat3()
-	: a(adlVec3(0.0f)), b(adlVec3(0.0f)), c(adlVec3(0.0f))
 {
-
+	vectors.a = adlVec3(0.0f);
+	vectors.b = adlVec3(0.0f);
+	vectors.c = adlVec3(0.0f);
 }
 
 inline adlMat3::adlMat3(const adlVec3& s, const adlVec3& f, const adlVec3& u)
 {
-	a = s;
-	b = f;
-	c = u;
+	vectors.a = s;
+	vectors.b = f;
+	vectors.c = u;
 }
 
 inline adlMat3::adlMat3(float _11, float _12, float _13, float _21, float _22, float _23, float _31, float _32, float _33)
@@ -94,9 +95,9 @@ inline adlMat3::adlMat3(float _11, float _12, float _13, float _21, float _22, f
 
 inline adlMat3::adlMat3(const adlMat3& mat)
 {
-	a = mat.a;
-	b = mat.b;
-	c = mat.c;
+	vectors.a = mat.vectors.a;
+	vectors.b = mat.vectors.b;
+	vectors.c = mat.vectors.c;
 }
 
 inline float adlMat3::operator[](unsigned int index)
@@ -113,33 +114,33 @@ inline float adlMat3::operator()(unsigned int i, unsigned int j)
 
 inline adlMat3 adlMat3::operator+(float scalar) const
 {
-	return adlMat3(a + scalar, b + scalar, c + scalar);
+	return adlMat3(vectors.a + scalar, vectors.b + scalar, vectors.c + scalar);
 }
 
 inline adlMat3 adlMat3::operator-(float scalar) const
 {
-	return adlMat3(a - scalar, b - scalar, c - scalar);
+	return adlMat3(vectors.a - scalar, vectors.b - scalar, vectors.c - scalar);
 }
 
 inline adlMat3 adlMat3::operator*(float scalar) const
 {
-	return adlMat3(a * scalar, b * scalar, c * scalar);
+	return adlMat3(vectors.a * scalar, vectors.b * scalar, vectors.c * scalar);
 }
 
 inline adlMat3 adlMat3::operator/(float scalar) const
 {
 	adl_assert(scalar != 0.0f);
-	return adlMat3(a / scalar, b / scalar, c / scalar);
+	return adlMat3(vectors.a / scalar, vectors.b / scalar, vectors.c / scalar);
 }
 
 inline adlMat3 adlMat3::operator+(const adlMat3& matrix) const
 {
-	return adlMat3(a + matrix.a, b + matrix.b, c + matrix.b);
+	return adlMat3(vectors.a + matrix.vectors.a, vectors.b + matrix.vectors.b, vectors.c + matrix.vectors.b);
 }
 
 inline adlMat3 adlMat3::operator-(const adlMat3& matrix) const
 {
-	return adlMat3(a - matrix.a, b - matrix.b, c - matrix.c);
+	return adlMat3(vectors.a - matrix.vectors.a, vectors.b - matrix.vectors.b, vectors.c - matrix.vectors.c);
 }
 
 inline adlMat3 adlMat3::identity()
@@ -153,9 +154,9 @@ inline adlMat3 adlMat3::identity()
 
 inline void adlMat3::operator=(const adlMat3& matrix)
 {
-	a = matrix.a;
-	b = matrix.b;
-	c = matrix.c;
+	vectors.a = matrix.vectors.a;
+	vectors.b = matrix.vectors.b;
+	vectors.c = matrix.vectors.c;
 }
 
 class adlMat4
@@ -213,73 +214,61 @@ public:
 			adlVec4 b;
 			adlVec4 c;
 			adlVec4 d;
-		};
+		} vectors;
 		float mat[16];
 		float mat2d[4][4];
 	};
 };
 
 inline adlMat4::adlMat4()
-	: a(adlVec4(0.0f)), b(adlVec4(0.0f)), c(adlVec4(0.0f)), d(adlVec4(0.0f))
 {
-
+	vectors.a = adlVec4(0.0f);
+	vectors.b = adlVec4(0.0f);
+	vectors.c = adlVec4(0.0f);
+	vectors.d = adlVec4(0.0f);
 }
 
 inline adlMat4::adlMat4(adlVec4 v1, adlVec4 v2, adlVec4 v3, adlVec4 v4)
 {
-	a.x = v1.x;
-	a.y = v1.y;
-	a.z = v1.z;
-	a.w = v1.z;
-
-	b.x = v2.x;
-	b.y = v2.y;
-	b.z = v2.z;
-	b.w = v2.z;
-
-	c.x = v3.x;
-	c.y = v3.y;
-	c.z = v3.z;
-	c.w = v3.z;
-
-	d.x = v4.x;
-	d.y = v4.y;
-	d.z = v4.z;
-	d.w = v4.z;
+	vectors.a = v1;
+	vectors.b = v2;
+	vectors.c = v3;
+	vectors.d = v4;
 }
 
 inline adlMat4::adlMat4(float _11, float _12, float _13, float _14,
 						float _21, float _22, float _23, float _24,
 						float _31, float _32, float _33, float _34,
 						float _41, float _42, float _43, float _44)
-	: a(adlVec4(_11, _12, _13, _14)),
-	  b(adlVec4(_21, _22, _23, _24)),
-	  c(adlVec4(_31, _32, _33, _34)),
-	  d(adlVec4(_41, _42, _43, _44))
 {
-
+	vectors.a = adlVec4(_11, _12, _13, _14);
+	vectors.b = adlVec4(_21, _22, _23, _24);
+	vectors.c = adlVec4(_31, _32, _33, _34);
+	vectors.d = adlVec4(_41, _42, _43, _44);
 }
 
 inline adlMat4::adlMat4(float value)
 {
-	a = adlVec4(value);
-	b = adlVec4(value);
-	c = adlVec4(value);
-	d = adlVec4(value);
+	vectors.a = adlVec4(value);
+	vectors.b = adlVec4(value);
+	vectors.c = adlVec4(value);
+	vectors.d = adlVec4(value);
 }
 
 inline adlMat4::adlMat4(const adlMat4& matrix)
-	: a(matrix.a), b(matrix.b), c(matrix.c), d(matrix.d)
 {
-
+	vectors.a = matrix.vectors.a;
+	vectors.b = matrix.vectors.b;
+	vectors.c = matrix.vectors.c;
+	vectors.d = matrix.vectors.d;
 }
 
 inline adlMat4::adlMat4(const adlMat3& matrix)
 {
-	a = matrix.a;
-	b = matrix.b;
-	c = matrix.c;
-	d = adlVec4(0, 0, 0, 1);
+	vectors.a = matrix.vectors.a;
+	vectors.b = matrix.vectors.b;
+	vectors.c = matrix.vectors.c;
+	vectors.d = adlVec4(0, 0, 0, 1);
 }
 
 inline float adlMat4::operator[](unsigned int index)
@@ -296,33 +285,33 @@ inline float adlMat4::operator()(unsigned int i, unsigned int j)
 
 inline adlMat4 adlMat4::operator+(float scalar) const
 {
-	return adlMat4(a + scalar, b + scalar, c + scalar, d + scalar);
+	return adlMat4(vectors.a + scalar, vectors.b + scalar, vectors.c + scalar, vectors.d + scalar);
 }
 
 inline adlMat4 adlMat4::operator-(float scalar) const
 {
-	return adlMat4(a - scalar, b - scalar, c - scalar, d - scalar);
+	return adlMat4(vectors.a - scalar, vectors.b - scalar, vectors.c - scalar, vectors.d - scalar);
 }
 
 inline adlMat4 adlMat4::operator*(float scalar) const
 {
-	return adlMat4(a * scalar, b * scalar, c * scalar, d * scalar);
+	return adlMat4(vectors.a * scalar, vectors.b * scalar, vectors.c * scalar, vectors.d * scalar);
 }
 
 inline adlMat4 adlMat4::operator/(float scalar) const
 {
 	adl_assert(scalar != 0.0f);
-	return adlMat4(a / scalar, b / scalar, c / scalar, d / scalar);
+	return adlMat4(vectors.a / scalar, vectors.b / scalar, vectors.c / scalar, vectors.d / scalar);
 }
 
 inline adlMat4 adlMat4::operator+(const adlMat4& matrix) const
 {
-	return adlMat4(a + matrix.a, b + matrix.b, c + matrix.c, d + matrix.d);
+	return adlMat4(vectors.a + matrix.vectors.a, vectors.b + matrix.vectors.b, vectors.c + matrix.vectors.c, vectors.d + matrix.vectors.d);
 }
 
 inline adlMat4 adlMat4::operator-(const adlMat4& matrix) const
 {
-	return adlMat4(a - matrix.a, b - matrix.b, c - matrix.c, d - matrix.d);
+	return adlMat4(vectors.a - matrix.vectors.a, vectors.b - matrix.vectors.b, vectors.c - matrix.vectors.c, vectors.d - matrix.vectors.d);
 }
 
 inline adlMat4 adlMat4::identity()
@@ -353,10 +342,10 @@ inline adlMat4 adlMat4::identity()
 
 inline void adlMat4::operator=(const adlMat4& matrix)
 {
-	a = matrix.a;
-	b = matrix.b;
-	c = matrix.c;
-	d = matrix.d;
+	vectors.a = matrix.vectors.a;
+	vectors.b = matrix.vectors.b;
+	vectors.c = matrix.vectors.c;
+	vectors.d = matrix.vectors.d;
 }
 
 class adlMatrix_frame
@@ -385,7 +374,7 @@ public:
 		adlVec3 o;
 		adlVec3 scale;
 		adlVec3 rot;
-	};
+	} transform;
 
 private:
 	void scale_matrix();
@@ -399,11 +388,11 @@ inline adlMatrix_frame::adlMatrix_frame()
 {
 }
 
-inline adlMatrix_frame::adlMatrix_frame(adlVec3 o_, adlVec3 rot_, adlVec3 scale_)
+inline adlMatrix_frame::adlMatrix_frame(adlVec3 o, adlVec3 rot, adlVec3 scale)
 {
-	o = o_;
-	rot = rot_;
-	scale = scale_;
+	transform.o = o;
+	transform.rot = rot;
+	transform.scale = scale;
 }
 
 inline adlMatrix_frame::adlMatrix_frame(adlMat4 trans_matrix)
@@ -413,9 +402,9 @@ inline adlMatrix_frame::adlMatrix_frame(adlMat4 trans_matrix)
 
 inline adlMatrix_frame::adlMatrix_frame(const adlMatrix_frame& frame)
 {
-	o = frame.o;
-	rot = frame.rot;
-	scale = frame.scale;
+	transform.o = frame.transform.o;
+	transform.rot = frame.transform.rot;
+	transform.scale = frame.transform.scale;
 }
 
 inline adlVec3 adlMatrix_frame::transform_to_parent(const adlVec3& vector)
@@ -426,9 +415,9 @@ inline adlVec3 adlMatrix_frame::transform_to_parent(const adlVec3& vector)
 inline adlMatrix_frame adlMatrix_frame::operator=(const adlMatrix_frame& frame)
 {
 	adlMatrix_frame new_frame;
-	new_frame.o = frame.o;
-	new_frame.rot = frame.rot;
-	new_frame.scale = frame.scale;
+	new_frame.transform.o = frame.transform.o;
+	new_frame.transform.rot = frame.transform.rot;
+	new_frame.transform.scale = frame.transform.scale;
 
 	return new_frame;
 }

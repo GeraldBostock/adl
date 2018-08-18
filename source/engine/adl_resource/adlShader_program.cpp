@@ -1,4 +1,5 @@
 #include "adlShader_program.h"
+#include "engine/adl_debug/adlLogger.h"
 
 #include <fstream>
 

@@ -36,7 +36,7 @@ void adlRender_manager::render(adlEntity entity, adlColor color)
 	shader->load_mvp(mvp_matrix);
 	shader->load_object_color(color.to_vec3());
 	shader->load_light_color(light_->get_color().to_vec3());
-	shader->load_light_position(light_->get_frame().o);
+	shader->load_light_position(light_->get_frame().transform.o);
 	shader->load_model_matrix(entity.get_frame().get_transformation_matrix());
 
 	if (is_wire_frame_mode_)

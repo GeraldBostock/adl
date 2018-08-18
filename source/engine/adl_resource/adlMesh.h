@@ -6,6 +6,7 @@
 #include "adlResource.h"
 #include "engine/adlShared_types.h"
 
+#include <vector>
 #include <GL/glew.h>
 
 enum Texture_type
@@ -26,7 +27,7 @@ struct Vertex
 
 	}
 
-	Vertex(adlVec3 position, adlVec3 normal, adlVec2 uv) 
+	Vertex(adlVec3 position, adlVec3 normal, adlVec2 uv)
 		: position(position), normal(normal), uv(uv)
 	{
 	}

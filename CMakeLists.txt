@@ -14,7 +14,8 @@ else()
 		-c
 		-Wall
 		-msse2
-		-std=gnu++11
+		-fms-extensions
+		-std=gnu++17
 		-nostartfiles
 	)
 endif()
@@ -99,6 +100,7 @@ INCLUDE(${ADL_CMAKE_DIR}/FindRAPIDJSON.cmake)
 # Google Test
 # INCLUDE(${ADL_CMAKE_DIR}/AddGoogleTest.cmake)
 
+
 # ADL Includes
 include_directories(
 	${PROJECT_SOURCE_DIR}/headers/
@@ -167,7 +169,7 @@ if(MSVC_IDE)
 		string(REPLACE "/" "\\" source_path_msvc "${relative_source_path}")
 		source_group("${source_path_msvc}" FILES "${source}")
 	endforeach()
-	
+
 	foreach(source IN LISTS GAME_SRCS GAME_HDRS)
 		get_filename_component(source_path "${source}" PATH)
 		string(REPLACE "${PROJECT_SOURCE_DIR}" "" relative_source_path "${source_path}")

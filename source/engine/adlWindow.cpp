@@ -1,12 +1,12 @@
 #include "adlWindow.h"
 
-#include "adl_debug\adlLogger.h"
+#include "engine/adl_debug/adlLogger.h"
 
 adlWindow* adlWindow::instance_ = nullptr;
 
 adlWindow::adlWindow(const std::string& title, int width, int height)
-	: title_(title), 
-	  width_(width), 
+	: title_(title),
+	  width_(width),
 	  height_(height)
 {
 	adlLogger* adl_logger = &adlLogger::get();

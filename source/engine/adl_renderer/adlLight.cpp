@@ -32,9 +32,9 @@ adlMatrix_frame adlLight::get_frame()
 
 void adlLight::set_frame(adlMatrix_frame frame)
 {
-	frame_.o = frame.o;
-	frame_.rot = frame.rot;
-	frame_.scale = frame.scale;
+	frame_.transform.o = frame.transform.o;
+	frame_.transform.rot = frame.transform.rot;
+	frame_.transform.scale = frame.transform.scale;
 }
 
 adlShader_shared_ptr adlLight::get_shader()

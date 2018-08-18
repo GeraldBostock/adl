@@ -36,8 +36,8 @@ bool Game::init()
 	adlTransform frame = adlMatrix_frame::identity();
 
 	light_ = ADL_NEW(adlLight, cube_model, adlColor::WHITE);
-	frame.scale = adlVec3(0.1f);
-	frame.o = adlVec3(0, 5, 0);
+	frame.transform.scale = adlVec3(0.1f);
+	frame.transform.o = adlVec3(0, 5, 0);
 	light_->set_frame(frame);
 	adl_renderer->set_light(light_);
 
@@ -49,11 +49,11 @@ bool Game::init()
 
 	box1_.set_frame(frame);
 	box2_.set_frame(frame);
-	frame.rot = adlVec3(adlMath::deg_to_rad(90), 0, 0);
+	frame.transform.rot = adlVec3(adlMath::deg_to_rad(90), 0, 0);
 	bison_entity_.set_frame(frame);
 
-	frame.rot = adlVec3(adlMath::deg_to_rad(90), 0, 0);
-	frame.o = adlVec3(0, -10.0f, 0);
+	frame.transform.rot = adlVec3(adlMath::deg_to_rad(90), 0, 0);
+	frame.transform.o = adlVec3(0, -10.0f, 0);
 	mount_.set_frame(frame);
 	teapot_entity_.set_frame(frame);
 
@@ -61,26 +61,26 @@ bool Game::init()
 	{
 		adlEntity entity;
 		entity.set_model(cube_model);
-		frame.o = adlVec3((float)i * 2 - 10, 0, 0);
-		frame.scale = adlVec3(0.5f);
+		frame.transform.o = adlVec3((float)i * 2 - 10, 0, 0);
+		frame.transform.scale = adlVec3(0.5f);
 		entity.set_frame(frame);
 		boxes_.push_back(entity);
 	}
 
 	adlMat4 projection = projection.create_projection_matrix(adl_window->get_width(), adl_window->get_height(), adlMath::deg_to_rad(40), 0.1f, 1000.0f);;
 	adl_renderer->set_projection(projection);
-	
+
 	camera->set_camera_type(ct_rts_camera);
 	adl_window->set_mouse_visible(true);
 
-	frame.o = adlVec3(0, -2, -5);
-	frame.scale = adlVec3(0.00025f);
-	frame.rot = adlVec3(0);
+	frame.transform.o = adlVec3(0, -2, -5);
+	frame.transform.scale = adlVec3(0.00025f);
+	frame.transform.rot = adlVec3(0);
 	at_at_.set_frame(frame);
 
-	frame.o = adlVec3(0, 30, 0);
-	frame.rot = adlVec3(0);
-	frame.scale = adlVec3(20);
+	frame.transform.o = adlVec3(0, 30, 0);
+	frame.transform.rot = adlVec3(0);
+	frame.transform.scale = adlVec3(20);
 	big_box_.set_frame(frame);
 
 	timer_.start();
@@ -96,32 +96,32 @@ bool Game::update(int64 dt)
 	}
 
 	adlMatrix_frame frame = adlMatrix_frame::identity();
-	frame.o = adlVec3(model_x, -0.5f, -1.5f);
-	frame.rot = adlVec3(0, 0, 0);
-	frame.scale = adlVec3(0.5f, 0.5f, 0.5f);
+	frame.transform.o = adlVec3(model_x, -0.5f, -1.5f);
+	frame.transform.rot = adlVec3(0, 0, 0);
+	frame.transform.scale = adlVec3(0.5f, 0.5f, 0.5f);
 	bison_entity_.set_frame(frame);
 
 	frame = adlMatrix_frame::identity();
-	frame.o = adlVec3(0, -0.5f, -10.0f);
-	frame.rot = adlVec3(adlMath::deg_to_rad(timer_.get_elapsed_milli_seconds()) / 8, 0, 0);
-	frame.scale = adlVec3(1.1f, 1.1f, 1.1f);
+	frame.transform.o = adlVec3(0, -0.5f, -10.0f);
+	frame.transform.rot = adlVec3(adlMath::deg_to_rad(timer_.get_elapsed_milli_seconds()) / 8, 0, 0);
+	frame.transform.scale = adlVec3(1.1f, 1.1f, 1.1f);
 	box1_.set_frame(frame);
 
 	for (int i = 0; i < 20; i++)
 	{
 		adlMatrix_frame box_frame = boxes_[i].get_frame();
-		box_frame.rot = adlVec3(0, adlMath::deg_to_rad(timer_.get_elapsed_milli_seconds()) / 8, 0);
+		box_frame.transform.rot = adlVec3(0, adlMath::deg_to_rad(timer_.get_elapsed_milli_seconds()) / 8, 0);
 		boxes_[i].set_frame(box_frame);
 		adl_renderer->render(boxes_[i], adlColor::RED);
 	}
 
-	frame.rot = adlVec3(0.0f);
-	frame.o = adlVec3(0, -10.0f, 0);
+	frame.transform.rot = adlVec3(0.0f);
+	frame.transform.o = adlVec3(0, -10.0f, 0);
 	mount_.set_frame(frame);
 
-	frame.o = adlVec3(0, 0, -20.0f);
-	frame.rot = adlVec3(adlMath::deg_to_rad(-90), 0, 0);
-	frame.scale = adlVec3(0.05f);
+	frame.transform.o = adlVec3(0, 0, -20.0f);
+	frame.transform.rot = adlVec3(adlMath::deg_to_rad(-90), 0, 0);
+	frame.transform.scale = adlVec3(0.05f);
 	teapot_entity_.set_frame(frame);
 
 	adl_renderer->render(box1_, adlColor::BLUE);
@@ -131,7 +131,7 @@ bool Game::update(int64 dt)
 	adl_renderer->render(at_at_, adlColor::MAGENTA);
 	adl_renderer->render(big_box_, adlColor::CYAN);
 
-	frame.o = adlVec3(std::sin(adlMath::deg_to_rad(timer_.get_elapsed_milli_seconds() / 8)) * 10, 5, 0);
+	frame.transform.o = adlVec3(std::sin(adlMath::deg_to_rad(timer_.get_elapsed_milli_seconds() / 8)) * 10, 5, 0);
 	light_->set_frame(frame);
 	adl_renderer->render(light_);
 

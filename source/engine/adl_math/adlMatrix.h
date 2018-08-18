@@ -369,12 +369,9 @@ public:
 
 	inline adlMatrix_frame operator=(const adlMatrix_frame& frame);
 
-	struct
-	{
-		adlVec3 o;
-		adlVec3 scale;
-		adlVec3 rot;
-	} transform;
+	adlVec3 o;
+	adlVec3 scale;
+	adlVec3 rot;
 
 private:
 	void scale_matrix();
@@ -388,11 +385,11 @@ inline adlMatrix_frame::adlMatrix_frame()
 {
 }
 
-inline adlMatrix_frame::adlMatrix_frame(adlVec3 o, adlVec3 rot, adlVec3 scale)
+inline adlMatrix_frame::adlMatrix_frame(adlVec3 o_, adlVec3 rot_, adlVec3 scale_)
 {
-	transform.o = o;
-	transform.rot = rot;
-	transform.scale = scale;
+	o = o_;
+	rot = rot_;
+	scale = scale_;
 }
 
 inline adlMatrix_frame::adlMatrix_frame(adlMat4 trans_matrix)
@@ -402,9 +399,9 @@ inline adlMatrix_frame::adlMatrix_frame(adlMat4 trans_matrix)
 
 inline adlMatrix_frame::adlMatrix_frame(const adlMatrix_frame& frame)
 {
-	transform.o = frame.transform.o;
-	transform.rot = frame.transform.rot;
-	transform.scale = frame.transform.scale;
+	o = frame.o;
+	rot = frame.rot;
+	scale = frame.scale;
 }
 
 inline adlVec3 adlMatrix_frame::transform_to_parent(const adlVec3& vector)
@@ -415,9 +412,9 @@ inline adlVec3 adlMatrix_frame::transform_to_parent(const adlVec3& vector)
 inline adlMatrix_frame adlMatrix_frame::operator=(const adlMatrix_frame& frame)
 {
 	adlMatrix_frame new_frame;
-	new_frame.transform.o = frame.transform.o;
-	new_frame.transform.rot = frame.transform.rot;
-	new_frame.transform.scale = frame.transform.scale;
+	new_frame.o = frame.o;
+	new_frame.rot = frame.rot;
+	new_frame.scale = frame.scale;
 
 	return new_frame;
 }

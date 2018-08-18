@@ -154,21 +154,21 @@ void adlMatrix_frame::scale_matrix()
 	* C: scale.z
 	*/
 
-	transformation_matrix_.vectors.a.x = transform.scale.x;
-	transformation_matrix_.vectors.b.y = transform.scale.y;
-	transformation_matrix_.vectors.c.z = transform.scale.z;
+	transformation_matrix_.vectors.a.x = scale.x;
+	transformation_matrix_.vectors.b.y = scale.y;
+	transformation_matrix_.vectors.c.z = scale.z;
 }
 
 void adlMatrix_frame::rotate_matrix()
 {
 	adlMat3 x_rotation = adlMat3::identity();
-	x_rotation = x_rotation.get_x_rotation_matrix(transform.rot.x);
+	x_rotation = x_rotation.get_x_rotation_matrix(rot.x);
 
 	adlMat3 y_rotation = adlMat3::identity();
-	y_rotation = y_rotation.get_y_rotation_matrix(transform.rot.y);
+	y_rotation = y_rotation.get_y_rotation_matrix(rot.y);
 
 	adlMat3 z_rotation = adlMat3::identity();
-	z_rotation = z_rotation.get_z_rotation_matrix(transform.rot.z);
+	z_rotation = z_rotation.get_z_rotation_matrix(rot.z);
 
 	adlMat3 rotation_matrix = (x_rotation * y_rotation) * z_rotation;
 
@@ -191,9 +191,9 @@ void adlMatrix_frame::translate_matrix()
 	* C = o.z
 	*/
 
-	transformation_matrix_.vectors.d.x = transform.o.x;
-	transformation_matrix_.vectors.d.y = transform.o.y;
-	transformation_matrix_.vectors.d.z = transform.o.z;
+	transformation_matrix_.vectors.d.x = o.x;
+	transformation_matrix_.vectors.d.y = o.y;
+	transformation_matrix_.vectors.d.z = o.z;
 }
 
 adlMat4 adlMatrix_frame::get_transformation_matrix()
@@ -210,10 +210,10 @@ adlMat4 adlMatrix_frame::get_transformation_matrix()
 adlMat4 adlMatrix_frame::get_view_matrix()
 {
 	transformation_matrix_ = adlMat4::identity();
-	float cos_pitch = std::cos(transform.rot.x);
-	float sin_pitch = std::sin(transform.rot.x);
-	float cos_yaw = std::cos(transform.rot.y);
-	float sin_yaw = std::sin(transform.rot.y);
+	float cos_pitch = std::cos(rot.x);
+	float sin_pitch = std::sin(rot.x);
+	float cos_yaw = std::cos(rot.y);
+	float sin_yaw = std::sin(rot.y);
 
 	adlVec3 x_axis(cos_yaw, 0, -sin_yaw);
 	adlVec3 y_axis(sin_yaw * sin_pitch, cos_pitch, cos_yaw * sin_pitch);
@@ -222,7 +222,7 @@ adlMat4 adlMatrix_frame::get_view_matrix()
 	transformation_matrix_.vectors.a = adlVec4(x_axis.x, y_axis.x, z_axis.x, 0);
 	transformation_matrix_.vectors.b = adlVec4(x_axis.y, y_axis.y, z_axis.y, 0);
 	transformation_matrix_.vectors.c = adlVec4(x_axis.z, y_axis.z, z_axis.z, 0);
-	transformation_matrix_.vectors.d = adlVec4(-x_axis.dotp(transform.o), -y_axis.dotp(transform.o), -z_axis.dotp(transform.o), 1);
+	transformation_matrix_.vectors.d = adlVec4(-x_axis.dotp(o), -y_axis.dotp(o), -z_axis.dotp(o), 1);
 
 	return transformation_matrix_;
 }
@@ -230,9 +230,9 @@ adlMat4 adlMatrix_frame::get_view_matrix()
 adlMatrix_frame adlMatrix_frame::identity()
 {
 	adlMatrix_frame frame;
-	frame.transform.o = adlVec3(0.0f);
-	frame.transform.rot = adlVec3(0.0f);
-	frame.transform.scale = adlVec3(1.0f);
+	frame.o = adlVec3(0.0f);
+	frame.rot = adlVec3(0.0f);
+	frame.scale = adlVec3(1.0f);
 
 	return frame;
 }

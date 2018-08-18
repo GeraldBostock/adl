@@ -17,9 +17,9 @@ adlMatrix_frame adlEntity::get_frame()
 
 void adlEntity::set_frame(adlMatrix_frame frame)
 {
-	frame_.transform.o = frame.transform.o;
-	frame_.transform.rot = frame.transform.rot;
-	frame_.transform.scale = frame.transform.scale;
+	frame_.o = frame.o;
+	frame_.rot = frame.rot;
+	frame_.scale = frame.scale;
 }
 
 adlModel_shared_ptr adlEntity::get_model()

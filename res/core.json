@@ -13,7 +13,8 @@
 		
 	],
 	"shaders": [
-		{"name": "basic_shader", "vertex_shader_path": "res/shaders/basic_shader.vs", "fragment_shader_path": "res/shaders/basic_shader.fs"},
+		{"name": "basic_shader", "vertex_shader_path": "res/shaders/basic_shader.vs", "fragment_shader_path": "res/shaders/diffuse_shader.fs"},
+		{"name": "specular_shader", "vertex_shader_path": "res/shaders/basic_shader.vs", "fragment_shader_path": "res/shaders/specular_shader.fs"},
 		{"name": "light_shader", "vertex_shader_Path": "res/shaders/basic_shader.vs", "fragment_shader_path": "res/shaders/light_shader.fs"}
 	]
 }

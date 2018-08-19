@@ -6,9 +6,10 @@
 
 enum Camera_type
 {
-	ct_fps_camera,
-	ct_rts_camera,
-	ct_custom_camera
+	ct_fps,
+	ct_rts,
+	ct_god_mode,
+	ct_custom
 };
 
 class adlCamera
@@ -50,6 +51,7 @@ private:
 
 	void update_fps_camera(int64 dt);
 	void update_rts_camera(int64 dt);
+	void update_god_mode_camera(int64 dt);
 };
 
 #endif // adl_camera_h__

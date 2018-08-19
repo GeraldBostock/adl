@@ -20,7 +20,7 @@ adlCamera::~adlCamera()
 
 }
 
-void adlCamera::update(int64 dt)
+void adlCamera::update(float dt)
 {
 	switch (camera_type_)
 	{
@@ -43,7 +43,7 @@ void adlCamera::update(int64 dt)
 
 }
 
-void adlCamera::update_fps_camera(int64 dt)
+void adlCamera::update_fps_camera(float dt)
 {
 	adlInput* input = &adlInput::get();
 
@@ -103,7 +103,7 @@ void adlCamera::look_at(adlVec3 target, adlVec3 up_vector)
 	view_matrix_.vectors.d = adlVec4(-adlMath::dotp(x_axis, position_), -adlMath::dotp(y_axis, position_), -adlMath::dotp(z_axis, position_), 1);
 }
 
-void adlCamera::update_rts_camera(int64 dt)
+void adlCamera::update_rts_camera(float dt)
 {
 	adlInput* input = &adlInput::get();
 	adlWindow* window = adlWindow::get();
@@ -173,7 +173,7 @@ void adlCamera::update_rts_camera(int64 dt)
 
 }
 
-void adlCamera::update_god_mode_camera(int64 dt)
+void adlCamera::update_god_mode_camera(float dt)
 {
 	adlInput* input = &adlInput::get();
 
@@ -241,7 +241,7 @@ void adlCamera::update_god_mode_camera(int64 dt)
 	movement_speed_ = start_movement_speed_;
 }
 
-void adlCamera::update_custom_camera(int64 dt)
+void adlCamera::update_custom_camera(float dt)
 {
 }
 

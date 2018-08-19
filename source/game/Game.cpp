@@ -73,7 +73,7 @@ bool Game::init()
 	adl_renderer->set_projection(projection);
 
 	camera->set_camera_type(ct_rts);
-	adl_window->set_mouse_visible(false);
+	adl_window->set_mouse_visible(true);
 
 	frame.o = adlVec3(0, -2, -5);
 	frame.scale = adlVec3(0.00025f);

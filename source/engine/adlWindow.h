@@ -53,10 +53,18 @@ public:
 
 	void set_mouse_visible(bool is_visible);
 
+	void set_fullscreen(bool is_fullscreen);
+	void toggle_fullscreen();
+
 private:
 	std::string title_;
 	int width_;
 	int height_;
+
+	bool is_fullscreen_;
+	int fullscreen_width_;
+	int fullscreen_height_;
+
 	bool closed_;
 
 	adlWindow_handle window_;

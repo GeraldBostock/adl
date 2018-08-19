@@ -95,3 +95,39 @@ void adlWindow::set_mouse_visible(bool is_visible)
 		SDL_SetRelativeMouseMode(SDL_TRUE);
 	}
 }
+
+void adlWindow::set_fullscreen(bool is_fullscreen)
+{
+	if (!is_fullscreen_ && is_fullscreen)
+	{
+		SDL_SetWindowFullscreen(window_, true);
+
+		SDL_DisplayMode dm;
+
+		if (SDL_GetDesktopDisplayMode(0, &dm) != 0)
+		{
+		}
+
+		fullscreen_width_ = dm.w;
+		fullscreen_height_ = dm.h;
+	}
+	else if(is_fullscreen_ && !is_fullscreen)
+	{
+		SDL_SetWindowFullscreen(window_, false);
+		SDL_SetWindowSize(window_, width_, height_);
+	}
+
+	is_fullscreen_ = is_fullscreen;
+}
+
+void adlWindow::toggle_fullscreen()
+{
+	if (is_fullscreen_)
+	{
+		set_fullscreen(false);
+	}
+	else
+	{
+		set_fullscreen(true);
+	}
+}

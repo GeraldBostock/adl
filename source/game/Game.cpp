@@ -21,8 +21,8 @@ bool Game::init()
 	adlModel_shared_ptr teapot_model	= adl_rm->get_model("teapot");
 	adlModel_shared_ptr at_at_model		= adl_rm->get_model("bmw");
 
-	adlShader_shared_ptr specular_shader = adl_rm->get_shader("specular_shader");
-	shader = adl_rm->get_shader("basic_shader");
+	adlShader_shared_ptr phong_shader = adl_rm->get_shader("phong_shader");
+	shader = adl_rm->get_shader("diffuse_shader");
 	model->set_shader(shader);
 	box->set_shader(shader);
 	mountain_model->set_shader(shader);
@@ -30,7 +30,7 @@ bool Game::init()
 	at_at_model->set_shader(shader);
 
 	adlModel_shared_ptr cube_model = adl_rm->get_model("cube");
-	cube_model->set_shader(specular_shader);
+	cube_model->set_shader(phong_shader);
 	at_at_.set_model(at_at_model);
 	big_box_.set_model(cube_model);
 
@@ -84,6 +84,8 @@ bool Game::init()
 	frame.scale = adlVec3(20);
 	big_box_.set_frame(frame);
 
+	adl_window->set_fullscreen(true);
+
 	timer_.start();
 
 	return true;
@@ -94,6 +96,11 @@ bool Game::update(int64 dt)
 	if (adl_input->get_key_up(adl_key_escape))
 	{
 		return false;
+	}
+
+	if (adl_input->get_key(adl_key_f))
+	{
+		adl_window->toggle_fullscreen();
 	}
 
 	adlMatrix_frame frame = adlMatrix_frame::identity();

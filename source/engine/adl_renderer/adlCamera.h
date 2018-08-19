@@ -28,6 +28,8 @@ public:
 	float get_yaw();
 	float get_roll();
 	float get_mouse_sensitivity();
+
+	void set_movement_speed(float speed);
 	float get_movement_speed();
 
 	void set_camera_type(Camera_type type);

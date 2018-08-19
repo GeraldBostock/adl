@@ -194,12 +194,14 @@ void adlCamera::update_god_mode_camera(int64 dt)
 
 	if (input->get_key(adl_key_w))
 	{
+		//Multiply by sin(pitch) because if the pitch is 90 or -90 we don't want to change the x and the z values.
 		position_.z -= movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_)) * dt * std::cos(adlMath::deg_to_rad(pitch_));
 		position_.x -= movement_speed_ * std::sin(adlMath::deg_to_rad(yaw_)) * dt * std::cos(adlMath::deg_to_rad(pitch_));
 		position_.y += movement_speed_ * std::sin(adlMath::deg_to_rad(pitch_)) * dt;
 	}
 	if (input->get_key(adl_key_s))
 	{
+		//Multiply by sin(pitch) because if the pitch is 90 or -90 we don't want to change the x and the z values.
 		position_.z += movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_)) * dt * std::cos(adlMath::deg_to_rad(pitch_));
 		position_.x += movement_speed_ * std::sin(adlMath::deg_to_rad(yaw_)) * dt * std::cos(adlMath::deg_to_rad(pitch_));
 		position_.y -= movement_speed_ * std::sin(adlMath::deg_to_rad(pitch_)) * dt;
@@ -250,6 +252,11 @@ float adlCamera::get_roll()
 float adlCamera::get_mouse_sensitivity()
 {
 	return mouse_sensitivity_;
+}
+
+void adlCamera::set_movement_speed(float speed)
+{
+	movement_speed_ = speed;
 }
 
 float adlCamera::get_movement_speed()

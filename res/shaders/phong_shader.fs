@@ -23,7 +23,10 @@ void main()
 	float spec = pow(max(dot(light_direction, reflection_direction), 0.0), 32);
 	vec3 specular = specular_strength * spec * light_color;
 	
-	vec3 result = (ambient + specular) * object_color;
+	float diff = max(dot(norm, light_direction), 0.0);
+	vec3 diffuse = diff * light_color;
+	
+	vec3 result = (ambient + diffuse + specular) * object_color;
 	
 	out_color = vec4(result, 1.0);
 }

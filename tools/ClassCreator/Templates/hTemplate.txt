@@ -1,0 +1,13 @@
+#ifndef ${Class}_h__
+#define ${Class}_h__
+
+class ${Class} {
+
+	public:
+		${Class}();
+		~${Class}();
+	private:
+
+};
+
+#endif //${Class}_h__

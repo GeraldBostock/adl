@@ -10,7 +10,7 @@ adlCamera::adlCamera()
 	roll_ = 0;
 
 	mouse_sensitivity_ = 1.0f;
-	movement_speed_ = 0.01f;
+	movement_speed_ = start_movement_speed_ = 0.01f;
 
 	camera_type_ = ct_fps;
 }
@@ -40,6 +40,7 @@ void adlCamera::update(int64 dt)
 		//You should not be here. Go away.
 		break;
 	}
+
 }
 
 void adlCamera::update_fps_camera(int64 dt)
@@ -114,11 +115,15 @@ void adlCamera::update_rts_camera(int64 dt)
 
 	if (input->get_key(adl_key_plus))
 	{
-		position_.y -= 0.02f;
+		position_.z -= movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_)) * dt * std::cos(adlMath::deg_to_rad(pitch_));
+		position_.x -= movement_speed_ * std::sin(adlMath::deg_to_rad(yaw_)) * dt * std::cos(adlMath::deg_to_rad(pitch_));
+		position_.y += movement_speed_ * std::sin(adlMath::deg_to_rad(pitch_)) * dt;
 	}
 	if (input->get_key(adl_key_minus))
 	{
-		position_.y += 0.02f;
+		position_.z += movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_)) * dt * std::cos(adlMath::deg_to_rad(pitch_));
+		position_.x += movement_speed_ * std::sin(adlMath::deg_to_rad(yaw_)) * dt * std::cos(adlMath::deg_to_rad(pitch_));
+		position_.y -= movement_speed_ * std::sin(adlMath::deg_to_rad(pitch_)) * dt;
 	}
 
 	if (mousePos.x < tolerance)
@@ -175,6 +180,12 @@ void adlCamera::update_god_mode_camera(int64 dt)
 	int dx = input->get_mouse_x_rel();
 	int dy = input->get_mouse_y_rel();
 
+	if (input->get_key(adl_key_left_shift))
+	{
+		movement_speed_ *= 2;
+	}
+
+
 	if (dy < 0 && pitch_ < 90)
 	{
 		pitch_ += -dy * mouse_sensitivity_;
@@ -216,8 +227,18 @@ void adlCamera::update_god_mode_camera(int64 dt)
 		position_.z -= movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_ - 90)) * dt;
 		position_.x -= movement_speed_ * std::sin(adlMath::deg_to_rad(yaw_ - 90)) * dt;
 	}
+	if (input->get_key(adl_key_q))
+	{
+		position_.y -= movement_speed_ * dt;
+	}
+	if (input->get_key(adl_key_e))
+	{
+		position_.y += movement_speed_ * dt;
+	}
 
 	view_matrix_ = view_matrix_.create_view_matrix(position_, adlVec3(adlMath::deg_to_rad(pitch_), adlMath::deg_to_rad(yaw_), adlMath::deg_to_rad(roll_)));
+
+	movement_speed_ = start_movement_speed_;
 }
 
 void adlCamera::update_custom_camera(int64 dt)

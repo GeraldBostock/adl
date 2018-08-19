@@ -9,12 +9,10 @@ adlCamera::adlCamera()
 	yaw_ = 0;
 	roll_ = 0;
 
-	mouse_sensitivity_ = 0.20f;
-	movement_speed_ = 0.01f;
+	mouse_sensitivity_ = 1.0f;
+	movement_speed_ = start_movement_speed_ = 0.01f;
 
 	camera_type_ = ct_fps;
-
-	rts_camera_target_ = adlVec3(0.0f);
 }
 
 adlCamera::~adlCamera()
@@ -22,7 +20,7 @@ adlCamera::~adlCamera()
 
 }
 
-void adlCamera::update(float dt)
+void adlCamera::update(int64 dt)
 {
 	switch (camera_type_)
 	{
@@ -42,9 +40,10 @@ void adlCamera::update(float dt)
 		//You should not be here. Go away.
 		break;
 	}
+
 }
 
-void adlCamera::update_fps_camera(float dt)
+void adlCamera::update_fps_camera(int64 dt)
 {
 	adlInput* input = &adlInput::get();
 
@@ -53,19 +52,19 @@ void adlCamera::update_fps_camera(float dt)
 
 	if (dy < 0 && pitch_ <= 90)
 	{
-		pitch_ += -dy * mouse_sensitivity_ * dt;
+		pitch_ += -dy * mouse_sensitivity_;
 	}
 	if (dy > 0 && pitch_ >= -90)
 	{
-		pitch_ -= dy * mouse_sensitivity_ * dt;
+		pitch_ -= dy * mouse_sensitivity_;
 	}
 	if (dx < 0)
 	{
-		yaw_ += -dx * mouse_sensitivity_ * dt;
+		yaw_ += -dx * mouse_sensitivity_;
 	}
 	if (dx > 0)
 	{
-		yaw_ -= dx * mouse_sensitivity_ * dt;
+		yaw_ -= dx * mouse_sensitivity_;
 	}
 
 	if (input->get_key(adl_key_w))
@@ -104,7 +103,7 @@ void adlCamera::look_at(adlVec3 target, adlVec3 up_vector)
 	view_matrix_.vectors.d = adlVec4(-adlMath::dotp(x_axis, position_), -adlMath::dotp(y_axis, position_), -adlMath::dotp(z_axis, position_), 1);
 }
 
-void adlCamera::update_rts_camera(float dt)
+void adlCamera::update_rts_camera(int64 dt)
 {
 	adlInput* input = &adlInput::get();
 	adlWindow* window = adlWindow::get();
@@ -116,96 +115,15 @@ void adlCamera::update_rts_camera(float dt)
 
 	if (input->get_key(adl_key_plus))
 	{
-		position_.y -= movement_speed_ * dt;
+		position_.z -= movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_)) * dt * std::cos(adlMath::deg_to_rad(pitch_));
+		position_.x -= movement_speed_ * std::sin(adlMath::deg_to_rad(yaw_)) * dt * std::cos(adlMath::deg_to_rad(pitch_));
+		position_.y += movement_speed_ * std::sin(adlMath::deg_to_rad(pitch_)) * dt;
 	}
 	if (input->get_key(adl_key_minus))
 	{
-		position_.y += movement_speed_ * dt;
-	}
-
-	if (mousePos.x < tolerance)
-	{
-		position_.z += movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_ - 90)) * dt;
-		position_.x += movement_speed_ * std::sin(adlMath::deg_to_rad(yaw_ - 90)) * dt;
-
-		rts_camera_target_.z += movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_ - 90)) * dt;
-		rts_camera_target_.x += movement_speed_ * std::sin(adlMath::deg_to_rad(yaw_ - 90)) * dt;
-	}
-	else if (mousePos.x > screen_width - tolerance)
-	{
-		position_.z -= movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_ - 90)) * dt;
-		position_.x -= movement_speed_ * std::sin(adlMath::deg_to_rad(yaw_ - 90)) * dt;
-
-		rts_camera_target_.z -= movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_ - 90)) * dt;
-		rts_camera_target_.x -= movement_speed_ * std::sin(adlMath::deg_to_rad(yaw_ - 90)) * dt;
-	}
-
-	if (mousePos.y < tolerance)
-	{
-		position_.z -= movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_)) * dt;
-		position_.x -= movement_speed_ * std::sin(adlMath::deg_to_rad(yaw_)) * dt;
-
-		rts_camera_target_.z -= movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_)) * dt;
-		rts_camera_target_.x -= movement_speed_ * std::sin(adlMath::deg_to_rad(yaw_)) * dt;
-	}
-	else if (mousePos.y > screen_height - tolerance)
-	{
-		position_.z += movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_)) * dt;
-		position_.x += movement_speed_ * std::sin(adlMath::deg_to_rad(yaw_)) * dt;
-
-		rts_camera_target_.z += movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_)) * dt;
-		rts_camera_target_.x += movement_speed_ * std::sin(adlMath::deg_to_rad(yaw_)) * dt;
-	}
-	if (input->get_key(adl_key_w))
-	{
-		position_.z -= movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_)) * dt;
-		position_.x -= movement_speed_ * std::sin(adlMath::deg_to_rad(yaw_)) * dt;
-
-		rts_camera_target_.z -= movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_)) * dt;
-		rts_camera_target_.x -= movement_speed_ * std::sin(adlMath::deg_to_rad(yaw_)) * dt;
-	}
-	if (input->get_key(adl_key_s))
-	{
-		position_.z += movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_)) * dt;
-		position_.x += movement_speed_ * std::sin(adlMath::deg_to_rad(yaw_)) * dt;
-
-		rts_camera_target_.z += movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_)) * dt;
-		rts_camera_target_.x += movement_speed_ * std::sin(adlMath::deg_to_rad(yaw_)) * dt;
-	}
-	if (input->get_key(adl_key_a))
-	{
-		position_.z += movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_ - 90)) * dt;
-		position_.x += movement_speed_ * std::sin(adlMath::deg_to_rad(yaw_ - 90)) * dt;
-
-		rts_camera_target_.z += movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_ - 90)) * dt;
-		rts_camera_target_.x += movement_speed_ * std::sin(adlMath::deg_to_rad(yaw_ - 90)) * dt;
-	}
-	if (input->get_key(adl_key_d))
-	{
-		position_.z -= movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_ - 90)) * dt;
-		position_.x -= movement_speed_ * std::sin(adlMath::deg_to_rad(yaw_ - 90)) * dt;
-
-		rts_camera_target_.z -= movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_ - 90)) * dt;
-		rts_camera_target_.x -= movement_speed_ * std::sin(adlMath::deg_to_rad(yaw_ - 90)) * dt;
-	}
-
-	look_at(rts_camera_target_, adlVec3(0, 1, 0));
-
-	/*adlInput* input = &adlInput::get();
-	adlWindow* window = adlWindow::get();
-	int screen_width = window->get_width();
-	int screen_height = window->get_height();
-
-	adlVec2_i32 mousePos = input->get_mouse_pos();
-	float tolerance = 25;
-
-	if (input->get_key(adl_key_plus))
-	{
-		position_.y -= 0.02f;
-	}
-	if (input->get_key(adl_key_minus))
-	{
-		position_.y += 0.02f;
+		position_.z += movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_)) * dt * std::cos(adlMath::deg_to_rad(pitch_));
+		position_.x += movement_speed_ * std::sin(adlMath::deg_to_rad(yaw_)) * dt * std::cos(adlMath::deg_to_rad(pitch_));
+		position_.y -= movement_speed_ * std::sin(adlMath::deg_to_rad(pitch_)) * dt;
 	}
 
 	if (mousePos.x < tolerance)
@@ -252,31 +170,37 @@ void adlCamera::update_rts_camera(float dt)
 
 
 	view_matrix_ = view_matrix_.create_view_matrix(position_, adlVec3(adlMath::deg_to_rad(pitch_), adlMath::deg_to_rad(yaw_), adlMath::deg_to_rad(roll_)));
-*/
+
 }
 
-void adlCamera::update_god_mode_camera(float dt)
+void adlCamera::update_god_mode_camera(int64 dt)
 {
 	adlInput* input = &adlInput::get();
 
 	int dx = input->get_mouse_x_rel();
 	int dy = input->get_mouse_y_rel();
 
+	if (input->get_key(adl_key_left_shift))
+	{
+		movement_speed_ *= 2;
+	}
+
+
 	if (dy < 0 && pitch_ < 90)
 	{
-		pitch_ += -dy * mouse_sensitivity_ * dt;
+		pitch_ += -dy * mouse_sensitivity_;
 	}
 	if (dy > 0 && pitch_ > -90)
 	{
-		pitch_ -= dy * mouse_sensitivity_ * dt;
+		pitch_ -= dy * mouse_sensitivity_;
 	}
 	if (dx < 0)
 	{
-		yaw_ += -dy * mouse_sensitivity_ * dt;
+		yaw_ += -dx * mouse_sensitivity_;
 	}
 	if (dx > 0)
 	{
-		yaw_ -= dx * mouse_sensitivity_ * dt;
+		yaw_ -= dx * mouse_sensitivity_;
 	}
 
 	if (input->get_key(adl_key_w))
@@ -303,11 +227,21 @@ void adlCamera::update_god_mode_camera(float dt)
 		position_.z -= movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_ - 90)) * dt;
 		position_.x -= movement_speed_ * std::sin(adlMath::deg_to_rad(yaw_ - 90)) * dt;
 	}
+	if (input->get_key(adl_key_q))
+	{
+		position_.y -= movement_speed_ * dt;
+	}
+	if (input->get_key(adl_key_e))
+	{
+		position_.y += movement_speed_ * dt;
+	}
 
 	view_matrix_ = view_matrix_.create_view_matrix(position_, adlVec3(adlMath::deg_to_rad(pitch_), adlMath::deg_to_rad(yaw_), adlMath::deg_to_rad(roll_)));
+
+	movement_speed_ = start_movement_speed_;
 }
 
-void adlCamera::update_custom_camera(float dt)
+void adlCamera::update_custom_camera(int64 dt)
 {
 }
 
@@ -356,7 +290,7 @@ void adlCamera::set_camera_type(Camera_type type)
 	camera_type_ = type;
 	if (camera_type_ == ct_rts)
 	{
-		position_ = adlVec3(0, 5.0f, 4.0f);
+		position_ = adlVec3(2.0f, 5.0f, 2.5f);
 		rts_camera_target_ = adlVec3(0.0, 0.0f, 0.0f);
 		pitch_ = -45;
 	}

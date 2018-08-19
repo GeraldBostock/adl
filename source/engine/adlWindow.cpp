@@ -48,6 +48,7 @@ adlWindow::adlWindow(const std::string& title, int width, int height)
 		}
 	}
 
+	is_fullscreen_ = false;
 	closed_ = false;
 #endif // USE_SDL
 }

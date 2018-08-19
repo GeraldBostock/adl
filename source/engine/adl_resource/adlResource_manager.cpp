@@ -16,6 +16,7 @@ adlResource_manager::adlResource_manager()
 
 	const rapidjson::Value& mesh_objects = document["models"];
 	const rapidjson::Value& shader_objects = document["shaders"];
+	const rapidjson::Value& font_objects = document["fonts"];
 
 	adl_assert(mesh_objects.IsArray());
 	adl_assert(shader_objects.IsArray());
@@ -48,6 +49,18 @@ adlResource_manager::adlResource_manager()
 		name_to_shader_path_[name].first = vertex_shader_path;
 		name_to_shader_path_[name].second = fragment_shader_path;
 		shaders_[name_to_shader_path_[name]] = nullptr;
+	}
+
+	for (rapidjson::Value::ConstValueIterator itr = font_objects.Begin(); itr != font_objects.End(); itr++)
+	{
+		const rapidjson::Value& font_object = *itr;
+		adl_assert(font_object.IsObject());
+		
+		const std::string name = font_object["name"].GetString();
+		const std::string path = font_object["path"].GetString();
+
+		name_to_font_path_[name] = path;
+		fonts_[path] = nullptr;
 	}
 }
 
@@ -90,7 +103,6 @@ adlModel_shared_ptr adlResource_manager::get_model(const std::string& model_name
 		}
 		else
 		{
-			adl_logger->log_info("Model is loaded. Returning pointer");
 			return models_[model_path];
 		}
 	}
@@ -117,10 +129,29 @@ adlShader_shared_ptr adlResource_manager::get_shader(const std::string& shader_n
 		}
 		else
 		{
-			adl_logger->log_info("Shader is loaded. Returning pointer");
 			return shaders_[shader_paths];
 		}
 	}
 
+	return nullptr;
+}
+
+adlFont_shared_ptr adlResource_manager::get_font(const std::string& font_name)
+{
+	adlLogger* adl_logger = &adlLogger::get();
+	if (!name_to_font_path_[font_name].empty())
+	{
+		const std::string& path = name_to_font_path_[font_name];
+		if (fonts_[path] == nullptr)
+		{
+			adl_logger->log_info("Font " + font_name + " is not loaded yet. Loading");
+			fonts_[path] = loader_.load_font(path);
+			return fonts_[path];
+		}
+		else
+		{
+			return fonts_[path];
+		}
+	}
 	return nullptr;
 }

@@ -19,6 +19,7 @@ public:
 	void prepare();
 	void render(adlEntity entity, adlColor color);
 	void render(adlLight* light);
+	void render_text(const std::string& text, adlFont_shared_ptr font, float x, float y, float scale, adlColor color);
 	/*void render_mesh(adlModel_shared_ptr model);
 	void render_mesh(adlModel model);*/
 	void set_wire_frame_mode();

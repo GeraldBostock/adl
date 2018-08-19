@@ -2,6 +2,7 @@
 
 #include "adlMesh.h"
 #include "adlModel.h"
+#include "adlFont.h"
 #include "engine/adl_debug/adlLogger.h"
 #include "engine/adl_resource/adlStatic_shader.h"
 
@@ -128,4 +129,71 @@ adlMesh_shared_ptr adlLoader::process_mesh(aiMesh *mesh)
 	new_mesh->add_vertices(vertices, indices);
 
 	return new_mesh;
+}
+
+adlFont_shared_ptr adlLoader::load_font(const std::string& font_path)
+{
+	adlLogger* logger = &adlLogger::get();
+	FT_Library ft;
+
+	adlFont_shared_ptr font = std::make_shared<adlFont>();
+	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+
+	std::map<char, glyph>* characters = font->get_character_map();
+
+	if (FT_Init_FreeType(&ft))
+	{
+		logger->log_error("Failed to initialize FreeType library");
+	}
+
+	FT_Face face;
+	if (FT_New_Face(ft, font_path.c_str(), 0, &face))
+	{
+		logger->log_error("Failed to load font at " + font_path);
+	}
+
+	FT_Set_Pixel_Sizes(face, 0, 48);
+	for (unsigned char c = 0; c < 128; c++)
+	{
+		// Load character glyph 
+		if (FT_Load_Char(face, c, FT_LOAD_RENDER))
+		{
+			logger->log_error("Failed to load glyph " + c);
+			continue;
+		}
+		// Generate texture
+		GLuint texture;
+		glGenTextures(1, &texture);
+		glBindTexture(GL_TEXTURE_2D, texture);
+		glTexImage2D(
+			GL_TEXTURE_2D,
+			0,
+			GL_RED,
+			face->glyph->bitmap.width,
+			face->glyph->bitmap.rows,
+			0,
+			GL_RED,
+			GL_UNSIGNED_BYTE,
+			face->glyph->bitmap.buffer
+		);
+		// Set texture options
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		// Now store character for later use
+		glyph character = {
+			texture,
+			adlVec2_i32(face->glyph->bitmap.width, face->glyph->bitmap.rows),
+			adlVec2_i32(face->glyph->bitmap_left, face->glyph->bitmap_top),
+			face->glyph->advance.x
+		};
+
+		characters->insert(std::pair<char, glyph>(c, character));
+	}
+
+	FT_Done_Face(face);
+	FT_Done_FreeType(ft);
+
+	return font;
 }

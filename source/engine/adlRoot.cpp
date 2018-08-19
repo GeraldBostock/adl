@@ -40,6 +40,13 @@ void adlRoot::run()
 		is_running_ = false;
 	}
 
+	float fps = fps_manager_->get_fps();
+	std::string fps_string = std::to_string(fps);
+	fps_string = fps_string.substr(0, fps_string.size() - 4);
+
+	adlFont_shared_ptr arial = adl_rm->get_font("arial");
+	adl_renderer->render_text("FPS: " + fps_string, arial, 0.90f * adl_window->get_width(), 0.95f * adl_window->get_height(), 0.5f, adlColor::YELLOW);
+
 	adl_window->swap_buffers();
 }
 
@@ -64,7 +71,7 @@ void adlRoot::game_thread()
 		is_running_ = false;
 	}
 
-	fps_manager_ = ADL_NEW(adlFPS_manager, 120, 2.5);
+	fps_manager_ = ADL_NEW(adlFPS_manager, 60, 0.5f);
 
 	while (is_running_)
 	{

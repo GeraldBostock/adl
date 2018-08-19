@@ -17,21 +17,23 @@ public:
 	float get_fps();
 
 private:
-	std::vector<double> frame_times_;
+	std::vector<float> frame_times_;
 
 	adlTimer timer_;
-	double frame_start_time_;         
-	double frame_end_time_;           
-	double frame_duration_;          
+	float frame_start_time_;
+	float frame_end_time_;
+	float frame_duration_;
 
-	double target_fps_;                   
+	float target_fps_;                   
 	int frame_count_;        
 
-	double target_frame_duration_;  
-	double sleep_duration_;       
+	float target_frame_duration_;
+	float sleep_duration_;
 
-	double last_report_time_;
-	double report_interval_;
+	float last_report_time_;
+	float report_interval_;
+	
+	float fps_;
 
 	void init();
 };

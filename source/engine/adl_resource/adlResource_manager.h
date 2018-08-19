@@ -21,6 +21,7 @@ public:
 
 	adlModel_shared_ptr get_model(const std::string& model_name);
 	adlShader_shared_ptr get_shader(const std::string& shader_name);
+	adlFont_shared_ptr get_font(const std::string& font_name);
 
 private:
 	adlResource_manager();
@@ -36,6 +37,9 @@ private:
 
 	std::map<std::string, std::pair<std::string, std::string>> name_to_shader_path_;
 	std::map<std::pair<std::string, std::string>, adlShader_shared_ptr> shaders_;
+
+	std::map<std::string, std::string> name_to_font_path_;
+	std::map<std::string, adlFont_shared_ptr> fonts_;
 
 	adlLoader loader_;
 

@@ -15,6 +15,9 @@ public:
 	void load_light_color(adlVec3 color);
 	void load_model_matrix(const adlMat4& model_matrix);
 	void load_light_position(adlVec3 position);
+	void load_camera_position(adlVec3 position);
+	void load_text_color(adlVec3 color);
+	void load_projection_matrix(const adlMat4& matrix);
 
 protected:
 	virtual void bind_attributes();
@@ -26,4 +29,8 @@ private:
 	int32 light_color_location_;
 	int32 model_matrix_location_;
 	int32 light_position_location_;
+	int32 camera_position_location_;
+
+	int32 text_color_location_;
+	int32 projection_matrix_location_;
 };

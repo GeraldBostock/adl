@@ -14,6 +14,7 @@ Game::~Game()
 
 bool Game::init()
 {
+	adlFont_shared_ptr arial_font = adl_rm->get_font("arial");
 	model = adl_rm->get_model("wuson");
 
 	box = adl_rm->get_model("box");
@@ -71,7 +72,7 @@ bool Game::init()
 	adlMat4 projection = projection.create_projection_matrix(adl_window->get_width(), adl_window->get_height(), adlMath::deg_to_rad(40), 0.1f, 1000.0f);;
 	adl_renderer->set_projection(projection);
 
-	camera->set_camera_type(ct_god_mode);
+	camera->set_camera_type(ct_rts);
 	adl_window->set_mouse_visible(false);
 
 	frame.o = adlVec3(0, -2, -5);
@@ -84,14 +85,12 @@ bool Game::init()
 	frame.scale = adlVec3(20);
 	big_box_.set_frame(frame);
 
-	adl_window->set_fullscreen(true);
-
 	timer_.start();
 
 	return true;
 }
 
-bool Game::update(int64 dt)
+bool Game::update(float dt)
 {
 	if (adl_input->get_key_up(adl_key_escape))
 	{

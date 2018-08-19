@@ -97,6 +97,9 @@ INCLUDE(${ADL_CMAKE_DIR}/FindSPDLOG.cmake)
 # RAPIDJSON
 INCLUDE(${ADL_CMAKE_DIR}/FindRAPIDJSON.cmake)
 
+# FREETYPE
+INCLUDE(${ADL_CMAKE_DIR}/FindFREETYPE.cmake)
+
 # Google Test
 # INCLUDE(${ADL_CMAKE_DIR}/AddGoogleTest.cmake)
 
@@ -114,6 +117,7 @@ include_directories(
 	${ASSIMP_INCLUDE_DIRS}
 	${SPDLOG_INCLUDE_DIRS}
 	${RAPIDJSON_INCLUDE_DIRS}
+	${FREETYPE_INCLUDE_DIRS}
 )
 
 if(WIN32)
@@ -124,6 +128,7 @@ target_link_libraries( adl
 	${GLEW_LIBRARIES}
 	${SDL2_LIBRARIES}
 	${ASSIMP_LIBRARIES}
+	${FREETYPE_LIBRARIES}
 )
 endif()
 # ADL Libs
@@ -134,6 +139,7 @@ target_link_libraries( game
 	${GLEW_LIBRARIES}
 	${SDL2_LIBRARIES}
 	${ASSIMP_LIBRARIES}
+	${FREETYPE_LIBRARIES}
 )
 
 if(UNIX)

@@ -17,6 +17,7 @@ public:
 
 	void start();
 	void stop();
+	int64 get_elapsed_micro_seconds();
 	int64 get_elapsed_milli_seconds();
 	int64 get_elapsed_seconds();
 

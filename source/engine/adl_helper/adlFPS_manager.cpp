@@ -1,6 +1,9 @@
 #include "engine/adl_helper/adlFPS_manager.h"
 
 #include "engine/adl_debug/adlLogger.h"
+#include "engine/adl_renderer/adlRender_manager.h"
+#include "engine/adl_resource/adlResource_manager.h"
+
 #include <SDL2/SDL.h>
 
 #include <thread>
@@ -23,31 +26,41 @@ void adlFPS_manager::init()
 	timer_.start();
 	frame_count_ = 0;
 	sleep_duration_ = 0.0;
-	frame_start_time_ = timer_.get_elapsed_milli_seconds();
+	frame_start_time_ = (timer_.get_elapsed_micro_seconds()) / 1000.0f;
 	frame_end_time_ = frame_start_time_ + 1;
 	frame_duration_ = 1;
 	last_report_time_ = frame_start_time_;
 	target_frame_duration_ = (1.0 / target_fps_) * MILLISECONDS_IN_SECOND;
 	frame_times_.resize(FRAME_VALUES, 0);
+	fps_ = target_fps_;
 }
 
 double adlFPS_manager::enforce_fps()
 {
 	int frames_index = frame_count_ % FRAME_VALUES;
 
-	frame_end_time_ = timer_.get_elapsed_milli_seconds();
+	frame_end_time_ = (timer_.get_elapsed_micro_seconds()) / 1000.0f;
 	frame_duration_ = frame_end_time_ - frame_start_time_;
 
 	sleep_duration_ = target_frame_duration_ - frame_duration_;
 
-	if (sleep_duration_ > 0.0)
+	if (sleep_duration_ > 0.0f)
 	{
-		//TODO find a better way of doing this
-		const unsigned long time_to_sleep = static_cast<unsigned long>(sleep_duration_);
-		SDL_Delay(time_to_sleep);
-		//std::this_thread::sleep_for(std::chrono::milliseconds(time_to_sleep));
+		//Sleep is not precise enough. We are working with microseconds here.
+		//But doing this means cpu is at 100% even when we are far above the fps limit.
+		//Find a better way I suppose?
+
+		int64 time_to_sleep_in_microseconds = sleep_duration_ * 1000;
+		float now = timer_.get_elapsed_micro_seconds();
+
+		float target_time = now + time_to_sleep_in_microseconds;
+		while (timer_.get_elapsed_micro_seconds() < target_time)
+		{
+
+		}
+		
 	}
-	frame_start_time_ = timer_.get_elapsed_milli_seconds();
+	frame_start_time_ = (timer_.get_elapsed_micro_seconds()) / 1000.0f;
 
 	frame_count_++;
 
@@ -61,11 +74,11 @@ double adlFPS_manager::enforce_fps()
 		count = FRAME_VALUES;
 	}
 
-	double dt = frame_duration_ + (frame_start_time_ - frame_end_time_);
+	float dt = frame_duration_ + (frame_start_time_ - frame_end_time_);
 
 	frame_times_[frames_index] = dt;
 
-	double frames_per_second = 0;
+	float frames_per_second = 0;
 	for (int i = 0; i < count; i++)
 	{
 		frames_per_second += frame_times_[i];
@@ -80,9 +93,7 @@ double adlFPS_manager::enforce_fps()
 		{
 			last_report_time_ = frame_end_time_;
 
-			
-			adlLogger* adl_logger = &adlLogger::get();
-			adl_logger->log_info("FPS:" + std::to_string(frames_per_second));
+			fps_ = frames_per_second;
 		}
 	}
 
@@ -90,5 +101,11 @@ double adlFPS_manager::enforce_fps()
 	{
 		dt = target_frame_duration_;
 	}
+
 	return dt;
+}
+
+float adlFPS_manager::get_fps()
+{
+	return fps_;
 }

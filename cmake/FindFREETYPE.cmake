@@ -1,0 +1,46 @@
+SET(_PF86 "PROGRAMFILES(X86)")
+SET( FREETYPE_SEARCH_PATHS
+	${FREETYPE_ROOT_DIR}					# ASSIMP!
+	./dependencies/freetype
+	$ENV{PROGRAMFILES}/freetype			# WINDOWS
+	"$ENV{_PF86}/freetype"				# WINDOWS
+	~/Library/Frameworks				# MAC
+	/Library/Frameworks					# MAC
+	/usr/local							# LINUX/MAC/UNIX
+	/usr								# LINUX/MAC/UNIX
+	/opt								# LINUX/MAC/UNIX
+)
+
+FIND_PATH( FREETYPE_INCLUDE_DIRS
+	NAMES
+		ft2build.h
+	PATHS
+		${FREETYPE_SEARCH_PATHS}
+	PATH_SUFFIXES
+		include
+	DOC
+		"The directory where assimp/mesh.h resides"
+)
+
+FIND_LIBRARY( FREETYPE_LIBRARIES
+	NAMES
+		freetype
+	PATHS
+		${FREETYPE_SEARCH_PATHS}
+	PATH_SUFFIXES
+		lib
+		lib64
+		lib/x86
+		lib/x64
+	DOC
+		"The FREETYPE library"
+)
+
+# Check if we found it!
+IF ( FREETYPE_INCLUDE_DIRS AND FREETYPE_LIBRARIES )
+	SET( FREETYPE_FOUND TRUE )
+	MESSAGE(STATUS "Looking for FREETYPE - found")
+ELSE ( FREETYPE_INCLUDE_DIRS AND FREETYPE_LIBRARIES )
+	SET( FREETYPE_FOUND FALSE )
+	MESSAGE(STATUS "Looking for FREETYPE - not found")
+ENDIF ( FREETYPE_INCLUDE_DIRS AND FREETYPE_LIBRARIES )

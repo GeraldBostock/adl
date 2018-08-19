@@ -26,7 +26,7 @@ public:
 	
 	void start();
 	virtual bool init() = 0;
-	virtual bool update(int64 dt) = 0;
+	virtual bool update(float dt) = 0;
 	void run();
 
 	void init_window(const std::string& title, int width, int height);

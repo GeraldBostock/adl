@@ -85,6 +85,18 @@ namespace adlMath
 	{
 		return radians * adl_rad_to_deg_conv;
 	}
+
+	static inline adlMat4 create_ortho_projection_matrix(float left, float right, float bottom, float top)
+	{
+		adlMat4 matrix = adlMat4::identity();
+
+		matrix.vectors.a.x = 2 / right - left;
+		matrix.vectors.b.y = 2 / top - bottom;
+		matrix.vectors.d.x = -(right + left) / (right - left);
+		matrix.vectors.d.y = -(top + bottom) / (top - bottom);
+
+		return matrix;
+	}
 }
 
 #endif // adl_math_h__

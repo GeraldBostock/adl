@@ -18,7 +18,7 @@ public:
 	adlCamera();
 	~adlCamera();
 
-	void update(int64 dt);
+	void update(float dt);
 	void look_at(adlVec3 target, adlVec3 up_vector);
 
 	adlMat4 get_view_matrix();
@@ -35,7 +35,7 @@ public:
 	void set_camera_type(Camera_type type);
 	
 protected:
-	virtual void update_custom_camera(int64 dt);
+	virtual void update_custom_camera(float dt);
 private:
 	adlVec3 position_;
 	float pitch_;
@@ -51,9 +51,9 @@ private:
 
 	Camera_type camera_type_;
 
-	void update_fps_camera(int64 dt);
-	void update_rts_camera(int64 dt);
-	void update_god_mode_camera(int64 dt);
+	void update_fps_camera(float dt);
+	void update_rts_camera(float dt);
+	void update_god_mode_camera(float dt);
 };
 
 #endif // adl_camera_h__

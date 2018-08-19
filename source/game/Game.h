@@ -10,7 +10,7 @@ public:
 	~Game();
 
 	bool init() override;
-	bool update(int64 dt) override;
+	bool update(float dt) override;
 
 private:
 	adlModel_shared_ptr model;

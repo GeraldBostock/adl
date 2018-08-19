@@ -22,6 +22,22 @@ void adlTimer::stop()
 	is_paused_ = true;
 }
 
+int64 adlTimer::get_elapsed_micro_seconds()
+{
+	Time_point end_time;
+
+	if (!is_paused_)
+	{
+		end_time = Clock::now();
+	}
+	else
+	{
+		end_time = end_time_;
+	}
+
+	return std::chrono::duration_cast<std::chrono::microseconds>(end_time - start_time_).count();
+}
+
 int64 adlTimer::get_elapsed_milli_seconds()
 {
 	Time_point end_time;

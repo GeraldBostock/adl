@@ -12,7 +12,7 @@ adlCamera::adlCamera()
 	mouse_sensitivity_ = 1.0f;
 	movement_speed_ = start_movement_speed_ = 0.01f;
 
-	camera_type_ = ct_fps;
+	camera_type_ = ct_god_mode;
 }
 
 adlCamera::~adlCamera()

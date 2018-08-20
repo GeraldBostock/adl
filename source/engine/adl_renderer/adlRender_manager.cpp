@@ -15,65 +15,60 @@ adlRender_manager::adlRender_manager()
 	glFrontFace(GL_CCW);
 	glCullFace(GL_BACK);
 	glEnable(GL_CULL_FACE);
-}
-
-adlRender_manager::~adlRender_manager()
-{
 
 }
 
 void adlRender_manager::prepare()
 {
 	glEnable(GL_DEPTH_TEST);
-	glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-void adlRender_manager::render(adlEntity entity, adlColor color)
+void adlRender_manager::render(adlActor_shared_ptr actor)
 {
-	adlModel_shared_ptr model = entity.get_model();
+	adl_assert(light_);
+	adlColor color = actor->get_color();
+	if (is_wire_frame_mode_)
+	{
+		color = adlColor::WHITE;
+	}
+	adlModel_shared_ptr model = actor->get_model();
+	adl_assert(model);
+
 	adlMat4 view_matrix = camera_->get_view_matrix();
+
 	adlShader_shared_ptr shader = model->get_shader();
+	adl_assert(shader);
+
 	shader->start();
-	adlMat4 mvp_matrix = projection_matrix_ * view_matrix * entity.get_frame().get_transformation_matrix();
+
+	adlMat4 mvp_matrix = projection_matrix_ * view_matrix * actor->get_transform().get_transformation_matrix();
 	shader->load_mvp(mvp_matrix);
 	shader->load_object_color(color.to_vec3());
 	shader->load_light_color(light_->get_color().to_vec3());
-	shader->load_light_position(light_->get_frame().o);
-	shader->load_model_matrix(entity.get_frame().get_transformation_matrix());
+	shader->load_light_position(light_->get_transform().o);
+	shader->load_model_matrix(actor->get_transform().get_transformation_matrix());
 	shader->load_camera_position(camera_->get_position());
-
-	if (is_wire_frame_mode_)
-	{
-		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	}
-	else
-	{
-		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	}
 
 	model->draw();
 	shader->stop();
 }
 
-void adlRender_manager::render(adlLight* light)
+void adlRender_manager::render(adlLight_shared_ptr light)
 {
+	adl_assert(light);
 	adlModel_shared_ptr model = light->get_model();
+	adl_assert(model);
 	adlMat4 view_matrix = camera_->get_view_matrix();
 	adlShader_shared_ptr shader = light->get_shader();
+	adl_assert(shader);
+
+	adlMat4 mvp_matrix = projection_matrix_ * view_matrix * light->get_transform().get_transformation_matrix();
+
 	shader->start();
-	adlMat4 mvp_matrix = projection_matrix_ * view_matrix * light->get_frame().get_transformation_matrix();
 	shader->load_mvp(mvp_matrix);
 	shader->load_light_color(light_->get_color().to_vec3());
-
-	if (is_wire_frame_mode_)
-	{
-		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	}
-	else
-	{
-		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	}
 
 	model->draw();
 	shader->stop();
@@ -100,6 +95,8 @@ void adlRender_manager::render_text(const std::string& text, adlFont_shared_ptr 
 
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
 	std::string::const_iterator c;
 	for (c = text.begin(); c != text.end(); c++)
@@ -137,11 +134,25 @@ void adlRender_manager::render_text(const std::string& text, adlFont_shared_ptr 
 	glBindTexture(GL_TEXTURE_2D, 0);
 
 	font_shader->stop();
+
+	if (is_wire_frame_mode_)
+	{
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	}
 }
 
-void adlRender_manager::set_wire_frame_mode()
+void adlRender_manager::toggle_wire_frame_mode()
 {
 	is_wire_frame_mode_ = !is_wire_frame_mode_;
+
+	if (is_wire_frame_mode_)
+	{
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	}
+	else
+	{
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	}
 }
 
 void adlRender_manager::set_projection(adlMat4 projection_matrix)
@@ -154,7 +165,7 @@ void adlRender_manager::set_camera(adlCamera* camera)
 	camera_ = camera;
 }
 
-void adlRender_manager::set_light(adlLight* light)
+void adlRender_manager::set_light(adlLight_shared_ptr light)
 {
 	light_ = light;
 }

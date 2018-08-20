@@ -1,44 +1,2832 @@
-[2018-07-07 10:43:23.977] [error_logger] [info] errrorororoororr
-[2018-07-07 13:48:42.485] [error_logger] [info] errrorororoororr
-[2018-07-07 13:49:21.640] [error_logger] [info] errrorororoororr
-[2018-07-07 13:49:56.986] [error_logger] [info] errrorororoororr
-[2018-07-07 19:58:02.230] [error_logger] [info] errrorororoororr
-[2018-07-07 21:16:35.316] [error_logger] [info] errrorororoororr
-[2018-07-07 22:01:53.908] [error_logger] [info] errrorororoororr
-[2018-07-07 22:02:05.485] [error_logger] [info] errrorororoororr
-[2018-07-07 22:02:16.022] [error_logger] [info] errrorororoororr
-[2018-07-07 22:03:17.118] [error_logger] [info] errrorororoororr
-[2018-07-07 22:09:27.202] [error_logger] [info] errrorororoororr
-[2018-07-07 22:09:35.801] [error_logger] [info] errrorororoororr
-[2018-07-07 22:10:20.871] [error_logger] [info] errrorororoororr
-[2018-07-07 22:16:11.187] [error_logger] [info] errrorororoororr
-[2018-07-07 22:16:38.776] [error_logger] [info] errrorororoororr
-[2018-07-07 22:17:29.433] [error_logger] [info] errrorororoororr
-[2018-07-07 22:17:48.631] [error_logger] [info] errrorororoororr
-[2018-07-07 22:18:23.317] [error_logger] [info] errrorororoororr
-[2018-07-07 22:18:36.045] [error_logger] [info] errrorororoororr
-[2018-07-07 22:18:45.653] [error_logger] [info] errrorororoororr
-[2018-07-07 22:20:49.056] [error_logger] [info] errrorororoororr
-[2018-07-07 22:21:39.618] [error_logger] [info] errrorororoororr
-[2018-07-07 22:22:08.785] [error_logger] [info] errrorororoororr
-[2018-07-07 22:33:29.838] [error_logger] [info] Assertion false failed.
-File: C:\Users\doga\Desktop\adl\source\main.cpp
-Line: 21
-
-[2018-07-07 22:33:53.798] [error_logger] [info] Assertion false failed.
-File: C:\Users\doga\Desktop\adl\source\main.cpp
-Line: 21
-
-[2018-07-07 22:34:14.513] [error_logger] [error] Assertion false failed.
-File: C:\Users\doga\Desktop\adl\source\main.cpp
-Line: 21
-
-[2018-07-07 22:34:47.693] [error_logger] [error] Assertion 4>5 failed.
-File: C:\Users\doga\Desktop\adl\source\main.cpp
-Line: 21
-
-[2018-07-08 09:22:12.473] [error_logger] [error] Mesh at %s does not exist in the resource database
-[2018-07-14 22:47:26.669] [error_logger] [error] Assertion document.IsObject() failed.
-File: C:\Users\doga\Desktop\adl\source\adl_resource\adlResource_manager.cpp
-Line: 15
-
+[2018-08-20 11:01:42.369] [error_logger] [error] y: 0.800000 x: 0.400000
+[2018-08-20 11:01:42.370] [error_logger] [error] 22
+[2018-08-20 11:01:42.441] [error_logger] [error] y: 1.600000 x: 0.800000
+[2018-08-20 11:01:42.441] [error_logger] [error] 22
+[2018-08-20 11:01:42.448] [error_logger] [error] y: 2.400000 x: 1.200000
+[2018-08-20 11:01:42.448] [error_logger] [error] 22
+[2018-08-20 11:01:42.457] [error_logger] [error] y: 3.200000 x: 1.600000
+[2018-08-20 11:01:42.457] [error_logger] [error] 22
+[2018-08-20 11:01:42.465] [error_logger] [error] y: 4.000000 x: 2.000000
+[2018-08-20 11:01:42.465] [error_logger] [error] 22
+[2018-08-20 11:01:42.474] [error_logger] [error] y: 4.800000 x: 2.400000
+[2018-08-20 11:01:42.474] [error_logger] [error] 22
+[2018-08-20 11:01:42.481] [error_logger] [error] y: 5.600000 x: 2.800000
+[2018-08-20 11:01:42.481] [error_logger] [error] 22
+[2018-08-20 11:01:42.490] [error_logger] [error] y: 6.400001 x: 3.200000
+[2018-08-20 11:01:42.490] [error_logger] [error] 22
+[2018-08-20 11:01:42.498] [error_logger] [error] y: 7.200001 x: 3.600000
+[2018-08-20 11:01:42.498] [error_logger] [error] 22
+[2018-08-20 11:01:42.506] [error_logger] [error] y: 8.000001 x: 4.000000
+[2018-08-20 11:01:42.507] [error_logger] [error] 22
+[2018-08-20 11:01:42.515] [error_logger] [error] y: 8.800001 x: 4.400001
+[2018-08-20 11:01:42.515] [error_logger] [error] 22
+[2018-08-20 11:01:42.523] [error_logger] [error] y: 9.600001 x: 4.800001
+[2018-08-20 11:01:42.523] [error_logger] [error] 22
+[2018-08-20 11:01:42.531] [error_logger] [error] y: 10.400002 x: 5.200001
+[2018-08-20 11:01:42.531] [error_logger] [error] 22
+[2018-08-20 11:01:42.540] [error_logger] [error] y: 11.200002 x: 5.600001
+[2018-08-20 11:01:42.540] [error_logger] [error] 22
+[2018-08-20 11:01:42.548] [error_logger] [error] y: 12.000002 x: 6.000001
+[2018-08-20 11:01:42.548] [error_logger] [error] 22
+[2018-08-20 11:01:42.557] [error_logger] [error] y: 12.800002 x: 6.400001
+[2018-08-20 11:01:42.558] [error_logger] [error] 22
+[2018-08-20 11:01:42.565] [error_logger] [error] y: 13.600002 x: 6.800001
+[2018-08-20 11:01:42.565] [error_logger] [error] 22
+[2018-08-20 11:01:42.576] [error_logger] [error] y: 14.400002 x: 7.200001
+[2018-08-20 11:01:42.576] [error_logger] [error] 22
+[2018-08-20 11:01:42.582] [error_logger] [error] y: 15.200003 x: 7.600001
+[2018-08-20 11:01:42.582] [error_logger] [error] 22
+[2018-08-20 11:01:42.592] [error_logger] [error] y: 16.000002 x: 8.000001
+[2018-08-20 11:01:42.592] [error_logger] [error] 22
+[2018-08-20 11:01:42.599] [error_logger] [error] y: 16.800001 x: 8.400001
+[2018-08-20 11:01:42.599] [error_logger] [error] 22
+[2018-08-20 11:01:42.606] [error_logger] [error] y: 17.600000 x: 8.800000
+[2018-08-20 11:01:42.606] [error_logger] [error] 22
+[2018-08-20 11:01:42.618] [error_logger] [error] y: 18.400000 x: 9.200000
+[2018-08-20 11:01:42.619] [error_logger] [error] 22
+[2018-08-20 11:01:42.624] [error_logger] [error] y: 19.199999 x: 9.599999
+[2018-08-20 11:01:42.624] [error_logger] [error] 22
+[2018-08-20 11:01:42.633] [error_logger] [error] y: 19.999998 x: 9.999999
+[2018-08-20 11:01:42.633] [error_logger] [error] 22
+[2018-08-20 11:01:42.641] [error_logger] [error] y: 20.799997 x: 10.399999
+[2018-08-20 11:01:42.641] [error_logger] [error] 22
+[2018-08-20 11:01:42.650] [error_logger] [error] y: 21.599997 x: 10.799998
+[2018-08-20 11:01:42.650] [error_logger] [error] 22
+[2018-08-20 11:01:42.658] [error_logger] [error] y: 22.399996 x: 11.199998
+[2018-08-20 11:01:42.658] [error_logger] [error] 22
+[2018-08-20 11:01:42.666] [error_logger] [error] y: 23.199995 x: 11.599998
+[2018-08-20 11:01:42.666] [error_logger] [error] 22
+[2018-08-20 11:01:42.674] [error_logger] [error] y: 23.999994 x: 11.999997
+[2018-08-20 11:01:42.674] [error_logger] [error] 22
+[2018-08-20 11:01:42.688] [error_logger] [error] y: 24.799994 x: 12.399997
+[2018-08-20 11:01:42.688] [error_logger] [error] 22
+[2018-08-20 11:01:42.694] [error_logger] [error] y: 25.599993 x: 12.799996
+[2018-08-20 11:01:42.694] [error_logger] [error] 22
+[2018-08-20 11:01:42.704] [error_logger] [error] y: 26.399992 x: 13.199996
+[2018-08-20 11:01:42.704] [error_logger] [error] 22
+[2018-08-20 11:01:42.712] [error_logger] [error] y: 27.199991 x: 13.599996
+[2018-08-20 11:01:42.712] [error_logger] [error] 22
+[2018-08-20 11:01:42.720] [error_logger] [error] y: 27.999990 x: 13.999995
+[2018-08-20 11:01:42.721] [error_logger] [error] 22
+[2018-08-20 11:01:42.727] [error_logger] [error] y: 28.799990 x: 14.399995
+[2018-08-20 11:01:42.727] [error_logger] [error] 22
+[2018-08-20 11:01:42.737] [error_logger] [error] y: 29.599989 x: 14.799994
+[2018-08-20 11:01:42.737] [error_logger] [error] 22
+[2018-08-20 11:01:42.744] [error_logger] [error] y: 30.399988 x: 15.199994
+[2018-08-20 11:01:42.744] [error_logger] [error] 22
+[2018-08-20 11:01:42.754] [error_logger] [error] y: 31.199987 x: 15.599994
+[2018-08-20 11:01:42.754] [error_logger] [error] 22
+[2018-08-20 11:01:42.761] [error_logger] [error] y: 31.999987 x: 15.999993
+[2018-08-20 11:01:42.761] [error_logger] [error] 22
+[2018-08-20 11:01:42.771] [error_logger] [error] y: 32.799988 x: 16.399994
+[2018-08-20 11:01:42.771] [error_logger] [error] 22
+[2018-08-20 11:01:42.777] [error_logger] [error] y: 33.599987 x: 16.799994
+[2018-08-20 11:01:42.777] [error_logger] [error] 22
+[2018-08-20 11:01:42.787] [error_logger] [error] y: 34.399986 x: 17.199993
+[2018-08-20 11:01:42.787] [error_logger] [error] 22
+[2018-08-20 11:01:42.794] [error_logger] [error] y: 35.199986 x: 17.599993
+[2018-08-20 11:01:42.794] [error_logger] [error] 22
+[2018-08-20 11:01:42.804] [error_logger] [error] y: 35.999985 x: 17.999992
+[2018-08-20 11:01:42.804] [error_logger] [error] 22
+[2018-08-20 11:01:42.811] [error_logger] [error] y: 36.799984 x: 18.399992
+[2018-08-20 11:01:42.811] [error_logger] [error] 22
+[2018-08-20 11:01:42.820] [error_logger] [error] y: 37.599983 x: 18.799992
+[2018-08-20 11:01:42.820] [error_logger] [error] 22
+[2018-08-20 11:01:42.827] [error_logger] [error] y: 38.399982 x: 19.199991
+[2018-08-20 11:01:42.827] [error_logger] [error] 22
+[2018-08-20 11:01:42.836] [error_logger] [error] y: 39.199982 x: 19.599991
+[2018-08-20 11:01:42.836] [error_logger] [error] 22
+[2018-08-20 11:01:42.844] [error_logger] [error] y: 39.999981 x: 19.999990
+[2018-08-20 11:01:42.844] [error_logger] [error] 22
+[2018-08-20 11:01:42.852] [error_logger] [error] y: 40.799980 x: 20.399990
+[2018-08-20 11:01:42.852] [error_logger] [error] 22
+[2018-08-20 11:01:42.861] [error_logger] [error] y: 41.599979 x: 20.799990
+[2018-08-20 11:01:42.861] [error_logger] [error] 22
+[2018-08-20 11:01:42.869] [error_logger] [error] y: 42.399979 x: 21.199989
+[2018-08-20 11:01:42.869] [error_logger] [error] 22
+[2018-08-20 11:01:42.878] [error_logger] [error] y: 43.199978 x: 21.599989
+[2018-08-20 11:01:42.878] [error_logger] [error] 22
+[2018-08-20 11:01:42.886] [error_logger] [error] y: 43.999977 x: 21.999989
+[2018-08-20 11:01:42.886] [error_logger] [error] 22
+[2018-08-20 11:01:42.894] [error_logger] [error] y: 44.799976 x: 22.399988
+[2018-08-20 11:01:42.894] [error_logger] [error] 22
+[2018-08-20 11:01:42.903] [error_logger] [error] y: 45.599976 x: 22.799988
+[2018-08-20 11:01:42.903] [error_logger] [error] 22
+[2018-08-20 11:01:42.911] [error_logger] [error] y: 46.399975 x: 23.199987
+[2018-08-20 11:01:42.911] [error_logger] [error] 22
+[2018-08-20 11:01:42.920] [error_logger] [error] y: 47.199974 x: 23.599987
+[2018-08-20 11:01:42.920] [error_logger] [error] 22
+[2018-08-20 11:01:42.928] [error_logger] [error] y: 47.999973 x: 23.999987
+[2018-08-20 11:01:42.928] [error_logger] [error] 22
+[2018-08-20 11:01:42.937] [error_logger] [error] y: 48.799973 x: 24.399986
+[2018-08-20 11:01:42.937] [error_logger] [error] 22
+[2018-08-20 11:01:42.945] [error_logger] [error] y: 49.599972 x: 24.799986
+[2018-08-20 11:01:42.945] [error_logger] [error] 22
+[2018-08-20 11:01:42.953] [error_logger] [error] y: 50.399971 x: 25.199986
+[2018-08-20 11:01:42.953] [error_logger] [error] 22
+[2018-08-20 11:01:42.961] [error_logger] [error] y: 51.199970 x: 25.599985
+[2018-08-20 11:01:42.961] [error_logger] [error] 22
+[2018-08-20 11:01:42.969] [error_logger] [error] y: 51.999969 x: 25.999985
+[2018-08-20 11:01:42.970] [error_logger] [error] 22
+[2018-08-20 11:01:42.978] [error_logger] [error] y: 52.799969 x: 26.399984
+[2018-08-20 11:01:42.978] [error_logger] [error] 22
+[2018-08-20 11:01:42.986] [error_logger] [error] y: 53.599968 x: 26.799984
+[2018-08-20 11:01:42.986] [error_logger] [error] 22
+[2018-08-20 11:01:42.994] [error_logger] [error] y: 54.399967 x: 27.199984
+[2018-08-20 11:01:42.994] [error_logger] [error] 22
+[2018-08-20 11:01:43.003] [error_logger] [error] y: 55.199966 x: 27.599983
+[2018-08-20 11:01:43.003] [error_logger] [error] 22
+[2018-08-20 11:01:43.011] [error_logger] [error] y: 55.999966 x: 27.999983
+[2018-08-20 11:01:43.011] [error_logger] [error] 22
+[2018-08-20 11:01:43.020] [error_logger] [error] y: 56.799965 x: 28.399982
+[2018-08-20 11:01:43.020] [error_logger] [error] 22
+[2018-08-20 11:01:43.027] [error_logger] [error] y: 57.599964 x: 28.799982
+[2018-08-20 11:01:43.027] [error_logger] [error] 22
+[2018-08-20 11:01:43.036] [error_logger] [error] y: 58.399963 x: 29.199982
+[2018-08-20 11:01:43.036] [error_logger] [error] 22
+[2018-08-20 11:01:43.044] [error_logger] [error] y: 59.199963 x: 29.599981
+[2018-08-20 11:01:43.044] [error_logger] [error] 22
+[2018-08-20 11:01:43.053] [error_logger] [error] y: 59.999962 x: 29.999981
+[2018-08-20 11:01:43.053] [error_logger] [error] 22
+[2018-08-20 11:01:43.061] [error_logger] [error] y: 60.799961 x: 30.399981
+[2018-08-20 11:01:43.061] [error_logger] [error] 22
+[2018-08-20 11:01:43.069] [error_logger] [error] y: 61.599960 x: 30.799980
+[2018-08-20 11:01:43.069] [error_logger] [error] 22
+[2018-08-20 11:01:43.078] [error_logger] [error] y: 62.399960 x: 31.199980
+[2018-08-20 11:01:43.078] [error_logger] [error] 22
+[2018-08-20 11:01:43.086] [error_logger] [error] y: 63.199959 x: 31.599979
+[2018-08-20 11:01:43.086] [error_logger] [error] 22
+[2018-08-20 11:01:43.094] [error_logger] [error] y: 63.999958 x: 31.999979
+[2018-08-20 11:01:43.094] [error_logger] [error] 22
+[2018-08-20 11:01:43.103] [error_logger] [error] y: 64.799957 x: 32.399979
+[2018-08-20 11:01:43.103] [error_logger] [error] 22
+[2018-08-20 11:01:43.112] [error_logger] [error] y: 65.599960 x: 32.799980
+[2018-08-20 11:01:43.112] [error_logger] [error] 22
+[2018-08-20 11:01:43.119] [error_logger] [error] y: 66.399963 x: 33.199982
+[2018-08-20 11:01:43.119] [error_logger] [error] 22
+[2018-08-20 11:01:43.128] [error_logger] [error] y: 67.199966 x: 33.599983
+[2018-08-20 11:01:43.128] [error_logger] [error] 22
+[2018-08-20 11:01:43.136] [error_logger] [error] y: 67.999969 x: 33.999985
+[2018-08-20 11:01:43.136] [error_logger] [error] 22
+[2018-08-20 11:01:43.144] [error_logger] [error] y: 68.799973 x: 34.399986
+[2018-08-20 11:01:43.144] [error_logger] [error] 22
+[2018-08-20 11:01:43.153] [error_logger] [error] y: 69.599976 x: 34.799988
+[2018-08-20 11:01:43.153] [error_logger] [error] 22
+[2018-08-20 11:01:43.161] [error_logger] [error] y: 70.399979 x: 35.199989
+[2018-08-20 11:01:43.161] [error_logger] [error] 22
+[2018-08-20 11:01:43.170] [error_logger] [error] y: 71.199982 x: 35.599991
+[2018-08-20 11:01:43.170] [error_logger] [error] 22
+[2018-08-20 11:01:43.178] [error_logger] [error] y: 71.999985 x: 35.999992
+[2018-08-20 11:01:43.178] [error_logger] [error] 22
+[2018-08-20 11:01:43.187] [error_logger] [error] y: 72.799988 x: 36.399994
+[2018-08-20 11:01:43.187] [error_logger] [error] 22
+[2018-08-20 11:01:43.194] [error_logger] [error] y: 73.599991 x: 36.799995
+[2018-08-20 11:01:43.194] [error_logger] [error] 22
+[2018-08-20 11:01:43.204] [error_logger] [error] y: 74.399994 x: 37.199997
+[2018-08-20 11:01:43.204] [error_logger] [error] 22
+[2018-08-20 11:01:43.211] [error_logger] [error] y: 75.199997 x: 37.599998
+[2018-08-20 11:01:43.211] [error_logger] [error] 22
+[2018-08-20 11:01:43.220] [error_logger] [error] y: 76.000000 x: 38.000000
+[2018-08-20 11:01:43.220] [error_logger] [error] 22
+[2018-08-20 11:01:43.228] [error_logger] [error] y: 76.800003 x: 38.400002
+[2018-08-20 11:01:43.228] [error_logger] [error] 22
+[2018-08-20 11:01:43.236] [error_logger] [error] y: 77.600006 x: 38.800003
+[2018-08-20 11:01:43.236] [error_logger] [error] 22
+[2018-08-20 11:01:43.245] [error_logger] [error] y: 78.400009 x: 39.200005
+[2018-08-20 11:01:43.245] [error_logger] [error] 22
+[2018-08-20 11:01:43.253] [error_logger] [error] y: 79.200012 x: 39.600006
+[2018-08-20 11:01:43.253] [error_logger] [error] 22
+[2018-08-20 11:01:43.261] [error_logger] [error] y: 80.000015 x: 40.000008
+[2018-08-20 11:01:43.261] [error_logger] [error] 22
+[2018-08-20 11:01:43.269] [error_logger] [error] y: 80.800018 x: 40.400009
+[2018-08-20 11:01:43.270] [error_logger] [error] 22
+[2018-08-20 11:01:43.278] [error_logger] [error] y: 81.600021 x: 40.800011
+[2018-08-20 11:01:43.278] [error_logger] [error] 22
+[2018-08-20 11:01:43.289] [error_logger] [error] y: 82.400024 x: 41.200012
+[2018-08-20 11:01:43.289] [error_logger] [error] 22
+[2018-08-20 11:01:43.295] [error_logger] [error] y: 83.200027 x: 41.600014
+[2018-08-20 11:01:43.295] [error_logger] [error] 22
+[2018-08-20 11:01:43.304] [error_logger] [error] y: 84.000031 x: 42.000015
+[2018-08-20 11:01:43.305] [error_logger] [error] 22
+[2018-08-20 11:01:43.311] [error_logger] [error] y: 84.800034 x: 42.400017
+[2018-08-20 11:01:43.311] [error_logger] [error] 22
+[2018-08-20 11:01:43.321] [error_logger] [error] y: 85.600037 x: 42.800018
+[2018-08-20 11:01:43.321] [error_logger] [error] 22
+[2018-08-20 11:01:43.328] [error_logger] [error] y: 86.400040 x: 43.200020
+[2018-08-20 11:01:43.328] [error_logger] [error] 22
+[2018-08-20 11:01:43.337] [error_logger] [error] y: 87.200043 x: 43.600021
+[2018-08-20 11:01:43.337] [error_logger] [error] 22
+[2018-08-20 11:01:43.345] [error_logger] [error] y: 88.000046 x: 44.000023
+[2018-08-20 11:01:43.345] [error_logger] [error] 22
+[2018-08-20 11:01:43.355] [error_logger] [error] y: 88.800049 x: 44.400024
+[2018-08-20 11:01:43.355] [error_logger] [error] 22
+[2018-08-20 11:01:43.362] [error_logger] [error] y: 89.600052 x: 44.800026
+[2018-08-20 11:01:43.362] [error_logger] [error] 22
+[2018-08-20 11:01:43.372] [error_logger] [error] y: 90.400055 x: 45.200027
+[2018-08-20 11:01:43.372] [error_logger] [error] 22
+[2018-08-20 11:01:43.380] [error_logger] [error] y: 91.200058 x: 45.600029
+[2018-08-20 11:01:43.380] [error_logger] [error] 22
+[2018-08-20 11:01:43.394] [error_logger] [error] y: 92.000061 x: 46.000031
+[2018-08-20 11:01:43.394] [error_logger] [error] 22
+[2018-08-20 11:01:43.406] [error_logger] [error] y: 92.800064 x: 46.400032
+[2018-08-20 11:01:43.406] [error_logger] [error] 22
+[2018-08-20 11:01:43.414] [error_logger] [error] y: 93.600067 x: 46.800034
+[2018-08-20 11:01:43.414] [error_logger] [error] 22
+[2018-08-20 11:01:43.428] [error_logger] [error] y: 94.400070 x: 47.200035
+[2018-08-20 11:01:43.428] [error_logger] [error] 22
+[2018-08-20 11:01:43.437] [error_logger] [error] y: 95.200073 x: 47.600037
+[2018-08-20 11:01:43.437] [error_logger] [error] 22
+[2018-08-20 11:01:43.446] [error_logger] [error] y: 96.000076 x: 48.000038
+[2018-08-20 11:01:43.446] [error_logger] [error] 22
+[2018-08-20 11:01:43.457] [error_logger] [error] y: 96.800079 x: 48.400040
+[2018-08-20 11:01:43.457] [error_logger] [error] 22
+[2018-08-20 11:01:43.462] [error_logger] [error] y: 97.600082 x: 48.800041
+[2018-08-20 11:01:43.462] [error_logger] [error] 22
+[2018-08-20 11:01:43.471] [error_logger] [error] y: 98.400085 x: 49.200043
+[2018-08-20 11:01:43.471] [error_logger] [error] 22
+[2018-08-20 11:01:43.479] [error_logger] [error] y: 99.200089 x: 49.600044
+[2018-08-20 11:01:43.479] [error_logger] [error] 22
+[2018-08-20 11:01:43.491] [error_logger] [error] y: 100.000092 x: 50.000046
+[2018-08-20 11:01:43.491] [error_logger] [error] 22
+[2018-08-20 11:01:43.496] [error_logger] [error] y: 100.800095 x: 50.400047
+[2018-08-20 11:01:43.496] [error_logger] [error] 22
+[2018-08-20 11:01:43.505] [error_logger] [error] y: 101.600098 x: 50.800049
+[2018-08-20 11:01:43.505] [error_logger] [error] 22
+[2018-08-20 11:01:43.514] [error_logger] [error] y: 102.400101 x: 51.200050
+[2018-08-20 11:01:43.514] [error_logger] [error] 22
+[2018-08-20 11:01:43.522] [error_logger] [error] y: 103.200104 x: 51.600052
+[2018-08-20 11:01:43.522] [error_logger] [error] 22
+[2018-08-20 11:01:43.530] [error_logger] [error] y: 104.000107 x: 52.000053
+[2018-08-20 11:01:43.530] [error_logger] [error] 22
+[2018-08-20 11:01:43.538] [error_logger] [error] y: 104.800110 x: 52.400055
+[2018-08-20 11:01:43.538] [error_logger] [error] 22
+[2018-08-20 11:01:43.547] [error_logger] [error] y: 105.600113 x: 52.800056
+[2018-08-20 11:01:43.547] [error_logger] [error] 22
+[2018-08-20 11:01:43.555] [error_logger] [error] y: 106.400116 x: 53.200058
+[2018-08-20 11:01:43.555] [error_logger] [error] 22
+[2018-08-20 11:01:43.563] [error_logger] [error] y: 107.200119 x: 53.600060
+[2018-08-20 11:01:43.563] [error_logger] [error] 22
+[2018-08-20 11:01:43.571] [error_logger] [error] y: 108.000122 x: 54.000061
+[2018-08-20 11:01:43.571] [error_logger] [error] 22
+[2018-08-20 11:01:43.582] [error_logger] [error] y: 108.800125 x: 54.400063
+[2018-08-20 11:01:43.582] [error_logger] [error] 22
+[2018-08-20 11:01:43.588] [error_logger] [error] y: 109.600128 x: 54.800064
+[2018-08-20 11:01:43.588] [error_logger] [error] 22
+[2018-08-20 11:01:43.596] [error_logger] [error] y: 110.400131 x: 55.200066
+[2018-08-20 11:01:43.596] [error_logger] [error] 22
+[2018-08-20 11:01:43.605] [error_logger] [error] y: 111.200134 x: 55.600067
+[2018-08-20 11:01:43.605] [error_logger] [error] 22
+[2018-08-20 11:01:43.614] [error_logger] [error] y: 112.000137 x: 56.000069
+[2018-08-20 11:01:43.614] [error_logger] [error] 22
+[2018-08-20 11:01:43.621] [error_logger] [error] y: 112.800140 x: 56.400070
+[2018-08-20 11:01:43.621] [error_logger] [error] 22
+[2018-08-20 11:01:43.630] [error_logger] [error] y: 113.600143 x: 56.800072
+[2018-08-20 11:01:43.630] [error_logger] [error] 22
+[2018-08-20 11:01:43.638] [error_logger] [error] y: 114.400146 x: 57.200073
+[2018-08-20 11:01:43.638] [error_logger] [error] 22
+[2018-08-20 11:01:43.647] [error_logger] [error] y: 115.200150 x: 57.600075
+[2018-08-20 11:01:43.647] [error_logger] [error] 22
+[2018-08-20 11:01:43.655] [error_logger] [error] y: 116.000153 x: 58.000076
+[2018-08-20 11:01:43.655] [error_logger] [error] 22
+[2018-08-20 11:01:43.663] [error_logger] [error] y: 116.800156 x: 58.400078
+[2018-08-20 11:01:43.663] [error_logger] [error] 22
+[2018-08-20 11:01:43.672] [error_logger] [error] y: 117.600159 x: 58.800079
+[2018-08-20 11:01:43.672] [error_logger] [error] 22
+[2018-08-20 11:01:43.681] [error_logger] [error] y: 118.400162 x: 59.200081
+[2018-08-20 11:01:43.681] [error_logger] [error] 22
+[2018-08-20 11:01:43.689] [error_logger] [error] y: 119.200165 x: 59.600082
+[2018-08-20 11:01:43.689] [error_logger] [error] 22
+[2018-08-20 11:01:43.697] [error_logger] [error] y: 120.000168 x: 60.000084
+[2018-08-20 11:01:43.697] [error_logger] [error] 22
+[2018-08-20 11:01:43.705] [error_logger] [error] y: 120.800171 x: 60.400085
+[2018-08-20 11:01:43.705] [error_logger] [error] 22
+[2018-08-20 11:01:43.713] [error_logger] [error] y: 121.600174 x: 60.800087
+[2018-08-20 11:01:43.713] [error_logger] [error] 22
+[2018-08-20 11:01:43.722] [error_logger] [error] y: 122.400177 x: 61.200089
+[2018-08-20 11:01:43.722] [error_logger] [error] 22
+[2018-08-20 11:01:43.730] [error_logger] [error] y: 123.200180 x: 61.600090
+[2018-08-20 11:01:43.730] [error_logger] [error] 22
+[2018-08-20 11:01:43.739] [error_logger] [error] y: 124.000183 x: 62.000092
+[2018-08-20 11:01:43.739] [error_logger] [error] 22
+[2018-08-20 11:01:43.747] [error_logger] [error] y: 124.800186 x: 62.400093
+[2018-08-20 11:01:43.747] [error_logger] [error] 22
+[2018-08-20 11:01:43.755] [error_logger] [error] y: 125.600189 x: 62.800095
+[2018-08-20 11:01:43.755] [error_logger] [error] 22
+[2018-08-20 11:01:43.764] [error_logger] [error] y: 126.400192 x: 63.200096
+[2018-08-20 11:01:43.764] [error_logger] [error] 22
+[2018-08-20 11:01:43.772] [error_logger] [error] y: 127.200195 x: 63.600098
+[2018-08-20 11:01:43.772] [error_logger] [error] 22
+[2018-08-20 11:01:43.781] [error_logger] [error] y: 128.000198 x: 64.000099
+[2018-08-20 11:01:43.781] [error_logger] [error] 22
+[2018-08-20 11:01:43.789] [error_logger] [error] y: 128.800201 x: 64.400101
+[2018-08-20 11:01:43.789] [error_logger] [error] 22
+[2018-08-20 11:01:43.797] [error_logger] [error] y: 129.600204 x: 64.800102
+[2018-08-20 11:01:43.797] [error_logger] [error] 22
+[2018-08-20 11:01:43.805] [error_logger] [error] y: 130.400208 x: 65.200104
+[2018-08-20 11:01:43.805] [error_logger] [error] 22
+[2018-08-20 11:01:43.814] [error_logger] [error] y: 131.200211 x: 65.600105
+[2018-08-20 11:01:43.814] [error_logger] [error] 22
+[2018-08-20 11:01:43.823] [error_logger] [error] y: 132.000214 x: 66.000107
+[2018-08-20 11:01:43.823] [error_logger] [error] 22
+[2018-08-20 11:01:43.830] [error_logger] [error] y: 132.800217 x: 66.400108
+[2018-08-20 11:01:43.830] [error_logger] [error] 22
+[2018-08-20 11:01:43.839] [error_logger] [error] y: 133.600220 x: 66.800110
+[2018-08-20 11:01:43.839] [error_logger] [error] 22
+[2018-08-20 11:01:43.847] [error_logger] [error] y: 134.400223 x: 67.200111
+[2018-08-20 11:01:43.847] [error_logger] [error] 22
+[2018-08-20 11:01:43.856] [error_logger] [error] y: 135.200226 x: 67.600113
+[2018-08-20 11:01:43.856] [error_logger] [error] 22
+[2018-08-20 11:01:43.866] [error_logger] [error] y: 136.000229 x: 68.000114
+[2018-08-20 11:01:43.866] [error_logger] [error] 22
+[2018-08-20 11:01:43.872] [error_logger] [error] y: 136.800232 x: 68.400116
+[2018-08-20 11:01:43.872] [error_logger] [error] 22
+[2018-08-20 11:01:43.880] [error_logger] [error] y: 137.600235 x: 68.800117
+[2018-08-20 11:01:43.880] [error_logger] [error] 22
+[2018-08-20 11:01:43.889] [error_logger] [error] y: 138.400238 x: 69.200119
+[2018-08-20 11:01:43.889] [error_logger] [error] 22
+[2018-08-20 11:01:43.897] [error_logger] [error] y: 139.200241 x: 69.600121
+[2018-08-20 11:01:43.897] [error_logger] [error] 22
+[2018-08-20 11:01:43.906] [error_logger] [error] y: 140.000244 x: 70.000122
+[2018-08-20 11:01:43.906] [error_logger] [error] 22
+[2018-08-20 11:01:43.914] [error_logger] [error] y: 140.800247 x: 70.400124
+[2018-08-20 11:01:43.914] [error_logger] [error] 22
+[2018-08-20 11:01:43.922] [error_logger] [error] y: 141.600250 x: 70.800125
+[2018-08-20 11:01:43.922] [error_logger] [error] 22
+[2018-08-20 11:01:43.930] [error_logger] [error] y: 142.400253 x: 71.200127
+[2018-08-20 11:01:43.930] [error_logger] [error] 22
+[2018-08-20 11:01:43.940] [error_logger] [error] y: 143.200256 x: 71.600128
+[2018-08-20 11:01:43.940] [error_logger] [error] 22
+[2018-08-20 11:01:43.947] [error_logger] [error] y: 144.000259 x: 72.000130
+[2018-08-20 11:01:43.947] [error_logger] [error] 22
+[2018-08-20 11:01:43.955] [error_logger] [error] y: 144.800262 x: 72.400131
+[2018-08-20 11:01:43.955] [error_logger] [error] 22
+[2018-08-20 11:01:43.964] [error_logger] [error] y: 145.600266 x: 72.800133
+[2018-08-20 11:01:43.964] [error_logger] [error] 22
+[2018-08-20 11:01:43.972] [error_logger] [error] y: 146.400269 x: 73.200134
+[2018-08-20 11:01:43.972] [error_logger] [error] 22
+[2018-08-20 11:01:43.981] [error_logger] [error] y: 147.200272 x: 73.600136
+[2018-08-20 11:01:43.981] [error_logger] [error] 22
+[2018-08-20 11:01:43.991] [error_logger] [error] y: 148.000275 x: 74.000137
+[2018-08-20 11:01:43.991] [error_logger] [error] 22
+[2018-08-20 11:01:43.997] [error_logger] [error] y: 148.800278 x: 74.400139
+[2018-08-20 11:01:43.997] [error_logger] [error] 22
+[2018-08-20 11:01:44.006] [error_logger] [error] y: 149.600281 x: 74.800140
+[2018-08-20 11:01:44.006] [error_logger] [error] 22
+[2018-08-20 11:01:44.014] [error_logger] [error] y: 150.400284 x: 75.200142
+[2018-08-20 11:01:44.014] [error_logger] [error] 22
+[2018-08-20 11:01:44.022] [error_logger] [error] y: 151.200287 x: 75.600143
+[2018-08-20 11:01:44.022] [error_logger] [error] 22
+[2018-08-20 11:01:44.031] [error_logger] [error] y: 152.000290 x: 76.000145
+[2018-08-20 11:01:44.031] [error_logger] [error] 22
+[2018-08-20 11:01:44.039] [error_logger] [error] y: 152.800293 x: 76.400146
+[2018-08-20 11:01:44.039] [error_logger] [error] 22
+[2018-08-20 11:01:44.047] [error_logger] [error] y: 153.600296 x: 76.800148
+[2018-08-20 11:01:44.047] [error_logger] [error] 22
+[2018-08-20 11:01:44.055] [error_logger] [error] y: 154.400299 x: 77.200150
+[2018-08-20 11:01:44.055] [error_logger] [error] 22
+[2018-08-20 11:01:44.064] [error_logger] [error] y: 155.200302 x: 77.600151
+[2018-08-20 11:01:44.064] [error_logger] [error] 22
+[2018-08-20 11:01:44.072] [error_logger] [error] y: 156.000305 x: 78.000153
+[2018-08-20 11:01:44.072] [error_logger] [error] 22
+[2018-08-20 11:01:44.081] [error_logger] [error] y: 156.800308 x: 78.400154
+[2018-08-20 11:01:44.081] [error_logger] [error] 22
+[2018-08-20 11:01:44.090] [error_logger] [error] y: 157.600311 x: 78.800156
+[2018-08-20 11:01:44.090] [error_logger] [error] 22
+[2018-08-20 11:01:44.097] [error_logger] [error] y: 158.400314 x: 79.200157
+[2018-08-20 11:01:44.097] [error_logger] [error] 22
+[2018-08-20 11:01:44.106] [error_logger] [error] y: 159.200317 x: 79.600159
+[2018-08-20 11:01:44.106] [error_logger] [error] 22
+[2018-08-20 11:01:44.114] [error_logger] [error] y: 160.000320 x: 80.000160
+[2018-08-20 11:01:44.114] [error_logger] [error] 22
+[2018-08-20 11:01:44.122] [error_logger] [error] y: 160.800323 x: 80.400162
+[2018-08-20 11:01:44.122] [error_logger] [error] 22
+[2018-08-20 11:01:44.133] [error_logger] [error] y: 161.600327 x: 80.800163
+[2018-08-20 11:01:44.133] [error_logger] [error] 22
+[2018-08-20 11:01:44.139] [error_logger] [error] y: 162.400330 x: 81.200165
+[2018-08-20 11:01:44.139] [error_logger] [error] 22
+[2018-08-20 11:01:44.148] [error_logger] [error] y: 163.200333 x: 81.600166
+[2018-08-20 11:01:44.148] [error_logger] [error] 22
+[2018-08-20 11:01:44.156] [error_logger] [error] y: 164.000336 x: 82.000168
+[2018-08-20 11:01:44.156] [error_logger] [error] 22
+[2018-08-20 11:01:44.164] [error_logger] [error] y: 164.800339 x: 82.400169
+[2018-08-20 11:01:44.164] [error_logger] [error] 22
+[2018-08-20 11:01:44.172] [error_logger] [error] y: 165.600342 x: 82.800171
+[2018-08-20 11:01:44.172] [error_logger] [error] 22
+[2018-08-20 11:01:44.181] [error_logger] [error] y: 166.400345 x: 83.200172
+[2018-08-20 11:01:44.181] [error_logger] [error] 22
+[2018-08-20 11:01:44.189] [error_logger] [error] y: 167.200348 x: 83.600174
+[2018-08-20 11:01:44.189] [error_logger] [error] 22
+[2018-08-20 11:01:44.197] [error_logger] [error] y: 168.000351 x: 84.000175
+[2018-08-20 11:01:44.197] [error_logger] [error] 22
+[2018-08-20 11:01:44.206] [error_logger] [error] y: 168.800354 x: 84.400177
+[2018-08-20 11:01:44.206] [error_logger] [error] 22
+[2018-08-20 11:01:44.214] [error_logger] [error] y: 169.600357 x: 84.800179
+[2018-08-20 11:01:44.214] [error_logger] [error] 22
+[2018-08-20 11:01:44.223] [error_logger] [error] y: 170.400360 x: 85.200180
+[2018-08-20 11:01:44.223] [error_logger] [error] 22
+[2018-08-20 11:01:44.232] [error_logger] [error] y: 171.200363 x: 85.600182
+[2018-08-20 11:01:44.232] [error_logger] [error] 22
+[2018-08-20 11:01:44.239] [error_logger] [error] y: 172.000366 x: 86.000183
+[2018-08-20 11:01:44.239] [error_logger] [error] 22
+[2018-08-20 11:01:44.247] [error_logger] [error] y: 172.800369 x: 86.400185
+[2018-08-20 11:01:44.247] [error_logger] [error] 22
+[2018-08-20 11:01:44.256] [error_logger] [error] y: 173.600372 x: 86.800186
+[2018-08-20 11:01:44.256] [error_logger] [error] 22
+[2018-08-20 11:01:44.264] [error_logger] [error] y: 174.400375 x: 87.200188
+[2018-08-20 11:01:44.264] [error_logger] [error] 22
+[2018-08-20 11:01:44.273] [error_logger] [error] y: 175.200378 x: 87.600189
+[2018-08-20 11:01:44.273] [error_logger] [error] 22
+[2018-08-20 11:01:44.281] [error_logger] [error] y: 176.000381 x: 88.000191
+[2018-08-20 11:01:44.281] [error_logger] [error] 22
+[2018-08-20 11:01:44.289] [error_logger] [error] y: 176.800385 x: 88.400192
+[2018-08-20 11:01:44.289] [error_logger] [error] 22
+[2018-08-20 11:01:44.298] [error_logger] [error] y: 177.600388 x: 88.800194
+[2018-08-20 11:01:44.298] [error_logger] [error] 22
+[2018-08-20 11:01:44.309] [error_logger] [error] y: 178.400391 x: 89.200195
+[2018-08-20 11:01:44.309] [error_logger] [error] 22
+[2018-08-20 11:01:44.319] [error_logger] [error] y: 179.200394 x: 89.600197
+[2018-08-20 11:01:44.319] [error_logger] [error] 22
+[2018-08-20 11:01:44.325] [error_logger] [error] y: 180.000397 x: 90.000198
+[2018-08-20 11:01:44.325] [error_logger] [error] 22
+[2018-08-20 11:01:44.335] [error_logger] [error] y: 180.800400 x: 90.400200
+[2018-08-20 11:01:44.335] [error_logger] [error] 22
+[2018-08-20 11:01:44.342] [error_logger] [error] y: 181.600403 x: 90.800201
+[2018-08-20 11:01:44.342] [error_logger] [error] 22
+[2018-08-20 11:01:44.351] [error_logger] [error] y: 182.400406 x: 91.200203
+[2018-08-20 11:01:44.351] [error_logger] [error] 22
+[2018-08-20 11:01:44.359] [error_logger] [error] y: 183.200409 x: 91.600204
+[2018-08-20 11:01:44.359] [error_logger] [error] 22
+[2018-08-20 11:01:44.367] [error_logger] [error] y: 184.000412 x: 92.000206
+[2018-08-20 11:01:44.367] [error_logger] [error] 22
+[2018-08-20 11:01:44.376] [error_logger] [error] y: 184.800415 x: 92.400208
+[2018-08-20 11:01:44.376] [error_logger] [error] 22
+[2018-08-20 11:01:44.387] [error_logger] [error] y: 185.600418 x: 92.800209
+[2018-08-20 11:01:44.388] [error_logger] [error] 22
+[2018-08-20 11:01:44.397] [error_logger] [error] y: 186.400421 x: 93.200211
+[2018-08-20 11:01:44.397] [error_logger] [error] 22
+[2018-08-20 11:01:44.407] [error_logger] [error] y: 187.200424 x: 93.600212
+[2018-08-20 11:01:44.407] [error_logger] [error] 22
+[2018-08-20 11:01:44.417] [error_logger] [error] y: 188.000427 x: 94.000214
+[2018-08-20 11:01:44.417] [error_logger] [error] 22
+[2018-08-20 11:01:44.425] [error_logger] [error] y: 188.800430 x: 94.400215
+[2018-08-20 11:01:44.425] [error_logger] [error] 22
+[2018-08-20 11:01:44.434] [error_logger] [error] y: 189.600433 x: 94.800217
+[2018-08-20 11:01:44.434] [error_logger] [error] 22
+[2018-08-20 11:01:44.441] [error_logger] [error] y: 190.400436 x: 95.200218
+[2018-08-20 11:01:44.442] [error_logger] [error] 22
+[2018-08-20 11:01:44.451] [error_logger] [error] y: 191.200439 x: 95.600220
+[2018-08-20 11:01:44.451] [error_logger] [error] 22
+[2018-08-20 11:01:44.458] [error_logger] [error] y: 192.000443 x: 96.000221
+[2018-08-20 11:01:44.458] [error_logger] [error] 22
+[2018-08-20 11:01:44.467] [error_logger] [error] y: 192.800446 x: 96.400223
+[2018-08-20 11:01:44.467] [error_logger] [error] 22
+[2018-08-20 11:01:44.475] [error_logger] [error] y: 193.600449 x: 96.800224
+[2018-08-20 11:01:44.475] [error_logger] [error] 22
+[2018-08-20 11:01:44.484] [error_logger] [error] y: 194.400452 x: 97.200226
+[2018-08-20 11:01:44.484] [error_logger] [error] 22
+[2018-08-20 11:01:44.491] [error_logger] [error] y: 195.200455 x: 97.600227
+[2018-08-20 11:01:44.491] [error_logger] [error] 22
+[2018-08-20 11:01:44.500] [error_logger] [error] y: 196.000458 x: 98.000229
+[2018-08-20 11:01:44.500] [error_logger] [error] 22
+[2018-08-20 11:01:44.508] [error_logger] [error] y: 196.800461 x: 98.400230
+[2018-08-20 11:01:44.508] [error_logger] [error] 22
+[2018-08-20 11:01:44.518] [error_logger] [error] y: 197.600464 x: 98.800232
+[2018-08-20 11:01:44.518] [error_logger] [error] 22
+[2018-08-20 11:01:44.525] [error_logger] [error] y: 198.400467 x: 99.200233
+[2018-08-20 11:01:44.525] [error_logger] [error] 22
+[2018-08-20 11:01:44.534] [error_logger] [error] y: 199.200470 x: 99.600235
+[2018-08-20 11:01:44.534] [error_logger] [error] 22
+[2018-08-20 11:01:44.542] [error_logger] [error] y: 200.000473 x: 100.000237
+[2018-08-20 11:01:44.542] [error_logger] [error] 22
+[2018-08-20 11:01:44.550] [error_logger] [error] y: 200.800476 x: 100.400238
+[2018-08-20 11:01:44.550] [error_logger] [error] 22
+[2018-08-20 11:01:44.558] [error_logger] [error] y: 201.600479 x: 100.800240
+[2018-08-20 11:01:44.558] [error_logger] [error] 22
+[2018-08-20 11:01:44.569] [error_logger] [error] y: 202.400482 x: 101.200241
+[2018-08-20 11:01:44.569] [error_logger] [error] 22
+[2018-08-20 11:01:44.575] [error_logger] [error] y: 203.200485 x: 101.600243
+[2018-08-20 11:01:44.575] [error_logger] [error] 22
+[2018-08-20 11:01:44.583] [error_logger] [error] y: 204.000488 x: 102.000244
+[2018-08-20 11:01:44.584] [error_logger] [error] 22
+[2018-08-20 11:01:44.591] [error_logger] [error] y: 204.800491 x: 102.400246
+[2018-08-20 11:01:44.591] [error_logger] [error] 22
+[2018-08-20 11:01:44.600] [error_logger] [error] y: 205.600494 x: 102.800247
+[2018-08-20 11:01:44.600] [error_logger] [error] 22
+[2018-08-20 11:01:44.608] [error_logger] [error] y: 206.400497 x: 103.200249
+[2018-08-20 11:01:44.608] [error_logger] [error] 22
+[2018-08-20 11:01:44.619] [error_logger] [error] y: 207.200500 x: 103.600250
+[2018-08-20 11:01:44.619] [error_logger] [error] 22
+[2018-08-20 11:01:44.625] [error_logger] [error] y: 208.000504 x: 104.000252
+[2018-08-20 11:01:44.625] [error_logger] [error] 22
+[2018-08-20 11:01:44.634] [error_logger] [error] y: 208.800507 x: 104.400253
+[2018-08-20 11:01:44.634] [error_logger] [error] 22
+[2018-08-20 11:01:44.642] [error_logger] [error] y: 209.600510 x: 104.800255
+[2018-08-20 11:01:44.642] [error_logger] [error] 22
+[2018-08-20 11:01:44.651] [error_logger] [error] y: 210.400513 x: 105.200256
+[2018-08-20 11:01:44.651] [error_logger] [error] 22
+[2018-08-20 11:01:44.658] [error_logger] [error] y: 211.200516 x: 105.600258
+[2018-08-20 11:01:44.658] [error_logger] [error] 22
+[2018-08-20 11:01:44.667] [error_logger] [error] y: 212.000519 x: 106.000259
+[2018-08-20 11:01:44.667] [error_logger] [error] 22
+[2018-08-20 11:01:44.675] [error_logger] [error] y: 212.800522 x: 106.400261
+[2018-08-20 11:01:44.675] [error_logger] [error] 22
+[2018-08-20 11:01:44.684] [error_logger] [error] y: 213.600525 x: 106.800262
+[2018-08-20 11:01:44.684] [error_logger] [error] 22
+[2018-08-20 11:01:44.692] [error_logger] [error] y: 214.400528 x: 107.200264
+[2018-08-20 11:01:44.692] [error_logger] [error] 22
+[2018-08-20 11:01:44.701] [error_logger] [error] y: 215.200531 x: 107.600266
+[2018-08-20 11:01:44.701] [error_logger] [error] 22
+[2018-08-20 11:01:44.708] [error_logger] [error] y: 216.000534 x: 108.000267
+[2018-08-20 11:01:44.708] [error_logger] [error] 22
+[2018-08-20 11:01:44.717] [error_logger] [error] y: 216.800537 x: 108.400269
+[2018-08-20 11:01:44.717] [error_logger] [error] 22
+[2018-08-20 11:01:44.725] [error_logger] [error] y: 217.600540 x: 108.800270
+[2018-08-20 11:01:44.725] [error_logger] [error] 22
+[2018-08-20 11:01:44.734] [error_logger] [error] y: 218.400543 x: 109.200272
+[2018-08-20 11:01:44.734] [error_logger] [error] 22
+[2018-08-20 11:01:44.742] [error_logger] [error] y: 219.200546 x: 109.600273
+[2018-08-20 11:01:44.742] [error_logger] [error] 22
+[2018-08-20 11:01:44.751] [error_logger] [error] y: 220.000549 x: 110.000275
+[2018-08-20 11:01:44.751] [error_logger] [error] 22
+[2018-08-20 11:01:44.759] [error_logger] [error] y: 220.800552 x: 110.400276
+[2018-08-20 11:01:44.759] [error_logger] [error] 22
+[2018-08-20 11:01:44.769] [error_logger] [error] y: 221.600555 x: 110.800278
+[2018-08-20 11:01:44.769] [error_logger] [error] 22
+[2018-08-20 11:01:44.775] [error_logger] [error] y: 222.400558 x: 111.200279
+[2018-08-20 11:01:44.775] [error_logger] [error] 22
+[2018-08-20 11:01:44.784] [error_logger] [error] y: 223.200562 x: 111.600281
+[2018-08-20 11:01:44.784] [error_logger] [error] 22
+[2018-08-20 11:01:44.792] [error_logger] [error] y: 224.000565 x: 112.000282
+[2018-08-20 11:01:44.792] [error_logger] [error] 22
+[2018-08-20 11:01:44.800] [error_logger] [error] y: 224.800568 x: 112.400284
+[2018-08-20 11:01:44.800] [error_logger] [error] 22
+[2018-08-20 11:01:44.808] [error_logger] [error] y: 225.600571 x: 112.800285
+[2018-08-20 11:01:44.808] [error_logger] [error] 22
+[2018-08-20 11:01:44.817] [error_logger] [error] y: 226.400574 x: 113.200287
+[2018-08-20 11:01:44.817] [error_logger] [error] 22
+[2018-08-20 11:01:44.825] [error_logger] [error] y: 227.200577 x: 113.600288
+[2018-08-20 11:01:44.825] [error_logger] [error] 22
+[2018-08-20 11:01:44.833] [error_logger] [error] y: 228.000580 x: 114.000290
+[2018-08-20 11:01:44.834] [error_logger] [error] 22
+[2018-08-20 11:01:44.842] [error_logger] [error] y: 228.800583 x: 114.400291
+[2018-08-20 11:01:44.842] [error_logger] [error] 22
+[2018-08-20 11:01:44.850] [error_logger] [error] y: 229.600586 x: 114.800293
+[2018-08-20 11:01:44.850] [error_logger] [error] 22
+[2018-08-20 11:01:44.858] [error_logger] [error] y: 230.400589 x: 115.200294
+[2018-08-20 11:01:44.858] [error_logger] [error] 22
+[2018-08-20 11:01:44.867] [error_logger] [error] y: 231.200592 x: 115.600296
+[2018-08-20 11:01:44.867] [error_logger] [error] 22
+[2018-08-20 11:01:44.875] [error_logger] [error] y: 232.000595 x: 116.000298
+[2018-08-20 11:01:44.875] [error_logger] [error] 22
+[2018-08-20 11:01:44.884] [error_logger] [error] y: 232.800598 x: 116.400299
+[2018-08-20 11:01:44.884] [error_logger] [error] 22
+[2018-08-20 11:01:44.892] [error_logger] [error] y: 233.600601 x: 116.800301
+[2018-08-20 11:01:44.892] [error_logger] [error] 22
+[2018-08-20 11:01:44.900] [error_logger] [error] y: 234.400604 x: 117.200302
+[2018-08-20 11:01:44.900] [error_logger] [error] 22
+[2018-08-20 11:01:44.908] [error_logger] [error] y: 235.200607 x: 117.600304
+[2018-08-20 11:01:44.908] [error_logger] [error] 22
+[2018-08-20 11:01:44.918] [error_logger] [error] y: 236.000610 x: 118.000305
+[2018-08-20 11:01:44.918] [error_logger] [error] 22
+[2018-08-20 11:01:44.925] [error_logger] [error] y: 236.800613 x: 118.400307
+[2018-08-20 11:01:44.925] [error_logger] [error] 22
+[2018-08-20 11:01:44.934] [error_logger] [error] y: 237.600616 x: 118.800308
+[2018-08-20 11:01:44.934] [error_logger] [error] 22
+[2018-08-20 11:01:44.942] [error_logger] [error] y: 238.400620 x: 119.200310
+[2018-08-20 11:01:44.942] [error_logger] [error] 22
+[2018-08-20 11:01:44.952] [error_logger] [error] y: 239.200623 x: 119.600311
+[2018-08-20 11:01:44.952] [error_logger] [error] 22
+[2018-08-20 11:01:44.959] [error_logger] [error] y: 240.000626 x: 120.000313
+[2018-08-20 11:01:44.959] [error_logger] [error] 22
+[2018-08-20 11:01:44.967] [error_logger] [error] y: 240.800629 x: 120.400314
+[2018-08-20 11:01:44.967] [error_logger] [error] 22
+[2018-08-20 11:01:44.975] [error_logger] [error] y: 241.600632 x: 120.800316
+[2018-08-20 11:01:44.975] [error_logger] [error] 22
+[2018-08-20 11:01:44.984] [error_logger] [error] y: 242.400635 x: 121.200317
+[2018-08-20 11:01:44.984] [error_logger] [error] 22
+[2018-08-20 11:01:44.992] [error_logger] [error] y: 243.200638 x: 121.600319
+[2018-08-20 11:01:44.992] [error_logger] [error] 22
+[2018-08-20 11:01:45.000] [error_logger] [error] y: 244.000641 x: 122.000320
+[2018-08-20 11:01:45.000] [error_logger] [error] 22
+[2018-08-20 11:01:45.008] [error_logger] [error] y: 244.800644 x: 122.400322
+[2018-08-20 11:01:45.008] [error_logger] [error] 22
+[2018-08-20 11:01:45.017] [error_logger] [error] y: 245.600647 x: 122.800323
+[2018-08-20 11:01:45.017] [error_logger] [error] 22
+[2018-08-20 11:01:45.025] [error_logger] [error] y: 246.400650 x: 123.200325
+[2018-08-20 11:01:45.025] [error_logger] [error] 22
+[2018-08-20 11:01:45.034] [error_logger] [error] y: 247.200653 x: 123.600327
+[2018-08-20 11:01:45.034] [error_logger] [error] 22
+[2018-08-20 11:01:45.042] [error_logger] [error] y: 248.000656 x: 124.000328
+[2018-08-20 11:01:45.042] [error_logger] [error] 22
+[2018-08-20 11:01:45.050] [error_logger] [error] y: 248.800659 x: 124.400330
+[2018-08-20 11:01:45.050] [error_logger] [error] 22
+[2018-08-20 11:01:45.058] [error_logger] [error] y: 249.600662 x: 124.800331
+[2018-08-20 11:01:45.058] [error_logger] [error] 22
+[2018-08-20 11:01:45.067] [error_logger] [error] y: 250.400665 x: 125.200333
+[2018-08-20 11:01:45.067] [error_logger] [error] 22
+[2018-08-20 11:01:45.075] [error_logger] [error] y: 251.200668 x: 125.600334
+[2018-08-20 11:01:45.075] [error_logger] [error] 22
+[2018-08-20 11:01:45.084] [error_logger] [error] y: 252.000671 x: 126.000336
+[2018-08-20 11:01:45.084] [error_logger] [error] 22
+[2018-08-20 11:01:45.092] [error_logger] [error] y: 252.800674 x: 126.400337
+[2018-08-20 11:01:45.092] [error_logger] [error] 22
+[2018-08-20 11:01:45.101] [error_logger] [error] y: 253.600677 x: 126.800339
+[2018-08-20 11:01:45.101] [error_logger] [error] 22
+[2018-08-20 11:01:45.108] [error_logger] [error] y: 254.400681 x: 127.200340
+[2018-08-20 11:01:45.108] [error_logger] [error] 22
+[2018-08-20 11:01:45.117] [error_logger] [error] y: 255.200684 x: 127.600342
+[2018-08-20 11:01:45.117] [error_logger] [error] 22
+[2018-08-20 11:01:45.125] [error_logger] [error] y: 256.000671 x: 128.000336
+[2018-08-20 11:01:45.125] [error_logger] [error] 22
+[2018-08-20 11:01:45.134] [error_logger] [error] y: 256.800659 x: 128.400330
+[2018-08-20 11:01:45.134] [error_logger] [error] 22
+[2018-08-20 11:01:45.142] [error_logger] [error] y: 257.600647 x: 128.800323
+[2018-08-20 11:01:45.142] [error_logger] [error] 22
+[2018-08-20 11:01:45.152] [error_logger] [error] y: 258.400635 x: 129.200317
+[2018-08-20 11:01:45.152] [error_logger] [error] 22
+[2018-08-20 11:01:45.158] [error_logger] [error] y: 259.200623 x: 129.600311
+[2018-08-20 11:01:45.158] [error_logger] [error] 22
+[2018-08-20 11:01:45.167] [error_logger] [error] y: 260.000610 x: 130.000305
+[2018-08-20 11:01:45.167] [error_logger] [error] 22
+[2018-08-20 11:01:45.175] [error_logger] [error] y: 260.800598 x: 130.400299
+[2018-08-20 11:01:45.175] [error_logger] [error] 22
+[2018-08-20 11:01:45.185] [error_logger] [error] y: 261.600586 x: 130.800293
+[2018-08-20 11:01:45.185] [error_logger] [error] 22
+[2018-08-20 11:01:45.192] [error_logger] [error] y: 262.400574 x: 131.200287
+[2018-08-20 11:01:45.192] [error_logger] [error] 22
+[2018-08-20 11:01:45.201] [error_logger] [error] y: 263.200562 x: 131.600281
+[2018-08-20 11:01:45.201] [error_logger] [error] 22
+[2018-08-20 11:01:45.209] [error_logger] [error] y: 264.000549 x: 132.000275
+[2018-08-20 11:01:45.209] [error_logger] [error] 22
+[2018-08-20 11:01:45.218] [error_logger] [error] y: 264.800537 x: 132.400269
+[2018-08-20 11:01:45.218] [error_logger] [error] 22
+[2018-08-20 11:01:45.225] [error_logger] [error] y: 265.600525 x: 132.800262
+[2018-08-20 11:01:45.225] [error_logger] [error] 22
+[2018-08-20 11:01:45.233] [error_logger] [error] y: 266.400513 x: 133.200256
+[2018-08-20 11:01:45.233] [error_logger] [error] 22
+[2018-08-20 11:01:45.242] [error_logger] [error] y: 267.200500 x: 133.600250
+[2018-08-20 11:01:45.242] [error_logger] [error] 22
+[2018-08-20 11:01:45.250] [error_logger] [error] y: 268.000488 x: 134.000244
+[2018-08-20 11:01:45.250] [error_logger] [error] 22
+[2018-08-20 11:01:45.258] [error_logger] [error] y: 268.800476 x: 134.400238
+[2018-08-20 11:01:45.258] [error_logger] [error] 22
+[2018-08-20 11:01:45.267] [error_logger] [error] y: 269.600464 x: 134.800232
+[2018-08-20 11:01:45.267] [error_logger] [error] 22
+[2018-08-20 11:01:45.275] [error_logger] [error] y: 270.400452 x: 135.200226
+[2018-08-20 11:01:45.275] [error_logger] [error] 22
+[2018-08-20 11:01:45.284] [error_logger] [error] y: 271.200439 x: 135.600220
+[2018-08-20 11:01:45.284] [error_logger] [error] 22
+[2018-08-20 11:01:45.292] [error_logger] [error] y: 272.000427 x: 136.000214
+[2018-08-20 11:01:45.292] [error_logger] [error] 22
+[2018-08-20 11:01:45.301] [error_logger] [error] y: 272.800415 x: 136.400208
+[2018-08-20 11:01:45.301] [error_logger] [error] 22
+[2018-08-20 11:01:45.309] [error_logger] [error] y: 273.600403 x: 136.800201
+[2018-08-20 11:01:45.309] [error_logger] [error] 22
+[2018-08-20 11:01:45.317] [error_logger] [error] y: 274.400391 x: 137.200195
+[2018-08-20 11:01:45.317] [error_logger] [error] 22
+[2018-08-20 11:01:45.325] [error_logger] [error] y: 275.200378 x: 137.600189
+[2018-08-20 11:01:45.325] [error_logger] [error] 22
+[2018-08-20 11:01:45.335] [error_logger] [error] y: 276.000366 x: 138.000183
+[2018-08-20 11:01:45.335] [error_logger] [error] 22
+[2018-08-20 11:01:45.342] [error_logger] [error] y: 276.800354 x: 138.400177
+[2018-08-20 11:01:45.342] [error_logger] [error] 22
+[2018-08-20 11:01:45.351] [error_logger] [error] y: 277.600342 x: 138.800171
+[2018-08-20 11:01:45.351] [error_logger] [error] 22
+[2018-08-20 11:01:45.359] [error_logger] [error] y: 278.400330 x: 139.200165
+[2018-08-20 11:01:45.359] [error_logger] [error] 22
+[2018-08-20 11:01:45.368] [error_logger] [error] y: 279.200317 x: 139.600159
+[2018-08-20 11:01:45.368] [error_logger] [error] 22
+[2018-08-20 11:01:45.375] [error_logger] [error] y: 280.000305 x: 140.000153
+[2018-08-20 11:01:45.375] [error_logger] [error] 22
+[2018-08-20 11:01:45.384] [error_logger] [error] y: 280.800293 x: 140.400146
+[2018-08-20 11:01:45.384] [error_logger] [error] 22
+[2018-08-20 11:01:45.392] [error_logger] [error] y: 281.600281 x: 140.800140
+[2018-08-20 11:01:45.392] [error_logger] [error] 22
+[2018-08-20 11:01:45.401] [error_logger] [error] y: 282.400269 x: 141.200134
+[2018-08-20 11:01:45.401] [error_logger] [error] 22
+[2018-08-20 11:01:45.409] [error_logger] [error] y: 283.200256 x: 141.600128
+[2018-08-20 11:01:45.409] [error_logger] [error] 22
+[2018-08-20 11:01:45.419] [error_logger] [error] y: 284.000244 x: 142.000122
+[2018-08-20 11:01:45.419] [error_logger] [error] 22
+[2018-08-20 11:01:45.425] [error_logger] [error] y: 284.800232 x: 142.400116
+[2018-08-20 11:01:45.425] [error_logger] [error] 22
+[2018-08-20 11:01:45.434] [error_logger] [error] y: 285.600220 x: 142.800110
+[2018-08-20 11:01:45.434] [error_logger] [error] 22
+[2018-08-20 11:01:45.442] [error_logger] [error] y: 286.400208 x: 143.200104
+[2018-08-20 11:01:45.442] [error_logger] [error] 22
+[2018-08-20 11:01:45.451] [error_logger] [error] y: 287.200195 x: 143.600098
+[2018-08-20 11:01:45.451] [error_logger] [error] 22
+[2018-08-20 11:01:45.459] [error_logger] [error] y: 288.000183 x: 144.000092
+[2018-08-20 11:01:45.459] [error_logger] [error] 22
+[2018-08-20 11:01:45.468] [error_logger] [error] y: 288.800171 x: 144.400085
+[2018-08-20 11:01:45.468] [error_logger] [error] 22
+[2018-08-20 11:01:45.475] [error_logger] [error] y: 289.600159 x: 144.800079
+[2018-08-20 11:01:45.475] [error_logger] [error] 22
+[2018-08-20 11:01:45.484] [error_logger] [error] y: 290.400146 x: 145.200073
+[2018-08-20 11:01:45.484] [error_logger] [error] 22
+[2018-08-20 11:01:45.492] [error_logger] [error] y: 291.200134 x: 145.600067
+[2018-08-20 11:01:45.492] [error_logger] [error] 22
+[2018-08-20 11:01:45.501] [error_logger] [error] y: 292.000122 x: 146.000061
+[2018-08-20 11:01:45.501] [error_logger] [error] 22
+[2018-08-20 11:01:45.509] [error_logger] [error] y: 292.800110 x: 146.400055
+[2018-08-20 11:01:45.509] [error_logger] [error] 22
+[2018-08-20 11:01:45.519] [error_logger] [error] y: 293.600098 x: 146.800049
+[2018-08-20 11:01:45.519] [error_logger] [error] 22
+[2018-08-20 11:01:45.525] [error_logger] [error] y: 294.400085 x: 147.200043
+[2018-08-20 11:01:45.525] [error_logger] [error] 22
+[2018-08-20 11:01:45.534] [error_logger] [error] y: 295.200073 x: 147.600037
+[2018-08-20 11:01:45.534] [error_logger] [error] 22
+[2018-08-20 11:01:45.542] [error_logger] [error] y: 296.000061 x: 148.000031
+[2018-08-20 11:01:45.542] [error_logger] [error] 22
+[2018-08-20 11:01:45.551] [error_logger] [error] y: 296.800049 x: 148.400024
+[2018-08-20 11:01:45.551] [error_logger] [error] 22
+[2018-08-20 11:01:45.559] [error_logger] [error] y: 297.600037 x: 148.800018
+[2018-08-20 11:01:45.559] [error_logger] [error] 22
+[2018-08-20 11:01:45.567] [error_logger] [error] y: 298.400024 x: 149.200012
+[2018-08-20 11:01:45.567] [error_logger] [error] 22
+[2018-08-20 11:01:45.575] [error_logger] [error] y: 299.200012 x: 149.600006
+[2018-08-20 11:01:45.576] [error_logger] [error] 22
+[2018-08-20 11:01:45.584] [error_logger] [error] y: 300.000000 x: 150.000000
+[2018-08-20 11:01:45.584] [error_logger] [error] 22
+[2018-08-20 11:01:45.592] [error_logger] [error] y: 300.799988 x: 150.399994
+[2018-08-20 11:01:45.592] [error_logger] [error] 22
+[2018-08-20 11:01:45.601] [error_logger] [error] y: 301.599976 x: 150.799988
+[2018-08-20 11:01:45.601] [error_logger] [error] 22
+[2018-08-20 11:01:45.609] [error_logger] [error] y: 302.399963 x: 151.199982
+[2018-08-20 11:01:45.609] [error_logger] [error] 22
+[2018-08-20 11:01:45.619] [error_logger] [error] y: 303.199951 x: 151.599976
+[2018-08-20 11:01:45.619] [error_logger] [error] 22
+[2018-08-20 11:01:45.627] [error_logger] [error] y: 303.999939 x: 151.999969
+[2018-08-20 11:01:45.627] [error_logger] [error] 22
+[2018-08-20 11:01:45.638] [error_logger] [error] y: 304.799927 x: 152.399963
+[2018-08-20 11:01:45.638] [error_logger] [error] 22
+[2018-08-20 11:01:45.643] [error_logger] [error] y: 305.599915 x: 152.799957
+[2018-08-20 11:01:45.643] [error_logger] [error] 22
+[2018-08-20 11:01:45.652] [error_logger] [error] y: 306.399902 x: 153.199951
+[2018-08-20 11:01:45.652] [error_logger] [error] 22
+[2018-08-20 11:01:45.659] [error_logger] [error] y: 307.199890 x: 153.599945
+[2018-08-20 11:01:45.659] [error_logger] [error] 22
+[2018-08-20 11:01:45.669] [error_logger] [error] y: 307.999878 x: 153.999939
+[2018-08-20 11:01:45.669] [error_logger] [error] 22
+[2018-08-20 11:01:45.676] [error_logger] [error] y: 308.799866 x: 154.399933
+[2018-08-20 11:01:45.676] [error_logger] [error] 22
+[2018-08-20 11:01:45.685] [error_logger] [error] y: 309.599854 x: 154.799927
+[2018-08-20 11:01:45.685] [error_logger] [error] 22
+[2018-08-20 11:01:45.692] [error_logger] [error] y: 310.399841 x: 155.199921
+[2018-08-20 11:01:45.692] [error_logger] [error] 22
+[2018-08-20 11:01:45.702] [error_logger] [error] y: 311.199829 x: 155.599915
+[2018-08-20 11:01:45.702] [error_logger] [error] 22
+[2018-08-20 11:01:45.709] [error_logger] [error] y: 311.999817 x: 155.999908
+[2018-08-20 11:01:45.709] [error_logger] [error] 22
+[2018-08-20 11:01:45.718] [error_logger] [error] y: 312.799805 x: 156.399902
+[2018-08-20 11:01:45.718] [error_logger] [error] 22
+[2018-08-20 11:01:45.726] [error_logger] [error] y: 313.599792 x: 156.799896
+[2018-08-20 11:01:45.726] [error_logger] [error] 22
+[2018-08-20 11:01:45.735] [error_logger] [error] y: 314.399780 x: 157.199890
+[2018-08-20 11:01:45.735] [error_logger] [error] 22
+[2018-08-20 11:01:45.742] [error_logger] [error] y: 315.199768 x: 157.599884
+[2018-08-20 11:01:45.742] [error_logger] [error] 22
+[2018-08-20 11:01:45.751] [error_logger] [error] y: 315.999756 x: 157.999878
+[2018-08-20 11:01:45.751] [error_logger] [error] 22
+[2018-08-20 11:01:45.759] [error_logger] [error] y: 316.799744 x: 158.399872
+[2018-08-20 11:01:45.759] [error_logger] [error] 22
+[2018-08-20 11:01:45.768] [error_logger] [error] y: 317.599731 x: 158.799866
+[2018-08-20 11:01:45.768] [error_logger] [error] 22
+[2018-08-20 11:01:45.776] [error_logger] [error] y: 318.399719 x: 159.199860
+[2018-08-20 11:01:45.776] [error_logger] [error] 22
+[2018-08-20 11:01:45.784] [error_logger] [error] y: 319.199707 x: 159.599854
+[2018-08-20 11:01:45.784] [error_logger] [error] 22
+[2018-08-20 11:01:45.792] [error_logger] [error] y: 319.999695 x: 159.999847
+[2018-08-20 11:01:45.792] [error_logger] [error] 22
+[2018-08-20 11:01:45.802] [error_logger] [error] y: 320.799683 x: 160.399841
+[2018-08-20 11:01:45.802] [error_logger] [error] 22
+[2018-08-20 11:01:45.810] [error_logger] [error] y: 321.599670 x: 160.799835
+[2018-08-20 11:01:45.810] [error_logger] [error] 22
+[2018-08-20 11:01:45.819] [error_logger] [error] y: 322.399658 x: 161.199829
+[2018-08-20 11:01:45.819] [error_logger] [error] 22
+[2018-08-20 11:01:45.826] [error_logger] [error] y: 323.199646 x: 161.599823
+[2018-08-20 11:01:45.826] [error_logger] [error] 22
+[2018-08-20 11:01:45.836] [error_logger] [error] y: 323.999634 x: 161.999817
+[2018-08-20 11:01:45.836] [error_logger] [error] 22
+[2018-08-20 11:01:45.843] [error_logger] [error] y: 324.799622 x: 162.399811
+[2018-08-20 11:01:45.843] [error_logger] [error] 22
+[2018-08-20 11:01:45.854] [error_logger] [error] y: 325.599609 x: 162.799805
+[2018-08-20 11:01:45.855] [error_logger] [error] 22
+[2018-08-20 11:01:45.859] [error_logger] [error] y: 326.399597 x: 163.199799
+[2018-08-20 11:01:45.859] [error_logger] [error] 22
+[2018-08-20 11:01:45.868] [error_logger] [error] y: 327.199585 x: 163.599792
+[2018-08-20 11:01:45.868] [error_logger] [error] 22
+[2018-08-20 11:01:45.876] [error_logger] [error] y: 327.999573 x: 163.999786
+[2018-08-20 11:01:45.876] [error_logger] [error] 22
+[2018-08-20 11:01:45.885] [error_logger] [error] y: 328.799561 x: 164.399780
+[2018-08-20 11:01:45.885] [error_logger] [error] 22
+[2018-08-20 11:01:45.893] [error_logger] [error] y: 329.599548 x: 164.799774
+[2018-08-20 11:01:45.893] [error_logger] [error] 22
+[2018-08-20 11:01:45.901] [error_logger] [error] y: 330.399536 x: 165.199768
+[2018-08-20 11:01:45.901] [error_logger] [error] 22
+[2018-08-20 11:01:45.909] [error_logger] [error] y: 331.199524 x: 165.599762
+[2018-08-20 11:01:45.909] [error_logger] [error] 22
+[2018-08-20 11:01:45.918] [error_logger] [error] y: 331.999512 x: 165.999756
+[2018-08-20 11:01:45.918] [error_logger] [error] 22
+[2018-08-20 11:01:45.926] [error_logger] [error] y: 332.799500 x: 166.399750
+[2018-08-20 11:01:45.926] [error_logger] [error] 22
+[2018-08-20 11:01:45.935] [error_logger] [error] y: 333.599487 x: 166.799744
+[2018-08-20 11:01:45.935] [error_logger] [error] 22
+[2018-08-20 11:01:45.943] [error_logger] [error] y: 334.399475 x: 167.199738
+[2018-08-20 11:01:45.943] [error_logger] [error] 22
+[2018-08-20 11:01:45.951] [error_logger] [error] y: 335.199463 x: 167.599731
+[2018-08-20 11:01:45.951] [error_logger] [error] 22
+[2018-08-20 11:01:45.959] [error_logger] [error] y: 335.999451 x: 167.999725
+[2018-08-20 11:01:45.959] [error_logger] [error] 22
+[2018-08-20 11:01:45.968] [error_logger] [error] y: 336.799438 x: 168.399719
+[2018-08-20 11:01:45.968] [error_logger] [error] 22
+[2018-08-20 11:01:45.976] [error_logger] [error] y: 337.599426 x: 168.799713
+[2018-08-20 11:01:45.976] [error_logger] [error] 22
+[2018-08-20 11:01:45.986] [error_logger] [error] y: 338.399414 x: 169.199707
+[2018-08-20 11:01:45.986] [error_logger] [error] 22
+[2018-08-20 11:01:45.993] [error_logger] [error] y: 339.199402 x: 169.599701
+[2018-08-20 11:01:45.993] [error_logger] [error] 22
+[2018-08-20 11:01:46.002] [error_logger] [error] y: 339.999390 x: 169.999695
+[2018-08-20 11:01:46.002] [error_logger] [error] 22
+[2018-08-20 11:01:46.009] [error_logger] [error] y: 340.799377 x: 170.399689
+[2018-08-20 11:01:46.009] [error_logger] [error] 22
+[2018-08-20 11:01:46.019] [error_logger] [error] y: 341.599365 x: 170.799683
+[2018-08-20 11:01:46.019] [error_logger] [error] 22
+[2018-08-20 11:01:46.027] [error_logger] [error] y: 342.399353 x: 171.199677
+[2018-08-20 11:01:46.027] [error_logger] [error] 22
+[2018-08-20 11:01:46.034] [error_logger] [error] y: 343.199341 x: 171.599670
+[2018-08-20 11:01:46.034] [error_logger] [error] 22
+[2018-08-20 11:01:46.043] [error_logger] [error] y: 343.999329 x: 171.999664
+[2018-08-20 11:01:46.043] [error_logger] [error] 22
+[2018-08-20 11:01:46.051] [error_logger] [error] y: 344.799316 x: 172.399658
+[2018-08-20 11:01:46.051] [error_logger] [error] 22
+[2018-08-20 11:01:46.060] [error_logger] [error] y: 345.599304 x: 172.799652
+[2018-08-20 11:01:46.060] [error_logger] [error] 22
+[2018-08-20 11:01:46.068] [error_logger] [error] y: 346.399292 x: 173.199646
+[2018-08-20 11:01:46.068] [error_logger] [error] 22
+[2018-08-20 11:01:46.076] [error_logger] [error] y: 347.199280 x: 173.599640
+[2018-08-20 11:01:46.076] [error_logger] [error] 22
+[2018-08-20 11:01:46.085] [error_logger] [error] y: 347.999268 x: 173.999634
+[2018-08-20 11:01:46.085] [error_logger] [error] 22
+[2018-08-20 11:01:46.093] [error_logger] [error] y: 348.799255 x: 174.399628
+[2018-08-20 11:01:46.093] [error_logger] [error] 22
+[2018-08-20 11:02:19.512] [error_logger] [error] y: 349.599243 x: 174.799622
+[2018-08-20 11:02:19.512] [error_logger] [error] 22
+[2018-08-20 11:02:19.516] [error_logger] [error] y: 350.399231 x: 175.199615
+[2018-08-20 11:02:19.516] [error_logger] [error] 22
+[2018-08-20 11:02:19.524] [error_logger] [error] y: 351.199219 x: 175.599609
+[2018-08-20 11:02:19.524] [error_logger] [error] 22
+[2018-08-20 11:02:19.532] [error_logger] [error] y: 351.999207 x: 175.999603
+[2018-08-20 11:02:19.532] [error_logger] [error] 22
+[2018-08-20 11:02:19.541] [error_logger] [error] y: 352.799194 x: 176.399597
+[2018-08-20 11:02:19.541] [error_logger] [error] 22
+[2018-08-20 11:02:19.550] [error_logger] [error] y: 353.599182 x: 176.799591
+[2018-08-20 11:02:19.550] [error_logger] [error] 22
+[2018-08-20 11:02:19.557] [error_logger] [error] y: 354.399170 x: 177.199585
+[2018-08-20 11:02:19.557] [error_logger] [error] 22
+[2018-08-20 11:02:19.566] [error_logger] [error] y: 355.199158 x: 177.599579
+[2018-08-20 11:02:19.566] [error_logger] [error] 22
+[2018-08-20 11:02:19.574] [error_logger] [error] y: 355.999146 x: 177.999573
+[2018-08-20 11:02:19.574] [error_logger] [error] 22
+[2018-08-20 11:02:19.582] [error_logger] [error] y: 356.799133 x: 178.399567
+[2018-08-20 11:02:19.582] [error_logger] [error] 22
+[2018-08-20 11:02:19.591] [error_logger] [error] y: 357.599121 x: 178.799561
+[2018-08-20 11:02:19.591] [error_logger] [error] 22
+[2018-08-20 11:02:19.599] [error_logger] [error] y: 358.399109 x: 179.199554
+[2018-08-20 11:02:19.599] [error_logger] [error] 22
+[2018-08-20 11:02:19.607] [error_logger] [error] y: 359.199097 x: 179.599548
+[2018-08-20 11:02:19.607] [error_logger] [error] 22
+[2018-08-20 11:02:19.616] [error_logger] [error] y: 359.999084 x: 179.999542
+[2018-08-20 11:02:19.616] [error_logger] [error] 22
+[2018-08-20 11:02:19.624] [error_logger] [error] y: 360.799072 x: 180.399536
+[2018-08-20 11:02:19.624] [error_logger] [error] 22
+[2018-08-20 11:02:19.632] [error_logger] [error] y: 361.599060 x: 180.799530
+[2018-08-20 11:02:19.632] [error_logger] [error] 22
+[2018-08-20 11:02:19.641] [error_logger] [error] y: 362.399048 x: 181.199524
+[2018-08-20 11:02:19.641] [error_logger] [error] 22
+[2018-08-20 11:02:19.649] [error_logger] [error] y: 363.199036 x: 181.599518
+[2018-08-20 11:02:19.649] [error_logger] [error] 22
+[2018-08-20 11:02:19.657] [error_logger] [error] y: 363.999023 x: 181.999512
+[2018-08-20 11:02:19.657] [error_logger] [error] 22
+[2018-08-20 11:02:19.665] [error_logger] [error] y: 364.799011 x: 182.399506
+[2018-08-20 11:02:19.665] [error_logger] [error] 22
+[2018-08-20 11:02:19.674] [error_logger] [error] y: 365.598999 x: 182.799500
+[2018-08-20 11:02:19.674] [error_logger] [error] 22
+[2018-08-20 11:02:19.682] [error_logger] [error] y: 366.398987 x: 183.199493
+[2018-08-20 11:02:19.682] [error_logger] [error] 22
+[2018-08-20 11:02:19.690] [error_logger] [error] y: 367.198975 x: 183.599487
+[2018-08-20 11:02:19.690] [error_logger] [error] 22
+[2018-08-20 11:02:19.699] [error_logger] [error] y: 367.998962 x: 183.999481
+[2018-08-20 11:02:19.699] [error_logger] [error] 22
+[2018-08-20 11:02:19.707] [error_logger] [error] y: 368.798950 x: 184.399475
+[2018-08-20 11:02:19.707] [error_logger] [error] 22
+[2018-08-20 11:02:19.715] [error_logger] [error] y: 369.598938 x: 184.799469
+[2018-08-20 11:02:19.715] [error_logger] [error] 22
+[2018-08-20 11:02:19.724] [error_logger] [error] y: 370.398926 x: 185.199463
+[2018-08-20 11:02:19.724] [error_logger] [error] 22
+[2018-08-20 11:02:19.732] [error_logger] [error] y: 371.198914 x: 185.599457
+[2018-08-20 11:02:19.732] [error_logger] [error] 22
+[2018-08-20 11:02:19.741] [error_logger] [error] y: 371.998901 x: 185.999451
+[2018-08-20 11:02:19.741] [error_logger] [error] 22
+[2018-08-20 11:02:19.749] [error_logger] [error] y: 372.798889 x: 186.399445
+[2018-08-20 11:02:19.749] [error_logger] [error] 22
+[2018-08-20 11:02:19.758] [error_logger] [error] y: 373.598877 x: 186.799438
+[2018-08-20 11:02:19.758] [error_logger] [error] 22
+[2018-08-20 11:02:19.766] [error_logger] [error] y: 374.398865 x: 187.199432
+[2018-08-20 11:02:19.766] [error_logger] [error] 22
+[2018-08-20 11:02:19.774] [error_logger] [error] y: 375.198853 x: 187.599426
+[2018-08-20 11:02:19.774] [error_logger] [error] 22
+[2018-08-20 11:02:19.782] [error_logger] [error] y: 375.998840 x: 187.999420
+[2018-08-20 11:02:19.782] [error_logger] [error] 22
+[2018-08-20 11:02:19.790] [error_logger] [error] y: 376.798828 x: 188.399414
+[2018-08-20 11:02:19.791] [error_logger] [error] 22
+[2018-08-20 11:02:19.799] [error_logger] [error] y: 377.598816 x: 188.799408
+[2018-08-20 11:02:19.799] [error_logger] [error] 22
+[2018-08-20 11:02:19.808] [error_logger] [error] y: 378.398804 x: 189.199402
+[2018-08-20 11:02:19.808] [error_logger] [error] 22
+[2018-08-20 11:02:19.816] [error_logger] [error] y: 379.198792 x: 189.599396
+[2018-08-20 11:02:19.816] [error_logger] [error] 22
+[2018-08-20 11:02:19.824] [error_logger] [error] y: 379.998779 x: 189.999390
+[2018-08-20 11:02:19.824] [error_logger] [error] 22
+[2018-08-20 11:02:19.832] [error_logger] [error] y: 380.798767 x: 190.399384
+[2018-08-20 11:02:19.832] [error_logger] [error] 22
+[2018-08-20 11:02:19.841] [error_logger] [error] y: 381.598755 x: 190.799377
+[2018-08-20 11:02:19.841] [error_logger] [error] 22
+[2018-08-20 11:02:19.850] [error_logger] [error] y: 382.398743 x: 191.199371
+[2018-08-20 11:02:19.850] [error_logger] [error] 22
+[2018-08-20 11:02:19.857] [error_logger] [error] y: 383.198730 x: 191.599365
+[2018-08-20 11:02:19.857] [error_logger] [error] 22
+[2018-08-20 11:02:19.866] [error_logger] [error] y: 383.998718 x: 191.999359
+[2018-08-20 11:02:19.866] [error_logger] [error] 22
+[2018-08-20 11:02:19.874] [error_logger] [error] y: 384.798706 x: 192.399353
+[2018-08-20 11:02:19.874] [error_logger] [error] 22
+[2018-08-20 11:02:19.882] [error_logger] [error] y: 385.598694 x: 192.799347
+[2018-08-20 11:02:19.882] [error_logger] [error] 22
+[2018-08-20 11:02:19.890] [error_logger] [error] y: 386.398682 x: 193.199341
+[2018-08-20 11:02:19.890] [error_logger] [error] 22
+[2018-08-20 11:02:19.899] [error_logger] [error] y: 387.198669 x: 193.599335
+[2018-08-20 11:02:19.899] [error_logger] [error] 22
+[2018-08-20 11:02:19.907] [error_logger] [error] y: 387.998657 x: 193.999329
+[2018-08-20 11:02:19.907] [error_logger] [error] 22
+[2018-08-20 11:02:19.916] [error_logger] [error] y: 388.798645 x: 194.399323
+[2018-08-20 11:02:19.916] [error_logger] [error] 22
+[2018-08-20 11:02:19.924] [error_logger] [error] y: 389.598633 x: 194.799316
+[2018-08-20 11:02:19.924] [error_logger] [error] 22
+[2018-08-20 11:02:19.932] [error_logger] [error] y: 390.398621 x: 195.199310
+[2018-08-20 11:02:19.932] [error_logger] [error] 22
+[2018-08-20 11:02:19.941] [error_logger] [error] y: 391.198608 x: 195.599304
+[2018-08-20 11:02:19.941] [error_logger] [error] 22
+[2018-08-20 11:02:19.949] [error_logger] [error] y: 391.998596 x: 195.999298
+[2018-08-20 11:02:19.949] [error_logger] [error] 22
+[2018-08-20 11:02:19.957] [error_logger] [error] y: 392.798584 x: 196.399292
+[2018-08-20 11:02:19.957] [error_logger] [error] 22
+[2018-08-20 11:02:19.967] [error_logger] [error] y: 393.598572 x: 196.799286
+[2018-08-20 11:02:19.967] [error_logger] [error] 22
+[2018-08-20 11:02:19.974] [error_logger] [error] y: 394.398560 x: 197.199280
+[2018-08-20 11:02:19.974] [error_logger] [error] 22
+[2018-08-20 11:02:19.982] [error_logger] [error] y: 395.198547 x: 197.599274
+[2018-08-20 11:02:19.982] [error_logger] [error] 22
+[2018-08-20 11:02:19.991] [error_logger] [error] y: 395.998535 x: 197.999268
+[2018-08-20 11:02:19.991] [error_logger] [error] 22
+[2018-08-20 11:02:19.999] [error_logger] [error] y: 396.798523 x: 198.399261
+[2018-08-20 11:02:20.000] [error_logger] [error] 22
+[2018-08-20 11:02:20.007] [error_logger] [error] y: 397.598511 x: 198.799255
+[2018-08-20 11:02:20.007] [error_logger] [error] 22
+[2018-08-20 11:02:20.016] [error_logger] [error] y: 398.398499 x: 199.199249
+[2018-08-20 11:02:20.016] [error_logger] [error] 22
+[2018-08-20 11:02:20.024] [error_logger] [error] y: 399.198486 x: 199.599243
+[2018-08-20 11:02:20.024] [error_logger] [error] 22
+[2018-08-20 11:02:20.032] [error_logger] [error] y: 399.998474 x: 199.999237
+[2018-08-20 11:02:20.032] [error_logger] [error] 22
+[2018-08-20 11:02:20.041] [error_logger] [error] y: 400.798462 x: 200.399231
+[2018-08-20 11:02:20.041] [error_logger] [error] 22
+[2018-08-20 11:02:20.050] [error_logger] [error] y: 401.598450 x: 200.799225
+[2018-08-20 11:02:20.050] [error_logger] [error] 22
+[2018-08-20 11:02:20.057] [error_logger] [error] y: 402.398438 x: 201.199219
+[2018-08-20 11:02:20.057] [error_logger] [error] 22
+[2018-08-20 11:02:20.066] [error_logger] [error] y: 403.198425 x: 201.599213
+[2018-08-20 11:02:20.066] [error_logger] [error] 22
+[2018-08-20 11:02:20.074] [error_logger] [error] y: 403.998413 x: 201.999207
+[2018-08-20 11:02:20.074] [error_logger] [error] 22
+[2018-08-20 11:02:20.082] [error_logger] [error] y: 404.798401 x: 202.399200
+[2018-08-20 11:02:20.082] [error_logger] [error] 22
+[2018-08-20 11:02:20.091] [error_logger] [error] y: 405.598389 x: 202.799194
+[2018-08-20 11:02:20.091] [error_logger] [error] 22
+[2018-08-20 11:02:20.099] [error_logger] [error] y: 406.398376 x: 203.199188
+[2018-08-20 11:02:20.099] [error_logger] [error] 22
+[2018-08-20 11:02:20.107] [error_logger] [error] y: 407.198364 x: 203.599182
+[2018-08-20 11:02:20.107] [error_logger] [error] 22
+[2018-08-20 11:02:20.116] [error_logger] [error] y: 407.998352 x: 203.999176
+[2018-08-20 11:02:20.116] [error_logger] [error] 22
+[2018-08-20 11:02:20.124] [error_logger] [error] y: 408.798340 x: 204.399170
+[2018-08-20 11:02:20.124] [error_logger] [error] 22
+[2018-08-20 11:02:20.132] [error_logger] [error] y: 409.598328 x: 204.799164
+[2018-08-20 11:02:20.132] [error_logger] [error] 22
+[2018-08-20 11:02:20.141] [error_logger] [error] y: 410.398315 x: 205.199158
+[2018-08-20 11:02:20.141] [error_logger] [error] 22
+[2018-08-20 11:02:20.150] [error_logger] [error] y: 411.198303 x: 205.599152
+[2018-08-20 11:02:20.150] [error_logger] [error] 22
+[2018-08-20 11:02:20.157] [error_logger] [error] y: 411.998291 x: 205.999146
+[2018-08-20 11:02:20.157] [error_logger] [error] 22
+[2018-08-20 11:02:20.166] [error_logger] [error] y: 412.798279 x: 206.399139
+[2018-08-20 11:02:20.166] [error_logger] [error] 22
+[2018-08-20 11:02:20.174] [error_logger] [error] y: 413.598267 x: 206.799133
+[2018-08-20 11:02:20.174] [error_logger] [error] 22
+[2018-08-20 11:02:20.182] [error_logger] [error] y: 414.398254 x: 207.199127
+[2018-08-20 11:02:20.182] [error_logger] [error] 22
+[2018-08-20 11:02:20.191] [error_logger] [error] y: 415.198242 x: 207.599121
+[2018-08-20 11:02:20.191] [error_logger] [error] 22
+[2018-08-20 11:02:20.199] [error_logger] [error] y: 415.998230 x: 207.999115
+[2018-08-20 11:02:20.199] [error_logger] [error] 22
+[2018-08-20 11:02:20.208] [error_logger] [error] y: 416.798218 x: 208.399109
+[2018-08-20 11:02:20.208] [error_logger] [error] 22
+[2018-08-20 11:02:20.216] [error_logger] [error] y: 417.598206 x: 208.799103
+[2018-08-20 11:02:20.216] [error_logger] [error] 22
+[2018-08-20 11:02:20.224] [error_logger] [error] y: 418.398193 x: 209.199097
+[2018-08-20 11:02:20.224] [error_logger] [error] 22
+[2018-08-20 11:02:20.232] [error_logger] [error] y: 419.198181 x: 209.599091
+[2018-08-20 11:02:20.232] [error_logger] [error] 22
+[2018-08-20 11:02:20.241] [error_logger] [error] y: 419.998169 x: 209.999084
+[2018-08-20 11:02:20.241] [error_logger] [error] 22
+[2018-08-20 11:02:20.249] [error_logger] [error] y: 420.798157 x: 210.399078
+[2018-08-20 11:02:20.249] [error_logger] [error] 22
+[2018-08-20 11:02:20.257] [error_logger] [error] y: 421.598145 x: 210.799072
+[2018-08-20 11:02:20.257] [error_logger] [error] 22
+[2018-08-20 11:02:20.266] [error_logger] [error] y: 422.398132 x: 211.199066
+[2018-08-20 11:02:20.266] [error_logger] [error] 22
+[2018-08-20 11:02:20.274] [error_logger] [error] y: 423.198120 x: 211.599060
+[2018-08-20 11:02:20.274] [error_logger] [error] 22
+[2018-08-20 11:02:20.282] [error_logger] [error] y: 423.998108 x: 211.999054
+[2018-08-20 11:02:20.282] [error_logger] [error] 22
+[2018-08-20 11:02:20.291] [error_logger] [error] y: 424.798096 x: 212.399048
+[2018-08-20 11:02:20.291] [error_logger] [error] 22
+[2018-08-20 11:02:20.299] [error_logger] [error] y: 425.598083 x: 212.799042
+[2018-08-20 11:02:20.299] [error_logger] [error] 22
+[2018-08-20 11:02:20.307] [error_logger] [error] y: 426.398071 x: 213.199036
+[2018-08-20 11:02:20.307] [error_logger] [error] 22
+[2018-08-20 11:02:20.316] [error_logger] [error] y: 427.198059 x: 213.599030
+[2018-08-20 11:02:20.316] [error_logger] [error] 22
+[2018-08-20 11:02:20.324] [error_logger] [error] y: 427.998047 x: 213.999023
+[2018-08-20 11:02:20.324] [error_logger] [error] 22
+[2018-08-20 11:02:20.332] [error_logger] [error] y: 428.798035 x: 214.399017
+[2018-08-20 11:02:20.332] [error_logger] [error] 22
+[2018-08-20 11:02:20.341] [error_logger] [error] y: 429.598022 x: 214.799011
+[2018-08-20 11:02:20.341] [error_logger] [error] 22
+[2018-08-20 11:02:20.349] [error_logger] [error] y: 430.398010 x: 215.199005
+[2018-08-20 11:02:20.349] [error_logger] [error] 22
+[2018-08-20 11:02:20.357] [error_logger] [error] y: 431.197998 x: 215.598999
+[2018-08-20 11:02:20.357] [error_logger] [error] 22
+[2018-08-20 11:02:20.366] [error_logger] [error] y: 431.997986 x: 215.998993
+[2018-08-20 11:02:20.366] [error_logger] [error] 22
+[2018-08-20 11:02:20.374] [error_logger] [error] y: 432.797974 x: 216.398987
+[2018-08-20 11:02:20.374] [error_logger] [error] 22
+[2018-08-20 11:02:20.382] [error_logger] [error] y: 433.597961 x: 216.798981
+[2018-08-20 11:02:20.382] [error_logger] [error] 22
+[2018-08-20 11:02:20.391] [error_logger] [error] y: 434.397949 x: 217.198975
+[2018-08-20 11:02:20.391] [error_logger] [error] 22
+[2018-08-20 11:02:20.399] [error_logger] [error] y: 435.197937 x: 217.598969
+[2018-08-20 11:02:20.399] [error_logger] [error] 22
+[2018-08-20 11:02:20.407] [error_logger] [error] y: 435.997925 x: 217.998962
+[2018-08-20 11:02:20.408] [error_logger] [error] 22
+[2018-08-20 11:02:20.418] [error_logger] [error] y: 436.797913 x: 218.398956
+[2018-08-20 11:02:20.418] [error_logger] [error] 22
+[2018-08-20 11:02:20.424] [error_logger] [error] y: 437.597900 x: 218.798950
+[2018-08-20 11:02:20.424] [error_logger] [error] 22
+[2018-08-20 11:02:20.432] [error_logger] [error] y: 438.397888 x: 219.198944
+[2018-08-20 11:02:20.432] [error_logger] [error] 22
+[2018-08-20 11:02:20.441] [error_logger] [error] y: 439.197876 x: 219.598938
+[2018-08-20 11:02:20.441] [error_logger] [error] 22
+[2018-08-20 11:02:20.449] [error_logger] [error] y: 439.997864 x: 219.998932
+[2018-08-20 11:02:20.449] [error_logger] [error] 22
+[2018-08-20 11:02:20.458] [error_logger] [error] y: 440.797852 x: 220.398926
+[2018-08-20 11:02:20.459] [error_logger] [error] 22
+[2018-08-20 11:02:20.466] [error_logger] [error] y: 441.597839 x: 220.798920
+[2018-08-20 11:02:20.466] [error_logger] [error] 22
+[2018-08-20 11:02:20.474] [error_logger] [error] y: 442.397827 x: 221.198914
+[2018-08-20 11:02:20.474] [error_logger] [error] 22
+[2018-08-20 11:02:20.482] [error_logger] [error] y: 443.197815 x: 221.598907
+[2018-08-20 11:02:20.482] [error_logger] [error] 22
+[2018-08-20 11:02:20.491] [error_logger] [error] y: 443.997803 x: 221.998901
+[2018-08-20 11:02:20.491] [error_logger] [error] 22
+[2018-08-20 11:02:20.499] [error_logger] [error] y: 444.797791 x: 222.398895
+[2018-08-20 11:02:20.499] [error_logger] [error] 22
+[2018-08-20 11:02:20.507] [error_logger] [error] y: 445.597778 x: 222.798889
+[2018-08-20 11:02:20.507] [error_logger] [error] 22
+[2018-08-20 11:02:20.516] [error_logger] [error] y: 446.397766 x: 223.198883
+[2018-08-20 11:02:20.516] [error_logger] [error] 22
+[2018-08-20 11:02:20.525] [error_logger] [error] y: 447.197754 x: 223.598877
+[2018-08-20 11:02:20.525] [error_logger] [error] 22
+[2018-08-20 11:02:20.533] [error_logger] [error] y: 447.997742 x: 223.998871
+[2018-08-20 11:02:20.533] [error_logger] [error] 22
+[2018-08-20 11:02:20.541] [error_logger] [error] y: 448.797729 x: 224.398865
+[2018-08-20 11:02:20.541] [error_logger] [error] 22
+[2018-08-20 11:02:20.549] [error_logger] [error] y: 449.597717 x: 224.798859
+[2018-08-20 11:02:20.549] [error_logger] [error] 22
+[2018-08-20 11:02:20.558] [error_logger] [error] y: 450.397705 x: 225.198853
+[2018-08-20 11:02:20.558] [error_logger] [error] 22
+[2018-08-20 11:02:20.566] [error_logger] [error] y: 451.197693 x: 225.598846
+[2018-08-20 11:02:20.566] [error_logger] [error] 22
+[2018-08-20 11:02:20.575] [error_logger] [error] y: 451.997681 x: 225.998840
+[2018-08-20 11:02:20.575] [error_logger] [error] 22
+[2018-08-20 11:02:20.583] [error_logger] [error] y: 452.797668 x: 226.398834
+[2018-08-20 11:02:20.583] [error_logger] [error] 22
+[2018-08-20 11:02:20.591] [error_logger] [error] y: 453.597656 x: 226.798828
+[2018-08-20 11:02:20.591] [error_logger] [error] 22
+[2018-08-20 11:02:20.599] [error_logger] [error] y: 454.397644 x: 227.198822
+[2018-08-20 11:02:20.599] [error_logger] [error] 22
+[2018-08-20 11:02:20.608] [error_logger] [error] y: 455.197632 x: 227.598816
+[2018-08-20 11:02:20.608] [error_logger] [error] 22
+[2018-08-20 11:02:20.616] [error_logger] [error] y: 455.997620 x: 227.998810
+[2018-08-20 11:02:20.616] [error_logger] [error] 22
+[2018-08-20 11:02:20.624] [error_logger] [error] y: 456.797607 x: 228.398804
+[2018-08-20 11:02:20.624] [error_logger] [error] 22
+[2018-08-20 11:02:20.633] [error_logger] [error] y: 457.597595 x: 228.798798
+[2018-08-20 11:02:20.633] [error_logger] [error] 22
+[2018-08-20 11:02:20.641] [error_logger] [error] y: 458.397583 x: 229.198792
+[2018-08-20 11:02:20.641] [error_logger] [error] 22
+[2018-08-20 11:02:20.649] [error_logger] [error] y: 459.197571 x: 229.598785
+[2018-08-20 11:02:20.649] [error_logger] [error] 22
+[2018-08-20 11:02:20.658] [error_logger] [error] y: 459.997559 x: 229.998779
+[2018-08-20 11:02:20.658] [error_logger] [error] 22
+[2018-08-20 11:02:20.666] [error_logger] [error] y: 460.797546 x: 230.398773
+[2018-08-20 11:02:20.666] [error_logger] [error] 22
+[2018-08-20 11:02:20.675] [error_logger] [error] y: 461.597534 x: 230.798767
+[2018-08-20 11:02:20.675] [error_logger] [error] 22
+[2018-08-20 11:02:20.683] [error_logger] [error] y: 462.397522 x: 231.198761
+[2018-08-20 11:02:20.683] [error_logger] [error] 22
+[2018-08-20 11:02:20.691] [error_logger] [error] y: 463.197510 x: 231.598755
+[2018-08-20 11:02:20.691] [error_logger] [error] 22
+[2018-08-20 11:02:20.699] [error_logger] [error] y: 463.997498 x: 231.998749
+[2018-08-20 11:02:20.699] [error_logger] [error] 22
+[2018-08-20 11:02:20.708] [error_logger] [error] y: 464.797485 x: 232.398743
+[2018-08-20 11:02:20.708] [error_logger] [error] 22
+[2018-08-20 11:02:20.716] [error_logger] [error] y: 465.597473 x: 232.798737
+[2018-08-20 11:02:20.716] [error_logger] [error] 22
+[2018-08-20 11:02:20.725] [error_logger] [error] y: 466.397461 x: 233.198730
+[2018-08-20 11:02:20.725] [error_logger] [error] 22
+[2018-08-20 11:02:20.733] [error_logger] [error] y: 467.197449 x: 233.598724
+[2018-08-20 11:02:20.733] [error_logger] [error] 22
+[2018-08-20 11:02:20.741] [error_logger] [error] y: 467.997437 x: 233.998718
+[2018-08-20 11:02:20.741] [error_logger] [error] 22
+[2018-08-20 11:02:20.749] [error_logger] [error] y: 468.797424 x: 234.398712
+[2018-08-20 11:02:20.749] [error_logger] [error] 22
+[2018-08-20 11:02:20.758] [error_logger] [error] y: 469.597412 x: 234.798706
+[2018-08-20 11:02:20.758] [error_logger] [error] 22
+[2018-08-20 11:02:20.766] [error_logger] [error] y: 470.397400 x: 235.198700
+[2018-08-20 11:02:20.766] [error_logger] [error] 22
+[2018-08-20 11:02:20.775] [error_logger] [error] y: 471.197388 x: 235.598694
+[2018-08-20 11:02:20.775] [error_logger] [error] 22
+[2018-08-20 11:02:20.783] [error_logger] [error] y: 471.997375 x: 235.998688
+[2018-08-20 11:02:20.783] [error_logger] [error] 22
+[2018-08-20 11:02:20.791] [error_logger] [error] y: 472.797363 x: 236.398682
+[2018-08-20 11:02:20.791] [error_logger] [error] 22
+[2018-08-20 11:02:20.799] [error_logger] [error] y: 473.597351 x: 236.798676
+[2018-08-20 11:02:20.799] [error_logger] [error] 22
+[2018-08-20 11:02:20.808] [error_logger] [error] y: 474.397339 x: 237.198669
+[2018-08-20 11:02:20.808] [error_logger] [error] 22
+[2018-08-20 11:02:20.817] [error_logger] [error] y: 475.197327 x: 237.598663
+[2018-08-20 11:02:20.817] [error_logger] [error] 22
+[2018-08-20 11:02:20.825] [error_logger] [error] y: 475.997314 x: 237.998657
+[2018-08-20 11:02:20.825] [error_logger] [error] 22
+[2018-08-20 11:02:20.833] [error_logger] [error] y: 476.797302 x: 238.398651
+[2018-08-20 11:02:20.833] [error_logger] [error] 22
+[2018-08-20 11:02:20.841] [error_logger] [error] y: 477.597290 x: 238.798645
+[2018-08-20 11:02:20.841] [error_logger] [error] 22
+[2018-08-20 11:02:20.850] [error_logger] [error] y: 478.397278 x: 239.198639
+[2018-08-20 11:02:20.850] [error_logger] [error] 22
+[2018-08-20 11:02:20.858] [error_logger] [error] y: 479.197266 x: 239.598633
+[2018-08-20 11:02:20.858] [error_logger] [error] 22
+[2018-08-20 11:02:20.866] [error_logger] [error] y: 479.997253 x: 239.998627
+[2018-08-20 11:02:20.866] [error_logger] [error] 22
+[2018-08-20 11:02:20.874] [error_logger] [error] y: 480.797241 x: 240.398621
+[2018-08-20 11:02:20.874] [error_logger] [error] 22
+[2018-08-20 11:02:20.883] [error_logger] [error] y: 481.597229 x: 240.798615
+[2018-08-20 11:02:20.884] [error_logger] [error] 22
+[2018-08-20 11:02:20.891] [error_logger] [error] y: 482.397217 x: 241.198608
+[2018-08-20 11:02:20.891] [error_logger] [error] 22
+[2018-08-20 11:02:20.899] [error_logger] [error] y: 483.197205 x: 241.598602
+[2018-08-20 11:02:20.899] [error_logger] [error] 22
+[2018-08-20 11:02:20.908] [error_logger] [error] y: 483.997192 x: 241.998596
+[2018-08-20 11:02:20.908] [error_logger] [error] 22
+[2018-08-20 11:02:20.916] [error_logger] [error] y: 484.797180 x: 242.398590
+[2018-08-20 11:02:20.916] [error_logger] [error] 22
+[2018-08-20 11:02:20.924] [error_logger] [error] y: 485.597168 x: 242.798584
+[2018-08-20 11:02:20.924] [error_logger] [error] 22
+[2018-08-20 11:02:20.933] [error_logger] [error] y: 486.397156 x: 243.198578
+[2018-08-20 11:02:20.933] [error_logger] [error] 22
+[2018-08-20 11:02:20.941] [error_logger] [error] y: 487.197144 x: 243.598572
+[2018-08-20 11:02:20.941] [error_logger] [error] 22
+[2018-08-20 11:02:20.949] [error_logger] [error] y: 487.997131 x: 243.998566
+[2018-08-20 11:02:20.949] [error_logger] [error] 22
+[2018-08-20 11:02:20.958] [error_logger] [error] y: 488.797119 x: 244.398560
+[2018-08-20 11:02:20.958] [error_logger] [error] 22
+[2018-08-20 11:02:20.966] [error_logger] [error] y: 489.597107 x: 244.798553
+[2018-08-20 11:02:20.966] [error_logger] [error] 22
+[2018-08-20 11:02:20.975] [error_logger] [error] y: 490.397095 x: 245.198547
+[2018-08-20 11:02:20.975] [error_logger] [error] 22
+[2018-08-20 11:02:20.984] [error_logger] [error] y: 491.197083 x: 245.598541
+[2018-08-20 11:02:20.984] [error_logger] [error] 22
+[2018-08-20 11:02:20.991] [error_logger] [error] y: 491.997070 x: 245.998535
+[2018-08-20 11:02:20.991] [error_logger] [error] 22
+[2018-08-20 11:02:20.999] [error_logger] [error] y: 492.797058 x: 246.398529
+[2018-08-20 11:02:20.999] [error_logger] [error] 22
+[2018-08-20 11:02:21.008] [error_logger] [error] y: 493.597046 x: 246.798523
+[2018-08-20 11:02:21.008] [error_logger] [error] 22
+[2018-08-20 11:02:21.016] [error_logger] [error] y: 494.397034 x: 247.198517
+[2018-08-20 11:02:21.016] [error_logger] [error] 22
+[2018-08-20 11:02:21.024] [error_logger] [error] y: 495.197021 x: 247.598511
+[2018-08-20 11:02:21.024] [error_logger] [error] 22
+[2018-08-20 11:02:21.033] [error_logger] [error] y: 495.997009 x: 247.998505
+[2018-08-20 11:02:21.033] [error_logger] [error] 22
+[2018-08-20 11:02:21.041] [error_logger] [error] y: 496.796997 x: 248.398499
+[2018-08-20 11:02:21.041] [error_logger] [error] 22
+[2018-08-20 11:02:21.049] [error_logger] [error] y: 497.596985 x: 248.798492
+[2018-08-20 11:02:21.049] [error_logger] [error] 22
+[2018-08-20 11:02:21.058] [error_logger] [error] y: 498.396973 x: 249.198486
+[2018-08-20 11:02:21.058] [error_logger] [error] 22
+[2018-08-20 11:02:21.066] [error_logger] [error] y: 499.196960 x: 249.598480
+[2018-08-20 11:02:21.066] [error_logger] [error] 22
+[2018-08-20 11:02:21.074] [error_logger] [error] y: 499.996948 x: 249.998474
+[2018-08-20 11:02:21.075] [error_logger] [error] 22
+[2018-08-20 11:02:21.083] [error_logger] [error] y: 500.796936 x: 250.398468
+[2018-08-20 11:02:21.083] [error_logger] [error] 22
+[2018-08-20 11:02:21.091] [error_logger] [error] y: 501.596924 x: 250.798462
+[2018-08-20 11:02:21.091] [error_logger] [error] 22
+[2018-08-20 11:02:21.100] [error_logger] [error] y: 502.396912 x: 251.198456
+[2018-08-20 11:02:21.100] [error_logger] [error] 22
+[2018-08-20 11:02:21.108] [error_logger] [error] y: 503.196899 x: 251.598450
+[2018-08-20 11:02:21.108] [error_logger] [error] 22
+[2018-08-20 11:02:21.116] [error_logger] [error] y: 503.996887 x: 251.998444
+[2018-08-20 11:02:21.116] [error_logger] [error] 22
+[2018-08-20 11:02:21.125] [error_logger] [error] y: 504.796875 x: 252.398438
+[2018-08-20 11:02:21.125] [error_logger] [error] 22
+[2018-08-20 11:02:21.134] [error_logger] [error] y: 505.596863 x: 252.798431
+[2018-08-20 11:02:21.134] [error_logger] [error] 22
+[2018-08-20 11:02:21.141] [error_logger] [error] y: 506.396851 x: 253.198425
+[2018-08-20 11:02:21.141] [error_logger] [error] 22
+[2018-08-20 11:02:21.150] [error_logger] [error] y: 507.196838 x: 253.598419
+[2018-08-20 11:02:21.150] [error_logger] [error] 22
+[2018-08-20 11:02:21.158] [error_logger] [error] y: 507.996826 x: 253.998413
+[2018-08-20 11:02:21.158] [error_logger] [error] 22
+[2018-08-20 11:02:21.166] [error_logger] [error] y: 508.796814 x: 254.398407
+[2018-08-20 11:02:21.166] [error_logger] [error] 22
+[2018-08-20 11:02:21.175] [error_logger] [error] y: 509.596802 x: 254.798401
+[2018-08-20 11:02:21.175] [error_logger] [error] 22
+[2018-08-20 11:02:21.183] [error_logger] [error] y: 510.396790 x: 255.198395
+[2018-08-20 11:02:21.183] [error_logger] [error] 22
+[2018-08-20 11:02:21.191] [error_logger] [error] y: 511.196777 x: 255.598389
+[2018-08-20 11:02:21.191] [error_logger] [error] 22
+[2018-08-20 11:02:21.200] [error_logger] [error] y: 511.996765 x: 255.998383
+[2018-08-20 11:02:21.200] [error_logger] [error] 22
+[2018-08-20 11:02:21.208] [error_logger] [error] y: 512.796753 x: 256.398376
+[2018-08-20 11:02:21.208] [error_logger] [error] 22
+[2018-08-20 11:02:21.216] [error_logger] [error] y: 513.596741 x: 256.798370
+[2018-08-20 11:02:21.216] [error_logger] [error] 22
+[2018-08-20 11:02:21.225] [error_logger] [error] y: 514.396729 x: 257.198364
+[2018-08-20 11:02:21.225] [error_logger] [error] 22
+[2018-08-20 11:02:21.233] [error_logger] [error] y: 515.196716 x: 257.598358
+[2018-08-20 11:02:21.233] [error_logger] [error] 22
+[2018-08-20 11:02:21.241] [error_logger] [error] y: 515.996704 x: 257.998352
+[2018-08-20 11:02:21.241] [error_logger] [error] 22
+[2018-08-20 11:02:21.250] [error_logger] [error] y: 516.796692 x: 258.398346
+[2018-08-20 11:02:21.250] [error_logger] [error] 22
+[2018-08-20 11:02:21.259] [error_logger] [error] y: 517.596680 x: 258.798340
+[2018-08-20 11:02:21.259] [error_logger] [error] 22
+[2018-08-20 11:02:21.267] [error_logger] [error] y: 518.396667 x: 259.198334
+[2018-08-20 11:02:21.267] [error_logger] [error] 22
+[2018-08-20 11:02:21.275] [error_logger] [error] y: 519.196655 x: 259.598328
+[2018-08-20 11:02:21.275] [error_logger] [error] 22
+[2018-08-20 11:02:21.283] [error_logger] [error] y: 519.996643 x: 259.998322
+[2018-08-20 11:02:21.283] [error_logger] [error] 22
+[2018-08-20 11:02:21.291] [error_logger] [error] y: 520.796631 x: 260.398315
+[2018-08-20 11:02:21.291] [error_logger] [error] 22
+[2018-08-20 11:02:21.300] [error_logger] [error] y: 521.596619 x: 260.798309
+[2018-08-20 11:02:21.300] [error_logger] [error] 22
+[2018-08-20 11:02:21.309] [error_logger] [error] y: 522.396606 x: 261.198303
+[2018-08-20 11:02:21.309] [error_logger] [error] 22
+[2018-08-20 11:02:21.316] [error_logger] [error] y: 523.196594 x: 261.598297
+[2018-08-20 11:02:21.316] [error_logger] [error] 22
+[2018-08-20 11:02:21.325] [error_logger] [error] y: 523.996582 x: 261.998291
+[2018-08-20 11:02:21.325] [error_logger] [error] 22
+[2018-08-20 11:02:21.333] [error_logger] [error] y: 524.796570 x: 262.398285
+[2018-08-20 11:02:21.333] [error_logger] [error] 22
+[2018-08-20 11:02:21.341] [error_logger] [error] y: 525.596558 x: 262.798279
+[2018-08-20 11:02:21.341] [error_logger] [error] 22
+[2018-08-20 11:02:21.350] [error_logger] [error] y: 526.396545 x: 263.198273
+[2018-08-20 11:02:21.350] [error_logger] [error] 22
+[2018-08-20 11:02:21.358] [error_logger] [error] y: 527.196533 x: 263.598267
+[2018-08-20 11:02:21.358] [error_logger] [error] 22
+[2018-08-20 11:02:21.366] [error_logger] [error] y: 527.996521 x: 263.998260
+[2018-08-20 11:02:21.367] [error_logger] [error] 22
+[2018-08-20 11:02:21.375] [error_logger] [error] y: 528.796509 x: 264.398254
+[2018-08-20 11:02:21.375] [error_logger] [error] 22
+[2018-08-20 11:02:21.383] [error_logger] [error] y: 529.596497 x: 264.798248
+[2018-08-20 11:02:21.383] [error_logger] [error] 22
+[2018-08-20 11:02:21.392] [error_logger] [error] y: 530.396484 x: 265.198242
+[2018-08-20 11:02:21.392] [error_logger] [error] 22
+[2018-08-20 11:02:21.400] [error_logger] [error] y: 531.196472 x: 265.598236
+[2018-08-20 11:02:21.400] [error_logger] [error] 22
+[2018-08-20 11:02:21.408] [error_logger] [error] y: 531.996460 x: 265.998230
+[2018-08-20 11:02:21.408] [error_logger] [error] 22
+[2018-08-20 11:02:21.417] [error_logger] [error] y: 532.796448 x: 266.398224
+[2018-08-20 11:02:21.417] [error_logger] [error] 22
+[2018-08-20 11:02:21.425] [error_logger] [error] y: 533.596436 x: 266.798218
+[2018-08-20 11:02:21.425] [error_logger] [error] 22
+[2018-08-20 11:02:21.434] [error_logger] [error] y: 534.396423 x: 267.198212
+[2018-08-20 11:02:21.434] [error_logger] [error] 22
+[2018-08-20 11:02:21.447] [error_logger] [error] y: 535.196411 x: 267.598206
+[2018-08-20 11:02:21.447] [error_logger] [error] 22
+[2018-08-20 11:02:21.452] [error_logger] [error] y: 535.996399 x: 267.998199
+[2018-08-20 11:02:21.452] [error_logger] [error] 22
+[2018-08-20 11:02:21.461] [error_logger] [error] y: 536.796387 x: 268.398193
+[2018-08-20 11:02:21.461] [error_logger] [error] 22
+[2018-08-20 11:02:21.469] [error_logger] [error] y: 537.596375 x: 268.798187
+[2018-08-20 11:02:21.469] [error_logger] [error] 22
+[2018-08-20 11:02:21.478] [error_logger] [error] y: 538.396362 x: 269.198181
+[2018-08-20 11:02:21.478] [error_logger] [error] 22
+[2018-08-20 11:02:21.485] [error_logger] [error] y: 539.196350 x: 269.598175
+[2018-08-20 11:02:21.485] [error_logger] [error] 22
+[2018-08-20 11:02:21.496] [error_logger] [error] y: 539.996338 x: 269.998169
+[2018-08-20 11:02:21.496] [error_logger] [error] 22
+[2018-08-20 11:02:21.502] [error_logger] [error] y: 540.796326 x: 270.398163
+[2018-08-20 11:02:21.502] [error_logger] [error] 22
+[2018-08-20 11:02:21.511] [error_logger] [error] y: 541.596313 x: 270.798157
+[2018-08-20 11:02:21.511] [error_logger] [error] 22
+[2018-08-20 11:02:21.519] [error_logger] [error] y: 542.396301 x: 271.198151
+[2018-08-20 11:02:21.519] [error_logger] [error] 22
+[2018-08-20 11:02:21.528] [error_logger] [error] y: 543.196289 x: 271.598145
+[2018-08-20 11:02:21.528] [error_logger] [error] 22
+[2018-08-20 11:02:21.535] [error_logger] [error] y: 543.996277 x: 271.998138
+[2018-08-20 11:02:21.535] [error_logger] [error] 22
+[2018-08-20 11:02:21.545] [error_logger] [error] y: 544.796265 x: 272.398132
+[2018-08-20 11:02:21.545] [error_logger] [error] 22
+[2018-08-20 11:02:21.552] [error_logger] [error] y: 545.596252 x: 272.798126
+[2018-08-20 11:02:21.552] [error_logger] [error] 22
+[2018-08-20 11:02:21.561] [error_logger] [error] y: 546.396240 x: 273.198120
+[2018-08-20 11:02:21.561] [error_logger] [error] 22
+[2018-08-20 11:02:21.569] [error_logger] [error] y: 547.196228 x: 273.598114
+[2018-08-20 11:02:21.569] [error_logger] [error] 22
+[2018-08-20 11:02:21.578] [error_logger] [error] y: 547.996216 x: 273.998108
+[2018-08-20 11:02:21.578] [error_logger] [error] 22
+[2018-08-20 11:02:21.586] [error_logger] [error] y: 548.796204 x: 274.398102
+[2018-08-20 11:02:21.586] [error_logger] [error] 22
+[2018-08-20 11:02:21.596] [error_logger] [error] y: 549.596191 x: 274.798096
+[2018-08-20 11:02:21.596] [error_logger] [error] 22
+[2018-08-20 11:02:21.602] [error_logger] [error] y: 550.396179 x: 275.198090
+[2018-08-20 11:02:21.602] [error_logger] [error] 22
+[2018-08-20 11:02:21.611] [error_logger] [error] y: 551.196167 x: 275.598083
+[2018-08-20 11:02:21.611] [error_logger] [error] 22
+[2018-08-20 11:02:21.619] [error_logger] [error] y: 551.996155 x: 275.998077
+[2018-08-20 11:02:21.619] [error_logger] [error] 22
+[2018-08-20 11:02:21.628] [error_logger] [error] y: 552.796143 x: 276.398071
+[2018-08-20 11:02:21.628] [error_logger] [error] 22
+[2018-08-20 11:02:21.636] [error_logger] [error] y: 553.596130 x: 276.798065
+[2018-08-20 11:02:21.636] [error_logger] [error] 22
+[2018-08-20 11:02:21.647] [error_logger] [error] y: 554.396118 x: 277.198059
+[2018-08-20 11:02:21.647] [error_logger] [error] 22
+[2018-08-20 11:02:21.652] [error_logger] [error] y: 555.196106 x: 277.598053
+[2018-08-20 11:02:21.652] [error_logger] [error] 22
+[2018-08-20 11:02:21.662] [error_logger] [error] y: 555.996094 x: 277.998047
+[2018-08-20 11:02:21.662] [error_logger] [error] 22
+[2018-08-20 11:02:21.669] [error_logger] [error] y: 556.796082 x: 278.398041
+[2018-08-20 11:02:21.669] [error_logger] [error] 22
+[2018-08-20 11:02:21.678] [error_logger] [error] y: 557.596069 x: 278.798035
+[2018-08-20 11:02:21.678] [error_logger] [error] 22
+[2018-08-20 11:02:21.686] [error_logger] [error] y: 558.396057 x: 279.198029
+[2018-08-20 11:02:21.686] [error_logger] [error] 22
+[2018-08-20 11:02:21.696] [error_logger] [error] y: 559.196045 x: 279.598022
+[2018-08-20 11:02:21.696] [error_logger] [error] 22
+[2018-08-20 11:02:21.702] [error_logger] [error] y: 559.996033 x: 279.998016
+[2018-08-20 11:02:21.702] [error_logger] [error] 22
+[2018-08-20 11:02:21.711] [error_logger] [error] y: 560.796021 x: 280.398010
+[2018-08-20 11:02:21.711] [error_logger] [error] 22
+[2018-08-20 11:02:21.719] [error_logger] [error] y: 561.596008 x: 280.798004
+[2018-08-20 11:02:21.719] [error_logger] [error] 22
+[2018-08-20 11:02:21.728] [error_logger] [error] y: 562.395996 x: 281.197998
+[2018-08-20 11:02:21.728] [error_logger] [error] 22
+[2018-08-20 11:02:21.736] [error_logger] [error] y: 563.195984 x: 281.597992
+[2018-08-20 11:02:21.736] [error_logger] [error] 22
+[2018-08-20 11:02:21.746] [error_logger] [error] y: 563.995972 x: 281.997986
+[2018-08-20 11:02:21.746] [error_logger] [error] 22
+[2018-08-20 11:02:21.752] [error_logger] [error] y: 564.795959 x: 282.397980
+[2018-08-20 11:02:21.752] [error_logger] [error] 22
+[2018-08-20 11:02:21.761] [error_logger] [error] y: 565.595947 x: 282.797974
+[2018-08-20 11:02:21.761] [error_logger] [error] 22
+[2018-08-20 11:02:21.769] [error_logger] [error] y: 566.395935 x: 283.197968
+[2018-08-20 11:02:21.769] [error_logger] [error] 22
+[2018-08-20 11:02:21.778] [error_logger] [error] y: 567.195923 x: 283.597961
+[2018-08-20 11:02:21.778] [error_logger] [error] 22
+[2018-08-20 11:02:21.786] [error_logger] [error] y: 567.995911 x: 283.997955
+[2018-08-20 11:02:21.786] [error_logger] [error] 22
+[2018-08-20 11:02:21.796] [error_logger] [error] y: 568.795898 x: 284.397949
+[2018-08-20 11:02:21.796] [error_logger] [error] 22
+[2018-08-20 11:02:21.802] [error_logger] [error] y: 569.595886 x: 284.797943
+[2018-08-20 11:02:21.802] [error_logger] [error] 22
+[2018-08-20 11:02:21.811] [error_logger] [error] y: 570.395874 x: 285.197937
+[2018-08-20 11:02:21.811] [error_logger] [error] 22
+[2018-08-20 11:02:21.819] [error_logger] [error] y: 571.195862 x: 285.597931
+[2018-08-20 11:02:21.819] [error_logger] [error] 22
+[2018-08-20 11:02:21.828] [error_logger] [error] y: 571.995850 x: 285.997925
+[2018-08-20 11:02:21.828] [error_logger] [error] 22
+[2018-08-20 11:02:21.836] [error_logger] [error] y: 572.795837 x: 286.397919
+[2018-08-20 11:02:21.836] [error_logger] [error] 22
+[2018-08-20 11:02:21.846] [error_logger] [error] y: 573.595825 x: 286.797913
+[2018-08-20 11:02:21.846] [error_logger] [error] 22
+[2018-08-20 11:02:21.852] [error_logger] [error] y: 574.395813 x: 287.197906
+[2018-08-20 11:02:21.852] [error_logger] [error] 22
+[2018-08-20 11:02:21.862] [error_logger] [error] y: 575.195801 x: 287.597900
+[2018-08-20 11:02:21.862] [error_logger] [error] 22
+[2018-08-20 11:02:21.869] [error_logger] [error] y: 575.995789 x: 287.997894
+[2018-08-20 11:02:21.870] [error_logger] [error] 22
+[2018-08-20 11:02:21.879] [error_logger] [error] y: 576.795776 x: 288.397888
+[2018-08-20 11:02:21.879] [error_logger] [error] 22
+[2018-08-20 11:02:21.886] [error_logger] [error] y: 577.595764 x: 288.797882
+[2018-08-20 11:02:21.886] [error_logger] [error] 22
+[2018-08-20 11:02:21.894] [error_logger] [error] y: 578.395752 x: 289.197876
+[2018-08-20 11:02:21.895] [error_logger] [error] 22
+[2018-08-20 11:02:21.902] [error_logger] [error] y: 579.195740 x: 289.597870
+[2018-08-20 11:02:21.902] [error_logger] [error] 22
+[2018-08-20 11:02:21.911] [error_logger] [error] y: 579.995728 x: 289.997864
+[2018-08-20 11:02:21.911] [error_logger] [error] 22
+[2018-08-20 11:02:21.919] [error_logger] [error] y: 580.795715 x: 290.397858
+[2018-08-20 11:02:21.919] [error_logger] [error] 22
+[2018-08-20 11:02:21.929] [error_logger] [error] y: 581.595703 x: 290.797852
+[2018-08-20 11:02:21.929] [error_logger] [error] 22
+[2018-08-20 11:02:21.936] [error_logger] [error] y: 582.395691 x: 291.197845
+[2018-08-20 11:02:21.936] [error_logger] [error] 22
+[2018-08-20 11:02:21.945] [error_logger] [error] y: 583.195679 x: 291.597839
+[2018-08-20 11:02:21.945] [error_logger] [error] 22
+[2018-08-20 11:02:21.952] [error_logger] [error] y: 583.995667 x: 291.997833
+[2018-08-20 11:02:21.952] [error_logger] [error] 22
+[2018-08-20 11:02:21.961] [error_logger] [error] y: 584.795654 x: 292.397827
+[2018-08-20 11:02:21.961] [error_logger] [error] 22
+[2018-08-20 11:02:21.969] [error_logger] [error] y: 585.595642 x: 292.797821
+[2018-08-20 11:02:21.969] [error_logger] [error] 22
+[2018-08-20 11:02:21.981] [error_logger] [error] y: 586.395630 x: 293.197815
+[2018-08-20 11:02:21.981] [error_logger] [error] 22
+[2018-08-20 11:02:21.986] [error_logger] [error] y: 587.195618 x: 293.597809
+[2018-08-20 11:02:21.986] [error_logger] [error] 22
+[2018-08-20 11:02:21.995] [error_logger] [error] y: 587.995605 x: 293.997803
+[2018-08-20 11:02:21.995] [error_logger] [error] 22
+[2018-08-20 11:02:22.003] [error_logger] [error] y: 588.795593 x: 294.397797
+[2018-08-20 11:02:22.003] [error_logger] [error] 22
+[2018-08-20 11:02:22.013] [error_logger] [error] y: 589.595581 x: 294.797791
+[2018-08-20 11:02:22.013] [error_logger] [error] 22
+[2018-08-20 11:02:22.019] [error_logger] [error] y: 590.395569 x: 295.197784
+[2018-08-20 11:02:22.019] [error_logger] [error] 22
+[2018-08-20 11:02:22.028] [error_logger] [error] y: 591.195557 x: 295.597778
+[2018-08-20 11:02:22.028] [error_logger] [error] 22
+[2018-08-20 11:02:22.036] [error_logger] [error] y: 591.995544 x: 295.997772
+[2018-08-20 11:02:22.036] [error_logger] [error] 22
+[2018-08-20 11:02:22.047] [error_logger] [error] y: 592.795532 x: 296.397766
+[2018-08-20 11:02:22.047] [error_logger] [error] 22
+[2018-08-20 11:02:22.053] [error_logger] [error] y: 593.595520 x: 296.797760
+[2018-08-20 11:02:22.053] [error_logger] [error] 22
+[2018-08-20 11:02:22.062] [error_logger] [error] y: 594.395508 x: 297.197754
+[2018-08-20 11:02:22.062] [error_logger] [error] 22
+[2018-08-20 11:02:22.069] [error_logger] [error] y: 595.195496 x: 297.597748
+[2018-08-20 11:02:22.069] [error_logger] [error] 22
+[2018-08-20 11:02:22.080] [error_logger] [error] y: 595.995483 x: 297.997742
+[2018-08-20 11:02:22.080] [error_logger] [error] 22
+[2018-08-20 11:02:22.086] [error_logger] [error] y: 596.795471 x: 298.397736
+[2018-08-20 11:02:22.086] [error_logger] [error] 22
+[2018-08-20 11:02:22.095] [error_logger] [error] y: 597.595459 x: 298.797729
+[2018-08-20 11:02:22.095] [error_logger] [error] 22
+[2018-08-20 11:02:22.103] [error_logger] [error] y: 598.395447 x: 299.197723
+[2018-08-20 11:02:22.103] [error_logger] [error] 22
+[2018-08-20 11:02:22.112] [error_logger] [error] y: 599.195435 x: 299.597717
+[2018-08-20 11:02:22.112] [error_logger] [error] 22
+[2018-08-20 11:02:22.119] [error_logger] [error] y: 599.995422 x: 299.997711
+[2018-08-20 11:02:22.119] [error_logger] [error] 22
+[2018-08-20 11:02:22.131] [error_logger] [error] y: 600.795410 x: 300.397705
+[2018-08-20 11:02:22.131] [error_logger] [error] 22
+[2018-08-20 11:02:22.136] [error_logger] [error] y: 601.595398 x: 300.797699
+[2018-08-20 11:02:22.136] [error_logger] [error] 22
+[2018-08-20 11:02:22.145] [error_logger] [error] y: 602.395386 x: 301.197693
+[2018-08-20 11:02:22.145] [error_logger] [error] 22
+[2018-08-20 11:02:22.153] [error_logger] [error] y: 603.195374 x: 301.597687
+[2018-08-20 11:02:22.153] [error_logger] [error] 22
+[2018-08-20 11:02:22.164] [error_logger] [error] y: 603.995361 x: 301.997681
+[2018-08-20 11:02:22.164] [error_logger] [error] 22
+[2018-08-20 11:02:22.169] [error_logger] [error] y: 604.795349 x: 302.397675
+[2018-08-20 11:02:22.169] [error_logger] [error] 22
+[2018-08-20 11:02:22.178] [error_logger] [error] y: 605.595337 x: 302.797668
+[2018-08-20 11:02:22.179] [error_logger] [error] 22
+[2018-08-20 11:02:22.186] [error_logger] [error] y: 606.395325 x: 303.197662
+[2018-08-20 11:02:22.186] [error_logger] [error] 22
+[2018-08-20 11:02:22.196] [error_logger] [error] y: 607.195313 x: 303.597656
+[2018-08-20 11:02:22.196] [error_logger] [error] 22
+[2018-08-20 11:02:22.203] [error_logger] [error] y: 607.995300 x: 303.997650
+[2018-08-20 11:02:22.203] [error_logger] [error] 22
+[2018-08-20 11:02:22.212] [error_logger] [error] y: 608.795288 x: 304.397644
+[2018-08-20 11:02:22.212] [error_logger] [error] 22
+[2018-08-20 11:02:22.219] [error_logger] [error] y: 609.595276 x: 304.797638
+[2018-08-20 11:02:22.219] [error_logger] [error] 22
+[2018-08-20 11:02:22.228] [error_logger] [error] y: 610.395264 x: 305.197632
+[2018-08-20 11:02:22.228] [error_logger] [error] 22
+[2018-08-20 11:02:22.236] [error_logger] [error] y: 611.195251 x: 305.597626
+[2018-08-20 11:02:22.236] [error_logger] [error] 22
+[2018-08-20 11:02:22.246] [error_logger] [error] y: 611.995239 x: 305.997620
+[2018-08-20 11:02:22.246] [error_logger] [error] 22
+[2018-08-20 11:02:22.253] [error_logger] [error] y: 612.795227 x: 306.397614
+[2018-08-20 11:02:22.253] [error_logger] [error] 22
+[2018-08-20 11:02:22.262] [error_logger] [error] y: 613.595215 x: 306.797607
+[2018-08-20 11:02:22.262] [error_logger] [error] 22
+[2018-08-20 11:02:22.270] [error_logger] [error] y: 614.395203 x: 307.197601
+[2018-08-20 11:02:22.270] [error_logger] [error] 22
+[2018-08-20 11:02:22.279] [error_logger] [error] y: 615.195190 x: 307.597595
+[2018-08-20 11:02:22.279] [error_logger] [error] 22
+[2018-08-20 11:02:22.286] [error_logger] [error] y: 615.995178 x: 307.997589
+[2018-08-20 11:02:22.286] [error_logger] [error] 22
+[2018-08-20 11:02:22.296] [error_logger] [error] y: 616.795166 x: 308.397583
+[2018-08-20 11:02:22.296] [error_logger] [error] 22
+[2018-08-20 11:02:22.303] [error_logger] [error] y: 617.595154 x: 308.797577
+[2018-08-20 11:02:22.303] [error_logger] [error] 22
+[2018-08-20 11:02:22.312] [error_logger] [error] y: 618.395142 x: 309.197571
+[2018-08-20 11:02:22.312] [error_logger] [error] 22
+[2018-08-20 11:02:22.320] [error_logger] [error] y: 619.195129 x: 309.597565
+[2018-08-20 11:02:22.320] [error_logger] [error] 22
+[2018-08-20 11:02:22.328] [error_logger] [error] y: 619.995117 x: 309.997559
+[2018-08-20 11:02:22.329] [error_logger] [error] 22
+[2018-08-20 11:02:22.336] [error_logger] [error] y: 620.795105 x: 310.397552
+[2018-08-20 11:02:22.336] [error_logger] [error] 22
+[2018-08-20 11:02:22.346] [error_logger] [error] y: 621.595093 x: 310.797546
+[2018-08-20 11:02:22.346] [error_logger] [error] 22
+[2018-08-20 11:02:22.353] [error_logger] [error] y: 622.395081 x: 311.197540
+[2018-08-20 11:02:22.353] [error_logger] [error] 22
+[2018-08-20 11:02:22.361] [error_logger] [error] y: 623.195068 x: 311.597534
+[2018-08-20 11:02:22.361] [error_logger] [error] 22
+[2018-08-20 11:02:22.370] [error_logger] [error] y: 623.995056 x: 311.997528
+[2018-08-20 11:02:22.370] [error_logger] [error] 22
+[2018-08-20 11:02:22.378] [error_logger] [error] y: 624.795044 x: 312.397522
+[2018-08-20 11:02:22.378] [error_logger] [error] 22
+[2018-08-20 11:02:22.386] [error_logger] [error] y: 625.595032 x: 312.797516
+[2018-08-20 11:02:22.386] [error_logger] [error] 22
+[2018-08-20 11:02:22.395] [error_logger] [error] y: 626.395020 x: 313.197510
+[2018-08-20 11:02:22.395] [error_logger] [error] 22
+[2018-08-20 11:02:22.403] [error_logger] [error] y: 627.195007 x: 313.597504
+[2018-08-20 11:02:22.403] [error_logger] [error] 22
+[2018-08-20 11:02:22.412] [error_logger] [error] y: 627.994995 x: 313.997498
+[2018-08-20 11:02:22.413] [error_logger] [error] 22
+[2018-08-20 11:02:22.420] [error_logger] [error] y: 628.794983 x: 314.397491
+[2018-08-20 11:02:22.420] [error_logger] [error] 22
+[2018-08-20 11:02:22.428] [error_logger] [error] y: 629.594971 x: 314.797485
+[2018-08-20 11:02:22.428] [error_logger] [error] 22
+[2018-08-20 11:02:22.436] [error_logger] [error] y: 630.394958 x: 315.197479
+[2018-08-20 11:02:22.436] [error_logger] [error] 22
+[2018-08-20 11:02:22.445] [error_logger] [error] y: 631.194946 x: 315.597473
+[2018-08-20 11:02:22.445] [error_logger] [error] 22
+[2018-08-20 11:02:22.453] [error_logger] [error] y: 631.994934 x: 315.997467
+[2018-08-20 11:02:22.453] [error_logger] [error] 22
+[2018-08-20 11:02:22.463] [error_logger] [error] y: 632.794922 x: 316.397461
+[2018-08-20 11:02:22.463] [error_logger] [error] 22
+[2018-08-20 11:02:22.470] [error_logger] [error] y: 633.594910 x: 316.797455
+[2018-08-20 11:02:22.470] [error_logger] [error] 22
+[2018-08-20 11:02:22.479] [error_logger] [error] y: 634.394897 x: 317.197449
+[2018-08-20 11:02:22.479] [error_logger] [error] 22
+[2018-08-20 11:02:22.486] [error_logger] [error] y: 635.194885 x: 317.597443
+[2018-08-20 11:02:22.486] [error_logger] [error] 22
+[2018-08-20 11:02:22.496] [error_logger] [error] y: 635.994873 x: 317.997437
+[2018-08-20 11:02:22.496] [error_logger] [error] 22
+[2018-08-20 11:02:22.503] [error_logger] [error] y: 636.794861 x: 318.397430
+[2018-08-20 11:02:22.503] [error_logger] [error] 22
+[2018-08-20 11:02:22.511] [error_logger] [error] y: 637.594849 x: 318.797424
+[2018-08-20 11:02:22.512] [error_logger] [error] 22
+[2018-08-20 11:02:22.520] [error_logger] [error] y: 638.394836 x: 319.197418
+[2018-08-20 11:02:22.520] [error_logger] [error] 22
+[2018-08-20 11:02:22.528] [error_logger] [error] y: 639.194824 x: 319.597412
+[2018-08-20 11:02:22.528] [error_logger] [error] 22
+[2018-08-20 11:02:22.536] [error_logger] [error] y: 639.994812 x: 319.997406
+[2018-08-20 11:02:22.536] [error_logger] [error] 22
+[2018-08-20 11:02:22.546] [error_logger] [error] y: 640.794800 x: 320.397400
+[2018-08-20 11:02:22.546] [error_logger] [error] 22
+[2018-08-20 11:02:22.553] [error_logger] [error] y: 641.594788 x: 320.797394
+[2018-08-20 11:02:22.553] [error_logger] [error] 22
+[2018-08-20 11:02:22.561] [error_logger] [error] y: 642.394775 x: 321.197388
+[2018-08-20 11:02:22.561] [error_logger] [error] 22
+[2018-08-20 11:02:22.570] [error_logger] [error] y: 643.194763 x: 321.597382
+[2018-08-20 11:02:22.570] [error_logger] [error] 22
+[2018-08-20 11:02:22.578] [error_logger] [error] y: 643.994751 x: 321.997375
+[2018-08-20 11:02:22.578] [error_logger] [error] 22
+[2018-08-20 11:02:22.586] [error_logger] [error] y: 644.794739 x: 322.397369
+[2018-08-20 11:02:22.586] [error_logger] [error] 22
+[2018-08-20 11:02:22.596] [error_logger] [error] y: 645.594727 x: 322.797363
+[2018-08-20 11:02:22.596] [error_logger] [error] 22
+[2018-08-20 11:02:22.603] [error_logger] [error] y: 646.394714 x: 323.197357
+[2018-08-20 11:02:22.603] [error_logger] [error] 22
+[2018-08-20 11:02:22.612] [error_logger] [error] y: 647.194702 x: 323.597351
+[2018-08-20 11:02:22.612] [error_logger] [error] 22
+[2018-08-20 11:02:22.620] [error_logger] [error] y: 647.994690 x: 323.997345
+[2018-08-20 11:02:22.620] [error_logger] [error] 22
+[2018-08-20 11:02:22.628] [error_logger] [error] y: 648.794678 x: 324.397339
+[2018-08-20 11:02:22.628] [error_logger] [error] 22
+[2018-08-20 11:02:22.636] [error_logger] [error] y: 649.594666 x: 324.797333
+[2018-08-20 11:02:22.636] [error_logger] [error] 22
+[2018-08-20 11:02:22.646] [error_logger] [error] y: 650.394653 x: 325.197327
+[2018-08-20 11:02:22.646] [error_logger] [error] 22
+[2018-08-20 11:02:22.653] [error_logger] [error] y: 651.194641 x: 325.597321
+[2018-08-20 11:02:22.653] [error_logger] [error] 22
+[2018-08-20 11:02:22.661] [error_logger] [error] y: 651.994629 x: 325.997314
+[2018-08-20 11:02:22.662] [error_logger] [error] 22
+[2018-08-20 11:02:22.670] [error_logger] [error] y: 652.794617 x: 326.397308
+[2018-08-20 11:02:22.670] [error_logger] [error] 22
+[2018-08-20 11:02:22.678] [error_logger] [error] y: 653.594604 x: 326.797302
+[2018-08-20 11:02:22.679] [error_logger] [error] 22
+[2018-08-20 11:02:22.686] [error_logger] [error] y: 654.394592 x: 327.197296
+[2018-08-20 11:02:22.686] [error_logger] [error] 22
+[2018-08-20 11:02:22.696] [error_logger] [error] y: 655.194580 x: 327.597290
+[2018-08-20 11:02:22.696] [error_logger] [error] 22
+[2018-08-20 11:02:22.703] [error_logger] [error] y: 655.994568 x: 327.997284
+[2018-08-20 11:02:22.703] [error_logger] [error] 22
+[2018-08-20 11:02:22.712] [error_logger] [error] y: 656.794556 x: 328.397278
+[2018-08-20 11:02:22.712] [error_logger] [error] 22
+[2018-08-20 11:02:22.720] [error_logger] [error] y: 657.594543 x: 328.797272
+[2018-08-20 11:02:22.720] [error_logger] [error] 22
+[2018-08-20 11:02:22.728] [error_logger] [error] y: 658.394531 x: 329.197266
+[2018-08-20 11:02:22.728] [error_logger] [error] 22
+[2018-08-20 11:02:22.736] [error_logger] [error] y: 659.194519 x: 329.597260
+[2018-08-20 11:02:22.736] [error_logger] [error] 22
+[2018-08-20 11:02:22.745] [error_logger] [error] y: 659.994507 x: 329.997253
+[2018-08-20 11:02:22.745] [error_logger] [error] 22
+[2018-08-20 11:02:22.754] [error_logger] [error] y: 660.794495 x: 330.397247
+[2018-08-20 11:02:22.754] [error_logger] [error] 22
+[2018-08-20 11:02:22.763] [error_logger] [error] y: 661.594482 x: 330.797241
+[2018-08-20 11:02:22.763] [error_logger] [error] 22
+[2018-08-20 11:02:22.770] [error_logger] [error] y: 662.394470 x: 331.197235
+[2018-08-20 11:02:22.770] [error_logger] [error] 22
+[2018-08-20 11:02:22.778] [error_logger] [error] y: 663.194458 x: 331.597229
+[2018-08-20 11:02:22.778] [error_logger] [error] 22
+[2018-08-20 11:02:22.786] [error_logger] [error] y: 663.994446 x: 331.997223
+[2018-08-20 11:02:22.786] [error_logger] [error] 22
+[2018-08-20 11:02:22.795] [error_logger] [error] y: 664.794434 x: 332.397217
+[2018-08-20 11:02:22.795] [error_logger] [error] 22
+[2018-08-20 11:02:22.803] [error_logger] [error] y: 665.594421 x: 332.797211
+[2018-08-20 11:02:22.803] [error_logger] [error] 22
+[2018-08-20 11:02:22.812] [error_logger] [error] y: 666.394409 x: 333.197205
+[2018-08-20 11:02:22.812] [error_logger] [error] 22
+[2018-08-20 11:02:22.820] [error_logger] [error] y: 667.194397 x: 333.597198
+[2018-08-20 11:02:22.820] [error_logger] [error] 22
+[2018-08-20 11:02:22.828] [error_logger] [error] y: 667.994385 x: 333.997192
+[2018-08-20 11:02:22.828] [error_logger] [error] 22
+[2018-08-20 11:02:22.836] [error_logger] [error] y: 668.794373 x: 334.397186
+[2018-08-20 11:02:22.836] [error_logger] [error] 22
+[2018-08-20 11:02:22.845] [error_logger] [error] y: 669.594360 x: 334.797180
+[2018-08-20 11:02:22.845] [error_logger] [error] 22
+[2018-08-20 11:02:22.853] [error_logger] [error] y: 670.394348 x: 335.197174
+[2018-08-20 11:02:22.853] [error_logger] [error] 22
+[2018-08-20 11:02:22.862] [error_logger] [error] y: 671.194336 x: 335.597168
+[2018-08-20 11:02:22.862] [error_logger] [error] 22
+[2018-08-20 11:02:22.870] [error_logger] [error] y: 671.994324 x: 335.997162
+[2018-08-20 11:02:22.870] [error_logger] [error] 22
+[2018-08-20 11:02:22.880] [error_logger] [error] y: 672.794312 x: 336.397156
+[2018-08-20 11:02:22.880] [error_logger] [error] 22
+[2018-08-20 11:02:22.887] [error_logger] [error] y: 673.594299 x: 336.797150
+[2018-08-20 11:02:22.887] [error_logger] [error] 22
+[2018-08-20 11:02:22.896] [error_logger] [error] y: 674.394287 x: 337.197144
+[2018-08-20 11:02:22.896] [error_logger] [error] 22
+[2018-08-20 11:02:22.903] [error_logger] [error] y: 675.194275 x: 337.597137
+[2018-08-20 11:02:22.903] [error_logger] [error] 22
+[2018-08-20 11:02:22.913] [error_logger] [error] y: 675.994263 x: 337.997131
+[2018-08-20 11:02:22.913] [error_logger] [error] 22
+[2018-08-20 11:02:22.920] [error_logger] [error] y: 676.794250 x: 338.397125
+[2018-08-20 11:02:22.920] [error_logger] [error] 22
+[2018-08-20 11:02:22.929] [error_logger] [error] y: 677.594238 x: 338.797119
+[2018-08-20 11:02:22.929] [error_logger] [error] 22
+[2018-08-20 11:02:22.937] [error_logger] [error] y: 678.394226 x: 339.197113
+[2018-08-20 11:02:22.937] [error_logger] [error] 22
+[2018-08-20 11:02:22.945] [error_logger] [error] y: 679.194214 x: 339.597107
+[2018-08-20 11:02:22.945] [error_logger] [error] 22
+[2018-08-20 11:02:22.953] [error_logger] [error] y: 679.994202 x: 339.997101
+[2018-08-20 11:02:22.953] [error_logger] [error] 22
+[2018-08-20 11:02:22.963] [error_logger] [error] y: 680.794189 x: 340.397095
+[2018-08-20 11:02:22.963] [error_logger] [error] 22
+[2018-08-20 11:02:22.970] [error_logger] [error] y: 681.594177 x: 340.797089
+[2018-08-20 11:02:22.970] [error_logger] [error] 22
+[2018-08-20 11:02:22.978] [error_logger] [error] y: 682.394165 x: 341.197083
+[2018-08-20 11:02:22.978] [error_logger] [error] 22
+[2018-08-20 11:02:22.986] [error_logger] [error] y: 683.194153 x: 341.597076
+[2018-08-20 11:02:22.986] [error_logger] [error] 22
+[2018-08-20 11:02:22.995] [error_logger] [error] y: 683.994141 x: 341.997070
+[2018-08-20 11:02:22.995] [error_logger] [error] 22
+[2018-08-20 11:02:23.003] [error_logger] [error] y: 684.794128 x: 342.397064
+[2018-08-20 11:02:23.003] [error_logger] [error] 22
+[2018-08-20 11:02:23.012] [error_logger] [error] y: 685.594116 x: 342.797058
+[2018-08-20 11:02:23.012] [error_logger] [error] 22
+[2018-08-20 11:02:23.020] [error_logger] [error] y: 686.394104 x: 343.197052
+[2018-08-20 11:02:23.020] [error_logger] [error] 22
+[2018-08-20 11:02:23.028] [error_logger] [error] y: 687.194092 x: 343.597046
+[2018-08-20 11:02:23.028] [error_logger] [error] 22
+[2018-08-20 11:02:23.037] [error_logger] [error] y: 687.994080 x: 343.997040
+[2018-08-20 11:02:23.037] [error_logger] [error] 22
+[2018-08-20 11:02:23.046] [error_logger] [error] y: 688.794067 x: 344.397034
+[2018-08-20 11:02:23.046] [error_logger] [error] 22
+[2018-08-20 11:02:23.055] [error_logger] [error] y: 689.594055 x: 344.797028
+[2018-08-20 11:02:23.055] [error_logger] [error] 22
+[2018-08-20 11:02:23.062] [error_logger] [error] y: 690.394043 x: 345.197021
+[2018-08-20 11:02:23.062] [error_logger] [error] 22
+[2018-08-20 11:02:23.070] [error_logger] [error] y: 691.194031 x: 345.597015
+[2018-08-20 11:02:23.070] [error_logger] [error] 22
+[2018-08-20 11:02:23.079] [error_logger] [error] y: 691.994019 x: 345.997009
+[2018-08-20 11:02:23.079] [error_logger] [error] 22
+[2018-08-20 11:02:23.087] [error_logger] [error] y: 692.794006 x: 346.397003
+[2018-08-20 11:02:23.087] [error_logger] [error] 22
+[2018-08-20 11:02:23.096] [error_logger] [error] y: 693.593994 x: 346.796997
+[2018-08-20 11:02:23.096] [error_logger] [error] 22
+[2018-08-20 11:02:23.103] [error_logger] [error] y: 694.393982 x: 347.196991
+[2018-08-20 11:02:23.103] [error_logger] [error] 22
+[2018-08-20 11:02:23.112] [error_logger] [error] y: 695.193970 x: 347.596985
+[2018-08-20 11:02:23.112] [error_logger] [error] 22
+[2018-08-20 11:02:23.120] [error_logger] [error] y: 695.993958 x: 347.996979
+[2018-08-20 11:02:23.120] [error_logger] [error] 22
+[2018-08-20 11:02:23.129] [error_logger] [error] y: 696.793945 x: 348.396973
+[2018-08-20 11:02:23.129] [error_logger] [error] 22
+[2018-08-20 11:02:23.137] [error_logger] [error] y: 697.593933 x: 348.796967
+[2018-08-20 11:02:23.137] [error_logger] [error] 22
+[2018-08-20 11:02:23.146] [error_logger] [error] y: 698.393921 x: 349.196960
+[2018-08-20 11:02:23.146] [error_logger] [error] 22
+[2018-08-20 11:02:23.153] [error_logger] [error] y: 699.193909 x: 349.596954
+[2018-08-20 11:02:23.153] [error_logger] [error] 22
+[2018-08-20 11:02:23.162] [error_logger] [error] y: 699.993896 x: 349.996948
+[2018-08-20 11:02:23.162] [error_logger] [error] 22
+[2018-08-20 11:02:23.170] [error_logger] [error] y: 700.793884 x: 350.396942
+[2018-08-20 11:02:23.170] [error_logger] [error] 22
+[2018-08-20 11:02:23.179] [error_logger] [error] y: 701.593872 x: 350.796936
+[2018-08-20 11:02:23.179] [error_logger] [error] 22
+[2018-08-20 11:02:23.187] [error_logger] [error] y: 702.393860 x: 351.196930
+[2018-08-20 11:02:23.187] [error_logger] [error] 22
+[2018-08-20 11:02:23.196] [error_logger] [error] y: 703.193848 x: 351.596924
+[2018-08-20 11:02:23.196] [error_logger] [error] 22
+[2018-08-20 11:02:23.204] [error_logger] [error] y: 703.993835 x: 351.996918
+[2018-08-20 11:02:23.204] [error_logger] [error] 22
+[2018-08-20 11:02:23.214] [error_logger] [error] y: 704.793823 x: 352.396912
+[2018-08-20 11:02:23.214] [error_logger] [error] 22
+[2018-08-20 11:02:23.220] [error_logger] [error] y: 705.593811 x: 352.796906
+[2018-08-20 11:02:23.220] [error_logger] [error] 22
+[2018-08-20 11:02:23.228] [error_logger] [error] y: 706.393799 x: 353.196899
+[2018-08-20 11:02:23.228] [error_logger] [error] 22
+[2018-08-20 11:02:23.237] [error_logger] [error] y: 707.193787 x: 353.596893
+[2018-08-20 11:02:23.237] [error_logger] [error] 22
+[2018-08-20 11:02:23.245] [error_logger] [error] y: 707.993774 x: 353.996887
+[2018-08-20 11:02:23.245] [error_logger] [error] 22
+[2018-08-20 11:02:23.253] [error_logger] [error] y: 708.793762 x: 354.396881
+[2018-08-20 11:02:23.253] [error_logger] [error] 22
+[2018-08-20 11:02:23.262] [error_logger] [error] y: 709.593750 x: 354.796875
+[2018-08-20 11:02:23.263] [error_logger] [error] 22
+[2018-08-20 11:02:23.270] [error_logger] [error] y: 710.393738 x: 355.196869
+[2018-08-20 11:02:23.270] [error_logger] [error] 22
+[2018-08-20 11:02:23.278] [error_logger] [error] y: 711.193726 x: 355.596863
+[2018-08-20 11:02:23.278] [error_logger] [error] 22
+[2018-08-20 11:02:23.287] [error_logger] [error] y: 711.993713 x: 355.996857
+[2018-08-20 11:02:23.287] [error_logger] [error] 22
+[2018-08-20 11:02:23.295] [error_logger] [error] y: 712.793701 x: 356.396851
+[2018-08-20 11:02:23.295] [error_logger] [error] 22
+[2018-08-20 11:02:23.303] [error_logger] [error] y: 713.593689 x: 356.796844
+[2018-08-20 11:02:23.303] [error_logger] [error] 22
+[2018-08-20 11:02:23.313] [error_logger] [error] y: 714.393677 x: 357.196838
+[2018-08-20 11:02:23.313] [error_logger] [error] 22
+[2018-08-20 11:02:23.320] [error_logger] [error] y: 715.193665 x: 357.596832
+[2018-08-20 11:02:23.320] [error_logger] [error] 22
+[2018-08-20 11:02:23.329] [error_logger] [error] y: 715.993652 x: 357.996826
+[2018-08-20 11:02:23.329] [error_logger] [error] 22
+[2018-08-20 11:02:23.337] [error_logger] [error] y: 716.793640 x: 358.396820
+[2018-08-20 11:02:23.337] [error_logger] [error] 22
+[2018-08-20 11:02:23.345] [error_logger] [error] y: 717.593628 x: 358.796814
+[2018-08-20 11:02:23.345] [error_logger] [error] 22
+[2018-08-20 11:02:23.353] [error_logger] [error] y: 718.393616 x: 359.196808
+[2018-08-20 11:02:23.353] [error_logger] [error] 22
+[2018-08-20 11:02:23.363] [error_logger] [error] y: 719.193604 x: 359.596802
+[2018-08-20 11:02:23.363] [error_logger] [error] 22
+[2018-08-20 11:02:23.370] [error_logger] [error] y: 719.993591 x: 359.996796
+[2018-08-20 11:02:23.370] [error_logger] [error] 22
+[2018-08-20 11:02:23.379] [error_logger] [error] y: 720.793579 x: 360.396790
+[2018-08-20 11:02:23.379] [error_logger] [error] 22
+[2018-08-20 11:02:23.387] [error_logger] [error] y: 721.593567 x: 360.796783
+[2018-08-20 11:02:23.387] [error_logger] [error] 22
+[2018-08-20 11:02:23.395] [error_logger] [error] y: 722.393555 x: 361.196777
+[2018-08-20 11:02:23.395] [error_logger] [error] 22
+[2018-08-20 11:02:23.403] [error_logger] [error] y: 723.193542 x: 361.596771
+[2018-08-20 11:02:23.403] [error_logger] [error] 22
+[2018-08-20 11:02:23.413] [error_logger] [error] y: 723.993530 x: 361.996765
+[2018-08-20 11:02:23.413] [error_logger] [error] 22
+[2018-08-20 11:02:23.420] [error_logger] [error] y: 724.793518 x: 362.396759
+[2018-08-20 11:02:23.420] [error_logger] [error] 22
+[2018-08-20 11:02:23.429] [error_logger] [error] y: 725.593506 x: 362.796753
+[2018-08-20 11:02:23.429] [error_logger] [error] 22
+[2018-08-20 11:02:23.437] [error_logger] [error] y: 726.393494 x: 363.196747
+[2018-08-20 11:02:23.437] [error_logger] [error] 22
+[2018-08-20 11:02:23.445] [error_logger] [error] y: 727.193481 x: 363.596741
+[2018-08-20 11:02:23.445] [error_logger] [error] 22
+[2018-08-20 11:02:23.453] [error_logger] [error] y: 727.993469 x: 363.996735
+[2018-08-20 11:02:23.453] [error_logger] [error] 22
+[2018-08-20 11:02:23.463] [error_logger] [error] y: 728.793457 x: 364.396729
+[2018-08-20 11:02:23.463] [error_logger] [error] 22
+[2018-08-20 11:02:23.471] [error_logger] [error] y: 729.593445 x: 364.796722
+[2018-08-20 11:02:23.471] [error_logger] [error] 22
+[2018-08-20 11:02:23.479] [error_logger] [error] y: 730.393433 x: 365.196716
+[2018-08-20 11:02:23.479] [error_logger] [error] 22
+[2018-08-20 11:02:23.487] [error_logger] [error] y: 731.193420 x: 365.596710
+[2018-08-20 11:02:23.487] [error_logger] [error] 22
+[2018-08-20 11:02:23.496] [error_logger] [error] y: 731.993408 x: 365.996704
+[2018-08-20 11:02:23.496] [error_logger] [error] 22
+[2018-08-20 11:02:23.503] [error_logger] [error] y: 732.793396 x: 366.396698
+[2018-08-20 11:02:23.503] [error_logger] [error] 22
+[2018-08-20 11:02:23.512] [error_logger] [error] y: 733.593384 x: 366.796692
+[2018-08-20 11:02:23.513] [error_logger] [error] 22
+[2018-08-20 11:02:23.520] [error_logger] [error] y: 734.393372 x: 367.196686
+[2018-08-20 11:02:23.520] [error_logger] [error] 22
+[2018-08-20 11:02:23.530] [error_logger] [error] y: 735.193359 x: 367.596680
+[2018-08-20 11:02:23.530] [error_logger] [error] 22
+[2018-08-20 11:02:23.537] [error_logger] [error] y: 735.993347 x: 367.996674
+[2018-08-20 11:02:23.537] [error_logger] [error] 22
+[2018-08-20 11:02:23.545] [error_logger] [error] y: 736.793335 x: 368.396667
+[2018-08-20 11:02:23.545] [error_logger] [error] 22
+[2018-08-20 11:02:23.553] [error_logger] [error] y: 737.593323 x: 368.796661
+[2018-08-20 11:02:23.553] [error_logger] [error] 22
+[2018-08-20 11:02:23.562] [error_logger] [error] y: 738.393311 x: 369.196655
+[2018-08-20 11:02:23.562] [error_logger] [error] 22
+[2018-08-20 11:02:23.570] [error_logger] [error] y: 739.193298 x: 369.596649
+[2018-08-20 11:02:23.570] [error_logger] [error] 22
+[2018-08-20 11:02:23.579] [error_logger] [error] y: 739.993286 x: 369.996643
+[2018-08-20 11:02:23.579] [error_logger] [error] 22
+[2018-08-20 11:02:23.587] [error_logger] [error] y: 740.793274 x: 370.396637
+[2018-08-20 11:02:23.587] [error_logger] [error] 22
+[2018-08-20 11:02:23.596] [error_logger] [error] y: 741.593262 x: 370.796631
+[2018-08-20 11:02:23.596] [error_logger] [error] 22
+[2018-08-20 11:02:23.604] [error_logger] [error] y: 742.393250 x: 371.196625
+[2018-08-20 11:02:23.604] [error_logger] [error] 22
+[2018-08-20 11:02:23.612] [error_logger] [error] y: 743.193237 x: 371.596619
+[2018-08-20 11:02:23.612] [error_logger] [error] 22
+[2018-08-20 11:02:23.620] [error_logger] [error] y: 743.993225 x: 371.996613
+[2018-08-20 11:02:23.620] [error_logger] [error] 22
+[2018-08-20 11:02:23.629] [error_logger] [error] y: 744.793213 x: 372.396606
+[2018-08-20 11:02:23.629] [error_logger] [error] 22
+[2018-08-20 11:02:23.637] [error_logger] [error] y: 745.593201 x: 372.796600
+[2018-08-20 11:02:23.637] [error_logger] [error] 22
+[2018-08-20 11:02:23.645] [error_logger] [error] y: 746.393188 x: 373.196594
+[2018-08-20 11:02:23.646] [error_logger] [error] 22
+[2018-08-20 11:02:23.653] [error_logger] [error] y: 747.193176 x: 373.596588
+[2018-08-20 11:02:23.653] [error_logger] [error] 22
+[2018-08-20 11:02:23.664] [error_logger] [error] y: 747.993164 x: 373.996582
+[2018-08-20 11:02:23.664] [error_logger] [error] 22
+[2018-08-20 11:02:23.670] [error_logger] [error] y: 748.793152 x: 374.396576
+[2018-08-20 11:02:23.670] [error_logger] [error] 22
+[2018-08-20 11:02:23.679] [error_logger] [error] y: 749.593140 x: 374.796570
+[2018-08-20 11:02:23.679] [error_logger] [error] 22
+[2018-08-20 11:02:23.687] [error_logger] [error] y: 750.393127 x: 375.196564
+[2018-08-20 11:02:23.687] [error_logger] [error] 22
+[2018-08-20 11:02:23.696] [error_logger] [error] y: 751.193115 x: 375.596558
+[2018-08-20 11:02:23.696] [error_logger] [error] 22
+[2018-08-20 11:02:23.704] [error_logger] [error] y: 751.993103 x: 375.996552
+[2018-08-20 11:02:23.704] [error_logger] [error] 22
+[2018-08-20 11:02:23.712] [error_logger] [error] y: 752.793091 x: 376.396545
+[2018-08-20 11:02:23.712] [error_logger] [error] 22
+[2018-08-20 11:02:23.721] [error_logger] [error] y: 753.593079 x: 376.796539
+[2018-08-20 11:02:23.721] [error_logger] [error] 22
+[2018-08-20 11:02:23.729] [error_logger] [error] y: 754.393066 x: 377.196533
+[2018-08-20 11:02:23.729] [error_logger] [error] 22
+[2018-08-20 11:02:23.737] [error_logger] [error] y: 755.193054 x: 377.596527
+[2018-08-20 11:02:23.737] [error_logger] [error] 22
+[2018-08-20 11:02:23.746] [error_logger] [error] y: 755.993042 x: 377.996521
+[2018-08-20 11:02:23.746] [error_logger] [error] 22
+[2018-08-20 11:02:23.754] [error_logger] [error] y: 756.793030 x: 378.396515
+[2018-08-20 11:02:23.754] [error_logger] [error] 22
+[2018-08-20 11:02:23.762] [error_logger] [error] y: 757.593018 x: 378.796509
+[2018-08-20 11:02:23.762] [error_logger] [error] 22
+[2018-08-20 11:02:23.770] [error_logger] [error] y: 758.393005 x: 379.196503
+[2018-08-20 11:02:23.770] [error_logger] [error] 22
+[2018-08-20 11:02:23.780] [error_logger] [error] y: 759.192993 x: 379.596497
+[2018-08-20 11:02:23.780] [error_logger] [error] 22
+[2018-08-20 11:02:23.787] [error_logger] [error] y: 759.992981 x: 379.996490
+[2018-08-20 11:02:23.787] [error_logger] [error] 22
+[2018-08-20 11:02:23.795] [error_logger] [error] y: 760.792969 x: 380.396484
+[2018-08-20 11:02:23.796] [error_logger] [error] 22
+[2018-08-20 11:02:23.804] [error_logger] [error] y: 761.592957 x: 380.796478
+[2018-08-20 11:02:23.804] [error_logger] [error] 22
+[2018-08-20 11:02:23.812] [error_logger] [error] y: 762.392944 x: 381.196472
+[2018-08-20 11:02:23.812] [error_logger] [error] 22
+[2018-08-20 11:02:23.820] [error_logger] [error] y: 763.192932 x: 381.596466
+[2018-08-20 11:02:23.820] [error_logger] [error] 22
+[2018-08-20 11:02:23.829] [error_logger] [error] y: 763.992920 x: 381.996460
+[2018-08-20 11:02:23.829] [error_logger] [error] 22
+[2018-08-20 11:02:23.837] [error_logger] [error] y: 764.792908 x: 382.396454
+[2018-08-20 11:02:23.837] [error_logger] [error] 22
+[2018-08-20 11:02:23.847] [error_logger] [error] y: 765.592896 x: 382.796448
+[2018-08-20 11:02:23.847] [error_logger] [error] 22
+[2018-08-20 11:02:23.854] [error_logger] [error] y: 766.392883 x: 383.196442
+[2018-08-20 11:02:23.854] [error_logger] [error] 22
+[2018-08-20 11:02:23.862] [error_logger] [error] y: 767.192871 x: 383.596436
+[2018-08-20 11:02:23.862] [error_logger] [error] 22
+[2018-08-20 11:02:23.870] [error_logger] [error] y: 767.992859 x: 383.996429
+[2018-08-20 11:02:23.870] [error_logger] [error] 22
+[2018-08-20 11:02:23.879] [error_logger] [error] y: 768.792847 x: 384.396423
+[2018-08-20 11:02:23.879] [error_logger] [error] 22
+[2018-08-20 11:02:23.887] [error_logger] [error] y: 769.592834 x: 384.796417
+[2018-08-20 11:02:23.887] [error_logger] [error] 22
+[2018-08-20 11:02:23.896] [error_logger] [error] y: 770.392822 x: 385.196411
+[2018-08-20 11:02:23.896] [error_logger] [error] 22
+[2018-08-20 11:02:23.904] [error_logger] [error] y: 771.192810 x: 385.596405
+[2018-08-20 11:02:23.904] [error_logger] [error] 22
+[2018-08-20 11:02:23.912] [error_logger] [error] y: 771.992798 x: 385.996399
+[2018-08-20 11:02:23.912] [error_logger] [error] 22
+[2018-08-20 11:02:23.920] [error_logger] [error] y: 772.792786 x: 386.396393
+[2018-08-20 11:02:23.920] [error_logger] [error] 22
+[2018-08-20 11:02:23.929] [error_logger] [error] y: 773.592773 x: 386.796387
+[2018-08-20 11:02:23.929] [error_logger] [error] 22
+[2018-08-20 11:02:23.937] [error_logger] [error] y: 774.392761 x: 387.196381
+[2018-08-20 11:02:23.937] [error_logger] [error] 22
+[2018-08-20 11:02:23.946] [error_logger] [error] y: 775.192749 x: 387.596375
+[2018-08-20 11:02:23.946] [error_logger] [error] 22
+[2018-08-20 11:02:23.954] [error_logger] [error] y: 775.992737 x: 387.996368
+[2018-08-20 11:02:23.954] [error_logger] [error] 22
+[2018-08-20 11:02:23.962] [error_logger] [error] y: 776.792725 x: 388.396362
+[2018-08-20 11:02:23.962] [error_logger] [error] 22
+[2018-08-20 11:02:23.970] [error_logger] [error] y: 777.592712 x: 388.796356
+[2018-08-20 11:02:23.970] [error_logger] [error] 22
+[2018-08-20 11:02:23.979] [error_logger] [error] y: 778.392700 x: 389.196350
+[2018-08-20 11:02:23.979] [error_logger] [error] 22
+[2018-08-20 11:02:23.987] [error_logger] [error] y: 779.192688 x: 389.596344
+[2018-08-20 11:02:23.987] [error_logger] [error] 22
+[2018-08-20 11:02:23.996] [error_logger] [error] y: 779.992676 x: 389.996338
+[2018-08-20 11:02:23.996] [error_logger] [error] 22
+[2018-08-20 11:02:24.004] [error_logger] [error] y: 780.792664 x: 390.396332
+[2018-08-20 11:02:24.004] [error_logger] [error] 22
+[2018-08-20 11:02:24.012] [error_logger] [error] y: 781.592651 x: 390.796326
+[2018-08-20 11:02:24.012] [error_logger] [error] 22
+[2018-08-20 11:02:24.020] [error_logger] [error] y: 782.392639 x: 391.196320
+[2018-08-20 11:02:24.020] [error_logger] [error] 22
+[2018-08-20 11:02:24.029] [error_logger] [error] y: 783.192627 x: 391.596313
+[2018-08-20 11:02:24.029] [error_logger] [error] 22
+[2018-08-20 11:02:24.037] [error_logger] [error] y: 783.992615 x: 391.996307
+[2018-08-20 11:02:24.037] [error_logger] [error] 22
+[2018-08-20 11:02:24.046] [error_logger] [error] y: 784.792603 x: 392.396301
+[2018-08-20 11:02:24.046] [error_logger] [error] 22
+[2018-08-20 11:02:24.054] [error_logger] [error] y: 785.592590 x: 392.796295
+[2018-08-20 11:02:24.054] [error_logger] [error] 22
+[2018-08-20 11:02:24.062] [error_logger] [error] y: 786.392578 x: 393.196289
+[2018-08-20 11:02:24.062] [error_logger] [error] 22
+[2018-08-20 11:02:24.070] [error_logger] [error] y: 787.192566 x: 393.596283
+[2018-08-20 11:02:24.070] [error_logger] [error] 22
+[2018-08-20 11:02:24.079] [error_logger] [error] y: 787.992554 x: 393.996277
+[2018-08-20 11:02:24.079] [error_logger] [error] 22
+[2018-08-20 11:02:24.087] [error_logger] [error] y: 788.792542 x: 394.396271
+[2018-08-20 11:02:24.087] [error_logger] [error] 22
+[2018-08-20 11:02:24.096] [error_logger] [error] y: 789.592529 x: 394.796265
+[2018-08-20 11:02:24.096] [error_logger] [error] 22
+[2018-08-20 11:02:24.104] [error_logger] [error] y: 790.392517 x: 395.196259
+[2018-08-20 11:02:24.104] [error_logger] [error] 22
+[2018-08-20 11:02:24.112] [error_logger] [error] y: 791.192505 x: 395.596252
+[2018-08-20 11:02:24.112] [error_logger] [error] 22
+[2018-08-20 11:02:24.121] [error_logger] [error] y: 791.992493 x: 395.996246
+[2018-08-20 11:02:24.121] [error_logger] [error] 22
+[2018-08-20 11:02:24.129] [error_logger] [error] y: 792.792480 x: 396.396240
+[2018-08-20 11:02:24.129] [error_logger] [error] 22
+[2018-08-20 11:02:24.137] [error_logger] [error] y: 793.592468 x: 396.796234
+[2018-08-20 11:02:24.137] [error_logger] [error] 22
+[2018-08-20 11:02:24.146] [error_logger] [error] y: 794.392456 x: 397.196228
+[2018-08-20 11:02:24.146] [error_logger] [error] 22
+[2018-08-20 11:02:24.154] [error_logger] [error] y: 795.192444 x: 397.596222
+[2018-08-20 11:02:24.154] [error_logger] [error] 22
+[2018-08-20 11:02:24.163] [error_logger] [error] y: 795.992432 x: 397.996216
+[2018-08-20 11:02:24.163] [error_logger] [error] 22
+[2018-08-20 11:02:24.170] [error_logger] [error] y: 796.792419 x: 398.396210
+[2018-08-20 11:02:24.170] [error_logger] [error] 22
+[2018-08-20 11:02:24.180] [error_logger] [error] y: 797.592407 x: 398.796204
+[2018-08-20 11:02:24.180] [error_logger] [error] 22
+[2018-08-20 11:02:24.187] [error_logger] [error] y: 798.392395 x: 399.196198
+[2018-08-20 11:02:24.187] [error_logger] [error] 22
+[2018-08-20 11:02:24.196] [error_logger] [error] y: 799.192383 x: 399.596191
+[2018-08-20 11:02:24.196] [error_logger] [error] 22
+[2018-08-20 11:02:24.204] [error_logger] [error] y: 799.992371 x: 399.996185
+[2018-08-20 11:02:24.204] [error_logger] [error] 22
+[2018-08-20 11:02:24.212] [error_logger] [error] y: 800.792358 x: 400.396179
+[2018-08-20 11:02:24.212] [error_logger] [error] 22
+[2018-08-20 11:02:24.220] [error_logger] [error] y: 801.592346 x: 400.796173
+[2018-08-20 11:02:24.220] [error_logger] [error] 22
+[2018-08-20 11:02:24.229] [error_logger] [error] y: 802.392334 x: 401.196167
+[2018-08-20 11:02:24.229] [error_logger] [error] 22
+[2018-08-20 11:02:24.237] [error_logger] [error] y: 803.192322 x: 401.596161
+[2018-08-20 11:02:24.237] [error_logger] [error] 22
+[2018-08-20 11:02:24.245] [error_logger] [error] y: 803.992310 x: 401.996155
+[2018-08-20 11:02:24.245] [error_logger] [error] 22
+[2018-08-20 11:02:24.254] [error_logger] [error] y: 804.792297 x: 402.396149
+[2018-08-20 11:02:24.254] [error_logger] [error] 22
+[2018-08-20 11:02:24.263] [error_logger] [error] y: 805.592285 x: 402.796143
+[2018-08-20 11:02:24.263] [error_logger] [error] 22
+[2018-08-20 11:02:24.270] [error_logger] [error] y: 806.392273 x: 403.196136
+[2018-08-20 11:02:24.270] [error_logger] [error] 22
+[2018-08-20 11:02:24.279] [error_logger] [error] y: 807.192261 x: 403.596130
+[2018-08-20 11:02:24.279] [error_logger] [error] 22
+[2018-08-20 11:02:24.287] [error_logger] [error] y: 807.992249 x: 403.996124
+[2018-08-20 11:02:24.287] [error_logger] [error] 22
+[2018-08-20 11:02:24.296] [error_logger] [error] y: 808.792236 x: 404.396118
+[2018-08-20 11:02:24.296] [error_logger] [error] 22
+[2018-08-20 11:02:24.304] [error_logger] [error] y: 809.592224 x: 404.796112
+[2018-08-20 11:02:24.304] [error_logger] [error] 22
+[2018-08-20 11:02:24.313] [error_logger] [error] y: 810.392212 x: 405.196106
+[2018-08-20 11:02:24.313] [error_logger] [error] 22
+[2018-08-20 11:02:24.321] [error_logger] [error] y: 811.192200 x: 405.596100
+[2018-08-20 11:02:24.321] [error_logger] [error] 22
+[2018-08-20 11:02:24.331] [error_logger] [error] y: 811.992188 x: 405.996094
+[2018-08-20 11:02:24.331] [error_logger] [error] 22
+[2018-08-20 11:02:24.337] [error_logger] [error] y: 812.792175 x: 406.396088
+[2018-08-20 11:02:24.337] [error_logger] [error] 22
+[2018-08-20 11:02:24.346] [error_logger] [error] y: 813.592163 x: 406.796082
+[2018-08-20 11:02:24.346] [error_logger] [error] 22
+[2018-08-20 11:02:24.354] [error_logger] [error] y: 814.392151 x: 407.196075
+[2018-08-20 11:02:24.354] [error_logger] [error] 22
+[2018-08-20 11:02:24.363] [error_logger] [error] y: 815.192139 x: 407.596069
+[2018-08-20 11:02:24.363] [error_logger] [error] 22
+[2018-08-20 11:02:24.371] [error_logger] [error] y: 815.992126 x: 407.996063
+[2018-08-20 11:02:24.371] [error_logger] [error] 22
+[2018-08-20 11:02:24.380] [error_logger] [error] y: 816.792114 x: 408.396057
+[2018-08-20 11:02:24.380] [error_logger] [error] 22
+[2018-08-20 11:02:24.387] [error_logger] [error] y: 817.592102 x: 408.796051
+[2018-08-20 11:02:24.387] [error_logger] [error] 22
+[2018-08-20 11:02:24.396] [error_logger] [error] y: 818.392090 x: 409.196045
+[2018-08-20 11:02:24.396] [error_logger] [error] 22
+[2018-08-20 11:02:24.404] [error_logger] [error] y: 819.192078 x: 409.596039
+[2018-08-20 11:02:24.404] [error_logger] [error] 22
+[2018-08-20 11:02:24.412] [error_logger] [error] y: 819.992065 x: 409.996033
+[2018-08-20 11:02:24.412] [error_logger] [error] 22
+[2018-08-20 11:02:24.420] [error_logger] [error] y: 820.792053 x: 410.396027
+[2018-08-20 11:02:24.420] [error_logger] [error] 22
+[2018-08-20 11:02:24.430] [error_logger] [error] y: 821.592041 x: 410.796021
+[2018-08-20 11:02:24.430] [error_logger] [error] 22
+[2018-08-20 11:02:24.437] [error_logger] [error] y: 822.392029 x: 411.196014
+[2018-08-20 11:02:24.437] [error_logger] [error] 22
+[2018-08-20 11:02:24.446] [error_logger] [error] y: 823.192017 x: 411.596008
+[2018-08-20 11:02:24.446] [error_logger] [error] 22
+[2018-08-20 11:02:24.454] [error_logger] [error] y: 823.992004 x: 411.996002
+[2018-08-20 11:02:24.454] [error_logger] [error] 22
+[2018-08-20 11:02:24.463] [error_logger] [error] y: 824.791992 x: 412.395996
+[2018-08-20 11:02:24.463] [error_logger] [error] 22
+[2018-08-20 11:02:24.470] [error_logger] [error] y: 825.591980 x: 412.795990
+[2018-08-20 11:02:24.470] [error_logger] [error] 22
+[2018-08-20 11:02:24.479] [error_logger] [error] y: 826.391968 x: 413.195984
+[2018-08-20 11:02:24.479] [error_logger] [error] 22
+[2018-08-20 11:02:24.487] [error_logger] [error] y: 827.191956 x: 413.595978
+[2018-08-20 11:02:24.487] [error_logger] [error] 22
+[2018-08-20 11:02:24.496] [error_logger] [error] y: 827.991943 x: 413.995972
+[2018-08-20 11:02:24.496] [error_logger] [error] 22
+[2018-08-20 11:02:24.504] [error_logger] [error] y: 828.791931 x: 414.395966
+[2018-08-20 11:02:24.504] [error_logger] [error] 22
+[2018-08-20 11:02:24.512] [error_logger] [error] y: 829.591919 x: 414.795959
+[2018-08-20 11:02:24.512] [error_logger] [error] 22
+[2018-08-20 11:02:24.521] [error_logger] [error] y: 830.391907 x: 415.195953
+[2018-08-20 11:02:24.521] [error_logger] [error] 22
+[2018-08-20 11:02:24.529] [error_logger] [error] y: 831.191895 x: 415.595947
+[2018-08-20 11:02:24.529] [error_logger] [error] 22
+[2018-08-20 11:02:24.537] [error_logger] [error] y: 831.991882 x: 415.995941
+[2018-08-20 11:02:24.537] [error_logger] [error] 22
+[2018-08-20 11:02:24.546] [error_logger] [error] y: 832.791870 x: 416.395935
+[2018-08-20 11:02:24.546] [error_logger] [error] 22
+[2018-08-20 11:02:24.554] [error_logger] [error] y: 833.591858 x: 416.795929
+[2018-08-20 11:02:24.554] [error_logger] [error] 22
+[2018-08-20 11:02:24.563] [error_logger] [error] y: 834.391846 x: 417.195923
+[2018-08-20 11:02:24.563] [error_logger] [error] 22
+[2018-08-20 11:02:24.572] [error_logger] [error] y: 835.191833 x: 417.595917
+[2018-08-20 11:02:24.572] [error_logger] [error] 22
+[2018-08-20 11:02:24.579] [error_logger] [error] y: 835.991821 x: 417.995911
+[2018-08-20 11:02:24.579] [error_logger] [error] 22
+[2018-08-20 11:02:24.587] [error_logger] [error] y: 836.791809 x: 418.395905
+[2018-08-20 11:02:24.587] [error_logger] [error] 22
+[2018-08-20 11:02:24.596] [error_logger] [error] y: 837.591797 x: 418.795898
+[2018-08-20 11:02:24.596] [error_logger] [error] 22
+[2018-08-20 11:02:24.604] [error_logger] [error] y: 838.391785 x: 419.195892
+[2018-08-20 11:02:24.604] [error_logger] [error] 22
+[2018-08-20 11:02:24.614] [error_logger] [error] y: 839.191772 x: 419.595886
+[2018-08-20 11:02:24.614] [error_logger] [error] 22
+[2018-08-20 11:02:24.621] [error_logger] [error] y: 839.991760 x: 419.995880
+[2018-08-20 11:02:24.621] [error_logger] [error] 22
+[2018-08-20 11:02:24.629] [error_logger] [error] y: 840.791748 x: 420.395874
+[2018-08-20 11:02:24.629] [error_logger] [error] 22
+[2018-08-20 11:02:24.637] [error_logger] [error] y: 841.591736 x: 420.795868
+[2018-08-20 11:02:24.637] [error_logger] [error] 22
+[2018-08-20 11:02:24.646] [error_logger] [error] y: 842.391724 x: 421.195862
+[2018-08-20 11:02:24.646] [error_logger] [error] 22
+[2018-08-20 11:02:24.654] [error_logger] [error] y: 843.191711 x: 421.595856
+[2018-08-20 11:02:24.654] [error_logger] [error] 22
+[2018-08-20 11:02:24.663] [error_logger] [error] y: 843.991699 x: 421.995850
+[2018-08-20 11:02:24.663] [error_logger] [error] 22
+[2018-08-20 11:02:24.671] [error_logger] [error] y: 844.791687 x: 422.395844
+[2018-08-20 11:02:24.671] [error_logger] [error] 22
+[2018-08-20 11:02:24.681] [error_logger] [error] y: 845.591675 x: 422.795837
+[2018-08-20 11:02:24.681] [error_logger] [error] 22
+[2018-08-20 11:02:24.687] [error_logger] [error] y: 846.391663 x: 423.195831
+[2018-08-20 11:02:24.687] [error_logger] [error] 22
+[2018-08-20 11:02:24.696] [error_logger] [error] y: 847.191650 x: 423.595825
+[2018-08-20 11:02:24.696] [error_logger] [error] 22
+[2018-08-20 11:02:24.704] [error_logger] [error] y: 847.991638 x: 423.995819
+[2018-08-20 11:02:24.704] [error_logger] [error] 22
+[2018-08-20 11:02:24.713] [error_logger] [error] y: 848.791626 x: 424.395813
+[2018-08-20 11:02:24.713] [error_logger] [error] 22
+[2018-08-20 11:02:24.721] [error_logger] [error] y: 849.591614 x: 424.795807
+[2018-08-20 11:02:24.721] [error_logger] [error] 22
+[2018-08-20 11:02:24.729] [error_logger] [error] y: 850.391602 x: 425.195801
+[2018-08-20 11:02:24.729] [error_logger] [error] 22
+[2018-08-20 11:02:24.738] [error_logger] [error] y: 851.191589 x: 425.595795
+[2018-08-20 11:02:24.738] [error_logger] [error] 22
+[2018-08-20 11:02:24.746] [error_logger] [error] y: 851.991577 x: 425.995789
+[2018-08-20 11:02:24.746] [error_logger] [error] 22
+[2018-08-20 11:02:24.754] [error_logger] [error] y: 852.791565 x: 426.395782
+[2018-08-20 11:02:24.754] [error_logger] [error] 22
+[2018-08-20 11:02:24.763] [error_logger] [error] y: 853.591553 x: 426.795776
+[2018-08-20 11:02:24.764] [error_logger] [error] 22
+[2018-08-20 11:02:24.771] [error_logger] [error] y: 854.391541 x: 427.195770
+[2018-08-20 11:02:24.771] [error_logger] [error] 22
+[2018-08-20 11:02:24.780] [error_logger] [error] y: 855.191528 x: 427.595764
+[2018-08-20 11:02:24.780] [error_logger] [error] 22
+[2018-08-20 11:02:24.787] [error_logger] [error] y: 855.991516 x: 427.995758
+[2018-08-20 11:02:24.787] [error_logger] [error] 22
+[2018-08-20 11:02:24.796] [error_logger] [error] y: 856.791504 x: 428.395752
+[2018-08-20 11:02:24.796] [error_logger] [error] 22
+[2018-08-20 11:02:24.804] [error_logger] [error] y: 857.591492 x: 428.795746
+[2018-08-20 11:02:24.804] [error_logger] [error] 22
+[2018-08-20 11:02:24.813] [error_logger] [error] y: 858.391479 x: 429.195740
+[2018-08-20 11:02:24.813] [error_logger] [error] 22
+[2018-08-20 11:02:24.821] [error_logger] [error] y: 859.191467 x: 429.595734
+[2018-08-20 11:02:24.821] [error_logger] [error] 22
+[2018-08-20 11:02:24.831] [error_logger] [error] y: 859.991455 x: 429.995728
+[2018-08-20 11:02:24.831] [error_logger] [error] 22
+[2018-08-20 11:02:24.837] [error_logger] [error] y: 860.791443 x: 430.395721
+[2018-08-20 11:02:24.837] [error_logger] [error] 22
+[2018-08-20 11:02:24.846] [error_logger] [error] y: 861.591431 x: 430.795715
+[2018-08-20 11:02:24.846] [error_logger] [error] 22
+[2018-08-20 11:02:24.854] [error_logger] [error] y: 862.391418 x: 431.195709
+[2018-08-20 11:02:24.854] [error_logger] [error] 22
+[2018-08-20 11:02:24.863] [error_logger] [error] y: 863.191406 x: 431.595703
+[2018-08-20 11:02:24.863] [error_logger] [error] 22
+[2018-08-20 11:02:24.871] [error_logger] [error] y: 863.991394 x: 431.995697
+[2018-08-20 11:02:24.871] [error_logger] [error] 22
+[2018-08-20 11:02:24.881] [error_logger] [error] y: 864.791382 x: 432.395691
+[2018-08-20 11:02:24.881] [error_logger] [error] 22
+[2018-08-20 11:02:24.887] [error_logger] [error] y: 865.591370 x: 432.795685
+[2018-08-20 11:02:24.887] [error_logger] [error] 22
+[2018-08-20 11:02:24.896] [error_logger] [error] y: 866.391357 x: 433.195679
+[2018-08-20 11:02:24.896] [error_logger] [error] 22
+[2018-08-20 11:02:24.904] [error_logger] [error] y: 867.191345 x: 433.595673
+[2018-08-20 11:02:24.904] [error_logger] [error] 22
+[2018-08-20 11:02:24.912] [error_logger] [error] y: 867.991333 x: 433.995667
+[2018-08-20 11:02:24.912] [error_logger] [error] 22
+[2018-08-20 11:02:24.921] [error_logger] [error] y: 868.791321 x: 434.395660
+[2018-08-20 11:02:24.921] [error_logger] [error] 22
+[2018-08-20 11:02:24.931] [error_logger] [error] y: 869.591309 x: 434.795654
+[2018-08-20 11:02:24.931] [error_logger] [error] 22
+[2018-08-20 11:02:24.937] [error_logger] [error] y: 870.391296 x: 435.195648
+[2018-08-20 11:02:24.937] [error_logger] [error] 22
+[2018-08-20 11:02:24.946] [error_logger] [error] y: 871.191284 x: 435.595642
+[2018-08-20 11:02:24.946] [error_logger] [error] 22
+[2018-08-20 11:02:24.954] [error_logger] [error] y: 871.991272 x: 435.995636
+[2018-08-20 11:02:24.954] [error_logger] [error] 22
+[2018-08-20 11:02:24.963] [error_logger] [error] y: 872.791260 x: 436.395630
+[2018-08-20 11:02:24.963] [error_logger] [error] 22
+[2018-08-20 11:02:24.971] [error_logger] [error] y: 873.591248 x: 436.795624
+[2018-08-20 11:02:24.971] [error_logger] [error] 22
+[2018-08-20 11:02:24.979] [error_logger] [error] y: 874.391235 x: 437.195618
+[2018-08-20 11:02:24.979] [error_logger] [error] 22
+[2018-08-20 11:02:24.988] [error_logger] [error] y: 875.191223 x: 437.595612
+[2018-08-20 11:02:24.988] [error_logger] [error] 22
+[2018-08-20 11:02:24.996] [error_logger] [error] y: 875.991211 x: 437.995605
+[2018-08-20 11:02:24.996] [error_logger] [error] 22
+[2018-08-20 11:02:25.004] [error_logger] [error] y: 876.791199 x: 438.395599
+[2018-08-20 11:02:25.004] [error_logger] [error] 22
+[2018-08-20 11:02:25.013] [error_logger] [error] y: 877.591187 x: 438.795593
+[2018-08-20 11:02:25.013] [error_logger] [error] 22
+[2018-08-20 11:02:25.021] [error_logger] [error] y: 878.391174 x: 439.195587
+[2018-08-20 11:02:25.021] [error_logger] [error] 22
+[2018-08-20 11:02:25.030] [error_logger] [error] y: 879.191162 x: 439.595581
+[2018-08-20 11:02:25.030] [error_logger] [error] 22
+[2018-08-20 11:02:25.037] [error_logger] [error] y: 879.991150 x: 439.995575
+[2018-08-20 11:02:25.037] [error_logger] [error] 22
+[2018-08-20 11:02:25.046] [error_logger] [error] y: 880.791138 x: 440.395569
+[2018-08-20 11:02:25.046] [error_logger] [error] 22
+[2018-08-20 11:02:25.054] [error_logger] [error] y: 881.591125 x: 440.795563
+[2018-08-20 11:02:25.054] [error_logger] [error] 22
+[2018-08-20 11:02:25.063] [error_logger] [error] y: 882.391113 x: 441.195557
+[2018-08-20 11:02:25.063] [error_logger] [error] 22
+[2018-08-20 11:02:25.071] [error_logger] [error] y: 883.191101 x: 441.595551
+[2018-08-20 11:02:25.071] [error_logger] [error] 22
+[2018-08-20 11:02:25.079] [error_logger] [error] y: 883.991089 x: 441.995544
+[2018-08-20 11:02:25.080] [error_logger] [error] 22
+[2018-08-20 11:02:25.087] [error_logger] [error] y: 884.791077 x: 442.395538
+[2018-08-20 11:02:25.087] [error_logger] [error] 22
+[2018-08-20 11:02:25.096] [error_logger] [error] y: 885.591064 x: 442.795532
+[2018-08-20 11:02:25.096] [error_logger] [error] 22
+[2018-08-20 11:02:25.104] [error_logger] [error] y: 886.391052 x: 443.195526
+[2018-08-20 11:02:25.104] [error_logger] [error] 22
+[2018-08-20 11:02:25.114] [error_logger] [error] y: 887.191040 x: 443.595520
+[2018-08-20 11:02:25.114] [error_logger] [error] 22
+[2018-08-20 11:02:25.121] [error_logger] [error] y: 887.991028 x: 443.995514
+[2018-08-20 11:02:25.121] [error_logger] [error] 22
+[2018-08-20 11:02:25.129] [error_logger] [error] y: 888.791016 x: 444.395508
+[2018-08-20 11:02:25.129] [error_logger] [error] 22
+[2018-08-20 11:02:25.137] [error_logger] [error] y: 889.591003 x: 444.795502
+[2018-08-20 11:02:25.137] [error_logger] [error] 22
+[2018-08-20 11:02:25.146] [error_logger] [error] y: 890.390991 x: 445.195496
+[2018-08-20 11:02:25.146] [error_logger] [error] 22
+[2018-08-20 11:02:25.154] [error_logger] [error] y: 891.190979 x: 445.595490
+[2018-08-20 11:02:25.154] [error_logger] [error] 22
+[2018-08-20 11:02:25.163] [error_logger] [error] y: 891.990967 x: 445.995483
+[2018-08-20 11:02:25.163] [error_logger] [error] 22
+[2018-08-20 11:02:25.171] [error_logger] [error] y: 892.790955 x: 446.395477
+[2018-08-20 11:02:25.171] [error_logger] [error] 22
+[2018-08-20 11:02:25.179] [error_logger] [error] y: 893.590942 x: 446.795471
+[2018-08-20 11:02:25.179] [error_logger] [error] 22
+[2018-08-20 11:02:25.187] [error_logger] [error] y: 894.390930 x: 447.195465
+[2018-08-20 11:02:25.187] [error_logger] [error] 22
+[2018-08-20 11:02:25.196] [error_logger] [error] y: 895.190918 x: 447.595459
+[2018-08-20 11:02:25.196] [error_logger] [error] 22
+[2018-08-20 11:02:25.204] [error_logger] [error] y: 895.990906 x: 447.995453
+[2018-08-20 11:02:25.204] [error_logger] [error] 22
+[2018-08-20 11:02:25.213] [error_logger] [error] y: 896.790894 x: 448.395447
+[2018-08-20 11:02:25.213] [error_logger] [error] 22
+[2018-08-20 11:02:25.221] [error_logger] [error] y: 897.590881 x: 448.795441
+[2018-08-20 11:02:25.221] [error_logger] [error] 22
+[2018-08-20 11:02:25.231] [error_logger] [error] y: 898.390869 x: 449.195435
+[2018-08-20 11:02:25.231] [error_logger] [error] 22
+[2018-08-20 11:02:25.237] [error_logger] [error] y: 899.190857 x: 449.595428
+[2018-08-20 11:02:25.237] [error_logger] [error] 22
+[2018-08-20 11:02:25.246] [error_logger] [error] y: 899.990845 x: 449.995422
+[2018-08-20 11:02:25.246] [error_logger] [error] 22
+[2018-08-20 11:02:25.254] [error_logger] [error] y: 900.790833 x: 450.395416
+[2018-08-20 11:02:25.254] [error_logger] [error] 22
+[2018-08-20 11:02:25.263] [error_logger] [error] y: 901.590820 x: 450.795410
+[2018-08-20 11:02:25.263] [error_logger] [error] 22
+[2018-08-20 11:02:25.271] [error_logger] [error] y: 902.390808 x: 451.195404
+[2018-08-20 11:02:25.271] [error_logger] [error] 22
+[2018-08-20 11:02:25.279] [error_logger] [error] y: 903.190796 x: 451.595398
+[2018-08-20 11:02:25.279] [error_logger] [error] 22
+[2018-08-20 11:02:25.288] [error_logger] [error] y: 903.990784 x: 451.995392
+[2018-08-20 11:02:25.288] [error_logger] [error] 22
+[2018-08-20 11:02:25.296] [error_logger] [error] y: 904.790771 x: 452.395386
+[2018-08-20 11:02:25.296] [error_logger] [error] 22
+[2018-08-20 11:02:25.304] [error_logger] [error] y: 905.590759 x: 452.795380
+[2018-08-20 11:02:25.304] [error_logger] [error] 22
+[2018-08-20 11:02:25.313] [error_logger] [error] y: 906.390747 x: 453.195374
+[2018-08-20 11:02:25.313] [error_logger] [error] 22
+[2018-08-20 11:02:25.321] [error_logger] [error] y: 907.190735 x: 453.595367
+[2018-08-20 11:02:25.321] [error_logger] [error] 22
+[2018-08-20 11:02:25.329] [error_logger] [error] y: 907.990723 x: 453.995361
+[2018-08-20 11:02:25.329] [error_logger] [error] 22
+[2018-08-20 11:02:25.337] [error_logger] [error] y: 908.790710 x: 454.395355
+[2018-08-20 11:02:25.337] [error_logger] [error] 22
+[2018-08-20 11:02:25.347] [error_logger] [error] y: 909.590698 x: 454.795349
+[2018-08-20 11:02:25.347] [error_logger] [error] 22
+[2018-08-20 11:02:25.354] [error_logger] [error] y: 910.390686 x: 455.195343
+[2018-08-20 11:02:25.354] [error_logger] [error] 22
+[2018-08-20 11:02:25.363] [error_logger] [error] y: 911.190674 x: 455.595337
+[2018-08-20 11:02:25.363] [error_logger] [error] 22
+[2018-08-20 11:02:25.371] [error_logger] [error] y: 911.990662 x: 455.995331
+[2018-08-20 11:02:25.371] [error_logger] [error] 22
+[2018-08-20 11:02:25.380] [error_logger] [error] y: 912.790649 x: 456.395325
+[2018-08-20 11:02:25.380] [error_logger] [error] 22
+[2018-08-20 11:02:25.388] [error_logger] [error] y: 913.590637 x: 456.795319
+[2018-08-20 11:02:25.388] [error_logger] [error] 22
+[2018-08-20 11:02:25.396] [error_logger] [error] y: 914.390625 x: 457.195313
+[2018-08-20 11:02:25.396] [error_logger] [error] 22
+[2018-08-20 11:02:25.405] [error_logger] [error] y: 915.190613 x: 457.595306
+[2018-08-20 11:02:25.405] [error_logger] [error] 22
+[2018-08-20 11:02:25.413] [error_logger] [error] y: 915.990601 x: 457.995300
+[2018-08-20 11:02:25.413] [error_logger] [error] 22
+[2018-08-20 11:02:25.421] [error_logger] [error] y: 916.790588 x: 458.395294
+[2018-08-20 11:02:25.421] [error_logger] [error] 22
+[2018-08-20 11:02:25.430] [error_logger] [error] y: 917.590576 x: 458.795288
+[2018-08-20 11:02:25.430] [error_logger] [error] 22
+[2018-08-20 11:02:25.438] [error_logger] [error] y: 918.390564 x: 459.195282
+[2018-08-20 11:02:25.438] [error_logger] [error] 22
+[2018-08-20 11:02:25.446] [error_logger] [error] y: 919.190552 x: 459.595276
+[2018-08-20 11:02:25.446] [error_logger] [error] 22
+[2018-08-20 11:02:25.455] [error_logger] [error] y: 919.990540 x: 459.995270
+[2018-08-20 11:02:25.455] [error_logger] [error] 22
+[2018-08-20 11:02:25.463] [error_logger] [error] y: 920.790527 x: 460.395264
+[2018-08-20 11:02:25.463] [error_logger] [error] 22
+[2018-08-20 11:02:25.471] [error_logger] [error] y: 921.590515 x: 460.795258
+[2018-08-20 11:02:25.471] [error_logger] [error] 22
+[2018-08-20 11:02:25.480] [error_logger] [error] y: 922.390503 x: 461.195251
+[2018-08-20 11:02:25.480] [error_logger] [error] 22
+[2018-08-20 11:02:25.488] [error_logger] [error] y: 923.190491 x: 461.595245
+[2018-08-20 11:02:25.488] [error_logger] [error] 22
+[2018-08-20 11:02:25.496] [error_logger] [error] y: 923.990479 x: 461.995239
+[2018-08-20 11:02:25.496] [error_logger] [error] 22
+[2018-08-20 11:02:25.504] [error_logger] [error] y: 924.790466 x: 462.395233
+[2018-08-20 11:02:25.504] [error_logger] [error] 22
+[2018-08-20 11:02:25.514] [error_logger] [error] y: 925.590454 x: 462.795227
+[2018-08-20 11:02:25.514] [error_logger] [error] 22
+[2018-08-20 11:02:25.521] [error_logger] [error] y: 926.390442 x: 463.195221
+[2018-08-20 11:02:25.521] [error_logger] [error] 22
+[2018-08-20 11:02:25.530] [error_logger] [error] y: 927.190430 x: 463.595215
+[2018-08-20 11:02:25.530] [error_logger] [error] 22
+[2018-08-20 11:02:25.538] [error_logger] [error] y: 927.990417 x: 463.995209
+[2018-08-20 11:02:25.538] [error_logger] [error] 22
+[2018-08-20 11:02:25.546] [error_logger] [error] y: 928.790405 x: 464.395203
+[2018-08-20 11:02:25.546] [error_logger] [error] 22
+[2018-08-20 11:02:25.554] [error_logger] [error] y: 929.590393 x: 464.795197
+[2018-08-20 11:02:25.554] [error_logger] [error] 22
+[2018-08-20 11:02:25.564] [error_logger] [error] y: 930.390381 x: 465.195190
+[2018-08-20 11:02:25.564] [error_logger] [error] 22
+[2018-08-20 11:02:25.571] [error_logger] [error] y: 931.190369 x: 465.595184
+[2018-08-20 11:02:25.571] [error_logger] [error] 22
+[2018-08-20 11:02:25.580] [error_logger] [error] y: 931.990356 x: 465.995178
+[2018-08-20 11:02:25.580] [error_logger] [error] 22
+[2018-08-20 11:02:25.588] [error_logger] [error] y: 932.790344 x: 466.395172
+[2018-08-20 11:02:25.588] [error_logger] [error] 22
+[2018-08-20 11:02:25.596] [error_logger] [error] y: 933.590332 x: 466.795166
+[2018-08-20 11:02:25.596] [error_logger] [error] 22
+[2018-08-20 11:02:25.604] [error_logger] [error] y: 934.390320 x: 467.195160
+[2018-08-20 11:02:25.604] [error_logger] [error] 22
+[2018-08-20 11:02:25.613] [error_logger] [error] y: 935.190308 x: 467.595154
+[2018-08-20 11:02:25.613] [error_logger] [error] 22
+[2018-08-20 11:02:25.621] [error_logger] [error] y: 935.990295 x: 467.995148
+[2018-08-20 11:02:25.621] [error_logger] [error] 22
+[2018-08-20 11:02:25.629] [error_logger] [error] y: 936.790283 x: 468.395142
+[2018-08-20 11:02:25.629] [error_logger] [error] 22
+[2018-08-20 11:02:25.638] [error_logger] [error] y: 937.590271 x: 468.795135
+[2018-08-20 11:02:25.638] [error_logger] [error] 22
+[2018-08-20 11:02:25.646] [error_logger] [error] y: 938.390259 x: 469.195129
+[2018-08-20 11:02:25.646] [error_logger] [error] 22
+[2018-08-20 11:02:25.654] [error_logger] [error] y: 939.190247 x: 469.595123
+[2018-08-20 11:02:25.654] [error_logger] [error] 22
+[2018-08-20 11:02:25.663] [error_logger] [error] y: 939.990234 x: 469.995117
+[2018-08-20 11:02:25.663] [error_logger] [error] 22
+[2018-08-20 11:02:25.671] [error_logger] [error] y: 940.790222 x: 470.395111
+[2018-08-20 11:02:25.671] [error_logger] [error] 22
+[2018-08-20 11:02:25.680] [error_logger] [error] y: 941.590210 x: 470.795105
+[2018-08-20 11:02:25.680] [error_logger] [error] 22
+[2018-08-20 11:02:25.688] [error_logger] [error] y: 942.390198 x: 471.195099
+[2018-08-20 11:02:25.688] [error_logger] [error] 22
+[2018-08-20 11:02:25.696] [error_logger] [error] y: 943.190186 x: 471.595093
+[2018-08-20 11:02:25.696] [error_logger] [error] 22
+[2018-08-20 11:02:25.704] [error_logger] [error] y: 943.990173 x: 471.995087
+[2018-08-20 11:02:25.704] [error_logger] [error] 22
+[2018-08-20 11:02:25.714] [error_logger] [error] y: 944.790161 x: 472.395081
+[2018-08-20 11:02:25.714] [error_logger] [error] 22
+[2018-08-20 11:02:25.721] [error_logger] [error] y: 945.590149 x: 472.795074
+[2018-08-20 11:02:25.721] [error_logger] [error] 22
+[2018-08-20 11:02:25.730] [error_logger] [error] y: 946.390137 x: 473.195068
+[2018-08-20 11:02:25.730] [error_logger] [error] 22
+[2018-08-20 11:02:25.738] [error_logger] [error] y: 947.190125 x: 473.595062
+[2018-08-20 11:02:25.738] [error_logger] [error] 22
+[2018-08-20 11:02:25.746] [error_logger] [error] y: 947.990112 x: 473.995056
+[2018-08-20 11:02:25.746] [error_logger] [error] 22
+[2018-08-20 11:02:25.754] [error_logger] [error] y: 948.790100 x: 474.395050
+[2018-08-20 11:02:25.754] [error_logger] [error] 22
+[2018-08-20 11:02:25.764] [error_logger] [error] y: 949.590088 x: 474.795044
+[2018-08-20 11:02:25.764] [error_logger] [error] 22
+[2018-08-20 11:02:25.771] [error_logger] [error] y: 950.390076 x: 475.195038
+[2018-08-20 11:02:25.771] [error_logger] [error] 22
+[2018-08-20 11:02:25.780] [error_logger] [error] y: 951.190063 x: 475.595032
+[2018-08-20 11:02:25.780] [error_logger] [error] 22
+[2018-08-20 11:02:25.788] [error_logger] [error] y: 951.990051 x: 475.995026
+[2018-08-20 11:02:25.788] [error_logger] [error] 22
+[2018-08-20 11:02:25.796] [error_logger] [error] y: 952.790039 x: 476.395020
+[2018-08-20 11:02:25.796] [error_logger] [error] 22
+[2018-08-20 11:02:25.804] [error_logger] [error] y: 953.590027 x: 476.795013
+[2018-08-20 11:02:25.804] [error_logger] [error] 22
+[2018-08-20 11:02:25.813] [error_logger] [error] y: 954.390015 x: 477.195007
+[2018-08-20 11:02:25.813] [error_logger] [error] 22
+[2018-08-20 11:02:25.821] [error_logger] [error] y: 955.190002 x: 477.595001
+[2018-08-20 11:02:25.821] [error_logger] [error] 22
+[2018-08-20 11:02:25.829] [error_logger] [error] y: 955.989990 x: 477.994995
+[2018-08-20 11:02:25.829] [error_logger] [error] 22
+[2018-08-20 11:02:25.838] [error_logger] [error] y: 956.789978 x: 478.394989
+[2018-08-20 11:02:25.838] [error_logger] [error] 22
+[2018-08-20 11:02:25.847] [error_logger] [error] y: 957.589966 x: 478.794983
+[2018-08-20 11:02:25.847] [error_logger] [error] 22
+[2018-08-20 11:02:25.854] [error_logger] [error] y: 958.389954 x: 479.194977
+[2018-08-20 11:02:25.854] [error_logger] [error] 22
+[2018-08-20 11:02:25.863] [error_logger] [error] y: 959.189941 x: 479.594971
+[2018-08-20 11:02:25.863] [error_logger] [error] 22
+[2018-08-20 11:02:25.871] [error_logger] [error] y: 959.989929 x: 479.994965
+[2018-08-20 11:02:25.871] [error_logger] [error] 22
+[2018-08-20 11:02:25.881] [error_logger] [error] y: 960.789917 x: 480.394958
+[2018-08-20 11:02:25.881] [error_logger] [error] 22
+[2018-08-20 11:02:25.888] [error_logger] [error] y: 961.589905 x: 480.794952
+[2018-08-20 11:02:25.888] [error_logger] [error] 22
+[2018-08-20 11:02:25.896] [error_logger] [error] y: 962.389893 x: 481.194946
+[2018-08-20 11:02:25.896] [error_logger] [error] 22
+[2018-08-20 11:02:25.904] [error_logger] [error] y: 963.189880 x: 481.594940
+[2018-08-20 11:02:25.904] [error_logger] [error] 22
+[2018-08-20 11:02:25.913] [error_logger] [error] y: 963.989868 x: 481.994934
+[2018-08-20 11:02:25.913] [error_logger] [error] 22
+[2018-08-20 11:02:25.921] [error_logger] [error] y: 964.789856 x: 482.394928
+[2018-08-20 11:02:25.921] [error_logger] [error] 22
+[2018-08-20 11:02:25.931] [error_logger] [error] y: 965.589844 x: 482.794922
+[2018-08-20 11:02:25.931] [error_logger] [error] 22
+[2018-08-20 11:02:25.938] [error_logger] [error] y: 966.389832 x: 483.194916
+[2018-08-20 11:02:25.938] [error_logger] [error] 22
+[2018-08-20 11:02:25.946] [error_logger] [error] y: 967.189819 x: 483.594910
+[2018-08-20 11:02:25.946] [error_logger] [error] 22
+[2018-08-20 11:02:25.954] [error_logger] [error] y: 967.989807 x: 483.994904
+[2018-08-20 11:02:25.954] [error_logger] [error] 22
+[2018-08-20 11:02:25.963] [error_logger] [error] y: 968.789795 x: 484.394897
+[2018-08-20 11:02:25.963] [error_logger] [error] 22
+[2018-08-20 11:02:25.971] [error_logger] [error] y: 969.589783 x: 484.794891
+[2018-08-20 11:02:25.971] [error_logger] [error] 22
+[2018-08-20 11:02:25.979] [error_logger] [error] y: 970.389771 x: 485.194885
+[2018-08-20 11:02:25.979] [error_logger] [error] 22
+[2018-08-20 11:02:25.988] [error_logger] [error] y: 971.189758 x: 485.594879
+[2018-08-20 11:02:25.988] [error_logger] [error] 22
+[2018-08-20 11:02:25.998] [error_logger] [error] y: 971.989746 x: 485.994873
+[2018-08-20 11:02:25.998] [error_logger] [error] 22
+[2018-08-20 11:02:26.005] [error_logger] [error] y: 972.789734 x: 486.394867
+[2018-08-20 11:02:26.005] [error_logger] [error] 22
+[2018-08-20 11:02:26.013] [error_logger] [error] y: 973.589722 x: 486.794861
+[2018-08-20 11:02:26.013] [error_logger] [error] 22
+[2018-08-20 11:02:26.021] [error_logger] [error] y: 974.389709 x: 487.194855
+[2018-08-20 11:02:26.021] [error_logger] [error] 22
+[2018-08-20 11:02:26.030] [error_logger] [error] y: 975.189697 x: 487.594849
+[2018-08-20 11:02:26.030] [error_logger] [error] 22
+[2018-08-20 11:02:26.039] [error_logger] [error] y: 975.989685 x: 487.994843
+[2018-08-20 11:02:26.039] [error_logger] [error] 22
+[2018-08-20 11:02:26.047] [error_logger] [error] y: 976.789673 x: 488.394836
+[2018-08-20 11:02:26.047] [error_logger] [error] 22
+[2018-08-20 11:02:26.054] [error_logger] [error] y: 977.589661 x: 488.794830
+[2018-08-20 11:02:26.054] [error_logger] [error] 22
+[2018-08-20 11:02:26.063] [error_logger] [error] y: 978.389648 x: 489.194824
+[2018-08-20 11:02:26.063] [error_logger] [error] 22
+[2018-08-20 11:02:26.071] [error_logger] [error] y: 979.189636 x: 489.594818
+[2018-08-20 11:02:26.071] [error_logger] [error] 22
+[2018-08-20 11:02:26.080] [error_logger] [error] y: 979.989624 x: 489.994812
+[2018-08-20 11:02:26.080] [error_logger] [error] 22
+[2018-08-20 11:02:26.088] [error_logger] [error] y: 980.789612 x: 490.394806
+[2018-08-20 11:02:26.088] [error_logger] [error] 22
+[2018-08-20 11:02:26.098] [error_logger] [error] y: 981.589600 x: 490.794800
+[2018-08-20 11:02:26.098] [error_logger] [error] 22
+[2018-08-20 11:02:26.104] [error_logger] [error] y: 982.389587 x: 491.194794
+[2018-08-20 11:02:26.104] [error_logger] [error] 22
+[2018-08-20 11:02:26.113] [error_logger] [error] y: 983.189575 x: 491.594788
+[2018-08-20 11:02:26.113] [error_logger] [error] 22
+[2018-08-20 11:02:26.121] [error_logger] [error] y: 983.989563 x: 491.994781
+[2018-08-20 11:02:26.121] [error_logger] [error] 22
+[2018-08-20 11:02:26.130] [error_logger] [error] y: 984.789551 x: 492.394775
+[2018-08-20 11:02:26.130] [error_logger] [error] 22
+[2018-08-20 11:02:26.138] [error_logger] [error] y: 985.589539 x: 492.794769
+[2018-08-20 11:02:26.138] [error_logger] [error] 22
+[2018-08-20 11:02:26.147] [error_logger] [error] y: 986.389526 x: 493.194763
+[2018-08-20 11:02:26.147] [error_logger] [error] 22
+[2018-08-20 11:02:26.154] [error_logger] [error] y: 987.189514 x: 493.594757
+[2018-08-20 11:02:26.154] [error_logger] [error] 22
+[2018-08-20 11:02:26.163] [error_logger] [error] y: 987.989502 x: 493.994751
+[2018-08-20 11:02:26.163] [error_logger] [error] 22
+[2018-08-20 11:02:26.171] [error_logger] [error] y: 988.789490 x: 494.394745
+[2018-08-20 11:02:26.171] [error_logger] [error] 22
+[2018-08-20 11:02:26.179] [error_logger] [error] y: 989.589478 x: 494.794739
+[2018-08-20 11:02:26.179] [error_logger] [error] 22
+[2018-08-20 11:02:26.188] [error_logger] [error] y: 990.389465 x: 495.194733
+[2018-08-20 11:02:26.188] [error_logger] [error] 22
+[2018-08-20 11:02:26.196] [error_logger] [error] y: 991.189453 x: 495.594727
+[2018-08-20 11:02:26.196] [error_logger] [error] 22
+[2018-08-20 11:02:26.205] [error_logger] [error] y: 991.989441 x: 495.994720
+[2018-08-20 11:02:26.205] [error_logger] [error] 22
+[2018-08-20 11:02:26.213] [error_logger] [error] y: 992.789429 x: 496.394714
+[2018-08-20 11:02:26.213] [error_logger] [error] 22
+[2018-08-20 11:02:26.221] [error_logger] [error] y: 993.589417 x: 496.794708
+[2018-08-20 11:02:26.221] [error_logger] [error] 22
+[2018-08-20 11:02:26.230] [error_logger] [error] y: 994.389404 x: 497.194702
+[2018-08-20 11:02:26.230] [error_logger] [error] 22
+[2018-08-20 11:02:26.238] [error_logger] [error] y: 995.189392 x: 497.594696
+[2018-08-20 11:02:26.238] [error_logger] [error] 22
+[2018-08-20 11:02:26.246] [error_logger] [error] y: 995.989380 x: 497.994690
+[2018-08-20 11:02:26.246] [error_logger] [error] 22
+[2018-08-20 11:02:26.255] [error_logger] [error] y: 996.789368 x: 498.394684
+[2018-08-20 11:02:26.255] [error_logger] [error] 22
+[2018-08-20 11:02:26.264] [error_logger] [error] y: 997.589355 x: 498.794678
+[2018-08-20 11:02:26.264] [error_logger] [error] 22
+[2018-08-20 11:02:26.271] [error_logger] [error] y: 998.389343 x: 499.194672
+[2018-08-20 11:02:26.271] [error_logger] [error] 22
+[2018-08-20 11:02:26.280] [error_logger] [error] y: 999.189331 x: 499.594666
+[2018-08-20 11:02:26.280] [error_logger] [error] 22
+[2018-08-20 11:02:26.288] [error_logger] [error] y: 999.989319 x: 499.994659
+[2018-08-20 11:02:26.288] [error_logger] [error] 22
+[2018-08-20 11:02:26.296] [error_logger] [error] y: 1000.789307 x: 500.394653
+[2018-08-20 11:02:26.296] [error_logger] [error] 22
+[2018-08-20 11:02:26.304] [error_logger] [error] y: 1001.589294 x: 500.794647
+[2018-08-20 11:02:26.304] [error_logger] [error] 22
+[2018-08-20 11:02:26.314] [error_logger] [error] y: 1002.389282 x: 501.194641
+[2018-08-20 11:02:26.315] [error_logger] [error] 22
+[2018-08-20 11:02:26.321] [error_logger] [error] y: 1003.189270 x: 501.594635
+[2018-08-20 11:02:26.321] [error_logger] [error] 22
+[2018-08-20 11:02:26.330] [error_logger] [error] y: 1003.989258 x: 501.994629
+[2018-08-20 11:02:26.330] [error_logger] [error] 22
+[2018-08-20 11:02:26.338] [error_logger] [error] y: 1004.789246 x: 502.394623
+[2018-08-20 11:02:26.338] [error_logger] [error] 22
+[2018-08-20 11:02:26.346] [error_logger] [error] y: 1005.589233 x: 502.794617
+[2018-08-20 11:02:26.346] [error_logger] [error] 22
+[2018-08-20 11:02:26.354] [error_logger] [error] y: 1006.389221 x: 503.194611
+[2018-08-20 11:02:26.354] [error_logger] [error] 22
+[2018-08-20 11:02:26.363] [error_logger] [error] y: 1007.189209 x: 503.594604
+[2018-08-20 11:02:26.363] [error_logger] [error] 22
+[2018-08-20 11:02:26.371] [error_logger] [error] y: 1007.989197 x: 503.994598
+[2018-08-20 11:02:26.371] [error_logger] [error] 22
+[2018-08-20 11:02:26.380] [error_logger] [error] y: 1008.789185 x: 504.394592
+[2018-08-20 11:02:26.380] [error_logger] [error] 22
+[2018-08-20 11:02:26.388] [error_logger] [error] y: 1009.589172 x: 504.794586
+[2018-08-20 11:02:26.388] [error_logger] [error] 22
+[2018-08-20 11:02:26.396] [error_logger] [error] y: 1010.389160 x: 505.194580
+[2018-08-20 11:02:26.396] [error_logger] [error] 22
+[2018-08-20 11:02:26.404] [error_logger] [error] y: 1011.189148 x: 505.594574
+[2018-08-20 11:02:26.405] [error_logger] [error] 22
+[2018-08-20 11:02:26.413] [error_logger] [error] y: 1011.989136 x: 505.994568
+[2018-08-20 11:02:26.413] [error_logger] [error] 22
+[2018-08-20 11:02:26.421] [error_logger] [error] y: 1012.789124 x: 506.394562
+[2018-08-20 11:02:26.421] [error_logger] [error] 22
+[2018-08-20 11:02:26.430] [error_logger] [error] y: 1013.589111 x: 506.794556
+[2018-08-20 11:02:26.430] [error_logger] [error] 22
+[2018-08-20 11:02:26.438] [error_logger] [error] y: 1014.389099 x: 507.194550
+[2018-08-20 11:02:26.438] [error_logger] [error] 22
+[2018-08-20 11:02:26.447] [error_logger] [error] y: 1015.189087 x: 507.594543
+[2018-08-20 11:02:26.447] [error_logger] [error] 22
+[2018-08-20 11:02:26.454] [error_logger] [error] y: 1015.989075 x: 507.994537
+[2018-08-20 11:02:26.454] [error_logger] [error] 22
+[2018-08-20 11:02:26.463] [error_logger] [error] y: 1016.789063 x: 508.394531
+[2018-08-20 11:02:26.463] [error_logger] [error] 22
+[2018-08-20 11:02:26.471] [error_logger] [error] y: 1017.589050 x: 508.794525
+[2018-08-20 11:02:26.471] [error_logger] [error] 22
+[2018-08-20 11:02:26.480] [error_logger] [error] y: 1018.389038 x: 509.194519
+[2018-08-20 11:02:26.480] [error_logger] [error] 22
+[2018-08-20 11:02:26.488] [error_logger] [error] y: 1019.189026 x: 509.594513
+[2018-08-20 11:02:26.488] [error_logger] [error] 22
+[2018-08-20 11:02:26.496] [error_logger] [error] y: 1019.989014 x: 509.994507
+[2018-08-20 11:02:26.496] [error_logger] [error] 22
+[2018-08-20 11:02:26.504] [error_logger] [error] y: 1020.789001 x: 510.394501
+[2018-08-20 11:02:26.504] [error_logger] [error] 22
+[2018-08-20 11:02:26.513] [error_logger] [error] y: 1021.588989 x: 510.794495
+[2018-08-20 11:02:26.513] [error_logger] [error] 22
+[2018-08-20 11:02:26.521] [error_logger] [error] y: 1022.388977 x: 511.194489
+[2018-08-20 11:02:26.521] [error_logger] [error] 22
+[2018-08-20 11:02:26.530] [error_logger] [error] y: 1023.188965 x: 511.594482
+[2018-08-20 11:02:26.530] [error_logger] [error] 22
+[2018-08-20 11:02:26.538] [error_logger] [error] y: 1023.988953 x: 511.994476
+[2018-08-20 11:02:26.538] [error_logger] [error] 22
+[2018-08-20 11:02:26.547] [error_logger] [error] y: 1024.788940 x: 512.394470
+[2018-08-20 11:02:26.547] [error_logger] [error] 22
+[2018-08-20 11:02:26.555] [error_logger] [error] y: 1025.588989 x: 512.794495
+[2018-08-20 11:02:26.555] [error_logger] [error] 22
+[2018-08-20 11:02:26.563] [error_logger] [error] y: 1026.389038 x: 513.194519
+[2018-08-20 11:02:26.563] [error_logger] [error] 22
+[2018-08-20 11:02:26.571] [error_logger] [error] y: 1027.189087 x: 513.594543
+[2018-08-20 11:02:26.571] [error_logger] [error] 22
+[2018-08-20 11:02:26.580] [error_logger] [error] y: 1027.989136 x: 513.994568
+[2018-08-20 11:02:26.580] [error_logger] [error] 22
+[2018-08-20 11:02:26.588] [error_logger] [error] y: 1028.789185 x: 514.394592
+[2018-08-20 11:02:26.588] [error_logger] [error] 22
+[2018-08-20 11:02:26.597] [error_logger] [error] y: 1029.589233 x: 514.794617
+[2018-08-20 11:02:26.597] [error_logger] [error] 22
+[2018-08-20 11:02:26.605] [error_logger] [error] y: 1030.389282 x: 515.194641
+[2018-08-20 11:02:26.605] [error_logger] [error] 22
+[2018-08-20 11:02:26.614] [error_logger] [error] y: 1031.189331 x: 515.594666
+[2018-08-20 11:02:26.614] [error_logger] [error] 22
+[2018-08-20 11:02:26.621] [error_logger] [error] y: 1031.989380 x: 515.994690
+[2018-08-20 11:02:26.621] [error_logger] [error] 22
+[2018-08-20 11:02:26.630] [error_logger] [error] y: 1032.789429 x: 516.394714
+[2018-08-20 11:02:26.630] [error_logger] [error] 22
+[2018-08-20 11:02:26.638] [error_logger] [error] y: 1033.589478 x: 516.794739
+[2018-08-20 11:02:26.638] [error_logger] [error] 22
+[2018-08-20 11:02:26.647] [error_logger] [error] y: 1034.389526 x: 517.194763
+[2018-08-20 11:02:26.647] [error_logger] [error] 22
+[2018-08-20 11:02:26.655] [error_logger] [error] y: 1035.189575 x: 517.594788
+[2018-08-20 11:02:26.655] [error_logger] [error] 22
+[2018-08-20 11:02:26.663] [error_logger] [error] y: 1035.989624 x: 517.994812
+[2018-08-20 11:02:26.664] [error_logger] [error] 22
+[2018-08-20 11:02:26.671] [error_logger] [error] y: 1036.789673 x: 518.394836
+[2018-08-20 11:02:26.671] [error_logger] [error] 22
+[2018-08-20 11:02:26.680] [error_logger] [error] y: 1037.589722 x: 518.794861
+[2018-08-20 11:02:26.680] [error_logger] [error] 22
+[2018-08-20 11:02:26.688] [error_logger] [error] y: 1038.389771 x: 519.194885
+[2018-08-20 11:02:26.688] [error_logger] [error] 22
+[2018-08-20 11:02:26.696] [error_logger] [error] y: 1039.189819 x: 519.594910
+[2018-08-20 11:02:26.696] [error_logger] [error] 22
+[2018-08-20 11:02:26.705] [error_logger] [error] y: 1039.989868 x: 519.994934
+[2018-08-20 11:02:26.705] [error_logger] [error] 22
+[2018-08-20 11:02:26.715] [error_logger] [error] y: 1040.789917 x: 520.394958
+[2018-08-20 11:02:26.715] [error_logger] [error] 22
+[2018-08-20 11:02:26.721] [error_logger] [error] y: 1041.589966 x: 520.794983
+[2018-08-20 11:02:26.721] [error_logger] [error] 22
+[2018-08-20 11:02:26.730] [error_logger] [error] y: 1042.390015 x: 521.195007
+[2018-08-20 11:02:26.730] [error_logger] [error] 22
+[2018-08-20 11:02:26.738] [error_logger] [error] y: 1043.190063 x: 521.595032
+[2018-08-20 11:02:26.738] [error_logger] [error] 22
+[2018-08-20 11:02:26.746] [error_logger] [error] y: 1043.990112 x: 521.995056
+[2018-08-20 11:02:26.746] [error_logger] [error] 22
+[2018-08-20 11:02:26.755] [error_logger] [error] y: 1044.790161 x: 522.395081
+[2018-08-20 11:02:26.755] [error_logger] [error] 22
+[2018-08-20 11:02:26.763] [error_logger] [error] y: 1045.590210 x: 522.795105
+[2018-08-20 11:02:26.763] [error_logger] [error] 22
+[2018-08-20 11:02:26.772] [error_logger] [error] y: 1046.390259 x: 523.195129
+[2018-08-20 11:02:26.772] [error_logger] [error] 22
+[2018-08-20 11:02:26.780] [error_logger] [error] y: 1047.190308 x: 523.595154
+[2018-08-20 11:02:26.780] [error_logger] [error] 22
+[2018-08-20 11:02:26.788] [error_logger] [error] y: 1047.990356 x: 523.995178
+[2018-08-20 11:02:26.788] [error_logger] [error] 22
+[2018-08-20 11:02:26.797] [error_logger] [error] y: 1048.790405 x: 524.395203
+[2018-08-20 11:02:26.797] [error_logger] [error] 22
+[2018-08-20 11:02:26.805] [error_logger] [error] y: 1049.590454 x: 524.795227
+[2018-08-20 11:02:26.805] [error_logger] [error] 22
+[2018-08-20 11:02:26.813] [error_logger] [error] y: 1050.390503 x: 525.195251
+[2018-08-20 11:02:26.813] [error_logger] [error] 22
+[2018-08-20 11:02:26.821] [error_logger] [error] y: 1051.190552 x: 525.595276
+[2018-08-20 11:02:26.821] [error_logger] [error] 22
+[2018-08-20 11:02:26.831] [error_logger] [error] y: 1051.990601 x: 525.995300
+[2018-08-20 11:02:26.831] [error_logger] [error] 22
+[2018-08-20 11:02:26.838] [error_logger] [error] y: 1052.790649 x: 526.395325
+[2018-08-20 11:02:26.838] [error_logger] [error] 22
+[2018-08-20 11:02:26.847] [error_logger] [error] y: 1053.590698 x: 526.795349
+[2018-08-20 11:02:26.847] [error_logger] [error] 22
+[2018-08-20 11:02:26.855] [error_logger] [error] y: 1054.390747 x: 527.195374
+[2018-08-20 11:02:26.855] [error_logger] [error] 22
+[2018-08-20 11:02:26.863] [error_logger] [error] y: 1055.190796 x: 527.595398
+[2018-08-20 11:02:26.863] [error_logger] [error] 22
+[2018-08-20 11:02:26.871] [error_logger] [error] y: 1055.990845 x: 527.995422
+[2018-08-20 11:02:26.871] [error_logger] [error] 22
+[2018-08-20 11:02:26.881] [error_logger] [error] y: 1056.790894 x: 528.395447
+[2018-08-20 11:02:26.881] [error_logger] [error] 22
+[2018-08-20 11:02:26.888] [error_logger] [error] y: 1057.590942 x: 528.795471
+[2018-08-20 11:02:26.888] [error_logger] [error] 22
+[2018-08-20 11:02:26.897] [error_logger] [error] y: 1058.390991 x: 529.195496
+[2018-08-20 11:02:26.897] [error_logger] [error] 22
+[2018-08-20 11:02:26.905] [error_logger] [error] y: 1059.191040 x: 529.595520
+[2018-08-20 11:02:26.905] [error_logger] [error] 22
+[2018-08-20 11:02:26.913] [error_logger] [error] y: 1059.991089 x: 529.995544
+[2018-08-20 11:02:26.913] [error_logger] [error] 22
+[2018-08-20 11:02:26.921] [error_logger] [error] y: 1060.791138 x: 530.395569
+[2018-08-20 11:02:26.921] [error_logger] [error] 22
+[2018-08-20 11:02:26.930] [error_logger] [error] y: 1061.591187 x: 530.795593
+[2018-08-20 11:02:26.930] [error_logger] [error] 22
+[2018-08-20 11:02:26.938] [error_logger] [error] y: 1062.391235 x: 531.195618
+[2018-08-20 11:02:26.938] [error_logger] [error] 22
+[2018-08-20 11:02:26.947] [error_logger] [error] y: 1063.191284 x: 531.595642
+[2018-08-20 11:02:26.947] [error_logger] [error] 22
+[2018-08-20 11:02:26.955] [error_logger] [error] y: 1063.991333 x: 531.995667
+[2018-08-20 11:02:26.955] [error_logger] [error] 22
+[2018-08-20 11:02:26.963] [error_logger] [error] y: 1064.791382 x: 532.395691
+[2018-08-20 11:02:26.963] [error_logger] [error] 22
+[2018-08-20 11:02:26.971] [error_logger] [error] y: 1065.591431 x: 532.795715
+[2018-08-20 11:02:26.971] [error_logger] [error] 22
+[2018-08-20 11:02:26.981] [error_logger] [error] y: 1066.391479 x: 533.195740
+[2018-08-20 11:02:26.981] [error_logger] [error] 22
+[2018-08-20 11:02:26.988] [error_logger] [error] y: 1067.191528 x: 533.595764
+[2018-08-20 11:02:26.988] [error_logger] [error] 22
+[2018-08-20 11:02:26.997] [error_logger] [error] y: 1067.991577 x: 533.995789
+[2018-08-20 11:02:26.997] [error_logger] [error] 22
+[2018-08-20 11:02:27.005] [error_logger] [error] y: 1068.791626 x: 534.395813
+[2018-08-20 11:02:27.005] [error_logger] [error] 22
+[2018-08-20 11:02:27.013] [error_logger] [error] y: 1069.591675 x: 534.795837
+[2018-08-20 11:02:27.013] [error_logger] [error] 22
+[2018-08-20 11:02:27.021] [error_logger] [error] y: 1070.391724 x: 535.195862
+[2018-08-20 11:02:27.021] [error_logger] [error] 22
+[2018-08-20 11:02:27.030] [error_logger] [error] y: 1071.191772 x: 535.595886
+[2018-08-20 11:02:27.030] [error_logger] [error] 22
+[2018-08-20 11:02:27.038] [error_logger] [error] y: 1071.991821 x: 535.995911
+[2018-08-20 11:02:27.038] [error_logger] [error] 22
+[2018-08-20 11:02:27.048] [error_logger] [error] y: 1072.791870 x: 536.395935
+[2018-08-20 11:02:27.048] [error_logger] [error] 22
+[2018-08-20 11:02:27.055] [error_logger] [error] y: 1073.591919 x: 536.795959
+[2018-08-20 11:02:27.055] [error_logger] [error] 22
+[2018-08-20 11:02:27.063] [error_logger] [error] y: 1074.391968 x: 537.195984
+[2018-08-20 11:02:27.063] [error_logger] [error] 22
+[2018-08-20 11:02:27.071] [error_logger] [error] y: 1075.192017 x: 537.596008
+[2018-08-20 11:02:27.072] [error_logger] [error] 22
+[2018-08-20 11:02:27.080] [error_logger] [error] y: 1075.992065 x: 537.996033
+[2018-08-20 11:02:27.080] [error_logger] [error] 22
+[2018-08-20 11:02:27.088] [error_logger] [error] y: 1076.792114 x: 538.396057
+[2018-08-20 11:02:27.088] [error_logger] [error] 22
+[2018-08-20 11:02:27.096] [error_logger] [error] y: 1077.592163 x: 538.796082
+[2018-08-20 11:02:27.096] [error_logger] [error] 22
+[2018-08-20 11:02:27.105] [error_logger] [error] y: 1078.392212 x: 539.196106
+[2018-08-20 11:02:27.105] [error_logger] [error] 22
+[2018-08-20 11:02:27.115] [error_logger] [error] y: 1079.192261 x: 539.596130
+[2018-08-20 11:02:27.115] [error_logger] [error] 22
+[2018-08-20 11:02:27.122] [error_logger] [error] y: 1079.992310 x: 539.996155
+[2018-08-20 11:02:27.122] [error_logger] [error] 22
+[2018-08-20 11:02:27.130] [error_logger] [error] y: 1080.792358 x: 540.396179
+[2018-08-20 11:02:27.130] [error_logger] [error] 22
+[2018-08-20 11:02:27.138] [error_logger] [error] y: 1081.592407 x: 540.796204
+[2018-08-20 11:02:27.138] [error_logger] [error] 22
+[2018-08-20 11:02:27.147] [error_logger] [error] y: 1082.392456 x: 541.196228
+[2018-08-20 11:02:27.147] [error_logger] [error] 22
+[2018-08-20 11:02:27.155] [error_logger] [error] y: 1083.192505 x: 541.596252
+[2018-08-20 11:02:27.155] [error_logger] [error] 22
+[2018-08-20 11:02:27.164] [error_logger] [error] y: 1083.992554 x: 541.996277
+[2018-08-20 11:02:27.164] [error_logger] [error] 22
+[2018-08-20 11:02:27.171] [error_logger] [error] y: 1084.792603 x: 542.396301
+[2018-08-20 11:02:27.171] [error_logger] [error] 22
+[2018-08-20 11:02:27.180] [error_logger] [error] y: 1085.592651 x: 542.796326
+[2018-08-20 11:02:27.180] [error_logger] [error] 22
+[2018-08-20 11:02:27.188] [error_logger] [error] y: 1086.392700 x: 543.196350
+[2018-08-20 11:02:27.188] [error_logger] [error] 22
+[2018-08-20 11:02:27.197] [error_logger] [error] y: 1087.192749 x: 543.596375
+[2018-08-20 11:02:27.197] [error_logger] [error] 22
+[2018-08-20 11:02:27.205] [error_logger] [error] y: 1087.992798 x: 543.996399
+[2018-08-20 11:02:27.205] [error_logger] [error] 22
+[2018-08-20 11:02:27.214] [error_logger] [error] y: 1088.792847 x: 544.396423
+[2018-08-20 11:02:27.214] [error_logger] [error] 22
+[2018-08-20 11:02:27.221] [error_logger] [error] y: 1089.592896 x: 544.796448
+[2018-08-20 11:02:27.221] [error_logger] [error] 22
+[2018-08-20 11:02:27.230] [error_logger] [error] y: 1090.392944 x: 545.196472
+[2018-08-20 11:02:27.230] [error_logger] [error] 22
+[2018-08-20 11:02:27.238] [error_logger] [error] y: 1091.192993 x: 545.596497
+[2018-08-20 11:02:27.238] [error_logger] [error] 22
+[2018-08-20 11:02:27.247] [error_logger] [error] y: 1091.993042 x: 545.996521
+[2018-08-20 11:02:27.247] [error_logger] [error] 22
+[2018-08-20 11:02:27.255] [error_logger] [error] y: 1092.793091 x: 546.396545
+[2018-08-20 11:02:27.255] [error_logger] [error] 22
+[2018-08-20 11:02:27.267] [error_logger] [error] y: 1093.593140 x: 546.796570
+[2018-08-20 11:02:27.267] [error_logger] [error] 22
+[2018-08-20 11:02:27.272] [error_logger] [error] y: 1094.393188 x: 547.196594
+[2018-08-20 11:02:27.272] [error_logger] [error] 22
+[2018-08-20 11:02:27.282] [error_logger] [error] y: 1095.193237 x: 547.596619
+[2018-08-20 11:02:27.282] [error_logger] [error] 22
+[2018-08-20 11:02:27.290] [error_logger] [error] y: 1095.993286 x: 547.996643
+[2018-08-20 11:02:27.290] [error_logger] [error] 22
+[2018-08-20 11:02:27.300] [error_logger] [error] y: 1096.793335 x: 548.396667
+[2018-08-20 11:02:27.300] [error_logger] [error] 22
+[2018-08-20 11:02:27.306] [error_logger] [error] y: 1097.593384 x: 548.796692
+[2018-08-20 11:02:27.306] [error_logger] [error] 22
+[2018-08-20 11:02:27.315] [error_logger] [error] y: 1098.393433 x: 549.196716
+[2018-08-20 11:02:27.315] [error_logger] [error] 22
+[2018-08-20 11:02:27.323] [error_logger] [error] y: 1099.193481 x: 549.596741
+[2018-08-20 11:02:27.323] [error_logger] [error] 22
+[2018-08-20 11:02:27.334] [error_logger] [error] y: 1099.993530 x: 549.996765
+[2018-08-20 11:02:27.334] [error_logger] [error] 22
+[2018-08-20 11:02:27.339] [error_logger] [error] y: 1100.793579 x: 550.396790
+[2018-08-20 11:02:27.339] [error_logger] [error] 22
+[2018-08-20 11:02:27.348] [error_logger] [error] y: 1101.593628 x: 550.796814
+[2018-08-20 11:02:27.348] [error_logger] [error] 22
+[2018-08-20 11:02:27.356] [error_logger] [error] y: 1102.393677 x: 551.196838
+[2018-08-20 11:02:27.356] [error_logger] [error] 22
+[2018-08-20 11:02:27.365] [error_logger] [error] y: 1103.193726 x: 551.596863
+[2018-08-20 11:02:27.365] [error_logger] [error] 22
+[2018-08-20 11:02:27.373] [error_logger] [error] y: 1103.993774 x: 551.996887
+[2018-08-20 11:02:27.373] [error_logger] [error] 22
+[2018-08-20 11:02:27.382] [error_logger] [error] y: 1104.793823 x: 552.396912
+[2018-08-20 11:02:27.382] [error_logger] [error] 22
+[2018-08-20 11:02:27.389] [error_logger] [error] y: 1105.593872 x: 552.796936
+[2018-08-20 11:02:27.389] [error_logger] [error] 22
+[2018-08-20 11:02:27.398] [error_logger] [error] y: 1106.393921 x: 553.196960
+[2018-08-20 11:02:27.398] [error_logger] [error] 22
+[2018-08-20 11:02:27.406] [error_logger] [error] y: 1107.193970 x: 553.596985
+[2018-08-20 11:02:27.406] [error_logger] [error] 22
+[2018-08-20 11:02:27.415] [error_logger] [error] y: 1107.994019 x: 553.997009
+[2018-08-20 11:02:27.415] [error_logger] [error] 22
+[2018-08-20 11:02:27.423] [error_logger] [error] y: 1108.794067 x: 554.397034
+[2018-08-20 11:02:27.423] [error_logger] [error] 22
+[2018-08-20 11:02:27.432] [error_logger] [error] y: 1109.594116 x: 554.797058
+[2018-08-20 11:02:27.432] [error_logger] [error] 22
+[2018-08-20 11:02:27.440] [error_logger] [error] y: 1110.394165 x: 555.197083
+[2018-08-20 11:02:27.440] [error_logger] [error] 22
+[2018-08-20 11:02:27.448] [error_logger] [error] y: 1111.194214 x: 555.597107
+[2018-08-20 11:02:27.448] [error_logger] [error] 22
+[2018-08-20 11:02:27.457] [error_logger] [error] y: 1111.994263 x: 555.997131
+[2018-08-20 11:02:27.457] [error_logger] [error] 22
+[2018-08-20 11:02:27.467] [error_logger] [error] y: 1112.794312 x: 556.397156
+[2018-08-20 11:02:27.467] [error_logger] [error] 22
+[2018-08-20 11:02:27.473] [error_logger] [error] y: 1113.594360 x: 556.797180
+[2018-08-20 11:02:27.473] [error_logger] [error] 22
+[2018-08-20 11:02:27.481] [error_logger] [error] y: 1114.394409 x: 557.197205
+[2018-08-20 11:02:27.481] [error_logger] [error] 22
+[2018-08-20 11:02:27.490] [error_logger] [error] y: 1115.194458 x: 557.597229
+[2018-08-20 11:02:27.490] [error_logger] [error] 22
+[2018-08-20 11:02:27.500] [error_logger] [error] y: 1115.994507 x: 557.997253
+[2018-08-20 11:02:27.501] [error_logger] [error] 22
+[2018-08-20 11:02:27.507] [error_logger] [error] y: 1116.794556 x: 558.397278
+[2018-08-20 11:02:27.507] [error_logger] [error] 22
+[2018-08-20 11:02:27.515] [error_logger] [error] y: 1117.594604 x: 558.797302
+[2018-08-20 11:02:27.515] [error_logger] [error] 22
+[2018-08-20 11:02:27.523] [error_logger] [error] y: 1118.394653 x: 559.197327
+[2018-08-20 11:02:27.523] [error_logger] [error] 22
+[2018-08-20 11:02:27.532] [error_logger] [error] y: 1119.194702 x: 559.597351
+[2018-08-20 11:02:27.532] [error_logger] [error] 22
+[2018-08-20 11:02:27.540] [error_logger] [error] y: 1119.994751 x: 559.997375
+[2018-08-20 11:02:27.540] [error_logger] [error] 22
+[2018-08-20 11:02:27.548] [error_logger] [error] y: 1120.794800 x: 560.397400
+[2018-08-20 11:02:27.548] [error_logger] [error] 22
+[2018-08-20 11:02:27.556] [error_logger] [error] y: 1121.594849 x: 560.797424
+[2018-08-20 11:02:27.556] [error_logger] [error] 22
+[2018-08-20 11:02:27.565] [error_logger] [error] y: 1122.394897 x: 561.197449
+[2018-08-20 11:02:27.565] [error_logger] [error] 22
+[2018-08-20 11:02:27.573] [error_logger] [error] y: 1123.194946 x: 561.597473
+[2018-08-20 11:02:27.573] [error_logger] [error] 22
+[2018-08-20 11:02:27.582] [error_logger] [error] y: 1123.994995 x: 561.997498
+[2018-08-20 11:02:27.582] [error_logger] [error] 22
+[2018-08-20 11:02:27.590] [error_logger] [error] y: 1124.795044 x: 562.397522
+[2018-08-20 11:02:27.590] [error_logger] [error] 22
+[2018-08-20 11:02:27.598] [error_logger] [error] y: 1125.595093 x: 562.797546
+[2018-08-20 11:02:27.598] [error_logger] [error] 22
+[2018-08-20 11:02:27.606] [error_logger] [error] y: 1126.395142 x: 563.197571
+[2018-08-20 11:02:27.606] [error_logger] [error] 22
+[2018-08-20 11:02:27.615] [error_logger] [error] y: 1127.195190 x: 563.597595
+[2018-08-20 11:02:27.615] [error_logger] [error] 22
+[2018-08-20 11:02:27.623] [error_logger] [error] y: 1127.995239 x: 563.997620
+[2018-08-20 11:02:27.623] [error_logger] [error] 22
+[2018-08-20 11:02:27.632] [error_logger] [error] y: 1128.795288 x: 564.397644
+[2018-08-20 11:02:27.632] [error_logger] [error] 22
+[2018-08-20 11:02:27.640] [error_logger] [error] y: 1129.595337 x: 564.797668
+[2018-08-20 11:02:27.640] [error_logger] [error] 22
+[2018-08-20 11:02:27.648] [error_logger] [error] y: 1130.395386 x: 565.197693
+[2018-08-20 11:02:27.648] [error_logger] [error] 22
+[2018-08-20 11:02:27.656] [error_logger] [error] y: 1131.195435 x: 565.597717
+[2018-08-20 11:02:27.656] [error_logger] [error] 22
+[2018-08-20 11:02:27.665] [error_logger] [error] y: 1131.995483 x: 565.997742
+[2018-08-20 11:02:27.665] [error_logger] [error] 22
+[2018-08-20 11:02:27.673] [error_logger] [error] y: 1132.795532 x: 566.397766
+[2018-08-20 11:02:27.673] [error_logger] [error] 22

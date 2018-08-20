@@ -97,6 +97,30 @@ namespace adlMath
 
 		return matrix;
 	}
+
+	static inline adlVec3 rotate_around(float radians, const adlVec3& vector_to_rotate, adlVec3& rotation_axis)
+	{
+		/*
+		*	https://en.wikipedia.org/wiki/Rotation_matrix
+		*	Rotation around an arbitrary axis.
+		*/
+		rotation_axis = rotation_axis.normalize();
+		adlMat4 mat = adlMat4::identity();
+
+		mat.vectors.a.x = std::cos(radians) + (std::pow(rotation_axis.x, 2) * (1 - std::cos(radians)));
+		mat.vectors.a.y = (rotation_axis.x * rotation_axis.y * (1 - std::cos(radians))) + (rotation_axis.z * std::sin(radians));
+		mat.vectors.a.z = (rotation_axis.x * rotation_axis.z * (1 - std::cos(radians))) - (rotation_axis.y * std::sin(radians));
+
+		mat.vectors.b.x = (rotation_axis.x * rotation_axis.y * (1 - std::cos(radians))) - (rotation_axis.z * std::sin(radians));
+		mat.vectors.b.y = std::cos(radians) + (std::pow(rotation_axis.y, 2) * (1 - std::cos(radians)));
+		mat.vectors.b.z = (rotation_axis.y * rotation_axis.z * (1 - std::cos(radians))) + (rotation_axis.x * std::sin(radians));
+
+		mat.vectors.c.x = (rotation_axis.x * rotation_axis.z * (1 - std::cos(radians))) + (rotation_axis.y * std::sin(radians));
+		mat.vectors.c.y = (rotation_axis.y * rotation_axis.z * (1 - std::cos(radians))) - (rotation_axis.x * std::sin(radians));
+		mat.vectors.c.z = std::cos(radians) + (std::pow(rotation_axis.z, 2) * (1 - std::cos(radians)));
+
+		return mat * vector_to_rotate;
+	}
 }
 
 #endif // adl_math_h__

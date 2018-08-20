@@ -3,10 +3,10 @@
 
 class ${Class} {
 
-	public:
-		${Class}();
-		~${Class}();
-	private:
+public:
+	${Class}();
+	~${Class}();
+private:
 
 };
 

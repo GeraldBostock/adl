@@ -97,7 +97,7 @@ double adlFPS_manager::enforce_fps()
 		}
 	}
 
-	if (dt > target_frame_duration_ * 10)
+	if (dt > target_frame_duration_ * 3)
 	{
 		dt = target_frame_duration_;
 	}

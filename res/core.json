@@ -20,6 +20,8 @@
 		{"name": "font_shader", "vertex_shader_path": "res/shaders/font_shader.vs", "fragment_shader_path": "res/shaders/font_shader.fs"}
 	],
 	"fonts": [
-		{"name": "arial", "path": "res/fonts/arial.ttf"}
+		{"name": "arial", "path": "res/fonts/arial.ttf"},
+		{"name": "consola", "path": "res/fonts/consola.ttf"},
+		{"name": "roboto", "path": "res/fonts/Roboto-Regular.ttf"}
 	]
 }

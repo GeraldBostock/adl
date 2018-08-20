@@ -31,7 +31,7 @@ void adlRoot::run()
 
 	if (adl_input->get_key(adl_key_left_ctrl) && adl_input->get_key(adl_key_left_alt) && adl_input->get_key_up(adl_key_w))
 	{
-		adl_renderer->set_wire_frame_mode();
+		adl_renderer->toggle_wire_frame_mode();
 	}
 
 	camera->update(dt);
@@ -39,6 +39,9 @@ void adlRoot::run()
 	{
 		is_running_ = false;
 	}
+
+	adl_scene_manager->update(dt);
+	adl_scene_manager->render();
 
 	float fps = fps_manager_->get_fps();
 	std::string fps_string = std::to_string(fps);
@@ -58,13 +61,16 @@ void adlRoot::start()
 
 void adlRoot::game_thread()
 {
-	adl_rm			= &adlResource_manager::get();
-	adl_renderer	= &adlRender_manager::get();
-	adl_input		= &adlInput::get();
-	adl_logger		= &adlLogger::get();
-	camera			= ADL_NEW(adlCamera);
+	adl_rm				= &adlResource_manager::get();
+	adl_renderer		= &adlRender_manager::get();
+	adl_input			= &adlInput::get();
+	adl_logger			= &adlLogger::get();
+	adl_scene_manager	= &adlScene_manager::get();
+	camera				= ADL_NEW(adlCamera);
 
 	adl_renderer->set_camera(camera);
+	adlMat4 projection_matrix = projection_matrix.create_projection_matrix(adl_window->get_width(), adl_window->get_height(), adlMath::deg_to_rad(45), 0.1f, 1000.0f);
+	adl_renderer->set_projection(projection_matrix);
 
 	if (!init())
 	{

@@ -3,6 +3,9 @@
 
 #include "engine/adlRoot.h"
 
+#include "Test_actor.h"
+#include "Test_light.h"
+
 class Game : public adlRoot
 {
 public:
@@ -13,26 +16,7 @@ public:
 	bool update(float dt) override;
 
 private:
-	adlModel_shared_ptr model;
-	adlModel_shared_ptr box;
-	adlModel_shared_ptr box2;
-	adlShader_shared_ptr shader;
-	adlModel plank_model_;
-	adlEntity bison_entity_;
-	adlEntity box1_;
-	adlEntity box2_;
-	adlEntity mount_;
-	adlEntity teapot_entity_;
-	adlEntity at_at_;
-	adlEntity big_box_;
-	adlLight* light_;
-
-	std::vector<adlEntity> boxes_;
-
-	float model_z = 0.0f;
-	float model_x = 0.0f;
-	float model_yaw = 0;
-	float model_pitch = 0;
+	adlActor_shared_ptr actor;
 
 	adlTimer timer_;
 };

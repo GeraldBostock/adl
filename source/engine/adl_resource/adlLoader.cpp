@@ -66,7 +66,7 @@ void adlLoader::process_ai_node(aiNode* node, const aiScene* scene, adlModel_sha
 
 adlMesh_shared_ptr adlLoader::process_mesh(aiMesh *mesh)
 {
-	adlMesh_shared_ptr new_mesh = std::make_shared<adlMesh>();
+	adlMesh_shared_ptr new_mesh = MAKE_SHARED(adlMesh);
 
 	std::vector<Vertex> vertices;
 	std::vector<unsigned int> indices;

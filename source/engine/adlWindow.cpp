@@ -131,4 +131,5 @@ void adlWindow::toggle_fullscreen()
 	{
 		set_fullscreen(true);
 	}
-}
+} 
+ 

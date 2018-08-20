@@ -77,4 +77,4 @@ private:
 };
 
 #endif // adl_window_h__
-
+ 

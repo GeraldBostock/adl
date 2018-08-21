@@ -98,7 +98,7 @@ namespace adlMath
 		return matrix;
 	}
 
-	static inline adlVec3 rotate_around(float radians, const adlVec3& vector_to_rotate, adlVec3& rotation_axis)
+	static inline adlVec3 rotate_around(float radians, const adlVec3& vector_to_rotate, adlVec3 rotation_axis)
 	{
 		/*
 		*	https://en.wikipedia.org/wiki/Rotation_matrix

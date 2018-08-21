@@ -5,7 +5,7 @@
 #include "engine/adl_math/adlMath.h"
 #include "adlCamera.h"
 #include "engine/adl_entities/adlActor.h"
-#include "engine/adl_renderer/adlLight.h"
+#include "engine/adl_entities/adlLight.h"
 
 class adlRender_manager
 {

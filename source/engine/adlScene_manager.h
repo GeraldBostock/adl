@@ -3,7 +3,7 @@
 
 #include "adl_entities/adlEntity.h"
 #include "adl_entities/adlActor.h"
-#include "adl_renderer/adlLight.h"
+#include "adl_entities/adlLight.h"
 #include "adlShared_types.h"
 
 #include <vector>

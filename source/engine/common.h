@@ -6,6 +6,10 @@
 #define SDL_MAIN_HANDLED
 #pragma warning( disable : 4201 )
 #pragma warning( disable : 4244 )
+//Not enough actual parameters for macro 'max'
+#pragma warning( disable : 4003 )
+//requires a narrowing conversion
+#pragma warning( disable : 4838)
 static inline void set_error_mode()
 {
 	_set_error_mode(_OUT_TO_MSGBOX);

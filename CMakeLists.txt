@@ -61,9 +61,6 @@ file(GLOB_RECURSE GAME_SRCS
 )
 
 # Define the executable
-if(WIN32)
-	add_executable(adl ${ADL_HDRS} ${ADL_SRCS})
-endif()
 add_executable(game ${GAME_HDRS} ${GAME_SRCS} ${ADL_HDRS} ${ADL_SRCS})
 
 # We need a CMAKE_DIR with some code to find external dependencies
@@ -120,17 +117,6 @@ include_directories(
 	${FREETYPE_INCLUDE_DIRS}
 )
 
-if(WIN32)
-target_link_libraries( adl
-	${OPENGL_LIBRARIES}
-	${SDL2_LIBRARY}
-	${GLEW_LIBRARY}
-	${GLEW_LIBRARIES}
-	${SDL2_LIBRARIES}
-	${ASSIMP_LIBRARIES}
-	${FREETYPE_LIBRARIES}
-)
-endif()
 # ADL Libs
 target_link_libraries( game
 	${OPENGL_LIBRARIES}

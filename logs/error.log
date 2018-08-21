@@ -2830,3 +2830,6 @@
 [2018-08-20 11:02:27.665] [error_logger] [error] 22
 [2018-08-20 11:02:27.673] [error_logger] [error] y: 1132.795532 x: 566.397766
 [2018-08-20 11:02:27.673] [error_logger] [error] 22
+[2018-08-20 16:40:46.570] [error_logger] [error] Could not open core resource file at %s
+
+[2018-08-20 16:40:46.570] [error_logger] [error] 22

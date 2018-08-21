@@ -1,7 +1,7 @@
 #ifndef test_light_h__
 #define test_light_h__
 
-#include "engine/adl_renderer/adlLight.h"
+#include "engine/adl_entities/adlLight.h"
 
 class Test_light : public adlLight
 {

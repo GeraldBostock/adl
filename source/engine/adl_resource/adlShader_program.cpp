@@ -57,6 +57,10 @@ void adlShader_program::load_matrix(int32 location, const adlMat4& matrix)
 	glUniformMatrix4fv(location, 1, GL_FALSE, matrix.mat);
 }
 
+void adlShader_program::load_float(int32 location, float value)
+{
+	glUniform1f(location, value);
+}
 
 void adlShader_program::start()
 {

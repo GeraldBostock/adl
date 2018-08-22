@@ -73,19 +73,19 @@ void adlModel::draw()
 	//shader_->stop();
 }
 
-adlShader_shared_ptr adlModel::get_shader()
-{
-	return shader_;
-}
-
-void adlModel::set_shader(adlShader_shared_ptr shader)
-{
-	shader_ = shader;
-	for (auto mesh : meshes_)
-	{
-		mesh->set_shader(shader);
-	}
-}
+//adlShader_shared_ptr adlModel::get_shader()
+//{
+//	return shader_;
+//}
+//
+//void adlModel::set_shader(adlShader_shared_ptr shader)
+//{
+//	shader_ = shader;
+//	for (auto mesh : meshes_)
+//	{
+//		mesh->set_shader(shader);
+//	}
+//}
 
 //void adlModel::set_frame(adlMatrix_frame& frame)
 //{

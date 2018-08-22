@@ -10,6 +10,7 @@ class adlFont;
 class adlActor;
 class adlEntity;
 class adlLight;
+class adlMaterial;
 
 #include <memory>
 
@@ -20,5 +21,6 @@ typedef std::shared_ptr<adlFont> adlFont_shared_ptr;
 typedef std::shared_ptr<adlEntity> adlEntity_shared_ptr;
 typedef std::shared_ptr<adlActor> adlActor_shared_ptr;
 typedef std::shared_ptr<adlLight> adlLight_shared_ptr;
+typedef std::shared_ptr<adlMaterial> adlMaterial_shared_ptr;
 
 #endif // adl_shared_types_h__

@@ -29,6 +29,7 @@ protected:
 
 	void load_vector(int32 location, adlVec3 vector);
 	void load_matrix(int32 location, const adlMat4& matrix);
+	void load_float(int32 location, float value);
 
 private:
 	uint32 program_id_;

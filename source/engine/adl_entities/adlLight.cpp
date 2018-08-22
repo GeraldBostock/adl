@@ -10,6 +10,11 @@ adlLight::adlLight()
 	transform_ = adlTransform::identity();
 	transform_.scale = adlVec3(0.15f);
 	color_ = adlColor::WHITE;
+
+	light_components_.ambient = adlVec3(0.2f);
+	light_components_.diffuse = adlVec3(0.5f);
+	light_components_.specular = adlVec3(1.0f);
+
 }
 
 adlLight::~adlLight()
@@ -38,3 +43,19 @@ adlShader_shared_ptr adlLight::get_shader()
 {
 	return light_shader_;
 }
+
+adlVec3 adlLight::get_ambient()
+{
+	return light_components_.ambient;
+}
+
+adlVec3 adlLight::get_diffuse()
+{
+	return light_components_.diffuse;
+}
+
+adlVec3 adlLight::get_specular()
+{
+	return light_components_.specular;
+}
+

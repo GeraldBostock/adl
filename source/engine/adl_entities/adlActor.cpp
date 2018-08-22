@@ -33,3 +33,13 @@ adlColor adlActor::get_color()
 {
 	return color_;
 }
+
+adlMaterial_shared_ptr adlActor::get_material()
+{
+	return material_;
+}
+
+void adlActor::set_material(adlMaterial_shared_ptr material)
+{
+	material_ = material;
+}

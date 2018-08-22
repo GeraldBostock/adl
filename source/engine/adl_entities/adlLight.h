@@ -16,9 +16,19 @@ public:
 	virtual void update(float dt) override;
 
 	adlShader_shared_ptr get_shader();
+	adlVec3 get_ambient();
+	adlVec3 get_diffuse();
+	adlVec3 get_specular();
 
 private:
 	adlShader_shared_ptr light_shader_;
+
+	struct Light_components
+	{
+		adlVec3 ambient;
+		adlVec3 diffuse;
+		adlVec3 specular;
+	} light_components_;
 };
 
 #endif // adl_light_h__

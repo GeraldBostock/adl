@@ -1,5 +1,6 @@
 #include "adlResource_manager.h"
 #include "engine/adl_debug/adlAssert.h"
+#include "engine/adl_resource/adlMaterial.h"
 
 #include <fstream>
 #include <sstream>
@@ -7,6 +8,8 @@
 
 adlResource_manager::adlResource_manager()
 {
+	adlLogger* adl_logger = &adlLogger::get();
+
 	std::string core_file_string = get_core_file_string();
 
 	rapidjson::Document document;
@@ -20,6 +23,7 @@ adlResource_manager::adlResource_manager()
 
 	adl_assert(mesh_objects.IsArray());
 	adl_assert(shader_objects.IsArray());
+	adl_assert(font_objects.IsArray());
 
 	for (rapidjson::Value::ConstValueIterator itr = mesh_objects.Begin(); itr != mesh_objects.End(); ++itr)
 	{
@@ -62,6 +66,58 @@ adlResource_manager::adlResource_manager()
 		name_to_font_path_[name] = path;
 		fonts_[path] = nullptr;
 	}
+
+	std::string materials_file_string = get_materials_string();
+
+	rapidjson::Document materials_document;
+	materials_document.Parse(materials_file_string.c_str());
+
+	adl_assert(materials_document.IsObject());
+
+	const rapidjson::Value& material_objects = materials_document["materials"];
+
+	adl_assert(material_objects.IsArray());
+
+	for (rapidjson::Value::ConstValueIterator itr = material_objects.Begin(); itr != material_objects.End(); ++itr)
+	{
+		adlMaterial_shared_ptr material = std::make_shared<adlMaterial>();
+
+		const rapidjson::Value& material_object = *itr;
+
+		const std::string material_name = material_object["name"].GetString();
+		const rapidjson::Value& ambient_array = material_object["ambient"];
+		const rapidjson::Value& diffuse_array = material_object["diffuse"];
+		const rapidjson::Value& specular_array = material_object["specular"];
+
+		rapidjson::Value::ConstValueIterator itr2 = ambient_array.Begin();
+
+		const rapidjson::Value& ambient_x = *itr2;
+		const rapidjson::Value& ambient_y = *++itr2;
+		const rapidjson::Value& ambient_z = *++itr2;
+		adlVec3 ambient_vec(ambient_x.GetFloat(), ambient_y.GetFloat(), ambient_z.GetFloat());
+
+		itr2 = diffuse_array.Begin();
+		const rapidjson::Value& diffuse_x = *itr2;
+		const rapidjson::Value& diffuse_y = *++itr2;
+		const rapidjson::Value& diffuse_z = *++itr2;
+		adlVec3 diffuse_vec(diffuse_x.GetFloat(), diffuse_y.GetFloat(), diffuse_z.GetFloat());
+
+		itr2 = specular_array.Begin();
+		const rapidjson::Value& specular_x = *itr2;
+		const rapidjson::Value& specular_y = *++itr2;
+		const rapidjson::Value& specular_z = *++itr2;
+		adlVec3 specular_vec(specular_x.GetFloat(), specular_y.GetFloat(), specular_z.GetFloat());
+
+		const rapidjson::Value& shine = material_object["shine"];
+		float shininess = shine.GetFloat();
+
+		material->set_material(ambient_vec, diffuse_vec, specular_vec, shininess);
+
+		std::string shader_name = material_object["shader"].GetString();
+		material->set_shader_name(shader_name);
+
+		materials_[material_name] = material;
+	}
 }
 
 std::string adlResource_manager::get_core_file_string()
@@ -84,6 +140,31 @@ std::string adlResource_manager::get_core_file_string()
 	{
 		adlLogger* adl_logger = &adlLogger::get();
 		adl_logger->log_error("Could not open core resource file at %s\n", core_file_path.c_str());
+	}
+
+	return file_text;
+}
+
+std::string adlResource_manager::get_materials_string()
+{
+	std::ifstream file;
+	file.open(materials_file_path);
+
+	std::string file_text;
+	std::string line;
+
+	if (file.is_open())
+	{
+		while (file.good())
+		{
+			getline(file, line);
+			file_text.append(line + "\n");
+		}
+	}
+	else
+	{
+		adlLogger* adl_logger = &adlLogger::get();
+		adl_logger->log_error("Could not open core resource file at %s\n", materials_file_path.c_str());
 	}
 
 	return file_text;
@@ -153,5 +234,26 @@ adlFont_shared_ptr adlResource_manager::get_font(const std::string& font_name)
 			return fonts_[path];
 		}
 	}
+	return nullptr;
+}
+
+adlMaterial_shared_ptr adlResource_manager::get_material(const std::string& material_name)
+{
+	adlLogger* adl_logger = &adlLogger::get();
+	adlMaterial_shared_ptr material = materials_[material_name];
+	if (material == nullptr)
+	{
+		adl_logger->log_info("Material " + material_name + "does not exist.");
+	}
+	else if(material->get_shader() == nullptr)
+	{
+		material->set_shader(get_shader(material->get_shader_name()));
+		return material;
+	}
+	else if (material->get_shader() != nullptr)
+	{
+		return material;
+	}
+
 	return nullptr;
 }

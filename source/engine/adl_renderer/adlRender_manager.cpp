@@ -4,6 +4,7 @@
 #include "engine/adl_resource/adlFont.h"
 #include "engine/adl_resource/adlStatic_shader.h"
 #include "engine/adl_resource/adlResource_manager.h"
+#include "engine/adl_resource/adlMaterial.h"
 #include "engine/adlWindow.h"
 
 #include <iostream>
@@ -38,16 +39,19 @@ void adlRender_manager::render(adlActor_shared_ptr actor)
 
 	adlMat4 view_matrix = camera_->get_view_matrix();
 
-	adlShader_shared_ptr shader = model->get_shader();
+	adlMaterial_shared_ptr material = actor->get_material();
+	adlShader_shared_ptr shader = material->get_shader();
 	adl_assert(shader);
 
 	shader->start();
 
+	/*adlMaterial material; 
+	material.set_material(adlVec3(0.24725f, 0.2245f, 0.0645f), adlVec3(0.34615f, 0.3143f, 0.0903f), adlVec3(0.797357f, 0.723991f, 0.208006f), 83.2f);*/
+
 	adlMat4 mvp_matrix = projection_matrix_ * view_matrix * actor->get_transform().get_transformation_matrix();
 	shader->load_mvp(mvp_matrix);
-	shader->load_object_color(color.to_vec3());
-	shader->load_light_color(light_->get_color().to_vec3());
-	shader->load_light_position(light_->get_transform().o);
+	shader->load_light(light_);
+	shader->load_material(material);
 	shader->load_model_matrix(actor->get_transform().get_transformation_matrix());
 	shader->load_camera_position(camera_->get_position());
 
@@ -68,7 +72,8 @@ void adlRender_manager::render(adlLight_shared_ptr light)
 
 	shader->start();
 	shader->load_mvp(mvp_matrix);
-	shader->load_light_color(light_->get_color().to_vec3());
+	shader->load_light(light_);
+	//shader->load_light_color(light_->get_color().to_vec3());
 
 	model->draw();
 	shader->stop();

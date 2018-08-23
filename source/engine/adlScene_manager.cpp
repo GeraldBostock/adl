@@ -39,24 +39,39 @@ void adlScene_manager::render()
 	}
 }
 
-void adlScene_manager::add_entity_to_active_scene(adlEntity entity)
+void adlScene_manager::add_to_scene(adlEntity entity)
 {
 	entity.init();
 	entities_.push_back(entity);
 }
 
-void adlScene_manager::add_actor_to_active_scene(adlActor_shared_ptr actor)
+void adlScene_manager::addToScene(adlEntity entity)
+{
+	add_to_scene(entity);
+}
+
+void adlScene_manager::add_to_scene(adlActor_shared_ptr actor)
 {
 	actor->init();
 	actors_.push_back(actor);
 }
 
-void adlScene_manager::add_light_to_active_scene(adlLight_shared_ptr light)
+void adlScene_manager::addToScene(adlActor_shared_ptr actor)
+{
+	add_to_scene(actor);
+}
+
+void adlScene_manager::add_to_scene(adlLight_shared_ptr light)
 {
 	light->init();
 	lights_.push_back(light);
 	adlRender_manager* renderer = &adlRender_manager::get();
 	renderer->set_light(light);
+}
+
+void adlScene_manager::addToScene(adlLight_shared_ptr light)
+{
+	add_to_scene(light);
 }
 
 void adlScene_manager::spawn_actor(adlActor_shared_ptr actor, adlVec3 position, adlVec3 rotation/* = adlVec3(0.0f)*/, adlVec3 scale/* = adlVec3(1.0f)*/)
@@ -66,4 +81,9 @@ void adlScene_manager::spawn_actor(adlActor_shared_ptr actor, adlVec3 position, 
 	actor->set_position(position);
 	actor->set_rotation(rotation);
 	actor->set_scale(scale);
+}
+
+void adlScene_manager::spawnActor(adlActor_shared_ptr actor, adlVec3 position, adlVec3 rotation/* = adlVec3(0.0f)*/, adlVec3 scale/* = adlVec3(1.0f)*/)
+{
+	spawn_actor(actor, position, rotation, scale);
 }

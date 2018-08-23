@@ -211,6 +211,11 @@ adlModel_shared_ptr adlResource_manager::get_model(const std::string& model_name
 	return nullptr;
 }
 
+adlModel_shared_ptr adlResource_manager::getModel(const std::string& model_name)
+{
+	return get_model(model_name);
+}
+
 adlShader_shared_ptr adlResource_manager::get_shader(const std::string& shader_name)
 {
 	adlLogger* adl_logger = &adlLogger::get();
@@ -235,6 +240,11 @@ adlShader_shared_ptr adlResource_manager::get_shader(const std::string& shader_n
 	return nullptr;
 }
 
+adlShader_shared_ptr adlResource_manager::getShader(const std::string& shader_name)
+{
+	return get_shader(shader_name);
+}
+
 adlFont_shared_ptr adlResource_manager::get_font(const std::string& font_name)
 {
 	adlLogger* adl_logger = &adlLogger::get();
@@ -253,6 +263,11 @@ adlFont_shared_ptr adlResource_manager::get_font(const std::string& font_name)
 		}
 	}
 	return nullptr;
+}
+
+adlFont_shared_ptr adlResource_manager::getFont(const std::string& font_name)
+{
+	return get_font(font_name);
 }
 
 adlMaterial_shared_ptr adlResource_manager::get_material(const std::string& material_name)
@@ -288,4 +303,9 @@ adlMaterial_shared_ptr adlResource_manager::get_material(const std::string& mate
 	}
 
 	return nullptr;
+}
+
+adlMaterial_shared_ptr adlResource_manager::getMaterial(const std::string& material_name)
+{
+	return get_material(material_name);
 }

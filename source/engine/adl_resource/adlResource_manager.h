@@ -20,9 +20,16 @@ public:
 	}
 
 	adlModel_shared_ptr get_model(const std::string& model_name);
+	adlModel_shared_ptr getModel(const std::string& model_name);
+
 	adlShader_shared_ptr get_shader(const std::string& shader_name);
+	adlShader_shared_ptr getShader(const std::string& shader_name);
+
 	adlFont_shared_ptr get_font(const std::string& font_name);
+	adlFont_shared_ptr getFont(const std::string& font_name);
+
 	adlMaterial_shared_ptr get_material(const std::string& material_name);
+	adlMaterial_shared_ptr getMaterial(const std::string& material_name);
 
 private:
 	adlResource_manager();

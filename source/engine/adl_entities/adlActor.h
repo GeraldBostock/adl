@@ -39,6 +39,7 @@ public:
 	adlModel_shared_ptr getModel();
 	adlModel_shared_ptr get_model();
 
+	adlColor getColor();
 	adlColor get_color();
 
 	adlMaterial_shared_ptr getMaterial();

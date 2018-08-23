@@ -118,3 +118,8 @@ void adlActor::setRotation(adlVec3 rotation)
 {
 	set_rotation(rotation);
 }
+
+adlColor adlActor::getColor()
+{
+	return get_color();
+}

@@ -62,6 +62,16 @@ void adlShader_program::load_float(int32 location, float value)
 	glUniform1f(location, value);
 }
 
+void adlShader_program::load_bool(int32 location, bool value)
+{
+	glUniform1i(location, value);
+}
+
+void adlShader_program::load_int(int32 location, int value)
+{
+	glUniform1i(location, value);
+}
+
 void adlShader_program::start()
 {
 	glUseProgram(program_id_);

@@ -7,8 +7,9 @@ adlLight::adlLight()
 	adlResource_manager* adl_rm = &adlResource_manager::get();
 	light_shader_ = adl_rm->get_shader("light_shader");
 	model_ = adl_rm->get_model("cube");
-	transform_ = adlTransform::identity();
-	transform_.scale = adlVec3(0.15f);
+	set_position(adlVec3(0));
+	set_rotation(adlVec3(0));
+	set_scale(adlVec3(0.15f));
 	color_ = adlColor::WHITE;
 
 	light_components_.ambient = adlVec3(0.2f);

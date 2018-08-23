@@ -46,6 +46,9 @@ private:
 
 	std::map<std::string, adlMaterial_shared_ptr> materials_;
 
+	std::map<std::string, std::pair<std::string, std::string>> name_to_texture_path_;
+	std::map<std::string, adlTexture_shared_ptr> textures_;
+
 	adlLoader loader_;
 
 	adlModel_shared_ptr model;

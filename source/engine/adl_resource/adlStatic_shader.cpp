@@ -41,6 +41,9 @@ void adlStatic_shader::get_all_uniform_locations()
 	light_ambient_location_ = get_uniform_location("light.ambient");
 	light_diffuse_location_ = get_uniform_location("light.diffuse");
 	light_specular_location_ = get_uniform_location("light.specular");
+
+	texture_location_ = get_uniform_location("material.diffuse");
+	texture_specular_location_ = get_uniform_location("material.specular");
 }
 
 void adlStatic_shader::load_mvp(const adlMat4& matrix)
@@ -76,12 +79,18 @@ void adlStatic_shader::load_material(adlMaterial_shared_ptr material)
 	load_float(shininess_location_, material->get_shininess());
 }
 
-void adlStatic_shader::load_light(Light light)
+void adlStatic_shader::load_light(adlLight_shared_ptr light)
 {
-	load_vector(light_color_location_, light->getColor().to_vec3());
-	load_vector(light_position_location_, light->getTransform().o);
+	load_vector(light_color_location_, light->get_color().to_vec3());
+	load_vector(light_position_location_, light->get_transform().o);
 
 	load_vector(light_ambient_location_, light->get_ambient());
 	load_vector(light_diffuse_location_, light->get_diffuse());
 	load_vector(light_specular_location_, light->get_specular());
+}
+
+void adlStatic_shader::load_texture()
+{
+	load_int(texture_location_, 0);
+	load_int(texture_specular_location_, 1);
 }

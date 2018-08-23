@@ -7,7 +7,8 @@
 			"diffuse": [0.780392, 0.568627, 0.113725],
 			"specular": [0.992157, 0.941176, 0.807843],
 			"shine": 27.8974,
-			"shader": "phong_shader"
+			"shader": "no_texture",
+			"texture": ""
 		},
 		{
 			"name": "bronze",
@@ -15,7 +16,8 @@
 			"diffuse": [0.714, 0.4284, 0.18144],
 			"specular": [0.393548, 0.271906, 0.166721],
 			"shine": 25.6,
-			"shader": "phong_shader"
+			"shader": "no_texture",
+			"texture": ""
 		},
 		{
 			"name": "polished_bronze",
@@ -23,7 +25,8 @@
 			"diffuse": [0.4, 0.2368, 0.1036],
 			"specular": [0.774597, 0.458561, 0.200621],
 			"shine": 76.8,
-			"shader": "phong_shader"
+			"shader": "no_texture",
+			"texture": ""
 		},
 		{
 			"name": "chrome",
@@ -31,7 +34,8 @@
 			"diffuse": [0.4, 0.4, 0.4],
 			"specular": [0.774597, 0.774597, 0.774597],
 			"shine": 76.8,
-			"shader": "phong_shader"
+			"shader": "no_texture",
+			"texture": ""
 		},
 		{
 			"name": "copper",
@@ -39,15 +43,17 @@
 			"diffuse": [0.7038, 0.27048, 0.0828],
 			"specular": [0.256777, 0.137622, 0.086014],
 			"shine": 12.8,
-			"shader": "phong_shader"
+			"shader": "no_texture",
+			"texture": ""
 		},
 		{
-			"name": "wood",
-			"ambient": [0.19125, 0.0735, 0.0225],
+			"name": "frame",
+			"ambient": [0.39125, 0.1735, 0.1225],
 			"diffuse": [0.55, 0.27048, 0.0828],
-			"specular": [0.0, 0.0, 0.0],
-			"shine": 12.0,
-			"shader": "phong_shader"
+			"specular": [0.5, 0.5, 0.5],
+			"shine": 24.0,
+			"shader": "textured",
+			"texture": "awful_texture"
 		},
 		{
 			"name": "ruby",
@@ -55,7 +61,8 @@
 			"diffuse": [0.61424, 0.04136, 0.04136],
 			"specular": [0.297254, 0.30829, 0.306678],
 			"shine": 76.8,
-			"shader": "phong_shader"
+			"shader": "no_texture",
+			"texture": ""
 		},
 		{
 			"name": "obsidian",
@@ -63,7 +70,8 @@
 			"diffuse": [0.18275, 0.17, 0.22525],
 			"specular": [0.332741, 0.328634, 0.346435],
 			"shine": 38.4,
-			"shader": "phong_shader"
+			"shader": "no_texture",
+			"texture": ""
 		},
 		{
 			"name": "red_rubber",
@@ -71,7 +79,8 @@
 			"diffuse": [0.5, 0.4, 0.4],
 			"specular": [0.7, 0.04, 0.04],
 			"shine": 10.0,
-			"shader": "phong_shader"
+			"shader": "no_texture",
+			"texture": ""
 		},
 		{
 			"name": "perl",
@@ -79,7 +88,8 @@
 			"diffuse": [1.0, 0.829, 0.829],
 			"specular": [0.296648, 0.296648, 0.296648],
 			"shine": 11.264,
-			"shader": "phong_shader"
+			"shader": "no_texture",
+			"texture": ""
 		},
 		{
 			"name": "emerald",
@@ -87,7 +97,8 @@
 			"diffuse": [0.07568, 0.61424, 0.07568],
 			"specular": [0.633, 0.727811, 0.633],
 			"shine": 76.8,
-			"shader": "phong_shader"
+			"shader": "no_texture",
+			"texture": ""
 		},
 		{
 			"name": "silver",
@@ -95,7 +106,8 @@
 			"diffuse": [0.50754, 0.50754, 0.50754],
 			"specular": [0.508273, 0.508273, 0.508273],
 			"shine": 51.2,
-			"shader": "phong_shader"
+			"shader": "no_texture",
+			"texture": ""
 		},
 		{
 			"name": "polished_silver",
@@ -103,7 +115,53 @@
 			"diffuse": [0.2775, 0.2775, 0.2775],
 			"specular": [0.773911, 0.773911, 0.773911],
 			"shine": 89.6,
-			"shader": "phong_shader"
+			"shader": "no_texture",
+			"texture": ""
+		},
+		{
+			"name": "gold",
+			"ambient": [0.24725, 0.1995, 0.0745],
+			"diffuse": [0.75164, 0.60648, 0.22648],
+			"specular": [0.628281, 0.555802, 0.366065],
+			"shine": 51.2,
+			"shader": "no_texture",
+			"texture": ""
+		},
+		{
+			"name": "red_plastic",
+			"ambient": [0.0, 0.0, 0.0],
+			"diffuse": [0.5, 0.0, 0.0],
+			"specular": [0.7, 0.6, 0.5],
+			"shine": 32.0,
+			"shader": "no_texture",
+			"texture": ""
+		},
+		{
+			"name": "white_plastic",
+			"ambient": [0.0, 0.0, 0.0],
+			"diffuse": [0.55, 0.55, 0.55],
+			"specular": [0.7, 0.7, 0.7],
+			"shine": 32.0,
+			"shader": "no_texture",
+			"texture": ""
+		},
+		{
+			"name": "black_rubber",
+			"ambient": [0.02, 0.02, 0.02],
+			"diffuse": [0.01, 0.01, 0.01],
+			"specular": [0.4, 0.4, 0.4],
+			"shine": 10.0,
+			"shader": "no_texture",
+			"texture": ""
+		},
+		{
+			"name": "green_rubber",
+			"ambient": [0.0, 0.05, 0.0],
+			"diffuse": [0.4, 0.5, 0.4],
+			"specular": [0.04, 0.7, 0.04],
+			"shine": 10.0,
+			"shader": "no_texture",
+			"texture": ""
 		}
 	]
 }

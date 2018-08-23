@@ -18,12 +18,13 @@ public:
 	void load_mvp(const adlMat4& mvp_matrix);
 	//void load_light_color(adlVec3 color);
 	void load_model_matrix(const adlMat4& model_matrix);
-	void load_light(Light light);
+	void load_light(adlLight_shared_ptr light);
 	//void load_light_position(adlVec3 position);
 	void load_camera_position(adlVec3 position);
 	void load_text_color(adlVec3 color);
 	void load_projection_matrix(const adlMat4& matrix);
 	void load_material(adlMaterial_shared_ptr material);
+	void load_texture();
 
 protected:
 	virtual void bind_attributes();
@@ -47,6 +48,9 @@ private:
 	int32 light_ambient_location_;
 	int32 light_diffuse_location_;
 	int32 light_specular_location_;
+
+	int32 texture_location_;
+	int32 texture_specular_location_;
 };
 
 #endif // adl_static_shader_h__

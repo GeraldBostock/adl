@@ -35,7 +35,6 @@ void adlModel::print_vertices()
 
 void adlModel::draw()
 {
-	//shader_->start();
 	for (auto mesh : meshes_)
 	{
 		glBindVertexArray(mesh->get_vao_id());
@@ -44,7 +43,6 @@ void adlModel::draw()
 		glEnableVertexAttribArray(1);
 		glEnableVertexAttribArray(2);
 
-		//glDrawArrays(GL_TRIANGLES, 0, mesh->get_vertex_count());
 		glDrawElements(GL_TRIANGLES, mesh->get_index_count(), GL_UNSIGNED_INT, 0);
 
 		glDisableVertexAttribArray(0);
@@ -70,31 +68,4 @@ void adlModel::draw()
 
 		glBindVertexArray(0);
 	}
-	//shader_->stop();
 }
-
-//adlShader_shared_ptr adlModel::get_shader()
-//{
-//	return shader_;
-//}
-//
-//void adlModel::set_shader(adlShader_shared_ptr shader)
-//{
-//	shader_ = shader;
-//	for (auto mesh : meshes_)
-//	{
-//		mesh->set_shader(shader);
-//	}
-//}
-
-//void adlModel::set_frame(adlMatrix_frame& frame)
-//{
-//	frame_.o = frame.o;
-//	frame_.rot = frame.rot;
-//	frame_.scale = frame.scale;
-//}
-//
-//adlMatrix_frame adlModel::get_frame()
-//{
-//	return frame_;
-//}

@@ -16,26 +16,28 @@ public:
 	virtual void init() override;
 	virtual void update(float dt) override;
 
-	adlTransform getTransform();
-	void setTransform(adlTransform t);
-	void setTransform(adlVec3 o, adlVec3 rot, adlVec3 scale);
+	void set_position(adlVec3 position);
+	void set_rotation(adlVec3 rotation);
+	void set_scale(adlVec3 scale);
 
-	adlModel_shared_ptr getModel();
-	void setModel(const std::string& model_name);
+	adlVec3 get_position();
+	adlVec3 get_rotation();
+	adlVec3 get_scale();
 
-	adlColor getColor();
-
-	adlMaterial_shared_ptr getMaterial();
-	void setMaterial(adlMaterial_shared_ptr material);
+	adlTransform get_transform();
+	adlModel_shared_ptr get_model();
+	adlColor get_color();
+	adlMaterial_shared_ptr get_material();
 
 protected:
-	adlTransform transform_;
 	adlModel_shared_ptr model_;
 	adlColor color_;
 
 	adlMaterial_shared_ptr material_;
 
+	void set_material(adlMaterial_shared_ptr material);
 private:
+	adlTransform transform_;
 };
 
 #endif // adl_actor_h__

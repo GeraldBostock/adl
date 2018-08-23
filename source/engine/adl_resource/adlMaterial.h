@@ -20,9 +20,14 @@ public:
 	float get_shininess();
 
 	void set_shader(adlShader_shared_ptr shader);
+	void set_names(const std::string& shader_name, const std::string& texture_name);
 	void set_shader_name(const std::string& shader_name);
 	std::string get_shader_name();
 	adlShader_shared_ptr get_shader();
+
+	std::string get_texture_name();
+	void set_texture(adlTexture_shared_ptr texture);
+	adlTexture_shared_ptr get_texture();
 private:
 
 	struct Material
@@ -35,6 +40,9 @@ private:
 
 	std::string shader_name_;
 	adlShader_shared_ptr shader_;
+
+	std::string texture_name_;
+	adlTexture_shared_ptr texture_;
 };
 
 #endif // adl_material_h__

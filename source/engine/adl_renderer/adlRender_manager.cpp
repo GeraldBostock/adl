@@ -5,6 +5,7 @@
 #include "engine/adl_resource/adlStatic_shader.h"
 #include "engine/adl_resource/adlResource_manager.h"
 #include "engine/adl_resource/adlMaterial.h"
+#include "engine/adl_resource/adlTexture.h"
 #include "engine/adlWindow.h"
 
 #include <iostream>
@@ -22,24 +23,24 @@ adlRender_manager::adlRender_manager()
 void adlRender_manager::prepare()
 {
 	glEnable(GL_DEPTH_TEST);
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-void adlRender_manager::render(Actor actor)
+void adlRender_manager::render(adlActor_shared_ptr actor)
 {
 	adl_assert(light_);
-	adlColor color = actor->getColor();
+	adlColor color = actor->get_color();
 	if (is_wire_frame_mode_)
 	{
 		color = adlColor::WHITE;
 	}
-	adlModel_shared_ptr model = actor->getModel();
+	adlModel_shared_ptr model = actor->get_model();
 	adl_assert(model);
 
 	adlMat4 view_matrix = camera_->get_view_matrix();
 
-	adlMaterial_shared_ptr material = actor->getMaterial();
+	adlMaterial_shared_ptr material = actor->get_material();
 	adlShader_shared_ptr shader = material->get_shader();
 	adl_assert(shader);
 
@@ -48,27 +49,36 @@ void adlRender_manager::render(Actor actor)
 	/*adlMaterial material; 
 	material.set_material(adlVec3(0.24725f, 0.2245f, 0.0645f), adlVec3(0.34615f, 0.3143f, 0.0903f), adlVec3(0.797357f, 0.723991f, 0.208006f), 83.2f);*/
 
-	adlMat4 mvp_matrix = projection_matrix_ * view_matrix * actor->getTransform().get_transformation_matrix();
+	adlMat4 mvp_matrix = projection_matrix_ * view_matrix * actor->get_transform().get_transformation_matrix();
 	shader->load_mvp(mvp_matrix);
 	shader->load_light(light_);
 	shader->load_material(material);
-	shader->load_model_matrix(actor->getTransform().get_transformation_matrix());
+	shader->load_model_matrix(actor->get_transform().get_transformation_matrix());
 	shader->load_camera_position(camera_->get_position());
 
+	if (material->get_texture() !=  nullptr)
+	{
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, material->get_texture()->get_id());
+		shader->load_texture();
+
+		glActiveTexture(GL_TEXTURE1);
+		glBindTexture(GL_TEXTURE_2D, material->get_texture()->get_specular_map_id());
+	}
 	model->draw();
 	shader->stop();
 }
 
-void adlRender_manager::render(Light light)
+void adlRender_manager::render(adlLight_shared_ptr light)
 {
 	adl_assert(light);
-	adlModel_shared_ptr model = light->getModel();
+	adlModel_shared_ptr model = light->get_model();
 	adl_assert(model);
 	adlMat4 view_matrix = camera_->get_view_matrix();
 	adlShader_shared_ptr shader = light->get_shader();
 	adl_assert(shader);
 
-	adlMat4 mvp_matrix = projection_matrix_ * view_matrix * light->getTransform().get_transformation_matrix();
+	adlMat4 mvp_matrix = projection_matrix_ * view_matrix * light->get_transform().get_transformation_matrix();
 
 	shader->start();
 	shader->load_mvp(mvp_matrix);
@@ -170,7 +180,7 @@ void adlRender_manager::set_camera(adlCamera* camera)
 	camera_ = camera;
 }
 
-void adlRender_manager::set_light(Light light)
+void adlRender_manager::set_light(adlLight_shared_ptr light)
 {
 	light_ = light;
 }

@@ -114,9 +114,27 @@ adlResource_manager::adlResource_manager()
 		material->set_material(ambient_vec, diffuse_vec, specular_vec, shininess);
 
 		std::string shader_name = material_object["shader"].GetString();
-		material->set_shader_name(shader_name);
+		std::string texture_name = material_object["texture"].GetString();
+		material->set_names(shader_name, texture_name);
+		//material->set_shader_name(shader_name);
 
 		materials_[material_name] = material;
+	}
+
+	const rapidjson::Value& texture_objects = document["textures"];
+	adl_assert(texture_objects.IsArray());
+
+	for (rapidjson::Value::ConstValueIterator itr = texture_objects.Begin(); itr != texture_objects.End(); ++itr)
+	{
+		const rapidjson::Value& texture_object = *itr;
+		adl_assert(texture_object.IsObject());
+
+		std::pair<std::string, std::string> texture_paths;
+		texture_paths.first = texture_object["path"].GetString();
+		texture_paths.second = texture_object["specular_map_path"].GetString();
+
+		name_to_texture_path_[texture_object["name"].GetString()] = texture_paths;
+		textures_[texture_object["name"].GetString()] = nullptr;
 	}
 }
 
@@ -245,9 +263,23 @@ adlMaterial_shared_ptr adlResource_manager::get_material(const std::string& mate
 	{
 		adl_logger->log_info("Material " + material_name + "does not exist.");
 	}
-	else if(material->get_shader() == nullptr)
+	else if(material->get_shader() == nullptr || material->get_texture() == nullptr)
 	{
-		material->set_shader(get_shader(material->get_shader_name()));
+		if (material->get_shader() == nullptr)
+		{
+			material->set_shader(get_shader(material->get_shader_name()));
+		}
+
+		if (material->get_texture() == nullptr && material->get_texture_name() != "")
+		{
+			std::string texture_name = material->get_texture_name();
+			if (textures_[texture_name] == nullptr)
+			{
+				textures_[texture_name] = loader_.load_texture(name_to_texture_path_[texture_name]);
+			}
+			material->set_texture(textures_[texture_name]);
+			//material->set_texture(loader_.load_texture())
+		}
 		return material;
 	}
 	else if (material->get_shader() != nullptr)

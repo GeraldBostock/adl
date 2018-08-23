@@ -1,10 +1,12 @@
 #include "adlMaterial.h"
 
 #include "engine/adl_resource/adlStatic_shader.h"
+#include "engine/adl_resource/adlTexture.h"
 
 
 adlMaterial::adlMaterial()
-	: shader_(nullptr)
+	: shader_(nullptr),
+	  texture_(nullptr)
 {
 }
 
@@ -58,4 +60,25 @@ adlShader_shared_ptr adlMaterial::get_shader()
 std::string adlMaterial::get_shader_name()
 {
 	return shader_name_;
+}
+
+void adlMaterial::set_names(const std::string& shader_name, const std::string& texture_name)
+{
+	shader_name_ = shader_name;
+	texture_name_ = texture_name;
+}
+
+adlTexture_shared_ptr adlMaterial::get_texture()
+{
+	return texture_;
+}
+
+void adlMaterial::set_texture(adlTexture_shared_ptr texture)
+{
+	texture_ = texture;
+}
+
+std::string adlMaterial::get_texture_name()
+{
+	return texture_name_;
 }

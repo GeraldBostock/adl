@@ -15,24 +15,16 @@ Game::~Game()
 bool Game::init()
 {
 	adlActor_shared_ptr actor = MAKE_SHARED(Test_actor);
-	adl_scene_manager->add_to_active_scene(actor);
-
-	adlActor_shared_ptr someActor = MAKE_SHARED(adlActor);
-	someActor->setPosition(adlVec3(-15.0, -5.0f, 15.0f));
-	someActor->setRotation(adlVec3(0.0f));
-	someActor->setScale(adlVec3(1.0f));
-	someActor->setMaterial(adl_rm->get_material("silver"));
-	someActor->setModel(adl_rm->get_model("mountain"));
-	adl_scene_manager->spawnActor(someActor);
+	adl_scene_manager->add_actor_to_active_scene(actor);
 
 	adlActor_shared_ptr material_actor = MAKE_SHARED(Material_test);
-	adl_scene_manager->add_to_active_scene(material_actor);
+	adl_scene_manager->add_actor_to_active_scene(material_actor);
 
 	adlActor_shared_ptr wuson = MAKE_SHARED(Material_new_test);
-	adl_scene_manager->add_to_active_scene(wuson);
+	adl_scene_manager->add_actor_to_active_scene(wuson);
 
 	adlLight_shared_ptr light = MAKE_SHARED(Test_light);
-	adl_scene_manager->add_to_active_scene(light);
+	adl_scene_manager->add_light_to_active_scene(light);
 
 	for (int i = 0; i < 20; i++)
 	{

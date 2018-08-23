@@ -21,13 +21,11 @@ public:
 	void update(float dt);
 	void render();
 
-	void add_to_active_scene(adlEntity entity);
-	void add_to_active_scene(adlActor_shared_ptr actor);
-	void add_to_active_scene(adlLight_shared_ptr light);
+	void add_entity_to_active_scene(adlEntity entity);
+	void add_actor_to_active_scene(adlActor_shared_ptr actor);
+	void add_light_to_active_scene(adlLight_shared_ptr light);
 
 	void spawn_actor(adlActor_shared_ptr actor, adlVec3 position, adlVec3 rotation = adlVec3(0.0f), adlVec3 scale = adlVec3(1.0f));
-	void spawnActor(adlActor_shared_ptr actor);
-
 private:
 	std::vector<adlEntity> entities_;
 	std::vector<adlActor_shared_ptr> actors_;

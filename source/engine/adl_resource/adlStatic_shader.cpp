@@ -81,8 +81,8 @@ void adlStatic_shader::load_material(adlMaterial_shared_ptr material)
 
 void adlStatic_shader::load_light(adlLight_shared_ptr light)
 {
-	load_vector(light_color_location_, light->getColor().to_vec3());
-	load_vector(light_position_location_, light->getTransform().o);
+	load_vector(light_color_location_, light->get_color().to_vec3());
+	load_vector(light_position_location_, light->get_transform().o);
 
 	load_vector(light_ambient_location_, light->get_ambient());
 	load_vector(light_diffuse_location_, light->get_diffuse());

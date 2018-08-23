@@ -39,19 +39,19 @@ void adlScene_manager::render()
 	}
 }
 
-void adlScene_manager::add_to_active_scene(adlEntity entity) //add2ActiveScene, addToActiveScene
+void adlScene_manager::add_entity_to_active_scene(adlEntity entity)
 {
 	entity.init();
 	entities_.push_back(entity);
 }
 
-void adlScene_manager::add_to_active_scene(adlActor_shared_ptr actor)
+void adlScene_manager::add_actor_to_active_scene(adlActor_shared_ptr actor)
 {
 	actor->init();
 	actors_.push_back(actor);
 }
 
-void adlScene_manager::add_to_active_scene(adlLight_shared_ptr light)
+void adlScene_manager::add_light_to_active_scene(adlLight_shared_ptr light)
 {
 	light->init();
 	lights_.push_back(light);
@@ -63,13 +63,7 @@ void adlScene_manager::spawn_actor(adlActor_shared_ptr actor, adlVec3 position, 
 {
 	actor->init();
 	actors_.push_back(actor);
-	actor->setPosition(position);
-	actor->setRotation(rotation);
-	actor->setScale(scale);
-}
-
-void adlScene_manager::spawnActor(adlActor_shared_ptr actor)
-{
-	actor->init();
-	actors_.push_back(actor);
+	actor->set_position(position);
+	actor->set_rotation(rotation);
+	actor->set_scale(scale);
 }

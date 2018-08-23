@@ -4,15 +4,6 @@
 
 Test_actor::Test_actor()
 {
-	adlResource_manager* adl_rm = &adlResource_manager::get();
-	setModel(adl_rm->get_model("landscape"));
-	setMaterial(adl_rm->get_material("copper"));
-
-	setPosition(adlVec3(0.0f, -5.0f, 0.0f));
-	setRotation(adlVec3(0.0f));
-	setScale(1.0f);
-
-	color_ = adlColor(160, 82, 45);
 }
 
 
@@ -22,7 +13,16 @@ Test_actor::~Test_actor()
 
 void Test_actor::init()
 {
+	adlResource_manager* adl_rm = &adlResource_manager::get();
+	model_ = adl_rm->get_model("landscape");
+	adlMaterial_shared_ptr material = adl_rm->get_material("copper");
+	set_material(material);
 
+	set_position(adlVec3(0.0f, -5.0f, 0.0f));
+	set_rotation(adlVec3(adlMath::deg_to_rad(-90.0f), 0, 0));
+	set_scale(1.0f);
+
+	color_ = adlColor(160, 82, 45);
 }
 
 void Test_actor::update(float dt)

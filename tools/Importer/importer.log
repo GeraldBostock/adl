@@ -1,0 +1,48 @@
+Args:
+[ 'C:\\Users\\Atakan\\Documents\\GitHub\\adl\\tools\\ThirdParty\\Nodejs\\Windows\\node.exe',
+  'C:\\Users\\Atakan\\Documents\\GitHub\\adl\\tools\\Importer\\Importer.js',
+  'models',
+  'landscape',
+  'Landscape.dae',
+  'argPath2' ]
+{
+    "models": [
+		{"name": "box", "path": "res/models/box.obj"},
+		{"name": "rifle", "path": "res/models/rifle.obj"},
+		{"name": "segment","path": "res/models/segment.obj"},
+		{"name": "duck","path": "res/models/duck.fbx"},
+		{"name": "wuson","path": "res/models/wuson.obj"},
+		{"name": "jeep","path": "res/models/jeep1.fbx"},
+		{"name": "cube", "path": "res/models/cube.obj"},
+		{"name": "mountain", "path": "res/models/part.obj"},
+		{"name": "teapot", "path": "res/models/teapot.obj"},
+		{"name": "bmw", "path": "res/models/bmw.obj"}
+		
+	],
+	"shaders": [
+		{"name": "diffuse_shader", "vertex_shader_path": "res/shaders/basic_shader.vs", "fragment_shader_path": "res/shaders/diffuse_shader.fs"},
+		{"name": "specular_shader", "vertex_shader_path": "res/shaders/basic_shader.vs", "fragment_shader_path": "res/shaders/specular_shader.fs"},
+		{"name": "phong_shader", "vertex_shader_path": "res/shaders/basic_shader.vs", "fragment_shader_path": "res/shaders/phong_shader.fs"},
+		{"name": "light_shader", "vertex_shader_path": "res/shaders/basic_shader.vs", "fragment_shader_path": "res/shaders/light_shader.fs"},
+		{"name": "font_shader", "vertex_shader_path": "res/shaders/font_shader.vs", "fragment_shader_path": "res/shaders/font_shader.fs"}
+	],
+	"fonts": [
+		{"name": "arial", "path": "res/fonts/arial.ttf"},
+		{"name": "consola", "path": "res/fonts/consola.ttf"},
+		{"name": "roboto", "path": "res/fonts/Roboto-Regular.ttf"}
+	]
+}
+[ { name: 'box', path: 'res/models/box.obj' },
+  { name: 'rifle', path: 'res/models/rifle.obj' },
+  { name: 'segment', path: 'res/models/segment.obj' },
+  { name: 'duck', path: 'res/models/duck.fbx' },
+  { name: 'wuson', path: 'res/models/wuson.obj' },
+  { name: 'jeep', path: 'res/models/jeep1.fbx' },
+  { name: 'cube', path: 'res/models/cube.obj' },
+  { name: 'mountain', path: 'res/models/part.obj' },
+  { name: 'teapot', path: 'res/models/teapot.obj' },
+  { name: 'bmw', path: 'res/models/bmw.obj' },
+  { name: 'landscape', path: 'res/models/Landscape.dae' } ]
+
+null
+File Updated!

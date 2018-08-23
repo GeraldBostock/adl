@@ -18,7 +18,7 @@ public:
 	void load_mvp(const adlMat4& mvp_matrix);
 	//void load_light_color(adlVec3 color);
 	void load_model_matrix(const adlMat4& model_matrix);
-	void load_light(adlLight_shared_ptr light);
+	void load_light(Light light);
 	//void load_light_position(adlVec3 position);
 	void load_camera_position(adlVec3 position);
 	void load_text_color(adlVec3 color);

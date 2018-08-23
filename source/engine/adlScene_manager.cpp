@@ -45,13 +45,28 @@ void adlScene_manager::add_entity_to_active_scene(adlEntity entity)
 	entities_.push_back(entity);
 }
 
-void adlScene_manager::add_actor_to_active_scene(adlActor_shared_ptr actor)
+void adlScene_manager::add_actor_to_active_scene(Actor actor)
 {
 	actor->init();
 	actors_.push_back(actor);
 }
 
-void adlScene_manager::add_light_to_active_scene(adlLight_shared_ptr light)
+void adlScene_manager::add_light_to_active_scene(Light light)
+{
+	light->init();
+	lights_.push_back(light);
+	adlRender_manager* renderer = &adlRender_manager::get();
+	renderer->set_light(light);
+}
+
+void adlScene_manager::addToScene(Actor actor)
+{
+	actor->init();
+	actors_.push_back(actor);
+}
+
+
+void adlScene_manager::addToScene(Light light)
 {
 	light->init();
 	lights_.push_back(light);

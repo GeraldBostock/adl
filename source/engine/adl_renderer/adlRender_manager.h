@@ -17,15 +17,15 @@ public:
 	}
 
 	void prepare();
-	void render(adlActor_shared_ptr actor);
-	void render(adlLight_shared_ptr light);
+	void render(Actor actor);
+	void render(Light light);
 	void render_text(const std::string& text, adlFont_shared_ptr font, float x, float y, float scale, adlColor color);
 	/*void render_mesh(adlModel_shared_ptr model);
 	void render_mesh(adlModel model);*/
 	void toggle_wire_frame_mode();
 
 	void set_camera(adlCamera* camera);
-	void set_light(adlLight_shared_ptr light);
+	void set_light(Light light);
 
 	void set_projection(adlMat4 projection_matrix);
 
@@ -37,7 +37,7 @@ private:
 	adlMat4 projection_matrix_;
 
 	adlCamera* camera_;
-	adlLight_shared_ptr light_;
+	Light light_;
 };
 
 #endif // adl_render_manager_h__

@@ -32,13 +32,6 @@ void adlLight::update(float dt)
 
 }
 
-//void adlLight::set_frame(adlMatrix_frame frame)
-//{
-//	frame_.o = frame.o;
-//	frame_.rot = frame.rot;
-//	frame_.scale = frame.scale;
-//}
-
 adlShader_shared_ptr adlLight::get_shader()
 {
 	return light_shader_;

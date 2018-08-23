@@ -22,12 +22,14 @@ public:
 	void render();
 
 	void add_entity_to_active_scene(adlEntity entity);
-	void add_actor_to_active_scene(adlActor_shared_ptr actor);
-	void add_light_to_active_scene(adlLight_shared_ptr light);
+	void add_actor_to_active_scene(Actor actor);
+	void add_light_to_active_scene(Light light);
+	void addToScene(Actor actor);
+	void addToScene(Light light);
 private:
 	std::vector<adlEntity> entities_;
-	std::vector<adlActor_shared_ptr> actors_;
-	std::vector<adlLight_shared_ptr> lights_;
+	std::vector<Actor> actors_;
+	std::vector<Light> lights_;
 
 
 	adlScene_manager();

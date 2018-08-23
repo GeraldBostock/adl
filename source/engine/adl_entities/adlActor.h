@@ -16,10 +16,17 @@ public:
 	virtual void init() override;
 	virtual void update(float dt) override;
 
-	adlTransform get_transform();
-	adlModel_shared_ptr get_model();
-	adlColor get_color();
-	adlMaterial_shared_ptr get_material();
+	adlTransform getTransform();
+	void setTransform(adlTransform t);
+	void setTransform(adlVec3 o, adlVec3 rot, adlVec3 scale);
+
+	adlModel_shared_ptr getModel();
+	void setModel(const std::string& model_name);
+
+	adlColor getColor();
+
+	adlMaterial_shared_ptr getMaterial();
+	void setMaterial(adlMaterial_shared_ptr material);
 
 protected:
 	adlTransform transform_;
@@ -28,7 +35,6 @@ protected:
 
 	adlMaterial_shared_ptr material_;
 
-	void set_material(adlMaterial_shared_ptr material);
 private:
 };
 

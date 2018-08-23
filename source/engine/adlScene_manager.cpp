@@ -58,3 +58,12 @@ void adlScene_manager::add_light_to_active_scene(adlLight_shared_ptr light)
 	adlRender_manager* renderer = &adlRender_manager::get();
 	renderer->set_light(light);
 }
+
+void adlScene_manager::spawn_actor(adlActor_shared_ptr actor, adlVec3 position, adlVec3 rotation/* = adlVec3(0.0f)*/, adlVec3 scale/* = adlVec3(1.0f)*/)
+{
+	actor->init();
+	actors_.push_back(actor);
+	actor->set_position(position);
+	actor->set_rotation(rotation);
+	actor->set_scale(scale);
+}

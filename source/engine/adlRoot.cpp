@@ -43,12 +43,14 @@ void adlRoot::run()
 	adl_scene_manager->update(dt);
 	adl_scene_manager->render();
 
+#ifdef _DEBUG
 	float fps = fps_manager_->get_fps();
 	std::string fps_string = std::to_string(fps);
 	fps_string = fps_string.substr(0, fps_string.size() - 4);
 
 	adlFont_shared_ptr arial = adl_rm->get_font("arial");
 	adl_renderer->render_text("FPS: " + fps_string, arial, 0.89f * adl_window->get_width(), 0.95f * adl_window->get_height(), 0.5f, adlColor::YELLOW);
+#endif // _DEBUG
 
 	adl_window->swap_buffers();
 }

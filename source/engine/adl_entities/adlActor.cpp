@@ -43,3 +43,33 @@ void adlActor::set_material(adlMaterial_shared_ptr material)
 {
 	material_ = material;
 }
+
+void adlActor::set_position(adlVec3 position)
+{
+	transform_.o = position;
+}
+
+void adlActor::set_rotation(adlVec3 rotation)
+{
+	transform_.rot = rotation;
+}
+
+void adlActor::set_scale(adlVec3 scale)
+{
+	transform_.scale = scale;
+}
+
+adlVec3 adlActor::get_position()
+{
+	return transform_.o;
+}
+
+adlVec3 adlActor::get_rotation()
+{
+	return transform_.rot;
+}
+
+adlVec3 adlActor::get_scale()
+{
+	return transform_.scale;
+}

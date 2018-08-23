@@ -3,6 +3,7 @@
 #include "adlMesh.h"
 #include "adlModel.h"
 #include "adlFont.h"
+#include "adlTexture.h"
 #include "engine/adl_debug/adlLogger.h"
 #include "engine/adl_resource/adlStatic_shader.h"
 
@@ -196,4 +197,56 @@ adlFont_shared_ptr adlLoader::load_font(const std::string& font_path)
 	FT_Done_FreeType(ft);
 
 	return font;
+}
+
+adlTexture_shared_ptr adlLoader::load_texture(const std::pair<std::string, std::string>& texture_paths)
+{
+	adlTexture_shared_ptr texture = MAKE_SHARED(adlTexture);
+
+	load_texture_from_file(texture->get_id(), texture_paths.first);
+	load_texture_from_file(texture->get_specular_map_id(), texture_paths.second);
+
+	adlLogger* logger = &adlLogger::get();
+
+	return texture;
+}
+
+void adlLoader::load_texture_from_file(unsigned int texture_id, const std::string& file_path)
+{
+	adlLogger* logger = &adlLogger::get();
+	logger->log_info("Loading texture at " + file_path);
+
+	glBindTexture(GL_TEXTURE_2D, texture_id);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	int width;
+	int height;
+	int color_channels;
+	unsigned char* data = stbi_load(file_path.c_str(), &width, &height, &color_channels, 0);
+
+	float color_format;
+	if (color_channels == 3)
+	{
+		color_format = GL_RGB;
+	}
+	else if (color_channels == 4)
+	{
+		color_format = GL_RGBA;
+	}
+
+	if (data)
+	{
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, color_format, GL_UNSIGNED_BYTE, data);
+		glGenerateMipmap(GL_TEXTURE_2D);
+	}
+	else
+	{
+		logger->log_error("Failed to load diffuse texture at " + file_path);
+	}
+
+	stbi_image_free(data);
 }

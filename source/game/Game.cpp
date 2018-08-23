@@ -26,6 +26,12 @@ bool Game::init()
 	adlLight_shared_ptr light = MAKE_SHARED(Test_light);
 	adl_scene_manager->add_light_to_active_scene(light);
 
+	for (int i = 0; i < 20; i++)
+	{
+		adlActor_shared_ptr multi_actor = MAKE_SHARED(Test_actor);
+		adl_scene_manager->spawn_actor(multi_actor, adlVec3(i * 3, 0, 0));
+	}
+
 	adl_window->set_mouse_visible(false);
 
 	return true;

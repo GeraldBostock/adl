@@ -5,6 +5,7 @@
 #include "engine/adl_resource/adlStatic_shader.h"
 #include "engine/adl_resource/adlResource_manager.h"
 #include "engine/adl_resource/adlMaterial.h"
+#include "engine/adl_resource/adlTexture.h"
 #include "engine/adlWindow.h"
 
 #include <iostream>
@@ -22,7 +23,7 @@ adlRender_manager::adlRender_manager()
 void adlRender_manager::prepare()
 {
 	glEnable(GL_DEPTH_TEST);
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
@@ -55,6 +56,15 @@ void adlRender_manager::render(adlActor_shared_ptr actor)
 	shader->load_model_matrix(actor->get_transform().get_transformation_matrix());
 	shader->load_camera_position(camera_->get_position());
 
+	if (material->get_texture() !=  nullptr)
+	{
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, material->get_texture()->get_id());
+		shader->load_texture();
+
+		glActiveTexture(GL_TEXTURE1);
+		glBindTexture(GL_TEXTURE_2D, material->get_texture()->get_specular_map_id());
+	}
 	model->draw();
 	shader->stop();
 }

@@ -9,6 +9,7 @@ uniform mat4 model_matrix;
 
 out vec3 fragment_position;
 out vec3 vertex_normal;
+out vec2 texture_coords;
 
 void main()
 {
@@ -17,4 +18,6 @@ void main()
 	
 	vertex_normal = mat3(transpose(inverse(model_matrix))) * normal;
 	fragment_position = vec3(model_matrix * vec4(position, 1.0));
+	
+	texture_coords = uv;
 }

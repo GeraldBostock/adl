@@ -18,9 +18,9 @@ void Material_new_test::init()
 	adlMaterial_shared_ptr material = adl_rm->get_material("bronze");
 	set_material(material);
 
-	transform_.o = adlVec3(8.0f, -1.0f, 0.0f);
-	transform_.rot = adlVec3(0, adlMath::deg_to_rad(90), 0);
-	transform_.scale = adlVec3(2.0f);
+	set_position(adlVec3(8.0f, -1.0f, 0.0f));
+	set_rotation(adlVec3(0, adlMath::deg_to_rad(90), 0));
+	set_scale(adlVec3(2.0f));
 }
 
 void Material_new_test::update(float dt)

@@ -15,17 +15,19 @@ void Test_actor::init()
 {
 	adlResource_manager* adl_rm = &adlResource_manager::get();
 	model_ = adl_rm->get_model("cube");
-	adlMaterial_shared_ptr material = adl_rm->get_material("copper");
+	adlMaterial_shared_ptr material = adl_rm->get_material("red_rubber");
 	set_material(material);
 
-	transform_.o = adlVec3(0.0f, 0.0f, 0.0f);
-	transform_.rot = adlVec3(0.0f);
-	transform_.scale = adlVec3(1.0f);
+	set_position(adlVec3(0.0f, 0.0f, 0.0f));
+	set_rotation(adlVec3(0.0f));
+	set_scale(adlVec3(1.0f));
 
 	color_ = adlColor(160, 82, 45);
 }
 
 void Test_actor::update(float dt)
 {
-	//transform_.rot.y = transform_.rot.y + adlMath::deg_to_rad(0.1f * dt);
+	/*adlVec3 rotation = get_rotation();
+	rotation.y = rotation.y + adlMath::deg_to_rad(0.1f * dt);
+	set_rotation(rotation);*/
 }

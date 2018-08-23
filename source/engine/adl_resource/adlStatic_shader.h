@@ -24,6 +24,7 @@ public:
 	void load_text_color(adlVec3 color);
 	void load_projection_matrix(const adlMat4& matrix);
 	void load_material(adlMaterial_shared_ptr material);
+	void load_texture();
 
 protected:
 	virtual void bind_attributes();
@@ -47,6 +48,9 @@ private:
 	int32 light_ambient_location_;
 	int32 light_diffuse_location_;
 	int32 light_specular_location_;
+
+	int32 texture_location_;
+	int32 texture_specular_location_;
 };
 
 #endif // adl_static_shader_h__

@@ -9,13 +9,16 @@
 		{"name": "cube", "path": "res/models/cube.obj"},
 		{"name": "mountain", "path": "res/models/part.obj"},
 		{"name": "teapot", "path": "res/models/teapot.obj"},
-		{"name": "bmw", "path": "res/models/bmw.obj"}
+		{"name": "bmw", "path": "res/models/bmw.obj"},
+		{"name": "gold_bar", "path": "res/models/gold.obj"},
+		{"name": "sphere", "path": "res/models/sphere.obj"}
 		
 	],
 	"shaders": [
 		{"name": "diffuse_shader", "vertex_shader_path": "res/shaders/basic_shader.vs", "fragment_shader_path": "res/shaders/diffuse_shader.fs"},
 		{"name": "specular_shader", "vertex_shader_path": "res/shaders/basic_shader.vs", "fragment_shader_path": "res/shaders/specular_shader.fs"},
-		{"name": "phong_shader", "vertex_shader_path": "res/shaders/basic_shader.vs", "fragment_shader_path": "res/shaders/phong_shader.fs"},
+		{"name": "textured", "vertex_shader_path": "res/shaders/basic_shader.vs", "fragment_shader_path": "res/shaders/texture_phong_shader.fs"},
+		{"name": "no_texture", "vertex_shader_path": "res/shaders/basic_shader.vs", "fragment_shader_path": "res/shaders/no_texture_phong.fs"},
 		{"name": "light_shader", "vertex_shader_path": "res/shaders/basic_shader.vs", "fragment_shader_path": "res/shaders/light_shader.fs"},
 		{"name": "font_shader", "vertex_shader_path": "res/shaders/font_shader.vs", "fragment_shader_path": "res/shaders/font_shader.fs"}
 	],
@@ -23,5 +26,9 @@
 		{"name": "arial", "path": "res/fonts/arial.ttf"},
 		{"name": "consola", "path": "res/fonts/consola.ttf"},
 		{"name": "roboto", "path": "res/fonts/Roboto-Regular.ttf"}
+	],
+	"textures": [
+		{"name": "steel_frame", "path": "res/textures/metal_frame.png", "specular_map_path": "res/textures/metal_frame_specular.png"},
+		{"name": "awful_texture", "path": "res/textures/awful_texture.png", "specular_map_path": "res/textures/awful_texture_specular.png"}
 	]
 }

@@ -15,9 +15,16 @@ public:
 	virtual void init() override;
 	virtual void update(float dt) override;
 
+	adlShader_shared_ptr getShader();
 	adlShader_shared_ptr get_shader();
+
+	adlVec3 getAmbient();
 	adlVec3 get_ambient();
+
+	adlVec3 getDiffuse();
 	adlVec3 get_diffuse();
+
+	adlVec3 getSpecular();
 	adlVec3 get_specular();
 
 private:

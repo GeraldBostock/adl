@@ -53,3 +53,22 @@ adlVec3 adlLight::get_specular()
 	return light_components_.specular;
 }
 
+adlShader_shared_ptr adlLight::getShader()
+{
+	return get_shader();
+}
+
+adlVec3 adlLight::getAmbient()
+{
+	return get_ambient();
+}
+
+adlVec3 adlLight::getDiffuse()
+{
+	return get_diffuse();
+}
+
+adlVec3 adlLight::getSpecular()
+{
+	return get_specular();
+}

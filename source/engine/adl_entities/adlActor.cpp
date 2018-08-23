@@ -73,3 +73,48 @@ adlVec3 adlActor::get_scale()
 {
 	return transform_.scale;
 }
+
+adlVec3 adlActor::getPosition()
+{
+	return get_position();
+}
+
+adlVec3 adlActor::getRotation()
+{
+	return get_rotation();
+}
+
+adlVec3 adlActor::getScale()
+{
+	return get_scale();
+}
+
+adlModel_shared_ptr adlActor::getModel()
+{
+	return get_model();
+}
+
+adlMaterial_shared_ptr adlActor::getMaterial()
+{
+	return get_material();
+}
+
+void adlActor::setMaterial(adlMaterial_shared_ptr material)
+{
+	set_material(material);
+}
+
+void adlActor::setScale(adlVec3 scale)
+{
+	set_scale(scale);
+}
+
+void adlActor::setPosition(adlVec3 position)
+{
+	set_position(position);
+}
+
+void adlActor::setRotation(adlVec3 rotation)
+{
+	set_rotation(rotation);
+}

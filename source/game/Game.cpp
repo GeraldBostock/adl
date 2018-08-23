@@ -28,7 +28,7 @@ bool Game::init()
 
 	for (int i = 0; i < 20; i++)
 	{
-		adlActor_shared_ptr multi_actor = MAKE_SHARED(Test_actor);
+		adlActor_shared_ptr multi_actor = MAKE_SHARED(Material_test);
 		adl_scene_manager->spawn_actor(multi_actor, adlVec3(i * 3, 0, 0));
 	}
 

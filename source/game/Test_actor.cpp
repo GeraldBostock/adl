@@ -18,9 +18,9 @@ void Test_actor::init()
 	adlMaterial_shared_ptr material = adl_rm->get_material("copper");
 	set_material(material);
 
-	transform_.o = adlVec3(0.0f, 0.0f, 0.0f);
-	transform_.rot = adlVec3(0.0f);
-	transform_.scale = adlVec3(1.0f);
+	set_position(adlVec3(0.0f, -5.0f, 0.0f));
+	set_rotation(adlVec3(adlMath::deg_to_rad(-90.0f), 0, 0));
+	set_scale(1.0f);
 
 	color_ = adlColor(160, 82, 45);
 }

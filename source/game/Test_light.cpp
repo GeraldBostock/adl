@@ -12,7 +12,7 @@ Test_light::~Test_light()
 
 void Test_light::init()
 {
-	set_position(adlVec3(0, 0, 4));
+	set_position(adlVec3(0, 5, 4));
 	color_ = adlColor::WHITE;
 	timer_.start();
 }

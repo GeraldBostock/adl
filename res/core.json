@@ -57,15 +57,20 @@
       "fragment_shader_path": "res/shaders/specular_shader.fs"
     },
     {
-      "name": "phong_shader",
+      "name": "textured",
       "vertex_shader_path": "res/shaders/basic_shader.vs",
-      "fragment_shader_path": "res/shaders/phong_shader.fs"
+      "fragment_shader_path": "res/shaders/texture_phong_shader.fs"
     },
     {
-      "name": "light_shader",
+      "name": "no_texture",
       "vertex_shader_path": "res/shaders/basic_shader.vs",
-      "fragment_shader_path": "res/shaders/light_shader.fs"
+      "fragment_shader_path": "res/shaders/no_texture_phong.fs"
     },
+	{
+	  "name": "light_shader",
+	  "vertex_shader_path": "res/shaders/basic_shader.vs",
+	  "fragment_shader_path": "res/shaders/light_shader.fs"
+	},
     {
       "name": "font_shader",
       "vertex_shader_path": "res/shaders/font_shader.vs",
@@ -85,5 +90,17 @@
       "name": "roboto",
       "path": "res/fonts/Roboto-Regular.ttf"
     }
+  ],
+  "textures": [
+	{
+	  "name": "steel_frame",
+	  "path": "res/textures/metal_frame.png",
+	  "specular_map_path": "res/textures/metal_frame_specular.png"
+	},
+	{
+	  "name": "awful_texture",
+	  "path": "res/textures/awful_texture.png",
+	  "specular_map_path": "res/textures/awful_texture_specular.png"
+	}
   ]
 }

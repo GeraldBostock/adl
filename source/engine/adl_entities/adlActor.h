@@ -16,33 +16,26 @@ public:
 	virtual void init() override;
 	virtual void update(float dt) override;
 
-	void setPosition(adlVec3 position);
-	void set_position(adlVec3 position);
-
-	void setRotation(adlVec3 rotation);
-	void set_rotation(adlVec3 rotation);
-
-	void setScale(adlVec3 scale);
-	void set_scale(adlVec3 scale);
-
 	adlVec3 getPosition();
-	adlVec3 get_position();
+	void setPosition(adlVec3 position);
 
 	adlVec3 getRotation();
-	adlVec3 get_rotation();
+	void setRotation(adlVec3 rotation);
 
 	adlVec3 getScale();
-	adlVec3 get_scale();
+	void setScale(adlVec3 scale);
 
-	adlTransform get_transform();
+	adlTransform getTransform();
+	void setTransform(adlTransform t);
+	void setTransform(adlVec3 o, adlVec3 rot, adlVec3 scale);
 
 	adlModel_shared_ptr getModel();
-	adlModel_shared_ptr get_model();
+	void setModel(adlModel_shared_ptr model);
 
-	adlColor get_color();
+	adlColor getColor();
 
 	adlMaterial_shared_ptr getMaterial();
-	adlMaterial_shared_ptr get_material();
+	void setMaterial(adlMaterial_shared_ptr material);
 
 protected:
 	adlModel_shared_ptr model_;
@@ -50,8 +43,6 @@ protected:
 
 	adlMaterial_shared_ptr material_;
 
-	void setMaterial(adlMaterial_shared_ptr material);
-	void set_material(adlMaterial_shared_ptr material);
 private:
 	adlTransform transform_;
 };

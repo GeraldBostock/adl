@@ -16,11 +16,11 @@ void Material_test::init()
 	adlResource_manager* adl_rm = &adlResource_manager::get();
 	model_ = adl_rm->get_model("cube");
 	adlMaterial_shared_ptr material = adl_rm->get_material("frame");
-	set_material(material);
+	setMaterial(material);
 
-	set_position(adlVec3(3.0f, 0.0f, 3.0f));
-	set_rotation(adlVec3(0.0f));
-	set_scale(adlVec3(1.0f));
+	setPosition(adlVec3(3.0f, 0.0f, 3.0f));
+	setRotation(adlVec3(0.0f));
+	setScale(adlVec3(1.0f));
 }
 
 void Material_test::update(float dt)

@@ -18,124 +18,29 @@ adlResource_manager::adlResource_manager()
 	adl_assert(document.IsObject());
 
 	const rapidjson::Value& mesh_objects = document["models"];
-	const rapidjson::Value& shader_objects = document["shaders"];
-	const rapidjson::Value& font_objects = document["fonts"];
-
 	adl_assert(mesh_objects.IsArray());
+	initialize_models(mesh_objects);
+
+	const rapidjson::Value& shader_objects = document["shaders"];
 	adl_assert(shader_objects.IsArray());
+	initialize_shaders(shader_objects);
+
+	const rapidjson::Value& font_objects = document["fonts"];
 	adl_assert(font_objects.IsArray());
-
-	for (rapidjson::Value::ConstValueIterator itr = mesh_objects.Begin(); itr != mesh_objects.End(); ++itr)
-	{
-		const rapidjson::Value& mesh_object = *itr;
-		adl_assert(mesh_object.IsObject());
-
-		rapidjson::Value::ConstMemberIterator itr2 = mesh_object.MemberBegin();
-		const std::string name = itr2->value.GetString();
-		itr2++;
-		const std::string path = itr2->value.GetString();
-		name_to_model_path_[name] = path;
-		models_[path] = nullptr;
-	}
-
-	for (rapidjson::Value::ConstValueIterator itr = shader_objects.Begin(); itr != shader_objects.End(); ++itr)
-	{
-		const rapidjson::Value& shader_object = *itr;
-		adl_assert(shader_object.IsObject());
-
-		rapidjson::Value::ConstMemberIterator itr2 = shader_object.MemberBegin();
-		const std::string name = itr2->value.GetString();
-		itr2++;
-		const std::string vertex_shader_path = itr2->value.GetString();
-		itr2++;
-		const std::string fragment_shader_path = itr2->value.GetString();
-
-		name_to_shader_path_[name].first = vertex_shader_path;
-		name_to_shader_path_[name].second = fragment_shader_path;
-		shaders_[name_to_shader_path_[name]] = nullptr;
-	}
-
-	for (rapidjson::Value::ConstValueIterator itr = font_objects.Begin(); itr != font_objects.End(); itr++)
-	{
-		const rapidjson::Value& font_object = *itr;
-		adl_assert(font_object.IsObject());
-		
-		const std::string name = font_object["name"].GetString();
-		const std::string path = font_object["path"].GetString();
-
-		name_to_font_path_[name] = path;
-		fonts_[path] = nullptr;
-	}
+	initialize_fonts(font_objects);
 
 	std::string materials_file_string = get_materials_string();
 
 	rapidjson::Document materials_document;
 	materials_document.Parse(materials_file_string.c_str());
-
 	adl_assert(materials_document.IsObject());
-
 	const rapidjson::Value& material_objects = materials_document["materials"];
-
 	adl_assert(material_objects.IsArray());
-
-	for (rapidjson::Value::ConstValueIterator itr = material_objects.Begin(); itr != material_objects.End(); ++itr)
-	{
-		adlMaterial_shared_ptr material = std::make_shared<adlMaterial>();
-
-		const rapidjson::Value& material_object = *itr;
-
-		const std::string material_name = material_object["name"].GetString();
-		const rapidjson::Value& ambient_array = material_object["ambient"];
-		const rapidjson::Value& diffuse_array = material_object["diffuse"];
-		const rapidjson::Value& specular_array = material_object["specular"];
-
-		rapidjson::Value::ConstValueIterator itr2 = ambient_array.Begin();
-
-		const rapidjson::Value& ambient_x = *itr2;
-		const rapidjson::Value& ambient_y = *++itr2;
-		const rapidjson::Value& ambient_z = *++itr2;
-		adlVec3 ambient_vec(ambient_x.GetFloat(), ambient_y.GetFloat(), ambient_z.GetFloat());
-
-		itr2 = diffuse_array.Begin();
-		const rapidjson::Value& diffuse_x = *itr2;
-		const rapidjson::Value& diffuse_y = *++itr2;
-		const rapidjson::Value& diffuse_z = *++itr2;
-		adlVec3 diffuse_vec(diffuse_x.GetFloat(), diffuse_y.GetFloat(), diffuse_z.GetFloat());
-
-		itr2 = specular_array.Begin();
-		const rapidjson::Value& specular_x = *itr2;
-		const rapidjson::Value& specular_y = *++itr2;
-		const rapidjson::Value& specular_z = *++itr2;
-		adlVec3 specular_vec(specular_x.GetFloat(), specular_y.GetFloat(), specular_z.GetFloat());
-
-		const rapidjson::Value& shine = material_object["shine"];
-		float shininess = shine.GetFloat();
-
-		material->set_material(ambient_vec, diffuse_vec, specular_vec, shininess);
-
-		std::string shader_name = material_object["shader"].GetString();
-		std::string texture_name = material_object["texture"].GetString();
-		material->set_names(shader_name, texture_name);
-		//material->set_shader_name(shader_name);
-
-		materials_[material_name] = material;
-	}
+	initialize_materials(material_objects);
 
 	const rapidjson::Value& texture_objects = document["textures"];
 	adl_assert(texture_objects.IsArray());
-
-	for (rapidjson::Value::ConstValueIterator itr = texture_objects.Begin(); itr != texture_objects.End(); ++itr)
-	{
-		const rapidjson::Value& texture_object = *itr;
-		adl_assert(texture_object.IsObject());
-
-		std::pair<std::string, std::string> texture_paths;
-		texture_paths.first = texture_object["path"].GetString();
-		texture_paths.second = texture_object["specular_map_path"].GetString();
-
-		name_to_texture_path_[texture_object["name"].GetString()] = texture_paths;
-		textures_[texture_object["name"].GetString()] = nullptr;
-	}
+	initialize_textures(texture_objects);
 }
 
 std::string adlResource_manager::get_core_file_string()
@@ -308,4 +213,116 @@ adlMaterial_shared_ptr adlResource_manager::get_material(const std::string& mate
 adlMaterial_shared_ptr adlResource_manager::getMaterial(const std::string& material_name)
 {
 	return get_material(material_name);
+}
+
+void adlResource_manager::initialize_models(const rapidjson::Value& models)
+{
+	for (rapidjson::Value::ConstValueIterator itr = models.Begin(); itr != models.End(); ++itr)
+	{
+		const rapidjson::Value& mesh_object = *itr;
+		adl_assert(mesh_object.IsObject());
+
+		rapidjson::Value::ConstMemberIterator itr2 = mesh_object.MemberBegin();
+		const std::string name = itr2->value.GetString();
+		itr2++;
+		const std::string path = itr2->value.GetString();
+		name_to_model_path_[name] = path;
+		models_[path] = nullptr;
+	}
+}
+
+void adlResource_manager::initialize_shaders(const rapidjson::Value& shaders)
+{
+	for (rapidjson::Value::ConstValueIterator itr = shaders.Begin(); itr != shaders.End(); ++itr)
+	{
+		const rapidjson::Value& shader_object = *itr;
+		adl_assert(shader_object.IsObject());
+
+		rapidjson::Value::ConstMemberIterator itr2 = shader_object.MemberBegin();
+		const std::string name = itr2->value.GetString();
+		itr2++;
+		const std::string vertex_shader_path = itr2->value.GetString();
+		itr2++;
+		const std::string fragment_shader_path = itr2->value.GetString();
+
+		name_to_shader_path_[name].first = vertex_shader_path;
+		name_to_shader_path_[name].second = fragment_shader_path;
+		shaders_[name_to_shader_path_[name]] = nullptr;
+	}
+}
+
+void adlResource_manager::initialize_fonts(const rapidjson::Value& fonts)
+{
+	for (rapidjson::Value::ConstValueIterator itr = fonts.Begin(); itr != fonts.End(); itr++)
+	{
+		const rapidjson::Value& font_object = *itr;
+		adl_assert(font_object.IsObject());
+
+		const std::string name = font_object["name"].GetString();
+		const std::string path = font_object["path"].GetString();
+
+		name_to_font_path_[name] = path;
+		fonts_[path] = nullptr;
+	}
+}
+
+void adlResource_manager::initialize_materials(const rapidjson::Value& materials)
+{
+	for (rapidjson::Value::ConstValueIterator itr = materials.Begin(); itr != materials.End(); ++itr)
+	{
+		adlMaterial_shared_ptr material = std::make_shared<adlMaterial>();
+
+		const rapidjson::Value& material_object = *itr;
+
+		const std::string material_name = material_object["name"].GetString();
+		const rapidjson::Value& ambient_array = material_object["ambient"];
+		const rapidjson::Value& diffuse_array = material_object["diffuse"];
+		const rapidjson::Value& specular_array = material_object["specular"];
+
+		rapidjson::Value::ConstValueIterator itr2 = ambient_array.Begin();
+
+		const rapidjson::Value& ambient_x = *itr2;
+		const rapidjson::Value& ambient_y = *++itr2;
+		const rapidjson::Value& ambient_z = *++itr2;
+		adlVec3 ambient_vec(ambient_x.GetFloat(), ambient_y.GetFloat(), ambient_z.GetFloat());
+
+		itr2 = diffuse_array.Begin();
+		const rapidjson::Value& diffuse_x = *itr2;
+		const rapidjson::Value& diffuse_y = *++itr2;
+		const rapidjson::Value& diffuse_z = *++itr2;
+		adlVec3 diffuse_vec(diffuse_x.GetFloat(), diffuse_y.GetFloat(), diffuse_z.GetFloat());
+
+		itr2 = specular_array.Begin();
+		const rapidjson::Value& specular_x = *itr2;
+		const rapidjson::Value& specular_y = *++itr2;
+		const rapidjson::Value& specular_z = *++itr2;
+		adlVec3 specular_vec(specular_x.GetFloat(), specular_y.GetFloat(), specular_z.GetFloat());
+
+		const rapidjson::Value& shine = material_object["shine"];
+		float shininess = shine.GetFloat();
+
+		material->set_material(ambient_vec, diffuse_vec, specular_vec, shininess);
+
+		std::string shader_name = material_object["shader"].GetString();
+		std::string texture_name = material_object["texture"].GetString();
+		material->set_names(shader_name, texture_name);
+
+		materials_[material_name] = material;
+	}
+}
+
+void adlResource_manager::initialize_textures(const rapidjson::Value& textures)
+{
+	for (rapidjson::Value::ConstValueIterator itr = textures.Begin(); itr != textures.End(); ++itr)
+	{
+		const rapidjson::Value& texture_object = *itr;
+		adl_assert(texture_object.IsObject());
+
+		std::pair<std::string, std::string> texture_paths;
+		texture_paths.first = texture_object["path"].GetString();
+		texture_paths.second = texture_object["specular_map_path"].GetString();
+
+		name_to_texture_path_[texture_object["name"].GetString()] = texture_paths;
+		textures_[texture_object["name"].GetString()] = nullptr;
+	}
 }

@@ -46,7 +46,7 @@ public:
 	adlMaterial_shared_ptr get_material();
 
 protected:
-	adlModel_shared_ptr model_;
+	adlModel_shared_ptr model_ = nullptr;
 	adlColor color_;
 
 	adlMaterial_shared_ptr material_;

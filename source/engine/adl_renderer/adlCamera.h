@@ -44,7 +44,6 @@ private:
 
 	float mouse_sensitivity_;
 	float movement_speed_;
-	float start_movement_speed_;
 
 	adlVec3 rts_camera_target_;
 

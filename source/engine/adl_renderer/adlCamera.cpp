@@ -3,16 +3,14 @@
 #include "engine/adlRoot.h"
 
 adlCamera::adlCamera()
+	: position_(adlVec3(0.0f)),
+	  pitch_(0.0f),
+	  yaw_(0.0f),
+	  roll_(0.0f),
+	  mouse_sensitivity_(1.0f),
+	  movement_speed_(0.01f),
+	  camera_type_(ct_god_mode)
 {
-	position_ = adlVec3(0.0f);
-	pitch_ = 0;
-	yaw_ = 0;
-	roll_ = 0;
-
-	mouse_sensitivity_ = 1.0f;
-	movement_speed_ = start_movement_speed_ = 0.01f;
-
-	camera_type_ = ct_god_mode;
 }
 
 adlCamera::~adlCamera()
@@ -237,8 +235,6 @@ void adlCamera::update_god_mode_camera(float dt)
 	}
 
 	view_matrix_ = view_matrix_.create_view_matrix(position_, adlVec3(adlMath::deg_to_rad(pitch_), adlMath::deg_to_rad(yaw_), adlMath::deg_to_rad(roll_)));
-
-	movement_speed_ = start_movement_speed_;
 }
 
 void adlCamera::update_custom_camera(float dt)

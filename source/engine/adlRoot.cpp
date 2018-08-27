@@ -1,8 +1,8 @@
 #include "adlRoot.h"
 
 adlRoot::adlRoot()
+	: is_running_(false)
 {
-	is_running_ = false;
 }
 
 adlRoot::~adlRoot()

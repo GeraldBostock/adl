@@ -13,11 +13,7 @@
 
 adlRender_manager::adlRender_manager()
 {
-	is_wire_frame_mode_ = false;
-	glFrontFace(GL_CCW);
-	glCullFace(GL_BACK);
-	glEnable(GL_CULL_FACE);
-
+	init();
 }
 
 void adlRender_manager::prepare()
@@ -25,6 +21,14 @@ void adlRender_manager::prepare()
 	glEnable(GL_DEPTH_TEST);
 	glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+}
+
+void adlRender_manager::init()
+{
+	is_wire_frame_mode_ = false;
+	glFrontFace(GL_CCW);
+	glCullFace(GL_BACK);
+	glEnable(GL_CULL_FACE);
 }
 
 void adlRender_manager::render(adlActor_shared_ptr actor)

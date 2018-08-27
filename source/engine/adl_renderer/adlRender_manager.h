@@ -32,6 +32,8 @@ public:
 private:
 	adlRender_manager();
 
+	void init();
+
 	bool is_wire_frame_mode_;
 
 	adlMat4 projection_matrix_;

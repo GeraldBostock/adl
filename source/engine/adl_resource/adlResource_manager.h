@@ -39,6 +39,12 @@ private:
 	adlResource_manager(adlResource_manager const&) = delete;
 	void operator=(adlResource_manager const&)		= delete;
 
+	void initialize_models(const rapidjson::Value& models);
+	void initialize_shaders(const rapidjson::Value& shaders);
+	void initialize_fonts(const rapidjson::Value& fonts);
+	void initialize_materials(const rapidjson::Value& materials);
+	void initialize_textures(const rapidjson::Value& textures);
+
 	const std::string core_file_path = "res/core.json";
 	const std::string materials_file_path = "res/materials.json";
 	

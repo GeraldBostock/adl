@@ -53,7 +53,7 @@
 			"specular": [0.5, 0.5, 0.5],
 			"shine": 24.0,
 			"shader": "textured",
-			"texture": "awful_texture"
+			"texture": "steel_frame"
 		},
 		{
 			"name": "ruby",

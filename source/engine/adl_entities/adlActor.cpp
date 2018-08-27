@@ -3,7 +3,6 @@
 
 adlActor::adlActor()
 {
-	model_ = nullptr;
 }
 
 

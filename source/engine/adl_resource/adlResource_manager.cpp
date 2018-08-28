@@ -8,8 +8,6 @@
 
 adlResource_manager::adlResource_manager()
 {
-	adlLogger* adl_logger = &adlLogger::get();
-
 	std::string core_file_string = get_core_file_string();
 
 	rapidjson::Document document;
@@ -185,6 +183,7 @@ adlMaterial_shared_ptr adlResource_manager::get_material(const std::string& mate
 	}
 	else if(material->get_shader() == nullptr || material->get_texture() == nullptr)
 	{
+		adl_logger->log_info("Loading material '" + material_name + "'.");
 		if (material->get_shader() == nullptr)
 		{
 			material->set_shader(get_shader(material->get_shader_name()));
@@ -198,7 +197,6 @@ adlMaterial_shared_ptr adlResource_manager::get_material(const std::string& mate
 				textures_[texture_name] = loader_.load_texture(name_to_texture_path_[texture_name]);
 			}
 			material->set_texture(textures_[texture_name]);
-			//material->set_texture(loader_.load_texture())
 		}
 		return material;
 	}

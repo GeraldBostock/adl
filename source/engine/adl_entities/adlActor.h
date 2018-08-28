@@ -36,6 +36,9 @@ public:
 
 	adlTransform get_transform();
 
+	void setModel(adlModel_shared_ptr model);
+	void set_model(adlModel_shared_ptr model);
+
 	adlModel_shared_ptr getModel();
 	adlModel_shared_ptr get_model();
 
@@ -46,15 +49,15 @@ public:
 	adlMaterial_shared_ptr get_material();
 
 protected:
-	adlModel_shared_ptr model_ = nullptr;
 	adlColor color_;
 
-	adlMaterial_shared_ptr material_;
 
 	void setMaterial(adlMaterial_shared_ptr material);
 	void set_material(adlMaterial_shared_ptr material);
 private:
 	adlTransform transform_;
+	adlModel_shared_ptr model_ = nullptr;
+	adlMaterial_shared_ptr material_ = nullptr;
 };
 
 #endif // adl_actor_h__

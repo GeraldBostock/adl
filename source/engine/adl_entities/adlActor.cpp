@@ -122,3 +122,13 @@ adlColor adlActor::getColor()
 {
 	return get_color();
 }
+
+void adlActor::setModel(adlModel_shared_ptr model)
+{
+	set_model(model);
+}
+
+void adlActor::set_model(adlModel_shared_ptr model)
+{
+	model_ = model;
+}

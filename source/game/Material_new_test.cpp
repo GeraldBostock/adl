@@ -14,7 +14,7 @@ Material_new_test::~Material_new_test()
 void Material_new_test::init()
 {
 	adlResource_manager* adl_rm = &adlResource_manager::get();
-	model_ = adl_rm->getModel("cube");
+	setModel(adl_rm->getModel("cube"));
 	adlMaterial_shared_ptr material = adl_rm->getMaterial("red_plastic");
 	setMaterial(material);
 

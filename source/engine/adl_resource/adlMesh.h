@@ -3,7 +3,6 @@
 
 #include "engine/common.h"
 #include "engine/adl_math/adlMath.h"
-#include "adlResource.h"
 #include "engine/adlShared_types.h"
 
 #include <vector>

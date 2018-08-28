@@ -7,7 +7,6 @@
 #include <document.h>
 
 #include "engine/adl_debug/adlLogger.h"
-#include "adlResource.h"
 #include "adlLoader.h"
 
 class adlResource_manager

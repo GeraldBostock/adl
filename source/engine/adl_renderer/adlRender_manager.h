@@ -6,6 +6,8 @@
 #include "adlCamera.h"
 #include "engine/adl_entities/adlActor.h"
 #include "engine/adl_entities/adlLight.h"
+#include "engine/adl_entities/adlPoint_light.h"
+#include "engine/adl_entities/adlSun.h"
 
 class adlRender_manager
 {
@@ -18,14 +20,16 @@ public:
 
 	void prepare();
 	void render(adlActor_shared_ptr actor);
-	void render(adlLight_shared_ptr light);
+	void render(adlSun_shared_ptr light);
+	void render(adlPoint_light_shared_ptr point_light);
 	void render_text(const std::string& text, adlFont_shared_ptr font, float x, float y, float scale, adlColor color);
 	/*void render_mesh(adlModel_shared_ptr model);
 	void render_mesh(adlModel model);*/
 	void toggle_wire_frame_mode();
 
 	void set_camera(adlCamera* camera);
-	void set_light(adlLight_shared_ptr light);
+	void set_light(adlSun_shared_ptr light);
+	void set_point_light(adlPoint_light_shared_ptr point_light);
 
 	void set_projection(adlMat4 projection_matrix);
 
@@ -39,7 +43,8 @@ private:
 	adlMat4 projection_matrix_;
 
 	adlCamera* camera_;
-	adlLight_shared_ptr light_;
+	adlSun_shared_ptr light_;
+	adlPoint_light_shared_ptr point_light_;
 };
 
 #endif // adl_render_manager_h__

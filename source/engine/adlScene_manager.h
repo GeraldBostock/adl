@@ -4,6 +4,8 @@
 #include "adl_entities/adlEntity.h"
 #include "adl_entities/adlActor.h"
 #include "adl_entities/adlLight.h"
+#include "adl_entities/adlPoint_light.h"
+#include "adl_entities/adlSun.h"
 #include "adlShared_types.h"
 
 #include <vector>
@@ -27,15 +29,19 @@ public:
 	void add_to_scene(adlActor_shared_ptr actor);
 	void addToScene(adlActor_shared_ptr actor);
 
-	void add_to_scene(adlLight_shared_ptr light);
-	void addToScene(adlLight_shared_ptr light);
+	void add_sun_to_scene(adlSun_shared_ptr sun);
+	void addSunToScene(adlSun_shared_ptr sun);
+
+	void addPointLightToScene(adlPoint_light_shared_ptr point_light);
+	void add_point_light_scene(adlPoint_light_shared_ptr point_light);
 
 	void spawn_actor(adlActor_shared_ptr actor, adlVec3 position, adlVec3 rotation = adlVec3(0.0f), adlVec3 scale = adlVec3(1.0f));
 	void spawnActor(adlActor_shared_ptr actor, adlVec3 position, adlVec3 rotation = adlVec3(0.0f), adlVec3 scale = adlVec3(1.0f));
 private:
 	std::vector<adlEntity> entities_;
 	std::vector<adlActor_shared_ptr> actors_;
-	std::vector<adlLight_shared_ptr> lights_;
+	std::vector<adlSun_shared_ptr> suns_;
+	std::vector<adlPoint_light_shared_ptr> point_lights_;
 
 
 	adlScene_manager();

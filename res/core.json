@@ -43,38 +43,42 @@
     {
       "name": "landscape",
       "path": "res/models/Landscape.dae"
-    }
+    },
+	{
+	  "name": "sphere",
+	  "path": "res/models/sphere.obj"
+	}
   ],
   "shaders": [
     {
       "name": "diffuse_shader",
-      "vertex_shader_path": "res/shaders/basic_shader.vs",
-      "fragment_shader_path": "res/shaders/diffuse_shader.fs"
+      "vertex_shader_path": "res/shaders/basic_shader.vert",
+      "fragment_shader_path": "res/shaders/diffuse_shader.frag"
     },
     {
       "name": "specular_shader",
-      "vertex_shader_path": "res/shaders/basic_shader.vs",
-      "fragment_shader_path": "res/shaders/specular_shader.fs"
+      "vertex_shader_path": "res/shaders/basic_shader.vert",
+      "fragment_shader_path": "res/shaders/specular_shader.frag"
     },
     {
       "name": "textured",
-      "vertex_shader_path": "res/shaders/basic_shader.vs",
-      "fragment_shader_path": "res/shaders/texture_phong_shader.fs"
+      "vertex_shader_path": "res/shaders/basic_shader.vert",
+      "fragment_shader_path": "res/shaders/texture_phong_shader.frag"
     },
     {
       "name": "no_texture",
-      "vertex_shader_path": "res/shaders/basic_shader.vs",
-      "fragment_shader_path": "res/shaders/no_texture_phong.fs"
+      "vertex_shader_path": "res/shaders/basic_shader.vert",
+      "fragment_shader_path": "res/shaders/no_texture_phong.frag"
     },
 	{
 	  "name": "light_shader",
-	  "vertex_shader_path": "res/shaders/basic_shader.vs",
-	  "fragment_shader_path": "res/shaders/light_shader.fs"
+	  "vertex_shader_path": "res/shaders/basic_shader.vert",
+	  "fragment_shader_path": "res/shaders/light_shader.frag"
 	},
     {
       "name": "font_shader",
-      "vertex_shader_path": "res/shaders/font_shader.vs",
-      "fragment_shader_path": "res/shaders/font_shader.fs"
+      "vertex_shader_path": "res/shaders/font_shader.vert",
+      "fragment_shader_path": "res/shaders/font_shader.frag"
     }
   ],
   "fonts": [

@@ -39,24 +39,40 @@ void adlInput::update()
 	buttons = SDL_GetMouseState(&mouse_state_.x, &mouse_state_.y);
 
 	if (buttons & ADL_BUTTON(1))
+	{
 		mouse_state_.lmb = 1;
+	}
 	else
+	{
 		mouse_state_.lmb = 0;
+	}
 
 	if (buttons & ADL_BUTTON(3))
+	{
 		mouse_state_.rmb = 1;
+	}
 	else
+	{
 		mouse_state_.rmb = 0;
+	}
 
 	if (mouse_state_.lmb == 0 && prev_mouse_state_.lmb == 1)
+	{
 		mouse_state_.lmbr = 1;
+	}
 	else
+	{
 		mouse_state_.lmbr = 0;
+	}
 
 	if (mouse_state_.rmb == 0 && prev_mouse_state_.rmb == 1)
+	{
 		mouse_state_.rmbr = 1;
+	}
 	else
+	{
 		mouse_state_.rmbr = 0;
+	}
 }
 
 bool adlInput::get_key(adl_keys key)

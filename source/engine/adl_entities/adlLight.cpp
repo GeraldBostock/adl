@@ -4,31 +4,9 @@
 
 adlLight::adlLight()
 {
-	adlResource_manager* adl_rm = &adlResource_manager::get();
-	light_shader_ = adl_rm->get_shader("light_shader");
-	model_ = adl_rm->get_model("cube");
-	set_position(adlVec3(0));
-	set_rotation(adlVec3(0));
-	set_scale(adlVec3(0.15f));
-	color_ = adlColor::WHITE;
-
-	light_components_.ambient = adlVec3(0.2f);
-	light_components_.diffuse = adlVec3(0.5f);
-	light_components_.specular = adlVec3(1.0f);
-
 }
 
 adlLight::~adlLight()
-{
-
-}
-
-void adlLight::init()
-{
-
-}
-
-void adlLight::update(float dt)
 {
 
 }
@@ -71,4 +49,44 @@ adlVec3 adlLight::getDiffuse()
 adlVec3 adlLight::getSpecular()
 {
 	return get_specular();
+}
+
+void adlLight::setShader(adlShader_shared_ptr shader)
+{
+	set_shader(shader);
+}
+
+void adlLight::set_shader(adlShader_shared_ptr shader)
+{
+	light_shader_ = shader;
+}
+
+void adlLight::setAmbient(adlVec3 ambient)
+{
+	set_ambient(ambient);
+}
+
+void adlLight::set_ambient(adlVec3 ambient)
+{
+	light_components_.ambient = ambient;
+}
+
+void adlLight::setDiffuse(adlVec3 diffuse)
+{
+	set_diffuse(diffuse);
+}
+
+void adlLight::set_diffuse(adlVec3 diffuse)
+{
+	light_components_.diffuse = diffuse;
+}
+
+void adlLight::setSpecular(adlVec3 specular)
+{
+	set_specular(specular);
+}
+
+void adlLight::set_specular(adlVec3 specular)
+{
+	light_components_.specular = specular;
 }

@@ -35,7 +35,7 @@ void adlFPS_manager::init()
 	fps_ = target_fps_;
 }
 
-double adlFPS_manager::enforce_fps()
+float adlFPS_manager::enforce_fps()
 {
 	int frames_index = frame_count_ % FRAME_VALUES;
 

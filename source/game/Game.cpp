@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+#include "engine/adl_entities/adlSun.h"
+
 Game::Game()
 {
 
@@ -23,8 +25,11 @@ bool Game::init()
 	adlActor_shared_ptr wuson = MAKE_SHARED(Material_new_test);
 	adl_scene_manager->addToScene(wuson);
 
-	adlLight_shared_ptr light = MAKE_SHARED(Test_light);
-	adl_scene_manager->addToScene(light);
+	adlSun_shared_ptr sun = MAKE_SHARED(adlSun);
+	adl_scene_manager->addSunToScene(sun);
+
+	adlPoint_light_shared_ptr point_light = MAKE_SHARED(adlPoint_light);
+	adl_scene_manager->addPointLightToScene(point_light);
 
 	for (int i = 0; i < 20; i++)
 	{

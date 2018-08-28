@@ -27,7 +27,7 @@ void adlRoot::run()
 		return;
 	}
 
-	int64 dt = fps_manager_->enforce_fps();
+	float dt = fps_manager_->enforce_fps();
 
 	if (adl_input->get_key(adl_key_left_ctrl) && adl_input->get_key(adl_key_left_alt) && adl_input->get_key_up(adl_key_w))
 	{

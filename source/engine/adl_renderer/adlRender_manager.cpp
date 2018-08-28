@@ -59,6 +59,7 @@ void adlRender_manager::render(adlActor_shared_ptr actor)
 	shader->load_material(material);
 	shader->load_model_matrix(actor->get_transform().get_transformation_matrix());
 	shader->load_camera_position(camera_->get_position());
+	shader->load_point_light(point_light_);
 
 	if (material->get_texture() !=  nullptr)
 	{
@@ -73,7 +74,7 @@ void adlRender_manager::render(adlActor_shared_ptr actor)
 	shader->stop();
 }
 
-void adlRender_manager::render(adlLight_shared_ptr light)
+void adlRender_manager::render(adlSun_shared_ptr light)
 {
 	adl_assert(light);
 	adlModel_shared_ptr model = light->get_model();
@@ -86,8 +87,27 @@ void adlRender_manager::render(adlLight_shared_ptr light)
 
 	shader->start();
 	shader->load_mvp(mvp_matrix);
-	shader->load_light(light_);
+	shader->load_light_color(light_->get_color().to_vec3());
 	//shader->load_light_color(light_->get_color().to_vec3());
+
+	model->draw();
+	shader->stop();
+}
+
+void adlRender_manager::render(adlPoint_light_shared_ptr point_light)
+{
+	adl_assert(point_light);
+	adlModel_shared_ptr model = point_light->get_model();
+	adl_assert(model);
+	adlMat4 view_matrix = camera_->get_view_matrix();
+	adlShader_shared_ptr shader = point_light->get_shader();
+	adl_assert(shader);
+
+	adlMat4 mvp_matrix = projection_matrix_ * view_matrix * point_light->get_transform().get_transformation_matrix();
+
+	shader->start();
+	shader->load_mvp(mvp_matrix);
+	shader->load_light_color(point_light->get_color().to_vec3());
 
 	model->draw();
 	shader->stop();
@@ -184,7 +204,12 @@ void adlRender_manager::set_camera(adlCamera* camera)
 	camera_ = camera;
 }
 
-void adlRender_manager::set_light(adlLight_shared_ptr light)
+void adlRender_manager::set_light(adlSun_shared_ptr light)
 {
 	light_ = light;
+}
+
+void adlRender_manager::set_point_light(adlPoint_light_shared_ptr point_light)
+{
+	point_light_ = point_light;
 }

@@ -13,7 +13,7 @@ public:
 	adlFPS_manager(int target_fps, double report_interval = 2.0);
 	~adlFPS_manager();
 
-	double enforce_fps();
+	float enforce_fps();
 	float get_fps();
 
 private:

@@ -206,8 +206,6 @@ adlTexture_shared_ptr adlLoader::load_texture(const std::pair<std::string, std::
 	load_texture_from_file(texture->get_id(), texture_paths.first);
 	load_texture_from_file(texture->get_specular_map_id(), texture_paths.second);
 
-	adlLogger* logger = &adlLogger::get();
-
 	return texture;
 }
 
@@ -228,7 +226,7 @@ void adlLoader::load_texture_from_file(unsigned int texture_id, const std::strin
 	int color_channels;
 	unsigned char* data = stbi_load(file_path.c_str(), &width, &height, &color_channels, 0);
 
-	float color_format;
+	float color_format = GL_RGB;
 	if (color_channels == 3)
 	{
 		color_format = GL_RGB;

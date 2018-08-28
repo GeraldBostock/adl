@@ -19,10 +19,7 @@ void adlScene_manager::update(float dt)
 		actor->update(dt);
 	}
 
-	for (auto sun : suns_)
-	{
-		sun->update(dt);
-	}
+	sun_->update(dt);
 
 	for (auto light : point_lights_)
 	{
@@ -33,15 +30,13 @@ void adlScene_manager::update(float dt)
 void adlScene_manager::render()
 {
 	adlRender_manager* renderer = &adlRender_manager::get();
+	renderer->set_lights(point_lights_);
 	for (auto actor : actors_)
 	{
 		renderer->render(actor);
 	}
 
-	for (auto sun : suns_)
-	{
-		renderer->render(sun);
-	}
+	renderer->render(sun_);
 
 	for (auto light : point_lights_)
 	{
@@ -71,17 +66,17 @@ void adlScene_manager::addToScene(adlActor_shared_ptr actor)
 	add_to_scene(actor);
 }
 
-void adlScene_manager::add_sun_to_scene(adlSun_shared_ptr sun)
+void adlScene_manager::set_sun(adlSun_shared_ptr sun)
 {
 	sun->init();
-	suns_.push_back(sun);
+	sun_ = sun;
 	adlRender_manager* renderer = &adlRender_manager::get();
 	renderer->set_light(sun);
 }
 
-void adlScene_manager::addSunToScene(adlSun_shared_ptr sun)
+void adlScene_manager::setSun(adlSun_shared_ptr sun)
 {
-	add_sun_to_scene(sun);
+	set_sun(sun);
 }
 
 void adlScene_manager::spawn_actor(adlActor_shared_ptr actor, adlVec3 position, adlVec3 rotation/* = adlVec3(0.0f)*/, adlVec3 scale/* = adlVec3(1.0f)*/)

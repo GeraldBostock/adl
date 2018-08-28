@@ -26,10 +26,14 @@ bool Game::init()
 	adl_scene_manager->addToScene(wuson);
 
 	adlSun_shared_ptr sun = MAKE_SHARED(adlSun);
-	adl_scene_manager->addSunToScene(sun);
+	adl_scene_manager->setSun(sun);
 
 	adlPoint_light_shared_ptr point_light = MAKE_SHARED(adlPoint_light);
 	adl_scene_manager->addPointLightToScene(point_light);
+
+	adlPoint_light_shared_ptr second_light = MAKE_SHARED(adlPoint_light);
+	adl_scene_manager->addPointLightToScene(second_light);
+	second_light->set_position(adlVec3(0, 5, 0));
 
 	for (int i = 0; i < 20; i++)
 	{

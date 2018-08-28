@@ -59,7 +59,7 @@ void adlRender_manager::render(adlActor_shared_ptr actor)
 	shader->load_material(material);
 	shader->load_model_matrix(actor->get_transform().get_transformation_matrix());
 	shader->load_camera_position(camera_->get_position());
-	shader->load_point_light(point_light_);
+	shader->load_point_lights(lights_);
 
 	if (material->get_texture() !=  nullptr)
 	{
@@ -87,7 +87,7 @@ void adlRender_manager::render(adlSun_shared_ptr light)
 
 	shader->start();
 	shader->load_mvp(mvp_matrix);
-	shader->load_light_color(light_->get_color().to_vec3());
+	shader->load_light_color(light->get_color().to_vec3());
 	//shader->load_light_color(light_->get_color().to_vec3());
 
 	model->draw();
@@ -212,4 +212,9 @@ void adlRender_manager::set_light(adlSun_shared_ptr light)
 void adlRender_manager::set_point_light(adlPoint_light_shared_ptr point_light)
 {
 	point_light_ = point_light;
+}
+
+void adlRender_manager::set_lights(const std::vector<adlPoint_light_shared_ptr>& lights)
+{
+	lights_ = lights;
 }

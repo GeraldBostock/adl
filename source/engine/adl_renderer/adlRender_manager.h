@@ -29,6 +29,7 @@ public:
 
 	void set_camera(adlCamera* camera);
 	void set_light(adlSun_shared_ptr light);
+	void set_lights(const std::vector<adlPoint_light_shared_ptr>& lights);
 	void set_point_light(adlPoint_light_shared_ptr point_light);
 
 	void set_projection(adlMat4 projection_matrix);
@@ -45,6 +46,7 @@ private:
 	adlCamera* camera_;
 	adlSun_shared_ptr light_;
 	adlPoint_light_shared_ptr point_light_;
+	std::vector<adlPoint_light_shared_ptr> lights_;
 };
 
 #endif // adl_render_manager_h__

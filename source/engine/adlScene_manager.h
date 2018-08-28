@@ -29,8 +29,8 @@ public:
 	void add_to_scene(adlActor_shared_ptr actor);
 	void addToScene(adlActor_shared_ptr actor);
 
-	void add_sun_to_scene(adlSun_shared_ptr sun);
-	void addSunToScene(adlSun_shared_ptr sun);
+	void set_sun(adlSun_shared_ptr sun);
+	void setSun(adlSun_shared_ptr sun);
 
 	void addPointLightToScene(adlPoint_light_shared_ptr point_light);
 	void add_point_light_scene(adlPoint_light_shared_ptr point_light);
@@ -43,6 +43,7 @@ private:
 	std::vector<adlSun_shared_ptr> suns_;
 	std::vector<adlPoint_light_shared_ptr> point_lights_;
 
+	adlSun_shared_ptr sun_;
 
 	adlScene_manager();
 };

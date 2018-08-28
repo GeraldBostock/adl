@@ -35,7 +35,9 @@ struct Point_light
 	float linear;
 	float quadratic;
 };
-uniform Point_light point_light;
+#define MAX_POINT_LIGHTS 64
+uniform Point_light point_lights[MAX_POINT_LIGHTS];
+uniform int point_light_number;
 
 in vec3 fragment_position;
 in vec3 vertex_normal;
@@ -86,8 +88,11 @@ void main()
 	vec3 norm = normalize(vertex_normal);
 	vec3 view_direction = normalize(camera_position - fragment_position);
 	
-	vec3 directional_result = calculate_directional_light(sun, norm, view_direction);
-	vec3 point_light_result = calculate_point_light(point_light, norm, fragment_position, view_direction);
+	vec3 result = calculate_directional_light(sun, norm, view_direction);
+	for(int i = 0; i < point_light_number; i++)
+	{
+		result += calculate_point_light(point_lights[i], norm, fragment_position, view_direction);
+	}
 	
-	out_color = vec4(directional_result + point_light_result, 1.0);
+	out_color = vec4(result, 1.0);
 }

@@ -25,13 +25,15 @@ void adlLight_editor::update(adlSun_shared_ptr sun, std::vector<adlPoint_light_s
 
 	if (window_open_)
 	{
-		float sun_x = sun->get_position().x;
-		float sun_y = sun->get_position().y;
-		float sun_z = sun->get_position().z;
+		adlVec3 sun_position = sun->get_position();
 		ImGui::Begin("Light Editor");
-		ImGui::InputFloat("Position", &sun_x, 0.01f, 1.0f, "%.8f");
+		ImGui::InputFloat("", &sun_position.x);
+		ImGui::SameLine();
+		ImGui::InputFloat("", &sun_position.y);
+		ImGui::SameLine();
+		ImGui::InputFloat("Position", &sun_position.z);
 		ImGui::End();
 
-		sun->set_position(adlVec3(sun_x, sun_y, sun_z));
+		sun->set_position(sun_position);
 	}
 }

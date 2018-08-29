@@ -188,9 +188,13 @@ void adlCamera::update_god_mode_camera(float dt)
 	int dx = input->get_mouse_x_rel();
 	int dy = input->get_mouse_y_rel();
 
-	if (input->get_key(adl_key_left_shift))
+	if (input->get_key_down(adl_key_left_shift))
 	{
 		movement_speed_ *= 2;
+	}
+	if (input->get_key_up(adl_key_left_shift))
+	{
+		movement_speed_ /= 2;
 	}
 
 

@@ -1,10 +1,13 @@
 #include "adlScene_manager.h"
 
 #include "adl_renderer/adlRender_manager.h"
+#include "adl_debug/imgui/imgui.h"
+#include "engine/adlMemory.h"
 
 
 adlScene_manager::adlScene_manager()
 {
+	light_editor_ = ADL_NEW(adlLight_editor);
 }
 
 void adlScene_manager::update(float dt)
@@ -25,6 +28,8 @@ void adlScene_manager::update(float dt)
 	{
 		light->update(dt);
 	}
+
+	light_editor_->update(sun_, point_lights_);
 }
 
 void adlScene_manager::render()

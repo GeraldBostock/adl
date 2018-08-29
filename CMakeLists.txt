@@ -100,6 +100,9 @@ INCLUDE(${ADL_CMAKE_DIR}/FindFREETYPE.cmake)
 # STB_IMAGE
 INCLUDE(${ADL_CMAKE_DIR}/FindSTBIMAGE.cmake)
 
+# IMGUI
+# INCLUDE(${ADL_CMAKE_DIR}/FindIMGUI.cmake)
+
 # Google Test
 # INCLUDE(${ADL_CMAKE_DIR}/AddGoogleTest.cmake)
 

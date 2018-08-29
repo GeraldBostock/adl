@@ -33,7 +33,7 @@ bool Game::init()
 
 	adlPoint_light_shared_ptr second_light = MAKE_SHARED(adlPoint_light);
 	adl_scene_manager->addPointLightToScene(second_light);
-	second_light->set_position(adlVec3(0, 5, 0));
+	second_light->set_position(adlVec3(0, 0, 20));
 
 	for (int i = 0; i < 20; i++)
 	{

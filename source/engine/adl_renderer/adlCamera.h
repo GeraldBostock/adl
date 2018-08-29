@@ -37,6 +37,8 @@ public:
 protected:
 	virtual void update_custom_camera(float dt);
 private:
+	bool is_paused_;
+
 	adlVec3 position_;
 	float pitch_;
 	float yaw_;

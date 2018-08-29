@@ -1,6 +1,9 @@
 #include "adlInput.h"
 
 #include <iostream>
+#include "adl_debug/imgui/imgui.h"
+#include "adl_debug/imgui/imgui_impl_sdl.h"
+#include "adl_debug/imgui/imgui_impl_opengl3.h"
 
 adlInput::adlInput()
 {
@@ -28,6 +31,8 @@ void adlInput::update()
 			mouse_state_.xDif = e.motion.xrel;
 			mouse_state_.yDif = e.motion.yrel;
 		}
+
+		ImGui_ImplSDL2_ProcessEvent(&e);
 	}
 
 	memcpy(prev_keyboard_, keyboard_, 323);

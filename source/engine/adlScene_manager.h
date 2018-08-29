@@ -7,6 +7,7 @@
 #include "adl_entities/adlPoint_light.h"
 #include "adl_entities/adlSun.h"
 #include "adlShared_types.h"
+#include "engine/adl_debug/adlLight_editor.h"
 
 #include <vector>
 
@@ -46,6 +47,8 @@ private:
 	adlSun_shared_ptr sun_;
 
 	adlScene_manager();
+
+	adlLight_editor* light_editor_;
 };
 
 #endif // adl_scene_manager_h_

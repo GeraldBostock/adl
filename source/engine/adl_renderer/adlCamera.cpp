@@ -9,7 +9,8 @@ adlCamera::adlCamera()
 	  roll_(0.0f),
 	  mouse_sensitivity_(1.0f),
 	  movement_speed_(0.01f),
-	  camera_type_(ct_god_mode)
+	  camera_type_(ct_god_mode),
+	  is_paused_(false)
 {
 }
 
@@ -20,23 +21,32 @@ adlCamera::~adlCamera()
 
 void adlCamera::update(float dt)
 {
-	switch (camera_type_)
+	adlInput* input = &adlInput::get();
+	if (input->get_key(adl_key_left_ctrl) && input->get_key_up(adl_key_s))
 	{
-	case ct_fps:
-		update_fps_camera(dt);
-		break;
-	case ct_rts:
-		update_rts_camera(dt);
-		break;
-	case ct_god_mode:
-		update_god_mode_camera(dt);
-		break;
-	case ct_custom:
-		update_custom_camera(dt);
-		break;
-	default:
-		//You should not be here. Go away.
-		break;
+		is_paused_ = !is_paused_;
+	}
+
+	if (!is_paused_)
+	{
+		switch (camera_type_)
+		{
+		case ct_fps:
+			update_fps_camera(dt);
+			break;
+		case ct_rts:
+			update_rts_camera(dt);
+			break;
+		case ct_god_mode:
+			update_god_mode_camera(dt);
+			break;
+		case ct_custom:
+			update_custom_camera(dt);
+			break;
+		default:
+			//You should not be here. Go away.
+			break;
+		}
 	}
 
 }

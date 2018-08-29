@@ -1,5 +1,9 @@
 #include "adlRoot.h"
 
+#include "adl_debug/imgui/imgui.h"
+#include "adl_debug/imgui/imgui_impl_sdl.h"
+#include "adl_debug/imgui/imgui_impl_opengl3.h"
+
 adlRoot::adlRoot()
 	: is_running_(false)
 {
@@ -9,6 +13,10 @@ adlRoot::~adlRoot()
 {
 	ADL_DELETE(fps_manager_);
 	ADL_DELETE(camera);
+
+	ImGui_ImplOpenGL3_Shutdown();
+	ImGui_ImplSDL2_Shutdown();
+	ImGui::DestroyContext();
 }
 
 void adlRoot::init_window(const std::string& title, int width, int height)
@@ -21,6 +29,10 @@ void adlRoot::run()
 	adl_input->update();
 	adl_renderer->prepare();
 
+	ImGui_ImplOpenGL3_NewFrame();
+	ImGui_ImplSDL2_NewFrame(adl_window->get_window());
+	ImGui::NewFrame();
+
 	if (adl_input->close_button_pressed())
 	{
 		is_running_ = false;
@@ -32,6 +44,11 @@ void adlRoot::run()
 	if (adl_input->get_key(adl_key_left_ctrl) && adl_input->get_key(adl_key_left_alt) && adl_input->get_key_up(adl_key_w))
 	{
 		adl_renderer->toggle_wire_frame_mode();
+	}
+
+	if (adl_input->get_key(adl_key_left_ctrl) && adl_input->get_key_up(adl_key_v))
+	{
+		adl_window->set_mouse_visible(true);
 	}
 
 	camera->update(dt);
@@ -51,6 +68,9 @@ void adlRoot::run()
 	adlFont_shared_ptr arial = adl_rm->get_font("arial");
 	adl_renderer->render_text("FPS: " + fps_string, arial, 0.89f * adl_window->get_width(), 0.95f * adl_window->get_height(), 0.5f, adlColor::YELLOW);
 #endif // _DEBUG
+
+	ImGui::Render();
+	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
 	adl_window->swap_buffers();
 }

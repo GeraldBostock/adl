@@ -56,6 +56,8 @@ public:
 	void set_fullscreen(bool is_fullscreen);
 	void toggle_fullscreen();
 
+	adlWindow_handle get_window();
+
 private:
 	std::string title_;
 	int width_;

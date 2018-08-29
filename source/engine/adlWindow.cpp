@@ -2,6 +2,10 @@
 
 #include "engine/adl_debug/adlLogger.h"
 
+#include "adl_debug/imgui/imgui.h"
+#include "adl_debug/imgui/imgui_impl_sdl.h"
+#include "adl_debug/imgui/imgui_impl_opengl3.h"
+
 adlWindow* adlWindow::instance_ = nullptr;
 
 adlWindow::adlWindow(const std::string& title, int width, int height)
@@ -17,6 +21,16 @@ adlWindow::adlWindow(const std::string& title, int width, int height)
 	}
 	else
 	{
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, 0);
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
+
+		SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
+		SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
+		SDL_DisplayMode current;
+		SDL_GetCurrentDisplayMode(0, &current);
+
 		/*
 		 * Set GL attributes.
 		 * Assigns 8 bits for each rgba component
@@ -48,6 +62,15 @@ adlWindow::adlWindow(const std::string& title, int width, int height)
 		}
 	}
 
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	ImGuiIO& io = ImGui::GetIO(); (void)io;
+
+	ImGui_ImplSDL2_InitForOpenGL(window_, g_context_);
+	ImGui_ImplOpenGL3_Init("#version 400");
+
+	ImGui::StyleColorsDark();
+
 	is_fullscreen_ = false;
 	closed_ = false;
 #endif // USE_SDL
@@ -58,6 +81,7 @@ adlWindow::~adlWindow()
 {
 	if (!closed_)
 	{
+		SDL_GL_DeleteContext(g_context_);
 		SDL_DestroyWindow(window_);
 		SDL_Quit();
 	}
@@ -89,6 +113,7 @@ void adlWindow::set_mouse_visible(bool is_visible)
 	if (is_visible)
 	{
 		SDL_ShowCursor(SDL_ENABLE);
+		SDL_SetRelativeMouseMode(SDL_FALSE);
 	}
 	else
 	{
@@ -131,5 +156,10 @@ void adlWindow::toggle_fullscreen()
 	{
 		set_fullscreen(true);
 	}
-} 
+}
+
+adlWindow_handle adlWindow::get_window()
+{
+	return window_;
+}
  

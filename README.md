@@ -22,3 +22,4 @@ and dlls under dependencies/bin folder.
 - [SDL2](https://www.libsdl.org/download-2.0.php)
 - [spdlog](https://github.com/gabime/spdlog)
 - [stb](https://github.com/nothings/stb)
+- [ImGui](https://github.com/ocornut/imgui)

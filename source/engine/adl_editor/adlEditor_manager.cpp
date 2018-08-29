@@ -6,6 +6,7 @@
 #include "engine/adlMemory.h"
 #include "engine/adlScene_manager.h"
 #include "engine/adlShared_types.h"
+#include "engine/adl_renderer/adlCamera.h"
 
 adlEditor_manager::adlEditor_manager()
 	: light_editor_open_(false),
@@ -75,7 +76,7 @@ void adlEditor_manager::MainMenu()
 void adlEditor_manager::update()
 {
 	adlInput* input = &adlInput::get();
-	if (input->get_key(adl_key_left_ctrl) && input->get_key_up(adl_key_left_shift))
+	if (input->get_key(adl_key_left_ctrl) && input->get_key_down(adl_key_left_shift))
 	{
 		main_editor_open_ = !main_editor_open_;
 

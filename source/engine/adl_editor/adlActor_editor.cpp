@@ -3,6 +3,7 @@
 #include "engine/adl_debug/imgui/imgui.h"
 #include "engine/adlInput.h"
 #include "engine/adl_entities/adlActor.h"
+#include "engine/adl_resource/adlResource_manager.h"
 
 adlActor_editor::adlActor_editor()
 {
@@ -99,8 +100,15 @@ void adlActor_editor::actorStats(adlActor_shared_ptr actor, int index)
 
 				ImGui::Text("Mesh(Name)");
 				ImGui::InputText("(max 20 char)", modelName, sizeof(modelName));
-				//actor->setModel(modelName);
-
+				if (ImGui::Button("Refresh Mesh"))
+				{
+					adlResource_manager* adl_rm = &adlResource_manager::get();
+					adlModel_shared_ptr model = adl_rm->getModel(modelName);
+					if (model != nullptr)
+					{
+						actor->setModel(model);
+					}
+				}
 				ImGui::Unindent();
 			}
 			if (ImGui::CollapsingHeader("Material"))
@@ -111,7 +119,17 @@ void adlActor_editor::actorStats(adlActor_shared_ptr actor, int index)
 
 				ImGui::Text("Material(Name)");
 				ImGui::InputText("(max 20 char)", materialName, sizeof(materialName));
-				//actor->setMaterial(materialName);
+
+				if (ImGui::Button("Refresh Material"))
+				{
+					adlResource_manager* adl_rm = &adlResource_manager::get();
+					adlMaterial_shared_ptr material = adl_rm->get_material(materialName);
+					if (material != nullptr)
+					{
+						actor->setMaterial(material);
+					}
+				}
+
 
 				ImGui::Unindent();
 			}

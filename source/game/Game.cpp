@@ -53,7 +53,7 @@ bool Game::update(float dt)
 		return false;
 	}
 
-	if (adl_input->get_key_up(adl_key_f))
+	if (adl_input->get_key(adl_key_left_alt) && adl_input->get_key_down(adl_key_f))
 	{
 		adl_window->toggle_fullscreen();
 	}

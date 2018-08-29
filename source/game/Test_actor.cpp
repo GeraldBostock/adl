@@ -19,7 +19,7 @@ void Test_actor::init()
 	set_material(material);
 
 	set_position(adlVec3(0.0f, -5.0f, 0.0f));
-	set_rotation(adlVec3(adlMath::deg_to_rad(-90.0f), 0, 0));
+	set_rotation(adlVec3(0, 0, 0));
 	set_scale(1.0f);
 
 	color_ = adlColor(160, 82, 45);

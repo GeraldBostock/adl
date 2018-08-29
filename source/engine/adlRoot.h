@@ -14,6 +14,7 @@
 #include "adlInput.h"
 #include "adl_helper/adlFPS_manager.h"
 #include "adlScene_manager.h"
+#include "adl_editor/adlEditor_manager.h"
 
 /*
 * Entry point for the engine
@@ -39,6 +40,7 @@ public:
 	adlWindow* adl_window;
 	adlCamera* camera;
 	adlScene_manager* adl_scene_manager;
+	adlEditor_manager* adl_editor;
 protected:
 private:
 	adlFPS_manager* fps_manager_;

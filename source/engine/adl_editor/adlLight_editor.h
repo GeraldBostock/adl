@@ -13,7 +13,6 @@ public:
 
 	void update(adlSun_shared_ptr sun, std::vector<adlPoint_light_shared_ptr>& point_lights);
 private:
-	bool window_open_;
 };
 
 #endif // adl_light_editor_h__

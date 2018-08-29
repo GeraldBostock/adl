@@ -7,14 +7,13 @@
 
 adlScene_manager::adlScene_manager()
 {
-	light_editor_ = ADL_NEW(adlLight_editor);
 }
 
 void adlScene_manager::update(float dt)
 {
 	for (auto entity : entities_)
 	{
-		entity.update(dt);
+		entity->update(dt);
 	}
 
 	for (auto actor : actors_)
@@ -28,8 +27,6 @@ void adlScene_manager::update(float dt)
 	{
 		light->update(dt);
 	}
-
-	light_editor_->update(sun_, point_lights_);
 }
 
 void adlScene_manager::render()
@@ -49,13 +46,13 @@ void adlScene_manager::render()
 	}
 }
 
-void adlScene_manager::add_to_scene(adlEntity entity)
+void adlScene_manager::add_to_scene(adlEntity_shared_ptr entity)
 {
-	entity.init();
+	entity->init();
 	entities_.push_back(entity);
 }
 
-void adlScene_manager::addToScene(adlEntity entity)
+void adlScene_manager::addToScene(adlEntity_shared_ptr entity)
 {
 	add_to_scene(entity);
 }
@@ -110,4 +107,19 @@ void adlScene_manager::add_point_light_scene(adlPoint_light_shared_ptr point_lig
 
 	adlRender_manager* renderer = &adlRender_manager::get();
 	renderer->set_point_light(point_light);
+}
+
+std::vector<adlActor_shared_ptr>& adlScene_manager::get_all_actors()
+{
+	return actors_;
+}
+
+std::vector<adlPoint_light_shared_ptr>& adlScene_manager::get_all_point_lights()
+{
+	return point_lights_;
+}
+
+adlSun_shared_ptr adlScene_manager::get_sun()
+{
+	return sun_;
 }

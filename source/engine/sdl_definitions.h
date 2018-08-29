@@ -66,9 +66,10 @@ enum adl_keys
 	adl_key_left = SDL_SCANCODE_LEFT,
 	adl_key_right = SDL_SCANCODE_RIGHT,
 
-	adl_key_quote = SDL_SCANCODE_APOSTROPHE,
+	adl_key_double_quote = SDLK_QUOTEDBL,
 	adl_key_less = SDL_SCANCODE_KP_LESS,
-	adl_key_greater = SDL_SCANCODE_KP_GREATER
+	adl_key_greater = SDL_SCANCODE_KP_GREATER,
+	
 };
 
 #endif // sdl_definitions_h__

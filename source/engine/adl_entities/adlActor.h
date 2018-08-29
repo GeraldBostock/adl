@@ -48,12 +48,12 @@ public:
 	adlMaterial_shared_ptr getMaterial();
 	adlMaterial_shared_ptr get_material();
 
+	void setMaterial(adlMaterial_shared_ptr material);
+	void set_material(adlMaterial_shared_ptr material);
+
 protected:
 	adlColor color_;
 
-
-	void setMaterial(adlMaterial_shared_ptr material);
-	void set_material(adlMaterial_shared_ptr material);
 private:
 	adlTransform transform_;
 	adlModel_shared_ptr model_ = nullptr;

@@ -109,6 +109,11 @@ void adlScene_manager::add_point_light_scene(adlPoint_light_shared_ptr point_lig
 	renderer->set_point_light(point_light);
 }
 
+std::vector<adlEntity_shared_ptr>& adlScene_manager::get_all_entities()
+{
+	return entities_;
+}
+
 std::vector<adlActor_shared_ptr>& adlScene_manager::get_all_actors()
 {
 	return actors_;

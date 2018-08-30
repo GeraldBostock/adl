@@ -41,6 +41,10 @@ bool Game::init()
 		adl_scene_manager->spawnActor(multi_actor, adlVec3(i * 3, 0, 0));
 	}
 
+	adlCamera* camera = ADL_NEW(adlCamera);
+	camera->set_camera_type(ct_rts);
+	adl_scene_manager->set_camera(camera);
+
 	adl_window->set_mouse_visible(false);
 
 	return true;

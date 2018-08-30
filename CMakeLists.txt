@@ -5,6 +5,7 @@ project(adl)
 
 # add the -c and -Wall flags
 if(MSVC)
+	set(CMAKE_CXX_STANDARD 17)
 	add_definitions(
 		-c
 		-W4
@@ -100,6 +101,9 @@ INCLUDE(${ADL_CMAKE_DIR}/FindFREETYPE.cmake)
 # STB_IMAGE
 INCLUDE(${ADL_CMAKE_DIR}/FindSTBIMAGE.cmake)
 
+# RTTR
+INCLUDE(${ADL_CMAKE_DIR}/FindRTTR.cmake)
+
 # IMGUI
 # INCLUDE(${ADL_CMAKE_DIR}/FindIMGUI.cmake)
 
@@ -122,6 +126,7 @@ include_directories(
 	${RAPIDJSON_INCLUDE_DIRS}
 	${FREETYPE_INCLUDE_DIRS}
 	${STBIMAGE_INCLUDE_DIRS}
+	${RTTR_INCLUDE_DIRS}
 )
 
 # ADL Libs
@@ -133,6 +138,7 @@ target_link_libraries( game
 	${SDL2_LIBRARIES}
 	${ASSIMP_LIBRARIES}
 	${FREETYPE_LIBRARIES}
+	${RTTR_LIBRARIES}
 )
 
 if(UNIX)

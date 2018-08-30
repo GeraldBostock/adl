@@ -2,6 +2,7 @@
 #define common_h__
 
 #if defined ADL_TARGET_SYSTEM_WINDOWS
+#define NOMINMAX
 #include <windows.h>
 #define SDL_MAIN_HANDLED
 #pragma warning( disable : 4201 )

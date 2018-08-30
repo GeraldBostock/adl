@@ -1,6 +1,5 @@
 #include "adlActor.h"
 
-
 adlActor::adlActor()
 {
 }
@@ -23,17 +22,24 @@ adlTransform adlActor::get_transform()
 	return transform_;
 }
 
-adlModel_shared_ptr adlActor::get_model()
+void adlActor::set_transform(adlTransform transform)
+{
+	transform_.o = transform.o;
+	transform_.rot = transform.rot;
+	transform_.scale = transform.scale;
+}
+
+adlModel_shared_ptr adlActor::get_model() const
 {
 	return model_;
 }
 
-adlColor adlActor::get_color()
+adlColor adlActor::get_color() const
 {
 	return color_;
 }
 
-adlMaterial_shared_ptr adlActor::get_material()
+adlMaterial_shared_ptr adlActor::get_material() const
 {
 	return material_;
 }
@@ -58,17 +64,17 @@ void adlActor::set_scale(adlVec3 scale)
 	transform_.scale = scale;
 }
 
-adlVec3 adlActor::get_position()
+adlVec3 adlActor::get_position() const
 {
 	return transform_.o;
 }
 
-adlVec3 adlActor::get_rotation()
+adlVec3 adlActor::get_rotation() const
 {
 	return transform_.rot;
 }
 
-adlVec3 adlActor::get_scale()
+adlVec3 adlActor::get_scale() const
 {
 	return transform_.scale;
 }

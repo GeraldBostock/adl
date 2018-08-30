@@ -21,6 +21,7 @@ void adlScene_manager::update(float dt)
 		actor->update(dt);
 	}
 
+	camera_->update(dt);
 	sun_->update(dt);
 
 	for (auto light : point_lights_)
@@ -33,6 +34,8 @@ void adlScene_manager::render()
 {
 	adlRender_manager* renderer = &adlRender_manager::get();
 	renderer->set_lights(point_lights_);
+	renderer->set_camera(camera_);
+
 	for (auto actor : actors_)
 	{
 		renderer->render(actor);
@@ -122,4 +125,9 @@ std::vector<adlPoint_light_shared_ptr>& adlScene_manager::get_all_point_lights()
 adlSun_shared_ptr adlScene_manager::get_sun()
 {
 	return sun_;
+}
+
+void adlScene_manager::set_camera(adlCamera* camera)
+{
+	camera_ = camera;
 }

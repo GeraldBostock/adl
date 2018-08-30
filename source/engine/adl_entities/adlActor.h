@@ -50,8 +50,6 @@ public:
 	adlMaterial_shared_ptr getMaterial();
 	adlMaterial_shared_ptr get_material() const;
 
-	int data = 5;
-
 	void setMaterial(adlMaterial_shared_ptr material);
 	void set_material(adlMaterial_shared_ptr material);
 
@@ -62,8 +60,6 @@ private:
 	adlTransform transform_;
 	adlModel_shared_ptr model_ = nullptr;
 	adlMaterial_shared_ptr material_ = nullptr;
-
-	RTTR_ENABLE()
 };
 
 #endif // adl_actor_h__

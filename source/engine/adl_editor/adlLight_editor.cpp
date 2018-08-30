@@ -166,7 +166,7 @@ void adlLight_editor::lightStats(adlPoint_light_shared_ptr pointLight, int index
 
 			float lightRot[3] = { light_rotation.x, light_rotation.y, light_rotation.z };
 			ImGui::InputFloat3(label.data(), &lightRot[0], 2);
-			light_rotation = adlVec3(lightRot[0], lightRot[1], lightRot[2]);
+			light_rotation = adlVec3(adlMath::deg_to_rad(lightRot[0]), adlMath::deg_to_rad(lightRot[1]), adlMath::deg_to_rad(lightRot[2]));
 			pointLight->set_rotation(light_rotation);
 		}
 		if (ImGui::CollapsingHeader("Scale"))

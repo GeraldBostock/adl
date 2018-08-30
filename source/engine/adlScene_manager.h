@@ -6,6 +6,7 @@
 #include "adl_entities/adlLight.h"
 #include "adl_entities/adlPoint_light.h"
 #include "adl_entities/adlSun.h"
+#include "adl_renderer/adlCamera.h"
 #include "adlShared_types.h"
 
 #include <vector>
@@ -32,6 +33,8 @@ public:
 	void set_sun(adlSun_shared_ptr sun);
 	void setSun(adlSun_shared_ptr sun);
 
+	void set_camera(adlCamera* camera);
+
 	void addPointLightToScene(adlPoint_light_shared_ptr point_light);
 	void add_point_light_scene(adlPoint_light_shared_ptr point_light);
 
@@ -50,6 +53,7 @@ private:
 	std::vector<adlPoint_light_shared_ptr> point_lights_;
 
 	adlSun_shared_ptr sun_;
+	adlCamera* camera_;
 
 	adlScene_manager();
 };

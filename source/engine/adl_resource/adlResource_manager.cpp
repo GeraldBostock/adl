@@ -179,7 +179,7 @@ adlMaterial_shared_ptr adlResource_manager::get_material(const std::string& mate
 	adlMaterial_shared_ptr material = materials_[material_name];
 	if (material == nullptr)
 	{
-		adl_logger->log_info("Material " + material_name + "does not exist.");
+		adl_logger->log_error("Material " + material_name + " does not exist.");
 	}
 	else if(material->get_shader() == nullptr || material->get_texture() == nullptr)
 	{

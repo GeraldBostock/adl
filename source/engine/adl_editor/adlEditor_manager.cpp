@@ -21,7 +21,6 @@ adlEditor_manager::adlEditor_manager()
 
 void adlEditor_manager::MainMenu()
 {
-	adlScene_manager* scene_manager = &adlScene_manager::get();
 	if (ImGui::BeginMainMenuBar())
 	{
 		if (ImGui::BeginMenu("adl Editors"))

@@ -10,7 +10,6 @@ adlLight_editor::adlLight_editor()
 {
 }
 
-
 adlLight_editor::~adlLight_editor()
 {
 }
@@ -85,7 +84,7 @@ void adlLight_editor::sunStats(adlSun_shared_ptr sun)
 		}
 		ImGui::Unindent();
 	}
-	if (ImGui::CollapsingHeader("Light Abilities"))
+	if (ImGui::CollapsingHeader("Light Properties"))
 	{
 		ImGui::Indent();
 		if (ImGui::CollapsingHeader("Light Reflections"))
@@ -122,15 +121,11 @@ void adlLight_editor::sunStats(adlSun_shared_ptr sun)
 
 			ImGui::Unindent();
 		}
-		if (ImGui::CollapsingHeader("Light Intensity"))
+		if (ImGui::CollapsingHeader("Sun Light Properties"))
 		{
 			ImGui::Indent();
 
-			ImGui::Text("Light Intensity(0f, 100f)");
-
-			float lightIntensity = 5.0f;// = sun->getintensity();
-
-			ImGui::SliderFloat("##Intensity", &lightIntensity, 0.0f, 100.0f);
+			ImGui::Text("Property");
 
 			ImGui::Unindent();
 		}
@@ -182,7 +177,7 @@ void adlLight_editor::lightStats(adlPoint_light_shared_ptr pointLight, int index
 		}
 		ImGui::Unindent();
 	}
-	if (ImGui::CollapsingHeader("Light Abilities"))
+	if (ImGui::CollapsingHeader("Light Properties"))
 	{
 		ImGui::Indent();
 		if (ImGui::CollapsingHeader("Light Reflections"))
@@ -219,15 +214,54 @@ void adlLight_editor::lightStats(adlPoint_light_shared_ptr pointLight, int index
 
 			ImGui::Unindent();
 		}
-		if (ImGui::CollapsingHeader("Light Intensity"))
+		if (ImGui::CollapsingHeader("Point Light Properties"))
 		{
+			ImGui::Text("Constant: %d | Linear: %d | Quadratic: %d", pointLight->get_constant(), pointLight->get_linear (), pointLight->get_quadratic());
+
 			ImGui::Indent();
+			if (ImGui::CollapsingHeader("Constant Property"))
+			{
+				ImGui::Indent();
 
-			ImGui::Text("Light Intensity(0f, 100f)");
+				ImGui::Text("Constant(0f, 50f)");
 
-			float lightIntensity = 5.0f;// = pointLight->getintensity();
+				float lightConstant = pointLight->get_constant();
 
-			ImGui::SliderFloat("##Intensity", &lightIntensity, 0.0f, 100.0f);
+				ImGui::SliderFloat("##Constant", &lightConstant, 0.0f, 50.0f);
+				pointLight->set_constant(lightConstant);
+
+				ImGui::Unindent();
+
+			}
+
+			if (ImGui::CollapsingHeader("Linear Property"))
+			{
+				ImGui::Indent();
+
+				ImGui::Text("Linear(0f, 1f)");
+
+				float lightLinear = pointLight->get_linear();
+
+				ImGui::SliderFloat("##Linear", &lightLinear, 0.0f, 1.0f);
+				pointLight->set_linear(lightLinear);
+
+				ImGui::Unindent();
+
+			}
+			if (ImGui::CollapsingHeader("Quadratic Property"))
+			{
+				ImGui::Indent();
+
+				ImGui::Text("Quadratic(0f, 1f)");
+
+				float lightQuadratic = pointLight->get_quadratic();
+
+				ImGui::SliderFloat("##Quadratic", &lightQuadratic, 0.0f, 1.0f);
+				pointLight->set_quadratic(lightQuadratic);
+
+				ImGui::Unindent();
+
+			}
 
 			ImGui::Unindent();
 		}

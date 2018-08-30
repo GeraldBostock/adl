@@ -19,6 +19,11 @@ bool Game::init()
 	adlActor_shared_ptr actor = MAKE_SHARED(Test_actor);
 	adl_scene_manager->addToScene(actor);
 
+	adlActor_shared_ptr landscape = MAKE_SHARED(Test_actor);
+	adl_scene_manager->addToScene(landscape);
+	landscape->set_position(adlVec3(0, -15, 20));
+	landscape->setModel(adl_rm->getModel("landscape"));
+
 	adlActor_shared_ptr material_actor = MAKE_SHARED(Material_test);
 	adl_scene_manager->addToScene(material_actor);
 

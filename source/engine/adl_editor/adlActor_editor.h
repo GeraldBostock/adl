@@ -11,6 +11,7 @@ public:
 
 	void update(std::vector<adlActor_shared_ptr>& actors);
 private:
+	void actorStats(adlActor_shared_ptr actor, int index);
 
 };
 

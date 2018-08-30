@@ -22,7 +22,7 @@ adlCamera::~adlCamera()
 void adlCamera::update(float dt)
 {
 	adlInput* input = &adlInput::get();
-	if (input->get_key(adl_key_left_ctrl) && input->get_key_up(adl_key_s))
+	if (input->get_key(adl_key_left_ctrl) && input->get_key_up(adl_key_left_shift))
 	{
 		is_paused_ = !is_paused_;
 	}

@@ -52,12 +52,12 @@ public:
 
 	int data = 5;
 
+	void setMaterial(adlMaterial_shared_ptr material);
+	void set_material(adlMaterial_shared_ptr material);
+
 protected:
 	adlColor color_;
 
-
-	void setMaterial(adlMaterial_shared_ptr material);
-	void set_material(adlMaterial_shared_ptr material);
 private:
 	adlTransform transform_;
 	adlModel_shared_ptr model_ = nullptr;

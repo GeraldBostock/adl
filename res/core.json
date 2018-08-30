@@ -42,7 +42,7 @@
     },
     {
       "name": "landscape",
-      "path": "res/models/Landscape.dae"
+      "path": "res/models/Landscape.obj"
     },
 	{
 	  "name": "sphere",

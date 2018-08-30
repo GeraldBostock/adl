@@ -6,7 +6,6 @@
 #include "adl_entities/adlLight.h"
 #include "adl_entities/adlPoint_light.h"
 #include "adl_entities/adlSun.h"
-#include "adl_renderer/adlCamera.h"
 #include "adlShared_types.h"
 
 #include <vector>
@@ -39,8 +38,7 @@ public:
 	void spawn_actor(adlActor_shared_ptr actor, adlVec3 position, adlVec3 rotation = adlVec3(0.0f), adlVec3 scale = adlVec3(1.0f));
 	void spawnActor(adlActor_shared_ptr actor, adlVec3 position, adlVec3 rotation = adlVec3(0.0f), adlVec3 scale = adlVec3(1.0f));
 
-	void set_camera(adlCamera* camera);
-
+	std::vector<adlEntity_shared_ptr>& get_all_entities();
 	std::vector<adlActor_shared_ptr>& get_all_actors();
 	std::vector<adlPoint_light_shared_ptr>& get_all_point_lights();
 	adlSun_shared_ptr get_sun();
@@ -52,7 +50,6 @@ private:
 	std::vector<adlPoint_light_shared_ptr> point_lights_;
 
 	adlSun_shared_ptr sun_;
-	adlCamera* camera_;
 
 	adlScene_manager();
 };

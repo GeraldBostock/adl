@@ -132,6 +132,11 @@ adlSun_shared_ptr adlScene_manager::get_sun()
 	return sun_;
 }
 
+adlCamera* adlScene_manager::getCamera()
+{
+	return camera_;
+}
+
 void adlScene_manager::set_camera(adlCamera* camera)
 {
 	camera_ = camera;

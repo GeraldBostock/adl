@@ -22,7 +22,7 @@ adlCamera::~adlCamera()
 void adlCamera::update(float dt)
 {
 	adlInput* input = &adlInput::get();
-	if (input->get_key(adl_key_left_ctrl) && input->get_key_up(adl_key_left_shift))
+	if (input->get_key(adl_key_left_ctrl) && input->get_key_down(adl_key_left_shift))
 	{
 		is_paused_ = !is_paused_;
 	}
@@ -175,7 +175,18 @@ void adlCamera::update_rts_camera(float dt)
 		position_.z -= movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_ - 90)) * dt;
 		position_.x -= movement_speed_ * std::sin(adlMath::deg_to_rad(yaw_ - 90)) * dt;
 	}
-
+	if (input->get_key(adl_key_e))
+	{
+		yaw_ -= mouse_sensitivity_ * dt / 10;
+	}
+	if (input->get_key(adl_key_q))
+	{
+		yaw_ += mouse_sensitivity_ * dt / 10;
+	}
+	if (input->get_key(adl_key_r))
+	{
+		yaw_= 0.0f;
+	}
 
 	view_matrix_ = view_matrix_.create_view_matrix(position_, adlVec3(adlMath::deg_to_rad(pitch_), adlMath::deg_to_rad(yaw_), adlMath::deg_to_rad(roll_)));
 

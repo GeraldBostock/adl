@@ -46,6 +46,8 @@ public:
 	std::vector<adlPoint_light_shared_ptr>& get_all_point_lights();
 	adlSun_shared_ptr get_sun();
 
+	adlCamera* getCamera();
+
 private:
 	std::vector<adlEntity_shared_ptr> entities_;
 	std::vector<adlActor_shared_ptr> actors_;

@@ -61,10 +61,13 @@ void adlEditor_manager::MainMenu()
 
 		if (ImGui::BeginMenu("Cameras"))
 		{
-			if (ImGui::MenuItem("FPS")) { std::cout << "FPS" << std::endl; }
-			if (ImGui::MenuItem("RTS")) { std::cout << "RTS" << std::endl; }
-			if (ImGui::MenuItem("GOD")) { std::cout << "GOD" << std::endl; }
-			if (ImGui::MenuItem("Custom")) { std::cout << "Custom" << std::endl; }
+			adlScene_manager* scene_manager = &adlScene_manager::get();
+			adlCamera* c = scene_manager->getCamera();
+
+			if (ImGui::MenuItem("GOD")) { c->set_camera_type(ct_god_mode); }
+			if (ImGui::MenuItem("RTS")) { c->set_camera_type(ct_rts); }
+			if (ImGui::MenuItem("FPS")) { c->set_camera_type(ct_fps); }
+			if (ImGui::MenuItem("Custom")) { c->set_camera_type(ct_custom); }
 
 			ImGui::EndMenu();
 		}
@@ -118,6 +121,8 @@ void adlEditor_manager::update()
 			ImGui::Begin("Help");
 			ImGui::Text("Close/Open Editor: 'CTRL(or CMD)+Shift'");
 			ImGui::Text("Show/Hide Sub Editors:  'adl Editors->Toggle Checkbox'");
+			ImGui::Text("Game Menu:  'Game->...'");
+			ImGui::Text("Change Cameras:  'Cameras-><CamType>'");
 
 			if (ImGui::CollapsingHeader("Extras"))
 			{

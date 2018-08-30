@@ -44,10 +44,14 @@
       "name": "landscape",
       "path": "res/models/Landscape.obj"
     },
-	{
-	  "name": "sphere",
-	  "path": "res/models/sphere.obj"
-	}
+    {
+      "name": "sphere",
+      "path": "res/models/sphere.obj"
+    },
+    {
+      "name": "InversedCube",
+      "path": "res/models/InversedCube.obj"
+    }
   ],
   "shaders": [
     {
@@ -70,11 +74,11 @@
       "vertex_shader_path": "res/shaders/basic_shader.vert",
       "fragment_shader_path": "res/shaders/no_texture_phong.frag"
     },
-	{
-	  "name": "light_shader",
-	  "vertex_shader_path": "res/shaders/basic_shader.vert",
-	  "fragment_shader_path": "res/shaders/light_shader.frag"
-	},
+    {
+      "name": "light_shader",
+      "vertex_shader_path": "res/shaders/basic_shader.vert",
+      "fragment_shader_path": "res/shaders/light_shader.frag"
+    },
     {
       "name": "font_shader",
       "vertex_shader_path": "res/shaders/font_shader.vert",
@@ -96,15 +100,15 @@
     }
   ],
   "textures": [
-	{
-	  "name": "steel_frame",
-	  "path": "res/textures/metal_frame.png",
-	  "specular_map_path": "res/textures/metal_frame_specular.png"
-	},
-	{
-	  "name": "awful_texture",
-	  "path": "res/textures/awful_texture.png",
-	  "specular_map_path": "res/textures/awful_texture_specular.png"
-	}
+    {
+      "name": "steel_frame",
+      "path": "res/textures/metal_frame.png",
+      "specular_map_path": "res/textures/metal_frame_specular.png"
+    },
+    {
+      "name": "awful_texture",
+      "path": "res/textures/awful_texture.png",
+      "specular_map_path": "res/textures/awful_texture_specular.png"
+    }
   ]
 }

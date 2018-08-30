@@ -67,7 +67,7 @@ void adlActor_editor::actorStats(adlActor_shared_ptr actor, int index)
 
 			std::string label = "##ActorRot" + std::to_string(index + 1);
 
-			float actorRot[3] = { actor_rotation.x, actor_rotation.y, actor_rotation.z };
+			float actorRot[3] = { adlMath::rad_to_deg(actor_rotation.x), adlMath::rad_to_deg(actor_rotation.y), adlMath::rad_to_deg(actor_rotation.z) };
 			ImGui::InputFloat3(label.data(), &actorRot[0], 2);
 			actor_rotation = adlVec3(adlMath::deg_to_rad(actorRot[0]), adlMath::deg_to_rad(actorRot[1]), adlMath::deg_to_rad(actorRot[2]));
 			actor->set_rotation(actor_rotation);

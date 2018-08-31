@@ -29,7 +29,9 @@ private:
 	bool actor_editor_open_;
 	bool light_editor_open_;
 	bool help_open_;
-	bool show_demo_window;
+	bool show_demo_window_;
+
+	bool spawner_editor_open_;
 
 	adlEditor_manager();
 

@@ -37,7 +37,9 @@ void adlEditor_manager::MainMenu()
 				actor_editor_open_ = false;
 				light_editor_open_ = false;
 				help_open_ = false;
-				show_demo_window = false;
+				show_demo_window_ = false;
+
+				spawner_editor_open_ = false;
 			}
 
 			ImGui::EndMenu();
@@ -65,6 +67,8 @@ void adlEditor_manager::MainMenu()
 				adlScene_manager* scene_manager = &adlScene_manager::get();
 				scene_manager->spawn_light("adlPoint_light");
 				scene_manager->spawn_actor("Test_actor");
+
+				spawner_editor_open_ = false;
 			}
 			if (ImGui::MenuItem("Save", "CTRL+S")) { std::cout << "Saved!" << std::endl; }
 
@@ -95,7 +99,7 @@ void adlEditor_manager::update()
 {
 	adlInput* input = &adlInput::get();
 	adlScene_manager* scene_manager = &adlScene_manager::get();
-	if (input->get_key(adl_key_quotedbl)/*input->get_key(adl_key_left_ctrl) && input->get_key_down(adl_key_left_shift)*/)
+	if (input->get_key(adl_key_quotedbl) || (input->get_key(adl_key_left_ctrl) && input->get_key_down(adl_key_left_shift)))
 	{
 		main_editor_open_ = !main_editor_open_;
 
@@ -112,7 +116,10 @@ void adlEditor_manager::update()
 			actor_editor_open_ = false;
 			light_editor_open_ = false;
 			help_open_ = false;		
-			show_demo_window = false;
+			show_demo_window_ = false;
+
+			spawner_editor_open_ = false;
+
 			scene_manager->getCamera()->toggle_active();
 		}
 	}
@@ -121,6 +128,14 @@ void adlEditor_manager::update()
 	{
 		MainMenu();
 
+
+		// adlEditor Shortcuts
+		if (input->get_key(adl_key_left_shift) && input->get_key_down(adl_key_a))
+		{
+			spawner_editor_open_ = true;
+		}
+
+		// adlEditors
 		adlScene_manager* scene_manager = &adlScene_manager::get();
 		if (entity_editor_open_)
 		{
@@ -145,15 +160,56 @@ void adlEditor_manager::update()
 			if (ImGui::CollapsingHeader("Extras"))
 			{
 				ImGui::Indent();
-				ImGui::Checkbox("Demo Window", &show_demo_window);
+				ImGui::Checkbox("Demo Window", &show_demo_window_);
 
-				if (show_demo_window)
-					ImGui::ShowDemoWindow(&show_demo_window);
+				if (show_demo_window_)
+					ImGui::ShowDemoWindow(&show_demo_window_);
 				ImGui::Unindent();
 			}
 
 			ImGui::End();
+		}
+		if (spawner_editor_open_)
+		{
+			adlEntity_factory* factory = &adlEntity_factory::get();
+			const std::vector<std::string> actors = factory->get_all_registered_actors();
+			const std::vector<std::string> lights = factory->get_all_registered_lights();
 
+			ImGui::Begin("Spawn Editor");
+
+			if (ImGui::CollapsingHeader("Actors"))
+			{
+				for (size_t i = 0; i < actors.size(); i++)
+				{
+					if (ImGui::Button(actors[i].data()))
+					{
+						ImGui::Indent();
+
+						scene_manager->spawn_actor(actors[i].data());
+
+						spawner_editor_open_ = false;
+						ImGui::Unindent();
+					}
+				}
+			}
+
+			if (ImGui::CollapsingHeader("Lights"))
+			{
+				for (size_t i = 0; i < lights.size(); i++)
+				{
+					if (ImGui::Button(lights[i].data()))
+					{
+						ImGui::Indent();
+
+						scene_manager->spawn_light(lights[i].data());
+
+						spawner_editor_open_ = false;
+						ImGui::Unindent();
+					}
+				}
+			}
+
+			ImGui::End();
 		}
 	}
 }

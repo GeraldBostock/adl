@@ -49,6 +49,8 @@ bool Game::init()
 
 	adlCamera* camera = ADL_NEW(adlCamera);
 	camera->set_camera_type(ct_rts);
+	camera->init();
+
 	adl_scene_manager->set_camera(camera);
 
 	adl_window->set_mouse_visible(false);

@@ -18,6 +18,7 @@ public:
 	adlCamera();
 	~adlCamera();
 
+	void init();
 	void update(float dt);
 	void look_at(adlVec3 target, adlVec3 up_vector);
 
@@ -48,6 +49,7 @@ private:
 
 	float mouse_sensitivity_;
 	float movement_speed_;
+	float start_movement_speed_;
 
 	adlVec3 rts_camera_target_;
 

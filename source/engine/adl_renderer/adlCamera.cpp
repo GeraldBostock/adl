@@ -8,6 +8,7 @@ adlCamera::adlCamera()
 	  yaw_(0.0f),
 	  roll_(0.0f),
 	  mouse_sensitivity_(1.0f),
+	  start_movement_speed_(0.01f),
 	  movement_speed_(0.01f),
 	  camera_type_(ct_god_mode),
 	  is_paused_(false)
@@ -17,6 +18,16 @@ adlCamera::adlCamera()
 adlCamera::~adlCamera()
 {
 
+}
+
+void adlCamera::init() 
+{
+	if (camera_type_ == ct_rts)
+	{
+		position_ = adlVec3(2.0f, 5.0f, 2.5f);
+		rts_camera_target_ = adlVec3(0.0, 0.0f, 0.0f);
+		pitch_ = -45;
+	}
 }
 
 void adlCamera::update(float dt)
@@ -260,7 +271,27 @@ void adlCamera::update_god_mode_camera(float dt)
 	if (input->get_key(adl_key_e))
 	{
 		position_.y += movement_speed_ * dt;
+	}	
+	if (input->get_key(adl_key_r))
+	{
+		movement_speed_ = start_movement_speed_;
 	}
+	int mouse_wheel_dif = input->get_mouse_wheel_dif();
+	if (mouse_wheel_dif > 0)
+	{
+		if (movement_speed_ < start_movement_speed_ * 10)
+		{
+			movement_speed_ *= 2;
+		}
+	}
+	else if (mouse_wheel_dif < 0)
+	{
+		if (movement_speed_ > start_movement_speed_ / 10)
+		{
+			movement_speed_ /= 2;
+		}
+	}
+
 
 	view_matrix_ = view_matrix_.create_view_matrix(position_, adlVec3(adlMath::deg_to_rad(pitch_), adlMath::deg_to_rad(yaw_), adlMath::deg_to_rad(roll_)));
 }
@@ -319,8 +350,6 @@ void adlCamera::set_camera_type(Camera_type type)
 	camera_type_ = type;
 	if (camera_type_ == ct_rts)
 	{
-		position_ = adlVec3(2.0f, 5.0f, 2.5f);
-		rts_camera_target_ = adlVec3(0.0, 0.0f, 0.0f);
 		pitch_ = -45;
 	}
 }

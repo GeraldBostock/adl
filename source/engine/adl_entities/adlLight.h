@@ -12,8 +12,8 @@ public:
 	adlLight();
 	~adlLight();
 
-	virtual void init() = 0;
-	virtual void update(float dt) = 0;
+	virtual void init();
+	virtual void update(float dt);
 
 	adlShader_shared_ptr getShader();
 	adlShader_shared_ptr get_shader();

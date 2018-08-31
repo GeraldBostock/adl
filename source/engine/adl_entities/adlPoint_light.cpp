@@ -2,9 +2,12 @@
 
 #include "engine/adl_resource/adlResource_manager.h"
 #include "engine/adlInput.h"
+#include "adlEntity_factory.h"
 
 adlPoint_light::adlPoint_light()
 {
+	REGISTER_CLASS(adlPoint_light)
+
 	adlResource_manager* adl_rm = &adlResource_manager::get();
 	set_shader(adl_rm->get_shader("light_shader"));
 	set_model(adl_rm->get_model("cube"));

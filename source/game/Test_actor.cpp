@@ -1,9 +1,11 @@
 #include "Test_actor.h"
 
 #include "engine/adl_resource/adlResource_manager.h"
+#include "engine/adl_entities/adlEntity_factory.h"
 
 Test_actor::Test_actor()
 {
+	REGISTER_CLASS(Test_actor)
 }
 
 

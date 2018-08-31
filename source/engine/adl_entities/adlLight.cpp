@@ -1,12 +1,23 @@
 #include "adlLight.h"
 #include "engine/adl_resource/adlResource_manager.h"
 #include "engine/adl_resource/adlStatic_shader.h"
+#include "adlEntity_factory.h"
 
 adlLight::adlLight()
 {
 }
 
 adlLight::~adlLight()
+{
+
+}
+
+void adlLight::init()
+{
+
+}
+
+void adlLight::update(float dt)
 {
 
 }

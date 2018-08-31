@@ -1,8 +1,10 @@
 #include "Test_light.h"
 
+#include "engine/adl_entities/adlEntity_factory.h"
 
 Test_light::Test_light()
 {
+	REGISTER_CLASS(Test_light)
 }
 
 

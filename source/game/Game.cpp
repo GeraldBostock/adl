@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "engine/adl_entities/adlSun.h"
+#include "engine/adl_entities/adlEntity_factory.h"
 
 Game::Game()
 {
@@ -51,6 +52,15 @@ bool Game::init()
 	adl_scene_manager->set_camera(camera);
 
 	adl_window->set_mouse_visible(false);
+
+	adlEntity_factory* factory = &adlEntity_factory::get();
+	adlActor* new_actor = (adlActor*)factory->construct("Test_actor");
+	if (new_actor != nullptr)
+	{
+		adlActor_shared_ptr my_ptr(new_actor);
+		adl_scene_manager->addToScene(my_ptr);
+		my_ptr->set_position(adlVec3(0, 10, 0));
+	}
 
 	return true;
 }

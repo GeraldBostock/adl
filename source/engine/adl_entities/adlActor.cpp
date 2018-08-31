@@ -1,7 +1,10 @@
 #include "adlActor.h"
 
+#include "adlEntity_factory.h"
+
 adlActor::adlActor()
 {
+	REGISTER_CLASS(adlActor)
 }
 
 

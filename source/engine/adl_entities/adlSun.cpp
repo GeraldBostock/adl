@@ -1,10 +1,13 @@
 #include "adlSun.h"
 
 #include "engine/adl_resource/adlResource_manager.h"
+#include "adlEntity_factory.h"
 
 
 adlSun::adlSun()
 {
+	REGISTER_CLASS(adlSun)
+
 	adlResource_manager* adl_rm = &adlResource_manager::get();
 	adlModel_shared_ptr sphere = adl_rm->get_model("sphere");
 	set_model(sphere);

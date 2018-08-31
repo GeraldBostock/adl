@@ -1,9 +1,11 @@
 #include "Material_new_test.h"
 
 #include "engine/adl_resource/adlResource_manager.h"
+#include "engine/adl_entities/adlEntity_factory.h"
 
 Material_new_test::Material_new_test()
 {
+	REGISTER_CLASS(Material_new_test)
 }
 
 

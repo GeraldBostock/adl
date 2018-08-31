@@ -7,6 +7,7 @@
 #include "engine/adlScene_manager.h"
 #include "engine/adlShared_types.h"
 #include "engine/adl_renderer/adlCamera.h"
+#include "engine/adl_entities/adlEntity_factory.h"
 
 adlEditor_manager::adlEditor_manager()
 	: light_editor_open_(false),
@@ -48,7 +49,12 @@ void adlEditor_manager::MainMenu()
 		{
 			if (ImGui::MenuItem("Spawn", "SHIFT+A"))
 			{
-				std::cout << "Spawned!" << std::endl;
+				adlEntity_factory* factory = &adlEntity_factory::get();
+				const std::vector<std::string> classes = factory->get_all_registered_classes();
+				for (auto key : classes)
+				{
+					std::cout << key << std::endl;
+				}
 			}
 			if (ImGui::MenuItem("Save", "CTRL+S")) { std::cout << "Saved!" << std::endl; }
 

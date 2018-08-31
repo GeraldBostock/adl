@@ -6,6 +6,7 @@
 class Material_new_test : public adlActor
 {
 public:
+
 	Material_new_test();
 	~Material_new_test();
 

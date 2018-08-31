@@ -24,7 +24,11 @@ public:
 	template <class T>
 	void register_class(const std::string& class_name)
 	{
-		classes_.insert(std::make_pair(class_name, &constructor<T>));
+		if (classes_.count(class_name) == 0)
+		{
+			classes_.insert(std::make_pair(class_name, &constructor<T>));
+			registered_classes_.push_back(class_name);
+		}
 	}
 
 	void* construct(const std::string& class_name)
@@ -40,11 +44,14 @@ public:
 		return i->second();
 	}
 
+	const std::vector<std::string>& get_all_registered_classes() const;
+
 
 private:
 	adlEntity_factory();
 
 	map_type classes_;
+	std::vector<std::string> registered_classes_;
 };
 
 #endif // adl_entity_factory_h__

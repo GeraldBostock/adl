@@ -4,7 +4,6 @@
 
 adlEntity::adlEntity()
 {
-	REGISTER_CLASS(adlEntity)
 }
 
 adlEntity::~adlEntity()

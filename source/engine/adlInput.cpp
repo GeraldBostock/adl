@@ -13,6 +13,7 @@ void adlInput::update()
 {
 	mouse_state_.xDif = 0;
 	mouse_state_.yDif = 0;
+	mouse_state_.m_wheel_dif = 0;
 
 	memcpy(prev_keyboard_, keyboard_, 323);
 	memcpy(keyboard_, SDL_GetKeyboardState(NULL), 323);
@@ -33,6 +34,11 @@ void adlInput::update()
 		{
 			mouse_state_.xDif = e.motion.xrel;
 			mouse_state_.yDif = e.motion.yrel;
+		}
+
+		if (e.type == SDL_MOUSEWHEEL)
+		{
+			mouse_state_.m_wheel_dif = e.wheel.y;
 		}
 
 		switch (e.key.keysym.sym)
@@ -80,6 +86,15 @@ void adlInput::update()
 		mouse_state_.rmb = 0;
 	}
 
+	if (buttons & ADL_BUTTON(2))
+	{
+		mouse_state_.mmb = 1;
+	}
+	else
+	{
+		mouse_state_.mmb = 0;
+	}
+
 	if (mouse_state_.lmb == 0 && prev_mouse_state_.lmb == 1)
 	{
 		mouse_state_.lmbr = 1;
@@ -96,6 +111,15 @@ void adlInput::update()
 	else
 	{
 		mouse_state_.rmbr = 0;
+	}
+
+	if (mouse_state_.mmb == 0 && prev_mouse_state_.mmb == 1)
+	{
+		mouse_state_.mmbr = 1;
+	}
+	else
+	{
+		mouse_state_.mmbr = 0;
 	}
 }
 
@@ -124,6 +148,9 @@ bool adlInput::get_mouse_down(uint32 button)
 	case ADL_BUTTON_RIGHT:
 		return mouse_state_.rmb && !prev_mouse_state_.rmb;
 		break;
+	case ADL_BUTTON_MIDDLE:
+		return mouse_state_.mmb && !prev_mouse_state_.mmb;
+		break;
 	}
 
 	return false;
@@ -138,6 +165,9 @@ bool adlInput::get_mouse_up(uint32 button)
 		break;
 	case ADL_BUTTON_RIGHT:
 		return !mouse_state_.rmb && prev_mouse_state_.rmb;
+		break;
+	case ADL_BUTTON_MIDDLE:
+		return !mouse_state_.mmb && prev_mouse_state_.mmb;
 		break;
 	}
 
@@ -162,4 +192,9 @@ int adlInput::get_mouse_y_rel()
 bool adlInput::close_button_pressed()
 {
 	return close_button_;
+}
+
+int adlInput::get_mouse_wheel_dif()
+{
+	return mouse_state_.m_wheel_dif;
 }

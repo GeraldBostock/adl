@@ -134,6 +134,15 @@ void adlCamera::update_rts_camera(float dt)
 		position_.y -= movement_speed_ * std::sin(adlMath::deg_to_rad(pitch_)) * dt;
 	}
 
+	int mouse_wheel_dif = input->get_mouse_wheel_dif();
+	if (mouse_wheel_dif != 0)
+	{ 
+		mouse_wheel_dif *= 2;
+		position_.z -= movement_speed_ * mouse_wheel_dif * std::cos(adlMath::deg_to_rad(yaw_)) * dt * std::cos(adlMath::deg_to_rad(pitch_));
+		position_.x -= movement_speed_ * mouse_wheel_dif * std::sin(adlMath::deg_to_rad(yaw_)) * dt * std::cos(adlMath::deg_to_rad(pitch_));
+		position_.y += movement_speed_ * mouse_wheel_dif * std::sin(adlMath::deg_to_rad(pitch_)) * dt;
+	}
+
 	if (mousePos.x < tolerance)
 	{
 		position_.z += movement_speed_ * std::cos(adlMath::deg_to_rad(yaw_ - 90)) * dt;

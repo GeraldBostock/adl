@@ -24,6 +24,8 @@ public:
 	bool get_mouse_down(uint32 button);
 	bool get_mouse_up(uint32 button);
 
+	int get_mouse_wheel_dif();
+
 	adlVec2_i32 get_mouse_pos();
 
 	int get_mouse_x_rel();
@@ -39,8 +41,14 @@ public:
 		int yDif;
 		int lmb;
 		int rmb;
+
 		int lmbr;
 		int rmbr;
+
+		int mmb;
+		int mmbr;
+
+		int m_wheel_dif;
 	};
 
 private:

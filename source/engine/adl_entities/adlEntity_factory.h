@@ -35,7 +35,7 @@ public:
 		if (i == classes_.end())
 		{
 			logger->log_error("Class " + class_name + " is not registered");
-			return nullptr; // or throw or whatever you want
+			return nullptr;
 		}
 		return i->second();
 	}

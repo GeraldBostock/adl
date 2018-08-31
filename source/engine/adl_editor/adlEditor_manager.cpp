@@ -78,7 +78,7 @@ void adlEditor_manager::MainMenu()
 void adlEditor_manager::update()
 {
 	adlInput* input = &adlInput::get();
-	if (input->get_key(adl_key_left_ctrl) && input->get_key_down(adl_key_left_shift))
+	if (input->get_key(adl_key_quotedbl)/*input->get_key(adl_key_left_ctrl) && input->get_key_down(adl_key_left_shift)*/)
 	{
 		main_editor_open_ = !main_editor_open_;
 

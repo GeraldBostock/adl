@@ -14,6 +14,9 @@ void adlInput::update()
 	mouse_state_.xDif = 0;
 	mouse_state_.yDif = 0;
 
+	memcpy(prev_keyboard_, keyboard_, 323);
+	memcpy(keyboard_, SDL_GetKeyboardState(NULL), 323);
+
 	SDL_Event e;
 	while (SDL_PollEvent(&e))
 	{
@@ -32,11 +35,27 @@ void adlInput::update()
 			mouse_state_.yDif = e.motion.yrel;
 		}
 
+		switch (e.key.keysym.sym)
+		{
+		case SDLK_QUOTEDBL:
+			keyboard_[adl_key_quotedbl] = true;
+			break;
+		case SDLK_GREATER:
+			keyboard_[adl_key_greater] = true;
+			break;
+		case SDLK_LESS:
+			keyboard_[adl_key_less] = true;
+			break;
+		default:
+			for (int i = 320; i < 323; i++)
+			{
+				keyboard_[i] = false;
+			}
+			break;
+		}
+
 		ImGui_ImplSDL2_ProcessEvent(&e);
 	}
-
-	memcpy(prev_keyboard_, keyboard_, 323);
-	memcpy(keyboard_, SDL_GetKeyboardState(NULL), 323);
 
 	Uint32 buttons;
 

@@ -21,12 +21,6 @@ adlCamera::~adlCamera()
 
 void adlCamera::update(float dt)
 {
-	adlInput* input = &adlInput::get();
-	if (input->get_key(adl_key_left_ctrl) && input->get_key_down(adl_key_left_shift))
-	{
-		is_paused_ = !is_paused_;
-	}
-
 	if (!is_paused_)
 	{
 		switch (camera_type_)
@@ -313,6 +307,11 @@ void adlCamera::set_movement_speed(float speed)
 float adlCamera::get_movement_speed()
 {
 	return movement_speed_;
+}
+
+void adlCamera::toggle_active()
+{
+	is_paused_ = !is_paused_;
 }
 
 void adlCamera::set_camera_type(Camera_type type)

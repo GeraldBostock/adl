@@ -5,7 +5,7 @@
 
 Material_new_test::Material_new_test()
 {
-	REGISTER_CLASS(Material_new_test)
+	REGISTER_ACTOR(Material_new_test)
 }
 
 

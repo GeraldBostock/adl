@@ -54,7 +54,7 @@ bool Game::init()
 	adl_window->set_mouse_visible(false);
 
 	adlEntity_factory* factory = &adlEntity_factory::get();
-	adlActor* new_actor = (adlActor*)factory->construct("Test_actor");
+	adlActor* new_actor = (adlActor*)factory->construct_actor("Test_actor");
 	if (new_actor != nullptr)
 	{
 		adlActor_shared_ptr my_ptr(new_actor);

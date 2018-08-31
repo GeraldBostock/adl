@@ -38,6 +38,9 @@ public:
 	void addPointLightToScene(adlPoint_light_shared_ptr point_light);
 	void add_point_light_scene(adlPoint_light_shared_ptr point_light);
 
+	void spawn_actor(const std::string& actor_name, adlVec3 position = adlVec3(0.0f), adlVec3 rotation = adlVec3(0.0f), adlVec3 scale = adlVec3(1.0f));
+	void spawn_light(const std::string& light_name, adlVec3 position = adlVec3(0.0f), adlVec3 rotation = adlVec3(0.0f), adlVec3 scale = adlVec3(1.0f));
+
 	void spawn_actor(adlActor_shared_ptr actor, adlVec3 position, adlVec3 rotation = adlVec3(0.0f), adlVec3 scale = adlVec3(1.0f));
 	void spawnActor(adlActor_shared_ptr actor, adlVec3 position, adlVec3 rotation = adlVec3(0.0f), adlVec3 scale = adlVec3(1.0f));
 

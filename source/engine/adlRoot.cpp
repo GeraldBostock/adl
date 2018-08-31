@@ -59,8 +59,9 @@ void adlRoot::run()
 	adl_scene_manager->update(dt);
 	adl_scene_manager->render();
 
-	adl_editor->update();
 #ifdef _DEBUG
+	adl_editor->update();
+
 	float fps = fps_manager_->get_fps();
 	std::string fps_string = std::to_string(fps);
 	fps_string = fps_string.substr(0, fps_string.size() - 4);
@@ -88,7 +89,9 @@ void adlRoot::game_thread()
 	adl_input			= &adlInput::get();
 	adl_logger			= &adlLogger::get();
 	adl_scene_manager	= &adlScene_manager::get();
+#ifdef _DEBUG
 	adl_editor			= &adlEditor_manager::get();
+#endif // _DEBUG
 	camera				= ADL_NEW(adlCamera);
 
 	adl_scene_manager->set_camera(camera);
@@ -107,5 +110,8 @@ void adlRoot::game_thread()
 		run();
 	}
 
+#ifdef _DEBUG
+	adl_editor->clean_up();
+#endif //_DEBUG
 	adl_window->close_window();
 }

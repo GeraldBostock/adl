@@ -4,7 +4,7 @@
 
 Test_light::Test_light()
 {
-	REGISTER_CLASS(Test_light)
+	REGISTER_LIGHT(Test_light)
 }
 
 

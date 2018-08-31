@@ -5,12 +5,11 @@
 #define NOMINMAX
 #include <windows.h>
 #define SDL_MAIN_HANDLED
-#pragma warning( disable : 4201 )
-#pragma warning( disable : 4244 )
-//Not enough actual parameters for macro 'max'
-#pragma warning( disable : 4003 )
-//requires a narrowing conversion
-#pragma warning( disable : 4838)
+#pragma warning( disable : 4201 ) // nonstandard extension used : nameless struct/union
+#pragma warning( disable : 4244 ) // conversion' conversion from 'type1' to 'type2', possible loss of data
+#pragma warning( disable : 4003 ) // not enough actual parameters for macro
+#pragma warning( disable : 4838 ) // requires a narrowing conversion
+#pragma warning( disable : 4100 ) // unreferenced formal parameter
 static inline void set_error_mode()
 {
 	_set_error_mode(_OUT_TO_MSGBOX);

@@ -41,23 +41,26 @@ void adlInput::update()
 			mouse_state_.m_wheel_dif = e.wheel.y;
 		}
 
-		switch (e.key.keysym.sym)
+		if (e.type == SDL_KEYDOWN)
 		{
-		case SDLK_QUOTEDBL:
-			keyboard_[adl_key_quotedbl] = true;
-			break;
-		case SDLK_GREATER:
-			keyboard_[adl_key_greater] = true;
-			break;
-		case SDLK_LESS:
-			keyboard_[adl_key_less] = true;
-			break;
-		default:
-			for (int i = 320; i < 323; i++)
+			switch (e.key.keysym.sym)
 			{
-				keyboard_[i] = false;
+			case SDLK_QUOTEDBL:
+				keyboard_[adl_key_quotedbl] = true;
+				break;
+			case SDLK_GREATER:
+				keyboard_[adl_key_greater] = true;
+				break;
+			case SDLK_LESS:
+				keyboard_[adl_key_less] = true;
+				break;
+			default:
+				for (int i = 320; i < 323; i++)
+				{
+					keyboard_[i] = false;
+				}
+				break;
 			}
-			break;
 		}
 
 		ImGui_ImplSDL2_ProcessEvent(&e);

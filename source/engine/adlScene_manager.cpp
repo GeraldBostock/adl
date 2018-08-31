@@ -3,6 +3,7 @@
 #include "adl_renderer/adlRender_manager.h"
 #include "adl_debug/imgui/imgui.h"
 #include "engine/adlMemory.h"
+#include "engine/adl_entities/adlEntity_factory.h"
 
 
 adlScene_manager::adlScene_manager()
@@ -84,6 +85,15 @@ void adlScene_manager::setSun(adlSun_shared_ptr sun)
 	set_sun(sun);
 }
 
+void adlScene_manager::spawn_actor(const std::string& actor_name, adlVec3 position/* = adlVec3(0.0f)*/, adlVec3 rotation/* = adlVec3(0.0f)*/, adlVec3 scale/* = adlVec3(1.0f)*/)
+{
+	adlEntity_factory* factory = &adlEntity_factory::get();
+	adlActor* actor = (adlActor*)factory->construct_actor(actor_name);
+	adlActor_shared_ptr actor_shared(actor);
+
+	spawn_actor(actor_shared, position, rotation, scale);
+}
+
 void adlScene_manager::spawn_actor(adlActor_shared_ptr actor, adlVec3 position, adlVec3 rotation/* = adlVec3(0.0f)*/, adlVec3 scale/* = adlVec3(1.0f)*/)
 {
 	actor->init();
@@ -96,6 +106,15 @@ void adlScene_manager::spawn_actor(adlActor_shared_ptr actor, adlVec3 position, 
 void adlScene_manager::spawnActor(adlActor_shared_ptr actor, adlVec3 position, adlVec3 rotation/* = adlVec3(0.0f)*/, adlVec3 scale/* = adlVec3(1.0f)*/)
 {
 	spawn_actor(actor, position, rotation, scale);
+}
+
+void adlScene_manager::spawn_light(const std::string& light_name, adlVec3 position/* = adlVec3(0.0f)*/, adlVec3 rotation/* = adlVec3(0.0f)*/, adlVec3 scale/* = adlVec3(1.0f)*/)
+{
+	adlEntity_factory* factory = &adlEntity_factory::get();
+	adlPoint_light* light = (adlPoint_light*)factory->construct_light(light_name);
+	adlPoint_light_shared_ptr shared_light(light);
+
+	add_point_light_scene(shared_light);
 }
 
 void adlScene_manager::addPointLightToScene(adlPoint_light_shared_ptr point_light)

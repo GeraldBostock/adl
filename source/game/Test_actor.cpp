@@ -5,7 +5,7 @@
 
 Test_actor::Test_actor()
 {
-	REGISTER_CLASS(Test_actor)
+	REGISTER_ACTOR(Test_actor)
 }
 
 

@@ -15,6 +15,8 @@ public:
 		return instance;
 	}
 
+	void clean_up();
+
 	void update();
 
 private:

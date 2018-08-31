@@ -9,8 +9,11 @@ template <class T> void* constructor() { return (void*)new T(); }
 typedef void*(*constructor_t)();
 typedef std::map<std::string, constructor_t> map_type;
 
-#define REGISTER_CLASS(class_name) adlEntity_factory* factory = &adlEntity_factory::get(); \
-								   factory->register_class<class_name>(#class_name);
+#define REGISTER_ACTOR(class_name) adlEntity_factory* factory = &adlEntity_factory::get(); \
+								   factory->register_class<class_name>(#class_name, true);
+
+#define REGISTER_LIGHT(class_name) adlEntity_factory* factory = &adlEntity_factory::get(); \
+								   factory->register_class<class_name>(#class_name, false);
 
 class adlEntity_factory
 {
@@ -22,36 +25,40 @@ public:
 	}
 
 	template <class T>
-	void register_class(const std::string& class_name)
+	void register_class(const std::string& class_name, bool is_actor)
 	{
-		if (classes_.count(class_name) == 0)
+		if (is_actor)
 		{
-			classes_.insert(std::make_pair(class_name, &constructor<T>));
-			registered_classes_.push_back(class_name);
+			if (actors_.count(class_name) == 0)
+			{
+				actors_.insert(std::make_pair(class_name, &constructor<T>));
+				registered_actors_.push_back(class_name);
+			}
+		}
+		else
+		{
+			if (lights_.count(class_name) == 0)
+			{
+				lights_.insert(std::make_pair(class_name, &constructor<T>));
+				registered_lights_.push_back(class_name);
+			}
 		}
 	}
 
-	void* construct(const std::string& class_name)
-	{
-		adlLogger* logger = &adlLogger::get();
+	void* construct_actor(const std::string& class_name);
+	void* construct_light(const std::string& class_name);
 
-		map_type::iterator i = classes_.find(class_name);
-		if (i == classes_.end())
-		{
-			logger->log_error("Class " + class_name + " is not registered");
-			return nullptr;
-		}
-		return i->second();
-	}
-
-	const std::vector<std::string>& get_all_registered_classes() const;
+	const std::vector<std::string>& get_all_registered_actors() const;
+	const std::vector<std::string>& get_all_registered_lights() const;
 
 
 private:
 	adlEntity_factory();
 
-	map_type classes_;
-	std::vector<std::string> registered_classes_;
+	map_type actors_;
+	map_type lights_;
+	std::vector<std::string> registered_actors_;
+	std::vector<std::string> registered_lights_;
 };
 
 #endif // adl_entity_factory_h__

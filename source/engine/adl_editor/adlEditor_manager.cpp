@@ -50,11 +50,21 @@ void adlEditor_manager::MainMenu()
 			if (ImGui::MenuItem("Spawn", "SHIFT+A"))
 			{
 				adlEntity_factory* factory = &adlEntity_factory::get();
-				const std::vector<std::string> classes = factory->get_all_registered_classes();
-				for (auto key : classes)
+				const std::vector<std::string> actors = factory->get_all_registered_actors();
+				const std::vector<std::string> lights = factory->get_all_registered_lights();
+				for (auto key : actors)
 				{
 					std::cout << key << std::endl;
 				}
+
+				for (auto key : lights)
+				{
+					std::cout << key << std::endl;
+				}
+
+				adlScene_manager* scene_manager = &adlScene_manager::get();
+				scene_manager->spawn_light("adlPoint_light");
+				scene_manager->spawn_actor("Test_actor");
 			}
 			if (ImGui::MenuItem("Save", "CTRL+S")) { std::cout << "Saved!" << std::endl; }
 
@@ -84,6 +94,7 @@ void adlEditor_manager::MainMenu()
 void adlEditor_manager::update()
 {
 	adlInput* input = &adlInput::get();
+	adlScene_manager* scene_manager = &adlScene_manager::get();
 	if (input->get_key(adl_key_quotedbl)/*input->get_key(adl_key_left_ctrl) && input->get_key_down(adl_key_left_shift)*/)
 	{
 		main_editor_open_ = !main_editor_open_;
@@ -92,7 +103,7 @@ void adlEditor_manager::update()
 		if (main_editor_open_)
 		{
 			window->set_mouse_visible(true);
-
+			scene_manager->getCamera()->toggle_active();
 		}
 		else
 		{
@@ -102,6 +113,7 @@ void adlEditor_manager::update()
 			light_editor_open_ = false;
 			help_open_ = false;		
 			show_demo_window = false;
+			scene_manager->getCamera()->toggle_active();
 		}
 	}
 
@@ -144,4 +156,11 @@ void adlEditor_manager::update()
 
 		}
 	}
+}
+
+void adlEditor_manager::clean_up()
+{
+	ADL_DELETE(entity_editor_);
+	ADL_DELETE(actor_editor_);
+	ADL_DELETE(light_editor_);
 }

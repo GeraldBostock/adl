@@ -87,12 +87,12 @@ void adlEditor_manager::update()
 	if (input->get_key(adl_key_quotedbl) || (input->get_key(adl_key_left_ctrl) && input->get_key_down(adl_key_left_shift)))
 	{
 		main_editor_open_ = !main_editor_open_;
+		scene_manager->get_camera()->toggle_active();
 
 		adlWindow* window = adlWindow::get();
 		if (main_editor_open_)
 		{
 			window->set_mouse_visible(true);
-			scene_manager->getCamera()->toggle_active();
 		}
 		else
 		{
@@ -103,9 +103,7 @@ void adlEditor_manager::update()
 			help_open_ = false;		
 			show_demo_window_ = false;
 
-			spawner_editor_open_ = false;
-
-			scene_manager->getCamera()->toggle_active();
+			spawner_editor_open_ = false;		
 		}
 	}
 
@@ -156,7 +154,7 @@ void adlEditor_manager::update()
 			{
 				ImGui::Indent();
 
-				ImGui::Text("Choose a entity then click to spawn button!");
+				ImGui::Text("Choose an entity then click the spawn button!");
 
 				ImGui::Unindent();
 			}
@@ -177,7 +175,7 @@ void adlEditor_manager::update()
 		{
 			spawn_editor_->init();
 			spawn_editor_->update(scene_manager);
-			spawner_editor_open_ = spawn_editor_->visible;
+			spawner_editor_open_ = spawn_editor_->get_visible();
 		}
 	}
 }

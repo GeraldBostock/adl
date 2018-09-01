@@ -52,7 +52,7 @@ void adlLight_editor::sunStats(adlSun_shared_ptr sun)
 {
 	adlVec3 sun_position = sun->get_position();
 	adlVec3 sun_rotation = sun->get_rotation();
-	adlVec3 sun_Scale = sun->getScale();
+	adlVec3 sun_scale = sun->getScale();
 
 	ImGui::Text("Sun");
 	if (ImGui::CollapsingHeader("Transform"))
@@ -77,10 +77,10 @@ void adlLight_editor::sunStats(adlSun_shared_ptr sun)
 		if (ImGui::CollapsingHeader("Scale"))
 		{
 			ImGui::Text("Scale(x,y,z)");
-			float sunScale[3] = { sun_Scale.x, sun_Scale.y, sun_Scale.z };
+			float sunScale[3] = { sun_scale.x, sun_scale.y, sun_scale.z };
 			ImGui::InputFloat3("##SunScale", &sunScale[0], 2);
-			sun_Scale = adlVec3(sunScale[0], sunScale[1], sunScale[2]);
-			sun->setScale(sun_Scale);
+			sun_scale = adlVec3(sunScale[0], sunScale[1], sunScale[2]);
+			sun->set_scale(sun_scale);
 		}
 		ImGui::Unindent();
 	}

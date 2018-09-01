@@ -1,25 +1,25 @@
 #include "adlSpawn_editor.h" 
 #include "engine/adl_debug/imgui/imgui.h"
 #include "engine/adl_entities/adlEntity_factory.h"
-#include "engine/adlScene_manager.h"
 #include "engine/adl_resource/adlResource_manager.h"
 
  
-adlSpawn_editor::adlSpawn_editor() {
- 
+adlSpawn_editor::adlSpawn_editor() 
+{
 }  
  
-adlSpawn_editor::~adlSpawn_editor() {
- 
+adlSpawn_editor::~adlSpawn_editor() 
+{
 }
 
-void adlSpawn_editor::init() {
-	spawnTransform.scale = adlVec3(1.0f);
+void adlSpawn_editor::init() 
+{
+	spawn_transform_.scale = adlVec3(1.0f);
 }
 
 void adlSpawn_editor::update(adlScene_manager* scene_manager)
 {
-	visible = true;
+	is_visible_ = true;
 	adlEntity_factory* factory = &adlEntity_factory::get();
 	adlResource_manager* adl_rm = &adlResource_manager::get();
 	
@@ -39,9 +39,9 @@ void adlSpawn_editor::update(adlScene_manager* scene_manager)
 			{
 				ImGui::Indent();
 
-				adlVec3 actor_position = spawnTransform.o;
-				adlVec3 actor_rotation = spawnTransform.rot;
-				adlVec3 actor_scale = spawnTransform.scale;
+				adlVec3 actor_position = spawn_transform_.o;
+				adlVec3 actor_rotation = spawn_transform_.rot;
+				adlVec3 actor_scale = spawn_transform_.scale;
 
 				if (ImGui::CollapsingHeader("Transform"))
 				{
@@ -78,9 +78,9 @@ void adlSpawn_editor::update(adlScene_manager* scene_manager)
 						actor_scale = adlVec3(actorScale[0], actorScale[1], actorScale[2]);
 					}
 
-					spawnTransform.o = actor_position;
-					spawnTransform.rot = actor_rotation;
-					spawnTransform.scale = actor_scale;
+					spawn_transform_.o = actor_position;
+					spawn_transform_.rot = actor_rotation;
+					spawn_transform_.scale = actor_scale;
 
 					ImGui::Unindent();
 				}
@@ -96,13 +96,13 @@ void adlSpawn_editor::update(adlScene_manager* scene_manager)
 						{
 							ImGui::Indent();
 
-							static char modelName[20] = {};
+							static char model_name[20] = {};
 
 							ImGui::Text("Mesh(Name)");
-							ImGui::InputText("(max 20 char)", modelName, sizeof(modelName));
+							ImGui::InputText("(max 20 char)", model_name, sizeof(model_name));
 							if (ImGui::Button("Refresh Mesh"))
 							{
-								spawnModel = adl_rm->getModel(modelName);
+								spawn_model_ = adl_rm->get_model(model_name);
 
 							}
 							ImGui::Unindent();
@@ -111,14 +111,14 @@ void adlSpawn_editor::update(adlScene_manager* scene_manager)
 						{
 							ImGui::Indent();
 
-							static char materialName[20] = {};
+							static char material_name[20] = {};
 
 							ImGui::Text("Material(Name)");
-							ImGui::InputText("(max 20 char)", materialName, sizeof(materialName));
+							ImGui::InputText("(max 20 char)", material_name, sizeof(material_name));
 
 							if (ImGui::Button("Refresh Material"))
 							{
-								spawnMaterial = adl_rm->get_material(materialName);
+								spawn_material_ = adl_rm->get_material(material_name);
 							}
 
 							ImGui::Unindent();
@@ -130,29 +130,29 @@ void adlSpawn_editor::update(adlScene_manager* scene_manager)
 				}
 
 
-				std::string buttonLabel = "Spawn " + actors[i] + " actor";
+				std::string button_label = "Spawn " + actors[i] + " actor";
 
 
-				if (ImGui::Button(buttonLabel.data()))
+				if (ImGui::Button(button_label.data()))
 				{
 					ImGui::Indent();
 
-					adlActor_shared_ptr spawnedActor = scene_manager->spawnActor(actors[i].data(), spawnTransform.o, spawnTransform.rot, spawnTransform.scale);
+					adlActor_shared_ptr spawned_actor = scene_manager->spawn_actor(actors[i].data(), spawn_transform_.o, spawn_transform_.rot, spawn_transform_.scale);
 
-					if (spawnModel != nullptr)
+					if (spawn_model_ != nullptr)
 					{
-						spawnedActor->setModel(spawnModel);
-						spawnModel = adl_rm->getModel("");
+						spawned_actor->set_model(spawn_model_);
+						spawn_model_ = adl_rm->get_model("");
 
 					}
 
-					if (spawnMaterial != nullptr)
+					if (spawn_material_ != nullptr)
 					{
-						spawnedActor->setMaterial(spawnMaterial);
-						spawnMaterial = adl_rm->get_material("");
+						spawned_actor->set_material(spawn_material_);
+						spawn_material_ = adl_rm->get_material("");
 					}
 
-					visible = false;
+					is_visible_ = false;
 					ImGui::Unindent();
 				}
 
@@ -174,9 +174,9 @@ void adlSpawn_editor::update(adlScene_manager* scene_manager)
 			{
 				ImGui::Indent();
 
-				adlVec3 light_position = spawnTransform.o;
-				adlVec3 light_rotation = spawnTransform.rot;
-				adlVec3 light_scale = spawnTransform.scale;
+				adlVec3 light_position = spawn_transform_.o;
+				adlVec3 light_rotation = spawn_transform_.rot;
+				adlVec3 light_scale = spawn_transform_.scale;
 
 				if (ImGui::CollapsingHeader("Transform"))
 				{
@@ -213,23 +213,23 @@ void adlSpawn_editor::update(adlScene_manager* scene_manager)
 						light_scale = adlVec3(lightScale[0], lightScale[1], lightScale[2]);
 					}
 
-					spawnTransform.o = light_position;
-					spawnTransform.rot = light_rotation;
-					spawnTransform.scale = light_scale;
+					spawn_transform_.o = light_position;
+					spawn_transform_.rot = light_rotation;
+					spawn_transform_.scale = light_scale;
 
 					ImGui::Unindent();
 				}
 
-				std::string buttonLabel = "Spawn " + lights[i] + " light";
+				std::string button_label = "Spawn " + lights[i] + " light";
 
 
-				if (ImGui::Button(buttonLabel.data()))
+				if (ImGui::Button(button_label.data()))
 				{
 					ImGui::Indent();
 
-					scene_manager->spawn_light(lights[i].data(), spawnTransform.o, spawnTransform.rot, spawnTransform.scale);
+					scene_manager->spawn_light(lights[i].data(), spawn_transform_.o, spawn_transform_.rot, spawn_transform_.scale);
 
-					visible = false;
+					is_visible_ = false;
 					ImGui::Unindent();
 				}
 
@@ -242,3 +242,9 @@ void adlSpawn_editor::update(adlScene_manager* scene_manager)
 
 	ImGui::End();
 }
+
+bool adlSpawn_editor::get_visible()
+{
+	return is_visible_;
+}
+

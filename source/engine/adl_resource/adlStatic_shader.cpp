@@ -143,15 +143,6 @@ void adlStatic_shader::load_point_lights(const std::vector<adlPoint_light_shared
 		load_float(point_light_linear_locations_[i], light->get_linear());
 		load_float(point_light_quadratic_locations_[i], light->get_quadratic());
 	}
-	/*load_vector(point_light_position_location_, point_light->getPosition());
-
-	load_vector(point_light_ambient_location_, point_light->get_ambient());
-	load_vector(point_light_diffuse_location_, point_light->get_diffuse());
-	load_vector(point_light_specular_location_, point_light->get_specular());
-
-	load_float(point_light_constant_location_, point_light->get_constant());
-	load_float(point_light_linear_location_, point_light->get_linear());
-	load_float(point_light_quadratic_location_, point_light->get_quadratic());*/
 }
 
 void adlStatic_shader::load_light_color(adlVec3 color)

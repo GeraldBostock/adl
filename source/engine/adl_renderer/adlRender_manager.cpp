@@ -107,7 +107,7 @@ void adlRender_manager::render(adlPoint_light_shared_ptr point_light)
 
 	shader->start();
 	shader->load_mvp(mvp_matrix);
-	shader->load_light_color(point_light->get_color().to_vec3());
+	shader->load_light_color(point_light->get_diffuse().normalize());
 
 	model->draw();
 	shader->stop();

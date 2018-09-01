@@ -108,6 +108,17 @@ void adlScene_manager::spawnActor(adlActor_shared_ptr actor, adlVec3 position, a
 	spawn_actor(actor, position, rotation, scale);
 }
 
+adlActor_shared_ptr adlScene_manager::spawnActor(const std::string& actor_name, adlVec3 position/* = adlVec3(0.0f)*/, adlVec3 rotation/* = adlVec3(0.0f)*/, adlVec3 scale/* = adlVec3(1.0f)*/)
+{
+	adlEntity_factory* factory = &adlEntity_factory::get();
+	adlActor* actor = (adlActor*)factory->construct_actor(actor_name);
+	adlActor_shared_ptr actor_shared(actor);
+
+	spawn_actor(actor_shared, position, rotation, scale);
+	
+	return actor_shared;
+}
+
 void adlScene_manager::spawn_light(const std::string& light_name, adlVec3 position/* = adlVec3(0.0f)*/, adlVec3 rotation/* = adlVec3(0.0f)*/, adlVec3 scale/* = adlVec3(1.0f)*/)
 {
 	adlEntity_factory* factory = &adlEntity_factory::get();

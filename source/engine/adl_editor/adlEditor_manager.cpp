@@ -18,6 +18,7 @@ adlEditor_manager::adlEditor_manager()
 {
 	light_editor_ = ADL_NEW(adlLight_editor);
 	actor_editor_ = ADL_NEW(adlActor_editor);
+	spawn_editor_ = ADL_NEW(adlSpawn_editor);
 }
 
 void adlEditor_manager::MainMenu()
@@ -38,7 +39,6 @@ void adlEditor_manager::MainMenu()
 				light_editor_open_ = false;
 				help_open_ = false;
 				show_demo_window_ = false;
-
 				spawner_editor_open_ = false;
 			}
 
@@ -51,26 +51,11 @@ void adlEditor_manager::MainMenu()
 		{
 			if (ImGui::MenuItem("Spawn", "SHIFT+A"))
 			{
-				adlEntity_factory* factory = &adlEntity_factory::get();
-				const std::vector<std::string> actors = factory->get_all_registered_actors();
-				const std::vector<std::string> lights = factory->get_all_registered_lights();
-				for (auto key : actors)
-				{
-					std::cout << key << std::endl;
-				}
-
-				for (auto key : lights)
-				{
-					std::cout << key << std::endl;
-				}
-
-				adlScene_manager* scene_manager = &adlScene_manager::get();
-				scene_manager->spawn_light("adlPoint_light");
-				scene_manager->spawn_actor("Test_actor");
-
-				spawner_editor_open_ = false;
+				spawner_editor_open_ = !spawner_editor_open_;
 			}
 			if (ImGui::MenuItem("Save", "CTRL+S")) { std::cout << "Saved!" << std::endl; }
+			if (ImGui::MenuItem("Undo", "CTRL+Z")) { std::cout << "Undo!" << std::endl; }
+			if (ImGui::MenuItem("Redo", "CTRL+Y")) { std::cout << "Redo!" << std::endl; }
 
 			if (ImGui::MenuItem("Quit", "ESC")) {}
 
@@ -132,7 +117,16 @@ void adlEditor_manager::update()
 		// adlEditor Shortcuts
 		if (input->get_key(adl_key_left_shift) && input->get_key_down(adl_key_a))
 		{
-			spawner_editor_open_ = true;
+			spawner_editor_open_ = !spawner_editor_open_;
+		}
+		if (input->get_key(adl_key_left_ctrl) && input->get_key_down(adl_key_q))
+		{
+			entity_editor_open_ = false;
+			actor_editor_open_ = false;
+			light_editor_open_ = false;
+			help_open_ = false;
+			show_demo_window_ = false;
+			spawner_editor_open_ = false;
 		}
 
 		// adlEditors
@@ -156,6 +150,16 @@ void adlEditor_manager::update()
 			ImGui::Text("Show/Hide Sub Editors:  'adl Editors->Toggle Checkbox'");
 			ImGui::Text("Game Menu:  'Game->...'");
 			ImGui::Text("Change Cameras:  'Cameras-><CamType>'");
+			ImGui::Text("Spawn Editor: 'Game->Spawn(SHIFT+A)'");
+
+			if (ImGui::CollapsingHeader("Spawn"))
+			{
+				ImGui::Indent();
+
+				ImGui::Text("Choose a entity then click to spawn button!");
+
+				ImGui::Unindent();
+			}
 
 			if (ImGui::CollapsingHeader("Extras"))
 			{
@@ -171,45 +175,9 @@ void adlEditor_manager::update()
 		}
 		if (spawner_editor_open_)
 		{
-			adlEntity_factory* factory = &adlEntity_factory::get();
-			const std::vector<std::string> actors = factory->get_all_registered_actors();
-			const std::vector<std::string> lights = factory->get_all_registered_lights();
-
-			ImGui::Begin("Spawn Editor");
-
-			if (ImGui::CollapsingHeader("Actors"))
-			{
-				for (size_t i = 0; i < actors.size(); i++)
-				{
-					if (ImGui::Button(actors[i].data()))
-					{
-						ImGui::Indent();
-
-						scene_manager->spawn_actor(actors[i].data());
-
-						spawner_editor_open_ = false;
-						ImGui::Unindent();
-					}
-				}
-			}
-
-			if (ImGui::CollapsingHeader("Lights"))
-			{
-				for (size_t i = 0; i < lights.size(); i++)
-				{
-					if (ImGui::Button(lights[i].data()))
-					{
-						ImGui::Indent();
-
-						scene_manager->spawn_light(lights[i].data());
-
-						spawner_editor_open_ = false;
-						ImGui::Unindent();
-					}
-				}
-			}
-
-			ImGui::End();
+			spawn_editor_->init();
+			spawn_editor_->update(scene_manager);
+			spawner_editor_open_ = spawn_editor_->visible;
 		}
 	}
 }
@@ -219,4 +187,5 @@ void adlEditor_manager::clean_up()
 	ADL_DELETE(entity_editor_);
 	ADL_DELETE(actor_editor_);
 	ADL_DELETE(light_editor_);
+	ADL_DELETE(spawn_editor_);
 }

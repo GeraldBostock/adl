@@ -44,6 +44,10 @@ public:
 	void spawn_actor(adlActor_shared_ptr actor, adlVec3 position, adlVec3 rotation = adlVec3(0.0f), adlVec3 scale = adlVec3(1.0f));
 	void spawnActor(adlActor_shared_ptr actor, adlVec3 position, adlVec3 rotation = adlVec3(0.0f), adlVec3 scale = adlVec3(1.0f));
 
+	
+	adlActor_shared_ptr spawnActor(const std::string& actor_name, adlVec3 position = adlVec3(0.0f), adlVec3 rotation = adlVec3(0.0f), adlVec3 scale = adlVec3(1.0f));
+	
+
 	std::vector<adlEntity_shared_ptr>& get_all_entities();
 	std::vector<adlActor_shared_ptr>& get_all_actors();
 	std::vector<adlPoint_light_shared_ptr>& get_all_point_lights();

@@ -85,7 +85,7 @@ void adlActor_editor::actorStats(adlActor_shared_ptr actor, int index)
 		}
 		ImGui::Unindent();
 	}
-	if (ImGui::CollapsingHeader("Actor Abilities"))
+	if (ImGui::CollapsingHeader("Actor Properties"))
 	{
 		ImGui::Indent();
 		if (ImGui::CollapsingHeader("Model"))

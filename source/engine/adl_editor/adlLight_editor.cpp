@@ -32,8 +32,8 @@ void adlLight_editor::update(adlSun_shared_ptr sun, std::vector<adlPoint_light_s
 
 		for (size_t i = 0; i < point_lights.size(); i++)
 		{	
-			std::string l = "Point Light " + std::to_string(i + 1);
-			if (ImGui::CollapsingHeader(l.data()))
+			std::string name = point_lights[i]->get_name();
+			if (ImGui::CollapsingHeader(name.c_str()))
 			{
 				ImGui::Indent();
 				ImGui::Text("Point Light (%d)", i);
@@ -53,6 +53,9 @@ void adlLight_editor::sunStats(adlSun_shared_ptr sun)
 	adlVec3 sun_position = sun->get_position();
 	adlVec3 sun_rotation = sun->get_rotation();
 	adlVec3 sun_scale = sun->getScale();
+
+	std::string id = "id: " + std::to_string(sun->get_id());
+	ImGui::Text(id.c_str());
 
 	ImGui::Text("Sun");
 	if (ImGui::CollapsingHeader("Transform"))
@@ -138,6 +141,9 @@ void adlLight_editor::lightStats(adlPoint_light_shared_ptr pointLight, int index
 	adlVec3 light_position = pointLight->getPosition();
 	adlVec3 light_rotation = pointLight->getRotation();
 	adlVec3 light_scale = pointLight->getScale();
+
+	std::string id = "id: " + std::to_string(pointLight->get_id());
+	ImGui::Text(id.c_str());
 
 	if (ImGui::CollapsingHeader("Transform"))
 	{

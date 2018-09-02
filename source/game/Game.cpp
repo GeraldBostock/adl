@@ -18,6 +18,7 @@ Game::~Game()
 bool Game::init()
 {
 	adlActor_shared_ptr actor = MAKE_SHARED(Test_actor);
+	actor->set_name("Big_Ass_Cube_#1");
 	adl_scene_manager->addToScene(actor);
 
 	adlActor_shared_ptr landscape = MAKE_SHARED(Test_actor);
@@ -36,10 +37,12 @@ bool Game::init()
 
 	adlPoint_light_shared_ptr point_light = MAKE_SHARED(adlPoint_light);
 	adl_scene_manager->addPointLightToScene(point_light);
+	point_light->set_name("Light_#1");
 
 	adlPoint_light_shared_ptr second_light = MAKE_SHARED(adlPoint_light);
 	adl_scene_manager->addPointLightToScene(second_light);
 	second_light->set_position(adlVec3(0, 0, 20));
+	second_light->set_name("Light_#2");
 
 	for (int i = 0; i < 20; i++)
 	{
@@ -62,6 +65,7 @@ bool Game::init()
 		adlActor_shared_ptr my_ptr(new_actor);
 		adl_scene_manager->addToScene(my_ptr);
 		my_ptr->set_position(adlVec3(0, 10, 0));
+		my_ptr->set_name("Big_Ass_Cube_#2");
 	}
 
 	return true;

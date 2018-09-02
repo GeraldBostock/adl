@@ -26,8 +26,8 @@ void adlActor_editor::update(std::vector<adlActor_shared_ptr>& actors)
 
 		for (size_t i = 0; i < actors.size(); i++)
 		{
-			std::string actr = "Actor " + std::to_string(i + 1);
-			if (ImGui::CollapsingHeader(actr.data()))
+			std::string actr = actors[i]->get_name();
+			if (ImGui::CollapsingHeader(actr.c_str()))
 			{
 				ImGui::Indent();
 				ImGui::Text("Actors (%d)", i);
@@ -46,6 +46,9 @@ void adlActor_editor::actorStats(adlActor_shared_ptr actor, int index)
 	adlVec3 actor_position = actor->getPosition();
 	adlVec3 actor_rotation = actor->getRotation();
 	adlVec3 actor_scale = actor->getScale();
+
+	std::string id = "id: " + std::to_string(actor->get_id());
+	ImGui::Text(id.c_str());
 
 	if (ImGui::CollapsingHeader("Transform "))
 	{

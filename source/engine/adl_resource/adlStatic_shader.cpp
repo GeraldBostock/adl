@@ -130,7 +130,7 @@ void adlStatic_shader::load_texture()
 void adlStatic_shader::load_point_lights(const std::vector<adlPoint_light_shared_ptr>& point_lights)
 {
 	load_int(point_light_count_location_, point_lights.size());
-	for (int i = 0; i < point_lights.size(); i++)
+	for (unsigned int i = 0; i < point_lights.size(); i++)
 	{
 		adlPoint_light_shared_ptr light = point_lights[i];
 		load_vector(point_light_position_locations_[i], light->get_position());

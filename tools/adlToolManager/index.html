@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>adl Tool Manager</title>
+</head>
+<body>
+    <h2>adl Tool Manager</h2>
+    <p>Welcome to adl Server!</p>
+    <br>
+    <p>Examples: "GetDirs:../../res", "Tree:../../res", "ReCore:../../res"</p>
+    <br>  
+    <label>Command: </label>
+    <input id="command" type="text" name="commandInput" value="" />
+    <button onclick="SendCommandData()">Send Command(Input) Data</button>
+    <br>
+    <button onclick="SendData('GetDirs:../../res')">GetDirs</button>
+    <button onclick="SendData('Tree:../../res')">Tree</button>
+    <button onclick="SendData('ReCore:../../res')">Refresh Core</button>
+    <br>
+    <p id="res">Response</p>
+</body>
+<script>
+    function Manager(args) {
+        var commands = JSON.parse(args);
+
+        if(commands.command == "GetDirs"){
+            delete commands.command;
+
+            var files = commands.res;
+
+            document.getElementById("res").innerHTML = JSON.stringify(files, RootReplacer,  "<br>"); 
+            console.log(JSON.stringify(files, RootReplacer, 2));
+            
+        } else if(commands.command == "Tree") {
+            delete commands.command;
+
+            var files = commands.res;
+            console.log(files);
+
+            document.getElementById("res").innerHTML = "Look at Browser Console!"; 
+            console.log("Tree:");
+            console.log(JSON.stringify(files, RootReplacer, 2));
+        } else if(commands.command == "ReCore") {
+            delete commands.command;
+
+            var files = commands.res;
+            console.log(files);
+
+            document.getElementById("res").innerHTML = "Look at Browser Console!"; 
+            console.log("ReCore:");
+            console.log(JSON.stringify(files, RootReplacer, 2));
+        } else {
+            console.log("----------------------------------------");            
+            console.log("args:");            
+            console.log(args);
+            console.log("----------------------------------------");            
+        }
+    }
+    function RootReplacer(key, value) {
+    if (typeof(value) == "string") { // key == "path"
+        value = value.replace(/\\/g, "/"); // Win "\" to "/" 
+        value = value.replace(/..\/..\//g, ""); // Root to res file
+    }
+    if (key  == "name") {  
+        value = value.replace(/\.[^/.]+$/g, "");
+    }
+
+    return value;
+}
+
+    function SendData(command) {
+        var request = new XMLHttpRequest();
+        request.open('POST', '/', true);
+        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+        request.onload = function() {
+            if (request.status >= 200 && request.status < 400) {
+                Manager(this.responseText);
+            }
+        };
+
+        request.send(command);
+    }    
+    
+    function SendCommandData() {
+        var request = new XMLHttpRequest();
+        request.open('POST', '/', true);
+        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+        request.onload = function() {
+            if (request.status >= 200 && request.status < 400) {
+                Manager(this.responseText);
+            }
+        };
+        var command = document.getElementById("command").value;
+
+        request.send(command);
+    }
+
+    function GetFile() {
+        var request = new XMLHttpRequest();
+        request.open('GET', '/', true);
+
+        request.onload = function() {
+        if (request.status >= 200 && request.status < 400) {
+            document.getElementById("res").innerHTML = this.responseText;
+        }
+        };
+        request.send();
+    }
+</script>
+</html>

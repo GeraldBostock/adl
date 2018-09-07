@@ -12,6 +12,6 @@ SET /P argPath2=Path2(Optional):
 
 echo %argType% %argName% %argPath1% %argPath2%
 
-..\ThirdParty\Nodejs\Windows\node.exe Importer.js %argType% %argName% %argPath1% %argPath2 > importer.log
+..\ThirdParty\Nodejs\Windows\node.exe Importer.js %argType% %argName% %argPath1% %argPath2
 
 timeout /t 10

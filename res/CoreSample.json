@@ -1,0 +1,114 @@
+{
+  "fonts": [
+    {
+      "name": "arial",
+      "path": "res/fonts/arial.ttf"
+    },
+    {
+      "name": "consola",
+      "path": "res/fonts/consola.ttf"
+    },
+    {
+      "name": "Roboto-Regular",
+      "path": "res/fonts/Roboto-Regular.ttf"
+    }
+  ],
+  "models": [
+    {
+      "name": "bmw",
+      "path": "res/models/bmw.obj"
+    },
+    {
+      "name": "box",
+      "path": "res/models/box.obj"
+    },
+    {
+      "name": "cube",
+      "path": "res/models/cube.obj"
+    },
+    {
+      "name": "duck",
+      "path": "res/models/duck.fbx"
+    },
+    {
+      "name": "gold",
+      "path": "res/models/gold.obj"
+    },
+    {
+      "name": "House",
+      "path": "res/models/House/House.obj"
+    },
+    {
+      "name": "InversedCube",
+      "path": "res/models/InversedCube.obj"
+    },
+    {
+      "name": "jeep1",
+      "path": "res/models/jeep1.fbx"
+    },
+    {
+      "name": "Landscape",
+      "path": "res/models/Landscape.obj"
+    },
+    {
+      "name": "part",
+      "path": "res/models/part.obj"
+    },
+    {
+      "name": "sphere",
+      "path": "res/models/sphere.obj"
+    },
+    {
+      "name": "teapot",
+      "path": "res/models/teapot.obj"
+    },
+    {
+      "name": "wuson",
+      "path": "res/models/wuson.obj"
+    }
+  ],
+  "textures": [
+    {
+      "name": "awful_texture",
+      "path": "res/textures/awful_texture.png",
+      "specular_map_path": "res/textures/awful_texture_specular.png"
+    },
+    {
+      "name": "metal_frame",
+      "path": "res/textures/metal_frame.png",
+      "specular_map_path": "res/textures/metal_frame_specular.png"
+    }
+  ],
+  "shaders": [
+    {
+      "name": "diffuse_shader",
+      "vertex_shader_path": "res/shaders/basic_shader.vert",
+      "fragment_shader_path": "res/shaders/diffuse_shader.frag"
+    },
+    {
+      "name": "specular_shader",
+      "vertex_shader_path": "res/shaders/basic_shader.vert",
+      "fragment_shader_path": "res/shaders/specular_shader.frag"
+    },
+    {
+      "name": "textured",
+      "vertex_shader_path": "res/shaders/basic_shader.vert",
+      "fragment_shader_path": "res/shaders/texture_phong_shader.frag"
+    },
+    {
+      "name": "no_texture",
+      "vertex_shader_path": "res/shaders/basic_shader.vert",
+      "fragment_shader_path": "res/shaders/no_texture_phong.frag"
+    },
+    {
+      "name": "light_shader",
+      "vertex_shader_path": "res/shaders/basic_shader.vert",
+      "fragment_shader_path": "res/shaders/light_shader.frag"
+    },
+    {
+      "name": "font_shader",
+      "vertex_shader_path": "res/shaders/font_shader.vert",
+      "fragment_shader_path": "res/shaders/font_shader.frag"
+    }
+  ]
+}

@@ -4,6 +4,8 @@
 #include "engine/common.h"
 #include "engine/adl_math/adlMath.h"
 #include "engine/adlShared_types.h"
+#include "engine/adl_resource/adlMaterial.h"
+
 
 #include <vector>
 #include <GL/glew.h>
@@ -46,11 +48,13 @@ public:
 
 	void add_vertices(std::vector<Vertex>& vertices, const std::vector<unsigned int>& indices);
 	void set_shader(adlShader_shared_ptr shader);
+	void set_material(adlMaterial_shared_ptr material);
 	void print_vertices();
 
 	uint32 get_vao_id();
 	int get_vertex_count();
 	int get_index_count();
+	adlMaterial_shared_ptr get_material();
 
 private:
 	void load_mesh_to_vao();
@@ -63,6 +67,7 @@ private:
 	uint32 vao_, ebo_;
 
 	adlShader_shared_ptr shader_;
+	adlMaterial_shared_ptr material_;
 };
 
 #endif // adl_mesh_h__

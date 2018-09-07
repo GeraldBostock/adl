@@ -44,33 +44,50 @@ void adlRender_manager::render(adlActor_shared_ptr actor)
 
 	adlMat4 view_matrix = camera_->get_view_matrix();
 
+	adlResource_manager* adl_rm = &adlResource_manager::get();
+
 	adlMaterial_shared_ptr material = actor->get_material();
-	adlShader_shared_ptr shader = material->get_shader();
+	adlShader_shared_ptr shader;
+	if (material != nullptr)
+	{
+		if (material->get_texture() != nullptr)
+		{
+			shader = adl_rm->get_shader("textured");
+		}
+		else
+		{
+			shader = adl_rm->get_shader("no_texture");
+		}
+	}
+	else
+	{
+		shader = adl_rm->get_shader("no_texture");
+	}
 	adl_assert(shader);
 
 	shader->start();
 
-	/*adlMaterial material; 
-	material.set_material(adlVec3(0.24725f, 0.2245f, 0.0645f), adlVec3(0.34615f, 0.3143f, 0.0903f), adlVec3(0.797357f, 0.723991f, 0.208006f), 83.2f);*/
-
 	adlMat4 mvp_matrix = projection_matrix_ * view_matrix * actor->get_transform().get_transformation_matrix();
 	shader->load_mvp(mvp_matrix);
 	shader->load_light(light_);
-	shader->load_material(material);
 	shader->load_model_matrix(actor->get_transform().get_transformation_matrix());
 	shader->load_camera_position(camera_->get_position());
 	shader->load_point_lights(lights_);
 
-	if (material->get_texture() !=  nullptr)
+	if (material != nullptr)
 	{
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, material->get_texture()->get_id());
-		shader->load_texture();
+		shader->load_material(material);
+		if (material->get_texture() != nullptr)
+		{
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_2D, material->get_texture()->get_id());
+			shader->load_texture();
 
-		glActiveTexture(GL_TEXTURE1);
-		glBindTexture(GL_TEXTURE_2D, material->get_texture()->get_specular_map_id());
+			glActiveTexture(GL_TEXTURE1);
+			glBindTexture(GL_TEXTURE_2D, material->get_texture()->get_specular_map_id());
+		}
 	}
-	model->draw();
+	model->draw(shader);
 	shader->stop();
 }
 
@@ -90,7 +107,7 @@ void adlRender_manager::render(adlSun_shared_ptr light)
 	shader->load_light_color(light->get_color().to_vec3());
 	//shader->load_light_color(light_->get_color().to_vec3());
 
-	model->draw();
+	model->draw(shader);
 	shader->stop();
 }
 
@@ -109,7 +126,7 @@ void adlRender_manager::render(adlPoint_light_shared_ptr point_light)
 	shader->load_mvp(mvp_matrix);
 	shader->load_light_color(point_light->get_diffuse().normalize());
 
-	model->draw();
+	model->draw(shader);
 	shader->stop();
 }
 

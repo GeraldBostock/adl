@@ -1,0 +1,150 @@
+newmtl AgeGold0
+Ka 0 0 0
+Ns 1
+Ks 0.803922 0.686275 0.305882
+Kd 0.807887 0.544779 0.0283706
+map_Kd AgeGold0.jpg
+newmtl AgeGold1
+Ka 0 0 0
+Ns 1
+Ks 0.803922 0.686275 0.305882
+Kd 0.807887 0.544779 0.0283706
+map_Kd AgeGold1_1.jpg
+newmtl AgeGold2
+Ka 0 0 0
+Ns 1
+Ks 0.803922 0.686275 0.305882
+Kd 0.807887 0.544779 0.0283706
+map_Kd AgeGold2_2.jpg
+newmtl AgeGold3
+Ka 0 0 0
+Ns 1
+Ks 0.803922 0.686275 0.305882
+Kd 0.807887 0.544779 0.0283706
+map_Kd AgeGold3_3.jpg
+newmtl AgeGold4
+Ka 0 0 0
+Ns 1
+Ks 0.803922 0.686275 0.305882
+Kd 0.807887 0.544779 0.0283706
+map_Kd AgeGold4_4.jpg
+newmtl AgeGold5
+Ka 0 0 0
+Ns 1
+Ks 0.803922 0.686275 0.305882
+Kd 0.807887 0.544779 0.0283706
+map_Kd AgeGold5_5.jpg
+newmtl AgeGold6
+Ka 0 0 0
+Ns 1
+Ks 0.803922 0.686275 0.305882
+Kd 0.807887 0.544779 0.0283706
+map_Kd AgeGold6_6.jpg
+newmtl AgeGold7
+Ka 0 0 0
+Ns 1
+Ks 0.803922 0.686275 0.305882
+Kd 0.807887 0.544779 0.0283706
+map_Kd AgeGold7_7.jpg
+newmtl Unpure_glass0
+Ka 0 0 0
+Ns 34.4669
+Ks 1 1 1
+Kd 1 1 1
+map_Kd Unpure_glass0_8.jpg
+newmtl AgeGold8
+Ka 0 0 0
+Ns 1
+Ks 0.803922 0.686275 0.305882
+Kd 0.807887 0.544779 0.0283706
+map_Kd AgeGold8_9.jpg
+newmtl AgeGold9
+Ka 0 0 0
+Ns 1
+Ks 0.803922 0.686275 0.305882
+Kd 0.807887 0.544779 0.0283706
+map_Kd AgeGold9_10.jpg
+newmtl AgeGold10
+Ka 0 0 0
+Ns 1
+Ks 0.803922 0.686275 0.305882
+Kd 0.807887 0.544779 0.0283706
+map_Kd AgeGold10_11.jpg
+newmtl AgeGold11
+Ka 0 0 0
+Ns 1
+Ks 0.803922 0.686275 0.305882
+Kd 0.807887 0.544779 0.0283706
+map_Kd AgeGold11_12.jpg
+newmtl AgeGold12
+Ka 0 0 0
+Ns 1
+Ks 0.803922 0.686275 0.305882
+Kd 0.807887 0.544779 0.0283706
+map_Kd AgeGold12_13.jpg
+newmtl AgeGold13
+Ka 0 0 0
+Ns 1
+Ks 0.803922 0.686275 0.305882
+Kd 0.807887 0.544779 0.0283706
+map_Kd AgeGold13_14.jpg
+newmtl AgeGold14
+Ka 0 0 0
+Ns 1
+Ks 0.803922 0.686275 0.305882
+Kd 0.807887 0.544779 0.0283706
+map_Kd AgeGold14_15.jpg
+newmtl AgeGold15
+Ka 0 0 0
+Ns 1
+Ks 0.803922 0.686275 0.305882
+Kd 0.807887 0.544779 0.0283706
+map_Kd AgeGold15_16.jpg
+newmtl AgeGold16
+Ka 0 0 0
+Ns 1
+Ks 0.803922 0.686275 0.305882
+Kd 0.807887 0.544779 0.0283706
+map_Kd AgeGold16_17.jpg
+newmtl AgeGold17
+Ka 0 0 0
+Ns 1
+Ks 0.803922 0.686275 0.305882
+Kd 0.807887 0.544779 0.0283706
+map_Kd AgeGold17_18.jpg
+newmtl Brushed_silver
+Ka 0 0 0
+Ns 3.32012
+Ks 1 0.788235 0.635294
+Kd 0.749005 0.749005 0.749005
+map_Kd Brushed_silver_19.jpg
+newmtl Copper0
+Ka 0 0 0
+Ns 11.0232
+Ks 1 0.584314 0.243137
+Kd 0.909804 0.533334 0.34902
+map_Kd Copper0_20.jpg
+newmtl Copper1
+Ka 0 0 0
+Ns 11.0232
+Ks 1 0.584314 0.243137
+Kd 0.909804 0.533334 0.34902
+map_Kd Copper1_21.jpg
+newmtl Unpure_glass1
+Ka 0 0 0
+Ns 34.4669
+Ks 1 1 1
+Kd 1 1 1
+map_Kd Unpure_glass1_22.jpg
+newmtl Unpure_glass2
+Ka 0 0 0
+Ns 34.4669
+Ks 1 1 1
+Kd 1 1 1
+map_Kd Unpure_glass2_23.jpg
+newmtl Unpure_glass3
+Ka 0 0 0
+Ns 34.4669
+Ks 1 1 1
+Kd 1 1 1
+map_Kd Unpure_glass3_24.jpg

@@ -16,13 +16,13 @@ Test_actor::~Test_actor()
 void Test_actor::init()
 {
 	adlResource_manager* adl_rm = &adlResource_manager::get();
-	setModel(adl_rm->get_model("InversedCube"));
-	adlMaterial_shared_ptr material = adl_rm->get_material("silver");
-	set_material(material);
+	setModel(adl_rm->get_model("seahorse"));
+	/*adlMaterial_shared_ptr material = adl_rm->get_material("silver");
+	set_material(material);*/
 
 	set_position(adlVec3(0.0f, -5.0f, 0.0f));
 	set_rotation(adlVec3(0, 0, 0));
-	set_scale(1.0f);
+	set_scale(adlVec3(0.01f, 0.01f, 0.01f));
 
 	color_ = adlColor(160, 82, 45);
 }

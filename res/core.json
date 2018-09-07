@@ -51,7 +51,19 @@
     {
       "name": "InversedCube",
       "path": "res/models/InversedCube.obj"
-    }
+    },
+	{
+	  "name": "seahorse",
+	  "path": "res/models/seahorse/seahorse.obj"
+	},
+	{
+	  "name": "spider",
+	  "path": "res/models/spider/spider.obj"
+	},
+	{
+	  "name": "house",
+	  "path": "res/models/house/regr01.obj"
+	}
   ],
   "shaders": [
     {
@@ -109,6 +121,11 @@
       "name": "awful_texture",
       "path": "res/textures/awful_texture.png",
       "specular_map_path": "res/textures/awful_texture_specular.png"
-    }
+    },
+	{
+	  "name": "spider",
+	  "path": "res/textures/SpiderTex.jpg",
+	  "specular_map_path": "res/textures/SpiderTex.jpg"
+	}
   ]
 }

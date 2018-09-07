@@ -94,3 +94,13 @@ int adlMesh::get_index_count()
 {
 	return indices_.size();
 }
+
+void adlMesh::set_material(adlMaterial_shared_ptr material)
+{
+	material_ = material;
+}
+
+adlMaterial_shared_ptr adlMesh::get_material()
+{
+	return material_;
+}

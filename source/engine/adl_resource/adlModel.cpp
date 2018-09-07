@@ -33,10 +33,13 @@ void adlModel::print_vertices()
 	}
 }
 
-void adlModel::draw()
+void adlModel::draw(adlShader_shared_ptr shader)
 {
 	for (auto mesh : meshes_)
 	{
+		adlMaterial_shared_ptr mtl = mesh->get_material();
+		shader->load_material(mtl);
+
 		glBindVertexArray(mesh->get_vao_id());
 
 		glEnableVertexAttribArray(0);
@@ -67,5 +70,13 @@ void adlModel::draw()
 		glDisableVertexAttribArray(2);
 
 		glBindVertexArray(0);
+	}
+}
+
+void adlModel::set_material(adlMaterial_shared_ptr material)
+{
+	for (auto mesh : meshes_)
+	{
+		mesh->set_material(material);
 	}
 }

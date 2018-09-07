@@ -14,8 +14,9 @@ public:
 	void add_mesh(adlMesh_shared_ptr mesh);
 	void add_mesh(adlMesh mesh);
 	void print_vertices();
+	void set_material(adlMaterial_shared_ptr material);
 
-	void draw();
+	void draw(adlShader_shared_ptr shader);
 
 private:
 	std::vector<adlMesh_shared_ptr> meshes_;

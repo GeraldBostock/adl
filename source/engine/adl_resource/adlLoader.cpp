@@ -56,7 +56,43 @@ void adlLoader::process_ai_node(aiNode* node, const aiScene* scene, adlModel_sha
 	for (unsigned int i = 0; i < node->mNumMeshes; i++)
 	{
 		aiMesh *mesh = scene->mMeshes[node->mMeshes[i]];
-		model->add_mesh(process_mesh(mesh));
+		adlMesh_shared_ptr new_mesh = process_mesh(mesh, scene);
+
+		aiMaterial* mtl = scene->mMaterials[mesh->mMaterialIndex];
+		if (mtl != nullptr)
+		{
+			aiColor4D diffuse(0.0f, 0.0f, 0.0f, 0.0f);
+			aiGetMaterialColor(mtl, AI_MATKEY_COLOR_DIFFUSE, &diffuse);
+
+			aiColor4D ambient(0.0f, 0.0f, 0.0f, 0.0f);
+			aiGetMaterialColor(mtl, AI_MATKEY_COLOR_AMBIENT, &ambient);
+
+			aiColor4D specular(0.0f, 0.0f, 0.0f, 0.0f);
+			aiGetMaterialColor(mtl, AI_MATKEY_COLOR_SPECULAR, &specular);
+
+			float shine = 0.0f;
+			aiGetMaterialFloat(mtl, AI_MATKEY_SHININESS, &shine);
+
+			adlMaterial_shared_ptr material = MAKE_SHARED(adlMaterial);
+			adlVec3 adlAmbient(ambient.r, ambient.g, ambient.b, 0);
+			adlVec3 adlDiffuse(diffuse.r, diffuse.g, diffuse.b, 0);
+			adlVec3 adlSpecular(specular.r, specular.g, specular.b, 0);
+
+			material->set_material(adlAmbient, adlDiffuse, adlSpecular, 80);
+
+			new_mesh->set_material(material);
+		}
+		else
+		{
+			adlMaterial_shared_ptr material = MAKE_SHARED(adlMaterial);
+			material->set_material(adlVec3(1), adlVec3(1), adlVec3(1), 100);
+
+			new_mesh->set_material(material);
+		}
+
+		//new_mesh->set_material(material);
+
+		model->add_mesh(new_mesh);
 	}
 	// then do the same for each of its children
 	for (unsigned int i = 0; i < node->mNumChildren; i++)
@@ -65,7 +101,7 @@ void adlLoader::process_ai_node(aiNode* node, const aiScene* scene, adlModel_sha
 	}
 }
 
-adlMesh_shared_ptr adlLoader::process_mesh(aiMesh *mesh)
+adlMesh_shared_ptr adlLoader::process_mesh(aiMesh *mesh, const aiScene* scene)
 {
 	adlMesh_shared_ptr new_mesh = MAKE_SHARED(adlMesh);
 
@@ -126,6 +162,35 @@ adlMesh_shared_ptr adlLoader::process_mesh(aiMesh *mesh)
 			indices.push_back(face.mIndices[j]);
 		}
 	}
+
+	/*if (scene->HasMaterials())
+	{
+		std::cout << "Has materials" << std::endl;
+		for (unsigned int i = 0; i < scene->mNumMaterials; i++)
+		{
+			aiMaterial* mtl = scene->mMaterials[i];
+			aiColor4D diffuse (0.0f, 0.0f, 0.0f, 0.0f);
+			aiGetMaterialColor(mtl, AI_MATKEY_COLOR_DIFFUSE, &diffuse);
+
+			aiColor4D ambient(0.0f, 0.0f, 0.0f, 0.0f);
+			aiGetMaterialColor(mtl, AI_MATKEY_COLOR_AMBIENT, &ambient);
+
+			aiColor4D specular(0.0f, 0.0f, 0.0f, 0.0f);
+			aiGetMaterialColor(mtl, AI_MATKEY_COLOR_SPECULAR, &specular);
+
+			float shine = 0.0f;
+			aiGetMaterialFloat(mtl, AI_MATKEY_SHININESS, &shine);
+
+			adlMaterial_shared_ptr material = MAKE_SHARED(adlMaterial);
+			adlVec3 adlAmbient(ambient.r, ambient.g, ambient.b);
+			adlVec3 adlDiffuse(diffuse.r, diffuse.g, diffuse.b);
+			adlVec3 adlSpecular(specular.r, specular.g, specular.b);
+
+			material->set_material(adlAmbient, adlDiffuse, adlSpecular, shine);
+
+			new_mesh->set_material(material);
+		}
+	}*/
 
 	new_mesh->add_vertices(vertices, indices);
 

@@ -10,7 +10,7 @@ adlPoint_light::adlPoint_light()
 
 	adlResource_manager* adl_rm = &adlResource_manager::get();
 	set_shader(adl_rm->get_shader("light_shader"));
-	set_model(adl_rm->get_model("cube"));
+	set_model(adl_rm->get_model("Cube"));
 	set_position(adlVec3(0, 0, -5));
 	set_rotation(adlVec3(0));
 	set_scale(adlVec3(0.15f));

@@ -49,6 +49,8 @@ enum adl_keys
 	adl_key_z = SDL_SCANCODE_Z,
 
 	adl_key_escape = SDL_SCANCODE_ESCAPE,
+	adl_key_tab = SDL_SCANCODE_TAB,
+	adl_key_space = SDL_SCANCODE_SPACE,
 
 	adl_key_left_ctrl = SDL_SCANCODE_LCTRL,
 	adl_key_right_ctrl = SDL_SCANCODE_RCTRL,
@@ -70,6 +72,19 @@ enum adl_keys
 	adl_key_quotedbl = 320,
 	adl_key_less = 321,
 	adl_key_greater = 323,
+
+	adl_key_f1 = SDL_SCANCODE_F1,
+	adl_key_f2 = SDL_SCANCODE_F2,
+	adl_key_f3 = SDL_SCANCODE_F3,
+	adl_key_f4 = SDL_SCANCODE_F4,
+	adl_key_f5 = SDL_SCANCODE_F5,
+	adl_key_f6 = SDL_SCANCODE_F6,
+	adl_key_f7 = SDL_SCANCODE_F7,
+	adl_key_f8 = SDL_SCANCODE_F8,
+	adl_key_f9 = SDL_SCANCODE_F9,
+	adl_key_f10 = SDL_SCANCODE_F10,
+	adl_key_f11 = SDL_SCANCODE_F11,
+	adl_key_f12 = SDL_SCANCODE_F12,
 	
 };
 

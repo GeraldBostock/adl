@@ -1,70 +1,4 @@
 {
-  "models": [
-    {
-      "name": "box",
-      "path": "res/models/box.obj"
-    },
-    {
-      "name": "rifle",
-      "path": "res/models/rifle.obj"
-    },
-    {
-      "name": "segment",
-      "path": "res/models/segment.obj"
-    },
-    {
-      "name": "duck",
-      "path": "res/models/duck.fbx"
-    },
-    {
-      "name": "wuson",
-      "path": "res/models/wuson.obj"
-    },
-    {
-      "name": "jeep",
-      "path": "res/models/jeep1.fbx"
-    },
-    {
-      "name": "cube",
-      "path": "res/models/cube.obj"
-    },
-    {
-      "name": "mountain",
-      "path": "res/models/part.obj"
-    },
-    {
-      "name": "teapot",
-      "path": "res/models/teapot.obj"
-    },
-    {
-      "name": "bmw",
-      "path": "res/models/bmw.obj"
-    },
-    {
-      "name": "landscape",
-      "path": "res/models/Landscape.obj"
-    },
-    {
-      "name": "sphere",
-      "path": "res/models/sphere.obj"
-    },
-    {
-      "name": "InversedCube",
-      "path": "res/models/InversedCube.obj"
-    },
-	{
-	  "name": "seahorse",
-	  "path": "res/models/seahorse/seahorse.obj"
-	},
-	{
-	  "name": "spider",
-	  "path": "res/models/spider/spider.obj"
-	},
-	{
-	  "name": "house",
-	  "path": "res/models/house/regr01.obj"
-	}
-  ],
   "fonts": [
     {
       "name": "arial",
@@ -75,57 +9,85 @@
       "path": "res/fonts/consola.ttf"
     },
     {
-      "name": "roboto",
+      "name": "Roboto-Regular",
       "path": "res/fonts/Roboto-Regular.ttf"
     }
   ],
+  "models": [
+    {
+      "name": "AxisArrow",
+      "path": "res/models/AxisArrow/AxisArrow.obj"
+    },
+    {
+      "name": "Cube",
+      "path": "res/models/Cube/Cube.obj"
+    },
+    {
+      "name": "House",
+      "path": "res/models/House/House.obj"
+    },
+    {
+      "name": "Landscape",
+      "path": "res/models/Landscape/Landscape.obj"
+    },
+    {
+      "name": "Monkey",
+      "path": "res/models/Monkey/Monkey.obj"
+    },
+    {
+      "name": "Plane",
+      "path": "res/models/Plane/Plane.obj"
+    },
+    {
+      "name": "Sphere",
+      "path": "res/models/Sphere/Sphere.obj"
+    },
+    {
+      "name": "Torus",
+      "path": "res/models/Torus/Torus.obj"
+    },
+    {
+      "name": "Tree",
+      "path": "res/models/Tree/Tree.obj"
+    }
+  ],
   "textures": [
-        {
-            "name": "steel_frame",
-            "path": "res/textures/metal_frame.png",
-            "specular_map_path": "res/textures/metal_frame_specular.png"
-        },
-        {
-            "name": "awful_texture",
-            "path": "res/textures/awful_texture.png",
-            "specular_map_path": "res/textures/awful_texture_specular.png"
-        },
-        {
-          "name": "spider",
-          "path": "res/textures/SpiderTex.jpg",
-          "specular_map_path": "res/textures/SpiderTex.jpg"
-        }
+    {
+      "name": "MetalFrame",
+      "path": "res/textures/MetalFrame.png",
+      "specular_map_path": "res/textures/MetalFrame_Specular.png"
+    }
   ],
   "shaders": [
-      {
-        "name": "diffuse_shader",
-        "vertex_shader_path": "res/shaders/basic_shader.vert",
-        "fragment_shader_path": "res/shaders/diffuse_shader.frag"
-      },
-      {
-        "name": "specular_shader",
-        "vertex_shader_path": "res/shaders/basic_shader.vert",
-        "fragment_shader_path": "res/shaders/specular_shader.frag"
-      },
-      {
-        "name": "textured",
-        "vertex_shader_path": "res/shaders/basic_shader.vert",
-        "fragment_shader_path": "res/shaders/texture_phong_shader.frag"
-      },
-      {
-        "name": "no_texture",
-        "vertex_shader_path": "res/shaders/basic_shader.vert",
-        "fragment_shader_path": "res/shaders/no_texture_phong.frag"
-      },
-      {
-        "name": "light_shader",
-        "vertex_shader_path": "res/shaders/basic_shader.vert",
-        "fragment_shader_path": "res/shaders/light_shader.frag"
-      },
-      {
-        "name": "font_shader",
-        "vertex_shader_path": "res/shaders/font_shader.vert",
-        "fragment_shader_path": "res/shaders/font_shader.frag"
-      }
+    {
+      "name": "diffuse_shader",
+      "vertex_shader_path": "res/shaders/basic_shader.vert",
+      "fragment_shader_path": "res/shaders/diffuse_shader.frag"
+    },
+    {
+      "name": "specular_shader",
+      "vertex_shader_path": "res/shaders/basic_shader.vert",
+      "fragment_shader_path": "res/shaders/specular_shader.frag"
+    },
+    {
+      "name": "textured",
+      "vertex_shader_path": "res/shaders/basic_shader.vert",
+      "fragment_shader_path": "res/shaders/texture_phong_shader.frag"
+    },
+    {
+      "name": "no_texture",
+      "vertex_shader_path": "res/shaders/basic_shader.vert",
+      "fragment_shader_path": "res/shaders/no_texture_phong.frag"
+    },
+    {
+      "name": "light_shader",
+      "vertex_shader_path": "res/shaders/basic_shader.vert",
+      "fragment_shader_path": "res/shaders/light_shader.frag"
+    },
+    {
+      "name": "font_shader",
+      "vertex_shader_path": "res/shaders/font_shader.vert",
+      "fragment_shader_path": "res/shaders/font_shader.frag"
+    }
   ]
 }

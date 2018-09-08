@@ -4,6 +4,7 @@
 
 adlActor::adlActor()
 {
+	REGISTER_ACTOR(adlActor)
 }
 
 

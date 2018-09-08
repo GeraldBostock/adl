@@ -49,7 +49,7 @@ void adlEditor_manager::MainMenu()
 
 		if (ImGui::BeginMenu("Game"))
 		{
-			if (ImGui::MenuItem("Spawn", "SHIFT+A"))
+			if (ImGui::MenuItem("Spawn", "F2"))
 			{
 				spawner_editor_open_ = !spawner_editor_open_;
 			}
@@ -111,9 +111,8 @@ void adlEditor_manager::update()
 	{
 		MainMenu();
 
-
 		// adlEditor Shortcuts
-		if (input->get_key(adl_key_left_shift) && input->get_key_down(adl_key_a))
+		if (input->get_key_down(adl_key_f2))
 		{
 			spawner_editor_open_ = !spawner_editor_open_;
 		}
@@ -144,11 +143,11 @@ void adlEditor_manager::update()
 		if (help_open_)
 		{
 			ImGui::Begin("Help");
-			ImGui::Text("Close/Open Editor: 'CTRL(or CMD)+Shift'");
+			ImGui::Text("Close/Open Editor: 'CTRL(or CMD)+Shift or \"'");
 			ImGui::Text("Show/Hide Sub Editors:  'adl Editors->Toggle Checkbox'");
 			ImGui::Text("Game Menu:  'Game->...'");
 			ImGui::Text("Change Cameras:  'Cameras-><CamType>'");
-			ImGui::Text("Spawn Editor: 'Game->Spawn(SHIFT+A)'");
+			ImGui::Text("Spawn Editor: 'Game->Spawn(F2)'");
 
 			if (ImGui::CollapsingHeader("Spawn"))
 			{

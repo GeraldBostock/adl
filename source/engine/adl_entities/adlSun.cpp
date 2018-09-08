@@ -7,7 +7,7 @@
 adlSun::adlSun()
 {
 	adlResource_manager* adl_rm = &adlResource_manager::get();
-	adlModel_shared_ptr sphere = adl_rm->get_model("sphere");
+	adlModel_shared_ptr sphere = adl_rm->get_model("Sphere");
 	set_model(sphere);
 	color_ = adlColor(255, 165, 0);
 

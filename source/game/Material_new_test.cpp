@@ -16,9 +16,9 @@ Material_new_test::~Material_new_test()
 void Material_new_test::init()
 {
 	adlResource_manager* adl_rm = &adlResource_manager::get();
-	setModel(adl_rm->getModel("cube"));
-	adlMaterial_shared_ptr material = adl_rm->getMaterial("red_rubber");
-	setMaterial(material);
+	setModel(adl_rm->getModel("Tree"));
+	//adlMaterial_shared_ptr material = adl_rm->getMaterial("red_rubber");
+	//setMaterial(material);
 
 	setPosition(adlVec3(0.0f, 0.0f, 5.0f));
 	setRotation(adlVec3(0, adlMath::deg_to_rad(90), 0));

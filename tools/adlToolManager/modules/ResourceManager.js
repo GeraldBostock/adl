@@ -41,14 +41,18 @@ PropertySyntaxer = function (data, propertyName) { // Specified for Models sub f
         if (data.hasOwnProperty(item)) {
             if (data[item].children != undefined) {
                 data[item].path = undefined;
-                data[item].path = data[item].children[1].path;
+                if (data[item].children[1] != undefined) {
+                    data[item].path = data[item].children[1].path; 
+                } else {
+                    data[item].path = data[item].children[0].path;                     
+                }
                 data[item].children = undefined; 
             }
 
             if (propertyName == "textures") {
-                data[item].specular_map_path = data[item].path.replace(/\.[^/.]+$/g, "") + "_specular" + path.extname(data[item].path);
+                data[item].specular_map_path = data[item].path.replace(/\.[^/.]+$/g, "") + "_Specular" + path.extname(data[item].path);
 
-                if (data[item].name.includes("_specular")) {
+                if (data[item].name.includes("_Specular")) {
                     data.splice(item, 1);
                     item-=1;
                 }
@@ -70,7 +74,7 @@ WriteJSONFile = function (pathName, content = {}) {
     /*console.log("con:");
     console.log(JSON.stringify(content, RootReplacer, 2));*/
 
-    fs.writeFileSync(pathName + "/CoreSample.json", data);
+    fs.writeFileSync(pathName + "/core.json", data);
 }
 
 function RootReplacer(key, value) {

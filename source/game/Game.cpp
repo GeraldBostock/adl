@@ -24,10 +24,18 @@ bool Game::init()
 	adlActor_shared_ptr landscape = MAKE_SHARED(Test_actor);
 	adl_scene_manager->addToScene(landscape);
 	landscape->set_position(adlVec3(0, -15, 20));
-	landscape->setModel(adl_rm->getModel("landscape"));
+	landscape->setModel(adl_rm->getModel("Landscape"));
+	landscape->set_name("Landscape");
 
 	adlActor_shared_ptr material_actor = MAKE_SHARED(Material_test);
 	adl_scene_manager->addToScene(material_actor);
+
+	adlActor_shared_ptr axisArrow = MAKE_SHARED(adlActor);
+	adl_scene_manager->addToScene(axisArrow);
+	axisArrow->setPosition(adlVec3(5.0f, 0.0f, 8.0f));
+	axisArrow->setScale(adlVec3(1.0f));
+	axisArrow->setModel(adl_rm->getModel("AxisArrow"));
+	axisArrow->set_name("AxisArrow");
 
 	adlActor_shared_ptr wuson = MAKE_SHARED(Material_new_test);
 	adl_scene_manager->addToScene(wuson);

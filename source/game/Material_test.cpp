@@ -16,9 +16,9 @@ Material_test::~Material_test()
 void Material_test::init()
 {
 	adlResource_manager* adl_rm = &adlResource_manager::get();
-	setModel(adl_rm->get_model("cube"));
-	adlMaterial_shared_ptr material = adl_rm->get_material("frame");
-	set_material(material);
+	setModel(adl_rm->get_model("Cube"));
+	//adlMaterial_shared_ptr material = adl_rm->get_material("frame");
+	//set_material(material);
 
 	set_position(adlVec3(3.0f, 0.0f, 3.0f));
 	set_rotation(adlVec3(0.0f));

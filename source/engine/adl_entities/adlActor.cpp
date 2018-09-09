@@ -25,11 +25,21 @@ adlTransform adlActor::get_transform()
 	return transform_;
 }
 
+adlTransform adlActor::getTransform()
+{
+	return get_transform();
+}
+
 void adlActor::set_transform(adlTransform transform)
 {
 	transform_.o = transform.o;
 	transform_.rot = transform.rot;
 	transform_.scale = transform.scale;
+}
+
+void adlActor::setTransform(adlTransform transform)
+{
+	set_transform(transform);
 }
 
 adlModel_shared_ptr adlActor::get_model() const

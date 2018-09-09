@@ -49,7 +49,9 @@ PropertySyntaxer = function (data, propertyName) { // Specified for Models sub f
                         
                         //console.log("c: " + JSON.stringify(c));
                         
-                        if (path.extname(c.path) == ".obj") {
+                        if (path.extname(c.path) == ".obj" || 
+                            path.extname(c.path) == ".fbx" ||
+                            path.extname(c.path) == ".blend") {
                             data[item].path = c.path;                            
                         } else if(path.extname(c.path) == ""){
                             //console.log("BaseName: " + path.basename(c.path));

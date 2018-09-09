@@ -36,7 +36,10 @@ public:
 	adlVec3 get_scale() const;
 
 	adlTransform get_transform();
+	adlTransform getTransform();
+
 	void set_transform(adlTransform transform);
+	void setTransform(adlTransform transform);
 
 	void setModel(adlModel_shared_ptr model);
 	void set_model(adlModel_shared_ptr model);

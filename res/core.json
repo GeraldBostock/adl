@@ -15,16 +15,24 @@
   ],
   "models": [
     {
-      "name": "AxisArrow",
-      "path": "res/models/AxisArrow/AxisArrow.obj"
-    },
-    {
       "name": "House",
       "path": "res/models/House/House.obj"
     },
     {
       "name": "Landscape",
       "path": "res/models/Landscape/Landscape.obj"
+    },
+    {
+      "name": "AxisArrow",
+      "path": "res/models/AxisArrows/AxisArrow/AxisArrow.blend"
+    },
+    {
+      "name": "AxisArrowFBX",
+      "path": "res/models/AxisArrows/AxisArrowFBX/AxisArrowFBX.fbx"
+    },
+    {
+      "name": "AxisArrowOBJ",
+      "path": "res/models/AxisArrows/AxisArrowOBJ/AxisArrowOBJ.obj"
     },
     {
       "name": "Cube",

@@ -33,9 +33,26 @@ bool Game::init()
 	adlActor_shared_ptr axisArrow = MAKE_SHARED(adlActor);
 	adl_scene_manager->addToScene(axisArrow);
 	axisArrow->setPosition(adlVec3(5.0f, 0.0f, 8.0f));
+	//axisArrow->setRotation(adlVec3(0.0f, 0.0f, 0.0f));
 	axisArrow->setScale(adlVec3(1.0f));
 	axisArrow->setModel(adl_rm->getModel("AxisArrow"));
-	axisArrow->set_name("AxisArrow");
+	axisArrow->set_name("AxisArrowBlend");
+
+	adlActor_shared_ptr axisArrowFBX = MAKE_SHARED(adlActor);
+	adl_scene_manager->addToScene(axisArrowFBX);
+	axisArrowFBX->setPosition(adlVec3(10.0f, 0.0f, 8.0f));
+	//axisArrowFBX->setRotation(adlVec3(0.0f, 0.0f, 0.0f));
+	axisArrowFBX->setScale(adlVec3(1.0f));
+	axisArrowFBX->setModel(adl_rm->getModel("AxisArrowFBX"));
+	axisArrowFBX->set_name("AxisArrowFBX");
+
+	adlActor_shared_ptr axisArrowOBJ = MAKE_SHARED(adlActor);
+	adl_scene_manager->addToScene(axisArrowOBJ);
+	axisArrowOBJ->setPosition(adlVec3(15.0f, 0.0f, 8.0f));
+	axisArrowOBJ->setRotation(adlVec3(0.0f, 0.0f, 0.0f));
+	axisArrowOBJ->setScale(adlVec3(1.0f));
+	axisArrowOBJ->setModel(adl_rm->getModel("AxisArrowOBJ"));
+	axisArrowOBJ->set_name("AxisArrowOBJ");
 
 	adlActor_shared_ptr wuson = MAKE_SHARED(Material_new_test);
 	adl_scene_manager->addToScene(wuson);

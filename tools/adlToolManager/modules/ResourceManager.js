@@ -36,17 +36,34 @@ CoreRefresher = function (dirFile, coreFile = {}) {
 }
 
 PropertySyntaxer = function (data, propertyName) { // Specified for Models sub folder and textures
+    var removed = [];
     for (var item = 0; item < data.length; item++) {
         
         if (data.hasOwnProperty(item)) {
-            if (data[item].children != undefined) {
+            if (data[item].children != undefined) { // Model sub folder
+
                 data[item].path = undefined;
-                if (data[item].children[1] != undefined) {
-                    data[item].path = data[item].children[1].path; 
-                } else {
-                    data[item].path = data[item].children[0].path;                     
+                for (const child in data[item].children) {
+                    if (data[item].children.hasOwnProperty(child)) {
+                        const c = data[item].children[child]; // Sub folder elements
+                        
+                        //console.log("c: " + JSON.stringify(c));
+                        
+                        if (path.extname(c.path) == ".obj") {
+                            data[item].path = c.path;                            
+                        } else if(path.extname(c.path) == ""){
+                            //console.log("BaseName: " + path.basename(c.path));
+
+                            data.push(PropertySyntaxer(c, path.basename(c.path)));
+                            delete data[item].name;
+
+                            if(removed.indexOf(item) == -1) {
+                                removed.push(item);
+                            }
+                        }
+                    }
                 }
-                data[item].children = undefined; 
+                data[item].children = undefined;
             }
 
             if (propertyName == "textures") {
@@ -59,6 +76,11 @@ PropertySyntaxer = function (data, propertyName) { // Specified for Models sub f
             }
         }   
     }
+
+    for (let i = 0; i < removed.length; i++) { // Remove empties(Models sub folder)
+        data.splice(removed[i] - i, 1);
+    } 
+
     return data;
 }
 

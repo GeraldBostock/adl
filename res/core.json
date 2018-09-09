@@ -19,10 +19,6 @@
       "path": "res/models/AxisArrow/AxisArrow.obj"
     },
     {
-      "name": "Cube",
-      "path": "res/models/Cube/Cube.obj"
-    },
-    {
       "name": "House",
       "path": "res/models/House/House.obj"
     },
@@ -31,24 +27,28 @@
       "path": "res/models/Landscape/Landscape.obj"
     },
     {
+      "name": "Cube",
+      "path": "res/models/BasicShapes/Cube/Cube.obj"
+    },
+    {
       "name": "Monkey",
-      "path": "res/models/Monkey/Monkey.obj"
+      "path": "res/models/BasicShapes/Monkey/Monkey.obj"
     },
     {
       "name": "Plane",
-      "path": "res/models/Plane/Plane.obj"
+      "path": "res/models/BasicShapes/Plane/Plane.obj"
     },
     {
       "name": "Sphere",
-      "path": "res/models/Sphere/Sphere.obj"
+      "path": "res/models/BasicShapes/Sphere/Sphere.obj"
     },
     {
       "name": "Torus",
-      "path": "res/models/Torus/Torus.obj"
+      "path": "res/models/BasicShapes/Torus/Torus.obj"
     },
     {
       "name": "Tree",
-      "path": "res/models/Tree/Tree.obj"
+      "path": "res/models/Foliage/Tree/Tree.obj"
     }
   ],
   "textures": [

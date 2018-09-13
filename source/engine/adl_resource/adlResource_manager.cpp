@@ -246,6 +246,11 @@ adlMaterial_shared_ptr adlResource_manager::getMaterial(const std::string& mater
 
 adlScene_shared_ptr adlResource_manager::get_scene(const std::string& name)
 {
+	if (scenes_[name] != nullptr)
+	{
+		return scenes_[name];
+	}
+
 	adlLogger* adl_logger = &adlLogger::get();
 	if (name_to_scene_path_[name].empty())
 	{
@@ -268,8 +273,6 @@ adlScene_shared_ptr adlResource_manager::get_scene(const std::string& name)
 			return scenes_[name];
 		}
 	}
-
-	return nullptr;
 }
 
 void adlResource_manager::initialize_models(const rapidjson::Value& models)
@@ -395,4 +398,9 @@ void adlResource_manager::initialize_scenes(const rapidjson::Value& scenes)
 		name_to_scene_path_[scene_name] = scene_object["path"].GetString();
 		scenes_[scene_name] = nullptr;
 	}
+}
+
+void adlResource_manager::add_new_scene(const std::string& scene_name, adlScene_shared_ptr scene)
+{
+	scenes_[scene_name] = scene;
 }

@@ -4,6 +4,7 @@
 #include "adl_debug/imgui/imgui.h"
 #include "engine/adlMemory.h"
 #include "engine/adl_entities/adlEntity_factory.h"
+#include "engine/adl_resource/adlResource_manager.h"
 
 
 adlScene_manager::adlScene_manager()
@@ -13,6 +14,10 @@ adlScene_manager::adlScene_manager()
 adlScene_shared_ptr adlScene_manager::create_empty_scene(const std::string& scene_name)
 {
 	adlScene_shared_ptr new_scene = MAKE_SHARED(adlScene, scene_name);
+
+	adlResource_manager* adl_rm = &adlResource_manager::get();
+	adl_rm->add_new_scene(scene_name, new_scene);
+
 	return new_scene;
 }
 

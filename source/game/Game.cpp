@@ -17,7 +17,7 @@ Game::~Game()
 
 bool Game::init()
 {
-	adlScene_shared_ptr scene = adl_scene_manager->create_empty_scene("New_scene");
+	adlScene_shared_ptr scene = adl_scene_manager->create_empty_scene("new_scene");
 	adl_scene_manager->set_active_scene(scene);
 
 	//adlActor_shared_ptr actor = MAKE_SHARED(Test_actor);
@@ -126,6 +126,11 @@ bool Game::update(float dt)
 	{
 		adlScene_shared_ptr test_scene = adl_rm->get_scene("test_scene");
 		adl_scene_manager->set_active_scene(test_scene);
+	}
+	if (adl_input->get_key(adl_key_n))
+	{
+		adlScene_shared_ptr new_scene = adl_rm->get_scene("new_scene");
+		adl_scene_manager->set_active_scene(new_scene);
 	}
 
 	return true;

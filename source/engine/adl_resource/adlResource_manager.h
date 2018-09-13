@@ -32,6 +32,8 @@ public:
 
 	adlScene_shared_ptr get_scene(const std::string& name);
 
+	void add_new_scene(const std::string& scene_name, adlScene_shared_ptr scene);
+
 private:
 	adlResource_manager();
 	std::string get_core_file_string();

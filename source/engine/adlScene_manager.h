@@ -7,6 +7,7 @@
 #include "adl_entities/adlPoint_light.h"
 #include "adl_entities/adlSun.h"
 #include "adl_renderer/adlCamera.h"
+#include "engine/adl_resource/adlScene.h"
 #include "adlShared_types.h"
 
 #include <vector>
@@ -23,6 +24,9 @@ public:
 
 	void update(float dt);
 	void render();
+
+	adlScene_shared_ptr create_empty_scene(const std::string& scene_name);
+	void set_active_scene(adlScene_shared_ptr scene);
 
 	void add_to_scene(adlEntity_shared_ptr entity);
 	void addToScene(adlEntity_shared_ptr entity);
@@ -61,6 +65,8 @@ private:
 
 	adlSun_shared_ptr sun_;
 	adlCamera* camera_;
+
+	adlScene_shared_ptr active_scene_ = nullptr;
 
 	adlScene_manager();
 };

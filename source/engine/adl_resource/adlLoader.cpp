@@ -163,35 +163,6 @@ adlMesh_shared_ptr adlLoader::process_mesh(aiMesh *mesh, const aiScene* scene)
 		}
 	}
 
-	/*if (scene->HasMaterials())
-	{
-		std::cout << "Has materials" << std::endl;
-		for (unsigned int i = 0; i < scene->mNumMaterials; i++)
-		{
-			aiMaterial* mtl = scene->mMaterials[i];
-			aiColor4D diffuse (0.0f, 0.0f, 0.0f, 0.0f);
-			aiGetMaterialColor(mtl, AI_MATKEY_COLOR_DIFFUSE, &diffuse);
-
-			aiColor4D ambient(0.0f, 0.0f, 0.0f, 0.0f);
-			aiGetMaterialColor(mtl, AI_MATKEY_COLOR_AMBIENT, &ambient);
-
-			aiColor4D specular(0.0f, 0.0f, 0.0f, 0.0f);
-			aiGetMaterialColor(mtl, AI_MATKEY_COLOR_SPECULAR, &specular);
-
-			float shine = 0.0f;
-			aiGetMaterialFloat(mtl, AI_MATKEY_SHININESS, &shine);
-
-			adlMaterial_shared_ptr material = MAKE_SHARED(adlMaterial);
-			adlVec3 adlAmbient(ambient.r, ambient.g, ambient.b);
-			adlVec3 adlDiffuse(diffuse.r, diffuse.g, diffuse.b);
-			adlVec3 adlSpecular(specular.r, specular.g, specular.b);
-
-			material->set_material(adlAmbient, adlDiffuse, adlSpecular, shine);
-
-			new_mesh->set_material(material);
-		}
-	}*/
-
 	new_mesh->add_vertices(vertices, indices);
 
 	return new_mesh;
@@ -312,4 +283,11 @@ void adlLoader::load_texture_from_file(unsigned int texture_id, const std::strin
 	}
 
 	stbi_image_free(data);
+}
+
+adlScene_shared_ptr adlLoader::load_scene(const std::string& scene_path)
+{
+	adlScene_shared_ptr scene = scene_loader_.load_scene(scene_path);
+
+	return scene;
 }

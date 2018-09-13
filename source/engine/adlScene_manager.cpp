@@ -10,9 +10,24 @@ adlScene_manager::adlScene_manager()
 {
 }
 
+adlScene_shared_ptr adlScene_manager::create_empty_scene(const std::string& scene_name)
+{
+	adlScene_shared_ptr new_scene = MAKE_SHARED(adlScene, scene_name);
+	return new_scene;
+}
+
+void adlScene_manager::set_active_scene(adlScene_shared_ptr scene)
+{
+	active_scene_ = scene;
+}
+
 void adlScene_manager::update(float dt)
 {
-	for (auto entity : entities_)
+	if (active_scene_ != nullptr)
+	{
+		active_scene_->update(dt);
+	}
+	/*for (auto entity : entities_)
 	{
 		entity->update(dt);
 	}
@@ -28,12 +43,16 @@ void adlScene_manager::update(float dt)
 	for (auto light : point_lights_)
 	{
 		light->update(dt);
-	}
+	}*/
 }
 
 void adlScene_manager::render()
 {
-	adlRender_manager* renderer = &adlRender_manager::get();
+	if (active_scene_ != nullptr)
+	{
+		active_scene_->render();
+	}
+	/*adlRender_manager* renderer = &adlRender_manager::get();
 	renderer->set_lights(point_lights_);
 	renderer->set_camera(camera_);
 
@@ -47,7 +66,7 @@ void adlScene_manager::render()
 	for (auto light : point_lights_)
 	{
 		renderer->render(light);
-	}
+	}*/
 }
 
 void adlScene_manager::add_to_scene(adlEntity_shared_ptr entity)
@@ -77,7 +96,7 @@ void adlScene_manager::set_sun(adlSun_shared_ptr sun)
 	sun->init();
 	sun_ = sun;
 	adlRender_manager* renderer = &adlRender_manager::get();
-	renderer->set_light(sun);
+	renderer->set_sun(sun);
 }
 
 void adlScene_manager::setSun(adlSun_shared_ptr sun)
@@ -91,7 +110,8 @@ adlActor_shared_ptr adlScene_manager::spawn_actor(const std::string& actor_name,
 	adlActor* actor = (adlActor*)factory->construct_actor(actor_name);
 	adlActor_shared_ptr actor_shared(actor);
 
-	spawn_actor(actor_shared, position, rotation, scale);
+	active_scene_->spawn_actor(actor_shared, position, rotation, scale);
+	//spawn_actor(actor_shared, position, rotation, scale);
 
 	return actor_shared;
 }
@@ -116,7 +136,8 @@ void adlScene_manager::spawn_light(const std::string& light_name, adlVec3 positi
 	adlPoint_light* light = (adlPoint_light*)factory->construct_light(light_name);
 	adlPoint_light_shared_ptr shared_light(light);
 
-	add_point_light_scene(shared_light);
+	//add_point_light_scene(shared_light);
+	active_scene_->spawn_point_light(shared_light, position, rotation, scale);
 }
 
 void adlScene_manager::addPointLightToScene(adlPoint_light_shared_ptr point_light)
@@ -128,29 +149,26 @@ void adlScene_manager::add_point_light_scene(adlPoint_light_shared_ptr point_lig
 {
 	point_light->init();
 	point_lights_.push_back(point_light);
-
-	adlRender_manager* renderer = &adlRender_manager::get();
-	renderer->set_point_light(point_light);
 }
 
 std::vector<adlEntity_shared_ptr>& adlScene_manager::get_all_entities()
 {
-	return entities_;
+	return active_scene_->get_all_entities();
 }
 
 std::vector<adlActor_shared_ptr>& adlScene_manager::get_all_actors()
 {
-	return actors_;
+	return active_scene_->get_all_actors();
 }
 
 std::vector<adlPoint_light_shared_ptr>& adlScene_manager::get_all_point_lights()
 {
-	return point_lights_;
+	return active_scene_->get_all_point_lights();
 }
 
 adlSun_shared_ptr adlScene_manager::get_sun()
 {
-	return sun_;
+	return active_scene_->get_sun();
 }
 
 adlCamera* adlScene_manager::getCamera()
@@ -160,10 +178,10 @@ adlCamera* adlScene_manager::getCamera()
 
 adlCamera* adlScene_manager::get_camera()
 {
-	return camera_;
+	return active_scene_->get_camera();
 }
 
 void adlScene_manager::set_camera(adlCamera* camera)
 {
-	camera_ = camera;
+	active_scene_->set_camera(camera);
 }

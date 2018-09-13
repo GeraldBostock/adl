@@ -2,6 +2,8 @@
 #define adl_entity_factory_h__
 
 #include "engine/adl_debug/adlLogger.h"
+#include "engine/adlMemory.h"
+
 #include <map>
 #include <memory>
 
@@ -10,11 +12,10 @@ typedef void*(*constructor_t)();
 typedef std::map<std::string, constructor_t> map_type;
 
 #define REGISTER_ACTOR(class_name) adlEntity_factory* factory = &adlEntity_factory::get(); \
-								   factory->register_class<class_name>(#class_name, true);
+								   factory->register_class<class_name>(#class_name, true); 
 
 #define REGISTER_LIGHT(class_name) adlEntity_factory* factory = &adlEntity_factory::get(); \
 								   factory->register_class<class_name>(#class_name, false);
-
 class adlEntity_factory
 {
 public:

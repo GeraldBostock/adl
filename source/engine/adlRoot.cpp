@@ -94,7 +94,7 @@ void adlRoot::game_thread()
 #endif // _DEBUG
 	camera				= ADL_NEW(adlCamera);
 
-	adl_scene_manager->set_camera(camera);
+	//adl_scene_manager->set_camera(camera);
 	adlMat4 projection_matrix = projection_matrix.create_projection_matrix(adl_window->get_width(), adl_window->get_height(), adlMath::deg_to_rad(45), 0.1f, 1000.0f);
 	adl_renderer->set_projection(projection_matrix);
 

@@ -97,5 +97,15 @@
       "vertex_shader_path": "res/shaders/font_shader.vert",
       "fragment_shader_path": "res/shaders/font_shader.frag"
     }
+  ],
+  "scenes": [
+	{
+		"name": "default_scene",
+		"path": "res/scenes/default_scene.json"
+	},
+	{
+		"name": "test_scene",
+		"path": "res/scenes/test_scene.json"
+	}
   ]
 }

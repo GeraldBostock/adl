@@ -29,5 +29,4 @@ void Test_actor::init()
 
 void Test_actor::update(float dt)
 {
-	//transform_.rot.y = transform_.rot.y + adlMath::deg_to_rad(0.1f * dt);
 }

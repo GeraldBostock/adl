@@ -26,9 +26,8 @@ public:
 	void toggle_wire_frame_mode();
 
 	void set_camera(adlCamera* camera);
-	void set_light(adlSun_shared_ptr light);
+	void set_sun(adlSun_shared_ptr light);
 	void set_lights(const std::vector<adlPoint_light_shared_ptr>& lights);
-	void set_point_light(adlPoint_light_shared_ptr point_light);
 
 	void set_projection(adlMat4 projection_matrix);
 
@@ -42,8 +41,7 @@ private:
 	adlMat4 projection_matrix_;
 
 	adlCamera* camera_;
-	adlSun_shared_ptr light_;
-	adlPoint_light_shared_ptr point_light_;
+	adlSun_shared_ptr sun_;
 	std::vector<adlPoint_light_shared_ptr> lights_;
 };
 

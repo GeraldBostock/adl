@@ -15,6 +15,7 @@
 #include "adl_helper/adlFPS_manager.h"
 #include "adlScene_manager.h"
 #include "adl_editor/adlEditor_manager.h"
+#include "engine/adl_resource/adlScene.h"
 
 /*
 * Entry point for the engine

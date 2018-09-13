@@ -1,0 +1,84 @@
+{
+	"sun":	{
+		"name": "Sun",
+		"position": [0.0, 100.0, 0.0],
+		"rotation": [0.0, 0.0, 0.0],
+		"scale": [1.0, 1.0, 1.0],
+		"ambient": [0.2, 0.2, 0.2],
+		"diffuse": [0.5, 0.5, 0.5],
+		"specular": [0.7, 0.7, 0.7]
+	},
+	"camera": {
+		"camera_type": "god_mode",
+		"position": [0.0, 0.0, 0.0],
+		"pitch": 0.0,
+		"yaw": 0.0,
+		"roll": 0.0
+	},
+	"actors": [
+		{
+			"type_name": "Test_actor",
+			"name": "Actor_1",
+			"position": [10.0, 1.0, 2.0],
+			"rotation": [0.0, 0.0, 0.0],
+			"scale": [1.0, 1.0, 1.0],
+			"model_name": "Monkey",
+			"material_name": ""
+		},
+		{
+			"type_name": "Test_actor",
+			"name": "Actor_4",
+			"position": [10.0, 1.0, 0.0],
+			"rotation": [0.0, 0.0, 0.0],
+			"scale": [1.0, 1.0, 1.0],
+			"model_name": "Cube",
+			"material_name": ""
+		},
+		{
+			"type_name": "Test_actor",
+			"name": "Actor_3",
+			"position": [10.0, 1.0, 10.0],
+			"rotation": [0.0, 0.0, 0.0],
+			"scale": [1.0, 1.0, 1.0],
+			"model_name": "Torus",
+			"material_name": "copper"
+		},
+		{
+			"type_name": "Test_actor",
+			"name": "Actor_2",
+			"position": [10.0, 1.0, -10.0],
+			"rotation": [0.0, 0.0, 0.0],
+			"scale": [1.0, 1.0, 1.0],
+			"model_name": "Plane",
+			"material_name": "gold"
+		}
+	],
+	"point_lights": [
+		{
+			"type_name": "adlPoint_light",
+			"name": "Light_1",
+			"position": [0.0, 10.0, 0.0],
+			"rotation": [0.0, 0.0, 0.0],
+			"scale": [0.1, 0.1, 0.1],
+			"ambient": [0.2, 0.2, 0.2],
+			"diffuse": [0.5, 0.5, 0.5],
+			"specular": [0.6, 0.6, 0.6],
+			"constant": 1.0,
+			"linear": 0.2,
+			"quadratic": 0.02
+		},
+		{
+			"type_name": "adlPoint_light",
+			"name": "Light_2",
+			"position": [10.0, 10.0, 10.0],
+			"rotation": [0.0, 0.0, 0.0],
+			"scale": [0.1, 0.1, 0.1],
+			"ambient": [0.2, 0.2, 0.2],
+			"diffuse": [0.5, 0.5, 0.5],
+			"specular": [0.6, 0.6, 0.6],
+			"constant": 1.0,
+			"linear": 0.2,
+			"quadratic": 0.02
+		}
+	]
+}

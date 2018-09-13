@@ -2,6 +2,8 @@
 #include "engine/adl_debug/adlAssert.h"
 #include "engine/adl_resource/adlMaterial.h"
 
+#include "engine/adl_entities/adlSun.h"
+
 #include <fstream>
 #include <sstream>
 #include <iostream>
@@ -39,6 +41,10 @@ adlResource_manager::adlResource_manager()
 	const rapidjson::Value& texture_objects = document["textures"];
 	adl_assert(texture_objects.IsArray());
 	initialize_textures(texture_objects);
+
+	const rapidjson::Value& scene_objects = document["scenes"];
+	adl_assert(scene_objects.IsArray());
+	initialize_scenes(scene_objects);
 }
 
 std::string adlResource_manager::get_core_file_string()
@@ -86,6 +92,31 @@ std::string adlResource_manager::get_materials_string()
 	{
 		adlLogger* adl_logger = &adlLogger::get();
 		adl_logger->log_error("Could not open core resource file at %s\n", materials_file_path.c_str());
+	}
+
+	return file_text;
+}
+
+std::string adlResource_manager::get_whole_file_string(const std::string& file_path)
+{
+	std::ifstream file;
+	file.open(file_path);
+
+	std::string file_text;
+	std::string line;
+
+	if (file.is_open())
+	{
+		while (file.good())
+		{
+			getline(file, line);
+			file_text.append(line + "\n");
+		}
+	}
+	else
+	{
+		adlLogger* adl_logger = &adlLogger::get();
+		adl_logger->log_error("Could not open file at %s\n", file_path.c_str());
 	}
 
 	return file_text;
@@ -213,6 +244,34 @@ adlMaterial_shared_ptr adlResource_manager::getMaterial(const std::string& mater
 	return get_material(material_name);
 }
 
+adlScene_shared_ptr adlResource_manager::get_scene(const std::string& name)
+{
+	adlLogger* adl_logger = &adlLogger::get();
+	if (name_to_scene_path_[name].empty())
+	{
+		adl_logger->log_error("Scene " + name + " could not be found.");
+		return nullptr;
+	}
+	else
+	{
+		if (scenes_[name] == nullptr)
+		{
+			adl_logger->log_info("Scene " + name + " is not loaded yet. Loading scene.");
+
+			adlScene_shared_ptr scene = loader_.load_scene(name_to_scene_path_[name]);
+
+			scenes_[name] = scene;
+			return scenes_[name];
+		}
+		else
+		{
+			return scenes_[name];
+		}
+	}
+
+	return nullptr;
+}
+
 void adlResource_manager::initialize_models(const rapidjson::Value& models)
 {
 	for (rapidjson::Value::ConstValueIterator itr = models.Begin(); itr != models.End(); ++itr)
@@ -322,5 +381,18 @@ void adlResource_manager::initialize_textures(const rapidjson::Value& textures)
 
 		name_to_texture_path_[texture_object["name"].GetString()] = texture_paths;
 		textures_[texture_object["name"].GetString()] = nullptr;
+	}
+}
+
+void adlResource_manager::initialize_scenes(const rapidjson::Value& scenes)
+{
+	for (rapidjson::Value::ConstValueIterator itr = scenes.Begin(); itr != scenes.End(); ++itr)
+	{
+		const rapidjson::Value& scene_object = *itr;
+		adl_assert(scene_object.IsObject());
+
+		std::string scene_name = scene_object["name"].GetString();
+		name_to_scene_path_[scene_name] = scene_object["path"].GetString();
+		scenes_[scene_name] = nullptr;
 	}
 }

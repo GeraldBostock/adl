@@ -30,10 +30,13 @@ public:
 	adlMaterial_shared_ptr get_material(const std::string& material_name);
 	adlMaterial_shared_ptr getMaterial(const std::string& material_name);
 
+	adlScene_shared_ptr get_scene(const std::string& name);
+
 private:
 	adlResource_manager();
 	std::string get_core_file_string();
 	std::string get_materials_string();
+	std::string get_whole_file_string(const std::string& file_path);
 
 	adlResource_manager(adlResource_manager const&) = delete;
 	void operator=(adlResource_manager const&)		= delete;
@@ -43,6 +46,7 @@ private:
 	void initialize_fonts(const rapidjson::Value& fonts);
 	void initialize_materials(const rapidjson::Value& materials);
 	void initialize_textures(const rapidjson::Value& textures);
+	void initialize_scenes(const rapidjson::Value& scenes);
 
 	const std::string core_file_path = "res/core.json";
 	const std::string materials_file_path = "res/materials.json";
@@ -60,6 +64,9 @@ private:
 
 	std::map<std::string, std::pair<std::string, std::string>> name_to_texture_path_;
 	std::map<std::string, adlTexture_shared_ptr> textures_;
+
+	std::map<std::string, std::string> name_to_scene_path_;
+	std::map<std::string, adlScene_shared_ptr> scenes_;
 
 	adlLoader loader_;
 

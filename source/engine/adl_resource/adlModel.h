@@ -2,6 +2,7 @@
 #define adl_model_h__
 
 #include <vector>
+
 #include "engine/adl_resource/adlMesh.h"
 #include "engine/adlShared_types.h"
 

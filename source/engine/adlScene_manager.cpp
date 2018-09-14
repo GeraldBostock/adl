@@ -5,6 +5,7 @@
 #include "engine/adlMemory.h"
 #include "engine/adl_entities/adlEntity_factory.h"
 #include "engine/adl_resource/adlResource_manager.h"
+#include "engine/adlInput.h"
 
 
 adlScene_manager::adlScene_manager()
@@ -24,10 +25,19 @@ adlScene_shared_ptr adlScene_manager::create_empty_scene(const std::string& scen
 void adlScene_manager::set_active_scene(adlScene_shared_ptr scene)
 {
 	active_scene_ = scene;
+	adlRender_manager* renderer = &adlRender_manager::get();
+	renderer->set_sun(active_scene_->get_sun());
+	renderer->set_lights(active_scene_->get_all_point_lights());
 }
 
 void adlScene_manager::update(float dt)
 {
+	adlInput* input = &adlInput::get();
+	if (input->get_key(adl_key_left_ctrl) && input->get_key_down(adl_key_s))
+	{
+
+	}
+
 	if (active_scene_ != nullptr)
 	{
 		active_scene_->update(dt);
@@ -67,7 +77,7 @@ void adlScene_manager::addToScene(adlActor_shared_ptr actor)
 void adlScene_manager::set_sun(adlSun_shared_ptr sun)
 {
 	sun->init();
-	sun_ = sun;
+	active_scene_->set_sun(sun);
 	adlRender_manager* renderer = &adlRender_manager::get();
 	renderer->set_sun(sun);
 }
@@ -157,4 +167,9 @@ adlCamera* adlScene_manager::get_camera()
 void adlScene_manager::set_camera(adlCamera* camera)
 {
 	active_scene_->set_camera(camera);
+}
+
+adlScene_shared_ptr adlScene_manager::get_active_scene()
+{
+	return active_scene_;
 }

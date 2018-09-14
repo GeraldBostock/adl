@@ -129,7 +129,7 @@ bool Game::update(float dt)
 	}
 	if (adl_input->get_key(adl_key_n))
 	{
-		adlScene_shared_ptr new_scene = adl_rm->get_scene("new_scene");
+		adlScene_shared_ptr new_scene = adl_rm->get_scene("saved_scene");
 		adl_scene_manager->set_active_scene(new_scene);
 	}
 

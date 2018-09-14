@@ -404,3 +404,8 @@ void adlResource_manager::add_new_scene(const std::string& scene_name, adlScene_
 {
 	scenes_[scene_name] = scene;
 }
+
+std::string adlResource_manager::serialize_scene(adlScene_shared_ptr scene)
+{
+	return scene_saver_.get_serialized_scene(scene);
+}

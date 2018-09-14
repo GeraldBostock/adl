@@ -36,5 +36,4 @@ void Test_actor::update(float dt)
 
 void Test_actor::deserialize(const rapidjson::Value& json_object)
 {
-	test_data = json_object["test_data"].GetFloat();
 }

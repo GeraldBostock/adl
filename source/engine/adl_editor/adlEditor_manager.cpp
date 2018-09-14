@@ -14,11 +14,13 @@ adlEditor_manager::adlEditor_manager()
 	  actor_editor_open_(false),
 	  main_editor_open_(false),
 	  light_editor_(nullptr),
-	  actor_editor_(nullptr)
+	  actor_editor_(nullptr),
+	  scene_editor_(nullptr)
 {
 	light_editor_ = ADL_NEW(adlLight_editor);
 	actor_editor_ = ADL_NEW(adlActor_editor);
 	spawn_editor_ = ADL_NEW(adlSpawn_editor);
+	scene_editor_ = ADL_NEW(adlScene_editor);
 }
 
 void adlEditor_manager::MainMenu()
@@ -177,6 +179,8 @@ void adlEditor_manager::update()
 			spawner_editor_open_ = spawn_editor_->get_visible();
 		}
 	}
+
+	scene_editor_->update();
 }
 
 void adlEditor_manager::clean_up()
@@ -185,4 +189,5 @@ void adlEditor_manager::clean_up()
 	ADL_DELETE(actor_editor_);
 	ADL_DELETE(light_editor_);
 	ADL_DELETE(spawn_editor_);
+	ADL_DELETE(scene_editor_);
 }

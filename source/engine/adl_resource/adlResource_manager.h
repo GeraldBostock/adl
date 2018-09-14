@@ -7,6 +7,7 @@
 #include <document.h>
 
 #include "engine/adl_debug/adlLogger.h"
+#include "adlScene_saver.h"
 #include "adlLoader.h"
 
 class adlResource_manager
@@ -33,6 +34,8 @@ public:
 	adlScene_shared_ptr get_scene(const std::string& name);
 
 	void add_new_scene(const std::string& scene_name, adlScene_shared_ptr scene);
+
+	std::string serialize_scene(adlScene_shared_ptr scene);
 
 private:
 	adlResource_manager();
@@ -71,6 +74,7 @@ private:
 	std::map<std::string, adlScene_shared_ptr> scenes_;
 
 	adlLoader loader_;
+	adlScene_saver scene_saver_;
 
 	adlModel_shared_ptr model;
 };

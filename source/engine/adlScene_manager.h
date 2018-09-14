@@ -53,6 +53,7 @@ public:
 	std::vector<adlActor_shared_ptr>& get_all_actors();
 	std::vector<adlPoint_light_shared_ptr>& get_all_point_lights();
 	adlSun_shared_ptr get_sun();
+	adlScene_shared_ptr get_active_scene();
 
 	adlCamera* getCamera();
 	adlCamera* get_camera();

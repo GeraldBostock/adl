@@ -114,6 +114,10 @@
 	{
 		"name": "test_scene",
 		"path": "res/scenes/test_scene.json"
+	},
+	{
+		"name": "saved_scene",
+		"path": "res/scenes/test.json"
 	}
   ]
 }

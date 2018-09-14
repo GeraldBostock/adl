@@ -5,6 +5,7 @@
 #include "adlActor_editor.h"
 #include "adlLight_editor.h"
 #include "adlSpawn_editor.h"
+#include "adlScene_editor.h"
 
 class adlEditor_manager
 {
@@ -25,6 +26,7 @@ private:
 	adlActor_editor* actor_editor_;
 	adlLight_editor* light_editor_;
 	adlSpawn_editor* spawn_editor_;
+	adlScene_editor* scene_editor_;
 
 
 	bool main_editor_open_;
@@ -34,6 +36,7 @@ private:
 	bool help_open_;
 	bool show_demo_window_;
 	bool spawner_editor_open_;
+	bool scene_editor_open_;
 
 	adlEditor_manager();
 

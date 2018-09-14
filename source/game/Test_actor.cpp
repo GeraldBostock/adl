@@ -29,4 +29,12 @@ void Test_actor::init()
 
 void Test_actor::update(float dt)
 {
+	adlVec3 rotation = get_rotation();
+	rotation.y += adlMath::deg_to_rad(0.1f * dt);
+	set_rotation(rotation);
+}
+
+void Test_actor::deserialize(const rapidjson::Value& json_object)
+{
+	test_data = json_object["test_data"].GetFloat();
 }

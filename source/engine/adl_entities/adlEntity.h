@@ -4,6 +4,8 @@
 #include "engine/adlShared_types.h"
 #include "engine/adl_resource/adlModel.h"
 
+#include <document.h>
+
 class adlEntity
 {
 public:
@@ -16,6 +18,13 @@ public:
 	unsigned int get_id();
 	const std::string& get_name();
 	void set_name(const std::string& name);
+
+	const std::string& get_type_name();
+
+	virtual void deserialize(const rapidjson::Value& json_object);
+
+protected:
+	std::string type_name;
 
 private:
 	static unsigned int current_id;

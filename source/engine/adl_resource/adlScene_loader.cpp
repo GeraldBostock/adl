@@ -38,6 +38,7 @@ adlScene_shared_ptr adlScene_loader::load_scene(const std::string& scene_path)
 	{
 		const rapidjson::Value& actor_object = *itr;
 		adlActor_shared_ptr actor = load_actor(actor_object);
+		actor->deserialize(actor_object);
 		actors_array.push_back(actor);
 	}
 

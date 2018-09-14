@@ -32,23 +32,6 @@ void adlScene_manager::update(float dt)
 	{
 		active_scene_->update(dt);
 	}
-	/*for (auto entity : entities_)
-	{
-		entity->update(dt);
-	}
-
-	for (auto actor : actors_)
-	{
-		actor->update(dt);
-	}
-
-	camera_->update(dt);
-	sun_->update(dt);
-
-	for (auto light : point_lights_)
-	{
-		light->update(dt);
-	}*/
 }
 
 void adlScene_manager::render()
@@ -57,21 +40,6 @@ void adlScene_manager::render()
 	{
 		active_scene_->render();
 	}
-	/*adlRender_manager* renderer = &adlRender_manager::get();
-	renderer->set_lights(point_lights_);
-	renderer->set_camera(camera_);
-
-	for (auto actor : actors_)
-	{
-		renderer->render(actor);
-	}
-
-	renderer->render(sun_);
-
-	for (auto light : point_lights_)
-	{
-		renderer->render(light);
-	}*/
 }
 
 void adlScene_manager::add_to_scene(adlEntity_shared_ptr entity)

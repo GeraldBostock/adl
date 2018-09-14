@@ -12,8 +12,15 @@ public:
 	void init() override;
 	void update(float dt) override;
 
-private:
+	void deserialize(const rapidjson::Value& json_object) override;
+	
+	float get_test_data()
+	{
+		return test_data;
+	}
 
+private:
+	float test_data;
 };
 
 #endif // test_actor_h__

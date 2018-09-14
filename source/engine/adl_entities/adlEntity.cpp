@@ -8,6 +8,7 @@ adlEntity::adlEntity()
 	: id_(current_id++)
 {
 	name_ = "Entity_" + std::to_string(id_);
+	type_name = "adlEntity";
 }
 
 adlEntity::~adlEntity()
@@ -36,4 +37,14 @@ const std::string& adlEntity::get_name()
 void adlEntity::set_name(const std::string& name)
 {
 	name_ = name;
+}
+
+const std::string& adlEntity::get_type_name()
+{
+	return type_name;
+}
+
+void adlEntity::deserialize(const rapidjson::Value& json_object)
+{
+
 }

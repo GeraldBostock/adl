@@ -12,10 +12,12 @@ typedef void*(*constructor_t)();
 typedef std::map<std::string, constructor_t> map_type;
 
 #define REGISTER_ACTOR(class_name) adlEntity_factory* factory = &adlEntity_factory::get(); \
-								   factory->register_class<class_name>(#class_name, true); 
+								   factory->register_class<class_name>(#class_name, true); \
+								   type_name = #class_name;
 
 #define REGISTER_LIGHT(class_name) adlEntity_factory* factory = &adlEntity_factory::get(); \
-								   factory->register_class<class_name>(#class_name, false);
+								   factory->register_class<class_name>(#class_name, false);\
+								   type_name = #class_name;
 class adlEntity_factory
 {
 public:

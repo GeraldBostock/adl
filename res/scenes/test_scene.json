@@ -23,10 +23,11 @@
 			"rotation": [0.0, 0.0, 0.0],
 			"scale": [1.0, 1.0, 1.0],
 			"model_name": "Monkey",
-			"material_name": ""
+			"material_name": "",
+			"test_data": 22
 		},
 		{
-			"type_name": "Test_actor",
+			"type_name": "Material_new_test",
 			"name": "Actor_4",
 			"position": [10.0, 1.0, 0.0],
 			"rotation": [0.0, 0.0, 0.0],
@@ -35,7 +36,7 @@
 			"material_name": ""
 		},
 		{
-			"type_name": "Test_actor",
+			"type_name": "Material_test",
 			"name": "Actor_3",
 			"position": [10.0, 1.0, 10.0],
 			"rotation": [0.0, 0.0, 0.0],
@@ -50,7 +51,8 @@
 			"rotation": [0.0, 0.0, 0.0],
 			"scale": [1.0, 1.0, 1.0],
 			"model_name": "Plane",
-			"material_name": "gold"
+			"material_name": "gold",
+			"test_data": 10
 		}
 	],
 	"point_lights": [

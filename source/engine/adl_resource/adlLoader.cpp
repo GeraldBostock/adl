@@ -27,7 +27,7 @@ adlShader_shared_ptr adlLoader::load_shader(const std::string& vertex_shader_pat
 	return new_shader;
 }
 
-adlModel_shared_ptr adlLoader::load_model(const std::string& mesh_path)
+adlModel_shared_ptr adlLoader::load_model(const std::string& mesh_path, const std::string& model_name)
 {
 	Assimp::Importer importer;
 
@@ -43,7 +43,7 @@ adlModel_shared_ptr adlLoader::load_model(const std::string& mesh_path)
 		return nullptr;
 	}
 
-	adlModel_shared_ptr new_model = std::make_shared<adlModel>();
+	adlModel_shared_ptr new_model = std::make_shared<adlModel>(model_name);
 
 	process_ai_node(scene->mRootNode, scene, new_model);
 

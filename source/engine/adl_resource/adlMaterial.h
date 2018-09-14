@@ -28,6 +28,8 @@ public:
 	std::string get_texture_name();
 	void set_texture(adlTexture_shared_ptr texture);
 	adlTexture_shared_ptr get_texture();
+
+	const std::string& get_name();
 private:
 
 	struct Material
@@ -43,6 +45,8 @@ private:
 
 	std::string texture_name_;
 	adlTexture_shared_ptr texture_;
+
+	std::string name_ = "";
 };
 
 #endif // adl_material_h__

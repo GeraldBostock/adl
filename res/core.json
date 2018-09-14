@@ -57,7 +57,15 @@
     {
       "name": "Tree",
       "path": "res/models/Foliage/Tree/Tree.obj"
-    }
+    },
+	{
+	  "name": "Test",
+	  "path": "res/models/Test.obj"
+	},
+	{
+	  "name": "rock",
+	  "path": "res/models/rock.obj"
+	}
   ],
   "textures": [
     {

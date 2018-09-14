@@ -5,9 +5,9 @@
 
 #include <GL/glew.h>
 
-adlModel::adlModel()
+adlModel::adlModel(const std::string& name)
 {
-	
+	name_ = name;
 }
 
 adlModel::~adlModel()
@@ -79,4 +79,9 @@ void adlModel::set_material(adlMaterial_shared_ptr material)
 	{
 		mesh->set_material(material);
 	}
+}
+
+std::string adlModel::get_name()
+{
+	return name_;
 }

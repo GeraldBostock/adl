@@ -21,7 +21,7 @@ public:
 	adlLoader();
 	virtual ~adlLoader();
 
-	adlModel_shared_ptr load_model(const std::string& mesh_path);
+	adlModel_shared_ptr load_model(const std::string& mesh_path, const std::string& model_name);
 	adlShader_shared_ptr load_shader(const std::string& vertex_shader_path, const std::string& fragment_shader_path);
 	adlFont_shared_ptr load_font(const std::string& font_path);
 	adlTexture_shared_ptr load_texture(const std::pair<std::string, std::string>& texture_paths);

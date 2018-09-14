@@ -82,3 +82,8 @@ std::string adlMaterial::get_texture_name()
 {
 	return texture_name_;
 }
+
+const std::string& adlMaterial::get_name()
+{
+	return name_;
+}

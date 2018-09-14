@@ -131,7 +131,7 @@ adlModel_shared_ptr adlResource_manager::get_model(const std::string& model_name
 		if (models_[model_path] == nullptr)
 		{
 			adl_logger->log_info("Model " + model_name + " is not loaded yet. Loading.");
-			models_[model_path] = loader_.load_model(model_path);
+			models_[model_path] = loader_.load_model(model_path, model_name);
 			return models_[model_path];
 		}
 		else

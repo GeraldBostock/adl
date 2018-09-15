@@ -195,6 +195,7 @@ public:
 	adlMat4 create_projection_matrix(int window_width, int window_height, float fov_in_radians, float near_plane, float far_plane);
 	adlMat4 create_view_matrix(adlVec3 position, adlVec3 rotation);
 
+	adlVec3 transform_to_parent(const adlVec3& vector);
 	adlVec3 transform_to_local(const adlVec3& vector);
 
 	/*

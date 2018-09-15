@@ -122,15 +122,13 @@ bool Game::update(float dt)
 		adl_window->toggle_fullscreen();
 	}
 
-	if (adl_input->get_key(adl_key_h))
+	adlScene_shared_ptr scene = adl_scene_manager->get_active_scene();
+	const std::vector<adlActor_shared_ptr>& actors = scene->get_all_actors();
+
+	for (auto actor : actors)
 	{
-		adlScene_shared_ptr test_scene = adl_rm->get_scene("test_scene");
-		adl_scene_manager->set_active_scene(test_scene);
-	}
-	if (adl_input->get_key(adl_key_n))
-	{
-		adlScene_shared_ptr new_scene = adl_rm->get_scene("saved_scene");
-		adl_scene_manager->set_active_scene(new_scene);
+		adlVec3 position = actor->get_position();
+		debug_renderer->debug_render_sphere(position, adlColor::RED, 0.1f);
 	}
 
 	return true;

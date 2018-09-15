@@ -8,6 +8,8 @@
 #include <string>
 #include <memory>
 
+#include "engine/adl_math/adlVector.h"
+
 class adlLogger
 {
 public:
@@ -19,6 +21,7 @@ public:
 
 	void log_error(const std::string& error, bool log_to_file = false);
 	void log_info(const std::string& info, bool log_to_file = false);
+	void log_info(const std::string& vector_name, adlVec3& vector, bool log_to_file = false);
 
 private:
 	adlLogger();

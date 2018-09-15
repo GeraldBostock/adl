@@ -254,6 +254,7 @@ inline adlVec2_i32 adlVec2_i32::operator*(int32 value) const
 
 inline adlVec2_i32 adlVec2_i32::operator/(int32 value) const
 {
+	adl_assert(value != 0);
 	return adlVec2_i32(x / value, y / +value);
 }
 
@@ -404,6 +405,7 @@ inline adlVec3 adlVec3::operator*(float value) const
 
 inline adlVec3 adlVec3::operator/(float value) const
 {
+	adl_assert(value != 0);
 	return adlVec3(x / value, y / value, z / value);
 }
 

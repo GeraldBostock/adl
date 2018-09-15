@@ -140,7 +140,7 @@ adlModel_shared_ptr adlResource_manager::get_model(const std::string& model_name
 		}
 	}
 
-	adl_logger->log_error("Model" + model_name + "doesn't exist. Returning nullptr");
+	adl_logger->log_error("Model " + model_name + " doesn't exist. Returning nullptr");
 
 	return nullptr;
 }

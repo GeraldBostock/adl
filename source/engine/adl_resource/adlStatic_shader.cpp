@@ -42,6 +42,8 @@ void adlStatic_shader::get_all_uniform_locations()
 	camera_position_location_	= get_uniform_location("camera_position");
 	text_color_location_		= get_uniform_location("text_color");
 	projection_matrix_location_ = get_uniform_location("projection");
+	view_matrix_location_		= get_uniform_location("view_matrix");
+	color_location_				= get_uniform_location("color");
 
 	ambient_location_	= get_uniform_location("material.ambient");
 	diffuse_location_	= get_uniform_location("material.diffuse");
@@ -69,13 +71,6 @@ void adlStatic_shader::get_all_uniform_locations()
 		point_light_linear_locations_[i] = get_uniform_location("point_lights[" + index + "].linear");
 		point_light_quadratic_locations_[i] = get_uniform_location("point_lights[" + index + "].quadratic");
 	}
-	//point_light_position_location_	= get_uniform_location("point_light.position");
-	//point_light_ambient_location_	= get_uniform_location("point_light.ambient");
-	//point_light_diffuse_location_	= get_uniform_location("point_light.diffuse");
-	//point_light_specular_location_	= get_uniform_location("point_light.specular");
-	//point_light_constant_location_	= get_uniform_location("point_light.constant");
-	//point_light_linear_location_	= get_uniform_location("point_light.linear");
-	//point_light_quadratic_location_	= get_uniform_location("point_light.quadratic");
 }
 
 void adlStatic_shader::load_mvp(const adlMat4& matrix)
@@ -148,4 +143,14 @@ void adlStatic_shader::load_point_lights(const std::vector<adlPoint_light_shared
 void adlStatic_shader::load_light_color(adlVec3 color)
 {
 	load_vector(light_color_location_, color);
+}
+
+void adlStatic_shader::load_color(adlVec3 color)
+{
+	load_vector(color_location_, color);
+}
+
+void adlStatic_shader::load_view_matrix(const adlMat4& matrix)
+{
+	load_matrix(view_matrix_location_, matrix);
 }

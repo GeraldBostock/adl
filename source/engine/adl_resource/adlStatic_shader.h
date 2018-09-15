@@ -27,6 +27,8 @@ public:
 	void load_projection_matrix(const adlMat4& matrix);
 	void load_material(adlMaterial_shared_ptr material);
 	void load_light_color(adlVec3 color);
+	void load_color(adlVec3 color);
+	void load_view_matrix(const adlMat4& matrix);
 	void load_texture();
 
 protected:
@@ -39,6 +41,8 @@ private:
 	int32 model_matrix_location_;
 	int32 light_position_location_;
 	int32 camera_position_location_;
+	int32 view_matrix_location_;
+	int32 color_location_;
 
 	int32 text_color_location_;
 	int32 projection_matrix_location_;

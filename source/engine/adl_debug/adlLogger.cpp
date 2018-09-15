@@ -31,3 +31,9 @@ void adlLogger::log_info(const std::string& info, bool log_to_file /*= false*/)
 		info_logger_->info(info);
 	}
 }
+
+void adlLogger::log_info(const std::string& vector_name, adlVec3& vector, bool log_to_file/* = false*/)
+{
+	std::string vector_string = vector_name + ": [x: " + std::to_string(vector.x) + ", y: " + std::to_string(vector.y) + ", z: " + std::to_string(vector.z) + "]";
+	log_info(vector_string, log_to_file);
+}

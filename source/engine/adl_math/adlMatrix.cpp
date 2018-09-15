@@ -132,12 +132,12 @@ adlMat4 adlMat4::operator*(const adlMat4& matrix) const
 
 adlVec4 adlMat4::operator*(const adlVec4& vector) const
 {
-	float a_ = (vectors.a.x * vector.x) + (vectors.a.y * vector.y) + (vectors.a.z * vector.z) + (vectors.a.w * vector.w);
-	float b_ = (vectors.b.x * vector.x) + (vectors.b.y * vector.y) + (vectors.b.z * vector.z) + (vectors.b.w * vector.w);
-	float c_ = (vectors.c.x * vector.x) + (vectors.c.y * vector.y) + (vectors.c.z * vector.z) + (vectors.c.w * vector.w);
-	float d_ = (vectors.d.x * vector.x) + (vectors.d.y * vector.y) + (vectors.d.z * vector.z) + (vectors.d.w * vector.w);
+	float a = (vector.x * vectors.a.x) + (vector.y * vectors.b.x) + (vector.z * vectors.c.x) + (vector.w * vectors.d.x);
+	float b = (vector.x * vectors.a.y) + (vector.y * vectors.b.y) + (vector.z * vectors.c.y) + (vector.w * vectors.d.y);
+	float c = (vector.x * vectors.a.z) + (vector.y * vectors.b.z) + (vector.z * vectors.c.z) + (vector.w * vectors.d.z);
+	float d = (vector.x * vectors.a.w) + (vector.y * vectors.b.w) + (vector.z * vectors.c.w) + (vector.w * vectors.d.w);
 
-	return adlVec4(a_, b_, c_, d_);
+	return adlVec4(a, b, c, d);
 }
 
 void adlMatrix_frame::scale_matrix()
@@ -315,6 +315,12 @@ adlVec3 adlMat4::transform_to_local(const adlVec3& vector)
 	result_vector.x = vectors.a.dotp(vector);
 	result_vector.y = vectors.b.dotp(vector);
 	result_vector.z = vectors.c.dotp(vector);
+	result_vector.w = vectors.d.dotp(vector);
 
 	return result_vector;
+}
+
+adlVec3 adlMat4::transform_to_parent(const adlVec3& vector)
+{
+	return adlVec3(0.0f);
 }

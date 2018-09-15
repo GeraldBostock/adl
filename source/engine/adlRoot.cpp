@@ -59,6 +59,9 @@ void adlRoot::run()
 	adl_scene_manager->update(dt);
 	adl_scene_manager->render();
 
+	debug_renderer->render();
+	debug_renderer->clear_render_queue();
+
 	mouse_picker->update(adl_renderer->get_projection_matrix(), adl_scene_manager->get_camera()->get_view_matrix());
 
 #ifdef _DEBUG
@@ -92,6 +95,7 @@ void adlRoot::game_thread()
 	adl_logger			= &adlLogger::get();
 	adl_scene_manager	= &adlScene_manager::get();
 	mouse_picker		= &adlMouse_picker::get();
+	debug_renderer		= &adlDebug_renderer::get();
 #ifdef _DEBUG
 	adl_editor			= &adlEditor_manager::get();
 #endif // _DEBUG

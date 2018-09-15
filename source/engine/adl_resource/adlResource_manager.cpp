@@ -367,6 +367,8 @@ void adlResource_manager::initialize_materials(const rapidjson::Value& materials
 		std::string texture_name = material_object["texture"].GetString();
 		material->set_names(shader_name, texture_name);
 
+		material->set_name(material_name);
+
 		materials_[material_name] = material;
 	}
 }

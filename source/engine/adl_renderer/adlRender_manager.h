@@ -30,6 +30,7 @@ public:
 	void set_lights(const std::vector<adlPoint_light_shared_ptr>& lights);
 
 	void set_projection(adlMat4 projection_matrix);
+	adlMat4 get_projection_matrix();
 
 private:
 	adlRender_manager();

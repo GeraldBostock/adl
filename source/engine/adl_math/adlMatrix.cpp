@@ -307,3 +307,14 @@ adlMat4 adlMat4::create_view_matrix(adlVec3 position, adlVec3 rotation)
 
 	return view_matrix;
 }
+
+adlVec3 adlMat4::transform_to_local(const adlVec3& vector)
+{
+	adlVec3 result_vector(0.0f);
+
+	result_vector.x = vectors.a.dotp(vector);
+	result_vector.y = vectors.b.dotp(vector);
+	result_vector.z = vectors.c.dotp(vector);
+
+	return result_vector;
+}

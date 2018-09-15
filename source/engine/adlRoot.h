@@ -16,6 +16,7 @@
 #include "adlScene_manager.h"
 #include "adl_editor/adlEditor_manager.h"
 #include "engine/adl_resource/adlScene.h"
+#include "engine/adl_math/adlMouse_picker.h"
 
 /*
 * Entry point for the engine
@@ -42,6 +43,7 @@ public:
 	adlCamera* camera;
 	adlScene_manager* adl_scene_manager;
 	adlEditor_manager* adl_editor;
+	adlMouse_picker* mouse_picker;
 protected:
 private:
 	adlFPS_manager* fps_manager_;

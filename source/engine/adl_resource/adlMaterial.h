@@ -29,6 +29,7 @@ public:
 	void set_texture(adlTexture_shared_ptr texture);
 	adlTexture_shared_ptr get_texture();
 
+	void set_name(const std::string& name);
 	const std::string& get_name();
 private:
 

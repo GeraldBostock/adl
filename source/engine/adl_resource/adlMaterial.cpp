@@ -87,3 +87,8 @@ const std::string& adlMaterial::get_name()
 {
 	return name_;
 }
+
+void adlMaterial::set_name(const std::string& name)
+{
+	name_ = name;
+}

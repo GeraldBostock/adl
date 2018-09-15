@@ -28,12 +28,9 @@ adlScene_shared_ptr adlScene_loader::load_scene(const std::string& scene_path)
 	document.Parse(scene_text.c_str());
 	adl_assert(document.IsObject());
 
-
 	const rapidjson::Value& sun_object = document["sun"];
 	adl_assert(sun_object.IsObject());
 	adlSun_shared_ptr sun = load_sun(sun_object);
-
-	std::cout << "a" << std::endl;
 
 	const rapidjson::Value& actors = document["actors"];
 	for (rapidjson::Value::ConstValueIterator itr = actors.Begin(); itr != actors.End(); ++itr)

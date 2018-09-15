@@ -230,3 +230,8 @@ void adlRender_manager::set_lights(const std::vector<adlPoint_light_shared_ptr>&
 {
 	lights_ = lights;
 }
+
+adlMat4 adlRender_manager::get_projection_matrix()
+{
+	return projection_matrix_;
+}

@@ -85,7 +85,6 @@ enum adl_keys
 	adl_key_f10 = SDL_SCANCODE_F10,
 	adl_key_f11 = SDL_SCANCODE_F11,
 	adl_key_f12 = SDL_SCANCODE_F12,
-	
 };
 
 #endif // sdl_definitions_h__

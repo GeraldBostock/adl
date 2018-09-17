@@ -110,6 +110,8 @@ private:
 	adlDebug_renderer();
 
 	std::vector<IDebug_renderable*> render_queue_;
+
+	friend class adlRoot;
 };
 
 #endif // adl_debug_renderer_h__

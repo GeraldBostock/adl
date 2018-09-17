@@ -18,6 +18,8 @@ void adlInput::update()
 	memcpy(prev_keyboard_, keyboard_, 323);
 	memcpy(keyboard_, SDL_GetKeyboardState(NULL), 323);
 
+	prev_has_focus_ = has_focus_;
+
 	SDL_Event e;
 	while (SDL_PollEvent(&e))
 	{
@@ -30,10 +32,39 @@ void adlInput::update()
 			close_button_ = false;
 		}
 
+		if (e.type == SDL_WINDOWEVENT)
+		{
+			switch (e.window.event)
+			{
+			case SDL_WINDOWEVENT_FOCUS_LOST:
+				has_focus_ = false;
+				break;
+			case SDL_WINDOWEVENT_FOCUS_GAINED:
+				has_focus_ = true;
+				break;
+			default:
+				break;
+
+			}
+		}
+
 		if (e.type == SDL_MOUSEMOTION)
 		{
-			mouse_state_.xDif = e.motion.xrel;
-			mouse_state_.yDif = e.motion.yrel;
+			/*
+			* When we gain focus after having lost it, SDL gives some wild relative position values.
+			* This if check is here to nullify that.
+			* If we didn't have focus on the previous frame, but we do on current frame, that means we just gained focus
+			*/
+			if (!prev_has_focus_ && has_focus_)
+			{
+				mouse_state_.xDif = 0;
+				mouse_state_.yDif = 0;
+			}
+			else
+			{
+				mouse_state_.xDif = e.motion.xrel;
+				mouse_state_.yDif = e.motion.yrel;
+			}
 		}
 
 		if (e.type == SDL_MOUSEWHEEL)
@@ -200,4 +231,9 @@ bool adlInput::close_button_pressed()
 int adlInput::get_mouse_wheel_dif()
 {
 	return mouse_state_.m_wheel_dif;
+}
+
+bool adlInput::has_focus()
+{
+	return has_focus_;
 }

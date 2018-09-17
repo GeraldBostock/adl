@@ -27,6 +27,10 @@ void adlRoot::init_window(const std::string& title, int width, int height)
 void adlRoot::run()
 {
 	adl_input->update();
+	if (!adl_input->has_focus())
+	{
+		return;
+	}
 	adl_renderer->prepare();
 
 	ImGui_ImplOpenGL3_NewFrame();

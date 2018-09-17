@@ -95,7 +95,6 @@ adlActor_shared_ptr adlScene_manager::spawn_actor(const std::string& actor_name,
 	adlActor_shared_ptr actor_shared(actor);
 
 	active_scene_->spawn_actor(actor_shared, position, rotation, scale);
-	//spawn_actor(actor_shared, position, rotation, scale);
 
 	return actor_shared;
 }
@@ -120,7 +119,6 @@ void adlScene_manager::spawn_light(const std::string& light_name, adlVec3 positi
 	adlPoint_light* light = (adlPoint_light*)factory->construct_light(light_name);
 	adlPoint_light_shared_ptr shared_light(light);
 
-	//add_point_light_scene(shared_light);
 	active_scene_->spawn_point_light(shared_light, position, rotation, scale);
 }
 

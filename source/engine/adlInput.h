@@ -33,6 +33,8 @@ public:
 
 	bool close_button_pressed();
 
+	bool has_focus();
+
 	struct Mouse_state
 	{
 		int x;
@@ -59,6 +61,9 @@ private:
 	Mouse_state prev_mouse_state_ = {};
 
 	bool close_button_ = false;
+
+	bool has_focus_ = false;
+	bool prev_has_focus_ = false;
 
 	adlInput();
 };

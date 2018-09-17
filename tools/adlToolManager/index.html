@@ -4,23 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/style.css" />
     <title>adl Tool Manager</title>
 </head>
 <body>
     <h2>adl Tool Manager</h2>
     <p>Welcome to adl Server!</p>
     <br>
-    <p>Examples: "GetDirs:../../res", "Tree:../../res", "ReCore:../../res"</p>
-    <br>  
-    <label>Command: </label>
-    <input id="command" type="text" name="commandInput" value="" />
-    <button onclick="SendCommandData()">Send Command(Input) Data</button>
     <br>
-    <button onclick="SendData('GetDirs:../../res')">GetDirs</button>
-    <button onclick="SendData('Tree:../../res')">Tree</button>
-    <button onclick="SendData('ReCore:../../res')">Refresh Core</button>
+    <div class="Tab">
+        <button class="TabLink" onclick="TabManager('Console')">Console</button>
+        <button class="TabLink" onclick="TabManager('dirMan')">Directory Manager</button>
+        <button class="TabLink" onclick="TabManager('resMan')">Resource Manager</button>
+        <button class="TabLink" onclick="TabManager('classor')">Class Creator</button>
+    </div>
+    <div  id="Console" class="TabContent">
+        <p>
+            Examples: 
+            <br>"GetDirs:../../res", "Tree:../../res", 
+            <br>"ReCore:../../res", "Classor:../../source/{engine/game}/className"
+        </p>
+        <label>Command: </label>
+        <input id="command" type="text" name="commandInput" value="" />
+        <button onclick="SendCommandData()">Send Command(Input) Data</button>
+    </div>
+    <div id="dirMan" class="TabContent">
+        <button onclick="SendData('GetDirs:../../res')">GetDirs</button>
+        <button onclick="SendData('Tree:../../res')">Tree</button>
+    </div>
+    <div id="resMan" class="TabContent">
+        <button onclick="SendData('ReCore:../../res')">Refresh Core</button>
+    </div>
+    <div id="classor" class="TabContent">
+        <input id="ClassName" type="text" name="commandInput" placeholder="game/ClassName" value="" />
+        <button onclick="SendData('Classor:../../source/' + document.getElementById('ClassName').value)">Create Class</button>        
+    </div>
     <br>
-    <p id="res">Response</p>
+    <br>
+    <div>
+        <p id="res" style="text-align:left;">Response</p>
+    </div>
 </body>
 <script>
     function Manager(args) {
@@ -52,6 +75,13 @@
             document.getElementById("res").innerHTML = "Look at Browser Console!"; 
             console.log("ReCore:");
             console.log(JSON.stringify(files, RootReplacer, 2));
+        } else if(commands.command == "Classor"){ 
+            delete commands.command;
+
+            console.log(commands);  
+            document.getElementById("res").innerHTML = "";           
+            document.getElementById("res").innerHTML += "C++(.cpp): <br> <pre>" + commands.res.cpp + "</pre><br>";           
+            document.getElementById("res").innerHTML += "Header(.h): <br> <pre>" + commands.res.h + "</pre><br>";           
         } else {
             console.log("----------------------------------------");            
             console.log("args:");            
@@ -60,16 +90,16 @@
         }
     }
     function RootReplacer(key, value) {
-    if (typeof(value) == "string") { // key == "path"
-        value = value.replace(/\\/g, "/"); // Win "\" to "/" 
-        value = value.replace(/..\/..\//g, ""); // Root to res file
-    }
-    if (key  == "name") {  
-        value = value.replace(/\.[^/.]+$/g, "");
-    }
+        if (typeof(value) == "string") { // key == "path"
+            value = value.replace(/\\/g, "/"); // Win "\" to "/" 
+            value = value.replace(/..\/..\//g, ""); // Root to res file
+        }
+        if (key  == "name") {  
+            value = value.replace(/\.[^/.]+$/g, "");
+        }
 
-    return value;
-}
+        return value;
+    }
 
     function SendData(command) {
         var request = new XMLHttpRequest();
@@ -108,6 +138,20 @@
         }
         };
         request.send();
+    }
+
+    // Display functions
+    function TabManager(ManagerId) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("TabContent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("TabLink");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(ManagerId).style.display = "block";
     }
 </script>
 </html>

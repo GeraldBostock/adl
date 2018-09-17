@@ -1,6 +1,7 @@
 var util = require('util');
 var dirMan = require('./modules/DirectoryManager');
 var resMan = require('./modules/ResourceManager');
+var classor = require('./modules/ClassCreator');
 
 module.exports = {
     PostManager: function (arg) {
@@ -39,6 +40,10 @@ module.exports = {
             console.log(CoreJSON);*/
 
             return CoreJSON;      
+        } else if (commands[0] == "Classor") { // Classor:../../source/ -> engine/.. || game/.. ->className
+            var clses = classor.FileCreator(commands[1]);
+
+            return clses;
         } else {
             console.log("Command can't found!");
             return "Commmand can't found!";

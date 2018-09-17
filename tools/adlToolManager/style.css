@@ -1,0 +1,44 @@
+@charset "UTF-8";
+html{
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	background: #ffffff;
+}
+body{
+	width: 90%;
+	height: 90%;
+	margin: 0 auto;
+    background: #ffffff;
+    text-align:center;
+}
+.Tab{
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+.Tab button {
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 15px;
+}
+
+/* Change background color of buttons on hover */
+.Tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.Tab button.active {
+    background-color: #ccc;
+}
+.TabContent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}

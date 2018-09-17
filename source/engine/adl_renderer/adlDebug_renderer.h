@@ -96,15 +96,11 @@ public:
 		return instance;
 	}
 
-	void render();
-
 	void render_sphere(adlVec3 position, adlColor color, float radius);
 	void render_quad_2D(adlVec2_i32 point1, adlVec2_i32 point2, float line_width = 1.0f, adlColor color = adlColor::WHITE);
 	void render_line_2D(adlVec2_i32 point1, adlVec2_i32 point2, float line_width = 1.0f, adlColor color = adlColor::WHITE);
 	void render_box(adlVec3 position, float scale = 1.0f, adlColor color = adlColor::WHITE);
 	void render_line3D(adlVec3 point1, adlVec3 point2, float line_width = 1.0f, adlColor color = adlColor::WHITE);
-
-	void clear_render_queue();
 
 private:
 	adlDebug_renderer();
@@ -112,6 +108,9 @@ private:
 	std::vector<IDebug_renderable*> render_queue_;
 
 	friend class adlRoot;
+
+	void render();
+	void clear_render_queue();
 };
 
 #endif // adl_debug_renderer_h__

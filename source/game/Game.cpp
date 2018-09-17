@@ -139,5 +139,9 @@ bool Game::update(float dt)
 		debug_renderer->render_box(position, 0.01f, adlColor(210, 52, 30));
 	}
 
+	adlSun_shared_ptr sun = scene->get_sun();
+	adlActor_shared_ptr actor = actors[0];
+	debug_renderer->render_line3D(sun->get_position(), actor->get_position(), 2.0f, adlColor::YELLOW);
+
 	return true;
 }

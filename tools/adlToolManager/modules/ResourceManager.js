@@ -17,7 +17,7 @@ CoreRefresher = function (dirFile, coreFile = {}) {
         if (dirFile.hasOwnProperty(item)) {
             const element = dirFile[item];
             
-            if (dirFile.name == "fonts" || dirFile.name == "models" || dirFile.name == "textures") {
+            if (dirFile.name == "fonts" || dirFile.name == "models" || dirFile.name == "textures" || dirFile.name == "scenes") {
                 var propertyName = dirFile.name;
                 var propertyData = element;
 

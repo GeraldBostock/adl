@@ -15,14 +15,6 @@
   ],
   "models": [
     {
-      "name": "House",
-      "path": "res/models/House/House.obj"
-    },
-    {
-      "name": "Landscape",
-      "path": "res/models/Landscape/Landscape.obj"
-    },
-    {
       "name": "AxisArrow",
       "path": "res/models/AxisArrows/AxisArrow/AxisArrow.blend"
     },
@@ -37,6 +29,10 @@
     {
       "name": "Cube",
       "path": "res/models/BasicShapes/Cube/Cube.obj"
+    },
+    {
+      "name": "Icosphere",
+      "path": "res/models/BasicShapes/Icosphere/icosphere.obj"
     },
     {
       "name": "Monkey",
@@ -55,21 +51,55 @@
       "path": "res/models/BasicShapes/Torus/Torus.obj"
     },
     {
+      "name": "Test",
+      "path": "res/models/Debugs/Test/test.obj"
+    },
+    {
+      "name": "testtest",
+      "path": "res/models/Debugs/testtest/test.fbx"
+    },
+    {
       "name": "Tree",
       "path": "res/models/Foliage/Tree/Tree.obj"
     },
-	{
-	  "name": "Test",
-	  "path": "res/models/Test.obj"
-	},
-	{
-	  "name": "rock",
-	  "path": "res/models/rock.obj"
-	},
-	{
-	  "name": "testtest",
-	  "path": "res/models/test.fbx"
-	}
+    {
+      "name": "House",
+      "path": "res/models/Houses/House/House.obj"
+    },
+    {
+      "name": "HugeLandscape",
+      "path": "res/models/Landscapes/HugeLandscape/HugeLandscape.fbx"
+    },
+    {
+      "name": "Landscape",
+      "path": "res/models/Landscapes/Landscape/Landscape.obj"
+    },
+    {
+      "name": "Rock",
+      "path": "res/models/Stones/Rock/rock.obj"
+    }
+  ],
+  "scenes": [
+    {
+      "name": "default_scene",
+      "path": "res/scenes/default_scene.json"
+    },
+    {
+      "name": "hello_scene",
+      "path": "res/scenes/hello_scene.json"
+    },
+    {
+      "name": "Showcase",
+      "path": "res/scenes/Showcase.json"
+    },
+    {
+      "name": "test",
+      "path": "res/scenes/test.json"
+    },
+    {
+      "name": "test_scene",
+      "path": "res/scenes/test_scene.json"
+    }
   ],
   "textures": [
     {
@@ -109,28 +139,10 @@
       "vertex_shader_path": "res/shaders/font_shader.vert",
       "fragment_shader_path": "res/shaders/font_shader.frag"
     },
-	{
-	  "name": "debug_render",
-	  "vertex_shader_path": "res/shaders/debug_render.vert",
-	  "fragment_shader_path": "res/shaders/debug_render.frag"
-	}
-  ],
-  "scenes": [
-	{
-		"name": "default_scene",
-		"path": "res/scenes/default_scene.json"
-	},
-	{
-		"name": "test_scene",
-		"path": "res/scenes/test_scene.json"
-	},
-	{
-		"name": "saved_scene",
-		"path": "res/scenes/test.json"
-	},
-	{
-		"name": "hello_scene",
-		"path": "res/scenes/hello_scene.json"
-	}
+    {
+      "name": "debug_render",
+      "vertex_shader_path": "res/shaders/debug_render.vert",
+      "fragment_shader_path": "res/shaders/debug_render.frag"
+    }
   ]
 }

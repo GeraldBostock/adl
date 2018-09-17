@@ -37,6 +37,8 @@ public:
 
 	std::string serialize_scene(adlScene_shared_ptr scene);
 
+	std::vector<std::string> get_all_scene_names();
+
 private:
 	adlResource_manager();
 	std::string get_core_file_string();

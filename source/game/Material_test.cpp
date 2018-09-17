@@ -27,7 +27,4 @@ void Material_test::init()
 
 void Material_test::update(float dt)
 {
-	adlVec3 rotation = get_rotation();
-	rotation.z += adlMath::deg_to_rad(0.1f * dt);
-	set_rotation(rotation);
 }

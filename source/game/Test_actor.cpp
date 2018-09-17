@@ -16,7 +16,7 @@ Test_actor::~Test_actor()
 void Test_actor::init()
 {
 	adlResource_manager* adl_rm = &adlResource_manager::get();
-	setModel(adl_rm->get_model("rock"));
+	//setModel(adl_rm->get_model("rock"));
 	/*adlMaterial_shared_ptr material = adl_rm->get_material("silver");
 	set_material(material);*/
 

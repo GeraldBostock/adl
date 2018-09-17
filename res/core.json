@@ -65,6 +65,10 @@
 	{
 	  "name": "rock",
 	  "path": "res/models/rock.obj"
+	},
+	{
+	  "name": "testtest",
+	  "path": "res/models/test.fbx"
 	}
   ],
   "textures": [
@@ -123,6 +127,10 @@
 	{
 		"name": "saved_scene",
 		"path": "res/scenes/test.json"
+	},
+	{
+		"name": "hello_scene",
+		"path": "res/scenes/hello_scene.json"
 	}
   ]
 }

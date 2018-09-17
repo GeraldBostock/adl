@@ -411,3 +411,14 @@ std::string adlResource_manager::serialize_scene(adlScene_shared_ptr scene)
 {
 	return scene_saver_.get_serialized_scene(scene);
 }
+
+std::vector<std::string> adlResource_manager::get_all_scene_names()
+{
+	std::vector<std::string> scene_names;
+	for (std::map<std::string, adlScene_shared_ptr>::iterator it = scenes_.begin(); it != scenes_.end(); ++it)
+	{
+		scene_names.push_back(it->first);
+	}
+
+	return scene_names;
+}

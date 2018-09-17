@@ -61,6 +61,7 @@ void adlLoader::process_ai_node(aiNode* node, const aiScene* scene, adlModel_sha
 		aiMaterial* mtl = scene->mMaterials[mesh->mMaterialIndex];
 		if (mtl != nullptr)
 		{
+			adlLogger* logger = &adlLogger::get();
 			aiColor4D diffuse(0.0f, 0.0f, 0.0f, 0.0f);
 			aiGetMaterialColor(mtl, AI_MATKEY_COLOR_DIFFUSE, &diffuse);
 
@@ -78,14 +79,14 @@ void adlLoader::process_ai_node(aiNode* node, const aiScene* scene, adlModel_sha
 			adlVec3 adlDiffuse(diffuse.r, diffuse.g, diffuse.b, 0);
 			adlVec3 adlSpecular(specular.r, specular.g, specular.b, 0);
 
-			material->set_material(adlAmbient, adlDiffuse, adlSpecular, 80);
+			material->set_material(adlAmbient, adlDiffuse, adlSpecular, shine);
 
 			new_mesh->set_material(material);
 		}
 		else
 		{
 			adlMaterial_shared_ptr material = MAKE_SHARED(adlMaterial);
-			material->set_material(adlVec3(1), adlVec3(1), adlVec3(1), 100);
+			material->set_material(adlVec3(0.2f), adlVec3(1), adlVec3(1), 80);
 
 			new_mesh->set_material(material);
 		}

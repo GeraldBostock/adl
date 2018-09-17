@@ -128,7 +128,7 @@ bool Game::update(float dt)
 	for (auto actor : actors)
 	{
 		adlVec3 position = actor->get_position();
-		debug_renderer->debug_render_sphere(position, adlColor::RED, 0.1f);
+		debug_renderer->debug_render_sphere(position, adlColor(210, 52, 30), 0.1f);
 	}
 
 	return true;

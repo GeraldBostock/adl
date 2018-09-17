@@ -18,13 +18,12 @@
 	"actors": [
 		{
 			"type_name": "Test_actor",
-			"name": "Actor_1",
+			"name": "Static_house",
 			"position": [10.0, 1.0, 2.0],
 			"rotation": [0.0, 0.0, 0.0],
 			"scale": [1.0, 1.0, 1.0],
-			"model_name": "Monkey",
-			"material_name": "",
-			"test_data": 53
+			"model_name": "Test",
+			"material_name": ""
 		}
 	],
 	"point_lights": [

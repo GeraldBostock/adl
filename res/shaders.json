@@ -29,6 +29,11 @@
           "name": "font_shader",
           "vertex_shader_path": "res/shaders/font_shader.vert",
           "fragment_shader_path": "res/shaders/font_shader.frag"
+        },
+        {
+          "name": "debug_render",
+          "vertex_shader_path": "res/shaders/debug_render.vert",
+          "fragment_shader_path": "res/shaders/debug_render.frag"
         }
       ]
 }

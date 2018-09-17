@@ -42,6 +42,7 @@ void adlEditor_manager::MainMenu()
 				help_open_ = false;
 				show_demo_window_ = false;
 				spawner_editor_open_ = false;
+				scene_editor_open_ = false;
 			}
 
 			ImGui::EndMenu();
@@ -55,11 +56,6 @@ void adlEditor_manager::MainMenu()
 			{
 				spawner_editor_open_ = !spawner_editor_open_;
 			}
-			if (ImGui::MenuItem("Save", "CTRL+S")) { std::cout << "Saved!" << std::endl; }
-			if (ImGui::MenuItem("Undo", "CTRL+Z")) { std::cout << "Undo!" << std::endl; }
-			if (ImGui::MenuItem("Redo", "CTRL+Y")) { std::cout << "Redo!" << std::endl; }
-
-			if (ImGui::MenuItem("Quit", "ESC")) {}
 
 			ImGui::EndMenu();
 		}		
@@ -75,9 +71,25 @@ void adlEditor_manager::MainMenu()
 			if (ImGui::MenuItem("RTS")) { c->set_camera_type(ct_rts); }
 			if (ImGui::MenuItem("FPS")) { c->set_camera_type(ct_fps); }
 			if (ImGui::MenuItem("Custom")) { c->set_camera_type(ct_custom); }
+			if (ImGui::MenuItem("Camera Activity", "SHIFT+TAB")) { 
+				adlWindow* window = adlWindow::get();
+				scene_manager->get_camera()->toggle_active();
+			}
 
 			ImGui::EndMenu();
 		}
+
+		ImGui::Text("|");
+
+		if (ImGui::BeginMenu("Scenes"))
+		{
+			ImGui::Checkbox("Scene Editor", &scene_editor_open_);
+			if (ImGui::MenuItem("Save Scene", "CTRL+S")) { }
+			if (ImGui::MenuItem("Open Scene", "CTRL+O")) { }
+
+			ImGui::EndMenu();
+		}
+
 		ImGui::EndMainMenuBar();
 	}
 }
@@ -95,6 +107,7 @@ void adlEditor_manager::update()
 		if (main_editor_open_)
 		{
 			window->set_mouse_visible(true);
+			scene_editor_open_ = true;
 		}
 		else
 		{
@@ -105,7 +118,9 @@ void adlEditor_manager::update()
 			help_open_ = false;		
 			show_demo_window_ = false;
 
-			spawner_editor_open_ = false;		
+			spawner_editor_open_ = false;	
+			scene_editor_open_ = false;
+
 		}
 	}
 
@@ -118,6 +133,10 @@ void adlEditor_manager::update()
 		{
 			spawner_editor_open_ = !spawner_editor_open_;
 		}
+		if (input->get_key_down(adl_key_f3))
+		{
+			actor_editor_open_ = !actor_editor_open_;
+		}
 		if (input->get_key(adl_key_left_ctrl) && input->get_key_down(adl_key_q))
 		{
 			entity_editor_open_ = false;
@@ -126,6 +145,12 @@ void adlEditor_manager::update()
 			help_open_ = false;
 			show_demo_window_ = false;
 			spawner_editor_open_ = false;
+			scene_editor_open_ = false;
+		}
+		if (input->get_key(adl_key_left_shift) && input->get_key_down(adl_key_tab))
+		{
+			adlWindow* window = adlWindow::get();
+			scene_manager->get_camera()->toggle_active();
 		}
 
 		// adlEditors
@@ -141,6 +166,10 @@ void adlEditor_manager::update()
 		if (light_editor_open_)
 		{
 			light_editor_->update(scene_manager->get_sun(), scene_manager->get_all_point_lights());
+		}
+		if (scene_editor_open_)
+		{
+			scene_editor_->update();
 		}
 		if (help_open_)
 		{
@@ -180,7 +209,6 @@ void adlEditor_manager::update()
 		}
 	}
 
-	scene_editor_->update();
 }
 
 void adlEditor_manager::clean_up()

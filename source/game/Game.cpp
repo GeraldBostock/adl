@@ -128,8 +128,24 @@ bool Game::update(float dt)
 	for (auto actor : actors)
 	{
 		adlVec3 position = actor->get_position();
-		debug_renderer->debug_render_sphere(position, adlColor(210, 52, 30), 0.1f);
+		debug_renderer->render_sphere(position, adlColor(210, 52, 30), 0.1f);
 	}
+
+	const std::vector<adlPoint_light_shared_ptr> lights = scene->get_all_point_lights();
+	
+	for (auto light : lights)
+	{
+		adlVec3 position = light->get_position();
+		debug_renderer->render_box(position, 0.01f, adlColor(210, 52, 30));
+	}
+
+	adlVec2_i32 mouse_pos = adl_input->get_mouse_pos();
+	debug_renderer->render_quad_2D(adlVec2_i32(640, 360), mouse_pos, 2.5f, adlColor::YELLOW);
+	debug_renderer->render_line_2D(adlVec2_i32(0, 0), mouse_pos, 5.0f, adlColor::GREEN);
+
+	debug_renderer->render_sphere(adlVec3(0.0f, 0.0f, -5.0f), adlColor(210, 52, 30), 0.1f);
+	debug_renderer->render_sphere(adlVec3(10.0f, 0.0f, 0.0f), adlColor(210, 52, 30), 0.1f);
+	debug_renderer->render_line3D(adlVec3(0.0f, 0.0f, -5.0f), adlVec3(10.0f, 0.0f, 0.0f), 5.0f, adlColor::CYAN);
 
 	return true;
 }

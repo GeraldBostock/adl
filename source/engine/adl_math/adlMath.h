@@ -1,6 +1,8 @@
 #ifndef adl_math_h__
 #define adl_math_h__
 
+#include "engine/adlWindow.h"
+
 #define adl_pi 3.1415926535897932f
 #define	adl_two_pi 6.28318530717959f
 #define	adl_half_pi 1.57079632679f
@@ -52,6 +54,18 @@ namespace adlMath
 	static inline float dotp(const adlVec2& v1, const adlVec2& v2)
 	{
 		return v1.x * v2.x + v1.y + v2.y;
+	}
+
+	static inline adlVec2 to_ndc(adlVec2_i32 point)
+	{
+		adlWindow* window = adlWindow::get();
+		int width = window->get_width();
+		int height = window->get_height();
+
+		float x = (2.0f * point.x) / (float)width - 1;
+		float y = (2.0f * point.y) / (float)height - 1;
+
+		return adlVec2(x, -y);
 	}
 
 	static inline adlVec3 crossp(const adlVec3& v1, const adlVec3& v2)

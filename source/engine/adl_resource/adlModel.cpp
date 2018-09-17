@@ -1,5 +1,6 @@
 #include "adlModel.h"
 #include "engine/adl_resource/adlStatic_shader.h"
+#include "engine/adl_renderer/adlDebug_renderer.h"
 
 #include <iostream>
 
@@ -33,7 +34,7 @@ void adlModel::print_vertices()
 	}
 }
 
-void adlModel::draw(adlShader_shared_ptr shader)
+void adlModel::draw(adlShader_shared_ptr shader, adlMat4 transformation_matrix)
 {
 	for (auto mesh : meshes_)
 	{
@@ -84,4 +85,9 @@ void adlModel::set_material(adlMaterial_shared_ptr material)
 std::string adlModel::get_name()
 {
 	return name_;
+}
+
+const std::vector<adlMesh_shared_ptr>& adlModel::get_all_meshes()
+{
+	return meshes_;
 }

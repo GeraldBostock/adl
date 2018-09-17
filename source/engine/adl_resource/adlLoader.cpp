@@ -110,6 +110,10 @@ adlMesh_shared_ptr adlLoader::process_mesh(aiMesh *mesh, const aiScene* scene)
 	std::vector<unsigned int> indices;
 	std::vector<Texture> textures;
 
+	adlVec2 min_max_x(9999.f, -9999.f);
+	adlVec2 min_max_y(9999.f, -9999.f);
+	adlVec2 min_max_z(9999.f, -9999.f);
+
 	for (unsigned int i = 0; i < mesh->mNumVertices; i++)
 	{
 		Vertex vertex;
@@ -122,6 +126,33 @@ adlMesh_shared_ptr adlLoader::process_mesh(aiMesh *mesh, const aiScene* scene)
 			vector.y = mesh->mVertices[i].y;
 			vector.z = mesh->mVertices[i].z;
 			vertex.position = vector;
+
+			if (vector.x < min_max_x.x)
+			{
+				min_max_x.x = vector.x;
+			}
+			if (vector.x > min_max_x.y)
+			{
+				min_max_x.y = vector.x;
+			}
+
+			if (vector.y < min_max_y.x)
+			{
+				min_max_y.x = vector.y;
+			}
+			if (vector.y > min_max_y.y)
+			{
+				min_max_y.y = vector.y;
+			}
+
+			if (vector.z < min_max_z.x)
+			{
+				min_max_z.x = vector.z;
+			}
+			if (vector.z > min_max_z.y)
+			{
+				min_max_z.y = vector.z;
+			}
 		}
 		else
 		{
@@ -165,6 +196,7 @@ adlMesh_shared_ptr adlLoader::process_mesh(aiMesh *mesh, const aiScene* scene)
 	}
 
 	new_mesh->add_vertices(vertices, indices);
+	new_mesh->set_bounding_box(adlBounding_box(min_max_x, min_max_y, min_max_z));
 
 	return new_mesh;
 }
@@ -291,4 +323,9 @@ adlScene_shared_ptr adlLoader::load_scene(const std::string& scene_path)
 	adlScene_shared_ptr scene = scene_loader_.load_scene(scene_path);
 
 	return scene;
+}
+
+void adlLoader::generate_bounding_box(adlVec2 min_max_x, adlVec2 min_max_y, adlVec2 min_max_z)
+{
+
 }

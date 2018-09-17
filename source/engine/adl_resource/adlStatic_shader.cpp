@@ -71,6 +71,8 @@ void adlStatic_shader::get_all_uniform_locations()
 		point_light_linear_locations_[i] = get_uniform_location("point_lights[" + index + "].linear");
 		point_light_quadratic_locations_[i] = get_uniform_location("point_lights[" + index + "].quadratic");
 	}
+
+	switch_location_ = get_uniform_location("switch_");
 }
 
 void adlStatic_shader::load_mvp(const adlMat4& matrix)
@@ -153,4 +155,9 @@ void adlStatic_shader::load_color(adlVec3 color)
 void adlStatic_shader::load_view_matrix(const adlMat4& matrix)
 {
 	load_matrix(view_matrix_location_, matrix);
+}
+
+void adlStatic_shader::load_switch(bool yn)
+{
+	load_bool(switch_location_, yn);
 }

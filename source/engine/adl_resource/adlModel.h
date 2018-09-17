@@ -18,7 +18,9 @@ public:
 	void set_material(adlMaterial_shared_ptr material);
 	std::string get_name();
 
-	void draw(adlShader_shared_ptr shader);
+	void draw(adlShader_shared_ptr shader, adlMat4 transformation_matrix);
+
+	const std::vector<adlMesh_shared_ptr>& get_all_meshes();
 
 private:
 	std::vector<adlMesh_shared_ptr> meshes_;

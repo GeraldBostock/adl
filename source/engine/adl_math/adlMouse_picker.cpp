@@ -42,7 +42,7 @@ void adlMouse_picker::update(adlMat4 projection_matrix, adlMat4 view_matrix)
 			adlVec3 location;
 			location = ray_origin + (ray_direction * t);
 			adlDebug_renderer* debug_renderer = &adlDebug_renderer::get();
-			debug_renderer->debug_render_sphere(location, adlColor::BLUE, 0.25f);
+			debug_renderer->render_sphere(location, adlColor::BLUE, 0.25f);
 		}
 	}
 }

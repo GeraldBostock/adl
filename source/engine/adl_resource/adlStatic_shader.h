@@ -29,6 +29,7 @@ public:
 	void load_light_color(adlVec3 color);
 	void load_color(adlVec3 color);
 	void load_view_matrix(const adlMat4& matrix);
+	void load_switch(bool yn);
 	void load_texture();
 
 protected:
@@ -67,6 +68,8 @@ private:
 	std::vector<int32> point_light_linear_locations_;
 	std::vector<int32> point_light_quadratic_locations_;
 	int32 point_light_count_location_;
+
+	int32 switch_location_;
 
 	/*int32 point_light_position_location_;
 	int32 point_light_ambient_location_;

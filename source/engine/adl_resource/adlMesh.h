@@ -5,6 +5,7 @@
 #include "engine/adl_math/adlMath.h"
 #include "engine/adlShared_types.h"
 #include "engine/adl_resource/adlMaterial.h"
+#include "engine/adl_resource/adlBounding_box.h"
 
 
 #include <vector>
@@ -56,6 +57,16 @@ public:
 	int get_index_count();
 	adlMaterial_shared_ptr get_material();
 
+	void set_bounding_box(adlBounding_box bb)
+	{
+		bounding_box_ = bb;
+	}
+
+	adlBounding_box get_bounding_box()
+	{
+		return bounding_box_;
+	}
+
 private:
 	void load_mesh_to_vao();
 	void store_data_in_attribute_list(int attribute_number, const std::vector<float>& data, int32 stride, int count);
@@ -68,6 +79,7 @@ private:
 
 	adlShader_shared_ptr shader_;
 	adlMaterial_shared_ptr material_;
+	adlBounding_box bounding_box_;
 };
 
 #endif // adl_mesh_h__

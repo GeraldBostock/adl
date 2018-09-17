@@ -322,5 +322,13 @@ adlVec3 adlMat4::transform_to_local(const adlVec3& vector)
 
 adlVec3 adlMat4::transform_to_parent(const adlVec3& vector)
 {
-	return adlVec3(0.0f);
+	adlVec3 padded_vector = vector;
+	padded_vector.w = 1.0f;
+
+	float a = (padded_vector.x * vectors.a.x) + (padded_vector.y * vectors.b.x) + (padded_vector.z * vectors.c.x) + (padded_vector.w * vectors.d.x);
+	float b = (padded_vector.x * vectors.a.y) + (padded_vector.y * vectors.b.y) + (padded_vector.z * vectors.c.y) + (padded_vector.w * vectors.d.y);
+	float c = (padded_vector.x * vectors.a.z) + (padded_vector.y * vectors.b.z) + (padded_vector.z * vectors.c.z) + (padded_vector.w * vectors.d.z);
+	float d = (padded_vector.x * vectors.a.w) + (padded_vector.y * vectors.b.w) + (padded_vector.z * vectors.c.w) + (padded_vector.w * vectors.d.w);
+
+	return adlVec4(a, b, c, d);
 }

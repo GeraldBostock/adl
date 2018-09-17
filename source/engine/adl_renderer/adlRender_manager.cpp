@@ -7,6 +7,7 @@
 #include "engine/adl_resource/adlMaterial.h"
 #include "engine/adl_resource/adlTexture.h"
 #include "engine/adlWindow.h"
+#include "engine/adl_renderer/adlDebug_renderer.h"
 
 #include <iostream>
 #include <GL/glew.h>
@@ -68,11 +69,31 @@ void adlRender_manager::render(adlActor_shared_ptr actor)
 	shader->start();
 
 	adlMat4 mvp_matrix = projection_matrix_ * view_matrix * actor->get_transform().get_transformation_matrix();
+	adlMat4 model_matrix = actor->get_transform().get_transformation_matrix();
 	shader->load_mvp(mvp_matrix);
 	shader->load_light(sun_);
-	shader->load_model_matrix(actor->get_transform().get_transformation_matrix());
+	shader->load_model_matrix(model_matrix);
 	shader->load_camera_position(camera_->get_position());
 	shader->load_point_lights(lights_);
+
+	const std::vector<adlMesh_shared_ptr> meshes = model->get_all_meshes();
+	for (auto mesh : meshes)
+	{
+		adlBounding_box bb = mesh->get_bounding_box();
+		adlDebug_renderer* dr = &adlDebug_renderer::get();
+		adlVec3 position = model_matrix * bb.up_left_back();
+
+		dr->render_sphere(model_matrix.transform_to_parent(bb.up_left_back()), adlColor::MAGENTA, 0.02f);
+		dr->render_sphere(model_matrix.transform_to_parent(bb.up_left_front()), adlColor::MAGENTA, 0.02f);
+		dr->render_sphere(model_matrix.transform_to_parent(bb.up_right_back()), adlColor::MAGENTA, 0.02f);
+		dr->render_sphere(model_matrix.transform_to_parent(bb.up_right_front()), adlColor::MAGENTA, 0.02f);
+
+		dr->render_sphere(model_matrix.transform_to_parent(bb.bottom_left_back()), adlColor::MAGENTA, 0.02f);
+		dr->render_sphere(model_matrix.transform_to_parent(bb.bottom_left_front()), adlColor::MAGENTA, 0.02f);
+		dr->render_sphere(model_matrix.transform_to_parent(bb.bottom_right_back()), adlColor::MAGENTA, 0.02f);
+		dr->render_sphere(model_matrix.transform_to_parent(bb.bottom_right_front()), adlColor::MAGENTA, 0.02f);
+	}
+
 
 	if (material != nullptr)
 	{
@@ -87,7 +108,7 @@ void adlRender_manager::render(adlActor_shared_ptr actor)
 			glBindTexture(GL_TEXTURE_2D, material->get_texture()->get_specular_map_id());
 		}
 	}
-	model->draw(shader);
+	model->draw(shader, model_matrix);
 	shader->stop();
 }
 
@@ -107,7 +128,7 @@ void adlRender_manager::render(adlSun_shared_ptr light)
 	shader->load_light_color(light->get_color().to_vec3());
 	//shader->load_light_color(light_->get_color().to_vec3());
 
-	model->draw(shader);
+	model->draw(shader, light->get_transform().get_transformation_matrix());
 	shader->stop();
 }
 
@@ -126,7 +147,7 @@ void adlRender_manager::render(adlPoint_light_shared_ptr point_light)
 	shader->load_mvp(mvp_matrix);
 	shader->load_light_color(point_light->get_diffuse().normalize());
 
-	model->draw(shader);
+	model->draw(shader, point_light->get_transform().get_transformation_matrix());
 	shader->stop();
 }
 

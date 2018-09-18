@@ -41,7 +41,7 @@ module.exports = {
 
             return CoreJSON;      
         } else if (commands[0] == "Classor") { // Classor:../../source/ -> engine/.. || game/.. ->className
-            var clses = classor.FileCreator(commands[1]);
+            var clses = classor.FileCreator(commands[1], commands[2]);
 
             return clses;
         } else {

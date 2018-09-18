@@ -67,6 +67,10 @@
       "path": "res/models/Houses/House/House.obj"
     },
     {
+      "name": "Human",
+      "path": "res/models/Humans/Human/Human.fbx"
+    },
+    {
       "name": "HugeLandscape",
       "path": "res/models/Landscapes/HugeLandscape/HugeLandscape.fbx"
     },

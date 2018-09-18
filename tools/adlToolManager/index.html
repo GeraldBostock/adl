@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/src/style.css" />
     <title>adl Tool Manager</title>
 </head>
 <body>
@@ -36,8 +36,20 @@
         <button onclick="SendData('ReCore:../../res')">Refresh Core</button>
     </div>
     <div id="classor" class="TabContent">
-        <input id="ClassName" type="text" name="commandInput" placeholder="game/ClassName" value="" />
-        <button onclick="SendData('Classor:../../source/' + document.getElementById('ClassName').value)">Create Class</button>        
+        Game? <input type="checkbox" name="pathGame" id="pathGame" checked>
+        <br>
+        <select name="ClassFormat" id="ClassFormat" onchange="ClassOptionsController()">
+                <option value="isEntity">Entity</option>
+                <option value="isCpp">C++</option>
+        </select>
+        <br>
+        <div id="ClassOptions">
+            Class Register? <input type="checkbox" name="ClassRegister" id="ClassRegister" checked><br>
+            Class Deserialize? <input type="checkbox" name="ClassDeserialize" id="ClassDeserialize" checked><br>
+        </div>
+        Parent: <input id="ClassParent" type="text" name="commandInput" placeholder="ClassParent" value="adlActor" /><br>
+        <input id="ClassName" type="text" name="commandInput" placeholder="ClassName" value="" />
+        <button onclick="Classor()">Create Class</button>        
     </div>
     <br>
     <br>
@@ -89,69 +101,38 @@
             console.log("----------------------------------------");            
         }
     }
-    function RootReplacer(key, value) {
-        if (typeof(value) == "string") { // key == "path"
-            value = value.replace(/\\/g, "/"); // Win "\" to "/" 
-            value = value.replace(/..\/..\//g, ""); // Root to res file
-        }
-        if (key  == "name") {  
-            value = value.replace(/\.[^/.]+$/g, "");
-        }
 
-        return value;
+    function Classor() {
+        var options = 
+            document.getElementById('ClassFormat').value + ","
+            + document.getElementById('ClassRegister').checked + ","
+            + document.getElementById('ClassDeserialize').checked + ","
+            + document.getElementById('ClassParent').value;
+        
+        var cPath = document.getElementById("pathGame").checked?'game/':'engine/';
+        console.log(cPath);
+
+
+        var commands = 'Classor:../../source/' + cPath + document.getElementById('ClassName').value + ':' + options
+        console.log(commands);
+        
+        SendData(commands);
     }
 
-    function SendData(command) {
-        var request = new XMLHttpRequest();
-        request.open('POST', '/', true);
-        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-        request.onload = function() {
-            if (request.status >= 200 && request.status < 400) {
-                Manager(this.responseText);
-            }
-        };
-
-        request.send(command);
-    }    
-    
-    function SendCommandData() {
-        var request = new XMLHttpRequest();
-        request.open('POST', '/', true);
-        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-        request.onload = function() {
-            if (request.status >= 200 && request.status < 400) {
-                Manager(this.responseText);
-            }
-        };
-        var command = document.getElementById("command").value;
-
-        request.send(command);
-    }
-
-    function GetFile() {
-        var request = new XMLHttpRequest();
-        request.open('GET', '/', true);
-
-        request.onload = function() {
-        if (request.status >= 200 && request.status < 400) {
-            document.getElementById("res").innerHTML = this.responseText;
+    //Display
+    function ClassOptionsController() {
+        var cFormat = document.getElementById('ClassFormat');
+        if(cFormat.value == 'isCpp'){
+            document.getElementById('ClassOptions').hidden = true;
+            document.getElementById('ClassRegister').checked = false;
+            document.getElementById('ClassDeserialize').checked = false;
+            document.getElementById('ClassParent').value = "";            
+        }else{
+            document.getElementById('ClassOptions').hidden = false;
+            document.getElementById('ClassRegister').checked = true;
+            document.getElementById('ClassDeserialize').checked = true;
         }
-        };
-        request.send();
-    }
-
-    // Display functions
-    function TabManager(ManagerId) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("TabContent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("TabLink");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(ManagerId).style.display = "block";
     }
 </script>
+<script src="src/index.js"></script>
 </html>

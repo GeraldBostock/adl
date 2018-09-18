@@ -5,6 +5,10 @@
 #include "engine/adl_entities/adlSun.h"
 #include "engine/adl_entities/adlEntity_factory.h"
 
+#include "game/Human.h"
+#include "game/Interfaces/IMovementBehaviour.h"
+
+
 Game::Game()
 {
 
@@ -14,6 +18,9 @@ Game::~Game()
 {
 
 }
+
+adlActor_shared_ptr human = MAKE_SHARED(Human);
+
 
 bool Game::init()
 {
@@ -26,14 +33,19 @@ bool Game::init()
 	Material_new_test new_test;
 	Material_test test;
 
-	adlActor_shared_ptr landscape = MAKE_SHARED(Test_actor);
-	adl_scene_manager->addToScene(landscape);
-	landscape->set_position(adlVec3(0, -15, 20));
-	landscape->setModel(adl_rm->getModel("Landscape"));
-	landscape->set_name("Landscape");
+	//adlActor_shared_ptr landscape = MAKE_SHARED(Test_actor);
+	//adl_scene_manager->addToScene(landscape);
+	//landscape->set_position(adlVec3(0, -15, 0));
+	//landscape->setModel(adl_rm->getModel("Landscape"));
+	//landscape->set_name("Landscape");
+
+	adl_scene_manager->addToScene(human);
+	human->setModel(adl_rm->getModel("Human"));
+
 
 	//adlActor_shared_ptr material_actor = MAKE_SHARED(Material_test);
 	//adl_scene_manager->addToScene(material_actor);
+
 
 	//adlActor_shared_ptr axisArrow = MAKE_SHARED(adlActor);
 	//adl_scene_manager->addToScene(axisArrow);
@@ -63,16 +75,18 @@ bool Game::init()
 	//adl_scene_manager->addToScene(wuson);
 
 	adlSun_shared_ptr sun = MAKE_SHARED(adlSun);
+	sun->set_position(adlVec3(0, 20, 20));
 	adl_scene_manager->setSun(sun);
 
 	adlPoint_light_shared_ptr point_light = MAKE_SHARED(adlPoint_light);
 	adl_scene_manager->addPointLightToScene(point_light);
+	point_light->set_position(adlVec3(0, 10, 20));
 	point_light->set_name("Light_#1");
 
-	adlPoint_light_shared_ptr second_light = MAKE_SHARED(adlPoint_light);
-	adl_scene_manager->addPointLightToScene(second_light);
-	second_light->set_position(adlVec3(0, 0, 20));
-	second_light->set_name("Light_#2");
+	//adlPoint_light_shared_ptr second_light = MAKE_SHARED(adlPoint_light);
+	//adl_scene_manager->addPointLightToScene(second_light);
+	//second_light->set_position(adlVec3(0, 10, 20));
+	//second_light->set_name("Light_#2");
 
 	//for (int i = 0; i < 20; i++)
 	//{
@@ -101,11 +115,28 @@ bool Game::init()
 	scene->set_sun(sun);
 	scene->set_camera(camera);
 	scene->spawn_point_light(point_light);
-	scene->spawn_point_light(second_light);
-	scene->spawn_actor(landscape);
+	//scene->spawn_point_light(second_light);
+	//scene->spawn_actor(landscape);
+	scene->spawn_actor(human);
 	
-	adlScene_shared_ptr default_scene = adl_rm->get_scene("default_scene");
-	adl_scene_manager->set_active_scene(default_scene);
+	human->set_position(adlVec3(0, 3, -4));
+	human->setRotation(adlVec3(-90, 0, 0));
+
+
+	std::shared_ptr<Human> h =
+		std::dynamic_pointer_cast<Human> (human);
+	
+	WalkMovement walker;
+	RunMovement runner;
+
+	h->SetMovementBehaviour(&walker);
+	h->MoveTo();
+
+	h->SetMovementBehaviour(&runner);
+	h->MoveTo();
+
+	//adlScene_shared_ptr default_scene = adl_rm->get_scene("default_scene");
+	//adl_scene_manager->set_active_scene(default_scene);
 
 	return true;
 }

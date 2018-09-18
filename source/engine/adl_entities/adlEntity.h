@@ -16,10 +16,16 @@ public:
 	virtual void update(float dt);
 
 	unsigned int get_id();
+	unsigned int getId();
+
 	const std::string& get_name();
+	const std::string& getName();
+
 	void set_name(const std::string& name);
+	void setName(const std::string& name);
 
 	const std::string& get_type_name();
+	const std::string& getTypeName();
 
 	virtual void deserialize(const rapidjson::Value& json_object);
 

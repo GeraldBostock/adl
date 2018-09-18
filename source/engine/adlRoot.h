@@ -51,8 +51,11 @@ private:
 	adlFPS_manager* fps_manager_;
 
 	bool is_running_;
+	bool rendering_bounding_boxes_ = false;
+
 
 	void game_thread();
+	
 };
 
 

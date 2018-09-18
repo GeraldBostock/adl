@@ -32,6 +32,7 @@ bool Game::init()
 	//adl_scene_manager->addToScene(actor);
 	Material_new_test new_test;
 	Material_test test;
+	Test_actor test_a;
 
 	//adlActor_shared_ptr landscape = MAKE_SHARED(Test_actor);
 	//adl_scene_manager->addToScene(landscape);

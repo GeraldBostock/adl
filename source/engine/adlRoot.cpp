@@ -60,6 +60,16 @@ void adlRoot::run()
 		is_running_ = false;
 	}
 
+	if (adl_input->get_key(adl_key_left_ctrl), adl_input->get_key_down(adl_key_z))
+	{
+		rendering_bounding_boxes_ = !rendering_bounding_boxes_;
+	}
+
+	if (rendering_bounding_boxes_)
+	{
+		debug_renderer->render_bounding_boxes();
+	}
+
 	adl_scene_manager->update(dt);
 	adl_scene_manager->render();
 

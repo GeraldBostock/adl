@@ -76,24 +76,6 @@ void adlRender_manager::render(adlActor_shared_ptr actor)
 	shader->load_camera_position(camera_->get_position());
 	shader->load_point_lights(lights_);
 
-	const std::vector<adlMesh_shared_ptr> meshes = model->get_all_meshes();
-	for (auto mesh : meshes)
-	{
-		adlBounding_box bb = mesh->get_bounding_box();
-		adlDebug_renderer* dr = &adlDebug_renderer::get();
-		adlVec3 position = model_matrix * bb.up_left_back();
-
-		dr->render_sphere(model_matrix.transform_to_parent(bb.up_left_back()), adlColor::MAGENTA, 0.02f);
-		dr->render_sphere(model_matrix.transform_to_parent(bb.up_left_front()), adlColor::MAGENTA, 0.02f);
-		dr->render_sphere(model_matrix.transform_to_parent(bb.up_right_back()), adlColor::MAGENTA, 0.02f);
-		dr->render_sphere(model_matrix.transform_to_parent(bb.up_right_front()), adlColor::MAGENTA, 0.02f);
-
-		dr->render_sphere(model_matrix.transform_to_parent(bb.bottom_left_back()), adlColor::MAGENTA, 0.02f);
-		dr->render_sphere(model_matrix.transform_to_parent(bb.bottom_left_front()), adlColor::MAGENTA, 0.02f);
-		dr->render_sphere(model_matrix.transform_to_parent(bb.bottom_right_back()), adlColor::MAGENTA, 0.02f);
-		dr->render_sphere(model_matrix.transform_to_parent(bb.bottom_right_front()), adlColor::MAGENTA, 0.02f);
-	}
-
 
 	if (material != nullptr)
 	{

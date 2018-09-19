@@ -81,7 +81,19 @@
     {
       "name": "Rock",
       "path": "res/models/Stones/Rock/rock.obj"
-    }
+    },
+	{
+	  "name": "Room",
+	  "path": "res/models/Room/Room.obj"
+	},
+	{
+	  "name": "Knight",
+	  "path": "res/models/Knight/knight.obj"
+	},
+	{
+	  "name": "IronMan",
+	  "path": "res/models/IronMan/IronMan.obj"
+	}
   ],
   "scenes": [
     {
@@ -110,7 +122,12 @@
       "name": "MetalFrame",
       "path": "res/textures/MetalFrame.png",
       "specular_map_path": "res/textures/MetalFrame_Specular.png"
-    }
+    },
+	{
+	  "name": "blank_texture",
+	  "path": "res/textures/default.png",
+	  "specular_map_path": ""
+	}
   ],
   "shaders": [
     {

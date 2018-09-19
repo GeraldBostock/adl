@@ -189,6 +189,16 @@
 			"shine": 96,
 			"shader": "no_texture",
 			"texture": ""
+		},
+		{
+			"name": "blank_material",
+			"ambient": [0.2, 0.2, 0.2],
+			"diffuse": [0.244, 0.016, 0.64],
+			"specular": [0.5, 0.5, 0.5],
+			"shine": 96,
+			"shader": "textured",
+			"texture": "blank_texture"
+			
 		}
 	]
 }

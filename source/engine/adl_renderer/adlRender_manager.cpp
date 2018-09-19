@@ -41,13 +41,17 @@ void adlRender_manager::render(adlActor_shared_ptr actor)
 		color = adlColor::WHITE;
 	}
 	adlModel_shared_ptr model = actor->get_model();
+	adlResource_manager* adl_rm = &adlResource_manager::get();
+	adlMaterial_shared_ptr material = actor->get_material();
+	if (model == nullptr)
+	{
+		material = adl_rm->get_material("blank_material");
+		model = adl_rm->get_model("Cube");
+	}
 	adl_assert(model);
 
 	adlMat4 view_matrix = camera_->get_view_matrix();
 
-	adlResource_manager* adl_rm = &adlResource_manager::get();
-
-	adlMaterial_shared_ptr material = actor->get_material();
 	adlShader_shared_ptr shader;
 	if (material != nullptr)
 	{

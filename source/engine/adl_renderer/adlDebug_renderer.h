@@ -115,6 +115,8 @@ private:
 
 	adlColor bounding_box_color_ = adlColor::MAGENTA;
 	float bounding_box_line_width_ = 1.0f;
+
+	std::vector<float> line_vertices_;
 };
 
 #endif // adl_debug_renderer_h__

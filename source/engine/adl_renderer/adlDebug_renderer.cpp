@@ -237,7 +237,12 @@ void adlDebug_renderer::render_bounding_boxes()
 	for (auto actor : actors)
 	{
 		adlMat4 model_matrix = actor->get_transform().get_transformation_matrix();
-		const std::vector<adlMesh_shared_ptr>& meshes = actor->get_model()->get_all_meshes();
+		adlModel_shared_ptr model = actor->get_model();
+		if (model == nullptr)
+		{
+			continue;
+		}
+		const std::vector<adlMesh_shared_ptr>& meshes = model->get_all_meshes();
 		for (auto mesh : meshes)
 		{
 			adlBounding_box bb = mesh->get_bounding_box();

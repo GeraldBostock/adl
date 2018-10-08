@@ -29,6 +29,10 @@ void adlScene_manager::set_active_scene(adlScene_shared_ptr scene)
 	renderer->set_sun(active_scene_->get_sun());
 	renderer->set_lights(active_scene_->get_all_point_lights());
 	camera_ = scene->get_camera();
+	if (camera_ != nullptr)
+	{
+		camera_->set_paused(true);
+	}
 }
 
 void adlScene_manager::update(float dt)

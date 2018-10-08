@@ -8,7 +8,9 @@
 #include "engine/adl_entities/adlEntity.h"
 
 adlScene::adlScene(const std::string& scene_name)
-	:	scene_name_(scene_name)
+	:	scene_name_(scene_name),
+		sun_(nullptr),
+		camera_(nullptr)
 {
 
 }
@@ -17,7 +19,9 @@ adlScene::adlScene(const std::string& scene_name, std::vector<adlEntity_shared_p
 	:	entities_(entities),
 		actors_(actors),
 		point_lights_(point_lights),
-		scene_name_(scene_name)
+		scene_name_(scene_name),
+		sun_(nullptr),
+		camera_(nullptr)
 {
 }
 

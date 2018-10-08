@@ -45,7 +45,7 @@ void adlRender_manager::render(adlActor_shared_ptr actor)
 	adlMaterial_shared_ptr material = actor->get_material();
 	if (model == nullptr)
 	{
-		material = adl_rm->get_material("blank_material");
+		material = adl_rm->get_material("missing");
 		model = adl_rm->get_model("Cube");
 	}
 	adl_assert(model);

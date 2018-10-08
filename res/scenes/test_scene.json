@@ -18,7 +18,7 @@
 	"actors": [
 		{
 			"type_name": "Test_actor",
-			"name": "Actor_1",
+			"name": "Monkey",
 			"position": [10.0, 1.0, 2.0],
 			"rotation": [0.0, 0.0, 0.0],
 			"scale": [1.0, 1.0, 1.0],
@@ -28,7 +28,7 @@
 		},
 		{
 			"type_name": "Material_new_test",
-			"name": "Actor_4",
+			"name": "Cube",
 			"position": [10.0, 1.0, 0.0],
 			"rotation": [0.0, 0.0, 0.0],
 			"scale": [1.0, 1.0, 1.0],
@@ -37,7 +37,7 @@
 		},
 		{
 			"type_name": "Material_test",
-			"name": "Actor_3",
+			"name": "Torus",
 			"position": [10.0, 1.0, 10.0],
 			"rotation": [0.0, 0.0, 0.0],
 			"scale": [1.0, 1.0, 1.0],
@@ -46,7 +46,7 @@
 		},
 		{
 			"type_name": "Test_actor",
-			"name": "Actor_2",
+			"name": "Plane",
 			"position": [10.0, 1.0, -10.0],
 			"rotation": [0.0, 0.0, 0.0],
 			"scale": [1.0, 1.0, 1.0],

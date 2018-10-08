@@ -61,7 +61,6 @@ void adlLoader::process_ai_node(aiNode* node, const aiScene* scene, adlModel_sha
 		aiMaterial* mtl = scene->mMaterials[mesh->mMaterialIndex];
 		if (mtl != nullptr)
 		{
-			adlLogger* logger = &adlLogger::get();
 			aiColor4D diffuse(0.0f, 0.0f, 0.0f, 0.0f);
 			aiGetMaterialColor(mtl, AI_MATKEY_COLOR_DIFFUSE, &diffuse);
 

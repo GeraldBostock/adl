@@ -353,3 +353,8 @@ void adlCamera::set_camera_type(Camera_type type)
 		pitch_ = -45;
 	}
 }
+
+void adlCamera::set_paused(bool is_active)
+{
+	is_paused_ = is_active;
+}

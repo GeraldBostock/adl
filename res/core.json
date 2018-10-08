@@ -127,6 +127,11 @@
 	  "name": "blank_texture",
 	  "path": "res/textures/default.png",
 	  "specular_map_path": ""
+	},
+	{
+	  "name": "missing_resource",
+	  "path": "res/textures/missing.png",
+	  "specular_map_path": ""
 	}
   ],
   "shaders": [

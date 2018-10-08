@@ -14,13 +14,6 @@ adlMouse_picker::adlMouse_picker()
 
 void adlMouse_picker::update(adlMat4 projection_matrix, adlMat4 view_matrix)
 {
-	adlLogger* logger = &adlLogger::get();
-
-	adlWindow* window = adlWindow::get();
-	int width = window->get_width();
-	int height = window->get_height();
-	float aspect_ratio = (float)width / (float)height;
-
 	projection_matrix_ = projection_matrix;
 	view_matrix_ = view_matrix;
 	view_matrix_.vectors.d = adlVec4(0, 0, 0, 1);

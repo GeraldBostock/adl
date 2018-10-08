@@ -60,7 +60,11 @@ adlMaterial_shared_ptr adlActor::get_material() const
 void adlActor::set_material(adlMaterial_shared_ptr material)
 {
 	material_ = material;
-	model_->set_material(material);
+	adl_assert(model_ != nullptr);
+	if (model_ != nullptr)
+	{
+		model_->set_material(material);
+	}
 }
 
 void adlActor::set_position(adlVec3 position)

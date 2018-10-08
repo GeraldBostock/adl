@@ -23,6 +23,7 @@ public:
 	void look_at(adlVec3 target, adlVec3 up_vector);
 
 	void toggle_active();
+	void set_paused(bool is_active);
 
 	adlMat4 get_view_matrix();
 

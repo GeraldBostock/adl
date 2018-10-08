@@ -72,7 +72,6 @@ void adlEditor_manager::MainMenu()
 			if (ImGui::MenuItem("FPS")) { c->set_camera_type(ct_fps); }
 			if (ImGui::MenuItem("Custom")) { c->set_camera_type(ct_custom); }
 			if (ImGui::MenuItem("Camera Activity", "SHIFT+TAB")) { 
-				adlWindow* window = adlWindow::get();
 				scene_manager->get_camera()->toggle_active();
 			}
 
@@ -149,7 +148,6 @@ void adlEditor_manager::update()
 		}
 		if (input->get_key(adl_key_left_shift) && input->get_key_down(adl_key_tab))
 		{
-			adlWindow* window = adlWindow::get();
 			scene_manager->get_camera()->toggle_active();
 		}
 

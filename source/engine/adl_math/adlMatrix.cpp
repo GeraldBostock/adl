@@ -332,3 +332,8 @@ adlVec3 adlMat4::transform_to_parent(const adlVec3& vector)
 
 	return adlVec4(a, b, c, d);
 }
+
+adlMat3 adlMat4::to_mat3()
+{
+	return adlMat3(adlVec3(vectors.a.x, vectors.a.y, vectors.a.z), adlVec3(vectors.b.x, vectors.b.y, vectors.b.z), adlVec3(vectors.c.x, vectors.c.y, vectors.c.z));
+}

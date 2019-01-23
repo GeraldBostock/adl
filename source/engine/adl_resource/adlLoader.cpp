@@ -7,6 +7,7 @@
 #include "adlTerrain.h"
 #include "engine/adl_debug/adlLogger.h"
 #include "engine/adl_resource/adlStatic_shader.h"
+#include "adlCube_map.h"
 
 #include "engine/adl_renderer/adlRender_manager.h"
 #include "engine/adlScene_manager.h"
@@ -280,7 +281,10 @@ adlTexture_shared_ptr adlLoader::load_texture(const std::pair<std::string, std::
 	adlTexture_shared_ptr texture = MAKE_SHARED(adlTexture);
 
 	load_texture_from_file(texture->get_id(), texture_paths.first);
-	load_texture_from_file(texture->get_specular_map_id(), texture_paths.second);
+	if (!texture_paths.second.empty())
+	{
+		load_texture_from_file(texture->get_specular_map_id(), texture_paths.second);
+	}
 
 	return texture;
 }
@@ -319,7 +323,7 @@ void adlLoader::load_texture_from_file(unsigned int texture_id, const std::strin
 	}
 	else
 	{
-		logger->log_error("Failed to load diffuse texture at " + file_path);
+		logger->log_error("Failed to load texture at " + file_path);
 	}
 
 	stbi_image_free(data);
@@ -440,6 +444,40 @@ adlTerrain_shared_ptr adlLoader::load_terrain(const std::string& terrain_path, c
 	adlTerrain_shared_ptr terrain = MAKE_SHARED(adlTerrain, vertices, indices, terrain_name, faces, face_normals);
 
 	return terrain;
+}
+
+adlCube_map_shared_ptr adlLoader::load_cube_map(const std::vector<std::string>& faces)
+{
+	adlLogger* logger = &adlLogger::get();
+
+	adlCube_map_shared_ptr cube_map = MAKE_SHARED(adlCube_map);
+
+	glBindTexture(GL_TEXTURE_CUBE_MAP, cube_map->get_id());
+
+	int width, height, nrChannels;
+	for (unsigned int i = 0; i < faces.size(); i++)
+	{
+		unsigned char *data = stbi_load(faces[i].c_str(), &width, &height, &nrChannels, 0);
+		if (data)
+		{
+			glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+			stbi_image_free(data);
+		}
+		else
+		{
+			logger->log_error("Cube map texture failed to load at path: " + faces[i]);
+			stbi_image_free(data);
+
+			return nullptr;
+		}
+	}
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+
+	return cube_map;
 }
 
 void adlLoader::generate_bounding_box(adlVec2 min_max_x, adlVec2 min_max_y, adlVec2 min_max_z)

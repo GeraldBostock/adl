@@ -16,7 +16,7 @@ adlShader_program::~adlShader_program()
 void adlShader_program::init(const std::string& vertex_file_path, const std::string& fragment_file_path)
 {
 	adlLogger* adl_logger = &adlLogger::get();
-	adl_logger->log_info("Compiling shader");
+	adl_logger->log_info("Compiling shaders at " + vertex_file_path + " and " + fragment_file_path);
 	vertex_shader_id_ = load_shader(vertex_file_path, GL_VERTEX_SHADER);
 	fragment_shader_id_ = load_shader(fragment_file_path, GL_FRAGMENT_SHADER);
 

@@ -49,6 +49,10 @@ adlResource_manager::adlResource_manager()
 	const rapidjson::Value& terrain_objects = document["terrains"];
 	adl_assert(terrain_objects.IsArray());
 	initialize_terrains(terrain_objects);
+
+	const rapidjson::Value& cube_map_objects = document["cube_maps"];
+	adl_assert(cube_map_objects.IsArray());
+	initialize_cube_maps(cube_map_objects);
 }
 
 std::string adlResource_manager::get_core_file_string()
@@ -288,7 +292,7 @@ adlTerrain_shared_ptr adlResource_manager::get_terrain(const std::string& name)
 		return terrains_[name];
 	}
 
-	if (name_to_terrain_path_.empty())
+	if (name_to_terrain_path_[name].empty())
 	{
 		adl_logger->log_error("Terrain " + name + " could not be found.");
 		return nullptr;
@@ -302,6 +306,33 @@ adlTerrain_shared_ptr adlResource_manager::get_terrain(const std::string& name)
 			
 			terrains_[name] = terrain;
 			return terrain;
+		}
+	}
+}
+
+adlCube_map_shared_ptr adlResource_manager::get_cube_map(const std::string& name)
+{
+	adlLogger* adl_logger = &adlLogger::get();
+
+	if (cube_maps_[name] != nullptr)
+	{
+		return cube_maps_[name];
+	}
+
+	if (name_to_cubemap_path_[name].empty())
+	{
+		adl_logger->log_error("Cube map " + name + " could not be found.");
+		return nullptr;
+	}
+	else
+	{
+		if (cube_maps_[name] == nullptr)
+		{
+			adl_logger->log_info("Loading cube map " + name);
+			adlCube_map_shared_ptr cube_map = loader_.load_cube_map(name_to_cubemap_path_[name]);
+
+			cube_maps_[name] = cube_map;
+			return cube_map;
 		}
 	}
 }
@@ -445,6 +476,41 @@ void adlResource_manager::initialize_terrains(const rapidjson::Value& terrains)
 
 		name_to_terrain_path_[terrain_name] = height_map_path;
 		terrains_[terrain_name] = nullptr;
+	}
+}
+
+void adlResource_manager::initialize_cube_maps(const rapidjson::Value& cube_maps)
+{
+	for (rapidjson::Value::ConstValueIterator itr = cube_maps.Begin(); itr != cube_maps.End(); ++itr)
+	{
+		const rapidjson::Value& cube_map_object = *itr;
+		adl_assert(cube_map_object.IsObject());
+		
+		const std::string prefix = "res/skyboxes/";
+
+		std::string cube_map_name = cube_map_object["name"].GetString();
+
+		std::string right = prefix + cube_map_object["right"].GetString();
+		std::string left = prefix + cube_map_object["left"].GetString();
+
+		std::string top = prefix + cube_map_object["top"].GetString();
+		std::string bottom = prefix + cube_map_object["bottom"].GetString();
+
+		std::string back = prefix + cube_map_object["back"].GetString();
+		std::string front = prefix + cube_map_object["front"].GetString();
+
+		std::vector<std::string> faces;
+		faces.push_back(right);
+		faces.push_back(left);
+
+		faces.push_back(top);
+		faces.push_back(bottom);
+
+		faces.push_back(back);
+		faces.push_back(front);
+
+		name_to_cubemap_path_[cube_map_name] = faces;
+		cube_maps_[cube_map_name] = nullptr;
 	}
 }
 

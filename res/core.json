@@ -182,7 +182,12 @@
       "name": "debug_render",
       "vertex_shader_path": "res/shaders/debug_render.vert",
       "fragment_shader_path": "res/shaders/debug_render.frag"
-    }
+    },
+	{
+	  "name": "skybox_shader",
+	  "vertex_shader_path": "res/shaders/skybox_shader.vert",
+	  "fragment_shader_path": "res/shaders/skybox_shader.frag"
+	}
   ],
   "terrains": [
 	{
@@ -192,6 +197,17 @@
 	{
 		"name": "test",
 		"height_map": "res/terrains/snaeT.pngl"
+	}
+  ],
+  "cube_maps": [
+    {
+	  "name": "default",
+	  "right": "default/right.png",
+	  "left": "default/left.png",
+	  "top": "default/top.png",
+	  "bottom": "default/bottom.png",
+	  "back": "default/back.png",
+	  "front": "default/front.png"
 	}
   ]
 }

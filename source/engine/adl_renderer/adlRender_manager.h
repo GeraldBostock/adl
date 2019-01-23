@@ -23,6 +23,7 @@ public:
 	void render(adlSun_shared_ptr light);
 	void render(adlPoint_light_shared_ptr point_light);
 	void render(adlTerrain_shared_ptr terrain);
+	void render(adlCube_map_shared_ptr cube_map);
 	void render_text(const std::string& text, adlFont_shared_ptr font, float x, float y, float scale, adlColor color);
 	void toggle_wire_frame_mode();
 

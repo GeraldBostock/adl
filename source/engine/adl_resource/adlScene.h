@@ -22,10 +22,12 @@ public:
 	void set_sun(adlSun_shared_ptr sun);
 	void set_camera(adlCamera* camera);
 	void set_terrain(adlTerrain_shared_ptr terrain);
+	void set_cube_map(adlCube_map_shared_ptr cube_map);
 
 	adlCamera* get_camera();
 	adlSun_shared_ptr get_sun();
 	adlTerrain_shared_ptr get_terrain();
+	adlCube_map_shared_ptr get_cube_map();
 	std::vector<adlEntity_shared_ptr>& get_all_entities();
 	std::vector<adlActor_shared_ptr>& get_all_actors();
 	std::vector<adlPoint_light_shared_ptr>& get_all_point_lights();
@@ -43,6 +45,7 @@ private:
 	adlSun_shared_ptr sun_;
 	adlCamera* camera_;
 	adlTerrain_shared_ptr terrain_;
+	adlCube_map_shared_ptr cube_map_;
 };
 
 #endif // adl_scene_h__

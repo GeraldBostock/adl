@@ -12,7 +12,8 @@ adlScene::adlScene(const std::string& scene_name)
 	:	scene_name_(scene_name),
 		sun_(nullptr),
 		camera_(nullptr),
-		terrain_(nullptr)
+		terrain_(nullptr),
+		cube_map_(nullptr)
 {
 
 }
@@ -24,7 +25,8 @@ adlScene::adlScene(const std::string& scene_name, std::vector<adlEntity_shared_p
 		scene_name_(scene_name),
 		sun_(nullptr),
 		camera_(nullptr),
-		terrain_(nullptr)
+		terrain_(nullptr),
+		cube_map_(nullptr)
 {
 }
 
@@ -59,6 +61,8 @@ void adlScene::render()
 	adlRender_manager* renderer = &adlRender_manager::get();
 	renderer->set_lights(point_lights_);
 	renderer->set_camera(camera_);
+
+	renderer->render(cube_map_);
 
 	for (auto actor : actors_)
 	{
@@ -114,6 +118,11 @@ void adlScene::set_terrain(adlTerrain_shared_ptr terrain)
 	terrain_ = terrain;
 }
 
+void adlScene::set_cube_map(adlCube_map_shared_ptr cube_map)
+{
+	cube_map_ = cube_map;
+}
+
 adlCamera* adlScene::get_camera()
 {
 	return camera_;
@@ -122,6 +131,11 @@ adlCamera* adlScene::get_camera()
 adlSun_shared_ptr adlScene::get_sun()
 {
 	return sun_;
+}
+
+adlCube_map_shared_ptr adlScene::get_cube_map()
+{
+	return cube_map_;
 }
 
 std::vector<adlEntity_shared_ptr>& adlScene::get_all_entities()

@@ -7,6 +7,7 @@
 #include "engine/adl_resource/adlMaterial.h"
 #include "engine/adl_resource/adlTexture.h"
 #include "engine/adl_resource/adlTerrain.h"
+#include "engine/adl_resource/adlCube_map.h"
 #include "engine/adlWindow.h"
 #include "engine/adl_renderer/adlDebug_renderer.h"
 
@@ -166,6 +167,30 @@ void adlRender_manager::render(adlTerrain_shared_ptr terrain)
 	shader->load_material(adl_rm->get_material("matte"));
 	terrain_model->draw(shader, transform.get_transformation_matrix());
 	shader->stop();
+}
+
+void adlRender_manager::render(adlCube_map_shared_ptr cube_map)
+{
+	adlResource_manager* rm = &adlResource_manager::get();
+	adlShader_shared_ptr skybox_shader = rm->get_shader("skybox_shader");
+
+	adlMat4 view_matrix = adlMat4(camera_->get_view_matrix().to_mat3());
+
+	glDepthMask(GL_FALSE);
+	skybox_shader->start();
+
+	skybox_shader->load_projection_matrix(projection_matrix_);
+	skybox_shader->load_view_matrix(view_matrix);
+	
+	glDisable(GL_CULL_FACE);
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, cube_map->get_id());
+
+	adlModel_shared_ptr cube_model = rm->get_model("Cube");
+
+	cube_model->draw(skybox_shader, adlMat4::identity());
+	glDepthMask(GL_TRUE);
+	glEnable(GL_CULL_FACE);
 }
 
 void adlRender_manager::render_text(const std::string& text, adlFont_shared_ptr font, float x, float y, float scale, adlColor color)

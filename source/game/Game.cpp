@@ -27,6 +27,8 @@ bool Game::init()
 	adlScene_shared_ptr scene = adl_scene_manager->create_empty_scene("new_scene");
 	adl_scene_manager->set_active_scene(scene);
 
+	scene->set_cube_map(adl_rm->get_cube_map("default"));
+
 	Material_new_test new_test;
 	Material_test test;
 	Test_actor test_a;
@@ -48,6 +50,7 @@ bool Game::init()
 		adlActor_shared_ptr multi_actor = MAKE_SHARED(Material_test);
 		adl_scene_manager->spawnActor(multi_actor, adlVec3(i + 1, 0, 0), adlVec3::zero(), adlVec3(0.5f));
 	}
+
 	adlActor_shared_ptr new_actor = MAKE_SHARED(Test_actor);
 	adl_scene_manager->spawnActor(new_actor, adlVec3(0, 0.5f, 0), adlVec3::zero(), adlVec3(0.5f));
 

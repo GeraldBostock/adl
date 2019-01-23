@@ -8,6 +8,7 @@ class adlColor
 public:
 	adlColor();
 	adlColor(float r, float g, float b);
+	adlColor(float rgb) : r_(rgb), g_(rgb), b_(rgb) {}
 	~adlColor();
 
 	adlVec3 to_vec3();

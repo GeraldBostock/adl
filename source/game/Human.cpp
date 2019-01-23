@@ -21,7 +21,6 @@ void Human::init() {
 
 }
 void Human::update(float dt) {
-
 }
 
 

@@ -5,6 +5,7 @@
 #include "engine/adl_renderer/adlColor.h"
 
 #include <vector>
+#include <map>
 
 class IDebug_renderable
 {
@@ -19,6 +20,19 @@ protected:
 	adlColor color_;
 
 private:
+};
+
+class Point_renderable : public IDebug_renderable
+{
+public:
+	Point_renderable(adlVec2_i32 position, adlColor color, float size) : IDebug_renderable(adlVec3(0.0f), color), size_(size), screen_pos_(position) {}
+	~Point_renderable() {}
+
+	void render() override;
+
+private:
+	float size_;
+	adlVec2_i32 screen_pos_;
 };
 
 class Sphere_renderable : public IDebug_renderable
@@ -101,6 +115,7 @@ public:
 	void render_line_2D(adlVec2_i32 point1, adlVec2_i32 point2, float line_width = 1.0f, adlColor color = adlColor::WHITE);
 	void render_box(adlVec3 position, float scale = 1.0f, adlColor color = adlColor::WHITE);
 	void render_line3D(adlVec3 point1, adlVec3 point2, float line_width = 1.0f, adlColor color = adlColor::WHITE);
+	void render_point(adlVec2_i32 point, adlColor color = adlColor::WHITE, float size = 1.0f);
 
 private:
 	adlDebug_renderer();
@@ -117,6 +132,9 @@ private:
 	float bounding_box_line_width_ = 1.0f;
 
 	std::vector<float> line_vertices_;
+
+	std::map<std::pair<adlColor, float>, std::vector<float>> line3Ds_;
+	std::vector<std::pair<adlColor, float>> line3D_keys_;
 };
 
 #endif // adl_debug_renderer_h__

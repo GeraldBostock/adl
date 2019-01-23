@@ -15,6 +15,7 @@ class adlTexture;
 class adlPoint_light;
 class adlSun;
 class adlScene;
+class adlTerrain;
 
 #include <memory>
 
@@ -30,5 +31,6 @@ typedef std::shared_ptr<adlTexture> adlTexture_shared_ptr;
 typedef std::shared_ptr<adlPoint_light> adlPoint_light_shared_ptr;
 typedef std::shared_ptr<adlSun> adlSun_shared_ptr;
 typedef std::shared_ptr<adlScene> adlScene_shared_ptr;
+typedef std::shared_ptr<adlTerrain> adlTerrain_shared_ptr;
 
 #endif // adl_shared_types_h__

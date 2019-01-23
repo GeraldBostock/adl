@@ -26,6 +26,7 @@ public:
 	adlFont_shared_ptr load_font(const std::string& font_path);
 	adlTexture_shared_ptr load_texture(const std::pair<std::string, std::string>& texture_paths);
 	adlScene_shared_ptr load_scene(const std::string& scene_path);
+	adlTerrain_shared_ptr load_terrain(const std::string& terrain_path, const std::string& terrain_name);
 private:
 	void process_ai_node(aiNode* node, const aiScene* scene, adlModel_shared_ptr model);
 	adlMesh_shared_ptr process_mesh(aiMesh *mesh, const aiScene* scene);

@@ -72,7 +72,7 @@ namespace adlMath
 	{
 		adlVec3 result_vector;
 		result_vector.x = v1.y * v2.z - v1.z * v2.y;
-		result_vector.y = v1.z * v2.x - v1.x * v2.y;
+		result_vector.y = v1.z * v2.x - v1.x * v2.z;
 		result_vector.z = v1.x * v2.y - v1.y * v2.x;
 
 		return result_vector;
@@ -134,6 +134,11 @@ namespace adlMath
 		mat.vectors.c.z = std::cos(radians) + (std::pow(rotation_axis.z, 2) * (1 - std::cos(radians)));
 
 		return mat * vector_to_rotate;
+	}
+
+	static inline float distance_between(const adlVec3& p1, const adlVec3& p2)
+	{
+		return std::sqrtf(std::pow(p1.x - p2.x, 2) + std::pow(p1.y - p2.y, 2) + std::pow(p1.z - p2.z, 2));
 	}
 }
 

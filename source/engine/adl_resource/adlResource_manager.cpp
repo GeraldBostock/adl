@@ -45,6 +45,10 @@ adlResource_manager::adlResource_manager()
 	const rapidjson::Value& scene_objects = document["scenes"];
 	adl_assert(scene_objects.IsArray());
 	initialize_scenes(scene_objects);
+
+	const rapidjson::Value& terrain_objects = document["terrains"];
+	adl_assert(terrain_objects.IsArray());
+	initialize_terrains(terrain_objects);
 }
 
 std::string adlResource_manager::get_core_file_string()
@@ -214,7 +218,7 @@ adlMaterial_shared_ptr adlResource_manager::get_material(const std::string& mate
 	}
 	else if(material->get_shader() == nullptr || material->get_texture() == nullptr)
 	{
-		adl_logger->log_info("Loading material '" + material_name + "'.");
+		//adl_logger->log_info("Loading material '" + material_name + "'.");
 		if (material->get_shader() == nullptr)
 		{
 			material->set_shader(get_shader(material->get_shader_name()));
@@ -271,6 +275,33 @@ adlScene_shared_ptr adlResource_manager::get_scene(const std::string& name)
 		else
 		{
 			return scenes_[name];
+		}
+	}
+}
+
+adlTerrain_shared_ptr adlResource_manager::get_terrain(const std::string& name)
+{
+	adlLogger* adl_logger = &adlLogger::get();
+
+	if (terrains_[name] != nullptr)
+	{
+		return terrains_[name];
+	}
+
+	if (name_to_terrain_path_.empty())
+	{
+		adl_logger->log_error("Terrain " + name + " could not be found.");
+		return nullptr;
+	}
+	else
+	{
+		if (terrains_[name] == nullptr)
+		{
+			adl_logger->log_info("Terrain " + name + " is not loaded yet. Loading terrain.");
+			adlTerrain_shared_ptr terrain = loader_.load_terrain(name_to_terrain_path_[name], name);
+			
+			terrains_[name] = terrain;
+			return terrain;
 		}
 	}
 }
@@ -399,6 +430,21 @@ void adlResource_manager::initialize_scenes(const rapidjson::Value& scenes)
 		std::string scene_name = scene_object["name"].GetString();
 		name_to_scene_path_[scene_name] = scene_object["path"].GetString();
 		scenes_[scene_name] = nullptr;
+	}
+}
+
+void adlResource_manager::initialize_terrains(const rapidjson::Value& terrains)
+{
+	for (rapidjson::Value::ConstValueIterator itr = terrains.Begin(); itr != terrains.End(); ++itr)
+	{
+		const rapidjson::Value& terrain_object = *itr;
+		adl_assert(terrain_object.IsObject());
+
+		std::string terrain_name = terrain_object["name"].GetString();
+		std::string height_map_path = terrain_object["height_map"].GetString();
+
+		name_to_terrain_path_[terrain_name] = height_map_path;
+		terrains_[terrain_name] = nullptr;
 	}
 }
 

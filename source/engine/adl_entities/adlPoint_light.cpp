@@ -37,27 +37,6 @@ void adlPoint_light::init()
 
 void adlPoint_light::update(float dt)
 {
-	adlInput* input = &adlInput::get();
-	adlVec3 position = get_position();
-
-	if (input->get_key(adl_key_up))
-	{
-		position.z -= dt * 0.01f;
-	}
-	if (input->get_key(adl_key_down))
-	{
-		position.z += dt * 0.01f;
-	}
-	if (input->get_key(adl_key_right))
-	{
-		position.x += dt * 0.01f;
-	}
-	if (input->get_key(adl_key_left))
-	{
-		position.x -= dt * 0.01f;
-	}
-
-	set_position(position);
 }
 
 void adlPoint_light::set_constant(float constant)

@@ -110,6 +110,7 @@ void adlScene_manager::spawn_actor(adlActor_shared_ptr actor, adlVec3 position, 
 	actor->set_position(position);
 	actor->set_rotation(rotation);
 	actor->set_scale(scale);
+	active_scene_->spawn_actor(actor, position, rotation, scale);
 }
 
 void adlScene_manager::spawnActor(adlActor_shared_ptr actor, adlVec3 position, adlVec3 rotation/* = adlVec3(0.0f)*/, adlVec3 scale/* = adlVec3(1.0f)*/)

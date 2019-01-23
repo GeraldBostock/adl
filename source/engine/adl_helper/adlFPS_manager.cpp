@@ -37,6 +37,8 @@ void adlFPS_manager::init()
 
 float adlFPS_manager::enforce_fps()
 {
+	//We maintain array of size FRAME_VALUES, this array stores frame times. These values are used to calculate an average fps.
+	//Otherwise individual fps values can jump all over the place due to the way the OS services the program
 	int frames_index = frame_count_ % FRAME_VALUES;
 
 	frame_end_time_ = (timer_.get_elapsed_micro_seconds()) / 1000.0f;
@@ -47,8 +49,8 @@ float adlFPS_manager::enforce_fps()
 	if (sleep_duration_ > 0.0f)
 	{
 		//Sleep is not precise enough. We are working with microseconds here.
-		//But doing this means cpu is at 100% even when we are far above the fps limit.
-		//Find a better way I suppose?
+		//But doing it this way means cpu is at 100% even when its not doing anything.
+		//Find a better way? ya wanker
 
 		int64 time_to_sleep_in_microseconds = sleep_duration_ * 1000;
 		float now = timer_.get_elapsed_micro_seconds();
@@ -97,6 +99,9 @@ float adlFPS_manager::enforce_fps()
 		}
 	}
 
+	//This 3 here is completely arbitrary. This is supposed to work if we are way over the time limit to complete one frame.
+	//This can happen when program the is in the background for example. We are normalizing it when it happens so it doesnt muddy up
+	//the dataset
 	if (dt > target_frame_duration_ * 3)
 	{
 		dt = target_frame_duration_;

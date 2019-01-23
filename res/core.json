@@ -93,6 +93,14 @@
 	{
 	  "name": "IronMan",
 	  "path": "res/models/IronMan/IronMan.obj"
+	},
+	{
+	  "name": "head",
+	  "path": "res/models/head.obj"
+	},
+	{
+	  "name": "Cat",
+	  "path": "res/models/Cat/cat.obj"
 	}
   ],
   "scenes": [
@@ -132,6 +140,11 @@
 	  "name": "missing_resource",
 	  "path": "res/textures/missing.png",
 	  "specular_map_path": ""
+	},
+	{
+	  "name": "grass",
+	  "path": "res/textures/grass.jpg",
+	  "specular_map_path": ""
 	}
   ],
   "shaders": [
@@ -170,5 +183,15 @@
       "vertex_shader_path": "res/shaders/debug_render.vert",
       "fragment_shader_path": "res/shaders/debug_render.frag"
     }
+  ],
+  "terrains": [
+	{
+		"name": "test_terrain",
+		"height_map": "res/terrains/test_terrain/height_map.png"
+	},
+	{
+		"name": "test",
+		"height_map": "res/terrains/snaeT.pngl"
+	}
   ]
 }

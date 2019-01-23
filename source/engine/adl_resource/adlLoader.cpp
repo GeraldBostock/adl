@@ -4,16 +4,24 @@
 #include "adlModel.h"
 #include "adlFont.h"
 #include "adlTexture.h"
+#include "adlTerrain.h"
 #include "engine/adl_debug/adlLogger.h"
 #include "engine/adl_resource/adlStatic_shader.h"
+
+#include "engine/adl_renderer/adlRender_manager.h"
+#include "engine/adlScene_manager.h"
+#include "engine/adl_renderer/adlDebug_renderer.h"
 
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 
+#include <stdlib.h>
+#include <time.h>  
+
 adlLoader::adlLoader()
 {
-
+	srand(time(NULL));
 }
 
 adlLoader::~adlLoader()
@@ -322,6 +330,116 @@ adlScene_shared_ptr adlLoader::load_scene(const std::string& scene_path)
 	adlScene_shared_ptr scene = scene_loader_.load_scene(scene_path);
 
 	return scene;
+}
+
+adlTerrain_shared_ptr adlLoader::load_terrain(const std::string& terrain_path, const std::string& terrain_name)
+{
+	int width;
+	int height;
+	int color_channels;
+	unsigned char* data = stbi_load(terrain_path.c_str(), &width, &height, &color_channels, 1);
+
+	std::vector<Vertex> vertices;
+
+	for (int i = 0; i < height; i++)
+	{
+		for (int j = 0; j < width; j++)
+		{
+			float y = (float)data[width * (j) + i] / 20.0f;
+			Vertex vertex(adlVec3(width / 2 - j, y, height / 2 - i), adlVec3(0, 1, 0), adlVec2(0, 0));
+			vertices.push_back(vertex);
+		}
+	}
+
+	std::vector<unsigned int> indices;
+	std::vector<adlVec3> faces;
+
+	std::map<unsigned int, std::vector<adlVec3>> vertices_normals;
+
+	for (int i = 0; i < height; i++)
+	{
+		for (int j = 0; j < width; j++)
+		{
+			if (i == height - 1 || j == width - 1)
+			{
+				continue;
+			}
+			int index = width * i + j;
+			indices.push_back(index + 1);
+			indices.push_back(index);
+			indices.push_back(index + width);
+
+			indices.push_back(index + 1);
+			indices.push_back(index + width);
+			indices.push_back(index + width + 1);
+
+			adlVec3 edge1 = vertices[index + width].position - vertices[index].position;
+			adlVec3 edge2 = vertices[index + 1].position - vertices[index].position;
+			adlVec3 normal = adlMath::crossp(edge1, edge2);
+			normal = normal.normalize();
+
+			std::vector<adlVec3> normals = vertices_normals[index + 1];
+			normals.push_back(normal);
+			vertices_normals[index + 1] = normals;
+			/*std::vector<adlVec3> */normals = vertices_normals[index];
+			normals.push_back(normal);
+			vertices_normals[index] = normals;
+			normals = vertices_normals[index + width];
+			normals.push_back(normal);
+			vertices_normals[index + width] = normals;
+
+			normals = vertices_normals[index + 1];
+			normals.push_back(normal);
+			vertices_normals[index + 1] = normals;
+			normals = vertices_normals[index + width];
+			normals.push_back(normal);
+			vertices_normals[index + width] = normals;
+			normals = vertices_normals[index + width + 1];
+			normals.push_back(normal);
+			vertices_normals[index + width + 1] = normals;
+
+			faces.push_back(vertices[index + 1].position);
+			faces.push_back(vertices[index].position);
+			faces.push_back(vertices[index + width].position);
+
+			faces.push_back(vertices[index + 1].position);
+			faces.push_back(vertices[index + width].position);
+			faces.push_back(vertices[index + width + 1].position);
+		}
+	}
+
+	for (unsigned int i = 0; i < vertices.size(); i++)
+	{
+		std::vector<adlVec3> normals = vertices_normals[i];
+		adlVec3 average_normal(0.0f);
+		for (auto normal : normals)
+		{
+			average_normal = average_normal + normal;
+		}
+		average_normal = average_normal / normals.size();
+		vertices[i].normal = average_normal;
+	}
+
+	std::vector<adlVec3> face_normals;
+
+	for (unsigned int i = 0; i < faces.size(); i = i + 3)
+	{
+		adlVec3 edge1 = faces[i] - faces[i + 2];
+		adlVec3 edge2 = faces[i + 1] - faces[i + 2];
+
+		adlVec3 normal = adlMath::crossp(edge1, edge2);
+		normal = normal.normalize();
+		face_normals.push_back(normal);
+		adlVec3 tri_center;
+		tri_center.x = (faces[i].x + faces[i + 1].x + faces[i + 2].x) / 3.0f;
+		tri_center.y = (faces[i].y + faces[i + 1].y + faces[i + 2].y) / 3.0f;
+		tri_center.z = (faces[i].z + faces[i + 1].z + faces[i + 2].z) / 3.0f;
+		face_normals.push_back(tri_center);
+ 	}
+
+	adlTerrain_shared_ptr terrain = MAKE_SHARED(adlTerrain, vertices, indices, terrain_name, faces, face_normals);
+
+	return terrain;
 }
 
 void adlLoader::generate_bounding_box(adlVec2 min_max_x, adlVec2 min_max_y, adlVec2 min_max_z)

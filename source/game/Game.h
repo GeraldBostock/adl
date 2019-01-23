@@ -7,6 +7,7 @@
 #include "Test_light.h"
 #include "Material_test.h"
 #include "Material_new_test.h"
+#include "Cube_actor.h"
 
 class Game : public adlRoot
 {

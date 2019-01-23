@@ -6,11 +6,13 @@
 #include "engine/adl_renderer/adlRender_manager.h"
 #include "engine/adl_renderer/adlCamera.h"
 #include "engine/adl_entities/adlEntity.h"
+#include "engine/adl_resource/adlTerrain.h"
 
 adlScene::adlScene(const std::string& scene_name)
 	:	scene_name_(scene_name),
 		sun_(nullptr),
-		camera_(nullptr)
+		camera_(nullptr),
+		terrain_(nullptr)
 {
 
 }
@@ -21,7 +23,8 @@ adlScene::adlScene(const std::string& scene_name, std::vector<adlEntity_shared_p
 		point_lights_(point_lights),
 		scene_name_(scene_name),
 		sun_(nullptr),
-		camera_(nullptr)
+		camera_(nullptr),
+		terrain_(nullptr)
 {
 }
 
@@ -68,6 +71,8 @@ void adlScene::render()
 	{
 		renderer->render(light);
 	}
+
+	renderer->render(terrain_);
 }
 
 void adlScene::spawn_entity(adlEntity_shared_ptr entity)
@@ -104,6 +109,11 @@ void adlScene::set_camera(adlCamera* camera)
 	camera_ = camera;
 }
 
+void adlScene::set_terrain(adlTerrain_shared_ptr terrain)
+{
+	terrain_ = terrain;
+}
+
 adlCamera* adlScene::get_camera()
 {
 	return camera_;
@@ -132,4 +142,9 @@ std::vector<adlPoint_light_shared_ptr>& adlScene::get_all_point_lights()
 const std::string& adlScene::get_name()
 {
 	return scene_name_;
+}
+
+adlTerrain_shared_ptr adlScene::get_terrain()
+{
+	return terrain_;
 }

@@ -18,6 +18,7 @@
 #include "engine/adl_resource/adlScene.h"
 #include "engine/adl_math/adlMouse_picker.h"
 #include "engine/adl_renderer/adlDebug_renderer.h"
+#include "engine/adl_debug/adlTerrain_debugger.h"
 
 /*
 * Entry point for the engine
@@ -46,6 +47,7 @@ public:
 	adlEditor_manager* adl_editor;
 	adlMouse_picker* mouse_picker;
 	adlDebug_renderer* debug_renderer;
+	adlTerrain_debugger* terrain_debugger;
 protected:
 private:
 	adlFPS_manager* fps_manager_;

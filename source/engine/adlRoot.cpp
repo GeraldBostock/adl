@@ -14,6 +14,10 @@ adlRoot::~adlRoot()
 	ADL_DELETE(fps_manager_);
 	ADL_DELETE(camera);
 
+#ifdef _DEBUG
+	ADL_DELETE(terrain_debugger);
+#endif // _DEBUG
+
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplSDL2_Shutdown();
 	ImGui::DestroyContext();
@@ -73,6 +77,8 @@ void adlRoot::run()
 	adl_scene_manager->update(dt);
 	adl_scene_manager->render();
 
+	terrain_debugger->update();
+
 	debug_renderer->render();
 	debug_renderer->clear_render_queue();
 
@@ -112,6 +118,7 @@ void adlRoot::game_thread()
 	debug_renderer		= &adlDebug_renderer::get();
 #ifdef _DEBUG
 	adl_editor			= &adlEditor_manager::get();
+	terrain_debugger	= ADL_NEW(adlTerrain_debugger);
 #endif // _DEBUG
 	camera				= ADL_NEW(adlCamera);
 

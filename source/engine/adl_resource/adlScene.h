@@ -21,9 +21,11 @@ public:
 	void spawn_point_light(adlPoint_light_shared_ptr point_light, adlVec3 position = adlVec3(0.0f), adlVec3 rotation = adlVec3(0.0f), adlVec3 scale = adlVec3(1.0f));
 	void set_sun(adlSun_shared_ptr sun);
 	void set_camera(adlCamera* camera);
+	void set_terrain(adlTerrain_shared_ptr terrain);
 
 	adlCamera* get_camera();
 	adlSun_shared_ptr get_sun();
+	adlTerrain_shared_ptr get_terrain();
 	std::vector<adlEntity_shared_ptr>& get_all_entities();
 	std::vector<adlActor_shared_ptr>& get_all_actors();
 	std::vector<adlPoint_light_shared_ptr>& get_all_point_lights();
@@ -40,6 +42,7 @@ private:
 
 	adlSun_shared_ptr sun_;
 	adlCamera* camera_;
+	adlTerrain_shared_ptr terrain_;
 };
 
 #endif // adl_scene_h__

@@ -39,8 +39,26 @@ void adlDebug_renderer::render_box(adlVec3 position, float scale/* = 1.0f*/, adl
 
 void adlDebug_renderer::render_line3D(adlVec3 point1, adlVec3 point2, float line_width/* = 1.0f*/, adlColor color/* = adlColor::WHITE*/)
 {
-	IDebug_renderable* line3D = ADL_NEW(Line3D_renderable, point1, point2, line_width, color);
-	render_queue_.push_back(line3D);
+	//std::pair<adlColor, float> pair = std::make_pair(color, line_width);
+
+	//std::vector<float> vertices = line3Ds_[pair];
+	line_vertices_.push_back(point1.x);
+	line_vertices_.push_back(point1.y);
+	line_vertices_.push_back(point1.z);
+	line_vertices_.push_back(point2.x);
+	line_vertices_.push_back(point2.y);
+	line_vertices_.push_back(point2.z);
+	
+	//line3D_keys_.push_back(pair);
+
+	/*IDebug_renderable* line3D = ADL_NEW(Line3D_renderable, point1, point2, line_width, color);
+	render_queue_.push_back(line3D);*/
+}
+
+void adlDebug_renderer::render_point(adlVec2_i32 point, adlColor color/* = adlColor::WHITE*/, float size/* = 1.0f*/)
+{
+	IDebug_renderable* point_to_draw = ADL_NEW(Point_renderable, point, color, size);
+	render_queue_.push_back(point_to_draw);
 }
 
 void Sphere_renderable::render()
@@ -106,6 +124,21 @@ void Quad2D_renderable::render()
 	glVertex3f(min_x, max_y, 0.0f);
 	glEnd();
 	glLineWidth(1.0f);
+}
+
+void Point_renderable::render()
+{
+	adlVec3 color_vec = color_.to_vec3();
+	adlVec2 ndc = adlMath::to_ndc(screen_pos_);
+
+	glPointSize(size_);
+
+	glBegin(GL_POINTS);
+	glColor3f(color_vec.x, color_vec.y, color_vec.z);
+	glVertex3f(ndc.x, ndc.y, 0.0f);
+	glEnd();
+
+	glPointSize(1.0f);
 }
 
 void Line2D_renderable::render()
@@ -216,6 +249,56 @@ void adlDebug_renderer::render()
 		renderable->render();
 	}
 
+	if (line_vertices_.size() != 0)
+	{
+		adlRender_manager* renderer = &adlRender_manager::get();
+		adlScene_manager* scn_manager = &adlScene_manager::get();
+
+		adlMat4 projection_matrix = renderer->get_projection_matrix();
+		adlMat4 view_matrix = scn_manager->get_camera()->get_view_matrix();
+
+		adlResource_manager* adl_rm = &adlResource_manager::get();
+		adlShader_shared_ptr shader = adl_rm->get_shader("debug_render");
+
+		uint32 vao;
+		glGenVertexArrays(1, &vao);
+		glBindVertexArray(vao);
+
+		uint32 vbo;
+		glGenBuffers(1, &vbo);
+		glBindBuffer(GL_ARRAY_BUFFER, vbo);
+		glBufferData(GL_ARRAY_BUFFER, line_vertices_.size() * sizeof(float), &line_vertices_[0], GL_STATIC_DRAW);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+		glLineWidth(1.0f);
+		shader->start();
+
+		adlColor color = adlColor::YELLOW;
+
+		shader->load_color(color.to_vec3());
+		shader->load_projection_matrix(projection_matrix);
+		shader->load_view_matrix(view_matrix);
+		shader->load_switch(false);
+
+		glBindVertexArray(vao);
+
+		glEnableVertexAttribArray(0);
+
+		glDrawArrays(GL_LINES, 0, line_vertices_.size());
+
+		glDisableVertexAttribArray(0);
+
+		glBindVertexArray(0);
+
+		shader->stop();
+		glLineWidth(1.0f);
+
+		glDeleteVertexArrays(1, &vao);
+		glDeleteBuffers(1, &vbo);
+	}
+
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 }
 
@@ -225,6 +308,10 @@ void adlDebug_renderer::clear_render_queue()
 	{
 		ADL_DELETE(renderable);
 	}
+
+	line3Ds_.clear();
+	line3D_keys_.clear();
+	line_vertices_.clear();
 
 	render_queue_.clear();
 }

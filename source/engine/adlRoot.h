@@ -19,6 +19,7 @@
 #include "engine/adl_math/adlMouse_picker.h"
 #include "engine/adl_renderer/adlDebug_renderer.h"
 #include "engine/adl_debug/adlTerrain_debugger.h"
+#include "engine/adl_physics/adl_bullet/adlBullet_physics.h"
 
 /*
 * Entry point for the engine
@@ -48,16 +49,16 @@ public:
 	adlMouse_picker* mouse_picker;
 	adlDebug_renderer* debug_renderer;
 	adlTerrain_debugger* terrain_debugger;
+	adlIPhysics* physics_;
 protected:
 private:
 	adlFPS_manager* fps_manager_;
 
 	bool is_running_;
 	bool rendering_bounding_boxes_ = false;
-
+	bool rendering_physics_diagnostics_ = false;
 
 	void game_thread();
-	
 };
 
 

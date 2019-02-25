@@ -81,6 +81,7 @@ void adlRender_manager::render(adlActor_shared_ptr actor)
 	shader->load_model_matrix(model_matrix);
 	shader->load_camera_position(camera_->get_position());
 	shader->load_point_lights(lights_);
+	shader->load_material(material);
 
 
 	if (material != nullptr)

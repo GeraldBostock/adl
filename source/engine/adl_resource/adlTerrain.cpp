@@ -3,12 +3,13 @@
 #include "engine/adl_resource/adlModel.h"
 
 adlTerrain::adlTerrain(const std::vector<Vertex>& vertices, std::vector<unsigned int>& indices, const std::string& name,
-	const std::vector<adlVec3>& faces, const std::vector<adlVec3>& face_normals)
+	const std::vector<adlVec3>& faces, const std::vector<adlVec3>& face_normals, const std::vector<float>& heightfield)
 	:	vertices_(vertices),
 		indices_(indices),
 		name_(name),
 		faces_(faces),
-		face_normals_(face_normals)
+		face_normals_(face_normals),
+		heightfield_(heightfield)
 {
 	terrain_model_ = MAKE_SHARED(adlModel, "terrain");
 	
@@ -17,10 +18,10 @@ adlTerrain::adlTerrain(const std::vector<Vertex>& vertices, std::vector<unsigned
 	terrain_model_->add_mesh(mesh);
 }
 
-//adlTerrain::~adlTerrain()
-//{
-//
-//}
+adlTerrain::~adlTerrain()
+{
+
+}
 
 adlModel_shared_ptr adlTerrain::get_model()
 {

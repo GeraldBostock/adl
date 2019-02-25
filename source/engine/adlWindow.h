@@ -52,6 +52,7 @@ public:
 	void close_window();
 
 	void set_mouse_visible(bool is_visible);
+	bool is_mouse_visible();
 
 	void set_fullscreen(bool is_fullscreen);
 	void toggle_fullscreen();
@@ -66,6 +67,8 @@ private:
 	bool is_fullscreen_;
 	int fullscreen_width_;
 	int fullscreen_height_;
+
+	bool mouse_visible_;
 
 	bool closed_;
 

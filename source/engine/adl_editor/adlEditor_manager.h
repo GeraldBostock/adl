@@ -38,6 +38,8 @@ private:
 	bool spawner_editor_open_;
 	bool scene_editor_open_;
 
+	bool was_mouse_visible_;
+
 	adlEditor_manager();
 
 	void MainMenu();

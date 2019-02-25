@@ -8,7 +8,6 @@
 #include "game/Human.h"
 #include "game/Interfaces/IMovementBehaviour.h"
 
-
 Game::Game()
 {
 
@@ -32,7 +31,9 @@ bool Game::init()
 	Material_new_test new_test;
 	Material_test test;
 	Test_actor test_a;
-	Cube_actor cube;
+	
+	listener_ = ADL_NEW(Physics_listener);
+	adl_scene_manager->add_physics_observer(listener_);
 
 	adl_scene_manager->addToScene(human);
 	human->setModel(adl_rm->getModel("head"));
@@ -45,18 +46,17 @@ bool Game::init()
 	adlPoint_light_shared_ptr point_light = MAKE_SHARED(adlPoint_light);
 	point_light->set_name("Light_#1");
 
-	for (int i = 0; i < 20; i++)
+	for (int i = 0; i < 2; i++)
 	{
 		adlActor_shared_ptr multi_actor = MAKE_SHARED(Material_test);
-		adl_scene_manager->spawnActor(multi_actor, adlVec3(i + 1, 0, 0), adlVec3::zero(), adlVec3(0.5f));
+		adl_scene_manager->spawnActor(multi_actor, adlVec3(i * 5, 20, 0), adlVec3::zero(), adlVec3(1.0f));
 	}
-
-	adlActor_shared_ptr new_actor = MAKE_SHARED(Test_actor);
-	adl_scene_manager->spawnActor(new_actor, adlVec3(0, 0.5f, 0), adlVec3::zero(), adlVec3(0.5f));
 
 	adlCamera* camera = ADL_NEW(adlCamera);
 	camera->set_camera_type(ct_god_mode);
 	camera->init();
+
+	//adl_scene_manager->add_plane();
 
 	adl_scene_manager->set_camera(camera);
 
@@ -65,9 +65,8 @@ bool Game::init()
 	scene->set_sun(sun);
 	scene->set_camera(camera);
 
-
 	adlTerrain_shared_ptr terrain = adl_rm->get_terrain("test_terrain");
-
+	adl_scene_manager->set_terrain(terrain);
 
 	return true;
 }

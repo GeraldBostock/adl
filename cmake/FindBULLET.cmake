@@ -1,0 +1,75 @@
+SET(_PF86 "PROGRAMFILES(X86)")
+SET( BULLET_SEARCH_PATHS
+	${BULLET_ROOT_DIR}					# SDL2!
+	./dependencies/bullet
+	$ENV{PROGRAMFILES}/bullet			# WINDOWS
+	"$ENV{_PF86}/BULLET"				# WINDOWS
+	~/Library/Frameworks				# MAC
+	/Library/Frameworks					# MAC
+	/usr/local							# LINUX/MAC/UNIX
+	/usr								# LINUX/MAC/UNIX
+	/opt								# LINUX/MAC/UNIX
+)
+
+FIND_PATH( BULLET_INCLUDE_DIRS
+	NAMES
+		btBulletDynamicsCommon.h btBulletCollisionCommon.h
+	PATHS
+		${BULLET_SEARCH_PATHS}
+	PATH_SUFFIXES
+		include
+		bullet
+	DOC
+		"The directory where SDL.h resides"
+)
+
+FIND_LIBRARY( BULLET_LINEAR_MATH_LIB
+	NAMES
+		LinearMath_Debug
+	PATHS
+		${BULLET_SEARCH_PATHS}
+	PATH_SUFFIXES
+		lib
+		lib64
+		lib/x86
+		lib/x64
+	DOC
+		"The Bullet library"
+)
+
+FIND_LIBRARY( BULLET_COLLISION_LIB
+	NAMES
+		BulletCollision_Debug
+	PATHS
+		${BULLET_SEARCH_PATHS}
+	PATH_SUFFIXES
+		lib
+		lib64
+		lib/x86
+		lib/x64
+	DOC
+		"The Bullet library"
+)
+
+FIND_LIBRARY( BULLET_DYNAMICS_LIB
+	NAMES
+		BulletDynamics_Debug
+	PATHS
+		${BULLET_SEARCH_PATHS}
+	PATH_SUFFIXES
+		lib
+		lib64
+		lib/x86
+		lib/x64
+	DOC
+		"The Bullet library"
+)
+
+# Check if we found it!
+IF ( BULLET_INCLUDE_DIRS AND BULLET_LINEAR_MATH_LIB AND BULLET_COLLISION_LIB AND BULLET_DYNAMICS_LIB)
+	SET( BULLET_FOUND TRUE )
+	MESSAGE(STATUS "Looking for Bullet - found")
+ELSE ( BULLET_INCLUDE_DIRS AND BULLET_LINEAR_MATH_LIB AND BULLET_COLLISION_LIB AND BULLET_DYNAMICS_LIB )
+	SET( BULLET_FOUND FALSE )
+	MESSAGE(STATUS "Looking for Bullet - not found")
+ENDIF ( BULLET_INCLUDE_DIRS AND BULLET_LINEAR_MATH_LIB AND BULLET_COLLISION_LIB AND BULLET_DYNAMICS_LIB )

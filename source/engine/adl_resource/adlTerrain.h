@@ -11,7 +11,7 @@ class adlTerrain
 {
 public:
 	adlTerrain(const std::vector<Vertex>& vertices, std::vector<unsigned int>& indices, const std::string& name,
-		const std::vector<adlVec3>& faces, const std::vector<adlVec3>& face_normals);
+		const std::vector<adlVec3>& faces, const std::vector<adlVec3>& face_normals, const std::vector<float>& heightfield);
 	~adlTerrain();
 
 	adlModel_shared_ptr get_model();
@@ -27,11 +27,17 @@ public:
 		return faces_;
 	}
 
+	const std::vector<float>& get_heightfield()
+	{
+		return heightfield_;
+	}
+
 private:
 	std::vector<Vertex> vertices_;
 	std::vector<unsigned int> indices_;
 	std::vector<adlVec3> faces_;
 	std::vector<adlVec3> face_normals_;
+	std::vector<float> heightfield_;
 
 	adlModel_shared_ptr terrain_model_;
 	std::string name_;

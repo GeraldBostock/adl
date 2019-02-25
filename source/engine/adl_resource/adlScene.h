@@ -6,6 +6,11 @@
 #include "engine/adlShared_types.h"
 #include "engine/adl_renderer/adlCamera.h"
 
+//#include "reactphysics3d.h"
+
+#include "engine/adlPhysics_world.h"
+#include "engine/adlPhysics.h"
+
 class adlScene
 {
 public:
@@ -41,11 +46,19 @@ private:
 	std::vector<adlEntity_shared_ptr> entities_;
 	std::vector<adlActor_shared_ptr> actors_;
 	std::vector<adlPoint_light_shared_ptr> point_lights_;
+	/*std::unordered_map<rp3d::CollisionBody*, adlActor_shared_ptr> bodies_;
+	std::vector<rp3d::CollisionBody*> bodies_array_;
+	std::vector<rp3d::ProxyShape*> proxy_array_;*/
 
 	adlSun_shared_ptr sun_;
 	adlCamera* camera_;
 	adlTerrain_shared_ptr terrain_;
 	adlCube_map_shared_ptr cube_map_;
+
+	/*adlPhysics_world* collision_world_;
+
+	rp3d::CollisionWorld world_;
+	rp3d::SphereShape* boxShape;*/
 };
 
 #endif // adl_scene_h__

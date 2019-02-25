@@ -152,7 +152,7 @@ void adlSpawn_editor::update(adlScene_manager* scene_manager)
 						spawn_material_ = adl_rm->get_material("");
 					}
 
-					is_visible_ = false;
+					//is_visible_ = false;
 					ImGui::Unindent();
 				}
 

@@ -13,6 +13,7 @@ adlRoot::~adlRoot()
 {
 	ADL_DELETE(fps_manager_);
 	ADL_DELETE(camera);
+	ADL_DELETE(physics_);
 
 #ifdef _DEBUG
 	ADL_DELETE(terrain_debugger);
@@ -69,20 +70,33 @@ void adlRoot::run()
 		rendering_bounding_boxes_ = !rendering_bounding_boxes_;
 	}
 
+	if (adl_input->get_key(adl_key_left_ctrl) && adl_input->get_key_down(adl_key_p))
+	{
+		rendering_physics_diagnostics_ = !rendering_physics_diagnostics_;
+	}
+
+	if (rendering_physics_diagnostics_)
+	{
+		physics_->render_diagnostics();
+	}
+
 	if (rendering_bounding_boxes_)
 	{
 		debug_renderer->render_bounding_boxes();
 	}
 
+	mouse_picker->update(adl_renderer->get_projection_matrix(), adl_scene_manager->get_camera()->get_view_matrix());
+
 	adl_scene_manager->update(dt);
 	adl_scene_manager->render();
+
+	physics_->update(dt);
+	physics_->sync_scene();
 
 	terrain_debugger->update();
 
 	debug_renderer->render();
 	debug_renderer->clear_render_queue();
-
-	mouse_picker->update(adl_renderer->get_projection_matrix(), adl_scene_manager->get_camera()->get_view_matrix());
 
 #ifdef _DEBUG
 	adl_editor->update();
@@ -121,6 +135,10 @@ void adlRoot::game_thread()
 	terrain_debugger	= ADL_NEW(adlTerrain_debugger);
 #endif // _DEBUG
 	camera				= ADL_NEW(adlCamera);
+	physics_			= ADL_NEW(adlBullet_physics);
+	physics_->initialize();
+
+	adl_scene_manager->set_physics(physics_);
 
 	//adl_scene_manager->set_camera(camera);
 	adlMat4 projection_matrix = projection_matrix.create_projection_matrix(adl_window->get_width(), adl_window->get_height(), adlMath::deg_to_rad(45), 0.1f, 1000.0f);

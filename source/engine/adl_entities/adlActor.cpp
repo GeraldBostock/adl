@@ -2,7 +2,9 @@
 
 #include "adlEntity_factory.h"
 
-adlActor::adlActor()
+adlActor::adlActor() :
+	model_(nullptr),
+	gravity_(true)
 {
 	REGISTER_ACTOR(adlActor)
 }

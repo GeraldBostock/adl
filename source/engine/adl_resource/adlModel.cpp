@@ -39,7 +39,7 @@ void adlModel::draw(adlShader_shared_ptr shader, adlMat4 transformation_matrix)
 	for (auto mesh : meshes_)
 	{
 		adlMaterial_shared_ptr mtl = mesh->get_material();
-		shader->load_material(mtl);
+		//shader->load_material(mtl);
 
 		glBindVertexArray(mesh->get_vao_id());
 

@@ -342,6 +342,7 @@ adlTerrain_shared_ptr adlLoader::load_terrain(const std::string& terrain_path, c
 	int height;
 	int color_channels;
 	unsigned char* data = stbi_load(terrain_path.c_str(), &width, &height, &color_channels, 1);
+	std::vector<float> heightfield;
 
 	std::vector<Vertex> vertices;
 
@@ -350,7 +351,8 @@ adlTerrain_shared_ptr adlLoader::load_terrain(const std::string& terrain_path, c
 		for (int j = 0; j < width; j++)
 		{
 			float y = (float)data[width * (j) + i] / 20.0f;
-			Vertex vertex(adlVec3(width / 2 - j, y, height / 2 - i), adlVec3(0, 1, 0), adlVec2(0, 0));
+			heightfield.insert(heightfield.begin(), y);
+			Vertex vertex(adlVec3(width / 2 - j - 0.5f, y, height / 2 - i - 0.5f), adlVec3(0, 1, 0), adlVec2(0, 0));
 			vertices.push_back(vertex);
 		}
 	}
@@ -441,7 +443,7 @@ adlTerrain_shared_ptr adlLoader::load_terrain(const std::string& terrain_path, c
 		face_normals.push_back(tri_center);
  	}
 
-	adlTerrain_shared_ptr terrain = MAKE_SHARED(adlTerrain, vertices, indices, terrain_name, faces, face_normals);
+	adlTerrain_shared_ptr terrain = MAKE_SHARED(adlTerrain, vertices, indices, terrain_name, faces, face_normals, heightfield);
 
 	return terrain;
 }

@@ -101,6 +101,10 @@
 	{
 	  "name": "Cat",
 	  "path": "res/models/Cat/cat.obj"
+	},
+	{
+	  "name": "GodotBall",
+	  "path": "res/models/GodotBall/GodotBall.dae"
 	}
   ],
   "scenes": [

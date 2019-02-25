@@ -26,7 +26,7 @@ void adlMouse_picker::update(adlMat4 projection_matrix, adlMat4 view_matrix)
 
 
 	//Ray-Plane intersection
-	float denom = plane_normal.dotp(ray_direction);
+	/*float denom = plane_normal.dotp(ray_direction);
 	if (std::abs(denom) > 0.0001f)
 	{
 		float t = -ray_origin.dotp(plane_normal) / denom;
@@ -37,7 +37,7 @@ void adlMouse_picker::update(adlMat4 projection_matrix, adlMat4 view_matrix)
 			adlDebug_renderer* debug_renderer = &adlDebug_renderer::get();
 			debug_renderer->render_sphere(location, adlColor::BLUE, 0.25f);
 		}
-	}
+	}*/
 }
 
 adlRay adlMouse_picker::calculate_mouse_ray()

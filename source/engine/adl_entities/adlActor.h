@@ -56,13 +56,24 @@ public:
 	void setMaterial(adlMaterial_shared_ptr material);
 	void set_material(adlMaterial_shared_ptr material);
 
+	void set_gravity(bool gravity)
+	{
+		gravity_ = gravity;
+	}
+	bool get_gravity()
+	{
+		return gravity_;
+	}
+
 protected:
 	adlColor color_;
 
 private:
 	adlTransform transform_;
-	adlModel_shared_ptr model_ = nullptr;
+	adlModel_shared_ptr model_;
 	adlMaterial_shared_ptr material_ = nullptr;
+
+	bool gravity_;
 };
 
 #endif // adl_actor_h__

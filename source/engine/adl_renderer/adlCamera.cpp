@@ -120,6 +120,7 @@ void adlCamera::update_rts_camera(float dt)
 {
 	adlInput* input = &adlInput::get();
 	adlWindow* window = adlWindow::get();
+	window->set_mouse_visible(true);
 	int screen_width = window->get_width();
 	int screen_height = window->get_height();
 
@@ -351,6 +352,8 @@ void adlCamera::set_camera_type(Camera_type type)
 	if (camera_type_ == ct_rts)
 	{
 		pitch_ = -45;
+		adlWindow* window = adlWindow::get();
+		window->set_mouse_visible(true);
 	}
 }
 

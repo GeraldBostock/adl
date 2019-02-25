@@ -7,7 +7,7 @@
 #include "Test_light.h"
 #include "Material_test.h"
 #include "Material_new_test.h"
-#include "Cube_actor.h"
+#include "game/Physics_listener.h"
 
 class Game : public adlRoot
 {
@@ -20,6 +20,7 @@ public:
 
 private:
 	adlTimer timer_;
+	Physics_listener* listener_;
 };
 
 #endif // game_h__

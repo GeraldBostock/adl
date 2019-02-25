@@ -105,12 +105,13 @@ void adlEditor_manager::update()
 		adlWindow* window = adlWindow::get();
 		if (main_editor_open_)
 		{
+			was_mouse_visible_ = window->is_mouse_visible();
 			window->set_mouse_visible(true);
 			scene_editor_open_ = true;
 		}
 		else
 		{
-			window->set_mouse_visible(false);
+			window->set_mouse_visible(was_mouse_visible_);
 			entity_editor_open_ = false;
 			actor_editor_open_ = false;
 			light_editor_open_ = false;

@@ -10,6 +10,7 @@
 #pragma warning( disable : 4003 ) // not enough actual parameters for macro
 #pragma warning( disable : 4838 ) // requires a narrowing conversion
 #pragma warning( disable : 4100 ) // unreferenced formal parameter
+#pragma warning( disable : 4099 ) //.pdb was not found with .lib file. Disabled for now. Will need to recompile the library later.
 static inline void set_error_mode()
 {
 	_set_error_mode(_OUT_TO_MSGBOX);

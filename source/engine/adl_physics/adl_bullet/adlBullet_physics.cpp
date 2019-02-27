@@ -81,9 +81,56 @@ bool adlBullet_physics::initialize()
 	return true;
 }
 
+void adlBullet_physics::sync_physics_to_rendering()
+{
+	for (Actor_to_body_map::const_iterator it = actor_to_body_map_.begin(); it != actor_to_body_map_.end(); ++it)
+	{
+		Actor_motion_state const * const actor_motion_state = static_cast <Actor_motion_state*>(it->second->getMotionState());
+		adl_assert(actor_motion_state);
+
+		adlTransform transform = it->first->get_transform();
+		btTransform bt_transform = adlTransform_to_btTransform(transform.get_transformation_matrix());
+
+		if (it->first && actor_motion_state)
+		{
+			it->second->setWorldTransform(bt_transform);
+		}
+	}
+}
+
 void adlBullet_physics::update(float dt)
 {
 	dynamics_world_->stepSimulation(dt / 1000.f, 4);
+
+	adlMouse_picker* mouse_picker = &adlMouse_picker::get();
+	adlRay mouse_ray = mouse_picker->get_mouse_ray();
+	adlVec3 origin = mouse_ray.get_origin();
+	adlVec3 direction = mouse_ray.get_direction();
+	adlVec3 ray_limit = origin + (direction * 200);
+
+	btVector3 from(origin.x, origin.y, origin.z);
+	btVector3 to(ray_limit.x, ray_limit.y, ray_limit.z);
+
+	btCollisionWorld::ClosestRayResultCallback closest_results(from, to);
+	closest_results.m_flags |= btTriangleRaycastCallback::kF_FilterBackfaces;
+
+	dynamics_world_->rayTest(from, to, closest_results);
+
+	if (closest_results.hasHit())
+	{
+		btRigidBody const * const hit_body = static_cast<btRigidBody const *>(closest_results.m_collisionObject);
+		adlActor_shared_ptr actor = body_to_actor_map_[hit_body];
+
+		if (actor == nullptr)
+		{
+			btVector3 hit_point = closest_results.m_hitPointWorld;
+			adlVec3 adl_hit_point(hit_point.x(), hit_point.y(), hit_point.z());
+			for (int i = 0; i < observers_.size(); i++)
+			{
+				observers_.at(i)->on_terrain_mouse_ray_collision(adl_hit_point);
+			}
+		}
+	}
 }
 
 void adlBullet_physics::sync_scene()
@@ -158,6 +205,7 @@ void adlBullet_physics::add_terrain(const std::vector<float>& heightfield)
 	btRigidBody* const body = ADL_NEW(btRigidBody, rb_info);
 	dynamics_world_->addRigidBody(body);
 	body->setGravity(btVector3(0, 0, 0));
+	terrain_body_ = body;
 }
 
 void adlBullet_physics::add_shape(adlActor_shared_ptr actor, btCollisionShape* shape, float mass, const std::string& material)
@@ -225,24 +273,44 @@ void adlBullet_physics::bullet_internal_tick_callback(btDynamicsWorld* const wor
 		adlActor_shared_ptr actor0 = bullet_physics->get_actor(sorted_body_a);
 		adlActor_shared_ptr actor1 = bullet_physics->get_actor(sorted_body_b);
 
-		if (bullet_physics->previous_tick_collision_pairs_.find(current_pair) == bullet_physics->previous_tick_collision_pairs_.end())
+		const int contact_count = manifold->getNumContacts();
+		bool bodies_colliding = false;
+		adlVec3 collision_point;
+		for (int j = 0; j < contact_count; ++j)
 		{
-			//This contanct was not in the list before. It's a new collision.
-			if (actor0 != nullptr && actor1 != nullptr)
+			btManifoldPoint const& pt = manifold->getContactPoint(j);
+			if (pt.getDistance() < 0.0f)
 			{
-				const int contact_count = manifold->getNumContacts();
+				bodies_colliding = true;
+				btVector3 a = pt.getPositionWorldOnA();
+				btVector3 b = pt.getPositionWorldOnB();
 
-				for (int j = 0; j < contact_count; ++j)
+				btVector3 c = (a + b) / 2;
+				collision_point.x = c.x();
+				collision_point.y = c.y();
+				collision_point.z = c.z();
+			}
+		}
+
+		if (bodies_colliding)
+		{
+			current_tick_collision_pairs.insert(current_pair);
+			if (bullet_physics->previous_tick_collision_pairs_.find(current_pair) == bullet_physics->previous_tick_collision_pairs_.end())
+			{
+				if (actor0 != nullptr && actor1 != nullptr)
 				{
-					btManifoldPoint const& pt = manifold->getContactPoint(j);
-					if (pt.getDistance() < 0.0f)
+					for (int i = 0; i < bullet_physics->observers_.size(); i++)
 					{
-						for (int i = 0; i < bullet_physics->observers_.size(); i++)
-						{
-							bullet_physics->observers_.at(i)->on_collision_start(actor0, actor1);
-						}
-						current_tick_collision_pairs.insert(current_pair);
-						logger->log_info("New collision detected");
+						bullet_physics->observers_.at(i)->on_collision_start(actor0, actor1);
+					}
+				}
+				if (actor0 == nullptr || actor1 == nullptr)
+				{
+					
+					adlActor_shared_ptr actor = actor0 == nullptr ? actor1 : actor0;
+					for (int i = 0; i < bullet_physics->observers_.size(); i++)
+					{
+						bullet_physics->observers_.at(i)->on_terrain_collision_start(actor, collision_point);
 					}
 				}
 			}
@@ -261,7 +329,24 @@ void adlBullet_physics::bullet_internal_tick_callback(btDynamicsWorld* const wor
 		btRigidBody const * const body0 = it->first;
 		btRigidBody const * const body1 = it->second;
 
-		logger->log_info("Collision ended");
+		adlActor_shared_ptr actor0 = bullet_physics->get_actor(body0);
+		adlActor_shared_ptr actor1 = bullet_physics->get_actor(body1);
+
+		if (actor0 != nullptr && actor1 != nullptr)
+		{
+			for (int i = 0; i < bullet_physics->observers_.size(); i++)
+			{
+				bullet_physics->observers_.at(i)->on_collision_end(actor0, actor1);
+			}
+		}
+		else
+		{
+			adlActor_shared_ptr actor = actor0 == nullptr ? actor1 : actor0;
+			for (int i = 0; i < bullet_physics->observers_.size(); i++)
+			{
+				bullet_physics->observers_.at(i)->on_terrain_collision_end(actor);
+			}
+		}
 	}
 
 	bullet_physics->previous_tick_collision_pairs_ = current_tick_collision_pairs;

@@ -12,6 +12,7 @@ class adlIPhysics : public adlPhysics_subject
 {
 public:
 	virtual bool initialize() = 0;
+	virtual void sync_physics_to_rendering() = 0;
 	virtual void update(float dt) = 0;
 	virtual void sync_scene() = 0;
 

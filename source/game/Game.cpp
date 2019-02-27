@@ -46,7 +46,7 @@ bool Game::init()
 	adlPoint_light_shared_ptr point_light = MAKE_SHARED(adlPoint_light);
 	point_light->set_name("Light_#1");
 
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 1; i++)
 	{
 		adlActor_shared_ptr multi_actor = MAKE_SHARED(Material_test);
 		adl_scene_manager->spawnActor(multi_actor, adlVec3(i * 5, 20, 0), adlVec3::zero(), adlVec3(1.0f));

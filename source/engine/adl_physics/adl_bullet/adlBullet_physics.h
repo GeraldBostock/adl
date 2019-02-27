@@ -83,6 +83,7 @@ public:
 	virtual ~adlBullet_physics();
 
 	virtual bool initialize() override;
+	virtual void sync_physics_to_rendering() override;
 	virtual void update(float dt) override;
 	virtual void sync_scene() override;
 
@@ -108,6 +109,7 @@ private:
 	btConstraintSolver* solver_;
 	btDefaultCollisionConfiguration* collision_configuration_;
 	btIDebugDraw* debug_drawer_;
+	btRigidBody* terrain_body_;
 
 	typedef std::map<adlActor_shared_ptr, btRigidBody*> Actor_to_body_map;
 	Actor_to_body_map actor_to_body_map_;

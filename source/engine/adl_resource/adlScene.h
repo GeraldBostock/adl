@@ -6,11 +6,6 @@
 #include "engine/adlShared_types.h"
 #include "engine/adl_renderer/adlCamera.h"
 
-//#include "reactphysics3d.h"
-
-#include "engine/adlPhysics_world.h"
-#include "engine/adlPhysics.h"
-
 class adlScene
 {
 public:

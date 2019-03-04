@@ -85,7 +85,7 @@ void adlBullet_physics::sync_physics_to_rendering()
 {
 	for (Actor_to_body_map::const_iterator it = actor_to_body_map_.begin(); it != actor_to_body_map_.end(); ++it)
 	{
-		Actor_motion_state const * const actor_motion_state = static_cast <Actor_motion_state*>(it->second->getMotionState());
+		Actor_motion_state const * const actor_motion_state = static_cast<Actor_motion_state*>(it->second->getMotionState());
 		adl_assert(actor_motion_state);
 
 		adlTransform transform = it->first->get_transform();

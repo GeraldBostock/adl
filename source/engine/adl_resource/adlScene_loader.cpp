@@ -99,11 +99,11 @@ adlVec3 adlScene_loader::load_vec3(const rapidjson::Value& object, std::string a
 
 adlActor_shared_ptr adlScene_loader::load_actor(const rapidjson::Value& object)
 {
-	adlEntity_factory* factory = &adlEntity_factory::get();
+	/*adlEntity_factory* factory = &adlEntity_factory::get();
 	adlResource_manager* adl_rm = &adlResource_manager::get();
 
 	std::string type_name = object["type_name"].GetString();
-	adlActor* actor = (adlActor*)factory->construct_actor(type_name);
+	adlActor* actor = (adlActor*)factory->construct_entity(type_name);
 	adlActor_shared_ptr actor_shared(actor);
 
 	std::string actor_name = object["name"].GetString();
@@ -126,7 +126,9 @@ adlActor_shared_ptr adlScene_loader::load_actor(const rapidjson::Value& object)
 		actor_shared->set_material(adl_rm->get_material(material_name));
 	}
 
-	return actor_shared;
+	return actor_shared;*/
+	std::cout << "TODO: uncomment this mess" << std::endl;
+	return nullptr;
 }
 
 adlSun_shared_ptr adlScene_loader::load_sun(const rapidjson::Value& object)

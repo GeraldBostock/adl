@@ -23,7 +23,7 @@ void adlSpawn_editor::update(adlScene_manager* scene_manager)
 	adlEntity_factory* factory = &adlEntity_factory::get();
 	adlResource_manager* adl_rm = &adlResource_manager::get();
 	
-	const std::vector<std::string> actors = factory->get_all_registered_actors();
+	const std::vector<std::string> actors = factory->get_all_registered_entities();
 	const std::vector<std::string> lights = factory->get_all_registered_lights();
 
 	ImGui::Begin("Spawn Editor");

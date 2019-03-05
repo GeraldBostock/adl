@@ -105,7 +105,8 @@ void adlScene_manager::setSun(adlSun_shared_ptr sun)
 adlActor_shared_ptr adlScene_manager::spawn_actor(const std::string& actor_name, adlVec3 position/* = adlVec3(0.0f)*/, adlVec3 rotation/* = adlVec3(0.0f)*/, adlVec3 scale/* = adlVec3(1.0f)*/)
 {
 	adlEntity_factory* factory = &adlEntity_factory::get();
-	adlActor* actor = (adlActor*)factory->construct_actor(actor_name);
+	adlEntity_shared_ptr entity = factory->construct_entity(actor_name);
+	/*adlActor* actor = (adlActor*)factory->construct_entity(actor_name);
 	adlActor_shared_ptr actor_shared(actor);
 
 	active_scene_->spawn_actor(actor_shared, position, rotation, scale);
@@ -130,9 +131,10 @@ adlActor_shared_ptr adlScene_manager::spawn_actor(const std::string& actor_name,
 	}
 
 
-	physics_->add_box(dims, actor->get_transform(), actor_shared);
+	physics_->add_sphere(1, actor->get_transform(), actor_shared);
 
-	return actor_shared;
+	return actor_shared;*/
+	return nullptr;
 }
 
 void adlScene_manager::spawn_actor(adlActor_shared_ptr actor, adlVec3 position, adlVec3 rotation/* = adlVec3(0.0f)*/, adlVec3 scale/* = adlVec3(1.0f)*/)

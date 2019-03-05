@@ -53,6 +53,10 @@ adlResource_manager::adlResource_manager()
 	const rapidjson::Value& cube_map_objects = document["cube_maps"];
 	adl_assert(cube_map_objects.IsArray());
 	initialize_cube_maps(cube_map_objects);
+
+	const rapidjson::Value& entity_objects = document["entities"];
+	adl_assert(entity_objects.IsArray());
+	initialize_entities(entity_objects);
 }
 
 std::string adlResource_manager::get_core_file_string()
@@ -281,6 +285,8 @@ adlScene_shared_ptr adlResource_manager::get_scene(const std::string& name)
 			return scenes_[name];
 		}
 	}
+
+	return nullptr;
 }
 
 adlTerrain_shared_ptr adlResource_manager::get_terrain(const std::string& name)
@@ -308,6 +314,8 @@ adlTerrain_shared_ptr adlResource_manager::get_terrain(const std::string& name)
 			return terrain;
 		}
 	}
+
+	return nullptr;
 }
 
 adlCube_map_shared_ptr adlResource_manager::get_cube_map(const std::string& name)
@@ -335,6 +343,36 @@ adlCube_map_shared_ptr adlResource_manager::get_cube_map(const std::string& name
 			return cube_map;
 		}
 	}
+
+	return nullptr;
+}
+
+std::string adlResource_manager::get_entity_json(const std::string& entity_name)
+{
+	adlLogger* adl_logger = &adlLogger::get();
+	if (entity_json_string_[entity_name] != "")
+	{
+		return entity_json_string_[entity_name];
+	}
+	
+	if (name_to_entity_path_[entity_name].empty())
+	{
+		adl_logger->log_error("Entity " + entity_name + "could not be found");
+		return "";
+	}
+	else
+	{
+		if (entity_json_string_[entity_name] == "")
+		{
+			std::string file_string = get_whole_file_string(name_to_entity_path_[entity_name]);
+			//std::cout << file_string << std::endl;
+			entity_json_string_[entity_name] = file_string;
+
+			return file_string;
+		}
+	}
+
+	return "";
 }
 
 void adlResource_manager::initialize_models(const rapidjson::Value& models)
@@ -511,6 +549,21 @@ void adlResource_manager::initialize_cube_maps(const rapidjson::Value& cube_maps
 
 		name_to_cubemap_path_[cube_map_name] = faces;
 		cube_maps_[cube_map_name] = nullptr;
+	}
+}
+
+void adlResource_manager::initialize_entities(const rapidjson::Value& entities)
+{
+	for (rapidjson::Value::ConstValueIterator it = entities.Begin(); it != entities.End(); ++it)
+	{
+		const rapidjson::Value& entity_object = *it;
+		adl_assert(entity_object.IsObject());
+
+		std::string entity_name = entity_object["name"].GetString();
+		std::string entity_path = entity_object["path"].GetString();
+
+		name_to_entity_path_[entity_name] = entity_path;
+		entity_json_string_[entity_name] = "";
 	}
 }
 

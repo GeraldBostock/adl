@@ -3,10 +3,7 @@
 
 #include "engine/adlRoot.h"
 
-#include "Test_actor.h"
 #include "Test_light.h"
-#include "Material_test.h"
-#include "Material_new_test.h"
 #include "game/Physics_listener.h"
 
 class Game : public adlRoot

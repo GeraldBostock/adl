@@ -37,6 +37,8 @@ public:
 
 	adlCube_map_shared_ptr get_cube_map(const std::string& name);
 
+	std::string get_entity_json(const std::string& entity_name);
+
 	void add_new_scene(const std::string& scene_name, adlScene_shared_ptr scene);
 
 	std::string serialize_scene(adlScene_shared_ptr scene);
@@ -60,6 +62,7 @@ private:
 	void initialize_scenes(const rapidjson::Value& scenes);
 	void initialize_terrains(const rapidjson::Value& terrains);
 	void initialize_cube_maps(const rapidjson::Value& cube_maps);
+	void initialize_entities(const rapidjson::Value& entities);
 
 	const std::string core_file_path = "res/core.json";
 	const std::string materials_file_path = "res/materials.json";
@@ -86,6 +89,9 @@ private:
 
 	std::map<std::string, std::vector<std::string>> name_to_cubemap_path_;
 	std::map<std::string, adlCube_map_shared_ptr> cube_maps_;
+
+	std::map<std::string, std::string> name_to_entity_path_;;
+	std::map<std::string, std::string> entity_json_string_;
 
 	adlLoader loader_;
 	adlScene_saver scene_saver_;

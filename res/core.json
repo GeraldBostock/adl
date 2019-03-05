@@ -213,5 +213,11 @@
 	  "back": "default/back.png",
 	  "front": "default/front.png"
 	}
+  ],
+  "entities": [
+	{
+		"name": "test_entity",
+		"path": "res/entities/test_entity.json"
+	}
   ]
 }

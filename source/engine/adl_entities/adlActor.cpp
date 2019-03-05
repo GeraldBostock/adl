@@ -6,7 +6,7 @@ adlActor::adlActor() :
 	model_(nullptr),
 	gravity_(true)
 {
-	REGISTER_ACTOR(adlActor)
+	//REGISTER_ENTITY(adlActor, 0)
 }
 
 

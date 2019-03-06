@@ -21,6 +21,12 @@ bool adlRender_component::init(const rapidjson::Value& json_object)
 	return true;
 }
 
+void adlRender_component::destroy()
+{
+	model_ = nullptr;
+	material_ = nullptr;
+}
+
 adlModel_shared_ptr adlRender_component::get_model()
 {
 	return model_;

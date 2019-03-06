@@ -18,6 +18,7 @@ public:
 private:
 	adlTimer timer_;
 	Physics_listener* listener_;
+	adlEntity_shared_ptr entity = nullptr;
 };
 
 #endif // game_h__

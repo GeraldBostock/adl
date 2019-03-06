@@ -6,9 +6,76 @@
 #include "../../adl_math/adlMouse_picker.h"
 #include "../../adl_renderer/adlDebug_renderer.h"
 #include "../../adl_resource/adlResource_manager.h"
+#include "../../adl_entities/adlTransform_component.h"
 
 #include "BulletCollision/NarrowPhaseCollision/btRaycastCallback.h"
 #include "BulletCollision/CollisionShapes/btHeightfieldTerrainShape.h"
+
+static adlTransform btTransform_to_adlTransform(btTransform const & bttransform, adlVec3 scale)
+{
+	adlMat4 matrix = adlMat4::identity();
+
+	btMatrix3x3 const & bulletRotation = bttransform.getBasis();
+	btVector3 const & bulletPosition = bttransform.getOrigin();
+	btQuaternion q = bttransform.getRotation();
+
+	adlVec3 rot;
+
+	double sinr_cosp = 2.0 * (q.w() * q.x() + q.y() * q.z());
+	double cosr_cosp = 1.0 - 2.0 * (q.x() * q.x() + q.y() * q.y());
+	rot.x = atan2(sinr_cosp, cosr_cosp);
+
+	// pitch (y-axis rotation)
+	double sinp = +2.0 * (q.w() * q.y() - q.z() * q.x());
+	if (fabs(sinp) >= 1)
+		rot.y = copysign(M_PI / 2, sinp); // use 90 degrees if out of range
+	else
+		rot.y = asin(sinp);
+
+	// yaw (z-axis rotation)
+	double siny_cosp = +2.0 * (q.w() * q.z() + q.x() * q.y());
+	double cosy_cosp = +1.0 - 2.0 * (q.y() * q.y() + q.z() * q.z());
+	rot.z = atan2(siny_cosp, cosy_cosp);
+
+
+	matrix.vectors.a.x = bulletRotation[0][0];
+	matrix.vectors.a.y = bulletRotation[1][0];
+	matrix.vectors.a.z = bulletRotation[2][0];
+
+	matrix.vectors.b.x = bulletRotation[0][1];
+	matrix.vectors.b.y = bulletRotation[1][1];
+	matrix.vectors.b.z = bulletRotation[2][1];
+
+	matrix.vectors.c.x = bulletRotation[0][2];
+	matrix.vectors.c.y = bulletRotation[1][2];
+	matrix.vectors.c.z = bulletRotation[2][2];
+
+	adlVec3 o(bulletPosition.x(), bulletPosition.y(), bulletPosition.z());
+	adlTransform transform(o, rot, scale);
+
+	return transform;
+}
+
+static btTransform adlTransform_to_btTransform(adlMat4 const & matrix)
+{
+	btMatrix3x3 bulletRotation;
+
+	bulletRotation[0][0] = matrix.vectors.a.x;
+	bulletRotation[1][0] = matrix.vectors.a.y;
+	bulletRotation[2][0] = matrix.vectors.a.z;
+
+	bulletRotation[0][1] = matrix.vectors.b.x;
+	bulletRotation[1][1] = matrix.vectors.b.y;
+	bulletRotation[2][1] = matrix.vectors.b.z;
+
+	bulletRotation[0][2] = matrix.vectors.c.x;
+	bulletRotation[1][2] = matrix.vectors.c.y;
+	bulletRotation[2][2] = matrix.vectors.c.z;
+
+	btVector3 bulletPosition(matrix.vectors.d.x, matrix.vectors.d.y, matrix.vectors.d.z);
+
+	return btTransform(bulletRotation, bulletPosition);
+}
 
 struct Actor_motion_state : public btMotionState
 {
@@ -83,12 +150,23 @@ bool adlBullet_physics::initialize()
 
 void adlBullet_physics::sync_physics_to_rendering()
 {
-	for (Actor_to_body_map::const_iterator it = actor_to_body_map_.begin(); it != actor_to_body_map_.end(); ++it)
+	for (Entity_to_body_map::const_iterator it = entity_to_body_map_.begin(); it != entity_to_body_map_.end(); ++it)
 	{
 		Actor_motion_state const * const actor_motion_state = static_cast<Actor_motion_state*>(it->second->getMotionState());
 		adl_assert(actor_motion_state);
 
-		adlTransform transform = it->first->get_transform();
+		adlEntity_shared_ptr entity = it->first;
+		std::shared_ptr<adlTransform_component> trans_comp;
+		if (entity->has_component("adlTransform_component"))
+		{
+			trans_comp = std::shared_ptr<adlTransform_component>(entity->get_component<adlTransform_component>("adlTransform_component"));
+		}
+		else
+		{
+			continue;
+		}
+
+		adlTransform transform = trans_comp->get_transform();
 		btTransform bt_transform = adlTransform_to_btTransform(transform.get_transformation_matrix());
 
 		if (it->first && actor_motion_state)
@@ -119,9 +197,9 @@ void adlBullet_physics::update(float dt)
 	if (closest_results.hasHit())
 	{
 		btRigidBody const * const hit_body = static_cast<btRigidBody const *>(closest_results.m_collisionObject);
-		adlActor_shared_ptr actor = body_to_actor_map_[hit_body];
+		adlEntity_shared_ptr entity = body_to_entity_map_[hit_body];
 
-		if (actor == nullptr)
+		if (entity == nullptr)
 		{
 			btVector3 hit_point = closest_results.m_hitPointWorld;
 			adlVec3 adl_hit_point(hit_point.x(), hit_point.y(), hit_point.z());
@@ -135,23 +213,33 @@ void adlBullet_physics::update(float dt)
 
 void adlBullet_physics::sync_scene()
 {
-	for (Actor_to_body_map::const_iterator it = actor_to_body_map_.begin(); it != actor_to_body_map_.end(); ++it)
+	for (Entity_to_body_map::const_iterator it = entity_to_body_map_.begin(); it != entity_to_body_map_.end(); ++it)
 	{
 		Actor_motion_state const * const actor_motion_state = static_cast <Actor_motion_state*>(it->second->getMotionState());
 		adl_assert(actor_motion_state);
 
 		if (it->first && actor_motion_state)
 		{
-			it->first->set_transform(actor_motion_state->world_to_position_transform);
+			adlEntity_shared_ptr entity = it->first;
+			std::shared_ptr<adlTransform_component> trans_comp;
+			if (entity->has_component("adlTransform_component"))
+			{
+				trans_comp = std::shared_ptr<adlTransform_component>(entity->get_component<adlTransform_component>("adlTransform_component"));
+				trans_comp->set_transform(actor_motion_state->world_to_position_transform);
+			}
+			else
+			{
+				continue;
+			}
 		}
 	}
 }
 
-void adlBullet_physics::add_sphere(float radius, adlTransform initial_transform, adlActor_shared_ptr actor)
+void adlBullet_physics::add_sphere(float radius, adlTransform initial_transform, adlEntity_shared_ptr entity)
 {
 	btSphereShape* const collision_shape = ADL_NEW(btSphereShape, radius);
 	
-	add_shape(actor, collision_shape, 10, "naber");
+	add_shape(entity, collision_shape, 10, "naber");
 }
 
 void adlBullet_physics::add_static_plane()
@@ -169,10 +257,10 @@ void adlBullet_physics::add_static_plane()
 	body->setGravity(btVector3(0, 0, 0));
 }
 
-void adlBullet_physics::add_box(const adlVec3& dimensions, adlTransform initial_transform, adlActor_shared_ptr actor)
+void adlBullet_physics::add_box(const adlVec3& dimensions, adlTransform initial_transform, adlEntity_shared_ptr entity)
 {
 	btBoxShape* const collision_shape = ADL_NEW(btBoxShape, btVector3(dimensions.x, dimensions.y, dimensions.z));
-	add_shape(actor, collision_shape, 10, "asd");
+	add_shape(entity, collision_shape, 10, "asd");
 }
 
 void adlBullet_physics::add_terrain(const std::vector<float>& heightfield)
@@ -208,32 +296,37 @@ void adlBullet_physics::add_terrain(const std::vector<float>& heightfield)
 	terrain_body_ = body;
 }
 
-void adlBullet_physics::add_shape(adlActor_shared_ptr actor, btCollisionShape* shape, float mass, const std::string& material)
+void adlBullet_physics::add_shape(adlEntity_shared_ptr entity, btCollisionShape* shape, float mass, const std::string& material)
 {
-	adl_assert(actor);
-	adl_assert(actor_to_body_map_.find(actor) == actor_to_body_map_.end());
+	adl_assert(entity);
+	adl_assert(entity_to_body_map_.find(entity) == entity_to_body_map_.end());
 
-	adlTransform transform = actor->get_transform();
-	transform.o = actor->get_transform().o;
+	std::shared_ptr<adlTransform_component> trans_comp;
+	if (entity->has_component("adlTransform_component"))
+	{
+		trans_comp = std::shared_ptr<adlTransform_component>(entity->get_component<adlTransform_component>("adlTransform_component"));
+	}
+	else
+	{
+		return;
+	}
+
+	adlTransform transform = trans_comp->get_transform();
+	transform.o = trans_comp->get_transform().o;
 
 	btVector3 localInertia(0.f, 0.f, 0.f);
 	if (mass > 0.f)
 		shape->calculateLocalInertia(mass, localInertia);
 
-	Actor_motion_state* const new_motion_state = ADL_NEW(Actor_motion_state, actor->get_position(), transform.rot, transform.scale);
+	Actor_motion_state* const new_motion_state = ADL_NEW(Actor_motion_state, trans_comp->get_position(), transform.rot, transform.scale);
 	btRigidBody::btRigidBodyConstructionInfo rb_info(mass, new_motion_state, shape, localInertia);
 
 	btRigidBody* const body = ADL_NEW(btRigidBody, rb_info);
 
 	dynamics_world_->addRigidBody(body);
 
-	if (!actor->get_gravity())
-	{
-		body->setGravity(btVector3(0, 0, 0));
-	}
-
-	actor_to_body_map_[actor] = body;
-	body_to_actor_map_[body] = actor;
+	entity_to_body_map_[entity] = body;
+	body_to_entity_map_[body] = entity;
 }
 
 void adlBullet_physics::bullet_internal_tick_callback(btDynamicsWorld* const world, btScalar const time_step)
@@ -270,8 +363,8 @@ void adlBullet_physics::bullet_internal_tick_callback(btDynamicsWorld* const wor
 
 		//current_tick_collision_pairs.insert(current_pair);
 
-		adlActor_shared_ptr actor0 = bullet_physics->get_actor(sorted_body_a);
-		adlActor_shared_ptr actor1 = bullet_physics->get_actor(sorted_body_b);
+		adlEntity_shared_ptr entity0 = bullet_physics->get_entity(sorted_body_a);
+		adlEntity_shared_ptr entity1 = bullet_physics->get_entity(sorted_body_b);
 
 		const int contact_count = manifold->getNumContacts();
 		bool bodies_colliding = false;
@@ -297,20 +390,20 @@ void adlBullet_physics::bullet_internal_tick_callback(btDynamicsWorld* const wor
 			current_tick_collision_pairs.insert(current_pair);
 			if (bullet_physics->previous_tick_collision_pairs_.find(current_pair) == bullet_physics->previous_tick_collision_pairs_.end())
 			{
-				if (actor0 != nullptr && actor1 != nullptr)
+				if (entity0 != nullptr && entity1 != nullptr)
 				{
 					for (int i = 0; i < bullet_physics->observers_.size(); i++)
 					{
-						bullet_physics->observers_.at(i)->on_collision_start(actor0, actor1);
+						bullet_physics->observers_.at(i)->on_collision_start(entity0, entity1);
 					}
 				}
-				if (actor0 == nullptr || actor1 == nullptr)
+				if (entity0 == nullptr || entity1 == nullptr)
 				{
 					
-					adlActor_shared_ptr actor = actor0 == nullptr ? actor1 : actor0;
+					adlEntity_shared_ptr entity = entity0 == nullptr ? entity1 : entity0;
 					for (int i = 0; i < bullet_physics->observers_.size(); i++)
 					{
-						bullet_physics->observers_.at(i)->on_terrain_collision_start(actor, collision_point);
+						bullet_physics->observers_.at(i)->on_terrain_collision_start(entity, collision_point);
 					}
 				}
 			}
@@ -329,22 +422,22 @@ void adlBullet_physics::bullet_internal_tick_callback(btDynamicsWorld* const wor
 		btRigidBody const * const body0 = it->first;
 		btRigidBody const * const body1 = it->second;
 
-		adlActor_shared_ptr actor0 = bullet_physics->get_actor(body0);
-		adlActor_shared_ptr actor1 = bullet_physics->get_actor(body1);
+		adlEntity_shared_ptr entity0 = bullet_physics->get_entity(body0);
+		adlEntity_shared_ptr entity1 = bullet_physics->get_entity(body1);
 
-		if (actor0 != nullptr && actor1 != nullptr)
+		if (entity0 != nullptr && entity1 != nullptr)
 		{
 			for (int i = 0; i < bullet_physics->observers_.size(); i++)
 			{
-				bullet_physics->observers_.at(i)->on_collision_end(actor0, actor1);
+				bullet_physics->observers_.at(i)->on_collision_end(entity0, entity1);
 			}
 		}
 		else
 		{
-			adlActor_shared_ptr actor = actor0 == nullptr ? actor1 : actor0;
+			adlEntity_shared_ptr entity = entity0 == nullptr ? entity1 : entity0;
 			for (int i = 0; i < bullet_physics->observers_.size(); i++)
 			{
-				bullet_physics->observers_.at(i)->on_terrain_collision_end(actor);
+				bullet_physics->observers_.at(i)->on_terrain_collision_end(entity);
 			}
 		}
 	}
@@ -352,12 +445,93 @@ void adlBullet_physics::bullet_internal_tick_callback(btDynamicsWorld* const wor
 	bullet_physics->previous_tick_collision_pairs_ = current_tick_collision_pairs;
 }
 
-void adlBullet_physics::remove_collision_object(btCollisionObject* obj)
+void adlBullet_physics::remove_entity(adlEntity_shared_ptr entity)
 {
-
+	if (btRigidBody * const body = get_body(entity))
+	{
+		// destroy the body and all its components
+		remove_collision_object(body);
+		entity_to_body_map_.erase(entity);
+		body_to_entity_map_.erase(body);
+	}
 }
 
-std::vector<adlActor_shared_ptr> adlBullet_physics::get_all_raycast_hits(adlRay ray)
+void adlBullet_physics::remove_collision_object(btCollisionObject* obj)
+{
+	// first remove the object from the physics sim
+	dynamics_world_->removeCollisionObject(obj);
+
+	// then remove the pointer from the ongoing contacts list
+	for (Collision_pairs::iterator it = previous_tick_collision_pairs_.begin(); it != previous_tick_collision_pairs_.end(); )
+	{
+		Collision_pairs::iterator next = it;
+		++next;
+
+		if (it->first == obj || it->second == obj)
+		{
+			//SendCollisionPairRemoveEvent(it->first, it->second);
+			previous_tick_collision_pairs_.erase(it);
+		}
+
+		it = next;
+	}
+
+	// if the object is a RigidBody (all of ours are RigidBodies, but it's good to be safe)
+	if (btRigidBody * const body = btRigidBody::upcast(obj))
+	{
+		// delete the components of the object
+		delete body->getMotionState();
+		delete body->getCollisionShape();
+		delete body->getUserPointer();
+		delete body->getUserPointer();
+
+		for (int ii = body->getNumConstraintRefs() - 1; ii >= 0; --ii)
+		{
+			btTypedConstraint * const constraint = body->getConstraintRef(ii);
+			dynamics_world_->removeConstraint(constraint);
+			delete constraint;
+		}
+	}
+
+	delete obj;
+}
+
+void adlBullet_physics::apply_force(const adlVec3& direction, float newtons, adlEntity_shared_ptr entity)
+{
+	if (btRigidBody * const body = get_body(entity))
+	{
+		body->setActivationState(DISABLE_DEACTIVATION);
+
+		btVector3 const force(direction.x * newtons, direction.y * newtons, direction.z * newtons);
+
+		body->applyCentralImpulse(force);
+	}
+}
+
+void adlBullet_physics::apply_torque(const adlVec3& direction, float magnitude, adlEntity_shared_ptr entity)
+{
+	if (btRigidBody * const body = get_body(entity))
+	{
+		body->setActivationState(DISABLE_DEACTIVATION);
+
+		btVector3 const torque(direction.x * magnitude, direction.y * magnitude, direction.z * magnitude);
+
+		body->applyTorqueImpulse(torque);
+	}
+}
+
+void adlBullet_physics::kinematic_move(adlTransform transform, adlEntity_shared_ptr entity)
+{
+	if (btRigidBody * const body = get_body(entity))
+	{
+		body->setActivationState(DISABLE_DEACTIVATION);
+
+		// warp the body to the new position
+		body->setWorldTransform(adlTransform_to_btTransform(transform.get_transformation_matrix()));
+	}
+}
+
+std::vector<adlEntity_shared_ptr> adlBullet_physics::get_all_raycast_hits(adlRay ray)
 {
 	adlVec3 origin = ray.get_origin();
 	adlVec3 direction = ray.get_direction();
@@ -371,7 +545,7 @@ std::vector<adlActor_shared_ptr> adlBullet_physics::get_all_raycast_hits(adlRay 
 
 	adl_assert(dynamics_world_);
 
-	std::vector<adlActor_shared_ptr> actors;
+	std::vector<adlEntity_shared_ptr> actors;
 
 	if (dynamics_world_)
 	{
@@ -382,21 +556,14 @@ std::vector<adlActor_shared_ptr> adlBullet_physics::get_all_raycast_hits(adlRay 
 		{
 			btVector3 p = from.lerp(to, all_results.m_hitFractions[i]);
 			btRigidBody const * const hit_body = static_cast<btRigidBody const *>(all_results.m_collisionObjects[i]);
-			adlActor_shared_ptr hit_actor = body_to_actor_map_[hit_body];
-
-			if (hit_actor)
-			{
-				actors.push_back(hit_actor);
-				adlResource_manager* adl_rm = &adlResource_manager::get();
-				hit_actor->set_material(adl_rm->get_material("gold"));
-			}
+			adlEntity_shared_ptr hit_actor = body_to_entity_map_[hit_body];
 		}
 	}
 
 	return actors;
 }
 
-adlActor_shared_ptr adlBullet_physics::get_first_raycast_hit(adlRay ray)
+adlEntity_shared_ptr adlBullet_physics::get_first_raycast_hit(adlRay ray)
 {
 	adlVec3 origin = ray.get_origin();
 	adlVec3 direction = ray.get_direction();
@@ -413,12 +580,69 @@ adlActor_shared_ptr adlBullet_physics::get_first_raycast_hit(adlRay ray)
 	if (closest_results.hasHit())
 	{
 		btRigidBody const * const hit_body = static_cast<btRigidBody const *>(closest_results.m_collisionObject);
-		adlActor_shared_ptr actor = body_to_actor_map_[hit_body];
+		adlEntity_shared_ptr actor = body_to_entity_map_[hit_body];
 
 		return actor;
 	}
 
 	return nullptr;
+}
+
+adlVec3 adlBullet_physics::get_velocity(adlEntity_shared_ptr entity)
+{
+	btRigidBody* body = get_body(entity);
+	adl_assert(body);
+
+	if (!body)
+	{
+		return adlVec3();
+	}
+
+	btVector3 bt_velocity = body->getLinearVelocity();
+
+	return adlVec3(bt_velocity.x(), bt_velocity.y(), bt_velocity.z());
+}
+void adlBullet_physics::set_velocity(adlEntity_shared_ptr entity, const adlVec3& velocity)
+{
+	btRigidBody * body = get_body(entity);
+
+	adl_assert(body);
+
+	if (!body)
+	{
+		return;
+	}
+	btVector3 bt_velocity(velocity.x, velocity.y, velocity.z);
+	body->setLinearVelocity(bt_velocity);
+}
+
+adlVec3 adlBullet_physics::get_angular_velocity(adlEntity_shared_ptr entity)
+{
+	btRigidBody* body = get_body(entity);
+	adl_assert(body);
+
+	if (!body)
+	{
+		return adlVec3();
+	}
+
+	btVector3 bt_velocity = body->getAngularVelocity();
+
+	return adlVec3(bt_velocity.x(), bt_velocity.y(), bt_velocity.z());
+}
+
+void adlBullet_physics::set_angular_velocity(adlEntity_shared_ptr entity, const adlVec3& velocity)
+{
+	btRigidBody * body = get_body(entity);
+
+	adl_assert(body);
+
+	if (!body)
+	{
+		return;
+	}
+	btVector3 bt_velocity(velocity.x, velocity.y, velocity.z);
+	body->setAngularVelocity(bt_velocity);
 }
 
 void adlBullet_physics::render_diagnostics()

@@ -67,6 +67,8 @@ public:
 		return bounding_box_;
 	}
 
+	adlVec3 get_bb_dimensions();
+
 private:
 	void load_mesh_to_vao();
 	void store_data_in_attribute_list(int attribute_number, const std::vector<float>& data, int32 stride, int count);

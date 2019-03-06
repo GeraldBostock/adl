@@ -53,6 +53,8 @@ public:
 	void* construct_light(const std::string& class_name);
 	void* construct_component(const std::string& component_name);
 
+	void add_component_to_entity(adlEntity_shared_ptr entity, const std::string& component_name);
+
 	const std::vector<std::string>& get_all_registered_entities() const;
 	const std::vector<std::string>& get_all_registered_lights() const;
 
@@ -66,6 +68,8 @@ private:
 	std::vector<std::string> registered_lights_;
 
 	adlEntity_id last_id_;
+
+	static adlEntity_id next_id;
 };
 
 #endif // adl_entity_factory_h__

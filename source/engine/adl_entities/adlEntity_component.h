@@ -17,7 +17,9 @@ public:
 	}
 
 	virtual bool init(const rapidjson::Value& json_object) = 0;
+	virtual void post_init() = 0;
 	virtual void update(float dt) {};
+	virtual void destroy() = 0;
 
 	void set_owner(adlEntity_shared_ptr entity) 
 	{ 

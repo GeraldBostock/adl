@@ -49,6 +49,11 @@ public:
 		physics_->addObserver(observer);
 	}
 
+	std::shared_ptr<adlIPhysics> get_physics()
+	{
+		return physics_;
+	}
+
 	void addPointLightToScene(adlPoint_light_shared_ptr point_light);
 	void add_point_light_scene(adlPoint_light_shared_ptr point_light);
 
@@ -58,6 +63,7 @@ public:
 	void spawn_actor(adlActor_shared_ptr actor, adlVec3 position, adlVec3 rotation = adlVec3(0.0f), adlVec3 scale = adlVec3(1.0f));
 	void spawnActor(adlActor_shared_ptr actor, adlVec3 position, adlVec3 rotation = adlVec3(0.0f), adlVec3 scale = adlVec3(1.0f));
 	
+	adlEntity_shared_ptr add_entity_to_scene(const std::string& entity_name);
 
 	std::vector<adlEntity_shared_ptr>& get_all_entities();
 	std::vector<adlActor_shared_ptr>& get_all_actors();
@@ -76,7 +82,7 @@ private:
 
 	adlSun_shared_ptr sun_;
 	adlCamera* camera_;
-	adlIPhysics* physics_;
+	std::shared_ptr<adlIPhysics> physics_;
 
 	adlScene_shared_ptr active_scene_ = nullptr;
 

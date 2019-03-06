@@ -19,6 +19,7 @@ public:
 	}
 
 	void prepare();
+	void render(adlEntity_shared_ptr entity);
 	void render(adlActor_shared_ptr actor);
 	void render(adlSun_shared_ptr light);
 	void render(adlPoint_light_shared_ptr point_light);

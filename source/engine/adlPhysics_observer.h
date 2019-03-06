@@ -8,10 +8,10 @@ class adlPhysics_observer
 {
 public:
 	virtual ~adlPhysics_observer() {}
-	virtual void on_collision_start(adlActor_shared_ptr actor1, adlActor_shared_ptr actor2) = 0;
-	virtual void on_collision_end(adlActor_shared_ptr actor1, adlActor_shared_ptr actor2) = 0;
-	virtual void on_terrain_collision_start(adlActor_shared_ptr actor, const adlVec3& collision_point) = 0;
-	virtual void on_terrain_collision_end(adlActor_shared_ptr actor) = 0;
+	virtual void on_collision_start(adlEntity_shared_ptr entity1, adlEntity_shared_ptr entity2) = 0;
+	virtual void on_collision_end(adlEntity_shared_ptr entity1, adlEntity_shared_ptr entity2) = 0;
+	virtual void on_terrain_collision_start(adlEntity_shared_ptr entity, const adlVec3& collision_point) = 0;
+	virtual void on_terrain_collision_end(adlEntity_shared_ptr entity) = 0;
 	virtual void on_terrain_mouse_ray_collision(const adlVec3& collision_point) = 0;
 };
 

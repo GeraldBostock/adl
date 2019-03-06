@@ -6,6 +6,7 @@
 #include "engine/adl_entities/adlEntity_factory.h"
 #include "engine/adl_entities/adlTransform_component.h"
 #include "engine/adl_entities/adlRender_component.h"
+#include "engine/adl_entities/adlPhysics_component.h"
 
 Game::Game()
 {
@@ -22,6 +23,7 @@ bool Game::init()
 {
 	adlTransform_component tc;
 	adlRender_component r;
+	adlPhysics_component p;
 	adlScene_shared_ptr scene = adl_scene_manager->create_empty_scene("new_scene");
 	adl_scene_manager->set_active_scene(scene);
 
@@ -51,8 +53,9 @@ bool Game::init()
 	adlTerrain_shared_ptr terrain = adl_rm->get_terrain("test_terrain");
 	adl_scene_manager->set_terrain(terrain);
 
-	adlEntity_factory* fac = &adlEntity_factory::get();
-	adlEntity_shared_ptr entity = fac->construct_entity("test_entity");
+	entity = adl_scene_manager->add_entity_to_scene("test_entity");
+	adlEntity_shared_ptr entity1 = adl_scene_manager->add_entity_to_scene("test_entity");
+
 	std::shared_ptr<adlTransform_component> component = std::shared_ptr(entity->get_component<adlTransform_component>("adlTransform_component"));
 
 	return true;
@@ -70,7 +73,31 @@ bool Game::update(float dt)
 		adl_window->toggle_fullscreen();
 	}
 
-	Game x(Game());
+	if (adl_input->get_key(adl_key_left_ctrl) && adl_input->get_key(adl_key_y))
+	{
+		if (entity->has_component("adlPhysics_component"))
+		{
+			std::shared_ptr<adlPhysics_component> component = std::shared_ptr(entity->get_component<adlPhysics_component>("adlPhysics_component"));
+			component->apply_force(adlVec3(0, 0, 1), 2);
+		}
+	}
+
+	if (adl_input->get_key(adl_key_left_ctrl) && adl_input->get_key_down(adl_key_h))
+	{
+		if (entity->has_component("adlPhysics_component"))
+		{
+			entity->remove_component("adlPhysics_component");
+		}
+	}
+
+	if (adl_input->get_key(adl_key_left_ctrl) && adl_input->get_key_down(adl_key_n))
+	{
+		if (!entity->has_component("adlPhysics_component"))
+		{
+			adlEntity_factory* fac = &adlEntity_factory::get();
+			fac->add_component_to_entity(entity, "adlPhysics_component");
+		}
+	}
 
 	return true;
 }

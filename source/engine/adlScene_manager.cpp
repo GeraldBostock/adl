@@ -39,7 +39,7 @@ void adlScene_manager::set_active_scene(adlScene_shared_ptr scene)
 
 void adlScene_manager::set_physics(adlIPhysics* physics)
 {
-	physics_ = physics;
+	physics_ = std::shared_ptr<adlIPhysics>(physics);
 }
 
 void adlScene_manager::update(float dt)
@@ -146,7 +146,7 @@ void adlScene_manager::spawn_actor(adlActor_shared_ptr actor, adlVec3 position, 
 	actor->set_scale(scale);
 	active_scene_->spawn_actor(actor, position, rotation, scale);
 
-	adlMesh_shared_ptr mesh = actor->getModel()->get_all_meshes()[0];
+	/*adlMesh_shared_ptr mesh = actor->getModel()->get_all_meshes()[0];
 	adlBounding_box bb = mesh->get_bounding_box();
 	adlVec3 dims;
 	dims.x = std::abs(bb.bottom_left_back().x - bb.bottom_right_back().x) / 2;
@@ -166,7 +166,7 @@ void adlScene_manager::spawn_actor(adlActor_shared_ptr actor, adlVec3 position, 
 		dims.z = 0.1f;
 	}
 
-	physics_->add_sphere(1, actor->get_transform(), actor);
+	physics_->add_sphere(1, actor->get_transform(), actor);*/
 }
 
 void adlScene_manager::spawnActor(adlActor_shared_ptr actor, adlVec3 position, adlVec3 rotation/* = adlVec3(0.0f)*/, adlVec3 scale/* = adlVec3(1.0f)*/)
@@ -197,6 +197,17 @@ void adlScene_manager::add_point_light_scene(adlPoint_light_shared_ptr point_lig
 {
 	point_light->init();
 	point_lights_.push_back(point_light);
+}
+
+adlEntity_shared_ptr adlScene_manager::add_entity_to_scene(const std::string& entity_name)
+{
+	adlEntity_factory* entity_factory = &adlEntity_factory::get();
+	adlEntity_shared_ptr entity = entity_factory->construct_entity(entity_name);
+
+	entities_.push_back(entity);
+	active_scene_->spawn_entity(entity);
+
+	return entity;
 }
 
 void adlScene_manager::set_terrain(adlTerrain_shared_ptr terrain)

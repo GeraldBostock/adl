@@ -104,3 +104,25 @@ adlMaterial_shared_ptr adlMesh::get_material()
 {
 	return material_;
 }
+
+adlVec3 adlMesh::get_bb_dimensions()
+{
+	adlVec3 dims;
+	dims.x = std::abs(bounding_box_.bottom_left_back().x - bounding_box_.bottom_right_back().x) / 2;
+	dims.y = std::abs(bounding_box_.bottom_left_back().y - bounding_box_.up_left_back().y) / 2;
+	dims.z = std::abs(bounding_box_.bottom_left_back().z - bounding_box_.bottom_left_front().z) / 2;
+	if (dims.x == 0.0f)
+	{
+		dims.x = 0.1f;
+	}
+	if (dims.y == 0.0f)
+	{
+		dims.y = 0.1f;
+	}
+	if (dims.z == 0.0f)
+	{
+		dims.z = 0.1f;
+	}
+
+	return dims;
+}

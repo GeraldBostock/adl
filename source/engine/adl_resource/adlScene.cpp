@@ -18,10 +18,6 @@ adlScene::adlScene(const std::string& scene_name)
 		terrain_(nullptr),
 		cube_map_(nullptr)
 {
-	//boxShape = new rp3d::SphereShape(1.0f);
-
-	/*adlPhysics* physics = &adlPhysics::get();
-	collision_world_ = physics->create_new_world();*/
 }
 
 adlScene::adlScene(const std::string& scene_name, std::vector<adlEntity_shared_ptr> entities, std::vector<adlActor_shared_ptr> actors, std::vector<adlPoint_light_shared_ptr> point_lights)
@@ -34,10 +30,6 @@ adlScene::adlScene(const std::string& scene_name, std::vector<adlEntity_shared_p
 		terrain_(nullptr),
 		cube_map_(nullptr)
 {
-	//boxShape = new rp3d::SphereShape(1.0f);
-
-	/*adlPhysics* physics = &adlPhysics::get();
-	collision_world_ = physics->create_new_world();*/
 }
 
 
@@ -47,32 +39,11 @@ adlScene::~adlScene()
 
 void adlScene::update(float dt)
 {
-	//adlMouse_picker* mp = &adlMouse_picker::get();
-	//adlRay ray = mp->get_mouse_ray();
-	//adlVec3 origin = ray.get_origin();
-
-	//float x = origin.x + (ray.get_direction().x * 500);
-	//float y = origin.y + (ray.get_direction().y * 500);
-	//float z = origin.z + (ray.get_direction().z * 500);
-
-	//rp3d::Vector3 startPoint(origin.x, origin.y, origin.z);
-	//rp3d::Vector3 endPoint(x, y, z);
-
-	//// Create the ray 
-	//rp3d::Ray rpdRay(startPoint, endPoint);
 
 	for (auto entity : entities_)
 	{
 		entity->update(dt);
 	}
-
-	/*for (auto actor : actors_)
-	{
-		adlResource_manager* rm = &adlResource_manager::get();
-		actor->set_material(rm->get_material("bronze"));
-
-		actor->update(dt);
-	}*/
 
 	camera_->update(dt);
 	sun_->update(dt);
@@ -81,18 +52,6 @@ void adlScene::update(float dt)
 	{
 		light->update(dt);
 	}
-
-	//RaycastCallback callbackObject;
-
-	//// Raycast test 
-	//world_.raycast(rpdRay, &callbackObject);
-	//rp3d::CollisionBody* body = callbackObject.get_body();
-	//if (body != nullptr)
-	//{
-	//	adlResource_manager* rm = &adlResource_manager::get();
-	//	adlActor_shared_ptr actor = bodies_[body];
-	//	actor->set_material(rm->get_material("copper"));
-	//}
 }
 
 void adlScene::render()
@@ -104,6 +63,11 @@ void adlScene::render()
 	if (cube_map_ != nullptr)
 	{
 		renderer->render(cube_map_);
+	}
+
+	for (auto entity : entities_)
+	{
+		renderer->render(entity);
 	}
 
 	for (auto actor : actors_)
@@ -134,48 +98,6 @@ void adlScene::spawn_actor(adlActor_shared_ptr actor, adlVec3 position/* = adlVe
 	actor->set_rotation(rotation);
 	actor->set_scale(scale);
 	actors_.push_back(actor);
-
-	//if (actor->get_model() != nullptr)
-	//{
-	//	rp3d::Vector3 initPosition(position.x, position.y, position.z);
-	//	rp3d::Quaternion initOrientation = rp3d::Quaternion::identity();
-	//	rp3d::Transform transform(initPosition, initOrientation);
-
-	//	// Create a collision body in the world 
-	//	rp3d::CollisionBody* body;
-	//	body = world_.createCollisionBody(transform);
-
-	//	std::vector<adlMesh_shared_ptr> meshes = actor->get_model()->get_all_meshes();
-
-	//	for (auto mesh : meshes)
-	//	{
-	//		adlBounding_box bb = mesh->get_bounding_box();
-	//		float x = std::abs(bb.up_left_back().x - bb.up_right_back().x);
-	//		if (x == 0.0f)
-	//		{
-	//			x = 0.1f;
-	//		}
-	//		float y = std::abs(bb.bottom_left_back().y - bb.up_left_back().y);
-	//		if (y == 0.0f)
-	//		{
-	//			y = 0.1f;
-	//		}
-	//		float z = std::abs(bb.bottom_left_front().z - bb.bottom_left_back().z);
-	//		if (z == 0.0f)
-	//		{
-	//			z = 0.1f;
-	//		}
-
-	//		const rp3d::Vector3 halfExtents(x / 2.0f, y / 2.0f, z / 2.0f);
-	//		rp3d::ProxyShape* proxyShape;
-	//		rp3d::Transform identity;
-	//		proxyShape = body->addCollisionShape(boxShape, identity);
-	//		proxy_array_.push_back(proxyShape);
-	//	}
-
-	//	bodies_[body] = actor;
-	//	bodies_array_.push_back(body);
-	//}
 }
 
 void adlScene::spawn_point_light(adlPoint_light_shared_ptr point_light, adlVec3 position/* = adlVec3(0.0f)*/, adlVec3 rotation/* = adlVec3(0.0f)*/, adlVec3 scale/* = adlVec3(1.0f)*/)

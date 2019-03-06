@@ -7,6 +7,7 @@
 
 #include <document.h>
 #include <map>
+#include <vector>
 
 typedef std::map<adlComponent_id, adlEntity_component_shared_ptr> Entity_Components;
 
@@ -19,6 +20,7 @@ public:
 
 	virtual void init();
 	virtual void update(float dt);
+	void destroy();
 
 	unsigned int get_id();
 	unsigned int getId();
@@ -34,45 +36,27 @@ public:
 
 	virtual void deserialize(const rapidjson::Value& json_object);
 
-	void add_component(adlEntity_component_shared_ptr);
-
-	template <class Component_type> std::weak_ptr<Component_type> get_component(adlComponent_id id)
-	{
-		Entity_Components::iterator it = components_.find(id);
-
-		//Found component
-		if (it != components_.end())
-		{
-			adlEntity_component_shared_ptr component(it->second);
-			std::shared_ptr<Component_type> sub_component(std::static_pointer_cast<Component_type>(component));
-			std::weak_ptr<Component_type> weak_sub_component(sub_component);
-
-			return weak_sub_component;
-		}
-		else
-		{
-			return std::weak_ptr<Component_type>();
-		}
-	}
+	void add_component(adlEntity_component_shared_ptr component);
+	void remove_component(const std::string& component_name);
+	bool has_component(const std::string& component_name);
 
 	template <class Component_type> std::weak_ptr<Component_type> get_component(const std::string& component_name)
 	{
-		for (Entity_Components::iterator it = components_.begin(); it != components_.end(); ++it)
+		for (auto component : components_)
 		{
-			if (it->second->get_type_name() == component_name)
+			if (component->get_type_name() == component_name)
 			{
 				//Found component
-				adlEntity_component_shared_ptr component(it->second);
-				std::shared_ptr<Component_type> sub_component(std::static_pointer_cast<Component_type>(component));
+				adlEntity_component_shared_ptr entity_component(component);
+				std::shared_ptr<Component_type> sub_component(std::static_pointer_cast<Component_type>(entity_component));
 				std::weak_ptr<Component_type> weak_sub_component(sub_component);
 
 				return weak_sub_component;
 			}
-			else
-			{
-				return std::weak_ptr<Component_type>();
-			}
 		}
+
+		std::cout << "component not found" << std::endl;
+		return std::weak_ptr<Component_type>();
 	}
 
 protected:
@@ -82,7 +66,8 @@ private:
 	static adlEntity_id current_id;
 	adlEntity_id id_;
 	std::string name_;
-	Entity_Components components_;
+	//Entity_Components components_;
+	std::vector<adlEntity_component_shared_ptr> components_;
 };
 
 #endif //adl_entity_h__

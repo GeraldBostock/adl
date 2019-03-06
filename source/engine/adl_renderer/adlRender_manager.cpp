@@ -10,6 +10,8 @@
 #include "engine/adl_resource/adlCube_map.h"
 #include "engine/adlWindow.h"
 #include "engine/adl_renderer/adlDebug_renderer.h"
+#include "engine/adl_entities/adlRender_component.h"
+#include "engine/adl_entities/adlTransform_component.h"
 
 #include <iostream>
 #include <GL/glew.h>
@@ -32,6 +34,82 @@ void adlRender_manager::init()
 	glFrontFace(GL_CCW);
 	glCullFace(GL_BACK);
 	glEnable(GL_CULL_FACE);
+}
+
+void adlRender_manager::render(adlEntity_shared_ptr entity)
+{
+	std::shared_ptr<adlTransform_component> transform_component;
+	if (entity->has_component("adlTransform_component"))
+	{
+		transform_component = std::shared_ptr(entity->get_component<adlTransform_component>("adlTransform_component"));
+	}
+	std::shared_ptr<adlRender_component> render_component;
+	if (entity->has_component("adlRender_component"))
+	{
+		render_component = std::shared_ptr(entity->get_component<adlRender_component>("adlRender_component"));
+	}
+	if (render_component == nullptr)
+	{
+		return;
+	}
+
+	adlResource_manager* adl_rm = &adlResource_manager::get();
+
+	adlModel_shared_ptr model = render_component->get_model();
+	adlMaterial_shared_ptr material = render_component->get_material();
+	if (model == nullptr)
+	{
+		material = adl_rm->get_material("missing");
+		model = adl_rm->get_model("Cube");
+	}
+	adl_assert(model);
+	adlMat4 view_matrix = camera_->get_view_matrix();
+
+	adlShader_shared_ptr shader;
+	if (material != nullptr)
+	{
+		if (material->get_texture() != nullptr)
+		{
+			shader = adl_rm->get_shader("textured");
+		}
+		else
+		{
+			shader = adl_rm->get_shader("no_texture");
+		}
+	}
+	else
+	{
+		shader = adl_rm->get_shader("no_texture");
+	}
+	adl_assert(shader);
+
+	shader->start();
+
+	adlMat4 mvp_matrix = projection_matrix_ * view_matrix * transform_component->get_transform().get_transformation_matrix();
+	adlMat4 model_matrix = transform_component->get_transform().get_transformation_matrix();
+	shader->load_mvp(mvp_matrix);
+	shader->load_light(sun_);
+	shader->load_model_matrix(model_matrix);
+	shader->load_camera_position(camera_->get_position());
+	shader->load_point_lights(lights_);
+	shader->load_material(material);
+
+
+	if (material != nullptr)
+	{
+		shader->load_material(material);
+		if (material->get_texture() != nullptr)
+		{
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_2D, material->get_texture()->get_id());
+			shader->load_texture();
+
+			glActiveTexture(GL_TEXTURE1);
+			glBindTexture(GL_TEXTURE_2D, material->get_texture()->get_specular_map_id());
+		}
+	}
+	model->draw(shader, model_matrix);
+	shader->stop();
 }
 
 void adlRender_manager::render(adlActor_shared_ptr actor)

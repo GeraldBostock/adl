@@ -5,6 +5,8 @@
 
 #include <document.h>
 
+adlEntity_id adlEntity_factory::next_id = 1;
+
 adlEntity_factory::adlEntity_factory()
 {
 }
@@ -24,7 +26,7 @@ adlEntity_shared_ptr adlEntity_factory::construct_entity(const std::string& enti
 {
 	adlLogger* logger = &adlLogger::get();
 	adlResource_manager* adl_rm = &adlResource_manager::get();
-	adlEntity_shared_ptr entity = MAKE_SHARED(adlEntity);
+	adlEntity_shared_ptr entity = MAKE_SHARED(adlEntity, next_id++);
 
 	const std::string& entity_json = adl_rm->get_entity_json(entity_name);
 	if (entity_json == "")
@@ -43,6 +45,8 @@ adlEntity_shared_ptr adlEntity_factory::construct_entity(const std::string& enti
 			return nullptr;
 		}
 
+		entity->set_name(document["type"].GetString());
+
 		const rapidjson::Value& components = document["components"];
 		adl_assert(components.IsArray());
 
@@ -55,11 +59,24 @@ adlEntity_shared_ptr adlEntity_factory::construct_entity(const std::string& enti
 			{
 				component->init(component_object);
 				entity->add_component(adlEntity_component_shared_ptr(component));
+				component->set_owner(entity);
+				component->post_init();
 			}
 		}	
 	}
 
 	return entity;
+}
+
+void adlEntity_factory::add_component_to_entity(adlEntity_shared_ptr entity, const std::string& component_name)
+{
+	adlEntity_component* component = (adlEntity_component*)construct_component(component_name);
+	if (component != nullptr)
+	{
+		entity->add_component(adlEntity_component_shared_ptr(component));
+		component->set_owner(entity);
+		component->post_init();
+	}
 }
 
 void* adlEntity_factory::construct_component(const std::string& component_name)

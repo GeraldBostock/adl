@@ -10,6 +10,8 @@ public:
 	adlTransform_component();
 
 	virtual bool init(const rapidjson::Value& json_object) override;
+	virtual void post_init() override {};
+	virtual void destroy() override;
 
 	const adlVec3& get_position();
 	void set_position(const adlVec3& position);
@@ -19,6 +21,9 @@ public:
 
 	const adlVec3& get_scale();
 	void set_scale(const adlVec3& scale);
+
+	adlTransform get_transform();
+	void set_transform(const adlTransform& transform);
 
 private:
 	adlTransform transform_;

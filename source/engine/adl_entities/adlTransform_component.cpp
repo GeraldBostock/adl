@@ -36,6 +36,11 @@ bool adlTransform_component::init(const rapidjson::Value& json_object)
 	return true;
 }
 
+void adlTransform_component::destroy()
+{
+
+}
+
 void adlTransform_component::set_position(const adlVec3& position)
 {
 	transform_.o = position;
@@ -64,4 +69,16 @@ const adlVec3& adlTransform_component::get_scale()
 void adlTransform_component::set_scale(const adlVec3& scale)
 {
 	transform_.scale = scale;
+}
+
+adlTransform adlTransform_component::get_transform()
+{
+	return transform_;
+}
+
+void adlTransform_component::set_transform(const adlTransform& transform)
+{
+	transform_.o = transform.o;
+	transform_.rot = transform.rot;
+	transform_.scale = transform.scale;
 }

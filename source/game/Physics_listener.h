@@ -11,19 +11,19 @@ public:
 	Physics_listener() {};
 	~Physics_listener() {};
 
-	virtual void on_collision_start(adlActor_shared_ptr actor1, adlActor_shared_ptr actor2) override
+	virtual void on_collision_start(adlEntity_shared_ptr entity1, adlEntity_shared_ptr entity2) override
 	{
 	}
 
-	virtual void on_collision_end(adlActor_shared_ptr actor1, adlActor_shared_ptr actor2) 
+	virtual void on_collision_end(adlEntity_shared_ptr entity1, adlEntity_shared_ptr entity2)
 	{
 	}
 
-	virtual void on_terrain_collision_start(adlActor_shared_ptr actor, const adlVec3& collision_point) 
+	virtual void on_terrain_collision_start(adlEntity_shared_ptr entity, const adlVec3& collision_point)
 	{
 	}
 
-	virtual void on_terrain_collision_end(adlActor_shared_ptr actor) 
+	virtual void on_terrain_collision_end(adlEntity_shared_ptr entity)
 	{
 	}
 

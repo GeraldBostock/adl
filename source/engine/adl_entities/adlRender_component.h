@@ -9,7 +9,9 @@ class adlRender_component : public adlEntity_component
 public:
 	adlRender_component();
 
-	virtual bool init(const rapidjson::Value& json_object);
+	virtual bool init(const rapidjson::Value& json_object) override;
+	virtual void post_init() override {};
+	virtual void destroy() override;
 
 	adlModel_shared_ptr get_model();
 	adlMaterial_shared_ptr get_material();

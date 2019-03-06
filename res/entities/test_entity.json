@@ -4,7 +4,7 @@
 	[
 		{
 			"type": "adlTransform_component",
-			"position": [0.0, 0.0, 0.0],
+			"position": [0.0, 20.0, 0.0],
 			"rotation": [0.0, 0.0, 0.0],
 			"scale": [1.0, 1.0, 1.0]
 		},
@@ -12,6 +12,10 @@
 			"type": "adlRender_component",
 			"model": "Cube",
 			"material": "obsidian"
+		},
+		{
+			"type": "adlPhysics_component",
+			"shape": "box"
 		}
 	]
 }

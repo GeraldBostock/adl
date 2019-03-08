@@ -203,6 +203,54 @@ void Tetromino::move_right()
 	current_i_++;
 }
 
+void Tetromino::rotate_tetromino()
+{
+	for (int x = 0; x < 4 / 2; x++)
+	{
+		// Consider elements in group of 4 in  
+		// current square 
+		for (int y = x; y < 4 - x - 1; y++)
+		{
+			// store current cell in temp variable 
+			int temp = blocks_[x][y];
+			adlEntity_shared_ptr temp1 = entities_[x][y];
+
+			// move values from right to top 
+			blocks_[x][y] = blocks_[y][4 - 1 - x];
+			entities_[x][y] = entities_[y][4 - 1 - x];
+
+			// move values from bottom to right 
+			blocks_[y][4 - 1 - x] = blocks_[4 - 1 - x][4 - 1 - y];
+			entities_[y][4 - 1 - x] = entities_[4 - 1 - x][4 - 1 - y];
+
+			// move values from left to bottom 
+			blocks_[4 - 1 - x][4 - 1 - y] = blocks_[4 - 1 - y][x];
+			entities_[4 - 1 - x][4 - 1 - y] = entities_[4 - 1 - y][x];
+
+			// assign temp to left 
+			blocks_[4 - 1 - y][x] = temp;
+			entities_[4 - 1 - y][x] = temp1;
+		}
+	}
+
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			adlEntity_shared_ptr entity = entities_[j][i];
+			if (entity)
+			{
+				std::shared_ptr<adlTransform_component> trans_comp;
+				if (entity->has_component("adlTransform_component"))
+				{
+					trans_comp = std::shared_ptr<adlTransform_component>(entity->get_component<adlTransform_component>("adlTransform_component"));
+					trans_comp->set_position(adlVec3((i + current_i_) * 2, (j + current_j_) * 2 + 20, 0));
+				}
+			}
+		}
+	}
+}
+
 int Tetromino::value_at(int i, int j)
 {
 	return blocks_[i][j];

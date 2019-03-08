@@ -28,6 +28,7 @@ public:
 	void move_left();
 	void move_right();
 	int value_at(int i, int j);
+	void rotate_tetromino();
 	void destroy()
 	{
 		for (int i = 0; i < 4; i++)

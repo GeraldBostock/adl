@@ -96,7 +96,7 @@ bool Game::update(float dt)
 				tetromino_->destroy();
 				tetromino_ = nullptr;
 
-				int random_number = 0;// rand() % 7;
+				int random_number = rand() % 7;
 				Tetromino_type type = Tetromino_type::O;
 				switch (random_number)
 				{
@@ -151,6 +151,11 @@ bool Game::update(float dt)
 		{
 			tetromino_->move_down();
 		}
+	}
+
+	if (adl_input->get_key_down(adl_key_up))
+	{
+		tetromino_->rotate_tetromino();
 	}
 
 	if (adl_input->get_key(adl_key_left_ctrl) && adl_input->get_key_down(adl_key_f))

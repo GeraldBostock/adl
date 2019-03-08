@@ -5,6 +5,8 @@
 
 #include "Test_light.h"
 #include "game/Physics_listener.h"
+#include "game/Tetromino.h"
+#include "game/Board.h"
 
 class Game : public adlRoot
 {
@@ -19,6 +21,10 @@ private:
 	adlTimer timer_;
 	Physics_listener* listener_;
 	adlEntity_shared_ptr entity = nullptr;
+
+	Tetromino* tetromino_;
+	Board* board_;
+	bool board_debug_draw_ =  false;
 };
 
 #endif // game_h__

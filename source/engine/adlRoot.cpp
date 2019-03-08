@@ -90,7 +90,6 @@ void adlRoot::run()
 	adl_scene_manager->update(dt);
 	adl_scene_manager->render();
 
-	//physics_->sync_physics_to_rendering();
 	physics_->update(dt);
 	physics_->sync_scene();
 

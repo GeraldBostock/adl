@@ -218,6 +218,10 @@
 	{
 		"name": "test_entity",
 		"path": "res/entities/test_entity.json"
+	},
+	{
+		"name": "wall",
+		"path": "res/entities/wall.json"
 	}
   ]
 }

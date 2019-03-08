@@ -1,5 +1,5 @@
 {
-	"type": "test_entity",
+	"type": "wall",
 	"components": 
 	[
 		{
@@ -11,7 +11,7 @@
 		{
 			"type": "adlRender_component",
 			"model": "Cube",
-			"material": "ruby"
+			"material": "obsidian"
 		}
 	]
 	

@@ -36,3 +36,13 @@ adlMaterial_shared_ptr adlRender_component::get_material()
 {
 	return material_;
 }
+
+void adlRender_component::set_material(adlMaterial_shared_ptr mat)
+{
+	material_ = mat;
+}
+
+void adlRender_component::set_model(adlModel_shared_ptr model)
+{
+	model_ = model;
+}

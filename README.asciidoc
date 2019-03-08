@@ -1,0 +1,40 @@
+# ADL Game Engine
+
+image::screenshot.png[]
+
+## 3D cross-platform game engine
+
+ADL is a somewhat competent cross-platform 3D game engine.
+
+### Build Instructions
+
+#### Windows
+**Prerequisites**
+
+- https://cmake.org/download/[Cmake]
+- https://visualstudio.microsoft.com/tr/downloads/[Visual Studio 2017]
+
+Running build_scripts/Windows_visual_studio.bat generates a Visual Studio Solution file under build folder. If that failes most likely you are missing some dependencies. Check cmakes output for which ones you are missing and download them.
+Put include files under dependencies/[library_name]/include
+Lib files under dependencies/[library_name]/lib
+and dlls under dependencies/bin folder.
+
+**Dependencies:**
+
+- http://assimp.sourceforge.net/main_downloads.html[Assimp]
+- https://www.freetype.org/download.html[Freetpye]
+- http://glew.sourceforge.net/[GLEW]
+- https://github.com/Tencent/rapidjson[RapidJSON]
+- https://www.libsdl.org/download-2.0.php[SDL2]
+- https://github.com/gabime/spdlog[spdlog]
+- https://github.com/nothings/stb[stb]
+- https://github.com/ocornut/imgui[ImGui]
+- https://github.com/bulletphysics/bullet3[BulletPhysics]
+
+**Building**
+Run Windows_visual_studio.bat file under /build_scripts
+
+OR run
+
+[source, batch]
+cmake

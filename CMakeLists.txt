@@ -115,7 +115,7 @@ INCLUDE(${ADL_CMAKE_DIR}/FindBULLET.cmake)
 
 
 # ADL Includes
-include_directories(
+include_directories( SYSTEM
 	${PROJECT_SOURCE_DIR}/headers/
 	${PROJECT_SOURCE_DIR}/sources/
 	${PROJECT_SOURCE_DIR}/source/

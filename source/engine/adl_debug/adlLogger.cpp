@@ -23,6 +23,16 @@ void adlLogger::log_error(const std::string& error, bool log_to_file /*= false*/
 	}
 }
 
+void adlLogger::log_warning(const std::string& warning, bool log_to_file/* = false*/)
+{
+	console_->warn(warning);
+	if (log_to_file)
+	{
+		warning_logger_->warn(warning);
+		warning_logger_->warn(__LINE__);
+	}
+}
+
 void adlLogger::log_info(const std::string& info, bool log_to_file /*= false*/)
 {
 	console_->info(info);

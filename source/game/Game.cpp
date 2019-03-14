@@ -7,6 +7,7 @@
 #include "engine/adl_entities/adlTransform_component.h"
 #include "engine/adl_entities/adlRender_component.h"
 #include "engine/adl_entities/adlPhysics_component.h"
+#include "engine/adl_entities/adlPoint_light_component.h"
 
 Game::Game()
 {
@@ -24,6 +25,7 @@ bool Game::init()
 	adlTransform_component tc;
 	adlRender_component r;
 	adlPhysics_component p;
+	adlPoint_light_component l;
 	adlScene_shared_ptr scene = adl_scene_manager->create_empty_scene("new_scene");
 	adl_scene_manager->set_active_scene(scene);
 
@@ -32,23 +34,15 @@ bool Game::init()
 	listener_ = ADL_NEW(Physics_listener);
 	adl_scene_manager->add_physics_observer(listener_);
 
-	adlSun_shared_ptr sun = MAKE_SHARED(adlSun);
-	sun->set_position(adlVec3(0, 300, 20));
-	adl_scene_manager->setSun(sun);
+	adlCamera* scene_camera = ADL_NEW(adlCamera);
+	scene_camera->set_camera_type(ct_god_mode);
+	scene_camera->init();
 
-	adlPoint_light_shared_ptr point_light = MAKE_SHARED(adlPoint_light);
-	point_light->set_name("Light_#1");
-
-	adlCamera* camera = ADL_NEW(adlCamera);
-	camera->set_camera_type(ct_god_mode);
-	camera->init();
-
-	adl_scene_manager->set_camera(camera);
+	adl_scene_manager->set_camera(scene_camera);
 
 	adl_window->set_mouse_visible(false);
 
-	scene->set_sun(sun);
-	scene->set_camera(camera);
+	scene->set_camera(scene_camera);
 
 	adlTerrain_shared_ptr terrain = adl_rm->get_terrain("test_terrain");
 	adl_scene_manager->set_terrain(terrain);
@@ -84,10 +78,8 @@ bool Game::update(float dt)
 
 	if (adl_input->get_key(adl_key_left_ctrl) && adl_input->get_key_down(adl_key_h))
 	{
-		if (entity->has_component("adlPhysics_component"))
-		{
-			entity->remove_component("adlPhysics_component");
-		}
+		adlEntity_factory* fac = &adlEntity_factory::get();
+		fac->remove_component_from_entity(entity, "adlPhysics_component");
 	}
 
 	if (adl_input->get_key(adl_key_left_ctrl) && adl_input->get_key_down(adl_key_n))
@@ -97,6 +89,18 @@ bool Game::update(float dt)
 			adlEntity_factory* fac = &adlEntity_factory::get();
 			fac->add_component_to_entity(entity, "adlPhysics_component");
 		}
+	}
+
+	if (adl_input->get_key(adl_key_left_ctrl) && adl_input->get_key_down(adl_key_j))
+	{
+		adlEntity_factory* fac = &adlEntity_factory::get();
+		fac->remove_component_from_entity(entity, "adlPoint_light_component");
+	}
+
+	if (adl_input->get_key(adl_key_left_ctrl) && adl_input->get_key_down(adl_key_m))
+	{
+		adlEntity_factory* fac = &adlEntity_factory::get();
+		fac->add_component_to_entity(entity, "adlPoint_light_component");
 	}
 
 	return true;

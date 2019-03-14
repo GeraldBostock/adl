@@ -318,46 +318,5 @@ void adlDebug_renderer::clear_render_queue()
 
 void adlDebug_renderer::render_bounding_boxes()
 {
-	adlScene_manager* scn_manager = &adlScene_manager::get();
-	const std::vector<adlActor_shared_ptr>& actors = scn_manager->get_all_actors();
 
-	for (auto actor : actors)
-	{
-		adlMat4 model_matrix = actor->get_transform().get_transformation_matrix();
-		adlModel_shared_ptr model = actor->get_model();
-		if (model == nullptr)
-		{
-			continue;
-		}
-		const std::vector<adlMesh_shared_ptr>& meshes = model->get_all_meshes();
-		for (auto mesh : meshes)
-		{
-			adlBounding_box bb = mesh->get_bounding_box();
-
-			adlVec3 up_left_back = model_matrix.transform_to_parent(bb.up_left_back());
-			adlVec3 up_left_front = model_matrix.transform_to_parent(bb.up_left_front());
-			adlVec3 up_right_back = model_matrix.transform_to_parent(bb.up_right_back());
-			adlVec3 up_right_front = model_matrix.transform_to_parent(bb.up_right_front());
-
-			adlVec3 bottom_left_back = model_matrix.transform_to_parent(bb.bottom_left_back());
-			adlVec3 bottom_left_front = model_matrix.transform_to_parent(bb.bottom_left_front());
-			adlVec3 bottom_right_back = model_matrix.transform_to_parent(bb.bottom_right_back());
-			adlVec3 bottom_right_front = model_matrix.transform_to_parent(bb.bottom_right_front());
-
-			render_line3D(up_left_back, up_right_back, bounding_box_line_width_, bounding_box_color_);
-			render_line3D(up_left_back, up_left_front, bounding_box_line_width_, bounding_box_color_);
-			render_line3D(up_left_front, up_right_front, bounding_box_line_width_, bounding_box_color_);
-			render_line3D(up_right_front, up_right_back, bounding_box_line_width_, bounding_box_color_);
-
-			render_line3D(up_left_back, bottom_left_back, bounding_box_line_width_, bounding_box_color_);
-			render_line3D(up_right_back, bottom_right_back, bounding_box_line_width_, bounding_box_color_);
-			render_line3D(up_right_front, bottom_right_front, bounding_box_line_width_, bounding_box_color_);
-			render_line3D(up_left_front, bottom_left_front, bounding_box_line_width_, bounding_box_color_);
-
-			render_line3D(bottom_left_back, bottom_right_back, bounding_box_line_width_, bounding_box_color_);
-			render_line3D(bottom_left_back, bottom_left_front, bounding_box_line_width_, bounding_box_color_);
-			render_line3D(bottom_left_front, bottom_right_front, bounding_box_line_width_, bounding_box_color_);
-			render_line3D(bottom_right_front, bottom_right_back, bounding_box_line_width_, bounding_box_color_);
-		}
-	}
 }

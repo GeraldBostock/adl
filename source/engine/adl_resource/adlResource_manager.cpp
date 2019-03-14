@@ -285,8 +285,6 @@ adlScene_shared_ptr adlResource_manager::get_scene(const std::string& name)
 			return scenes_[name];
 		}
 	}
-
-	return nullptr;
 }
 
 adlTerrain_shared_ptr adlResource_manager::get_terrain(const std::string& name)

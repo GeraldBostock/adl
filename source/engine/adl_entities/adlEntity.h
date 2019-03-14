@@ -14,6 +14,8 @@ typedef std::map<adlComponent_id, adlEntity_component_shared_ptr> Entity_Compone
 class adlEntity
 {
 public:
+	friend class adlEntity_factory;
+
 	explicit adlEntity(adlEntity_id id);
 	adlEntity() {};
 	~adlEntity();
@@ -36,8 +38,6 @@ public:
 
 	virtual void deserialize(const rapidjson::Value& json_object);
 
-	void add_component(adlEntity_component_shared_ptr component);
-	void remove_component(const std::string& component_name);
 	bool has_component(const std::string& component_name);
 
 	template <class Component_type> std::weak_ptr<Component_type> get_component(const std::string& component_name)
@@ -63,6 +63,9 @@ protected:
 	std::string type_name;
 
 private:
+	void add_component(adlEntity_component_shared_ptr component);
+	void remove_component(const std::string& component_name);
+
 	static adlEntity_id current_id;
 	adlEntity_id id_;
 	std::string name_;

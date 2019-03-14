@@ -1,5 +1,7 @@
+#pragma warning(push, 0)
 #include "btBulletCollisionCommon.h"
 #include "btBulletDynamicsCommon.h"
+#pragma warning(pop)
 
 class adlBullet_debug_drawer : public btIDebugDraw
 {

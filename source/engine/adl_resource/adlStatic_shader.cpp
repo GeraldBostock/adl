@@ -4,6 +4,8 @@
 #include "engine/adl_entities/adlLight.h"
 #include "engine/adl_entities/adlPoint_light.h"
 #include "engine/adl_resource/adlMaterial.h"
+#include "engine/adl_entities/adlPoint_light_component.h"
+#include "engine/adl_entities/adlTransform_component.h"
 
 
 adlStatic_shader::adlStatic_shader(const std::string& vertex_file, const std::string& fragment_file)
@@ -108,14 +110,32 @@ void adlStatic_shader::load_material(adlMaterial_shared_ptr material)
 	load_float(shininess_location_, material->get_shininess());
 }
 
-void adlStatic_shader::load_light(adlLight_shared_ptr light)
+void adlStatic_shader::load_light(adlEntity_shared_ptr light)
 {
-	load_vector(light_color_location_, light->get_color().to_vec3());
-	load_vector(light_position_location_, light->get_transform().o);
+	adlLogger* logger = &adlLogger::get();
+	if (!light)
+	{
+		return;
+	}
+	if (!light->has_component("adlTransform_component"))
+	{
+		logger->log_warning("Point light " + light->get_name() + " does not have a transform component");
+		return;
+	}
+	if (!light->has_component("adlLight_component"))
+	{
+		return;
+	}
 
-	load_vector(light_ambient_location_, light->get_ambient());
-	load_vector(light_diffuse_location_, light->get_diffuse());
-	load_vector(light_specular_location_, light->get_specular());
+	std::shared_ptr<adlLight_component> light_component = std::shared_ptr(light->get_component<adlLight_component>("adlLight_component"));
+	std::shared_ptr<adlTransform_component> trans_component = std::shared_ptr(light->get_component<adlTransform_component>("adlTransform_component"));
+
+	load_vector(light_position_location_, trans_component->get_position());
+	load_vector(light_color_location_, light_component->get_color().to_vec3());
+
+	load_vector(light_ambient_location_, light_component->get_ambient());
+	load_vector(light_diffuse_location_, light_component->get_diffuse());
+	load_vector(light_specular_location_, light_component->get_specular());
 }
 
 void adlStatic_shader::load_texture()
@@ -124,21 +144,36 @@ void adlStatic_shader::load_texture()
 	load_int(texture_specular_location_, 1);
 }
 
-void adlStatic_shader::load_point_lights(const std::vector<adlPoint_light_shared_ptr>& point_lights)
+
+void adlStatic_shader::load_point_lights(const std::vector<adlEntity_shared_ptr>& point_lights)
 {
+	adlLogger* logger = &adlLogger::get();
 	load_int(point_light_count_location_, point_lights.size());
 	for (unsigned int i = 0; i < point_lights.size(); i++)
 	{
-		adlPoint_light_shared_ptr light = point_lights[i];
-		load_vector(point_light_position_locations_[i], light->get_position());
+		adlEntity_shared_ptr point_light = point_lights[i];
+		if (!point_light->has_component("adlTransform_component"))
+		{
+			logger->log_warning("Point light " + point_light->get_name() + " does not have a transform component");
+			continue;
+		}
+		if (!point_light->has_component("adlPoint_light_component"))
+		{
+			continue;
+		}
 
-		load_vector(point_light_ambient_locations_[i], light->get_ambient());
-		load_vector(point_light_diffuse_locations_[i], light->get_diffuse());
-		load_vector(point_light_specular_locations_[i], light->get_specular());
+		std::shared_ptr<adlPoint_light_component> point_light_component = std::shared_ptr(point_light->get_component<adlPoint_light_component>("adlPoint_light_component"));
+		std::shared_ptr<adlTransform_component> trans_component = std::shared_ptr(point_light->get_component<adlTransform_component>("adlTransform_component"));
 
-		load_float(point_light_constant_locations_[i], light->get_constant());
-		load_float(point_light_linear_locations_[i], light->get_linear());
-		load_float(point_light_quadratic_locations_[i], light->get_quadratic());
+		load_vector(point_light_position_locations_[i], trans_component->get_position());
+
+		load_vector(point_light_ambient_locations_[i], point_light_component->get_ambient());
+		load_vector(point_light_diffuse_locations_[i], point_light_component->get_diffuse());
+		load_vector(point_light_specular_locations_[i], point_light_component->get_specular());
+
+		load_float(point_light_constant_locations_[i], point_light_component->get_constant());
+		load_float(point_light_linear_locations_[i], point_light_component->get_linear());
+		load_float(point_light_quadratic_locations_[i], point_light_component->get_quadratic());
 	}
 }
 

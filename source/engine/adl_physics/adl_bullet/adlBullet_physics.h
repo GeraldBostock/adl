@@ -1,8 +1,11 @@
 #ifndef adl_bullet_physics_h__
 #define adl_bullet_physics_h__
 
+
+#pragma warning(push, 0)			
 #include "btBulletCollisionCommon.h"
-#include "btBulletDynamicsCommon.h"
+#include "btBulletDynamicsCommon.h"	
+#pragma warning(pop)
 
 #include "../adlIPhysics.h"
 #include "adlBullet_debug_drawer.h"

@@ -8,7 +8,6 @@
 void adlBullet_debug_drawer::drawLine(const btVector3& from, const btVector3& to, const btVector3& color)
 {
 	adlDebug_renderer* db_renderer = &adlDebug_renderer::get();
-	adlLogger* logger = &adlLogger::get();
 
 	db_renderer->render_line3D(adlVec3(from.x(), from.y(), from.z()), adlVec3(to.x(), to.y(), to.z()), 1.0f, adlColor(color.x(), color.y(), color.z()));
 }

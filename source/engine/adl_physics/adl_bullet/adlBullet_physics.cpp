@@ -8,8 +8,10 @@
 #include "../../adl_resource/adlResource_manager.h"
 #include "../../adl_entities/adlTransform_component.h"
 
+#pragma warning(push, 0)
 #include "BulletCollision/NarrowPhaseCollision/btRaycastCallback.h"
 #include "BulletCollision/CollisionShapes/btHeightfieldTerrainShape.h"
+#pragma warning(pop)
 
 static adlTransform btTransform_to_adlTransform(btTransform const & bttransform, adlVec3 scale)
 {
@@ -203,7 +205,7 @@ void adlBullet_physics::update(float dt)
 		{
 			btVector3 hit_point = closest_results.m_hitPointWorld;
 			adlVec3 adl_hit_point(hit_point.x(), hit_point.y(), hit_point.z());
-			for (int i = 0; i < observers_.size(); i++)
+			for (unsigned int i = 0; i < observers_.size(); i++)
 			{
 				observers_.at(i)->on_terrain_mouse_ray_collision(adl_hit_point);
 			}
@@ -339,8 +341,6 @@ void adlBullet_physics::bullet_internal_tick_callback(btDynamicsWorld* const wor
 	Collision_pairs current_tick_collision_pairs;
 	btDispatcher* const dispatcher = world->getDispatcher();
 
-	adlLogger* logger = &adlLogger::get();
-
 	for (int manifold_index = 0; manifold_index < dispatcher->getNumManifolds(); ++manifold_index)
 	{
 		btPersistentManifold const * const manifold = dispatcher->getManifoldByIndexInternal(manifold_index);
@@ -392,7 +392,7 @@ void adlBullet_physics::bullet_internal_tick_callback(btDynamicsWorld* const wor
 			{
 				if (entity0 != nullptr && entity1 != nullptr)
 				{
-					for (int i = 0; i < bullet_physics->observers_.size(); i++)
+					for (unsigned int i = 0; i < bullet_physics->observers_.size(); i++)
 					{
 						bullet_physics->observers_.at(i)->on_collision_start(entity0, entity1);
 					}
@@ -401,7 +401,7 @@ void adlBullet_physics::bullet_internal_tick_callback(btDynamicsWorld* const wor
 				{
 					
 					adlEntity_shared_ptr entity = entity0 == nullptr ? entity1 : entity0;
-					for (int i = 0; i < bullet_physics->observers_.size(); i++)
+					for (unsigned int i = 0; i < bullet_physics->observers_.size(); i++)
 					{
 						bullet_physics->observers_.at(i)->on_terrain_collision_start(entity, collision_point);
 					}
@@ -427,7 +427,7 @@ void adlBullet_physics::bullet_internal_tick_callback(btDynamicsWorld* const wor
 
 		if (entity0 != nullptr && entity1 != nullptr)
 		{
-			for (int i = 0; i < bullet_physics->observers_.size(); i++)
+			for (unsigned int i = 0; i < bullet_physics->observers_.size(); i++)
 			{
 				bullet_physics->observers_.at(i)->on_collision_end(entity0, entity1);
 			}
@@ -435,7 +435,7 @@ void adlBullet_physics::bullet_internal_tick_callback(btDynamicsWorld* const wor
 		else
 		{
 			adlEntity_shared_ptr entity = entity0 == nullptr ? entity1 : entity0;
-			for (int i = 0; i < bullet_physics->observers_.size(); i++)
+			for (unsigned int i = 0; i < bullet_physics->observers_.size(); i++)
 			{
 				bullet_physics->observers_.at(i)->on_terrain_collision_end(entity);
 			}
@@ -550,7 +550,6 @@ std::vector<adlEntity_shared_ptr> adlBullet_physics::get_all_raycast_hits(adlRay
 	if (dynamics_world_)
 	{
 		dynamics_world_->rayTest(from, to, all_results);
-		adlDebug_renderer* db_renderer = &adlDebug_renderer::get();
 
 		for (int i = 0; i < all_results.m_hitFractions.size(); i++)
 		{

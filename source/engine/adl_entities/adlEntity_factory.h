@@ -53,6 +53,7 @@ public:
 	void* construct_light(const std::string& class_name);
 	void* construct_component(const std::string& component_name);
 
+	void remove_component_from_entity(adlEntity_shared_ptr entity, const std::string& component_name);
 	void add_component_to_entity(adlEntity_shared_ptr entity, const std::string& component_name);
 
 	const std::vector<std::string>& get_all_registered_entities() const;
@@ -61,6 +62,8 @@ public:
 
 private:
 	adlEntity_factory();
+	void light_component_added(adlEntity_shared_ptr entity, const std::string& component_name);
+	void light_component_removed(adlEntity_shared_ptr entity, const std::string& component_name);
 
 	map_type components_;
 	map_type lights_;

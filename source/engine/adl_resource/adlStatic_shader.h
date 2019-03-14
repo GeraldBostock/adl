@@ -20,8 +20,8 @@ public:
 
 	void load_mvp(const adlMat4& mvp_matrix);
 	void load_model_matrix(const adlMat4& model_matrix);
-	void load_light(adlLight_shared_ptr light);
-	void load_point_lights(const std::vector<adlPoint_light_shared_ptr>& point_lights);
+	void load_light(adlEntity_shared_ptr light);
+	void load_point_lights(const std::vector<adlEntity_shared_ptr>& point_lights);
 	void load_camera_position(adlVec3 position);
 	void load_text_color(adlVec3 color);
 	void load_projection_matrix(const adlMat4& matrix);
@@ -70,14 +70,6 @@ private:
 	int32 point_light_count_location_;
 
 	int32 switch_location_;
-
-	/*int32 point_light_position_location_;
-	int32 point_light_ambient_location_;
-	int32 point_light_diffuse_location_;
-	int32 point_light_specular_location_;
-	int32 point_light_constant_location_;
-	int32 point_light_linear_location_;
-	int32 point_light_quadratic_location_;*/
 };
 
 #endif // adl_static_shader_h__

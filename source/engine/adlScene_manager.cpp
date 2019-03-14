@@ -28,8 +28,6 @@ void adlScene_manager::set_active_scene(adlScene_shared_ptr scene)
 {
 	active_scene_ = scene;
 	adlRender_manager* renderer = &adlRender_manager::get();
-	renderer->set_sun(active_scene_->get_sun());
-	renderer->set_lights(active_scene_->get_all_point_lights());
 	camera_ = scene->get_camera();
 	if (camera_ != nullptr)
 	{
@@ -78,126 +76,131 @@ void adlScene_manager::addToScene(adlEntity_shared_ptr entity)
 	add_to_scene(entity);
 }
 
-void adlScene_manager::add_to_scene(adlActor_shared_ptr actor)
-{
-	actor->init();
-	actors_.push_back(actor);
-}
-
-void adlScene_manager::addToScene(adlActor_shared_ptr actor)
-{
-	add_to_scene(actor);
-}
-
-void adlScene_manager::set_sun(adlSun_shared_ptr sun)
-{
-	sun->init();
-	active_scene_->set_sun(sun);
-	adlRender_manager* renderer = &adlRender_manager::get();
-	renderer->set_sun(sun);
-}
-
-void adlScene_manager::setSun(adlSun_shared_ptr sun)
-{
-	set_sun(sun);
-}
-
-adlActor_shared_ptr adlScene_manager::spawn_actor(const std::string& actor_name, adlVec3 position/* = adlVec3(0.0f)*/, adlVec3 rotation/* = adlVec3(0.0f)*/, adlVec3 scale/* = adlVec3(1.0f)*/)
-{
-	adlEntity_factory* factory = &adlEntity_factory::get();
-	adlEntity_shared_ptr entity = factory->construct_entity(actor_name);
-	/*adlActor* actor = (adlActor*)factory->construct_entity(actor_name);
-	adlActor_shared_ptr actor_shared(actor);
-
-	active_scene_->spawn_actor(actor_shared, position, rotation, scale);
-
-	adlMesh_shared_ptr mesh = actor->getModel()->get_all_meshes()[0];
-	adlBounding_box bb = mesh->get_bounding_box();
-	adlVec3 dims;
-	dims.x = std::abs(bb.bottom_left_back().x - bb.bottom_right_back().x) / 2;
-	dims.y = std::abs(bb.bottom_left_back().y - bb.up_left_back().y) / 2;
-	dims.z = std::abs(bb.bottom_left_back().z - bb.bottom_left_front().z) / 2;
-	if (dims.x == 0.0f)
-	{
-		dims.x = 0.1f;
-	}
-	if (dims.y == 0.0f)
-	{
-		dims.y = 0.1f;
-	}
-	if (dims.z == 0.0f)
-	{
-		dims.z = 0.1f;
-	}
-
-
-	physics_->add_sphere(1, actor->get_transform(), actor_shared);
-
-	return actor_shared;*/
-	return nullptr;
-}
-
-void adlScene_manager::spawn_actor(adlActor_shared_ptr actor, adlVec3 position, adlVec3 rotation/* = adlVec3(0.0f)*/, adlVec3 scale/* = adlVec3(1.0f)*/)
-{
-	actor->init();
-	actors_.push_back(actor);
-	actor->set_position(position);
-	actor->set_rotation(rotation);
-	actor->set_scale(scale);
-	active_scene_->spawn_actor(actor, position, rotation, scale);
-
-	/*adlMesh_shared_ptr mesh = actor->getModel()->get_all_meshes()[0];
-	adlBounding_box bb = mesh->get_bounding_box();
-	adlVec3 dims;
-	dims.x = std::abs(bb.bottom_left_back().x - bb.bottom_right_back().x) / 2;
-	dims.y = std::abs(bb.bottom_left_back().y - bb.up_left_back().y) / 2;
-	dims.z = std::abs(bb.bottom_left_back().z - bb.bottom_left_front().z) / 2;
-	
-	if (dims.x == 0.0f)
-	{
-		dims.x = 0.1f;
-	}
-	if (dims.y == 0.0f)
-	{
-		dims.y = 0.1f;
-	}
-	if (dims.z == 0.0f)
-	{
-		dims.z = 0.1f;
-	}
-
-	physics_->add_sphere(1, actor->get_transform(), actor);*/
-}
-
-void adlScene_manager::spawnActor(adlActor_shared_ptr actor, adlVec3 position, adlVec3 rotation/* = adlVec3(0.0f)*/, adlVec3 scale/* = adlVec3(1.0f)*/)
-{
-	spawn_actor(actor, position, rotation, scale);
-}
+//void adlScene_manager::add_to_scene(adlActor_shared_ptr actor)
+//{
+//	actor->init();
+//	actors_.push_back(actor);
+//}
+//
+//void adlScene_manager::addToScene(adlActor_shared_ptr actor)
+//{
+//	add_to_scene(actor);
+//}
+//
+//void adlScene_manager::set_sun(adlSun_shared_ptr sun)
+//{
+//	sun->init();
+//	active_scene_->set_sun(sun);
+//	adlRender_manager* renderer = &adlRender_manager::get();
+//	renderer->set_sun(sun);
+//}
+//
+//void adlScene_manager::set_sun(adlEntity_shared_ptr sun)
+//{
+//	active_s
+//}
+//
+//void adlScene_manager::setSun(adlSun_shared_ptr sun)
+//{
+//	set_sun(sun);
+//}
+//
+//adlActor_shared_ptr adlScene_manager::spawn_actor(const std::string& actor_name, adlVec3 position/* = adlVec3(0.0f)*/, adlVec3 rotation/* = adlVec3(0.0f)*/, adlVec3 scale/* = adlVec3(1.0f)*/)
+//{
+//	adlEntity_factory* factory = &adlEntity_factory::get();
+//	adlEntity_shared_ptr entity = factory->construct_entity(actor_name);
+//	/*adlActor* actor = (adlActor*)factory->construct_entity(actor_name);
+//	adlActor_shared_ptr actor_shared(actor);
+//
+//	active_scene_->spawn_actor(actor_shared, position, rotation, scale);
+//
+//	adlMesh_shared_ptr mesh = actor->getModel()->get_all_meshes()[0];
+//	adlBounding_box bb = mesh->get_bounding_box();
+//	adlVec3 dims;
+//	dims.x = std::abs(bb.bottom_left_back().x - bb.bottom_right_back().x) / 2;
+//	dims.y = std::abs(bb.bottom_left_back().y - bb.up_left_back().y) / 2;
+//	dims.z = std::abs(bb.bottom_left_back().z - bb.bottom_left_front().z) / 2;
+//	if (dims.x == 0.0f)
+//	{
+//		dims.x = 0.1f;
+//	}
+//	if (dims.y == 0.0f)
+//	{
+//		dims.y = 0.1f;
+//	}
+//	if (dims.z == 0.0f)
+//	{
+//		dims.z = 0.1f;
+//	}
+//
+//
+//	physics_->add_sphere(1, actor->get_transform(), actor_shared);
+//
+//	return actor_shared;*/
+//	return nullptr;
+//}
+//
+//void adlScene_manager::spawn_actor(adlActor_shared_ptr actor, adlVec3 position, adlVec3 rotation/* = adlVec3(0.0f)*/, adlVec3 scale/* = adlVec3(1.0f)*/)
+//{
+//	actor->init();
+//	actors_.push_back(actor);
+//	actor->set_position(position);
+//	actor->set_rotation(rotation);
+//	actor->set_scale(scale);
+//	active_scene_->spawn_actor(actor, position, rotation, scale);
+//
+//	/*adlMesh_shared_ptr mesh = actor->getModel()->get_all_meshes()[0];
+//	adlBounding_box bb = mesh->get_bounding_box();
+//	adlVec3 dims;
+//	dims.x = std::abs(bb.bottom_left_back().x - bb.bottom_right_back().x) / 2;
+//	dims.y = std::abs(bb.bottom_left_back().y - bb.up_left_back().y) / 2;
+//	dims.z = std::abs(bb.bottom_left_back().z - bb.bottom_left_front().z) / 2;
+//	
+//	if (dims.x == 0.0f)
+//	{
+//		dims.x = 0.1f;
+//	}
+//	if (dims.y == 0.0f)
+//	{
+//		dims.y = 0.1f;
+//	}
+//	if (dims.z == 0.0f)
+//	{
+//		dims.z = 0.1f;
+//	}
+//
+//	physics_->add_sphere(1, actor->get_transform(), actor);*/
+//}
+//
+//void adlScene_manager::spawnActor(adlActor_shared_ptr actor, adlVec3 position, adlVec3 rotation/* = adlVec3(0.0f)*/, adlVec3 scale/* = adlVec3(1.0f)*/)
+//{
+//	spawn_actor(actor, position, rotation, scale);
+//}
 
 void adlScene_manager::add_plane()
 {
 	physics_->add_static_plane();
 }
 
-void adlScene_manager::spawn_light(const std::string& light_name, adlVec3 position/* = adlVec3(0.0f)*/, adlVec3 rotation/* = adlVec3(0.0f)*/, adlVec3 scale/* = adlVec3(1.0f)*/)
-{
-	adlEntity_factory* factory = &adlEntity_factory::get();
-	adlPoint_light* light = (adlPoint_light*)factory->construct_light(light_name);
-	adlPoint_light_shared_ptr shared_light(light);
-
-	active_scene_->spawn_point_light(shared_light, position, rotation, scale);
-}
-
-void adlScene_manager::addPointLightToScene(adlPoint_light_shared_ptr point_light)
-{
-	add_point_light_scene(point_light);
-}
-
-void adlScene_manager::add_point_light_scene(adlPoint_light_shared_ptr point_light)
-{
-	point_light->init();
-	point_lights_.push_back(point_light);
-}
+//void adlScene_manager::spawn_light(const std::string& light_name, adlVec3 position/* = adlVec3(0.0f)*/, adlVec3 rotation/* = adlVec3(0.0f)*/, adlVec3 scale/* = adlVec3(1.0f)*/)
+//{
+//	adlEntity_factory* factory = &adlEntity_factory::get();
+//	adlPoint_light* light = (adlPoint_light*)factory->construct_light(light_name);
+//	adlPoint_light_shared_ptr shared_light(light);
+//
+//	active_scene_->spawn_point_light(shared_light, position, rotation, scale);
+//}
+//
+//void adlScene_manager::addPointLightToScene(adlPoint_light_shared_ptr point_light)
+//{
+//	add_point_light_scene(point_light);
+//}
+//
+//void adlScene_manager::add_point_light_scene(adlPoint_light_shared_ptr point_light)
+//{
+//	point_light->init();
+//	point_lights_.push_back(point_light);
+//}
 
 adlEntity_shared_ptr adlScene_manager::add_entity_to_scene(const std::string& entity_name)
 {
@@ -221,20 +224,20 @@ std::vector<adlEntity_shared_ptr>& adlScene_manager::get_all_entities()
 	return active_scene_->get_all_entities();
 }
 
-std::vector<adlActor_shared_ptr>& adlScene_manager::get_all_actors()
-{
-	return active_scene_->get_all_actors();
-}
-
-std::vector<adlPoint_light_shared_ptr>& adlScene_manager::get_all_point_lights()
-{
-	return active_scene_->get_all_point_lights();
-}
-
-adlSun_shared_ptr adlScene_manager::get_sun()
-{
-	return active_scene_->get_sun();
-}
+//std::vector<adlActor_shared_ptr>& adlScene_manager::get_all_actors()
+//{
+//	return active_scene_->get_all_actors();
+//}
+//
+//std::vector<adlPoint_light_shared_ptr>& adlScene_manager::get_all_point_lights()
+//{
+//	return active_scene_->get_all_point_lights();
+//}
+//
+//adlSun_shared_ptr adlScene_manager::get_sun()
+//{
+//	return active_scene_->get_sun();
+//}
 
 adlCamera* adlScene_manager::getCamera()
 {
@@ -254,4 +257,29 @@ void adlScene_manager::set_camera(adlCamera* camera)
 adlScene_shared_ptr adlScene_manager::get_active_scene()
 {
 	return active_scene_;
+}
+
+void adlScene_manager::light_component_added(adlEntity_shared_ptr entity, const std::string& component_name)
+{
+	if (component_name == "adlSun_component")
+	{
+		sun_components_.push_back(entity);
+	}
+	else if (component_name == "adlPoint_light_component")
+	{
+		point_light_components_.push_back(entity);
+		active_scene_->add_point_light_entity(entity);
+	}
+}
+
+void adlScene_manager::light_component_removed(adlEntity_shared_ptr entity, const std::string& component_name)
+{
+	if (component_name == "adlSun_component")
+	{
+		sun_components_.push_back(entity);
+	}
+	else if (component_name == "adlPoint_light_component")
+	{
+		active_scene_->remove_point_light_entity(entity);
+	}
 }

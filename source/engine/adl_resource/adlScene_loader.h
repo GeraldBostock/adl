@@ -19,9 +19,9 @@ private:
 
 	adlVec3 load_vec3(const rapidjson::Value& object, std::string array_name);
 
-	adlActor_shared_ptr load_actor(const rapidjson::Value& object);
+	/*adlActor_shared_ptr load_actor(const rapidjson::Value& object);
 	adlSun_shared_ptr load_sun(const rapidjson::Value& object);
-	adlPoint_light_shared_ptr load_point_light(const rapidjson::Value& object);
+	adlPoint_light_shared_ptr load_point_light(const rapidjson::Value& object);*/
 };
 
 #endif // adl_scene_loader_h__

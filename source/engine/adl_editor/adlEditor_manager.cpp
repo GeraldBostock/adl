@@ -13,12 +13,8 @@ adlEditor_manager::adlEditor_manager()
 	: light_editor_open_(false),
 	  actor_editor_open_(false),
 	  main_editor_open_(false),
-	  light_editor_(nullptr),
-	  actor_editor_(nullptr),
 	  scene_editor_(nullptr)
 {
-	light_editor_ = ADL_NEW(adlLight_editor);
-	actor_editor_ = ADL_NEW(adlActor_editor);
 	spawn_editor_ = ADL_NEW(adlSpawn_editor);
 	scene_editor_ = ADL_NEW(adlScene_editor);
 }
@@ -153,18 +149,9 @@ void adlEditor_manager::update()
 		}
 
 		// adlEditors
-		adlScene_manager* scene_manager = &adlScene_manager::get();
 		if (entity_editor_open_)
 		{
 			entity_editor_->update(scene_manager->get_all_entities());
-		}
-		if (actor_editor_open_)
-		{
-			actor_editor_->update(scene_manager->get_all_actors());
-		}
-		if (light_editor_open_)
-		{
-			light_editor_->update(scene_manager->get_sun(), scene_manager->get_all_point_lights());
 		}
 		if (scene_editor_open_)
 		{
@@ -213,8 +200,6 @@ void adlEditor_manager::update()
 void adlEditor_manager::clean_up()
 {
 	ADL_DELETE(entity_editor_);
-	ADL_DELETE(actor_editor_);
-	ADL_DELETE(light_editor_);
 	ADL_DELETE(spawn_editor_);
 	ADL_DELETE(scene_editor_);
 }

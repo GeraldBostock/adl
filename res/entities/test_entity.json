@@ -16,6 +16,23 @@
 		{
 			"type": "adlPhysics_component",
 			"shape": "box"
+		},
+		{
+			"type": "adlSun_component",
+			"ambient": [0.1, 0.1, 0.1],
+			"diffuse": [0.8, 0.8, 0.8],
+			"specular": [1.0, 1.0, 1.0],
+			"color": [1.0, 1.0, 1.0]
+		},
+		{
+			"type": "adlPoint_light_component",
+			"ambient": [0.1, 0.1, 0.1],
+			"diffuse": [0.8, 0.8, 0.8],
+			"specular": [1.0, 1.0, 1.0],
+			"color": [1.0, 1.0, 1.0],
+			"constant": 1.0,
+			"linear": 0.022,
+			"quadratic": 0.0018	
 		}
 	]
 }

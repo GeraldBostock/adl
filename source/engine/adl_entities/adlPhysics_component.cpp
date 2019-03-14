@@ -77,7 +77,7 @@ void adlPhysics_component::update(float fps)
 			float acc_this_frame = acceleration_ / 1000.0f * fps;
 
 			adlVec3 velocity = physics_->get_velocity(owner);
-			float velocity_scalar = velocity.length();
+			//float velocity_scalar = velocity.length();
 
 			adlVec3 direction = transform.rot;
 			physics_->apply_force(direction, acc_this_frame, owner);

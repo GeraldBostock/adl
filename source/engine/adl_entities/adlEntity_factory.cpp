@@ -1,7 +1,9 @@
 #include "adlEntity_factory.h"
 
 #include "engine/adl_resource/adlResource_manager.h"
+#include "engine/adlScene_manager.h"
 #include "engine/adl_entities/adlEntity.h"
+#include "engine/adl_debug/adlLogger.h"
 
 #include <document.h>
 
@@ -61,6 +63,11 @@ adlEntity_shared_ptr adlEntity_factory::construct_entity(const std::string& enti
 				entity->add_component(adlEntity_component_shared_ptr(component));
 				component->set_owner(entity);
 				component->post_init();
+
+				if (component->get_type_name() == "adlPoint_light_component")
+				{
+					light_component_added(entity, "adlPoint_light_component");
+				}
 			}
 		}	
 	}
@@ -70,12 +77,38 @@ adlEntity_shared_ptr adlEntity_factory::construct_entity(const std::string& enti
 
 void adlEntity_factory::add_component_to_entity(adlEntity_shared_ptr entity, const std::string& component_name)
 {
+	if (entity->has_component(component_name))
+	{
+		adlLogger* logger = &adlLogger::get();
+		logger->log_warning("Entity " + entity->get_name() + " already has " + component_name + "");
+		return;
+	}
 	adlEntity_component* component = (adlEntity_component*)construct_component(component_name);
 	if (component != nullptr)
 	{
 		entity->add_component(adlEntity_component_shared_ptr(component));
 		component->set_owner(entity);
 		component->post_init();
+
+		if (component_name == "adlPoint_light_component")
+		{
+			light_component_added(entity, component_name);
+		}
+	}
+}
+
+void adlEntity_factory::remove_component_from_entity(adlEntity_shared_ptr entity, const std::string& component_name)
+{
+	if (!entity->has_component(component_name))
+	{
+		adlLogger* logger = &adlLogger::get();
+		logger->log_warning("Entity " + entity->get_name() + " does not have " + component_name + "");
+		return;
+	}
+	entity->remove_component(component_name);
+	if (component_name == "adlPoint_light_component")
+	{
+		light_component_removed(entity, "adlPoint_light_component");
 	}
 }
 
@@ -105,4 +138,16 @@ void* adlEntity_factory::construct_light(const std::string& class_name)
 	}
 
 	return i->second();
+}
+
+void adlEntity_factory::light_component_added(adlEntity_shared_ptr entity, const std::string& component_name)
+{
+	adlScene_manager* scene_manager = &adlScene_manager::get();
+	scene_manager->light_component_added(entity, component_name);
+}
+
+void adlEntity_factory::light_component_removed(adlEntity_shared_ptr entity, const std::string& component_name)
+{
+	adlScene_manager* scene_manager = &adlScene_manager::get();
+	scene_manager->light_component_removed(entity, component_name);
 }

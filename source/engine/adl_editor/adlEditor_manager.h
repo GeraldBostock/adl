@@ -2,8 +2,6 @@
 #define adl_editor_manager_h__
 
 #include "adlEntity_editor.h"
-#include "adlActor_editor.h"
-#include "adlLight_editor.h"
 #include "adlSpawn_editor.h"
 #include "adlScene_editor.h"
 
@@ -23,8 +21,6 @@ public:
 
 private:
 	adlEntity_editor* entity_editor_;
-	adlActor_editor* actor_editor_;
-	adlLight_editor* light_editor_;
 	adlSpawn_editor* spawn_editor_;
 	adlScene_editor* scene_editor_;
 

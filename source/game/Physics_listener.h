@@ -2,7 +2,6 @@
 #define physics_listener_h__
 
 #include "../engine/adlPhysics_observer.h" 
-#include "engine/adl_entities/adlActor.h"
 #include "engine/adl_resource/adlResource_manager.h"
 
 class Physics_listener : public adlPhysics_observer

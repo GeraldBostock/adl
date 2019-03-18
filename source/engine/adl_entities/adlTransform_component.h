@@ -12,6 +12,7 @@ public:
 	virtual bool init(const rapidjson::Value& json_object) override;
 	virtual void post_init() override {};
 	virtual void destroy() override;
+	virtual void editor() override;
 
 	const adlVec3& get_position();
 	void set_position(const adlVec3& position);

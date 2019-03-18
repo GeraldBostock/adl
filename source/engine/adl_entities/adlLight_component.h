@@ -15,6 +15,7 @@ public:
 	virtual void post_init() override {};
 	virtual void update(float dt) override {};
 	virtual void destroy() override {};
+	virtual void editor() override {};
 
 	void set_ambient(const adlVec3& ambient);
 	const adlVec3& get_ambient();

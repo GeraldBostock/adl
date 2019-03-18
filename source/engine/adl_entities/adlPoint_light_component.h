@@ -10,6 +10,7 @@ public:
 	~adlPoint_light_component();
 
 	virtual bool init(const rapidjson::Value& json_object) override;
+	virtual void editor() override;
 
 	float get_constant() const;
 	void set_constant(float constant);

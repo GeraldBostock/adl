@@ -1,8 +1,5 @@
 #include "adlScene.h"
 
-#include "engine/adl_entities/adlActor.h"
-#include "engine/adl_entities/adlPoint_light.h"
-#include "engine/adl_entities/adlSun.h"
 #include "engine/adl_renderer/adlRender_manager.h"
 #include "engine/adl_renderer/adlCamera.h"
 #include "engine/adl_entities/adlEntity.h"

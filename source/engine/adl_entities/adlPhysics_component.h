@@ -13,6 +13,7 @@ public:
 	virtual void post_init() override;
 	virtual void update(float fps) override;
 	virtual void destroy() override;
+	virtual void editor() override;
 
 	void set_position(const adlVec3& position);
 

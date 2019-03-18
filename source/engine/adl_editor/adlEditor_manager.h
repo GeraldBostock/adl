@@ -27,8 +27,6 @@ private:
 
 	bool main_editor_open_;
 	bool entity_editor_open_;
-	bool actor_editor_open_;
-	bool light_editor_open_;
 	bool help_open_;
 	bool show_demo_window_;
 	bool spawner_editor_open_;

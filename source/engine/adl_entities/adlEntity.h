@@ -40,6 +40,11 @@ public:
 
 	bool has_component(const std::string& component_name);
 
+	const std::vector<adlEntity_component_shared_ptr>& get_all_component()
+	{
+		return components_;
+	}
+
 	template <class Component_type> std::weak_ptr<Component_type> get_component(const std::string& component_name)
 	{
 		for (auto component : components_)

@@ -10,11 +10,14 @@
 #include "engine/adl_entities/adlEntity_factory.h"
 
 adlEditor_manager::adlEditor_manager()
-	: light_editor_open_(false),
-	  actor_editor_open_(false),
-	  main_editor_open_(false),
-	  scene_editor_(nullptr)
+	:	main_editor_open_(false),
+		scene_editor_open_(false),
+		entity_editor_open_(false),
+		scene_editor_(nullptr),
+		spawn_editor_(nullptr),
+		entity_editor_(nullptr)
 {
+	entity_editor_ = ADL_NEW(adlEntity_editor);
 	spawn_editor_ = ADL_NEW(adlSpawn_editor);
 	scene_editor_ = ADL_NEW(adlScene_editor);
 }
@@ -26,15 +29,11 @@ void adlEditor_manager::MainMenu()
 		if (ImGui::BeginMenu("adl Editors"))
 		{
 			ImGui::Checkbox("Entity Editor", &entity_editor_open_);
-			ImGui::Checkbox("Actor Editor", &actor_editor_open_);
-			ImGui::Checkbox("Light Editor", &light_editor_open_);
 			ImGui::Checkbox("Help", &help_open_);
 
 			if (ImGui::MenuItem("Close All Editors", "CTRL+Q"))
 			{
 				entity_editor_open_ = false;
-				actor_editor_open_ = false;
-				light_editor_open_ = false;
 				help_open_ = false;
 				show_demo_window_ = false;
 				spawner_editor_open_ = false;
@@ -103,14 +102,12 @@ void adlEditor_manager::update()
 		{
 			was_mouse_visible_ = window->is_mouse_visible();
 			window->set_mouse_visible(true);
-			scene_editor_open_ = true;
+			scene_editor_open_ = false;
 		}
 		else
 		{
 			window->set_mouse_visible(was_mouse_visible_);
 			entity_editor_open_ = false;
-			actor_editor_open_ = false;
-			light_editor_open_ = false;
 			help_open_ = false;		
 			show_demo_window_ = false;
 
@@ -129,15 +126,9 @@ void adlEditor_manager::update()
 		{
 			spawner_editor_open_ = !spawner_editor_open_;
 		}
-		if (input->get_key_down(adl_key_f3))
-		{
-			actor_editor_open_ = !actor_editor_open_;
-		}
 		if (input->get_key(adl_key_left_ctrl) && input->get_key_down(adl_key_q))
 		{
 			entity_editor_open_ = false;
-			actor_editor_open_ = false;
-			light_editor_open_ = false;
 			help_open_ = false;
 			show_demo_window_ = false;
 			spawner_editor_open_ = false;

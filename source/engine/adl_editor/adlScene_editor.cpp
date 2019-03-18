@@ -18,6 +18,7 @@ adlScene_editor::~adlScene_editor()
 
 void adlScene_editor::update()
 {
+	adlScene_manager* scene_manager = &adlScene_manager::get();
 	adlInput* input = &adlInput::get();
 
 	if (input->get_key(adl_key_left_ctrl) && input->get_key_down(adl_key_s))
@@ -29,6 +30,42 @@ void adlScene_editor::update()
 	{
 		scene_chooser_open_ = !scene_chooser_open_;
 	}
+
+	ImGui::Begin("Scene Editor");
+	if (ImGui::CollapsingHeader("Camera"))
+	{
+		ImGui::Indent();
+		adlCamera* camera = scene_manager->get_camera();
+		if (ImGui::CollapsingHeader("Position"))
+		{
+			adlVec3 position = camera->get_position();
+			ImGui::Text("Position(x,y,z)");
+
+			std::string label = "##Position";
+
+			float camera_position[3] = { position.x, position.y, position.z };
+			ImGui::InputFloat3(label.data(), &camera_position[0], 2);
+			camera->set_position(adlVec3(camera_position[0], camera_position[1], camera_position[2]));
+		}
+
+		if (ImGui::CollapsingHeader("Rotation"))
+		{
+			float pitch = camera->get_pitch();
+			float yaw = camera->get_yaw();
+			float roll = camera->get_roll();
+			ImGui::Text("Rotation(pitch, yaw, roll)");
+
+			std::string label = "##Rotation";
+
+			float camera_rotation[3] = { pitch, yaw, roll };
+			ImGui::InputFloat3(label.data(), &camera_rotation[0], 2);
+			camera->set_pitch(camera_rotation[0]);
+			camera->set_yaw(camera_rotation[1]);
+			camera->set_roll(camera_rotation[2]);
+		}
+		ImGui::Unindent();
+	}
+	ImGui::End();
 
 	if (scene_saver_open_)
 	{
@@ -47,7 +84,6 @@ void adlScene_editor::update()
 	if (scene_chooser_open_)
 	{
 		adlResource_manager* adl_rm = &adlResource_manager::get();
-		adlScene_manager* scene_manager = &adlScene_manager::get();
 
 		const std::vector<std::string>& scene_names = adl_rm->get_all_scene_names();
 

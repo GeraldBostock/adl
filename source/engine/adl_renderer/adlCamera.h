@@ -27,6 +27,26 @@ public:
 
 	adlMat4 get_view_matrix();
 
+	void set_position(const adlVec3& position)
+	{
+		position_ = position;
+	}
+
+	void set_pitch(const float& pitch)
+	{
+		pitch_ = pitch;
+	}
+
+	void set_yaw(const float& yaw)
+	{
+		yaw_ = yaw;
+	}
+
+	void set_roll(const float& roll)
+	{
+		roll_ = roll;
+	}
+
 	adlVec3 get_position();
 	float get_pitch();
 	float get_yaw();

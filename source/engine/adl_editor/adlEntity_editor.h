@@ -1,7 +1,7 @@
 #ifndef adlEntity_editor_h__
 #define adlEntity_editor_h__  
- 
-#include "engine/adl_entities/adlActor.h"
+
+#include "engine/adl_entities/adlEntity.h"
 
 class adlEntity_editor 
 {  

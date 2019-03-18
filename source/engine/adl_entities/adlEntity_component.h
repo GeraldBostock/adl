@@ -3,6 +3,7 @@
 
 #include "../adlShared_types.h"
 #include "adlEntity_factory.h"
+#include "engine/adl_debug/imgui/imgui.h"
 
 #include <string>
 #include <document.h>
@@ -18,8 +19,9 @@ public:
 
 	virtual bool init(const rapidjson::Value& json_object) = 0;
 	virtual void post_init() = 0;
-	virtual void update(float dt) {};
+	virtual void update(float dt) {}
 	virtual void destroy() = 0;
+	virtual void editor() {}
 
 	void set_owner(adlEntity_shared_ptr entity) 
 	{ 

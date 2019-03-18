@@ -2,7 +2,6 @@
 
 #include <iostream>
 
-#include "engine/adl_entities/adlSun.h"
 #include "engine/adl_entities/adlEntity_factory.h"
 #include "engine/adl_entities/adlTransform_component.h"
 #include "engine/adl_entities/adlRender_component.h"
@@ -37,6 +36,8 @@ bool Game::init()
 	adlCamera* scene_camera = ADL_NEW(adlCamera);
 	scene_camera->set_camera_type(ct_god_mode);
 	scene_camera->init();
+	scene_camera->set_pitch(-50);
+	scene_camera->set_position(adlVec3(0, 30, 10));
 
 	adl_scene_manager->set_camera(scene_camera);
 

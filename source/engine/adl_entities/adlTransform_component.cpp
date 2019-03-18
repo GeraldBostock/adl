@@ -1,5 +1,7 @@
 #include "adlTransform_component.h"
 
+#include "engine/adl_math/adlMath.h"
+
 adlTransform_component::adlTransform_component()
 	:	transform_(adlTransform::identity())
 {
@@ -39,6 +41,46 @@ bool adlTransform_component::init(const rapidjson::Value& json_object)
 void adlTransform_component::destroy()
 {
 
+}
+
+void adlTransform_component::editor()
+{
+	ImGui::Indent();
+
+	if (ImGui::CollapsingHeader("Position"))
+	{
+		ImGui::Text("Position(x,y,z)");
+
+		std::string label = "##Position";
+
+		float actorPos[3] = { transform_.o.x, transform_.o.y, transform_.o.z };
+		ImGui::InputFloat3(label.data(), &actorPos[0], 2);
+		transform_.o = adlVec3(actorPos[0], actorPos[1], actorPos[2]);
+	}
+
+	if (ImGui::CollapsingHeader("Rotation"))
+	{
+		ImGui::Text("Rotation(x,y,z)");
+
+		std::string label = "##Rotation";
+
+		float actorRot[3] = { adlMath::rad_to_deg(transform_.rot.x), adlMath::rad_to_deg(transform_.rot.y), adlMath::rad_to_deg(transform_.rot.z) };
+		ImGui::InputFloat3(label.data(), &actorRot[0], 2);
+		transform_.rot = adlVec3(adlMath::deg_to_rad(actorRot[0]), adlMath::deg_to_rad(actorRot[1]), adlMath::deg_to_rad(actorRot[2]));
+	}
+
+	if (ImGui::CollapsingHeader("Scale"))
+	{
+		ImGui::Text("Scale(x,y,z)");
+
+		std::string label = "##ActorScale";
+
+		float actorScale[3] = { transform_.scale.x, transform_.scale.y, transform_.scale.z };
+		ImGui::InputFloat3(label.data(), &actorScale[0], 2);
+		transform_.scale = adlVec3(actorScale[0], actorScale[1], actorScale[2]);
+	}
+
+	ImGui::Unindent();
 }
 
 void adlTransform_component::set_position(const adlVec3& position)

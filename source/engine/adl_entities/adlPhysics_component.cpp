@@ -103,6 +103,15 @@ void adlPhysics_component::destroy()
 	physics_->remove_entity(owner);
 }
 
+void adlPhysics_component::editor()
+{
+	ImGui::Indent();
+
+
+
+	ImGui::Unindent();
+}
+
 void adlPhysics_component::set_position(const adlVec3& position)
 {
 	std::shared_ptr<adlTransform_component> trans_comp;

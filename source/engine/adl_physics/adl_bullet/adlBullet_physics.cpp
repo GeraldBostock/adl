@@ -2,11 +2,11 @@
 #include "../../adlMemory.h"
 
 #include "../../adl_debug/adlLogger.h"
-#include "../../adl_entities/adlActor.h"
 #include "../../adl_math/adlMouse_picker.h"
 #include "../../adl_renderer/adlDebug_renderer.h"
 #include "../../adl_resource/adlResource_manager.h"
 #include "../../adl_entities/adlTransform_component.h"
+#include "engine/adl_entities/adlEntity.h"
 
 #pragma warning(push, 0)
 #include "BulletCollision/NarrowPhaseCollision/btRaycastCallback.h"

@@ -1,8 +1,7 @@
 #include "adlStatic_shader.h"
 
 #include <iostream>
-#include "engine/adl_entities/adlLight.h"
-#include "engine/adl_entities/adlPoint_light.h"
+#include "engine/adl_entities/adlEntity.h"
 #include "engine/adl_resource/adlMaterial.h"
 #include "engine/adl_entities/adlPoint_light_component.h"
 #include "engine/adl_entities/adlTransform_component.h"

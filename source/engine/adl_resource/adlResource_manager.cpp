@@ -2,8 +2,6 @@
 #include "engine/adl_debug/adlAssert.h"
 #include "engine/adl_resource/adlMaterial.h"
 
-#include "engine/adl_entities/adlSun.h"
-
 #include <fstream>
 #include <sstream>
 #include <iostream>

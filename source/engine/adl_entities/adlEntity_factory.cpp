@@ -47,7 +47,7 @@ adlEntity_shared_ptr adlEntity_factory::construct_entity(const std::string& enti
 			return nullptr;
 		}
 
-		entity->set_name(document["type"].GetString());
+		entity->set_name(entity_name + +"#" + std::to_string(next_id));
 
 		const rapidjson::Value& components = document["components"];
 		adl_assert(components.IsArray());

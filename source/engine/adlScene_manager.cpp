@@ -86,8 +86,11 @@ adlEntity_shared_ptr adlScene_manager::add_entity_to_scene(const std::string& en
 	adlEntity_factory* entity_factory = &adlEntity_factory::get();
 	adlEntity_shared_ptr entity = entity_factory->construct_entity(entity_name);
 
-	entities_.push_back(entity);
-	active_scene_->spawn_entity(entity);
+	if (entity)
+	{
+		entities_.push_back(entity);
+		active_scene_->spawn_entity(entity);
+	}
 
 	return entity;
 }

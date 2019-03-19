@@ -34,6 +34,7 @@ adlEntity_shared_ptr adlEntity_factory::construct_entity(const std::string& enti
 	if (entity_json == "")
 	{
 		logger->log_error("JSON resource for entity " + entity_name + " not found");
+		return nullptr;
 	}
 	else
 	{

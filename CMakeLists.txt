@@ -6,6 +6,7 @@ project(adl)
 # add the -c and -Wall flags
 if(MSVC)
 	set(CMAKE_CXX_STANDARD 17)
+	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MTd")
 	add_definitions(
 		-c
 		-W4

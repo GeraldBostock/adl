@@ -13,13 +13,16 @@ adlEditor_manager::adlEditor_manager()
 	:	main_editor_open_(false),
 		scene_editor_open_(false),
 		entity_editor_open_(false),
+		resource_manager_editor_open_(false),
 		scene_editor_(nullptr),
 		spawn_editor_(nullptr),
-		entity_editor_(nullptr)
+		entity_editor_(nullptr),
+		resource_editor_(nullptr)
 {
 	entity_editor_ = ADL_NEW(adlEntity_editor);
 	spawn_editor_ = ADL_NEW(adlSpawn_editor);
 	scene_editor_ = ADL_NEW(adlScene_editor);
+	resource_editor_ = ADL_NEW(adlResource_manager_editor);
 }
 
 void adlEditor_manager::MainMenu()
@@ -29,6 +32,7 @@ void adlEditor_manager::MainMenu()
 		if (ImGui::BeginMenu("adl Editors"))
 		{
 			ImGui::Checkbox("Entity Editor", &entity_editor_open_);
+			ImGui::Checkbox("Resource Manager", &resource_manager_editor_open_);
 			ImGui::Checkbox("Help", &help_open_);
 
 			if (ImGui::MenuItem("Close All Editors", "CTRL+Q"))
@@ -38,6 +42,7 @@ void adlEditor_manager::MainMenu()
 				show_demo_window_ = false;
 				spawner_editor_open_ = false;
 				scene_editor_open_ = false;
+				resource_editor_ = false;
 			}
 
 			ImGui::EndMenu();
@@ -148,6 +153,10 @@ void adlEditor_manager::update()
 		{
 			scene_editor_->update();
 		}
+		if (resource_manager_editor_open_)
+		{
+			resource_editor_->update();
+		}
 		if (help_open_)
 		{
 			ImGui::Begin("Help");
@@ -193,4 +202,5 @@ void adlEditor_manager::clean_up()
 	ADL_DELETE(entity_editor_);
 	ADL_DELETE(spawn_editor_);
 	ADL_DELETE(scene_editor_);
+	ADL_DELETE(resource_editor_);
 }

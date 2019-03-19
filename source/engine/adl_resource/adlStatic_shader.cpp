@@ -5,6 +5,7 @@
 #include "engine/adl_resource/adlMaterial.h"
 #include "engine/adl_entities/adlPoint_light_component.h"
 #include "engine/adl_entities/adlTransform_component.h"
+#include "engine/adl_entities/adlSun_component.h"
 
 
 adlStatic_shader::adlStatic_shader(const std::string& vertex_file, const std::string& fragment_file)
@@ -121,12 +122,12 @@ void adlStatic_shader::load_light(adlEntity_shared_ptr light)
 		logger->log_warning("Point light " + light->get_name() + " does not have a transform component");
 		return;
 	}
-	if (!light->has_component("adlLight_component"))
+	if (!light->has_component("adlSun_component"))
 	{
 		return;
 	}
 
-	std::shared_ptr<adlLight_component> light_component = std::shared_ptr(light->get_component<adlLight_component>("adlLight_component"));
+	std::shared_ptr<adlSun_component> light_component = std::shared_ptr(light->get_component<adlSun_component>("adlSun_component"));
 	std::shared_ptr<adlTransform_component> trans_component = std::shared_ptr(light->get_component<adlTransform_component>("adlTransform_component"));
 
 	load_vector(light_position_location_, trans_component->get_position());

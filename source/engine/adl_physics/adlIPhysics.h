@@ -26,6 +26,9 @@ public:
 	virtual void apply_force(const adlVec3& direction, float newtons, adlEntity_shared_ptr entity) = 0;
 	virtual void apply_torque(const adlVec3& direction, float magnitude, adlEntity_shared_ptr entity) = 0;
 	virtual void kinematic_move(adlTransform transform, adlEntity_shared_ptr entity) = 0;
+	virtual void stop(adlEntity_shared_ptr entity) = 0;
+
+	virtual const adlTransform& get_transform(adlEntity_shared_ptr entity) = 0;
 
 	virtual adlVec3 get_velocity(adlEntity_shared_ptr entity) = 0;
 	virtual void set_velocity(adlEntity_shared_ptr entity, const adlVec3& velocity) = 0;

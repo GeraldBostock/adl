@@ -7,6 +7,10 @@ adlRender_component::adlRender_component()
 		material_(nullptr)
 {
 	REGISTER_COMPONENT(adlRender_component)
+
+	adlResource_manager* adl_rm = &adlResource_manager::get();
+	model_ = adl_rm->get_model("Cube");
+	material_ = adl_rm->get_material("copper");
 }
 
 bool adlRender_component::init(const rapidjson::Value& json_object)

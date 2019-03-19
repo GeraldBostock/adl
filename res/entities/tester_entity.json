@@ -1,0 +1,28 @@
+{
+	"type": "test_entity",
+	"components": 
+	[
+		{
+			"type": "adlTransform_component",
+			"position": [0.0, 20.0, 0.0],
+			"rotation": [0.0, 0.0, 0.0],
+			"scale": [1.0, 1.0, 1.0]
+		},
+		{
+			"type": "adlRender_component",
+			"model": "Cube",
+			"material": "obsidian"
+		},
+		{
+			"type": "adlPhysics_component",
+			"shape": "box"
+		},
+		{
+			"type": "adlSun_component",
+			"ambient": [0.1, 0.1, 0.1],
+			"diffuse": [0.8, 0.8, 0.8],
+			"specular": [1.0, 1.0, 1.0],
+			"color": [1.0, 1.0, 1.0]
+		}
+	]
+}

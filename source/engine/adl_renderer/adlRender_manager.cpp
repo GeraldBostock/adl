@@ -47,6 +47,10 @@ void adlRender_manager::render(adlEntity_shared_ptr entity)
 	{
 		transform_component = std::shared_ptr(entity->get_component<adlTransform_component>("adlTransform_component"));
 	}
+	if (transform_component == nullptr)
+	{
+		return;
+	}
 	std::shared_ptr<adlRender_component> render_component;
 	if (entity->has_component("adlRender_component"))
 	{

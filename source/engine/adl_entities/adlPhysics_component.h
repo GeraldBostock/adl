@@ -16,8 +16,13 @@ public:
 	virtual void editor() override;
 
 	void set_position(const adlVec3& position);
+	const adlVec3& get_position();
+	void set_velocity(const adlVec3& velocity);
+	const adlVec3& get_velocity();
 
 	void apply_force(const adlVec3& direction, float newtons);
+	void apply_torque(const adlVec3& direction, float newtons);
+	void stop();
 
 private:
 	std::shared_ptr<adlIPhysics> physics_;

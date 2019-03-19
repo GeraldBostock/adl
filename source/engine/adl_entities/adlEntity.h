@@ -40,7 +40,7 @@ public:
 
 	bool has_component(const std::string& component_name);
 
-	const std::vector<adlEntity_component_shared_ptr>& get_all_component()
+	const std::vector<adlEntity_component_shared_ptr>& get_all_components()
 	{
 		return components_;
 	}

@@ -3,7 +3,6 @@
 
 #include "engine/adlRoot.h"
 
-#include "Test_light.h"
 #include "game/Physics_listener.h"
 
 class Game : public adlRoot

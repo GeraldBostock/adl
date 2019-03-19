@@ -361,7 +361,6 @@ std::string adlResource_manager::get_entity_json(const std::string& entity_name)
 		if (entity_json_string_[entity_name] == "")
 		{
 			std::string file_string = get_whole_file_string(name_to_entity_path_[entity_name]);
-			//std::cout << file_string << std::endl;
 			entity_json_string_[entity_name] = file_string;
 
 			return file_string;
@@ -558,6 +557,8 @@ void adlResource_manager::initialize_entities(const rapidjson::Value& entities)
 		std::string entity_name = entity_object["name"].GetString();
 		std::string entity_path = entity_object["path"].GetString();
 
+		entity_names_.push_back(entity_name);
+
 		name_to_entity_path_[entity_name] = entity_path;
 		entity_json_string_[entity_name] = "";
 	}
@@ -582,4 +583,39 @@ std::vector<std::string> adlResource_manager::get_all_scene_names()
 	}
 
 	return scene_names;
+}
+
+const std::vector<std::string>& adlResource_manager::get_all_entity_names()
+{
+	return entity_names_;
+}
+
+void adlResource_manager::reload_model(const std::string& model_name)
+{
+	adlLogger* logger = &adlLogger::get();
+	std::string resource_path = name_to_model_path_[model_name];
+	logger->log_info("Reloading model at " + resource_path);
+	models_[resource_path] = nullptr;
+	models_[resource_path] = loader_.load_model(resource_path, model_name);
+}
+
+void adlResource_manager::reload_entity(const std::string& entity_name)
+{
+	std::string file_string = get_whole_file_string(name_to_entity_path_[entity_name]);
+
+	entity_json_string_[entity_name] = file_string;
+}
+
+void adlResource_manager::reload_resource(const std::string& resource_name, Resources type)
+{
+	adlLogger* logger = &adlLogger::get();
+	switch (type)
+	{
+	case Resources::MODEL:
+		reload_model(resource_name);
+		break;
+	case Resources::ENTITY:
+		reload_entity(resource_name);
+		break;
+	}
 }

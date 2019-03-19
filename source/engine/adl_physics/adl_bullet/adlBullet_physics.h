@@ -35,6 +35,9 @@ public:
 	virtual void apply_force(const adlVec3& direction, float newtons, adlEntity_shared_ptr entity) override;
 	virtual void apply_torque(const adlVec3& direction, float magnitude, adlEntity_shared_ptr entity) override;
 	virtual void kinematic_move(adlTransform transform, adlEntity_shared_ptr entity) override;
+	virtual void stop(adlEntity_shared_ptr entity) override;
+
+	virtual const adlTransform& get_transform(adlEntity_shared_ptr entity) override;
 
 	virtual adlVec3 get_velocity(adlEntity_shared_ptr entity) override;
 	virtual void set_velocity(adlEntity_shared_ptr entity, const adlVec3& velocity) override;

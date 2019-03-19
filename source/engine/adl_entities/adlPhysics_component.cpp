@@ -92,7 +92,7 @@ void adlPhysics_component::update(float fps)
 	else
 	{
 		adlLogger* logger = &adlLogger::get();
-		logger->log_info("Physics entity does not have a transform component");
+		logger->log_warning("Physics entity does not have a transform component");
 
 		return;
 	}
@@ -107,7 +107,22 @@ void adlPhysics_component::editor()
 {
 	ImGui::Indent();
 
+	if (ImGui::CollapsingHeader("Position"))
+	{
+		ImGui::Text("Position(x,y,z)");
 
+		std::string label = "##Position";
+
+		const adlVec3& position = get_position();
+		float actorPos[3] = { position.x, position.y, position.z };
+		ImGui::InputFloat3(label.data(), &actorPos[0], 2);
+		set_position(adlVec3(actorPos[0], actorPos[1], actorPos[2]));
+	}
+
+	if(ImGui::Button("Stop"))
+	{
+		stop();
+	}
 
 	ImGui::Unindent();
 }
@@ -132,7 +147,33 @@ void adlPhysics_component::set_position(const adlVec3& position)
 	}
 }
 
+const adlVec3& adlPhysics_component::get_position()
+{
+	const adlTransform& transform = physics_->get_transform(owner);
+	return transform.o;
+}
+
+void adlPhysics_component::set_velocity(const adlVec3& velocity)
+{
+	physics_->set_velocity(owner, velocity);
+}
+
+const adlVec3& adlPhysics_component::get_velocity()
+{
+	return physics_->get_velocity(owner);
+}
+
 void adlPhysics_component::apply_force(const adlVec3& direction, float newtons)
 {
 	physics_->apply_force(direction, newtons, owner);
+}
+
+void adlPhysics_component::apply_torque(const adlVec3& direction, float newtons)
+{
+	physics_->apply_torque(direction, newtons, owner);
+}
+
+void adlPhysics_component::stop()
+{
+	physics_->stop(owner);
 }

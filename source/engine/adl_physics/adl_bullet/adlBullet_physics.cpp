@@ -531,6 +531,20 @@ void adlBullet_physics::kinematic_move(adlTransform transform, adlEntity_shared_
 	}
 }
 
+void adlBullet_physics::stop(adlEntity_shared_ptr entity)
+{
+	set_velocity(entity, adlVec3(0.0f));
+}
+
+const adlTransform& adlBullet_physics::get_transform(adlEntity_shared_ptr entity)
+{
+	btRigidBody * rigid_body = get_body(entity);
+	adl_assert(rigid_body);
+
+	const btTransform& body_transform = rigid_body->getCenterOfMassTransform();
+	return btTransform_to_adlTransform(body_transform, adlVec3(1.0f));
+}
+
 std::vector<adlEntity_shared_ptr> adlBullet_physics::get_all_raycast_hits(adlRay ray)
 {
 	adlVec3 origin = ray.get_origin();

@@ -43,7 +43,7 @@ void adlScene::update(float dt)
 	}
 
 	camera_->update(dt);
-	//sun_->update(dt);
+	sun_->update(dt);
 }
 
 void adlScene::render()
@@ -51,7 +51,7 @@ void adlScene::render()
 	adlRender_manager* renderer = &adlRender_manager::get();
 	//renderer->set_lights(point_lights_);
 	renderer->set_lights(point_light_components_);
-	//renderer->set_sun(sun_);
+	renderer->set_sun(sun_);
 	renderer->set_camera(camera_);
 
 	if (cube_map_ != nullptr)

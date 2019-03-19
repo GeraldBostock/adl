@@ -10,9 +10,26 @@
 #include "adlScene_saver.h"
 #include "adlLoader.h"
 
+enum Resources
+{
+	MODEL,
+	SHADER,
+	FONT,
+	MATERIAL,
+	TEXTURE,
+	SCENE,
+	TERRAIN,
+	CUBE_MAP,
+	ENTITY,
+	RESOURCE_TYPE_COUNT
+};
+
 class adlResource_manager
 {
 public:
+
+	friend class adlResource_manager_editor;
+
 	static adlResource_manager& get()
 	{
 		static adlResource_manager instance;
@@ -37,6 +54,8 @@ public:
 
 	adlCube_map_shared_ptr get_cube_map(const std::string& name);
 
+	void reload_resource(const std::string& resource_path, Resources type);
+
 	std::string get_entity_json(const std::string& entity_name);
 
 	void add_new_scene(const std::string& scene_name, adlScene_shared_ptr scene);
@@ -44,6 +63,7 @@ public:
 	std::string serialize_scene(adlScene_shared_ptr scene);
 
 	std::vector<std::string> get_all_scene_names();
+	const std::vector<std::string>& get_all_entity_names();
 
 private:
 	adlResource_manager();
@@ -63,6 +83,9 @@ private:
 	void initialize_terrains(const rapidjson::Value& terrains);
 	void initialize_cube_maps(const rapidjson::Value& cube_maps);
 	void initialize_entities(const rapidjson::Value& entities);
+
+	void reload_model(const std::string& model_name);
+	void reload_entity(const std::string& entity_name);
 
 	const std::string core_file_path = "res/core.json";
 	const std::string materials_file_path = "res/materials.json";
@@ -90,8 +113,10 @@ private:
 	std::map<std::string, std::vector<std::string>> name_to_cubemap_path_;
 	std::map<std::string, adlCube_map_shared_ptr> cube_maps_;
 
-	std::map<std::string, std::string> name_to_entity_path_;;
+	std::map<std::string, std::string> name_to_entity_path_;
 	std::map<std::string, std::string> entity_json_string_;
+
+	std::vector<std::string> entity_names_;
 
 	adlLoader loader_;
 	adlScene_saver scene_saver_;

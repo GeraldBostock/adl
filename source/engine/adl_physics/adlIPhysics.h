@@ -28,6 +28,8 @@ public:
 	virtual void kinematic_move(adlTransform transform, adlEntity_shared_ptr entity) = 0;
 	virtual void stop(adlEntity_shared_ptr entity) = 0;
 
+	virtual void set_static(adlEntity_shared_ptr entity, bool is_static) = 0;
+
 	virtual const adlTransform& get_transform(adlEntity_shared_ptr entity) = 0;
 
 	virtual adlVec3 get_velocity(adlEntity_shared_ptr entity) = 0;

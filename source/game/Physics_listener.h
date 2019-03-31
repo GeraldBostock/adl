@@ -12,6 +12,7 @@ public:
 
 	virtual void on_collision_start(adlEntity_shared_ptr entity1, adlEntity_shared_ptr entity2) override
 	{
+		std::cout << "collision start" << std::endl;
 	}
 
 	virtual void on_collision_end(adlEntity_shared_ptr entity1, adlEntity_shared_ptr entity2)
@@ -28,6 +29,11 @@ public:
 
 	virtual void on_terrain_mouse_ray_collision(const adlVec3& collision_point) 
 	{
+	}
+
+	virtual void on_mouse_collision_start(adlEntity_shared_ptr  entity)
+	{
+		std::cout << "mouse collision start" << std::endl;
 	}
 };
 

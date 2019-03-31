@@ -15,7 +15,8 @@
 		},
 		{
 			"type": "adlPhysics_component",
-			"shape": "box"
+			"shape": "box",
+			"static": true
 		},
 		{
 			"type": "adlSun_component",

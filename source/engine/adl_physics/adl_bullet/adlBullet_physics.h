@@ -37,6 +37,8 @@ public:
 	virtual void kinematic_move(adlTransform transform, adlEntity_shared_ptr entity) override;
 	virtual void stop(adlEntity_shared_ptr entity) override;
 
+	virtual void set_static(adlEntity_shared_ptr entity, bool is_static) override;
+
 	virtual const adlTransform& get_transform(adlEntity_shared_ptr entity) override;
 
 	virtual adlVec3 get_velocity(adlEntity_shared_ptr entity) override;
@@ -62,6 +64,7 @@ private:
 	btIDebugDraw* debug_drawer_;
 	btRigidBody* terrain_body_;
 
+	//Entity to body map
 	typedef std::map<adlEntity_shared_ptr, btRigidBody*> Entity_to_body_map;
 	Entity_to_body_map entity_to_body_map_;
 	btRigidBody* get_body(adlEntity_shared_ptr entity)
@@ -69,6 +72,7 @@ private:
 		return entity_to_body_map_[entity];
 	}
 
+	//Body to entity map
 	typedef std::map<btRigidBody const*, adlEntity_shared_ptr> Body_to_entity_map;
 	Body_to_entity_map body_to_entity_map_;
 	adlEntity_shared_ptr get_entity(btRigidBody const* body)
@@ -80,7 +84,7 @@ private:
 	typedef std::set<Collision_pair> Collision_pairs;
 	Collision_pairs previous_tick_collision_pairs_;
 
-	std::vector<btRigidBody const*> previous_mouse_ray_collisions_;
+	std::vector<adlEntity_shared_ptr> previous_mouse_ray_collisions_;
 
 	void add_shape(adlEntity_shared_ptr actor, btCollisionShape* shape, float mass, const std::string& material);
 };

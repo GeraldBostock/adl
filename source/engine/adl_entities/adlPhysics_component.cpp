@@ -27,6 +27,9 @@ bool adlPhysics_component::init(const rapidjson::Value& json_object)
 	const rapidjson::Value& shape_object = json_object["shape"];
 	shape_ = shape_object.GetString();
 
+	const rapidjson::Value& is_static = json_object["static"];
+	is_static_ = is_static.GetBool();
+
 	return true;
 }
 
@@ -60,6 +63,11 @@ void adlPhysics_component::post_init()
 		else if (shape_ == "sphere")
 		{
 			physics_->add_box(1, trans_comp->get_transform(), owner);
+		}
+
+		if (is_static_)
+		{
+			physics_->set_static(owner, is_static_);
 		}
 	}
 }
@@ -124,6 +132,11 @@ void adlPhysics_component::editor()
 		stop();
 	}
 
+	if (ImGui::Checkbox("Static", &is_static_))
+	{
+		physics_->set_static(owner, is_static_);
+	}
+
 	ImGui::Unindent();
 }
 
@@ -176,4 +189,9 @@ void adlPhysics_component::apply_torque(const adlVec3& direction, float newtons)
 void adlPhysics_component::stop()
 {
 	physics_->stop(owner);
+}
+
+void adlPhysics_component::set_static(bool is_static)
+{
+	physics_->set_static(owner, is_static);
 }

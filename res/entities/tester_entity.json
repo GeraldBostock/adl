@@ -1,5 +1,5 @@
 {
-	"type": "test_entity",
+	"type": "tester_entity",
 	"components": 
 	[
 		{
@@ -15,7 +15,8 @@
 		},
 		{
 			"type": "adlPhysics_component",
-			"shape": "box"
+			"shape": "box",
+			"static": false
 		},
 		{
 			"type": "adlSun_component",

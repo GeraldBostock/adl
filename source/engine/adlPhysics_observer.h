@@ -13,6 +13,7 @@ public:
 	virtual void on_terrain_collision_start(adlEntity_shared_ptr entity, const adlVec3& collision_point) = 0;
 	virtual void on_terrain_collision_end(adlEntity_shared_ptr entity) = 0;
 	virtual void on_terrain_mouse_ray_collision(const adlVec3& collision_point) = 0;
+	virtual void on_mouse_collision_start(adlEntity_shared_ptr  entity) = 0;
 };
 
 #endif //adl_physics_observer_h__

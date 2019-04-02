@@ -7,6 +7,7 @@ adlRender_component::adlRender_component()
 		material_(nullptr)
 {
 	REGISTER_COMPONENT(adlRender_component)
+	engine_component_name = "adlRender_component";
 
 	adlResource_manager* adl_rm = &adlResource_manager::get();
 	model_ = adl_rm->get_model("Cube");

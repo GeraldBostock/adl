@@ -14,7 +14,7 @@
 			"material": "obsidian"
 		},
 		{
-			"type": "adlPhysics_component",
+			"type": "Test_component",
 			"shape": "box",
 			"static": true
 		},

@@ -7,6 +7,7 @@
 #include "../../adl_resource/adlResource_manager.h"
 #include "../../adl_entities/adlTransform_component.h"
 #include "engine/adl_entities/adlEntity.h"
+#include "engine/adl_entities/adlPhysics_component.h"
 
 #pragma warning(push, 0)
 #include "BulletCollision/NarrowPhaseCollision/btRaycastCallback.h"
@@ -221,9 +222,28 @@ void adlBullet_physics::update(float dt)
 				{
 					observers_[i]->on_mouse_collision_start(entity);
 				}
+
+				std::shared_ptr<adlPhysics_component> physics_comp = std::shared_ptr(entity->get_component<adlPhysics_component>("adlPhysics_component"));
+				adl_assert(physics_comp);
+				physics_comp->on_mouse_hover_start();
 			}
 		}
 	}
+
+	std::vector<adlEntity_shared_ptr> removed_mouse_ray_collisions_;
+
+	std::set_difference(previous_mouse_ray_collisions_.begin(),
+		previous_mouse_ray_collisions_.end(),
+		mouse_ray_collisions_this_frame.begin(), mouse_ray_collisions_this_frame.end(),
+		std::inserter(removed_mouse_ray_collisions_, removed_mouse_ray_collisions_.begin()));
+
+	for (auto entity : removed_mouse_ray_collisions_)
+	{
+		std::shared_ptr<adlPhysics_component> physics_comp = std::shared_ptr(entity->get_component<adlPhysics_component>("adlPhysics_component"));
+		adl_assert(physics_comp);
+		physics_comp->on_mouse_hover_end();
+	}
+
 	previous_mouse_ray_collisions_ = mouse_ray_collisions_this_frame;
 }
 

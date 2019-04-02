@@ -12,6 +12,7 @@ adlPhysics_component::adlPhysics_component()
 	: physics_(nullptr)
 {
 	REGISTER_COMPONENT(adlPhysics_component)
+	engine_component_name = "adlPhysics_component";
 
 	acceleration_ = 0.0f;
 	anguler_acceleration_ = 0.0f;

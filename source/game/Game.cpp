@@ -8,6 +8,7 @@
 #include "engine/adl_entities/adlPhysics_component.h"
 #include "engine/adl_entities/adlPoint_light_component.h"
 #include "engine/adl_entities/adlSun_component.h"
+#include "game/Test_component.h"
 
 Game::Game()
 {
@@ -27,6 +28,7 @@ bool Game::init()
 	adlPhysics_component p;
 	adlPoint_light_component l;
 	adlSun_component sun;
+	Test_component test_c;
 	adlScene_shared_ptr scene = adl_scene_manager->create_empty_scene("new_scene");
 	adl_scene_manager->set_active_scene(scene);
 

@@ -28,8 +28,9 @@ void adlEntity_editor::update(std::vector<adlEntity_shared_ptr>& entities)
 			//This might cause problems for entities with the same name
 			if (ImGui::CollapsingHeader(actr.c_str()))
 			{
+				adlEntity_id id = entities[i]->getId();
 				ImGui::Indent();
-				ImGui::Text("Entity (%d)", i);
+				ImGui::Text("Entity (%d)", id);
 
 				ImGui::Indent();
 				if (ImGui::CollapsingHeader("Add Components"))

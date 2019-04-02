@@ -23,6 +23,11 @@ public:
 	virtual void destroy() = 0;
 	virtual void editor() {}
 
+	const std::string& get_engine_component_name()
+	{
+		return engine_component_name;
+	}
+
 	void set_owner(adlEntity_shared_ptr entity) 
 	{ 
 		owner = entity;
@@ -36,6 +41,8 @@ public:
 protected:
 	adlEntity_shared_ptr owner;
 	std::string type_name;
+
+	std::string engine_component_name;
 
 private:
 

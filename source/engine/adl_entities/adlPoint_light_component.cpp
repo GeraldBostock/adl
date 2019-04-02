@@ -6,6 +6,7 @@ adlPoint_light_component::adlPoint_light_component()
 		quadratic_(0.0018f)
 {
 	REGISTER_COMPONENT(adlPoint_light_component);
+	engine_component_name = "adlPoint_light_component";
 }
 
 adlPoint_light_component::~adlPoint_light_component()

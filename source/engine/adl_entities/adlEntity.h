@@ -58,6 +58,16 @@ public:
 
 				return weak_sub_component;
 			}
+
+			if (component->get_engine_component_name() == component_name)
+			{
+				//Found component but its the base class of a child
+				adlEntity_component_shared_ptr entity_component(component);
+				std::shared_ptr<Component_type> sub_component(std::static_pointer_cast<Component_type>(entity_component));
+				std::weak_ptr<Component_type> weak_sub_component(sub_component);
+
+				return weak_sub_component;
+			}
 		}
 
 		std::cout << "component not found" << std::endl;

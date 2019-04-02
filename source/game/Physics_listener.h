@@ -33,7 +33,6 @@ public:
 
 	virtual void on_mouse_collision_start(adlEntity_shared_ptr  entity)
 	{
-		std::cout << "mouse collision start" << std::endl;
 	}
 };
 

@@ -109,6 +109,11 @@ bool adlEntity::has_component(const std::string& component_name)
 		{
 			return true;
 		}
+
+		if (component_name == component->get_engine_component_name())
+		{
+			return true;
+		}
 	}
 
 	return false;

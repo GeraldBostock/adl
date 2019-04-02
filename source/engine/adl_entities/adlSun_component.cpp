@@ -3,6 +3,7 @@
 adlSun_component::adlSun_component()
 {
 	REGISTER_COMPONENT(adlSun_component)
+	engine_component_name = "adlSun_component";
 
 	light_components_.ambient = adlVec3(0.1f);
 	light_components_.diffuse = adlVec3(0.8f);

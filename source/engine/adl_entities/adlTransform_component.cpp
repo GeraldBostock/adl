@@ -6,6 +6,7 @@ adlTransform_component::adlTransform_component()
 	:	transform_(adlTransform::identity())
 {
 	REGISTER_COMPONENT(adlTransform_component)
+		engine_component_name = "adlTransform_component";
 }
 
 bool adlTransform_component::init(const rapidjson::Value& json_object)

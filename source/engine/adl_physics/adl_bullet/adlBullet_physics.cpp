@@ -227,6 +227,12 @@ void adlBullet_physics::update(float dt)
 				adl_assert(physics_comp);
 				physics_comp->on_mouse_hover_start();
 			}
+			else
+			{
+				std::shared_ptr<adlPhysics_component> physics_comp = std::shared_ptr(entity->get_component<adlPhysics_component>("adlPhysics_component"));
+				adl_assert(physics_comp);
+				physics_comp->under_mouse();
+			}
 		}
 	}
 

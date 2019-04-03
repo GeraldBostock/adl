@@ -24,6 +24,11 @@ public:
 		std::cout << "Mouse hover end" << std::endl;
 	}
 
+	virtual void under_mouse() override
+	{
+		std::cout << "Under mouse" << std::endl;
+	}
+
 private:
 
 };

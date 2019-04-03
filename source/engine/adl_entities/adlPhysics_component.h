@@ -26,8 +26,9 @@ public:
 
 	void set_static(bool is_static);
 
-	virtual void on_mouse_hover_start() {};
-	virtual void on_mouse_hover_end() {};
+	virtual void on_mouse_hover_start() {}
+	virtual void on_mouse_hover_end() {}
+	virtual void under_mouse() {}
 
 private:
 	std::shared_ptr<adlIPhysics> physics_;

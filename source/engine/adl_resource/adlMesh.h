@@ -33,6 +33,13 @@ struct Vertex
 		: position(position), normal(normal), uv(uv)
 	{
 	}
+
+	std::string to_string()
+	{
+		std::string struct_string = "";
+		struct_string += "x: " + std::to_string(position.x) + ", y: " + std::to_string(position.y) + ", z: " + std::to_string(position.z);
+		return struct_string;
+	}
 };
 
 struct Texture

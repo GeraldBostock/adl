@@ -16,7 +16,7 @@
 class adlBullet_physics : public adlIPhysics
 {
 public:
-	adlBullet_physics() {};
+	adlBullet_physics();
 	virtual ~adlBullet_physics();
 
 	virtual bool initialize() override;

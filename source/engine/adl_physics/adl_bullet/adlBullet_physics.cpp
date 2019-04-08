@@ -109,6 +109,12 @@ struct Actor_motion_state : public btMotionState
 	}
 };
 
+adlBullet_physics::adlBullet_physics()
+	:	terrain_body_(nullptr)
+{
+
+}
+
 adlBullet_physics::~adlBullet_physics()
 {
 	for (int i = dynamics_world_->getNumCollisionObjects() - 1; i >= 0; --i)
@@ -307,6 +313,11 @@ void adlBullet_physics::add_box(const adlVec3& dimensions, adlTransform initial_
 
 void adlBullet_physics::add_terrain(const std::vector<float>& heightfield)
 {
+	if (terrain_body_)
+	{
+		remove_collision_object(terrain_body_);
+	}
+
 	float min = -5000.0f;
 	float max = 5000.0f;
 

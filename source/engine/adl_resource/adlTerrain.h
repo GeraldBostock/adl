@@ -10,12 +10,19 @@
 class adlTerrain
 {
 public:
-	adlTerrain(const std::vector<Vertex>& vertices, std::vector<unsigned int>& indices, const std::string& name,
+	adlTerrain(int width, int height, const std::vector<Vertex>& vertices, std::vector<unsigned int>& indices, const std::string& name,
 		const std::vector<adlVec3>& faces, const std::vector<adlVec3>& face_normals, const std::vector<float>& heightfield);
 	~adlTerrain();
 
 	adlModel_shared_ptr get_model();
 	const std::string& get_name();
+
+	const Vertex& get_vertex_at_index(int iVertex, int jVertex);
+	int get_width();
+	int get_height();
+
+	void edit_vertex(int i, int j);
+	void edit_vertices(const std::vector<std::pair<int, int>>& vertices);
 
 	const std::vector<Vertex>& get_vertices();
 	const std::vector<adlVec3>& get_face_normals()
@@ -33,6 +40,11 @@ public:
 	}
 
 private:
+
+	void calculate_normal(int i, int j);
+
+	int width_;
+	int height_;
 	std::vector<Vertex> vertices_;
 	std::vector<unsigned int> indices_;
 	std::vector<adlVec3> faces_;

@@ -26,7 +26,7 @@ public:
 
 	virtual void add_box(const adlVec3& dimensions, adlTransform initial_transform, adlEntity_shared_ptr entity) override;
 	virtual void add_sphere(float radius, adlTransform initial_transform, adlEntity_shared_ptr entity) override;
-	virtual void add_terrain(const std::vector<float>& heightfield) override;
+	virtual void add_terrain(const std::vector<float>& heightfield, int width, int height) override;
 	virtual void add_static_plane() override;
 	virtual void remove_collision_object(btCollisionObject* obj);
 

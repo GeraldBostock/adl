@@ -6,6 +6,8 @@
 #include "adlScene_editor.h"
 #include "adlResource_manager_editor.h"
 
+class adlTerrain_editor;
+
 class adlEditor_manager
 {
 public:
@@ -16,6 +18,7 @@ public:
 		return instance;
 	}
 
+	void init();
 	void clean_up();
 
 	void update();
@@ -25,7 +28,7 @@ private:
 	adlSpawn_editor* spawn_editor_;
 	adlScene_editor* scene_editor_;
 	adlResource_manager_editor* resource_editor_;
-
+	adlTerrain_editor* terrain_editor_;
 
 	bool main_editor_open_;
 	bool entity_editor_open_;
@@ -34,6 +37,7 @@ private:
 	bool spawner_editor_open_;
 	bool scene_editor_open_;
 	bool resource_manager_editor_open_;
+	bool terrain_editor_open_;
 
 	bool was_mouse_visible_;
 

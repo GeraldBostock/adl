@@ -60,9 +60,75 @@ int adlTerrain::get_height()
 	return height_;
 }
 
-void adlTerrain::edit_vertices(const std::vector<std::pair<int, int>>& vertices)
+void adlTerrain::edit_vertices(const std::set<std::pair<int, int>>& vertex_indices, const std::vector<Vertex>& vertex_values)
 {
-	for (auto vertex : vertices)
+	for (unsigned int i = 0; i < vertex_indices.size(); ++i)
+	{
+		std::pair<int, int> vertex_index = *std::next(vertex_indices.begin(), i);
+		vertices_[vertex_index.first * width_ + vertex_index.second] = vertex_values[i];
+		heightfield_[(width_ - (vertex_index.first + 1)) * width_ + (height_ - (vertex_index.second + 1))] = vertex_values[i].position.y;
+
+		std::map<unsigned int, std::vector<adlVec3>> vertices_normals;
+		for (int k = vertex_index.first - 1; k < vertex_index.first + 2; ++k)
+		{
+			for (int l = vertex_index.second - 1; l < vertex_index.second + 2; ++l)
+			{
+				if (k == height_ - 1 || l == width_ - 1 || k == -1 || l == -1)
+				{
+					continue;
+				}
+				int index = width_ * k + l;
+
+				adlVec3 edge1 = vertices_[index + width_].position - vertices_[index].position;
+				adlVec3 edge2 = vertices_[index + 1].position - vertices_[index].position;
+				adlVec3 normal = adlMath::crossp(edge1, edge2);
+				normal = normal.normalize();
+
+				std::vector<adlVec3> normals = vertices_normals[index + 1];
+				normals.push_back(normal);
+				vertices_normals[index + 1] = normals;
+				normals = vertices_normals[index];
+				normals.push_back(normal);
+				vertices_normals[index] = normals;
+				normals = vertices_normals[index + width_];
+				normals.push_back(normal);
+				vertices_normals[index + width_] = normals;
+
+				normals = vertices_normals[index + 1];
+				normals.push_back(normal);
+				vertices_normals[index + 1] = normals;
+				normals = vertices_normals[index + width_];
+				normals.push_back(normal);
+				vertices_normals[index + width_] = normals;
+				normals = vertices_normals[index + width_ + 1];
+				normals.push_back(normal);
+				vertices_normals[index + width_ + 1] = normals;
+
+				std::vector<adlVec3> vertex_normals = vertices_normals[index];
+				adlVec3 average_normal(0.0f);
+				for (auto vertex_normal : vertex_normals)
+				{
+					average_normal = average_normal + vertex_normal;
+				}
+				if (!vertex_normals.empty())
+				{
+					average_normal = average_normal / vertex_normals.size();
+					vertices_[index].normal = average_normal;
+				}
+			}
+		}
+	}
+
+	adlModel_shared_ptr model = MAKE_SHARED(adlModel, "terrain");
+	adlMesh mesh;
+	mesh.add_vertices(vertices_, indices_);
+	model->add_mesh(mesh);
+	terrain_model_ = model;
+
+	adlScene_manager* scn_mngr = &adlScene_manager::get();
+	scn_mngr->set_terrain(heightfield_);
+	/*std::vector<std::pair<int, int>> elevated_vertices;
+	for (auto vertex : vertex_indices)
 	{
 		int iVertex = vertex.first;
 		int jVertex = vertex.second;
@@ -134,7 +200,7 @@ void adlTerrain::edit_vertices(const std::vector<std::pair<int, int>>& vertices)
 	terrain_model_ = model;
 
 	adlScene_manager* scn_mngr = &adlScene_manager::get();
-	scn_mngr->set_terrain(heightfield_);
+	scn_mngr->set_terrain(heightfield_);*/
 }
 
 void adlTerrain::edit_vertex(int iVertex, int jVertex)

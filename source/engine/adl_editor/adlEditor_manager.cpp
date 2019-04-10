@@ -8,21 +8,31 @@
 #include "engine/adlShared_types.h"
 #include "engine/adl_renderer/adlCamera.h"
 #include "engine/adl_entities/adlEntity_factory.h"
+#include "adlTerrain_editor.h"
 
 adlEditor_manager::adlEditor_manager()
 	:	main_editor_open_(false),
 		scene_editor_open_(false),
 		entity_editor_open_(false),
 		resource_manager_editor_open_(false),
+		terrain_editor_open_(false),
 		scene_editor_(nullptr),
 		spawn_editor_(nullptr),
 		entity_editor_(nullptr),
-		resource_editor_(nullptr)
+		resource_editor_(nullptr),
+		terrain_editor_(nullptr)
 {
 	entity_editor_ = ADL_NEW(adlEntity_editor);
 	spawn_editor_ = ADL_NEW(adlSpawn_editor);
 	scene_editor_ = ADL_NEW(adlScene_editor);
 	resource_editor_ = ADL_NEW(adlResource_manager_editor);
+	terrain_editor_ = ADL_NEW(adlTerrain_editor);
+}
+
+void adlEditor_manager::init()
+{
+	adlScene_manager* scene_manager = &adlScene_manager::get();
+	scene_manager->add_physics_observer(terrain_editor_);
 }
 
 void adlEditor_manager::MainMenu()
@@ -32,12 +42,14 @@ void adlEditor_manager::MainMenu()
 		if (ImGui::BeginMenu("adl Editors"))
 		{
 			ImGui::Checkbox("Entity Editor", &entity_editor_open_);
+			ImGui::Checkbox("Terrain Editor", &terrain_editor_open_);
 			ImGui::Checkbox("Resource Manager", &resource_manager_editor_open_);
 			ImGui::Checkbox("Help", &help_open_);
 
 			if (ImGui::MenuItem("Close All Editors", "CTRL+Q"))
 			{
 				entity_editor_open_ = false;
+				terrain_editor_open_ = false;
 				help_open_ = false;
 				show_demo_window_ = false;
 				spawner_editor_open_ = false;
@@ -113,6 +125,8 @@ void adlEditor_manager::update()
 		{
 			window->set_mouse_visible(was_mouse_visible_);
 			entity_editor_open_ = false;
+			terrain_editor_open_ = false;
+			terrain_editor_->set_open(false);
 			help_open_ = false;		
 			show_demo_window_ = false;
 
@@ -134,6 +148,8 @@ void adlEditor_manager::update()
 		if (input->get_key(adl_key_left_ctrl) && input->get_key_down(adl_key_q))
 		{
 			entity_editor_open_ = false;
+			terrain_editor_open_ = false;
+			terrain_editor_->set_open(false);
 			help_open_ = false;
 			show_demo_window_ = false;
 			spawner_editor_open_ = false;
@@ -149,6 +165,17 @@ void adlEditor_manager::update()
 		{
 			entity_editor_->update(scene_manager->get_all_entities());
 		}
+
+		if (terrain_editor_open_)
+		{
+			terrain_editor_->set_open(true);
+			terrain_editor_->update();
+		}
+		else
+		{
+			terrain_editor_->set_open(false);
+		}
+
 		if (scene_editor_open_)
 		{
 			scene_editor_->update();
@@ -203,4 +230,5 @@ void adlEditor_manager::clean_up()
 	ADL_DELETE(spawn_editor_);
 	ADL_DELETE(scene_editor_);
 	ADL_DELETE(resource_editor_);
+	ADL_DELETE(terrain_editor_);
 }

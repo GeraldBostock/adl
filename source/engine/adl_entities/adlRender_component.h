@@ -17,6 +17,11 @@ public:
 	adlModel_shared_ptr get_model();
 	adlMaterial_shared_ptr get_material();
 
+	void set_material(adlMaterial_shared_ptr material)
+	{
+		material_ = material;
+	}
+
 private:
 	adlModel_shared_ptr model_;
 	adlMaterial_shared_ptr material_;

@@ -11,6 +11,9 @@
 class adlEntity_component
 {
 public:
+
+	friend class adlEntity_factory;
+
 	adlEntity_component() {}
 	virtual ~adlEntity_component() 
 	{ 
@@ -28,11 +31,6 @@ public:
 		return engine_component_name;
 	}
 
-	void set_owner(adlEntity_shared_ptr entity) 
-	{ 
-		owner = entity;
-	}
-
 	const std::string& get_type_name()
 	{
 		return type_name;
@@ -45,8 +43,10 @@ protected:
 	std::string engine_component_name;
 
 private:
-
-
+	void set_owner(adlEntity_shared_ptr entity)
+	{
+		owner = entity;
+	}
 };
 
 #endif //adl_entity_component_h__

@@ -50,9 +50,12 @@ bool Game::init()
 	scene->set_camera(scene_camera);
 
 	adlTerrain_shared_ptr terrain = adl_rm->get_terrain("test_terrain");
+	terrain->set_blend_map(adl_rm->get_texture("black"));
 	adl_scene_manager->set_terrain(terrain);
 
 	entity = adl_scene_manager->add_entity_to_scene("test_entity");
+	std::shared_ptr<adlRender_component> render_comp = std::shared_ptr(entity->get_component<adlRender_component>("adlRender_component"));
+	render_comp->set_material(adl_rm->get_material("frame"));
 	adl_scene_manager->set_sun(entity);
 	adlEntity_shared_ptr entity1 = adl_scene_manager->add_entity_to_scene("test_entity");
 

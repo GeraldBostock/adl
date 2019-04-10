@@ -1,6 +1,8 @@
 #include "adlResource_manager.h"
 #include "engine/adl_debug/adlAssert.h"
 #include "engine/adl_resource/adlMaterial.h"
+#include "adlTerrain.h"
+#include "adlModel.h"
 
 #include <fstream>
 #include <sstream>
@@ -305,10 +307,35 @@ adlTerrain_shared_ptr adlResource_manager::get_terrain(const std::string& name)
 		{
 			adl_logger->log_info("Terrain " + name + " is not loaded yet. Loading terrain.");
 			adlTerrain_shared_ptr terrain = loader_.load_terrain(name_to_terrain_path_[name], name);
-			
+			terrain->get_model()->set_material(get_material("grass_material"));
+
 			terrains_[name] = terrain;
 			return terrain;
 		}
+	}
+
+	return nullptr;
+}
+
+adlTexture_shared_ptr adlResource_manager::get_texture(const std::string& name)
+{
+	adlLogger* logger = &adlLogger::get();
+
+	if (textures_[name] != nullptr)
+	{
+		return textures_[name];
+	}
+
+	if (name_to_texture_path_[name].first.empty() && name_to_texture_path_[name].second.empty())
+	{
+		logger->log_error("Texture " + name + "doesnt exist");
+		return nullptr;
+	}
+	else
+	{
+		adlTexture_shared_ptr texture = loader_.load_texture(name_to_texture_path_[name]);
+		textures_[name] = texture;
+		return texture;
 	}
 
 	return nullptr;

@@ -136,6 +136,21 @@
       "specular_map_path": "res/textures/MetalFrame_Specular.png"
     },
 	{
+      "name": "black",
+      "path": "res/textures/blank.png",
+      "specular_map_path": ""
+    },
+	{
+      "name": "dirt",
+      "path": "res/textures/dirt.jpg",
+      "specular_map_path": ""
+    },
+	{
+      "name": "snow",
+      "path": "res/textures/snow.jpg",
+      "specular_map_path": ""
+    },
+	{
 	  "name": "blank_texture",
 	  "path": "res/textures/default.png",
 	  "specular_map_path": ""
@@ -148,6 +163,11 @@
 	{
 	  "name": "grass",
 	  "path": "res/textures/grass.jpg",
+	  "specular_map_path": ""
+	},
+	{
+	  "name": "stone",
+	  "path": "res/textures/stone.png",
 	  "specular_map_path": ""
 	}
   ],
@@ -191,6 +211,11 @@
 	  "name": "skybox_shader",
 	  "vertex_shader_path": "res/shaders/skybox_shader.vert",
 	  "fragment_shader_path": "res/shaders/skybox_shader.frag"
+	},
+	{
+	  "name": "terrain_shader",
+	  "vertex_shader_path": "res/shaders/terrain_shader.vert",
+	  "fragment_shader_path": "res/shaders/terrain_shader.frag"
 	}
   ],
   "terrains": [

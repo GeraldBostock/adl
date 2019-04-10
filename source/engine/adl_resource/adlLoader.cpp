@@ -280,16 +280,16 @@ adlTexture_shared_ptr adlLoader::load_texture(const std::pair<std::string, std::
 {
 	adlTexture_shared_ptr texture = MAKE_SHARED(adlTexture);
 
-	load_texture_from_file(texture->get_id(), texture_paths.first);
+	load_texture_from_file(texture->get_id(), texture_paths.first, texture);
 	if (!texture_paths.second.empty())
 	{
-		load_texture_from_file(texture->get_specular_map_id(), texture_paths.second);
+		load_texture_from_file(texture->get_specular_map_id(), texture_paths.second, texture);
 	}
 
 	return texture;
 }
 
-void adlLoader::load_texture_from_file(unsigned int texture_id, const std::string& file_path)
+void adlLoader::load_texture_from_file(unsigned int texture_id, const std::string& file_path, adlTexture_shared_ptr texture)
 {
 	adlLogger* logger = &adlLogger::get();
 	logger->log_info("Loading texture at " + file_path);
@@ -320,6 +320,18 @@ void adlLoader::load_texture_from_file(unsigned int texture_id, const std::strin
 	{
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, color_format, GL_UNSIGNED_BYTE, data);
 		glGenerateMipmap(GL_TEXTURE_2D);
+
+		texture->set_width(width);
+		texture->set_height(height);
+		texture->set_color_format(color_format);
+
+		std::vector<unsigned char> pixel_array;
+		for (unsigned int i = 0; i < width * height * color_channels; i++)
+		{
+			pixel_array.push_back(data[i]);
+		}
+
+		texture->set_pixel_array(pixel_array);
 	}
 	else
 	{
@@ -345,14 +357,17 @@ adlTerrain_shared_ptr adlLoader::load_terrain(const std::string& terrain_path, c
 	std::vector<float> heightfield;
 
 	std::vector<Vertex> vertices;
+	width = 256;
+	height = 256;
 
-	for (int i = 0; i < height; i++)
+	for (int i = 0; i < width; i++)
 	{
-		for (int j = 0; j < width; j++)
+		for (int j = 0; j < height; j++)
 		{
 			float y = 0;//(float)data[width * (j)+i] / 20.0f;
-			heightfield.insert(heightfield.begin(), y);
-			Vertex vertex(adlVec3(width / 2 - j - 0.5f, y, height / 2 - i - 0.5f), adlVec3(0, 1, 0), adlVec2(0, 0));
+			heightfield.push_back(y);
+			//heightfield.insert(heightfield.begin(), y);
+			Vertex vertex(adlVec3(width / 2 - j - 0.5f, y, height / 2 - i - 0.5f), adlVec3(0, 1, 0), adlVec2(j, i));
 			vertices.push_back(vertex);
 		}
 	}

@@ -18,7 +18,7 @@ public:
 
 	virtual void add_box(const adlVec3& dimensions, adlTransform initial_transform, adlEntity_shared_ptr entity) = 0;
 	virtual void add_sphere(float radius, adlTransform initial_transform, adlEntity_shared_ptr entity) = 0;
-	virtual void add_terrain(const std::vector<float>& heightfield) = 0;
+	virtual void add_terrain(const std::vector<float>& heightfield, int width, int height) = 0;
 	virtual void add_static_plane() = 0;
 
 	virtual void remove_entity(adlEntity_shared_ptr entity) = 0;

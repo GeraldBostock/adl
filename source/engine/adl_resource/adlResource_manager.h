@@ -52,6 +52,8 @@ public:
 
 	adlTerrain_shared_ptr get_terrain(const std::string& name);
 
+	adlTexture_shared_ptr get_texture(const std::string& name);
+
 	adlCube_map_shared_ptr get_cube_map(const std::string& name);
 
 	void reload_resource(const std::string& resource_path, Resources type);

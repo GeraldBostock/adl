@@ -133,7 +133,7 @@ void adlRender_manager::render(adlTerrain_shared_ptr terrain)
 	adlResource_manager* adl_rm = &adlResource_manager::get();
 
 	adlMat4 view_matrix = camera_->get_view_matrix();
-	adlShader_shared_ptr shader = adl_rm->get_shader("no_texture");
+	adlShader_shared_ptr shader = adl_rm->get_shader("terrain_shader");
 
 	adlTransform transform = adlTransform::identity();
 	adlMat4 model_matrix = transform.get_transformation_matrix();
@@ -146,7 +146,20 @@ void adlRender_manager::render(adlTerrain_shared_ptr terrain)
 	//shader->load_point_lights(lights_);
 	shader->load_point_lights(point_lights_);
 	shader->load_model_matrix(model_matrix);
-	shader->load_material(adl_rm->get_material("matte"));
+	shader->load_material(adl_rm->get_material("grass_material"));
+
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, adl_rm->get_texture("grass")->get_id());
+	glActiveTexture(GL_TEXTURE1);
+	glBindTexture(GL_TEXTURE_2D, adl_rm->get_texture("stone")->get_id());
+	glActiveTexture(GL_TEXTURE2);
+	glBindTexture(GL_TEXTURE_2D, adl_rm->get_texture("dirt")->get_id());
+	glActiveTexture(GL_TEXTURE3);
+	glBindTexture(GL_TEXTURE_2D, adl_rm->get_texture("snow")->get_id());
+	glActiveTexture(GL_TEXTURE4);
+	glBindTexture(GL_TEXTURE_2D, terrain->get_blend_map()->get_id());
+	shader->load_texture_units();
+
 	terrain_model->draw(shader, transform.get_transformation_matrix());
 	shader->stop();
 }

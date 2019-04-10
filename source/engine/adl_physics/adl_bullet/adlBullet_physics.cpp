@@ -311,7 +311,7 @@ void adlBullet_physics::add_box(const adlVec3& dimensions, adlTransform initial_
 	add_shape(entity, collision_shape, 10, "asd");
 }
 
-void adlBullet_physics::add_terrain(const std::vector<float>& heightfield)
+void adlBullet_physics::add_terrain(const std::vector<float>& heightfield, int width, int height)
 {
 	if (terrain_body_)
 	{
@@ -334,7 +334,7 @@ void adlBullet_physics::add_terrain(const std::vector<float>& heightfield)
 		}
 	}
 
-	btHeightfieldTerrainShape* const terrain_shape = ADL_NEW(btHeightfieldTerrainShape, 128, 128, &heightfield[0], btScalar(1.0f), btScalar(min), btScalar(max), 1, PHY_FLOAT, true);
+	btHeightfieldTerrainShape* const terrain_shape = ADL_NEW(btHeightfieldTerrainShape, width, height, &heightfield[0], btScalar(1.0f), btScalar(min), btScalar(max), 1, PHY_FLOAT, true);
 
 	adlTransform transform = adlTransform::identity();
 	transform.o = adlVec3(0, 0, 0);

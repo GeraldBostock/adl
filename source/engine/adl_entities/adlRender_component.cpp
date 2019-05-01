@@ -16,12 +16,16 @@ adlRender_component::adlRender_component()
 
 bool adlRender_component::init(const rapidjson::Value& json_object)
 {
-	std::string model_name = json_object["model"].GetString();
-	std::string material_name = json_object["material"].GetString();
-
 	adlResource_manager* adl_rm = &adlResource_manager::get();
+
+	std::string model_name = json_object["model"].GetString();
+	if (json_object.HasMember("material"))
+	{
+		std::string material_name = json_object["material"].GetString();
+		material_ = adl_rm->get_material(material_name);
+	}
+
 	model_ = adl_rm->get_model(model_name);
-	material_ = adl_rm->get_material(material_name);
 
 	return true;
 }

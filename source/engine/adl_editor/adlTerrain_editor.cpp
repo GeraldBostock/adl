@@ -28,6 +28,9 @@ adlTerrain_editor::~adlTerrain_editor()
 void adlTerrain_editor::update()
 {
 	ImGui::Begin("Terrain Editor");
+	ImGui::Text("Deform");
+	ImGui::Indent();
+
 	if (ImGui::Checkbox("Elevate", &elevate_))
 	{
 		lower_ = false;
@@ -55,6 +58,10 @@ void adlTerrain_editor::update()
 		texture3_ = false;
 		texture4_ = false;
 	}
+	ImGui::Unindent();
+	ImGui::Text("Textures");
+	ImGui::Indent();
+
 	if (ImGui::Checkbox("Grass", &texture1_))
 	{
 		elevate_ = false;
@@ -91,6 +98,7 @@ void adlTerrain_editor::update()
 		texture2_ = false;
 		texture3_ = false;
 	}
+	ImGui::Unindent();
 	ImGui::End();
 }
 
@@ -226,7 +234,7 @@ void adlTerrain_editor::end_tile_selection_state(const adlVec2_i32& current_tile
 		if (current_tile_index.y < selection_start_index_.y)
 		{
 			y_min = current_tile_index.y;
-			y_max = selection_start_index_.y;
+			y_max = selection_start_index_.y; 
 		}
 
 		int scale_rate = terrain->get_blend_map()->get_width() / terrain->get_width();

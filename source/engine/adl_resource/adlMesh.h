@@ -64,6 +64,16 @@ public:
 	int get_index_count();
 	adlMaterial_shared_ptr get_material();
 
+	void set_texture(adlTexture_shared_ptr texture)
+	{
+		texture_ = texture;
+	}
+
+	adlTexture_shared_ptr get_texture()
+	{
+		return texture_;
+	}
+
 	void set_bounding_box(adlBounding_box bb)
 	{
 		bounding_box_ = bb;
@@ -83,6 +93,7 @@ private:
 	std::vector<Vertex> vertices_;
 	std::vector<unsigned int> indices_;
 	std::vector<Texture> textures_;
+	adlTexture_shared_ptr texture_;
 
 	uint32 vao_, ebo_;
 

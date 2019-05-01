@@ -27,6 +27,15 @@ public:
 		return blend_map_;
 	}
 
+	void set_texture_pack(adlTerrain_texture_pack_shared_ptr texture_pack)
+	{
+		texture_pack_ = texture_pack;
+	}
+	adlTerrain_texture_pack_shared_ptr get_texture_pack()
+	{
+		return texture_pack_;
+	}
+
 	const Vertex& get_vertex_at_index(int iVertex, int jVertex);
 	int get_width();
 	int get_height();
@@ -64,6 +73,8 @@ private:
 	adlModel_shared_ptr terrain_model_;
 	adlTexture_shared_ptr blend_map_;
 	std::string name_;
+
+	adlTerrain_texture_pack_shared_ptr texture_pack_;
 };
 
-#endif // adl_terrain_h__
+#endif //adl_terrain_h__

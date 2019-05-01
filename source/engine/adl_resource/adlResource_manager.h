@@ -21,6 +21,7 @@ enum Resources
 	TERRAIN,
 	CUBE_MAP,
 	ENTITY,
+	TERRAIN_TEXTURE_PACK,
 	RESOURCE_TYPE_COUNT
 };
 
@@ -56,6 +57,8 @@ public:
 
 	adlCube_map_shared_ptr get_cube_map(const std::string& name);
 
+	adlTerrain_texture_pack_shared_ptr get_texture_pack(const std::string& name);
+
 	void reload_resource(const std::string& resource_path, Resources type);
 
 	std::string get_entity_json(const std::string& entity_name);
@@ -85,6 +88,7 @@ private:
 	void initialize_terrains(const rapidjson::Value& terrains);
 	void initialize_cube_maps(const rapidjson::Value& cube_maps);
 	void initialize_entities(const rapidjson::Value& entities);
+	void initialize_texture_packs(const rapidjson::Value& texture_packs);
 
 	void reload_model(const std::string& model_name);
 	void reload_entity(const std::string& entity_name);
@@ -117,6 +121,9 @@ private:
 
 	std::map<std::string, std::string> name_to_entity_path_;
 	std::map<std::string, std::string> entity_json_string_;
+
+	std::map<std::string, std::vector<std::string>> name_to_texture_pack_textures_;
+	std::map<std::string, adlTerrain_texture_pack_shared_ptr> name_to_texture_pack_;
 
 	std::vector<std::string> entity_names_;
 

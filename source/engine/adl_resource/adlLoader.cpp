@@ -39,6 +39,11 @@ adlShader_shared_ptr adlLoader::load_shader(const std::string& vertex_shader_pat
 adlModel_shared_ptr adlLoader::load_model(const std::string& mesh_path, const std::string& model_name)
 {
 	Assimp::Importer importer;
+	std::cout << mesh_path << std::endl;
+
+	std::string model_folder_path = mesh_path;
+	const size_t last_slash_idx = model_folder_path.rfind('/');
+	model_folder_path = model_folder_path.erase(last_slash_idx, mesh_path.size()) + '/';
 
 	const aiScene* scene = importer.ReadFile(mesh_path,
 		aiProcess_Triangulate |
@@ -54,12 +59,12 @@ adlModel_shared_ptr adlLoader::load_model(const std::string& mesh_path, const st
 
 	adlModel_shared_ptr new_model = std::make_shared<adlModel>(model_name);
 
-	process_ai_node(scene->mRootNode, scene, new_model);
+	process_ai_node(scene->mRootNode, scene, new_model, model_folder_path);
 
 	return new_model;
 }
 
-void adlLoader::process_ai_node(aiNode* node, const aiScene* scene, adlModel_shared_ptr model)
+void adlLoader::process_ai_node(aiNode* node, const aiScene* scene, adlModel_shared_ptr model, const std::string& model_folder_location)
 {
 	// process all the node's meshes (if any)
 	for (unsigned int i = 0; i < node->mNumMeshes; i++)
@@ -68,8 +73,65 @@ void adlLoader::process_ai_node(aiNode* node, const aiScene* scene, adlModel_sha
 		adlMesh_shared_ptr new_mesh = process_mesh(mesh, scene);
 
 		aiMaterial* mtl = scene->mMaterials[mesh->mMaterialIndex];
+		if (scene->HasTextures())
+		{
+			aiTexture * text = scene->mTextures[mesh->mMaterialIndex];
+
+			if (text != nullptr)
+			{
+				adlTexture_shared_ptr texture = MAKE_SHARED(adlTexture);
+				glBindTexture(GL_TEXTURE_2D, texture->get_id());
+
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+				glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, text->mWidth, text->mHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, text->pcData);
+				glGenerateMipmap(GL_TEXTURE_2D);
+
+				texture->set_width(text->mWidth);
+				texture->set_height(text->mHeight);
+				texture->set_color_format(GL_RGBA);
+
+				std::vector<unsigned char> pixel_array;
+				for (unsigned int j = 0; j < text->mWidth * text->mHeight; ++j)
+				{
+					aiTexel pixel = text->pcData[j];
+					pixel_array.push_back(pixel.r);
+					pixel_array.push_back(pixel.g);
+					pixel_array.push_back(pixel.b);
+					pixel_array.push_back(pixel.a);
+				}
+
+				texture->set_pixel_array(pixel_array);
+
+				new_mesh->set_texture(texture);
+			}
+		}
+
 		if (mtl != nullptr)
 		{
+			aiString path;
+			std::cout << mtl->GetTextureCount(aiTextureType_DIFFUSE) << std::endl;
+			if (AI_SUCCESS != mtl->GetTexture(aiTextureType_DIFFUSE, 0, &path, NULL, NULL, NULL, NULL, NULL))
+			{
+				std::cout << "success" << std::endl;
+			}
+			std::string assimp_texture_path = std::string(path.C_Str());
+			const size_t last_slash_idx = assimp_texture_path.rfind('\\');
+			std::string texture_name = assimp_texture_path;
+			if (last_slash_idx > 0 && last_slash_idx < assimp_texture_path.size())
+			{
+				texture_name = assimp_texture_path.substr(last_slash_idx, assimp_texture_path.size());
+			}
+
+			std::string texture_file_path = model_folder_location + texture_name;
+
+			adlTexture_shared_ptr texture = MAKE_SHARED(adlTexture);
+			load_texture_from_file(texture->get_id(), texture_file_path, texture);
+			new_mesh->set_texture(texture);
+
 			aiColor4D diffuse(0.0f, 0.0f, 0.0f, 0.0f);
 			aiGetMaterialColor(mtl, AI_MATKEY_COLOR_DIFFUSE, &diffuse);
 
@@ -106,7 +168,7 @@ void adlLoader::process_ai_node(aiNode* node, const aiScene* scene, adlModel_sha
 	// then do the same for each of its children
 	for (unsigned int i = 0; i < node->mNumChildren; i++)
 	{
-		process_ai_node(node->mChildren[i], scene, model);
+		process_ai_node(node->mChildren[i], scene, model, model_folder_location);
 	}
 }
 

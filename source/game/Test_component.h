@@ -16,17 +16,14 @@ public:
 
 	virtual void on_mouse_hover_start() override
 	{
-		std::cout << "Mouse hover start" << std::endl;
 	}
 
 	virtual void on_mouse_hover_end() override
 	{
-		std::cout << "Mouse hover end" << std::endl;
 	}
 
 	virtual void under_mouse() override
 	{
-		std::cout << "Under mouse" << std::endl;
 	}
 
 private:

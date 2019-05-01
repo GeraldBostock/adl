@@ -8,6 +8,7 @@
 #include "engine/adl_resource/adlTexture.h"
 #include "engine/adl_resource/adlTerrain.h"
 #include "engine/adl_resource/adlCube_map.h"
+#include "engine/adl_resource/adlTerrain_texture_pack.h"
 #include "engine/adlWindow.h"
 #include "engine/adl_renderer/adlDebug_renderer.h"
 #include "engine/adl_entities/adlRender_component.h"
@@ -76,7 +77,7 @@ void adlRender_manager::render(adlEntity_shared_ptr entity)
 	adlShader_shared_ptr shader;
 	if (material != nullptr)
 	{
-		if (material->get_texture() != nullptr)
+		if (material->get_texture() != nullptr || model->get_all_meshes()[0]->get_texture() != nullptr)
 		{
 			shader = adl_rm->get_shader("textured");
 		}
@@ -100,7 +101,7 @@ void adlRender_manager::render(adlEntity_shared_ptr entity)
 	shader->load_model_matrix(model_matrix);
 	shader->load_camera_position(camera_->get_position());
 	shader->load_point_lights(point_lights_);
-	shader->load_material(material);
+	//shader->load_material(material);
 
 
 	if (material != nullptr)
@@ -148,14 +149,17 @@ void adlRender_manager::render(adlTerrain_shared_ptr terrain)
 	shader->load_model_matrix(model_matrix);
 	shader->load_material(adl_rm->get_material("grass_material"));
 
+	adlTerrain_texture_pack_shared_ptr tex_pack = terrain->get_texture_pack();
+	const std::vector<adlTexture_shared_ptr>& textures = tex_pack->get_textures();
+
 	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, adl_rm->get_texture("grass")->get_id());
+	glBindTexture(GL_TEXTURE_2D, textures[0]->get_id());
 	glActiveTexture(GL_TEXTURE1);
-	glBindTexture(GL_TEXTURE_2D, adl_rm->get_texture("stone")->get_id());
+	glBindTexture(GL_TEXTURE_2D, textures[1]->get_id());
 	glActiveTexture(GL_TEXTURE2);
-	glBindTexture(GL_TEXTURE_2D, adl_rm->get_texture("dirt")->get_id());
+	glBindTexture(GL_TEXTURE_2D, textures[2]->get_id());
 	glActiveTexture(GL_TEXTURE3);
-	glBindTexture(GL_TEXTURE_2D, adl_rm->get_texture("snow")->get_id());
+	glBindTexture(GL_TEXTURE_2D, textures[3]->get_id());
 	glActiveTexture(GL_TEXTURE4);
 	glBindTexture(GL_TEXTURE_2D, terrain->get_blend_map()->get_id());
 	shader->load_texture_units();

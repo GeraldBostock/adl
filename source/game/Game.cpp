@@ -51,6 +51,7 @@ bool Game::init()
 
 	adlTerrain_shared_ptr terrain = adl_rm->get_terrain("test_terrain");
 	terrain->set_blend_map(adl_rm->get_texture("black"));
+	terrain->set_texture_pack(adl_rm->get_texture_pack("default"));
 	adl_scene_manager->set_terrain(terrain);
 
 	entity = adl_scene_manager->add_entity_to_scene("test_entity");

@@ -3,6 +3,7 @@
 #include "engine/adl_resource/adlMaterial.h"
 #include "adlTerrain.h"
 #include "adlModel.h"
+#include "adlTerrain_texture_pack.h"
 
 #include <fstream>
 #include <sstream>
@@ -57,6 +58,10 @@ adlResource_manager::adlResource_manager()
 	const rapidjson::Value& entity_objects = document["entities"];
 	adl_assert(entity_objects.IsArray());
 	initialize_entities(entity_objects);
+
+	const rapidjson::Value& texture_pack_objects = document["terrain_texture_packs"];
+	adl_assert(texture_pack_objects.IsArray());
+	initialize_texture_packs(texture_pack_objects);
 }
 
 std::string adlResource_manager::get_core_file_string()
@@ -397,6 +402,26 @@ std::string adlResource_manager::get_entity_json(const std::string& entity_name)
 	return "";
 }
 
+adlTerrain_texture_pack_shared_ptr adlResource_manager::get_texture_pack(const std::string& name)
+{
+	adlLogger* logger = &adlLogger::get();
+	if (name_to_texture_pack_[name] == nullptr)
+	{
+		logger->log_info("Loading texture pack " + name);
+		std::vector<std::string> texture_names = name_to_texture_pack_textures_[name];
+		adlTerrain_texture_pack_shared_ptr texture_pack = MAKE_SHARED(adlTerrain_texture_pack, name,
+			get_texture(texture_names[0]), get_texture(texture_names[1]), get_texture(texture_names[2]), get_texture(texture_names[3]));
+
+		name_to_texture_pack_[name] = texture_pack;
+
+		return texture_pack;
+	}
+	else
+	{
+		return name_to_texture_pack_[name];
+	}
+}
+
 void adlResource_manager::initialize_models(const rapidjson::Value& models)
 {
 	for (rapidjson::Value::ConstValueIterator itr = models.Begin(); itr != models.End(); ++itr)
@@ -588,6 +613,26 @@ void adlResource_manager::initialize_entities(const rapidjson::Value& entities)
 
 		name_to_entity_path_[entity_name] = entity_path;
 		entity_json_string_[entity_name] = "";
+	}
+}
+
+void adlResource_manager::initialize_texture_packs(const rapidjson::Value& texture_packs)
+{
+	for (rapidjson::Value::ConstValueIterator it = texture_packs.Begin(); it != texture_packs.End(); ++it)
+	{
+		const rapidjson::Value& texture_pack_object = *it;
+		adl_assert(texture_pack_object.IsObject());
+
+		std::vector<std::string> texture_names;
+
+		std::string pack_name = texture_pack_object["name"].GetString();
+		texture_names.push_back(texture_pack_object["tex1"].GetString());
+		texture_names.push_back(texture_pack_object["tex2"].GetString());
+		texture_names.push_back(texture_pack_object["tex3"].GetString());
+		texture_names.push_back(texture_pack_object["tex4"].GetString());
+
+		name_to_texture_pack_textures_[pack_name] = texture_names;
+		name_to_texture_pack_[pack_name] = nullptr;
 	}
 }
 

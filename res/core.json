@@ -105,6 +105,18 @@
 	{
 	  "name": "GodotBall",
 	  "path": "res/models/GodotBall/GodotBall.dae"
+	},
+	{
+	  "name": "tank",
+	  "path": "res/models/Tank/D0306011.obj"
+	},
+	{
+	  "name": "bmw",
+	  "path": "res/models/car/Hulk-1.obj"
+	},
+	{
+	  "name": "tree_stump",
+	  "path": "res/models/tree/kand.blend"
 	}
   ],
   "scenes": [
@@ -168,6 +180,11 @@
 	{
 	  "name": "stone",
 	  "path": "res/textures/stone.png",
+	  "specular_map_path": ""
+	},
+	{
+	  "name": "Rock",
+	  "path": "res/models/Stones/BetterRock/stone.jpg",
 	  "specular_map_path": ""
 	}
   ],
@@ -247,6 +264,27 @@
 	{
 		"name": "tester_entity",
 		"path": "res/entities/tester_entity.json"
+	},
+	{
+		"name": "rock",
+		"path": "res/entities/rock.json"
+	},
+	{
+		"name": "bmw",
+		"path": "res/entities/bmw.json"
+	},
+	{
+		"name": "tree",
+		"path": "res/entities/tree.json"
+	}
+  ],
+  "terrain_texture_packs": [
+    {
+		"name": "default",
+		"tex1": "grass",
+		"tex2": "MetalFrame",
+		"tex3": "dirt",
+		"tex4": "snow"
 	}
   ]
 }

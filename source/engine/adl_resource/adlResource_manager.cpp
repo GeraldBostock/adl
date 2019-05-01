@@ -1,6 +1,9 @@
 #include "adlResource_manager.h"
 #include "engine/adl_debug/adlAssert.h"
 #include "engine/adl_resource/adlMaterial.h"
+#include "adlTerrain.h"
+#include "adlModel.h"
+#include "adlTerrain_texture_pack.h"
 
 #include <fstream>
 #include <sstream>
@@ -55,6 +58,10 @@ adlResource_manager::adlResource_manager()
 	const rapidjson::Value& entity_objects = document["entities"];
 	adl_assert(entity_objects.IsArray());
 	initialize_entities(entity_objects);
+
+	const rapidjson::Value& texture_pack_objects = document["terrain_texture_packs"];
+	adl_assert(texture_pack_objects.IsArray());
+	initialize_texture_packs(texture_pack_objects);
 }
 
 std::string adlResource_manager::get_core_file_string()
@@ -305,10 +312,35 @@ adlTerrain_shared_ptr adlResource_manager::get_terrain(const std::string& name)
 		{
 			adl_logger->log_info("Terrain " + name + " is not loaded yet. Loading terrain.");
 			adlTerrain_shared_ptr terrain = loader_.load_terrain(name_to_terrain_path_[name], name);
-			
+			terrain->get_model()->set_material(get_material("grass_material"));
+
 			terrains_[name] = terrain;
 			return terrain;
 		}
+	}
+
+	return nullptr;
+}
+
+adlTexture_shared_ptr adlResource_manager::get_texture(const std::string& name)
+{
+	adlLogger* logger = &adlLogger::get();
+
+	if (textures_[name] != nullptr)
+	{
+		return textures_[name];
+	}
+
+	if (name_to_texture_path_[name].first.empty() && name_to_texture_path_[name].second.empty())
+	{
+		logger->log_error("Texture " + name + "doesnt exist");
+		return nullptr;
+	}
+	else
+	{
+		adlTexture_shared_ptr texture = loader_.load_texture(name_to_texture_path_[name]);
+		textures_[name] = texture;
+		return texture;
 	}
 
 	return nullptr;
@@ -368,6 +400,26 @@ std::string adlResource_manager::get_entity_json(const std::string& entity_name)
 	}
 
 	return "";
+}
+
+adlTerrain_texture_pack_shared_ptr adlResource_manager::get_texture_pack(const std::string& name)
+{
+	adlLogger* logger = &adlLogger::get();
+	if (name_to_texture_pack_[name] == nullptr)
+	{
+		logger->log_info("Loading texture pack " + name);
+		std::vector<std::string> texture_names = name_to_texture_pack_textures_[name];
+		adlTerrain_texture_pack_shared_ptr texture_pack = MAKE_SHARED(adlTerrain_texture_pack, name,
+			get_texture(texture_names[0]), get_texture(texture_names[1]), get_texture(texture_names[2]), get_texture(texture_names[3]));
+
+		name_to_texture_pack_[name] = texture_pack;
+
+		return texture_pack;
+	}
+	else
+	{
+		return name_to_texture_pack_[name];
+	}
 }
 
 void adlResource_manager::initialize_models(const rapidjson::Value& models)
@@ -561,6 +613,26 @@ void adlResource_manager::initialize_entities(const rapidjson::Value& entities)
 
 		name_to_entity_path_[entity_name] = entity_path;
 		entity_json_string_[entity_name] = "";
+	}
+}
+
+void adlResource_manager::initialize_texture_packs(const rapidjson::Value& texture_packs)
+{
+	for (rapidjson::Value::ConstValueIterator it = texture_packs.Begin(); it != texture_packs.End(); ++it)
+	{
+		const rapidjson::Value& texture_pack_object = *it;
+		adl_assert(texture_pack_object.IsObject());
+
+		std::vector<std::string> texture_names;
+
+		std::string pack_name = texture_pack_object["name"].GetString();
+		texture_names.push_back(texture_pack_object["tex1"].GetString());
+		texture_names.push_back(texture_pack_object["tex2"].GetString());
+		texture_names.push_back(texture_pack_object["tex3"].GetString());
+		texture_names.push_back(texture_pack_object["tex4"].GetString());
+
+		name_to_texture_pack_textures_[pack_name] = texture_names;
+		name_to_texture_pack_[pack_name] = nullptr;
 	}
 }
 

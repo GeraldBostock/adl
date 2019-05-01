@@ -151,6 +151,7 @@ void adlRoot::game_thread()
 	}
 
 	fps_manager_ = ADL_NEW(adlFPS_manager, 120, 0.5f);
+	adl_editor->init();
 
 	while (is_running_)
 	{

@@ -3,6 +3,7 @@
 #include <stdio.h>
 
 adlMesh::adlMesh()
+	:	texture_(nullptr)
 {
 	glGenVertexArrays(1, &vao_);
 }

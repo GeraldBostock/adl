@@ -151,6 +151,7 @@ public:
 	inline static adlVec2_i32 zero();
 	inline float length();
 	inline adlVec2 to_vec2();
+	inline adlVec2_i32 swap();
 
 	/*------------------------Operator overloads--------------------*/
 	inline adlVec2_i32 operator+(const adlVec2_i32& vector) const;
@@ -215,6 +216,11 @@ inline float adlVec2_i32::length()
 inline adlVec2 adlVec2_i32::to_vec2()
 {
 	return adlVec2((float)x, (float)y);
+}
+
+inline adlVec2_i32 adlVec2_i32::swap()
+{
+	return adlVec2_i32(y, x);
 }
 
 inline adlVec2_i32 adlVec2_i32::operator+(const adlVec2_i32& vector) const

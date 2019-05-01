@@ -1,0 +1,19 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 28.02.2015 04:04:19
+
+newmtl Hulk_1
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka F:\Hulk-1\Map\Hulk-d.png
+	map_Kd F:\Hulk-1\Map\Hulk-d.png
+	map_Ks F:\Hulk-1\Map\Hulk-s.png
+	map_bump F:\Hulk-1\Map\Hulk-n.png
+	bump F:\Hulk-1\Map\Hulk-n.png

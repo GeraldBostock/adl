@@ -3,6 +3,10 @@
 
 #include "../engine/adlPhysics_observer.h" 
 #include "engine/adl_resource/adlResource_manager.h"
+#include "engine/adlScene_manager.h"
+#include "engine/adl_resource/adlTerrain.h"
+#include "engine/adl_renderer/adlDebug_renderer.h"
+#include "engine/adlInput.h"
 
 class Physics_listener : public adlPhysics_observer
 {
@@ -12,7 +16,6 @@ public:
 
 	virtual void on_collision_start(adlEntity_shared_ptr entity1, adlEntity_shared_ptr entity2) override
 	{
-		std::cout << "collision start" << std::endl;
 	}
 
 	virtual void on_collision_end(adlEntity_shared_ptr entity1, adlEntity_shared_ptr entity2)
@@ -34,6 +37,11 @@ public:
 	virtual void on_mouse_collision_start(adlEntity_shared_ptr  entity)
 	{
 	}
+
+private:
+	bool selection_state_ = false;
+	adlVec3 selection_start_;
+	adlVec3 selection_current_;
 };
 
 #endif //physics_listener_h__

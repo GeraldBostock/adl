@@ -61,6 +61,12 @@ void adlStatic_shader::get_all_uniform_locations()
 	texture_location_			= get_uniform_location("material.diffuse");
 	texture_specular_location_	= get_uniform_location("material.specular");
 
+	r_texture_location_ = get_uniform_location("r_texture");
+	g_texture_location_ = get_uniform_location("g_texture");
+	b_texture_location_ = get_uniform_location("b_texture");
+	blend_texture_location_ = get_uniform_location("blend_texture");
+	background_texture_location_ = get_uniform_location("background_texture");
+
 	point_light_count_location_ = get_uniform_location("point_light_number");
 	for (int i = 0; i < MAX_POINT_LIGHTS; i++)
 	{
@@ -195,4 +201,13 @@ void adlStatic_shader::load_view_matrix(const adlMat4& matrix)
 void adlStatic_shader::load_switch(bool yn)
 {
 	load_bool(switch_location_, yn);
+}
+
+void adlStatic_shader::load_texture_units()
+{
+	load_int(background_texture_location_, 0);
+	load_int(r_texture_location_, 1);
+	load_int(g_texture_location_, 2);
+	load_int(b_texture_location_, 3);
+	load_int(blend_texture_location_, 4);
 }

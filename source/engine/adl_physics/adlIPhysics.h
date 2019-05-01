@@ -5,6 +5,7 @@
 #include "../adl_math/adlRay.h"
 #include "../adlShared_types.h"
 #include "../adlPhysics_subject.h"
+#include "engine/adl_resource/adlBounding_box.h"
 
 #include <vector>
 
@@ -16,7 +17,7 @@ public:
 	virtual void update(float dt) = 0;
 	virtual void sync_scene() = 0;
 
-	virtual void add_box(const adlVec3& dimensions, adlTransform initial_transform, adlEntity_shared_ptr entity) = 0;
+	virtual void add_box(adlBounding_box bb, adlTransform initial_transform, adlEntity_shared_ptr entity) = 0;
 	virtual void add_sphere(float radius, adlTransform initial_transform, adlEntity_shared_ptr entity) = 0;
 	virtual void add_terrain(const std::vector<float>& heightfield, int width, int height) = 0;
 	virtual void add_static_plane() = 0;

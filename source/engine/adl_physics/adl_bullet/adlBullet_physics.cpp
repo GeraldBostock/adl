@@ -188,7 +188,6 @@ void adlBullet_physics::sync_physics_to_rendering()
 void adlBullet_physics::update(float dt)
 {
 	dynamics_world_->stepSimulation(dt / 1000.f, 4);
-	//dynamics_world_->performDiscreteCollisionDetection();
 
 	adlMouse_picker* mouse_picker = &adlMouse_picker::get();
 	adlRay mouse_ray = mouse_picker->get_mouse_ray();
@@ -305,9 +304,38 @@ void adlBullet_physics::add_static_plane()
 	body->setGravity(btVector3(0, 0, 0));
 }
 
-void adlBullet_physics::add_box(const adlVec3& dimensions, adlTransform initial_transform, adlEntity_shared_ptr entity)
+void adlBullet_physics::add_box(adlBounding_box bb, adlTransform initial_transform, adlEntity_shared_ptr entity)
 {
-	btBoxShape* const collision_shape = ADL_NEW(btBoxShape, btVector3(dimensions.x, dimensions.y, dimensions.z));
+	btConvexHullShape* const collision_shape = new btConvexHullShape();
+	btVector3 bottom_left_back = to_btVec3(bb.bottom_left_back());
+	btVector3 bottom_left_front = to_btVec3(bb.bottom_left_front());
+	btVector3 bottom_right_back = to_btVec3(bb.bottom_right_back());
+	btVector3 bottom_right_front = to_btVec3(bb.bottom_right_front());
+	btVector3 up_left_back = to_btVec3(bb.up_left_back());
+	btVector3 up_left_front = to_btVec3(bb.up_left_front());
+	btVector3 up_right_back = to_btVec3(bb.up_right_back());
+	btVector3 up_right_front = to_btVec3(bb.up_right_front());
+
+	collision_shape->addPoint(bottom_left_back, false);
+	collision_shape->addPoint(bottom_left_front, false);
+	collision_shape->addPoint(bottom_right_front, false);
+	collision_shape->addPoint(bottom_right_back, false);
+	collision_shape->addPoint(bottom_left_back, false);
+
+	collision_shape->addPoint(up_left_back, false);
+	collision_shape->addPoint(up_right_back, false);
+	collision_shape->addPoint(bottom_right_back, false);
+	collision_shape->addPoint(up_right_back, false);
+	collision_shape->addPoint(up_right_front, false);
+	collision_shape->addPoint(bottom_right_front, false);
+
+	collision_shape->addPoint(up_right_front, false);
+	collision_shape->addPoint(up_left_front, false);
+	collision_shape->addPoint(bottom_left_front, false);
+	collision_shape->addPoint(up_left_front, false);
+	collision_shape->addPoint(up_left_back, false);
+	collision_shape->addPoint(bottom_left_back);
+
 	add_shape(entity, collision_shape, 10, "asd");
 }
 
@@ -731,4 +759,9 @@ void adlBullet_physics::set_angular_velocity(adlEntity_shared_ptr entity, const 
 void adlBullet_physics::render_diagnostics()
 {
 	dynamics_world_->debugDrawWorld();
+}
+
+btVector3 adlBullet_physics::to_btVec3(const adlVec3& vector)
+{
+	return btVector3(vector.x, vector.y, vector.z);
 }

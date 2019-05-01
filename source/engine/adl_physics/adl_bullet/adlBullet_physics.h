@@ -24,7 +24,7 @@ public:
 	virtual void update(float dt) override;
 	virtual void sync_scene() override;
 
-	virtual void add_box(const adlVec3& dimensions, adlTransform initial_transform, adlEntity_shared_ptr entity) override;
+	virtual void add_box(adlBounding_box bb, adlTransform initial_transform, adlEntity_shared_ptr entity) override;
 	virtual void add_sphere(float radius, adlTransform initial_transform, adlEntity_shared_ptr entity) override;
 	virtual void add_terrain(const std::vector<float>& heightfield, int width, int height) override;
 	virtual void add_static_plane() override;
@@ -87,6 +87,7 @@ private:
 	std::vector<adlEntity_shared_ptr> previous_mouse_ray_collisions_;
 
 	void add_shape(adlEntity_shared_ptr actor, btCollisionShape* shape, float mass, const std::string& material);
+	btVector3 to_btVec3(const adlVec3& vector);
 };
 
 #endif //adl_bullet_physics_h__

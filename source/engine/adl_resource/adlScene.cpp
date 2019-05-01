@@ -36,14 +36,14 @@ adlScene::~adlScene()
 
 void adlScene::update(float dt)
 {
-
-	for (auto entity : entities_)
+	uint32 num_entities = entities_.size();
+	for (uint32 i = 0; i < num_entities; i++)
 	{
+		adlEntity_shared_ptr entity = entities_[i];
 		entity->update(dt);
 	}
 
 	camera_->update(dt);
-	sun_->update(dt);
 }
 
 void adlScene::render()

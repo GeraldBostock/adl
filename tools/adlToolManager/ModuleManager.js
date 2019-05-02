@@ -44,6 +44,18 @@ module.exports = {
             var clses = classor.FileCreator(commands[1], commands[2]);
 
             return clses;
+        } else if (commands[0] == "LineCount") { // LineCount:../../source/
+            var flist;
+            flist = dirMan.walkSync(commands[1]);
+
+            var counter = [];
+
+            for (let index = 0; index < flist.length; index++) {            
+                count = dirMan.CountLinesSync(flist[index]);   
+                counter.push({"file" : flist[index], "lineNumber" : count});                             
+            }
+
+            return counter;
         } else {
             console.log("Command can't found!");
             return "Commmand can't found!";

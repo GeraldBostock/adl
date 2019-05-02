@@ -1,5 +1,7 @@
 @echo off
 
-..\ThirdParty\Nodejs\Windows\node.exe adlToolManagerServer.js
+echo adlTool Working with Node.js
+
+node adlToolManagerServer.js
 
 timeout /t 5

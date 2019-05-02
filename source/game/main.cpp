@@ -4,7 +4,7 @@
 int main(int argc, char* args[])
 {
 	Game game;
-	game.init_window("Default Window", 1920, 1080);
+	game.init_window("adl Game Engine", 1366, 768);
 	game.start();
 
 	return 0;

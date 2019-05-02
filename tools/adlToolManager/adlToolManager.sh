@@ -1,4 +1,6 @@
 #!/bin/bash
 
-../ThirdParty/Nodejs/Linux/bin/node adlToolManagerServer.js
+echo adlTool Working with Node.js
+
+node adlToolManagerServer.js
 

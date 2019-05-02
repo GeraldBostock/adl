@@ -1,0 +1,2 @@
+1.Add scenes to resource manager so the user can request scenes by name
+2.Fix problems of the save system

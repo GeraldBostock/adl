@@ -62,6 +62,9 @@ bool Game::init()
 
 	std::shared_ptr<adlTransform_component> component = std::shared_ptr(entity->get_component<adlTransform_component>("adlTransform_component"));
 
+	adlEntity_shared_ptr monkey = adl_scene_manager->add_entity_to_scene("Monkey");
+
+
 	return true;
 }
 

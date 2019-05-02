@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/src/style.css" />
     <title>adl Tool Manager</title>
+    <link rel="stylesheet" href="./lib/tabulator/tabulator.min.css">
+    <script src="./lib/tabulator/tabulator.min.js"></script>
 </head>
 <body>
     <h2>adl Tool Manager</h2>
@@ -17,11 +19,12 @@
         <button class="TabLink" onclick="TabManager('dirMan')">Directory Manager</button>
         <button class="TabLink" onclick="TabManager('resMan')">Resource Manager</button>
         <button class="TabLink" onclick="TabManager('classor')">Class Creator</button>
+        <button class="TabLink" onclick="TabManager('table');table.setPage(1);">Data Table</button>
     </div>
     <div  id="Console" class="TabContent">
         <p>
             Examples: 
-            <br>"GetDirs:../../res", "Tree:../../res", 
+            <br>"GetDirs:../../res", "Tree:../../res", "LineCount:../../source/", 
             <br>"ReCore:../../res", "Classor:../../source/{engine/game}/className"
         </p>
         <label>Command: </label>
@@ -31,6 +34,7 @@
     <div id="dirMan" class="TabContent">
         <button onclick="SendData('GetDirs:../../res')">GetDirs</button>
         <button onclick="SendData('Tree:../../res')">Tree</button>
+        <button onclick="SendData('LineCount:../../source/')">LineCounter</button>
     </div>
     <div id="resMan" class="TabContent">
         <button onclick="SendData('ReCore:../../res')">Refresh Core</button>
@@ -39,17 +43,20 @@
         Game? <input type="checkbox" name="pathGame" id="pathGame" checked>
         <br>
         <select name="ClassFormat" id="ClassFormat" onchange="ClassOptionsController()">
-                <option value="isEntity">Entity</option>
+                <option value="isComponent">Component</option>
                 <option value="isCpp">C++</option>
         </select>
         <br>
         <div id="ClassOptions">
+            Class Generic? <input type="checkbox" name="GameGeneric" id="GameGeneric" checked><br>
             Class Register? <input type="checkbox" name="ClassRegister" id="ClassRegister" checked><br>
-            Class Deserialize? <input type="checkbox" name="ClassDeserialize" id="ClassDeserialize" checked><br>
         </div>
-        Parent: <input id="ClassParent" type="text" name="commandInput" placeholder="ClassParent" value="adlActor" /><br>
-        <input id="ClassName" type="text" name="commandInput" placeholder="ClassName" value="" />
+        Parent: <input id="ClassParent" type="text" name="commandInput" placeholder="ClassParent" value="adlEntity_component" /><br>
+        <input id="ClassName" type="text" name="commandInput" placeholder="ClassName" value="GameComponents/" />
         <button onclick="Classor()">Create Class</button>        
+    </div>
+    <div id="table" class="TabContent">
+        <div id="example-table"></div>
     </div>
     <br>
     <br>
@@ -94,43 +101,33 @@
             document.getElementById("res").innerHTML = "";           
             document.getElementById("res").innerHTML += "C++(.cpp): <br> <pre>" + commands.res.cpp + "</pre><br>";           
             document.getElementById("res").innerHTML += "Header(.h): <br> <pre>" + commands.res.h + "</pre><br>";           
+        }else if(commands.command == "LineCount"){ 
+            delete commands.command;
+
+            var files = commands.res;
+
+            //document.getElementById("res").innerHTML = JSON.stringify(files, RootReplacer,  "<br>"); 
+            
+            console.log(files);
+            
+            var totalLine = 0;
+            
+            document.getElementById("res").innerHTML = "";
+            files.forEach(element => {
+                document.getElementById("res").innerHTML += RootReplacer(typeof element.file, element.file) + ": " + element.lineNumber + "<br>";
+                
+                if (element.file.indexOf("imgui") == -1) { // don't add imgui files
+                    totalLine += element.lineNumber;                    
+                } 
+            });
+            document.getElementById("res").innerHTML += "Total Line(without imgui): " + totalLine;
+
+            console.log(JSON.stringify(files, RootReplacer, 2));      
         } else {
             console.log("----------------------------------------");            
             console.log("args:");            
             console.log(args);
             console.log("----------------------------------------");            
-        }
-    }
-
-    function Classor() {
-        var options = 
-            document.getElementById('ClassFormat').value + ","
-            + document.getElementById('ClassRegister').checked + ","
-            + document.getElementById('ClassDeserialize').checked + ","
-            + document.getElementById('ClassParent').value;
-        
-        var cPath = document.getElementById("pathGame").checked?'game/':'engine/';
-        console.log(cPath);
-
-
-        var commands = 'Classor:../../source/' + cPath + document.getElementById('ClassName').value + ':' + options
-        console.log(commands);
-        
-        SendData(commands);
-    }
-
-    //Display
-    function ClassOptionsController() {
-        var cFormat = document.getElementById('ClassFormat');
-        if(cFormat.value == 'isCpp'){
-            document.getElementById('ClassOptions').hidden = true;
-            document.getElementById('ClassRegister').checked = false;
-            document.getElementById('ClassDeserialize').checked = false;
-            document.getElementById('ClassParent').value = "";            
-        }else{
-            document.getElementById('ClassOptions').hidden = false;
-            document.getElementById('ClassRegister').checked = true;
-            document.getElementById('ClassDeserialize').checked = true;
         }
     }
 </script>

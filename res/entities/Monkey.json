@@ -1,16 +1,16 @@
 {
-	"type": "tree",
+	"type": "Monkey",
 	"components": 
 	[
 		{
 			"type": "adlTransform_component",
-			"position": [0.0, 0.9, 0.0],
+			"position": [0.0, 1.0, -10.0],
 			"rotation": [0.0, 0.0, 0.0],
 			"scale": [1.0, 1.0, 1.0]
 		},
 		{
 			"type": "adlRender_component",
-			"model": "tree_stump"
+			"model": "Monkey"
 		}
 	]
 }

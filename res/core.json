@@ -1,6 +1,10 @@
 {
   "entities": [
     {
+      "name": "Monkey",
+      "path": "res/entities/Monkey.json"
+    },
+    {
       "name": "tester_entity",
       "path": "res/entities/tester_entity.json"
     },
@@ -57,6 +61,10 @@
       "path": "res/models/BasicShapes/Torus/Torus.obj"
     },
     {
+      "name": "Hulk-1",
+      "path": "res/models/car/Hulk-1.obj"
+    },
+    {
       "name": "cat",
       "path": "res/models/Cat/cat.obj"
     },
@@ -85,16 +93,16 @@
       "path": "res/models/Humans/Human/Human.fbx"
     },
     {
-      "name": "IronMan",
-      "path": "res/models/IronMan/IronMan.obj"
-    },
-    {
       "name": "HugeLandscape",
       "path": "res/models/Landscapes/HugeLandscape/HugeLandscape.fbx"
     },
     {
       "name": "Landscape",
       "path": "res/models/Landscapes/Landscape/Landscape.obj"
+    },
+    {
+      "name": "stone",
+      "path": "res/models/Stones/BetterRock/stone.obj"
     },
     {
       "name": "rock",
@@ -135,14 +143,34 @@
   ],
   "textures": [
     {
+      "name": "black",
+      "path": "res/textures/black.jpg",
+      "specular_map_path": "res/textures/black_Specular.jpg"
+    },
+    {
+      "name": "blank",
+      "path": "res/textures/blank.png",
+      "specular_map_path": "res/textures/blank_Specular.png"
+    },
+    {
       "name": "blank_texture",
       "path": "res/textures/blank_texture.png",
       "specular_map_path": "res/textures/blank_texture_Specular.png"
     },
     {
+      "name": "dirt",
+      "path": "res/textures/dirt.jpg",
+      "specular_map_path": "res/textures/dirt_Specular.jpg"
+    },
+    {
       "name": "grass",
       "path": "res/textures/grass.jpg",
       "specular_map_path": "res/textures/grass_Specular.jpg"
+    },
+    {
+      "name": "grass",
+      "path": "res/textures/grass.png",
+      "specular_map_path": "res/textures/grass_Specular.png"
     },
     {
       "name": "MetalFrame",
@@ -158,6 +186,16 @@
       "name": "missing_resource",
       "path": "res/textures/missing_resource.png",
       "specular_map_path": "res/textures/missing_resource_Specular.png"
+    },
+    {
+      "name": "snow",
+      "path": "res/textures/snow.jpg",
+      "specular_map_path": "res/textures/snow_Specular.jpg"
+    },
+    {
+      "name": "stone",
+      "path": "res/textures/stone.png",
+      "specular_map_path": "res/textures/stone_Specular.png"
     }
   ],
   "shaders": [
@@ -200,6 +238,11 @@
       "name": "skybox_shader",
       "vertex_shader_path": "res/shaders/skybox_shader.vert",
       "fragment_shader_path": "res/shaders/skybox_shader.frag"
+    },
+    {
+      "name": "terrain_shader",
+      "vertex_shader_path": "res/shaders/terrain_shader.vert",
+      "fragment_shader_path": "res/shaders/terrain_shader.frag"
     }
   ],
   "cube_maps": [
@@ -211,6 +254,15 @@
       "bottom": "default/bottom.png",
       "back": "default/back.png",
       "front": "default/front.png"
+    }
+  ],
+  "terrain_texture_packs": [
+    {
+      "name": "default",
+      "tex1": "grass",
+      "tex2": "MetalFrame",
+      "tex3": "dirt",
+      "tex4": "snow"
     }
   ]
 }

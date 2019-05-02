@@ -118,6 +118,7 @@ WriteJSONFile = function (pathName, content = {}) {
     var others = JSON.parse(fs.readFileSync(pathName + "/shaders.json", 'utf8'));
     content.shaders = others.shaders;
     content.cube_maps = others.cube_maps;
+    content.terrain_texture_packs = others.terrain_texture_packs;
 
     data = JSON.stringify(content, RootReplacer, 2);
 

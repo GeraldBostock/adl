@@ -39,6 +39,11 @@
       "name": "skybox_shader",
       "vertex_shader_path": "res/shaders/skybox_shader.vert",
       "fragment_shader_path": "res/shaders/skybox_shader.frag"
+    },
+    {
+      "name": "terrain_shader",
+      "vertex_shader_path": "res/shaders/terrain_shader.vert",
+      "fragment_shader_path": "res/shaders/terrain_shader.frag"
     }
   ],
   "cube_maps": [
@@ -51,5 +56,14 @@
       "back": "default/back.png",
       "front": "default/front.png"
     }
+  ],
+  "terrain_texture_packs": [
+    {
+		"name": "default",
+		"tex1": "grass",
+		"tex2": "MetalFrame",
+		"tex3": "dirt",
+		"tex4": "snow"
+	  }
   ]
 }

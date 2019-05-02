@@ -33,3 +33,18 @@ adlVec3 adlColor::to_vec3()
 	adlVec3 vec(r_ / (float)255, g_ / (float)255, b_ / (float)255);
 	return vec;
 }
+
+float adlColor::get_r()
+{
+	return r_;
+}
+
+float adlColor::get_g()
+{
+	return g_;
+}
+
+float adlColor::get_b()
+{
+	return b_;
+}

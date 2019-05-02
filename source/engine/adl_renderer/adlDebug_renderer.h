@@ -115,6 +115,7 @@ public:
 	void render_line_2D(adlVec2_i32 point1, adlVec2_i32 point2, float line_width = 1.0f, adlColor color = adlColor::WHITE);
 	void render_box(adlVec3 position, float scale = 1.0f, adlColor color = adlColor::WHITE);
 	void render_line3D(adlVec3 point1, adlVec3 point2, float line_width = 1.0f, adlColor color = adlColor::WHITE);
+	void render_line3D_physics_debug(adlVec3 point1, adlVec3 point2, float line_width = 1.0f, adlColor color = adlColor::WHITE);
 	void render_point(adlVec2_i32 point, adlColor color = adlColor::WHITE, float size = 1.0f);
 
 private:
@@ -131,10 +132,9 @@ private:
 	adlColor bounding_box_color_ = adlColor::MAGENTA;
 	float bounding_box_line_width_ = 1.0f;
 
-	std::vector<float> line_vertices_;
-
 	std::map<std::pair<adlColor, float>, std::vector<float>> line3Ds_;
 	std::vector<std::pair<adlColor, float>> line3D_keys_;
+	std::vector<float> physics_debug_vertices_;
 };
 
 #endif // adl_debug_renderer_h__

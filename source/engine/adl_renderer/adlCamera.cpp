@@ -7,8 +7,8 @@ adlCamera::adlCamera()
 	  pitch_(0.0f),
 	  yaw_(0.0f),
 	  roll_(0.0f),
-	  mouse_sensitivity_(1.0f),
-	  start_movement_speed_(0.01f),
+	  mouse_sensitivity_(0.1f),
+	  start_movement_speed_(0.02f),
 	  movement_speed_(0.01f),
 	  camera_type_(ct_god_mode),
 	  is_paused_(false)
@@ -65,19 +65,19 @@ void adlCamera::update_fps_camera(float dt)
 
 	if (dy < 0 && pitch_ <= 90)
 	{
-		pitch_ += -dy * mouse_sensitivity_;
+		pitch_ += -dy * mouse_sensitivity_ * dt;
 	}
 	if (dy > 0 && pitch_ >= -90)
 	{
-		pitch_ -= dy * mouse_sensitivity_;
+		pitch_ -= dy * mouse_sensitivity_ * dt;
 	}
 	if (dx < 0)
 	{
-		yaw_ += -dx * mouse_sensitivity_;
+		yaw_ += -dx * mouse_sensitivity_ * dt;
 	}
 	if (dx > 0)
 	{
-		yaw_ -= dx * mouse_sensitivity_;
+		yaw_ -= dx * mouse_sensitivity_ * dt;
 	}
 
 	if (input->get_key(adl_key_w))
@@ -226,19 +226,19 @@ void adlCamera::update_god_mode_camera(float dt)
 
 	if (dy < 0 && pitch_ < 90)
 	{
-		pitch_ += -dy * mouse_sensitivity_;
+		pitch_ += -dy * mouse_sensitivity_ * dt;
 	}
 	if (dy > 0 && pitch_ > -90)
 	{
-		pitch_ -= dy * mouse_sensitivity_;
+		pitch_ -= dy * mouse_sensitivity_ * dt;
 	}
 	if (dx < 0)
 	{
-		yaw_ += -dx * mouse_sensitivity_;
+		yaw_ += -dx * mouse_sensitivity_ * dt;
 	}
 	if (dx > 0)
 	{
-		yaw_ -= dx * mouse_sensitivity_;
+		yaw_ -= dx * mouse_sensitivity_ * dt;
 	}
 
 	if (input->get_key(adl_key_w))

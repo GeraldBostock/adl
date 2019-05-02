@@ -31,6 +31,7 @@ public:
 	void load_view_matrix(const adlMat4& matrix);
 	void load_switch(bool yn);
 	void load_texture();
+	void load_texture_units();
 
 protected:
 	virtual void bind_attributes();
@@ -59,6 +60,12 @@ private:
 
 	int32 texture_location_;
 	int32 texture_specular_location_;
+
+	int32 r_texture_location_;
+	int32 g_texture_location_;
+	int32 b_texture_location_;
+	int32 blend_texture_location_;
+	int32 background_texture_location_;
 
 	std::vector<int32> point_light_position_locations_;
 	std::vector<int32> point_light_ambient_locations_;

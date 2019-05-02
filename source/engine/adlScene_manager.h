@@ -37,7 +37,9 @@ public:
 
 	void set_camera(adlCamera* camera);
 
+	adlTerrain_shared_ptr get_terrain();
 	void set_terrain(adlTerrain_shared_ptr terrain);
+	void set_terrain(const std::vector<float>& heightfield);
 	void add_physics_observer(adlPhysics_observer* observer)
 	{
 		physics_->addObserver(observer);

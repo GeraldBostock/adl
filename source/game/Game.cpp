@@ -50,9 +50,13 @@ bool Game::init()
 	scene->set_camera(scene_camera);
 
 	adlTerrain_shared_ptr terrain = adl_rm->get_terrain("test_terrain");
+	terrain->set_blend_map(adl_rm->get_texture("black"));
+	terrain->set_texture_pack(adl_rm->get_texture_pack("default"));
 	adl_scene_manager->set_terrain(terrain);
 
 	entity = adl_scene_manager->add_entity_to_scene("test_entity");
+	std::shared_ptr<adlRender_component> render_comp = std::shared_ptr(entity->get_component<adlRender_component>("adlRender_component"));
+	render_comp->set_material(adl_rm->get_material("frame"));
 	adl_scene_manager->set_sun(entity);
 	adlEntity_shared_ptr entity1 = adl_scene_manager->add_entity_to_scene("test_entity");
 
@@ -71,51 +75,6 @@ bool Game::update(float dt)
 	if (adl_input->get_key(adl_key_left_alt) && adl_input->get_key_down(adl_key_f))
 	{
 		adl_window->toggle_fullscreen();
-	}
-
-	if (adl_input->get_key(adl_key_left_ctrl) && adl_input->get_key(adl_key_y))
-	{
-		if (entity->has_component("adlPhysics_component"))
-		{
-			std::shared_ptr<adlPhysics_component> component = std::shared_ptr(entity->get_component<adlPhysics_component>("adlPhysics_component"));
-			component->apply_force(adlVec3(0, 0, 1), 2);
-		}
-	}
-
-	if (adl_input->get_key(adl_key_left_ctrl) && adl_input->get_key_down(adl_key_h))
-	{
-		adlEntity_factory* fac = &adlEntity_factory::get();
-		fac->remove_component_from_entity(entity, "adlPhysics_component");
-	}
-
-	if (adl_input->get_key(adl_key_left_ctrl) && adl_input->get_key_down(adl_key_n))
-	{
-		if (!entity->has_component("adlPhysics_component"))
-		{
-			adlEntity_factory* fac = &adlEntity_factory::get();
-			fac->add_component_to_entity(entity, "adlPhysics_component");
-		}
-	}
-
-	if (adl_input->get_key(adl_key_left_ctrl) && adl_input->get_key_down(adl_key_l))
-	{
-		if (entity->has_component("adlPhysics_component"))
-		{
-			std::shared_ptr<adlPhysics_component> component = std::shared_ptr(entity->get_component<adlPhysics_component>("adlPhysics_component"));
-			component->stop();
-		}
-	}
-
-	if (adl_input->get_key(adl_key_left_ctrl) && adl_input->get_key_down(adl_key_j))
-	{
-		adlEntity_factory* fac = &adlEntity_factory::get();
-		fac->remove_component_from_entity(entity, "adlPoint_light_component");
-	}
-
-	if (adl_input->get_key(adl_key_left_ctrl) && adl_input->get_key_down(adl_key_m))
-	{
-		adlEntity_factory* fac = &adlEntity_factory::get();
-		fac->add_component_to_entity(entity, "adlPoint_light_component");
 	}
 
 	return true;

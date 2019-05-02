@@ -11,6 +11,9 @@ public:
 	adlColor(float rgb) : r_(rgb), g_(rgb), b_(rgb) {}
 	~adlColor();
 
+	inline bool operator<(const adlColor& color) const;
+	inline bool operator==(const adlColor& color) const;
+
 	adlVec3 to_vec3();
 
 	static const adlColor WHITE;
@@ -22,10 +25,29 @@ public:
 	static const adlColor YELLOW;
 	static const adlColor BLACK;
 
+	float get_r();
+	float get_g();
+	float get_b();
+
 private:
 	float r_;
 	float g_;
 	float b_;
 };
+
+inline bool adlColor::operator<(const adlColor& color) const
+{
+	if (r_ < color.r_ && g_ < color.g_ && b_ < color.b_)
+	{
+		return true;
+	}
+
+	return false;
+}
+
+inline bool adlColor::operator==(const adlColor& color) const
+{
+	return r_ == color.r_ && g_ == color.g_ && b_ == color.b_;
+}
 
 #endif // adl_color_h__

@@ -30,10 +30,10 @@ public:
 	adlCube_map_shared_ptr load_cube_map(const std::vector<std::string>& faces);
 
 private:
-	void process_ai_node(aiNode* node, const aiScene* scene, adlModel_shared_ptr model);
+	void process_ai_node(aiNode* node, const aiScene* scene, adlModel_shared_ptr model, const std::string& model_folder_location);
 	adlMesh_shared_ptr process_mesh(aiMesh *mesh, const aiScene* scene);
 
-	void load_texture_from_file(unsigned int texture_id, const std::string& file_path);
+	void load_texture_from_file(unsigned int texture_id, const std::string& file_path, adlTexture_shared_ptr texture);
 
 	void generate_bounding_box(adlVec2 min_max_x, adlVec2 min_max_y, adlVec2 min_max_z);
 

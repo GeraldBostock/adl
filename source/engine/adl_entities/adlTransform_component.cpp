@@ -2,6 +2,9 @@
 
 #include "engine/adl_math/adlMath.h"
 
+#include "engine/adlScene_manager.h"
+#include "engine/adlInput.h"
+
 adlTransform_component::adlTransform_component()
 	:	transform_(adlTransform::identity())
 {
@@ -40,6 +43,11 @@ bool adlTransform_component::init(const rapidjson::Value& json_object)
 }
 
 void adlTransform_component::destroy()
+{
+
+}
+
+void adlTransform_component::update(float dt)
 {
 
 }

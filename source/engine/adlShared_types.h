@@ -14,6 +14,7 @@ class adlScene;
 class adlTerrain;
 class adlCube_map;
 class adlEntity_component;
+class adlTerrain_texture_pack;
 
 #include <memory>
 
@@ -28,6 +29,7 @@ typedef std::shared_ptr<adlScene> adlScene_shared_ptr;
 typedef std::shared_ptr<adlTerrain> adlTerrain_shared_ptr;
 typedef std::shared_ptr<adlCube_map> adlCube_map_shared_ptr;
 typedef std::shared_ptr<adlEntity_component> adlEntity_component_shared_ptr;
+typedef std::shared_ptr<adlTerrain_texture_pack> adlTerrain_texture_pack_shared_ptr;
 
 typedef unsigned int adlEntity_id;
 typedef unsigned int adlComponent_id;

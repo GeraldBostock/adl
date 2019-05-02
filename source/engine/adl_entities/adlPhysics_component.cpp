@@ -57,13 +57,13 @@ void adlPhysics_component::post_init()
 
 		if (shape_ == "box")
 		{
-			adlVec3 dims = mesh->get_bb_dimensions();
+			//adlVec3 dims = mesh->get_bb_dimensions();
 
-			physics_->add_box(dims, trans_comp->get_transform(), owner);
+			physics_->add_box(mesh->get_bounding_box(), trans_comp->get_transform(), owner);
 		}
 		else if (shape_ == "sphere")
 		{
-			physics_->add_box(1, trans_comp->get_transform(), owner);
+			physics_->add_sphere(1, trans_comp->get_transform(), owner);
 		}
 
 		if (is_static_)

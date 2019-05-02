@@ -18,6 +18,9 @@ public:
 	void set_material(adlMaterial_shared_ptr material);
 	std::string get_name();
 
+	void set_texture(adlTexture_shared_ptr texture);
+	adlTexture_shared_ptr get_texture();
+
 	void draw(adlShader_shared_ptr shader, adlMat4 transformation_matrix);
 
 	const std::vector<adlMesh_shared_ptr>& get_all_meshes();
@@ -26,6 +29,7 @@ private:
 	std::vector<adlMesh_shared_ptr> meshes_;
 	std::vector<adlMesh> value_meshes_;
 	std::string name_ = "";
+	adlTexture_shared_ptr texture_;
 };
 
 #endif // adl_model_h__

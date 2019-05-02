@@ -1,6 +1,7 @@
 #include "adlModel.h"
 #include "engine/adl_resource/adlStatic_shader.h"
 #include "engine/adl_renderer/adlDebug_renderer.h"
+#include "engine/adl_resource/adlTexture.h"
 
 #include <iostream>
 
@@ -39,7 +40,14 @@ void adlModel::draw(adlShader_shared_ptr shader, adlMat4 transformation_matrix)
 	for (auto mesh : meshes_)
 	{
 		adlMaterial_shared_ptr mtl = mesh->get_material();
-		//shader->load_material(mtl);
+		shader->load_material(mtl);
+
+		if (mesh->get_texture() != nullptr)
+		{
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_2D, mesh->get_texture()->get_id());
+			shader->load_texture();
+		}
 
 		glBindVertexArray(mesh->get_vao_id());
 
@@ -90,4 +98,17 @@ std::string adlModel::get_name()
 const std::vector<adlMesh_shared_ptr>& adlModel::get_all_meshes()
 {
 	return meshes_;
+}
+
+void adlModel::set_texture(adlTexture_shared_ptr texture)
+{
+	for (auto mesh : meshes_)
+	{
+		mesh->set_texture(texture);
+	}
+}
+
+adlTexture_shared_ptr adlModel::get_texture()
+{
+	return texture_;
 }

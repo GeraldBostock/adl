@@ -95,10 +95,20 @@ adlEntity_shared_ptr adlScene_manager::add_entity_to_scene(const std::string& en
 	return entity;
 }
 
+adlTerrain_shared_ptr adlScene_manager::get_terrain()
+{
+	return active_scene_->get_terrain();
+}
+
 void adlScene_manager::set_terrain(adlTerrain_shared_ptr terrain)
 {
 	active_scene_->set_terrain(terrain);
-	physics_->add_terrain(terrain->get_heightfield());
+	physics_->add_terrain(terrain->get_heightfield(), terrain->get_width(), terrain->get_height());
+}
+
+void adlScene_manager::set_terrain(const std::vector<float>& heightfield)
+{
+	physics_->add_terrain(heightfield, 256, 256);
 }
 
 std::vector<adlEntity_shared_ptr>& adlScene_manager::get_all_entities()

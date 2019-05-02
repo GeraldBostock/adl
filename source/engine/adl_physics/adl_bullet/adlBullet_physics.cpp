@@ -109,6 +109,12 @@ struct Actor_motion_state : public btMotionState
 	}
 };
 
+adlBullet_physics::adlBullet_physics()
+	:	terrain_body_(nullptr)
+{
+
+}
+
 adlBullet_physics::~adlBullet_physics()
 {
 	for (int i = dynamics_world_->getNumCollisionObjects() - 1; i >= 0; --i)
@@ -182,7 +188,6 @@ void adlBullet_physics::sync_physics_to_rendering()
 void adlBullet_physics::update(float dt)
 {
 	dynamics_world_->stepSimulation(dt / 1000.f, 4);
-	//dynamics_world_->performDiscreteCollisionDetection();
 
 	adlMouse_picker* mouse_picker = &adlMouse_picker::get();
 	adlRay mouse_ray = mouse_picker->get_mouse_ray();
@@ -299,14 +304,48 @@ void adlBullet_physics::add_static_plane()
 	body->setGravity(btVector3(0, 0, 0));
 }
 
-void adlBullet_physics::add_box(const adlVec3& dimensions, adlTransform initial_transform, adlEntity_shared_ptr entity)
+void adlBullet_physics::add_box(adlBounding_box bb, adlTransform initial_transform, adlEntity_shared_ptr entity)
 {
-	btBoxShape* const collision_shape = ADL_NEW(btBoxShape, btVector3(dimensions.x, dimensions.y, dimensions.z));
+	btConvexHullShape* const collision_shape = new btConvexHullShape();
+	btVector3 bottom_left_back = to_btVec3(bb.bottom_left_back());
+	btVector3 bottom_left_front = to_btVec3(bb.bottom_left_front());
+	btVector3 bottom_right_back = to_btVec3(bb.bottom_right_back());
+	btVector3 bottom_right_front = to_btVec3(bb.bottom_right_front());
+	btVector3 up_left_back = to_btVec3(bb.up_left_back());
+	btVector3 up_left_front = to_btVec3(bb.up_left_front());
+	btVector3 up_right_back = to_btVec3(bb.up_right_back());
+	btVector3 up_right_front = to_btVec3(bb.up_right_front());
+
+	collision_shape->addPoint(bottom_left_back, false);
+	collision_shape->addPoint(bottom_left_front, false);
+	collision_shape->addPoint(bottom_right_front, false);
+	collision_shape->addPoint(bottom_right_back, false);
+	collision_shape->addPoint(bottom_left_back, false);
+
+	collision_shape->addPoint(up_left_back, false);
+	collision_shape->addPoint(up_right_back, false);
+	collision_shape->addPoint(bottom_right_back, false);
+	collision_shape->addPoint(up_right_back, false);
+	collision_shape->addPoint(up_right_front, false);
+	collision_shape->addPoint(bottom_right_front, false);
+
+	collision_shape->addPoint(up_right_front, false);
+	collision_shape->addPoint(up_left_front, false);
+	collision_shape->addPoint(bottom_left_front, false);
+	collision_shape->addPoint(up_left_front, false);
+	collision_shape->addPoint(up_left_back, false);
+	collision_shape->addPoint(bottom_left_back);
+
 	add_shape(entity, collision_shape, 10, "asd");
 }
 
-void adlBullet_physics::add_terrain(const std::vector<float>& heightfield)
+void adlBullet_physics::add_terrain(const std::vector<float>& heightfield, int width, int height)
 {
+	if (terrain_body_)
+	{
+		remove_collision_object(terrain_body_);
+	}
+
 	float min = -5000.0f;
 	float max = 5000.0f;
 
@@ -323,7 +362,7 @@ void adlBullet_physics::add_terrain(const std::vector<float>& heightfield)
 		}
 	}
 
-	btHeightfieldTerrainShape* const terrain_shape = ADL_NEW(btHeightfieldTerrainShape, 128, 128, &heightfield[0], btScalar(1.0f), btScalar(min), btScalar(max), 1, PHY_FLOAT, true);
+	btHeightfieldTerrainShape* const terrain_shape = ADL_NEW(btHeightfieldTerrainShape, width, height, &heightfield[0], btScalar(1.0f), btScalar(min), btScalar(max), 1, PHY_FLOAT, true);
 
 	adlTransform transform = adlTransform::identity();
 	transform.o = adlVec3(0, 0, 0);
@@ -720,4 +759,9 @@ void adlBullet_physics::set_angular_velocity(adlEntity_shared_ptr entity, const 
 void adlBullet_physics::render_diagnostics()
 {
 	dynamics_world_->debugDrawWorld();
+}
+
+btVector3 adlBullet_physics::to_btVec3(const adlVec3& vector)
+{
+	return btVector3(vector.x, vector.y, vector.z);
 }

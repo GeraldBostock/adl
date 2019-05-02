@@ -9,7 +9,8 @@ void adlBullet_debug_drawer::drawLine(const btVector3& from, const btVector3& to
 {
 	adlDebug_renderer* db_renderer = &adlDebug_renderer::get();
 
-	db_renderer->render_line3D(adlVec3(from.x(), from.y(), from.z()), adlVec3(to.x(), to.y(), to.z()), 1.0f, adlColor(color.x(), color.y(), color.z()));
+	db_renderer->render_line3D_physics_debug(adlVec3(from.x(), from.y(), from.z()), adlVec3(to.x(), to.y(), to.z()), 1.0f, adlColor::WHITE);
+	//db_renderer->render_line3D(adlVec3(from.x(), from.y(), from.z()), adlVec3(to.x(), to.y(), to.z()), 1.0f, adlColor::WHITE/*adlColor(color.x(), color.y(), color.z())*/);
 }
 
 void adlBullet_debug_drawer::reportErrorWarning(const char* warningString)

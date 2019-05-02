@@ -4,25 +4,31 @@ const path = require('path');
 
 CoreRefresher = function (dirFile, coreFile = {}) {
     
-    /*console.log("Dir Files: ");
-    console.log(dirFile);
-    console.log("Core Files: ");
-    console.log(coreFile);
+    // console.log("Dir Files: ");
+    // console.log(dirFile);
+    // console.log("Core Files: ");
+    // console.log(coreFile);
 
-    console.log("Dir File Name: ");
-    console.log(dirFile.name);*/
+    // console.log("Dir File Name: ");
+    // console.log(dirFile.name);
 
 
     for (const item in dirFile) {
         if (dirFile.hasOwnProperty(item)) {
             const element = dirFile[item];
             
-            if (dirFile.name == "fonts" || dirFile.name == "models" || dirFile.name == "textures" || dirFile.name == "scenes") {
+            if (dirFile.name == "fonts" ||
+              dirFile.name == "models" ||
+               dirFile.name == "textures" ||
+               dirFile.name == "scenes" ||
+               dirFile.name == "terrains" ||
+               dirFile.name == "entities") {
                 var propertyName = dirFile.name;
                 var propertyData = element;
 
                 if(typeof(element) === 'object') {
-                    propertyData = PropertySyntaxer(element, propertyName);
+                    propertyData = PropertyWalker(element, propertyName, dirFile.name);
+                    //console.log(propertyData);
                 }
 
                 coreFile[propertyName] = propertyData;
@@ -35,54 +41,73 @@ CoreRefresher = function (dirFile, coreFile = {}) {
     return coreFile;
 }
 
-PropertySyntaxer = function (data, propertyName) { // Specified for Models sub folder and textures
-    var removed = [];
-    for (var item = 0; item < data.length; item++) {
-        
-        if (data.hasOwnProperty(item)) {
-            if (data[item].children != undefined) { // Model sub folder
+PropertyWalker = function (data, propertyName, baseDirectory) {
+    
+    if (Array.isArray(data)) {// Folder Array
+        var newData = [];
+        for (let item = 0; item < data.length; item++) {
+            if (data.hasOwnProperty(item)) {
+                var element = data[item];
+                // console.log("Folder Array: ");
+                // console.log(element);
 
-                data[item].path = undefined;
-                for (const child in data[item].children) {
-                    if (data[item].children.hasOwnProperty(child)) {
-                        const c = data[item].children[child]; // Sub folder elements
-                        
-                        //console.log("c: " + JSON.stringify(c));
-                        
-                        if (path.extname(c.path) == ".obj" || 
-                            path.extname(c.path) == ".fbx" ||
-                            path.extname(c.path) == ".blend") {
-                            data[item].path = c.path;                            
-                        } else if(path.extname(c.path) == ""){
-                            //console.log("BaseName: " + path.basename(c.path));
-
-                            data.push(PropertySyntaxer(c, path.basename(c.path)));
-                            delete data[item].name;
-
-                            if(removed.indexOf(item) == -1) {
-                                removed.push(item);
-                            }
-                        }
-                    }
+                var n = PropertyWalker(element, propertyName, baseDirectory);
+                
+                if (n != undefined) {
+                    newData.push(n);                     
                 }
-                data[item].children = undefined;
-            }
+            }        
+        }
 
-            if (propertyName == "textures") {
-                data[item].specular_map_path = data[item].path.replace(/\.[^/.]+$/g, "") + "_Specular" + path.extname(data[item].path);
+        data = newData;
+        data = Array.prototype.concat.apply([], data); // Nested JSON To Flatten JSON
 
-                if (data[item].name.includes("_Specular")) {
-                    data.splice(item, 1);
-                    item-=1;
-                }
-            }
-        }   
+    } else if(data.children !== undefined){ // Folder
+        // console.log("Folder: ");
+        // console.log(data);
+
+        var n = PropertyWalker(data.children, propertyName, baseDirectory);
+
+        if (n != undefined) {
+           data = n;
+        }  
+    } else { // File
+        // console.log("File: ");
+        // console.log(data);
+        data = PropertyParser(data, baseDirectory);
     }
 
-    for (let i = 0; i < removed.length; i++) { // Remove empties(Models sub folder)
-        data.splice(removed[i] - i, 1);
-    } 
 
+    return data;
+}
+
+PropertyParser = function (data, baseDirectory) { // Edit for different needs
+    // console.log("\t\t\t BaseDir:" + baseDirectory);
+
+    if (baseDirectory === "fonts") { // fonts // path.extname(data.name) === ".tff"
+        data.name = path.basename(data.name, path.extname(data.name));
+        //console.log(path.basename(data.name, path.extname(data.name).toString()));
+    } else if (baseDirectory === "models") {
+        //console.log("\n\n\t\t" + path.extname(data.path));
+        
+        if (path.extname(data.path) === ".obj" || path.extname(data.path) === ".fbx" || path.extname(data.path) === ".dae") {
+            data.name = path.basename(data.name, path.extname(data.name));                    
+        } else {
+            data = undefined;
+        }
+    } else if (baseDirectory === "textures") {
+        data.specular_map_path = data.path.replace(/\.[^/.]+$/g, "") + "_Specular" + path.extname(data.path);        
+    } else if (baseDirectory === "terrains") {
+        // console.log(path.basename(data.name, path.extname(data.name)));
+        data.height_map = data.path;
+        data.path = undefined;
+    } else if (baseDirectory === "entities") {
+        // console.log(path.basename(data.name, path.extname(data.name)));
+        data.name = path.basename(data.name, path.extname(data.name));
+    } else {
+        //data.name = path.basename(data.name, path.extname(data.name));
+        console.log(path.basename(data.name, path.extname(data.name)));
+    }
     return data;
 }
 
@@ -90,8 +115,9 @@ WriteJSONFile = function (pathName, content = {}) {
     /*console.log("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨");
     console.log(content);*/
     
-    var shaders = JSON.parse(fs.readFileSync(pathName + "/shaders.json", 'utf8'));
-    content.shaders = shaders.shaders;
+    var others = JSON.parse(fs.readFileSync(pathName + "/shaders.json", 'utf8'));
+    content.shaders = others.shaders;
+    content.cube_maps = others.cube_maps;
 
     data = JSON.stringify(content, RootReplacer, 2);
 
@@ -112,28 +138,6 @@ function RootReplacer(key, value) {
 
     return value;
 }
-
-/*
-TreeBuilder = function (filename) {
-    var stats = fs.lstatSync(filename),
-        info = {
-            name: path.basename(filename),
-            path: filename
-        };
-
-    if (stats.isDirectory()) {
-        info.type = "folder";
-        info.children = fs.readdirSync(filename).map(function(child) {
-            return TreeBuilder(filename + '/' + child);
-        });
-    } else {
-        info.type = "file";
-    }
-
-    return info;
-}*/
-
-
 
 module.exports = {
     CoreRefresher: CoreRefresher,

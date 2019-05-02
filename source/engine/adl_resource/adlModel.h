@@ -18,6 +18,9 @@ public:
 	void set_material(adlMaterial_shared_ptr material);
 	std::string get_name();
 
+	void set_bounding_box(adlBounding_box bb);
+	adlBounding_box get_bounding_box();
+
 	void set_texture(adlTexture_shared_ptr texture);
 	adlTexture_shared_ptr get_texture();
 
@@ -30,6 +33,8 @@ private:
 	std::vector<adlMesh> value_meshes_;
 	std::string name_ = "";
 	adlTexture_shared_ptr texture_;
+
+	adlBounding_box bb_;
 };
 
 #endif // adl_model_h__

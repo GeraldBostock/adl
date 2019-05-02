@@ -61,6 +61,9 @@ adlModel_shared_ptr adlLoader::load_model(const std::string& mesh_path, const st
 
 	process_ai_node(scene->mRootNode, scene, new_model, model_folder_path);
 
+	const std::vector<adlMesh_shared_ptr>& meshes = new_model->get_all_meshes();
+	new_model->set_bounding_box(generate_model_bounding_box(meshes));
+
 	return new_model;
 }
 
@@ -559,7 +562,48 @@ adlCube_map_shared_ptr adlLoader::load_cube_map(const std::vector<std::string>& 
 	return cube_map;
 }
 
-void adlLoader::generate_bounding_box(adlVec2 min_max_x, adlVec2 min_max_y, adlVec2 min_max_z)
+adlBounding_box adlLoader::generate_model_bounding_box(const std::vector<adlMesh_shared_ptr>& meshes)
 {
+	float highest_y = meshes[0]->get_bounding_box().up_left_back().y;
+	float lowest_y = meshes[0]->get_bounding_box().bottom_left_back().y;
 
+	float highest_x = meshes[0]->get_bounding_box().bottom_right_back().x;
+	float lowest_x = meshes[0]->get_bounding_box().bottom_left_back().x;
+
+	float highest_z = meshes[0]->get_bounding_box().bottom_left_front().z;
+	float lowest_z = meshes[0]->get_bounding_box().bottom_left_back().z;
+
+	for (auto mesh : meshes)
+	{
+		adlBounding_box bb = mesh->get_bounding_box();
+
+		if (highest_y < bb.up_left_back().y)
+		{
+			highest_y = bb.up_left_back().y;
+		}
+		if (lowest_y > bb.bottom_left_back().y)
+		{
+			lowest_y = bb.bottom_left_back().y;
+		}
+
+		if (highest_x < bb.bottom_right_back().x)
+		{
+			highest_x = bb.bottom_right_back().x;
+		}
+		if (lowest_x > bb.bottom_left_back().x)
+		{
+			lowest_x = bb.bottom_left_back().x;
+		}
+
+		if (highest_z < bb.bottom_left_front().z)
+		{
+			highest_z = bb.bottom_left_front().z;
+		}
+		if (lowest_z > bb.bottom_left_back().z)
+		{
+			lowest_z = bb.bottom_left_back().z;
+		}
+	}
+
+	return adlBounding_box(adlVec2(highest_x, lowest_x), adlVec2(highest_y, lowest_y), adlVec2(highest_z, lowest_z));
 }

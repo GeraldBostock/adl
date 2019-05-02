@@ -35,7 +35,7 @@ private:
 
 	void load_texture_from_file(unsigned int texture_id, const std::string& file_path, adlTexture_shared_ptr texture);
 
-	void generate_bounding_box(adlVec2 min_max_x, adlVec2 min_max_y, adlVec2 min_max_z);
+	adlBounding_box generate_model_bounding_box(const std::vector<adlMesh_shared_ptr>& meshes);
 
 	adlScene_loader scene_loader_;
 };

@@ -10,7 +10,7 @@
 		},
 		{
 			"type": "adlRender_component",
-			"model": "bmw"
+			"model": "House"
 		}
 	]
 }

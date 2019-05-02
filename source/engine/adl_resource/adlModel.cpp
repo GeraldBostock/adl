@@ -112,3 +112,13 @@ adlTexture_shared_ptr adlModel::get_texture()
 {
 	return texture_;
 }
+
+void adlModel::set_bounding_box(adlBounding_box bb)
+{
+	bb_ = bb;
+}
+
+adlBounding_box adlModel::get_bounding_box()
+{
+	return bb_;
+}

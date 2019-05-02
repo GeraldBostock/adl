@@ -59,7 +59,7 @@ void adlPhysics_component::post_init()
 		{
 			//adlVec3 dims = mesh->get_bb_dimensions();
 
-			physics_->add_box(mesh->get_bounding_box(), trans_comp->get_transform(), owner);
+			physics_->add_box(model->get_bounding_box(), trans_comp->get_transform(), owner);
 		}
 		else if (shape_ == "sphere")
 		{

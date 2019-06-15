@@ -39,7 +39,6 @@ adlShader_shared_ptr adlLoader::load_shader(const std::string& vertex_shader_pat
 adlModel_shared_ptr adlLoader::load_model(const std::string& mesh_path, const std::string& model_name)
 {
 	Assimp::Importer importer;
-	std::cout << mesh_path << std::endl;
 
 	std::string model_folder_path = mesh_path;
 	const size_t last_slash_idx = model_folder_path.rfind('/');
@@ -82,6 +81,20 @@ void adlLoader::process_ai_node(aiNode* node, const aiScene* scene, adlModel_sha
 
 			if (text != nullptr)
 			{
+				std::vector<unsigned char> pixel_array;
+				for (unsigned int j = 0; j < text->mWidth * text->mHeight; ++j)
+				{
+					aiTexel pixel = text->pcData[j];
+					/*pixel_array.push_back(pixel.r);
+					pixel_array.push_back(pixel.g);
+					pixel_array.push_back(pixel.b);
+					pixel_array.push_back(pixel.a);*/
+					pixel_array.push_back(1);
+					pixel_array.push_back(1);
+					pixel_array.push_back(1);
+					pixel_array.push_back(1);
+				}
+
 				adlTexture_shared_ptr texture = MAKE_SHARED(adlTexture);
 				glBindTexture(GL_TEXTURE_2D, texture->get_id());
 
@@ -90,22 +103,12 @@ void adlLoader::process_ai_node(aiNode* node, const aiScene* scene, adlModel_sha
 				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-				glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, text->mWidth, text->mHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, text->pcData);
+				glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, text->mWidth, text->mHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, &pixel_array[0]);
 				glGenerateMipmap(GL_TEXTURE_2D);
 
 				texture->set_width(text->mWidth);
 				texture->set_height(text->mHeight);
 				texture->set_color_format(GL_RGBA);
-
-				std::vector<unsigned char> pixel_array;
-				for (unsigned int j = 0; j < text->mWidth * text->mHeight; ++j)
-				{
-					aiTexel pixel = text->pcData[j];
-					pixel_array.push_back(pixel.r);
-					pixel_array.push_back(pixel.g);
-					pixel_array.push_back(pixel.b);
-					pixel_array.push_back(pixel.a);
-				}
 
 				texture->set_pixel_array(pixel_array);
 
@@ -113,13 +116,12 @@ void adlLoader::process_ai_node(aiNode* node, const aiScene* scene, adlModel_sha
 			}
 		}
 
-		if (mtl != nullptr)
+		if (true/*mtl != nullptr*/)
 		{
 			aiString path;
-			std::cout << mtl->GetTextureCount(aiTextureType_DIFFUSE) << std::endl;
+			//std::cout << mtl->GetTextureCount(aiTextureType_DIFFUSE) << std::endl;
 			if (AI_SUCCESS != mtl->GetTexture(aiTextureType_DIFFUSE, 0, &path, NULL, NULL, NULL, NULL, NULL))
 			{
-				std::cout << "success" << std::endl;
 			}
 			std::string assimp_texture_path = std::string(path.C_Str());
 			const size_t last_slash_idx = assimp_texture_path.rfind('\\');
@@ -383,18 +385,18 @@ void adlLoader::load_texture_from_file(unsigned int texture_id, const std::strin
 
 	if (data)
 	{
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, color_format, GL_UNSIGNED_BYTE, data);
-		glGenerateMipmap(GL_TEXTURE_2D);
-
-		texture->set_width(width);
-		texture->set_height(height);
-		texture->set_color_format(color_format);
-
 		std::vector<unsigned char> pixel_array;
 		for (unsigned int i = 0; i < width * height * color_channels; i++)
 		{
 			pixel_array.push_back(data[i]);
 		}
+
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, color_format, GL_UNSIGNED_BYTE, &pixel_array[0]);
+		glGenerateMipmap(GL_TEXTURE_2D);
+
+		texture->set_width(width);
+		texture->set_height(height);
+		texture->set_color_format(color_format);
 
 		texture->set_pixel_array(pixel_array);
 	}

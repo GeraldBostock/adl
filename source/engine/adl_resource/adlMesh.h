@@ -54,7 +54,7 @@ public:
 	adlMesh();
 	virtual ~adlMesh();
 
-	void add_vertices(std::vector<Vertex>& vertices, const std::vector<unsigned int>& indices);
+	void add_vertices(const std::vector<Vertex>& vertices, const std::vector<unsigned int>& indices);
 	void set_shader(adlShader_shared_ptr shader);
 	void set_material(adlMaterial_shared_ptr material);
 	void print_vertices();
@@ -63,6 +63,16 @@ public:
 	int get_vertex_count();
 	int get_index_count();
 	adlMaterial_shared_ptr get_material();
+
+	const std::vector<Vertex>& get_vertices()
+	{
+		return vertices_;
+	}
+
+	const std::vector<unsigned int>& get_indices()
+	{
+		return indices_;
+	}
 
 	void set_texture(adlTexture_shared_ptr texture)
 	{

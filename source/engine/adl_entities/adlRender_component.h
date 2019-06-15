@@ -22,6 +22,11 @@ public:
 		material_ = material;
 	}
 
+	void set_model(adlModel_shared_ptr model)
+	{
+		model_ = model;
+	}
+
 private:
 	adlModel_shared_ptr model_;
 	adlMaterial_shared_ptr material_;

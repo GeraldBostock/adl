@@ -11,19 +11,7 @@
 		{
 			"type": "adlRender_component",
 			"model": "Cube",
-			"material": "obsidian"
-		},
-		{
-			"type": "Test_component",
-			"shape": "box",
-			"static": true
-		},
-		{
-			"type": "adlSun_component",
-			"ambient": [0.1, 0.1, 0.1],
-			"diffuse": [0.8, 0.8, 0.8],
-			"specular": [1.0, 1.0, 1.0],
-			"color": [1.0, 1.0, 1.0]
+			"material": "copper"
 		},
 		{
 			"type": "adlPoint_light_component",

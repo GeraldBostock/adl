@@ -1,6 +1,7 @@
 #include "adlRender_component.h"
 
 #include "engine/adl_resource/adlResource_manager.h"
+#include "engine/adl_resource/adlModel.h"
 
 adlRender_component::adlRender_component()
 	:	model_(nullptr),
@@ -66,7 +67,7 @@ void adlRender_component::editor()
 
 		static char material_name[20] = {};
 
-		ImGui::Text("Material(Name)");
+		ImGui::Text(std::string("Material(Name) - " + material_->get_name()).c_str());
 		ImGui::InputText("(max 20 char)", material_name, sizeof(material_name));
 
 		if (ImGui::Button("Refresh Material"))
@@ -76,6 +77,7 @@ void adlRender_component::editor()
 			if (material != nullptr)
 			{
 				material_ = material;
+				model_->set_material(material_);
 			}
 		}
 

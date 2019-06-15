@@ -13,10 +13,12 @@ adlMesh::~adlMesh()
 	
 }
 
-void adlMesh::add_vertices(std::vector<Vertex>& vertices, const std::vector<unsigned int>& indices)
+void adlMesh::add_vertices(const std::vector<Vertex>& vertices, const std::vector<unsigned int>& indices)
 {
-	vertices_ = vertices;
-	indices_ = indices;
+	vertices_.insert(std::end(vertices_), std::begin(vertices), std::end(vertices));
+	indices_.insert(std::end(indices_), std::begin(indices), std::end(indices));
+	//vertices_ = vertices;
+	//indices_ = indices;
 	load_mesh_to_vao();
 }
 

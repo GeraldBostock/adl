@@ -42,12 +42,12 @@ void adlModel::draw(adlShader_shared_ptr shader, adlMat4 transformation_matrix)
 		adlMaterial_shared_ptr mtl = mesh->get_material();
 		shader->load_material(mtl);
 
-		if (mesh->get_texture() != nullptr)
+		/*if (mesh->get_texture() != nullptr)
 		{
 			glActiveTexture(GL_TEXTURE0);
 			glBindTexture(GL_TEXTURE_2D, mesh->get_texture()->get_id());
 			shader->load_texture();
-		}
+		}*/
 
 		glBindVertexArray(mesh->get_vao_id());
 
@@ -87,6 +87,7 @@ void adlModel::set_material(adlMaterial_shared_ptr material)
 	for (auto mesh : meshes_)
 	{
 		mesh->set_material(material);
+		mesh->set_texture(nullptr);
 	}
 }
 

@@ -418,9 +418,33 @@ void adlDebug_renderer::render_bounding_boxes()
 			std::shared_ptr<adlTransform_component> trans_comp = std::shared_ptr(entity->get_component<adlTransform_component>("adlTransform_component"));
 			adlMat4 transform = trans_comp->get_transform().get_transformation_matrix();
 
-			std::vector<adlMesh_shared_ptr> meshes = render_comp->get_model()->get_all_meshes();
+			adlBounding_box bb = render_comp->get_model()->get_bounding_box();
 
-			for (auto mesh : meshes)
+			adlVec3 bottom_left_back = transform.transform_to_parent(bb.bottom_left_back());
+			adlVec3 up_left_back = transform.transform_to_parent(bb.up_left_back());
+			adlVec3 bottom_right_back = transform.transform_to_parent(bb.bottom_right_back());
+			adlVec3 up_right_back = transform.transform_to_parent(bb.up_right_back());
+			adlVec3 up_right_front = transform.transform_to_parent(bb.up_right_front());
+			adlVec3 up_left_front = transform.transform_to_parent(bb.up_left_front());
+			adlVec3 bottom_left_front = transform.transform_to_parent(bb.bottom_left_front());
+			adlVec3 bottom_right_front = transform.transform_to_parent(bb.bottom_right_front());
+
+			render_line3D(bottom_left_back, up_left_back, line_width, line_color);
+			render_line3D(bottom_right_back, up_right_back, line_width, line_color);
+			render_line3D(bottom_left_front, up_left_front, line_width, line_color);
+			render_line3D(bottom_right_front, up_right_front, line_width, line_color);
+			render_line3D(up_left_back, up_right_back, line_width, line_color);
+			render_line3D(up_left_front, up_right_front, line_width, line_color);
+			render_line3D(bottom_left_back, bottom_right_back, line_width, line_color);
+			render_line3D(bottom_left_front, bottom_right_front, line_width, line_color);
+			render_line3D(bottom_left_front, bottom_left_back, line_width, line_color);
+			render_line3D(bottom_right_front, bottom_right_back, line_width, line_color);
+			render_line3D(up_left_front, up_left_back, line_width, line_color);
+			render_line3D(up_right_front, up_right_back, line_width, line_color);
+
+			//std::vector<adlMesh_shared_ptr> meshes = render_comp->get_model()->get_all_meshes();
+
+			/*for (auto mesh : meshes)
 			{
 				adlBounding_box bb = mesh->get_bounding_box();
 
@@ -445,7 +469,7 @@ void adlDebug_renderer::render_bounding_boxes()
 				render_line3D(bottom_right_front, bottom_right_back, line_width, line_color);
 				render_line3D(up_left_front, up_left_back, line_width, line_color);
 				render_line3D(up_right_front, up_right_back, line_width, line_color);
-			}
+			}*/
 		}
 	}
 }

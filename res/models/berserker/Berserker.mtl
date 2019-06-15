@@ -1,0 +1,31 @@
+# Max2Mtl Version 4.0 Mar 10th, 2001
+#
+newmtl 02_-_Default
+Ka  0.6 0.6 0.6
+Kd  0.6 0.6 0.6
+Ks  0.9 0.9 0.9
+d  1.0
+Ns  0.0
+illum 2
+map_Kd _ungame-2c78df40.dds
+map_d _ungame-2c78df40.dds
+#
+newmtl Material__27
+Ka  0.6 0.6 0.6
+Kd  0.6 0.6 0.6
+Ks  0.9 0.9 0.9
+d  1.0
+Ns  0.0
+illum 2
+map_Kd _ungame-2eb8fee0.dds
+#
+newmtl Material__29
+Ka  0.6 0.6 0.6
+Kd  0.6 0.6 0.6
+Ks  0.9 0.9 0.9
+d  1.0
+Ns  0.0
+illum 2
+map_Kd _ungame-1e19ef60.dds
+#
+# EOF

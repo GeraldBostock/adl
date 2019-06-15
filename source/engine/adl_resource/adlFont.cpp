@@ -26,6 +26,7 @@ adlFont::adlFont()
 
 adlFont::~adlFont()
 {
+	ADL_DELETE(characters_)
 }
 
 std::map<char, glyph>* adlFont::get_character_map()

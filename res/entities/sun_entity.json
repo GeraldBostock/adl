@@ -1,0 +1,19 @@
+{
+	"type": "sun_entity",
+	"components": 
+	[
+		{
+			"type": "adlTransform_component",
+			"position": [0.0, 100.0, 0.0],
+			"rotation": [0.0, 0.0, 0.0],
+			"scale": [1.0, 1.0, 1.0]
+		},
+		{
+			"type": "adlSun_component",
+			"ambient": [0.1, 0.1, 0.1],
+			"diffuse": [0.8, 0.8, 0.8],
+			"specular": [1.0, 1.0, 1.0],
+			"color": [1.0, 1.0, 1.0]
+		}
+	]
+}

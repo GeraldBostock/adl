@@ -10,6 +10,9 @@
 #include "engine/adl_entities/adlSun_component.h"
 #include "game/Test_component.h"
 
+#include <stdlib.h>
+#include <time.h> 
+
 Game::Game()
 {
 
@@ -23,6 +26,9 @@ Game::~Game()
 
 bool Game::init()
 {
+	srand(time(NULL));
+	create_randomized_voxels();
+
 	adlTransform_component tc;
 	adlRender_component r;
 	adlPhysics_component p;
@@ -44,26 +50,88 @@ bool Game::init()
 	scene_camera->set_position(adlVec3(0, 30, 10));
 
 	adl_scene_manager->set_camera(scene_camera);
+	adl_scene_manager->set_sun(adl_scene_manager->add_entity_to_scene("sun_entity"));
 
 	adl_window->set_mouse_visible(false);
 
 	scene->set_camera(scene_camera);
 
+	adlMaterial_shared_ptr copper = adl_rm->get_material("copper");
+
 	adlTerrain_shared_ptr terrain = adl_rm->get_terrain("test_terrain");
 	terrain->set_blend_map(adl_rm->get_texture("black"));
 	terrain->set_texture_pack(adl_rm->get_texture_pack("default"));
-	adl_scene_manager->set_terrain(terrain);
+	//adl_scene_manager->set_terrain(terrain);
 
-	entity = adl_scene_manager->add_entity_to_scene("test_entity");
-	std::shared_ptr<adlRender_component> render_comp = std::shared_ptr(entity->get_component<adlRender_component>("adlRender_component"));
-	render_comp->set_material(adl_rm->get_material("frame"));
-	adl_scene_manager->set_sun(entity);
-	adlEntity_shared_ptr entity1 = adl_scene_manager->add_entity_to_scene("test_entity");
+	adlModel_shared_ptr box_model = adl_rm->get_model("Cube");
+	//This works because the box model has only 1 mesh.
+	adlMesh_shared_ptr box_mesh = box_model->get_all_meshes()[0];
 
-	std::shared_ptr<adlTransform_component> component = std::shared_ptr(entity->get_component<adlTransform_component>("adlTransform_component"));
+	adlMesh_shared_ptr voxel_mesh = MAKE_SHARED(adlMesh);
+	voxel_mesh->add_vertices(box_mesh->get_vertices(), box_mesh->get_indices());
 
-	adlEntity_shared_ptr monkey = adl_scene_manager->add_entity_to_scene("Monkey");
+	adlEntity_shared_ptr voxel_entity = adl_scene_manager->add_entity_to_scene("voxel_entity");
 
+	int count = 0;
+
+	std::vector<Vertex> transformed_mesh;
+	transformed_mesh.resize(24 * voxels_.size());
+	std::vector<unsigned int> indices;
+	indices.resize(36 * voxels_.size());
+	int vertex_count = 0;
+	int index_counter = 0;
+
+	for (int i = 0; i < voxels_.size(); ++i)
+	{
+		Voxel voxel = voxels_[i];
+
+		adlVec3 position = voxel.position;
+		int size = voxel.size;
+
+		adlMatrix_frame transform = adlMatrix_frame::identity();
+		transform.o = position;
+		transform.scale = adlVec3(size);
+
+		int vertex_index = 0;
+		for (auto vertex : box_mesh->get_vertices())
+		{
+			adlVec3 pos = vertex.position;
+			adlVec3 transformed_pos = transform.get_transformation_matrix().transform_to_parent(pos);
+			transformed_mesh[i * 24 + vertex_index++] = Vertex(transformed_pos, vertex.normal, vertex.uv);
+			vertex_count++;
+			//transformed_mesh.push_back(Vertex(transformed_pos, vertex.normal, vertex.uv));
+		}
+
+		int voxel_mesh_vertex_count = voxel_mesh->get_vertex_count();
+		const std::vector<unsigned int>& box_mesh_indices = box_mesh->get_indices();
+		//std::vector<unsigned int> indices;
+		for (unsigned int j = 0; j < box_mesh->get_index_count(); ++j)
+		{
+			indices[index_counter++] = box_mesh_indices[j] + vertex_count;
+		}
+
+		//voxel_mesh->add_vertices(transformed_mesh, indices);
+
+		count++;
+
+		if (count % 10000 == 0)
+		{
+			std::cout << count << std::endl;
+		}
+	}
+	
+	voxel_mesh->add_vertices(transformed_mesh, indices);
+
+	voxel_mesh->set_texture(adl_rm->get_texture("grass"));
+	voxel_mesh->set_material(adl_rm->get_material("copper"));
+
+	adlModel_shared_ptr voxel_model = MAKE_SHARED(adlModel, "Voxels");
+	voxel_model->add_mesh(voxel_mesh);
+	voxel_model->set_material(adl_rm->get_material("copper"));
+	//voxel_model->set_texture(adl_rm->get_texture("grass"));
+
+	std::shared_ptr<adlRender_component> render_component = std::shared_ptr(voxel_entity->get_component<adlRender_component>("adlRender_component"));
+	render_component->set_model(voxel_model);
 
 	return true;
 }
@@ -81,4 +149,18 @@ bool Game::update(float dt)
 	}
 
 	return true;
+}
+
+void Game::create_randomized_voxels()
+{
+	for (int i = 0; i < 200000; i++)
+	{
+		int x = rand() % 300;
+		int y = rand() % 300;
+		int z = rand() % 300;
+
+		int size = rand() % 8;
+
+		voxels_.push_back(Voxel(adlVec3(x, y, z), size));
+	}
 }

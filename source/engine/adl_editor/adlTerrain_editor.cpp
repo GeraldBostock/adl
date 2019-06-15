@@ -239,9 +239,10 @@ void adlTerrain_editor::end_tile_selection_state(const adlVec2_i32& current_tile
 
 		int scale_rate = terrain->get_blend_map()->get_width() / terrain->get_width();
 
-		for (unsigned int i = x_min * scale_rate * 4; i < x_max * scale_rate * 4 + scale_rate * 4; i += 4)
+		// This assumes the texture has alpha channel
+		for (unsigned int i = x_min * scale_rate * 3; i < x_max * scale_rate * 3 + scale_rate * 3; i += 3)
 		{
-			for (unsigned int j = y_min * scale_rate * 4; j < y_max * scale_rate * 4 + scale_rate * 4; j += 4)
+			for (unsigned int j = y_min * scale_rate * 3; j < y_max * scale_rate * 3 + scale_rate * 3; j += 3)
 			{
 				int channel = 0;
 				if (texture2_)

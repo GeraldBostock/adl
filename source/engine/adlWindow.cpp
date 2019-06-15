@@ -6,6 +6,8 @@
 #include "adl_debug/imgui/imgui_impl_sdl.h"
 #include "adl_debug/imgui/imgui_impl_opengl3.h"
 
+#include <iostream>
+
 adlWindow* adlWindow::instance_ = nullptr;
 
 adlWindow::adlWindow(const std::string& title, int width, int height)
@@ -74,6 +76,15 @@ adlWindow::adlWindow(const std::string& title, int width, int height)
 
 	is_fullscreen_ = false;
 	closed_ = false;
+
+	SDL_DisplayMode dm;
+	if (SDL_GetDesktopDisplayMode(0, &dm) != 0)
+	{
+		SDL_Log("SDL_GetDesktopDisplayMode failed: %s", SDL_GetError());
+	}
+
+	std::cout << dm.w << " " << dm.h << std::endl;
+
 #endif // USE_SDL
 }
 

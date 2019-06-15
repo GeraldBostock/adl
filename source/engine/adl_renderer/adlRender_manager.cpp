@@ -103,8 +103,7 @@ void adlRender_manager::render(adlEntity_shared_ptr entity)
 	shader->load_point_lights(point_lights_);
 	//shader->load_material(material);
 
-
-	if (material != nullptr)
+	/*if (material != nullptr)
 	{
 		shader->load_material(material);
 		if (material->get_texture() != nullptr)
@@ -116,7 +115,8 @@ void adlRender_manager::render(adlEntity_shared_ptr entity)
 			glActiveTexture(GL_TEXTURE1);
 			glBindTexture(GL_TEXTURE_2D, material->get_texture()->get_specular_map_id());
 		}
-	}
+	}*/
+	shader = adl_rm->get_shader("no_texture");
 	model->draw(shader, model_matrix);
 	shader->stop();
 }

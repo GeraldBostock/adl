@@ -11,7 +11,15 @@
     {
       "name": "test_entity",
       "path": "res/entities/test_entity.json"
-    }
+    },
+	{
+	  "name": "voxel_entity",
+	  "path": "res/entities/voxel_entity.json"
+	},
+	{
+	  "name": "sun_entity",
+	  "path": "res/entities/sun_entity.json"
+	}
   ],
   "fonts": [
     {
@@ -32,6 +40,10 @@
       "name": "AxisArrowFBX",
       "path": "res/models/AxisArrows/AxisArrowFBX/AxisArrowFBX.fbx"
     },
+	{
+	  "name": "hulk",
+	  "path": "res/models/hulk/Hulk-1.obj"
+	},
     {
       "name": "AxisArrowOBJ",
       "path": "res/models/AxisArrows/AxisArrowOBJ/AxisArrowOBJ.obj"
@@ -107,7 +119,35 @@
     {
       "name": "rock",
       "path": "res/models/Stones/Rock/rock.obj"
-    }
+    },
+	{
+	  "name": "orcs",
+	  "path": "res/models/orcs/D0306011.obj"
+	},
+	{
+	  "name": "stump",
+	  "path": "res/models/stump/kand.blend"
+	},
+	{
+	  "name": "axe",
+	  "path": "res/models/axe/axe.obj"
+	},
+	{
+	  "name": "berserker",
+	  "path": "res/models/berserker/Berserker.obj"
+	},
+	{
+	  "name": "soldier",
+	  "path": "res/models/soldier/Liit.obj"
+	},
+	{
+	  "name": "davy",
+	  "path": "res/models/davy/Davy Jones.obj"
+	},
+	{
+	  "name": "sword",
+	  "path": "res/models/sword/sword.fbx"
+	}
   ],
   "scenes": [
     {
